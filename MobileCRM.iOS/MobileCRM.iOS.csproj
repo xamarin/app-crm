@@ -112,6 +112,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
+    <Reference Include="Xamarin.Controls.BarChart.iOS">
+      <HintPath>..\Components\barchart-1.1\lib\ios\Xamarin.Controls.BarChart.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\packages\Xamarin.Forms.1.1.1.6206\lib\MonoTouch10\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
@@ -163,7 +166,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Renderers\BlueNavigationRenderer.cs" />
+    <Compile Include="Renderers\BarChartRenderer.cs" />
     <Compile Include="Renderers\DarkTextCellRenderer.cs" />
     <Compile Include="GeoService.cs" />
   </ItemGroup>
@@ -190,6 +193,12 @@
       <Project>{ABDE5DEF-A5D7-410A-B9BE-FF897688EB8F}</Project>
       <Name>MobileCRM.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="barchart">
+      <Visible>False</Visible>
+      <Version>1.1</Version>
+    </XamarinComponentReference>
   </ItemGroup>
   <Import Project="..\packages\Xamarin.Forms.1.1.1.6206\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.1.1.6206\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

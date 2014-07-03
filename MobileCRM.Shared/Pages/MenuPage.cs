@@ -51,7 +51,7 @@ namespace MobileCRM.Shared.Pages
                 BackgroundColor = Color.Transparent,
             };
 
-            var cell = new DataTemplate(typeof(DarkTextCell));
+            var cell = new DataTemplate(typeof(MenuCell));
             cell.SetBinding(TextCell.TextProperty, "Title");
             cell.SetBinding(TextCell.DetailProperty, "Count");
             cell.SetBinding(ImageCell.ImageSourceProperty, "IconSource");

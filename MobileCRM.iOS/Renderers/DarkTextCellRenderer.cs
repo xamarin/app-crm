@@ -4,12 +4,12 @@ using Xamarin.Forms;
 using MonoTouch.UIKit;
 using MobileCRM.iOS;
 
-[assembly: ExportCell (typeof (DarkTextCell), typeof (DarkTextCellRenderer))]
+[assembly: ExportCell (typeof (MenuCell), typeof (MenuCellRenderer))]
 
 namespace MobileCRM.iOS
 {
 
-    public class DarkTextCellRenderer : ImageCellRenderer
+    public class MenuCellRenderer : ImageCellRenderer
     {
         public override UITableViewCell GetCell (Cell item, UITableView tv)
         {

@@ -1,4 +1,5 @@
-﻿using MobileCRM.Shared.ViewModels;
+﻿using MobileCRM.CustomViews;
+using MobileCRM.Shared.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -43,6 +44,17 @@ namespace MobileCRM.Shared.Pages
 
             layout.Children.Add(button);
 
+            var items = new List<BarItem>();
+            items.Add(new BarItem { Name = "a", Value = 10 });
+            items.Add(new BarItem { Name = "b", Value = 15 });
+            items.Add(new BarItem { Name = "c", Value = 20 });
+            items.Add(new BarItem { Name = "d", Value = 5 });
+            items.Add(new BarItem { Name = "e", Value = 14 });
+            var chart = new BarChart
+            {
+              Items = items
+            };
+            layout.Children.Add(chart);
             Content = new ScrollView { Content = layout };
         }
     }

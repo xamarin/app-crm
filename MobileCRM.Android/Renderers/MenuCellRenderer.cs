@@ -15,11 +15,11 @@ using Context = global::Android.Content.Context;
 using ListView = global::Android.Widget.ListView;
 using Android.App;
 
-[assembly: ExportCell (typeof (DarkTextCell), typeof (DarkTextCellRenderer))]
+[assembly: ExportCell (typeof (MenuCell), typeof (MenuCellRenderer))]
 
 namespace MobileCRMAndroid
 {
-    public class DarkTextCellRenderer : ImageCellRenderer
+    public class MenuCellRenderer : ImageCellRenderer
     {
         protected override View GetCellCore (Cell item, View convertView, ViewGroup parent, Context context)
         {

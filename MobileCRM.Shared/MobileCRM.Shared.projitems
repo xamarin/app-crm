@@ -9,6 +9,7 @@
     <Import_RootNamespace>MobileCRM</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CustomViews\BarChart.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Color.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MobileCRM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LoginPage.cs" />
@@ -17,10 +18,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\RootPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MapViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ListTextCell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\DarkTextCell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\StripedListView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\StripedViewCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomViews\ListTextCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomViews\MenuCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\OptionItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\ListPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\DetailPage.cs" />
