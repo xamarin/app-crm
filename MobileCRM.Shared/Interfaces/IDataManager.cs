@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MobileCRM.Shared.Models
+namespace MobileCRM.Shared.Interfaces
 {
-    public class Contact : BaseModel
+    interface IDataManager
     {
     }
 }

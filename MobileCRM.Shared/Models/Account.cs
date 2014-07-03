@@ -1,13 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace MobileCRM.Models
+namespace MobileCRM.Shared.Models
 {
-    public class Account : Contact
+    public class Account : BaseModel
     {
-        public Account() : base (null) { }
-        public Account (IContact contact) : base (contact)
-        {
-        }
+      public string ContactId { get; set; }
     }
 }
-

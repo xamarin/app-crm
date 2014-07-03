@@ -21,8 +21,8 @@ namespace MobileCRM.Shared.Pages
             Map = new MapPage<T>(viewModel);
             List = new ListPage<T>(viewModel) { Icon = "list.png" };
 
-            this.Children.Add(Map);
             this.Children.Add(List);
+            this.Children.Add(Map);
         }
     }
 }

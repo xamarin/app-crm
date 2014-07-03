@@ -44,25 +44,6 @@ namespace MobileCRM.Shared.Pages
             Content = detailTable;
         }
 
-        protected override void OnPropertyChanging (string propertyName = null)
-        {
-            Console.WriteLine(propertyName + " is changing");
-            base.OnPropertyChanging (propertyName);
-        }
-
-        protected override void OnPropertyChanged (string propertyName = null)
-        {
-            Console.WriteLine(propertyName + " is changed");
-            base.OnPropertyChanging (propertyName);
-        }
-
-        protected override void OnBindingContextChanged ()
-        {
-            base.OnBindingContextChanged ();
-            Console.WriteLine("BindingContext Changed");
-
-        }
-
         TableView CreateTableForProperties (IEnumerable<PropertyInfo> items, IContact context)
         {
             var table = new TableView {
