@@ -50,7 +50,7 @@ namespace MobileCRM.Shared.Pages
             items.Add(new BarItem { Name = "c", Value = 20 });
             items.Add(new BarItem { Name = "d", Value = 5 });
             items.Add(new BarItem { Name = "e", Value = 14 });
-            var chart = new BarChart
+            var chart = new MobileCRM.CustomViews.BarChart
             {
               Items = items
             };
