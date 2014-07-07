@@ -35,8 +35,18 @@ namespace MobileCRM.Shared.Models
 
       [Display("Est. Amount"), Currency]
       [JsonProperty(PropertyName = "estimated_amount")]
-      public int EstimatedAmount { get; set; }
+      public string EstimatedAmountDisplay { get; set; }
 
+      [JsonIgnore]
+      public int EstimatedAmount
+      {
+        get
+        {
+          int estimated = 0;
+          int.TryParse(EstimatedAmountDisplay, out estimated);
+          return estimated;
+        }
+      }
       public override string ToString()
       {
         return string.Format("{0}{1}", Company, EstimatedAmount == Decimal.Zero

@@ -42,14 +42,30 @@
       <DependentUpon>ContactDetailsView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactsListView.xaml.cs">
-      <DependentUpon>ContactsListView.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactsView.xaml.cs">
+      <DependentUpon>ContactsView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactsMapView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Home\HomeView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Home\LoginPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Home\MenuPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Leads\LeadDetailsView.xaml.cs">
+      <DependentUpon>LeadDetailsView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Leads\LeadsDashboardView.xaml.cs">
+      <DependentUpon>LeadsDashboardView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Leads\NewLeadView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>NewLeadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Leads\LeadsView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>LeadsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Services\AzureService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Accounts\AccountDetailsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Accounts\AccountsViewModel.cs" />
@@ -58,6 +74,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Contacts\ContactsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Home\LoginViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Leads\NewLeadViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Leads\LeadDetailsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Leads\LeadsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ConvertableConverter.cs" />
@@ -72,7 +89,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactsListView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Leads\NewLeadView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Leads\LeadsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -84,10 +109,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Pages\Leads\" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountDetailsMapView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountDetailsMapView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Leads\LeadsDashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Leads\LeadDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

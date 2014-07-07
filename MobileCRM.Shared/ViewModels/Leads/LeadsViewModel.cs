@@ -27,27 +27,34 @@ namespace MobileCRM.Shared.ViewModels.Leads
         dataManager = DependencyService.Get<IDataManager>();
         Leads = new ObservableCollection<Account>();
 
-        MessagingCenter.Subscribe<Account>(this, "NewLead", (account) =>
+        /*MessagingCenter.Subscribe<Account>(this, "NewLead", async (account) =>
           {
             Leads.Add(account);
           });
+
+        MessagingCenter.Subscribe<Account>(this, "ApproveLead", (account) =>
+        {
+          var index = Leads.IndexOf(account);
+          if (index >= 0)
+            Leads.RemoveAt(index);
+        });*/
       }
 
-      private Command loadAccountsCommand;
+      private Command loadLeadsCommand;
       /// <summary>
       /// Command to load accounts
       /// </summary>
-      public Command LoadAccountsCommand
+      public Command LoadLeadsCommand
       {
         get
         {
-          return loadAccountsCommand ??
-                 (loadAccountsCommand = new Command(async () =>
-                  await ExecuteLoadAccountsCommand()));
+          return loadLeadsCommand ??
+                 (loadLeadsCommand = new Command(async () =>
+                  await ExecuteLoadLeadsCommand()));
         }
       }
 
-      private async Task ExecuteLoadAccountsCommand()
+      private async Task ExecuteLoadLeadsCommand()
       {
         if (IsBusy)
           return;

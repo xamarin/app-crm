@@ -38,6 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BarChart.cs" />
+    <Compile Include="Converters\ConvertableConverter.cs" />
     <Compile Include="ListTextCell.cs" />
     <Compile Include="MenuCell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

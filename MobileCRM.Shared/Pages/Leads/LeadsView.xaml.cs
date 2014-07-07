@@ -1,5 +1,6 @@
 ﻿using MobileCRM.Shared.Models;
 using MobileCRM.Shared.ViewModels.Contacts;
+using MobileCRM.Shared.ViewModels.Leads;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace MobileCRM.Shared.Pages.Contacts
+namespace MobileCRM.Shared.Pages.Leads
 {
-	public partial class ContactsListView
+	public partial class LeadsView
 	{
-    private ContactsViewModel ViewModel
+    private LeadsViewModel ViewModel
     {
-      get { return BindingContext as ContactsViewModel; }
+      get { return BindingContext as LeadsViewModel; }
     }
 
-    public ContactsListView(ContactsViewModel vm)
+    public LeadsView(LeadsViewModel vm)
 		{
 			InitializeComponent ();
 
@@ -29,7 +30,7 @@ namespace MobileCRM.Shared.Pages.Contacts
         Command = new Command(() =>
         {
           //navigate to new page
-          Navigation.PushAsync(new ContactDetailsView(null));
+          Navigation.PushAsync(new NewLeadView());
         })
       });
 
@@ -37,7 +38,7 @@ namespace MobileCRM.Shared.Pages.Contacts
       {
         Icon = "refresh.png",
         Name = "refresh",
-        Command = ViewModel.LoadContactsCommand
+        Command = ViewModel.LoadLeadsCommand
       });
 
 		}
@@ -47,19 +48,19 @@ namespace MobileCRM.Shared.Pages.Contacts
       if (e.Item == null)
         return;
 
-      Navigation.PushAsync(new ContactDetailsView(e.Item as Contact));
+      Navigation.PushModalAsync(new LeadDetailsView(e.Item as Account));
 
-      ContactList.SelectedItem = null;
+      LeadsList.SelectedItem = null;
     }
 
     protected override void OnAppearing()
     {
       base.OnAppearing();
-      if (ViewModel.IsInitialized)
+      /*if (ViewModel.IsInitialized)
       {
         return;
-      }
-      ViewModel.LoadContactsCommand.Execute(null);
+      }*/
+      ViewModel.LoadLeadsCommand.Execute(null);
       ViewModel.IsInitialized = true;
     }
 	}

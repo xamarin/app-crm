@@ -82,7 +82,7 @@ namespace MobileCRM.Shared.Services
 #region Jobs
 
       
-      private async Task SyncJobs()
+      public async Task SyncJobs()
       {
 
         try
@@ -128,7 +128,7 @@ namespace MobileCRM.Shared.Services
 
 #region Accounts
 
-      private async Task SyncAccounts()
+      public async Task SyncAccounts()
       {
         try
         {
@@ -150,8 +150,6 @@ namespace MobileCRM.Shared.Services
           await accountTable.InsertAsync(item);
         else
           await accountTable.UpdateAsync(item);
-
-        await SyncAccounts();
       }
 
       public async Task DeleteAccountAsync(Account item)
@@ -176,6 +174,7 @@ namespace MobileCRM.Shared.Services
         try
         {
           await SyncAccounts();
+          await SyncJobs();
           return await accountTable.Where(a =>a.IsLead == leads).ToEnumerableAsync();
         }
         catch (MobileServiceInvalidOperationException ex)
@@ -193,6 +192,7 @@ namespace MobileCRM.Shared.Services
       {
         try
         {
+          await SyncAccounts();
           await SyncJobs();
           return await jobTable.Where(j => j.AccountId == accountId &&
                                          j.IsProposed == proposed &&
@@ -214,7 +214,7 @@ namespace MobileCRM.Shared.Services
 
 #region Contacts
 
-      private async Task SyncContacts()
+      public async Task SyncContacts()
       {
         try
         {

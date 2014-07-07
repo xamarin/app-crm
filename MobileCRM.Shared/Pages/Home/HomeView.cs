@@ -3,9 +3,11 @@ using MobileCRM.Shared.Models;
 using MobileCRM.Shared.Pages.Accounts;
 using MobileCRM.Shared.Pages.Base;
 using MobileCRM.Shared.Pages.Contacts;
+using MobileCRM.Shared.Pages.Leads;
 using MobileCRM.Shared.ViewModels;
 using MobileCRM.Shared.ViewModels.Accounts;
 using MobileCRM.Shared.ViewModels.Contacts;
+using MobileCRM.Shared.ViewModels.Leads;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -162,7 +164,7 @@ namespace MobileCRM.Shared.Pages
             var vm = new ContactsViewModel();
             contacts = new TabView("Contacts", new List<Page>
             {
-              new ContactsListView(vm),
+              new ContactsView(vm),
               new ContactsMapView(vm)
             }, vm);
           }
@@ -171,7 +173,15 @@ namespace MobileCRM.Shared.Pages
           break;
         case MenuType.Leads:
           if (leads == null)
-            leads = new TabView("Leads", new List<Page>());
+          {
+
+            var vm = new LeadsViewModel();
+            leads = new TabView("Leads", new List<Page>
+            {
+              new LeadsView(vm),
+              new LeadsDashboardView()
+            }, vm);
+          }
 
           PageSelection = leads;
 

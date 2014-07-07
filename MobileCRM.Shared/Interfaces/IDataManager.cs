@@ -8,6 +8,10 @@ namespace MobileCRM.Shared.Interfaces
 {
     public interface IDataManager
     {
+      Task SyncJobs();
+      Task SyncAccounts();
+      Task SyncContacts();
+
       Task SaveJobAsync(Job item);
       Task DeleteJobAsync(Job item);
 

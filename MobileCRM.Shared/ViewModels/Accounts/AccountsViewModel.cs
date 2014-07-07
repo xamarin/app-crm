@@ -30,10 +30,16 @@ namespace MobileCRM.Shared.ViewModels.Accounts
         dataManager = DependencyService.Get<IDataManager>();
         Accounts = new ObservableCollection<Account>();
 
-        MessagingCenter.Subscribe<Account>(this, "NewAccount", (account) =>
+        /*MessagingCenter.Subscribe<Account>(this, "NewAccount", (account) =>
           {
             Accounts.Add(account);
           });
+
+
+        MessagingCenter.Subscribe<Account>(this, "ApproveLead", (account) =>
+        {
+          Accounts.Add(account);
+        });*/
       }
 
       private Command loadAccountsCommand;
