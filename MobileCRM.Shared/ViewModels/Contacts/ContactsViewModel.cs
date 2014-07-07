@@ -29,9 +29,13 @@ namespace MobileCRM.Shared.ViewModels.Contacts
         dataManager = DependencyService.Get<IDataManager>();
         Contacts = new ObservableCollection<Contact>();
 
-        MessagingCenter.Subscribe<Contact>(this, "NewContact", (contact) =>
+        MessagingCenter.Subscribe<Contact>(this, "SaveContact", (contact) =>
           {
-            Contacts.Add(contact);
+            var index = Contacts.IndexOf(contact);
+            if(index >= 0)
+              Contacts[index] = contact;
+            else
+              Contacts.Add(contact);
           });
       }
 

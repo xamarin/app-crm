@@ -64,9 +64,13 @@ namespace MobileCRM.Shared.ViewModels.Contacts
           Contact.Latitude = point.Latitude;
           Contact.Longitude = point.Longitude;
         }
+
+       
+
         await dataManager.SaveContactAsync(Contact);
 
-        MessagingCenter.Send(Contact, "NewContact");
+
+        MessagingCenter.Send(Contact, "SaveContact");
 
         IsBusy = false;
 
