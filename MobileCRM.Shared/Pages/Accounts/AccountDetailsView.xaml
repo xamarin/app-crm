@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+					   x:Class="MobileCRM.Shared.Pages.Accounts.AccountDetailsView">
+	<ContentPage.Content>
+        <TableView HasUnevenRows="True" VerticalOptions="FillAndExpand">
+            <TableView.Root>
+                <TableRoot>
+                    <TableSection Title="Information">
+                        <EntryCell Label="Company" Text="{Binding Account.Company}"/>
+                        <EntryCell Label="Phone" Text="{Binding Account.Phone}"/>
+                        <TextCell x:Name="CallCell"  Text="Call"/><!--PUt in image here-->
+                    </TableSection>
+                    <TableSection Title="Address">
+                        <EntryCell Label="Street" Text="{Binding Account.Street}"/>
+                        <EntryCell Label="City" Text ="{Binding Account.City}"/>
+                        <EntryCell Label="State" Text="{Binding Account.State}"/>
+                        <EntryCell Label="Postal Code" Text="{Binding Account.PostalCode}" />
+                        <EntryCell Label="Country" Text="{Binding Account.Country}"/>
+                    </TableSection>
+                </TableRoot>
+            </TableView.Root>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>

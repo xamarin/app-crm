@@ -7,6 +7,7 @@ using MobileCRM.Shared.Pages;
 using MobileCRM;
 using Android.Graphics.Drawables;
 using Android.Content.PM;
+using MobileCRM.Shared;
 
 namespace MobileCRMAndroid
 {
@@ -17,18 +18,14 @@ namespace MobileCRMAndroid
         {
             base.OnCreate (bundle);
 
-            MobileCRMApp.Init(typeof(MobileCRMApp).Assembly);
             Forms.Init(this, bundle);
             FormsMaps.Init(this, bundle);
 
             // Set our view from the "main" layout resource
-            SetPage (BuildView());
+            SetPage (MobileCRM.Shared.App.RootPage);
         }
 
-        static Page BuildView()
-        {
-            return new RootPage();
-        }
+        
     }
 }
 

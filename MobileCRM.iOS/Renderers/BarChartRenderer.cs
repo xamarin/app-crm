@@ -7,13 +7,13 @@ using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms;
 using MobileCRM.iOS.Renderers;
 using System.ComponentModel;
-[assembly: ExportRenderer(typeof(MobileCRM.CustomViews.BarChart), typeof(BarChartRenderer))]
+[assembly: ExportRenderer(typeof(MobileCRM.CustomControls.BarChart), typeof(BarChartRenderer))]
 namespace MobileCRM.iOS.Renderers
 {
 
-  public class BarChartRenderer : ViewRenderer<MobileCRM.CustomViews.BarChart, BarChart.BarChartView>
+  public class BarChartRenderer : ViewRenderer<MobileCRM.CustomControls.BarChart, BarChart.BarChartView>
   {
-    protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.CustomViews.BarChart> e)
+    protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.CustomControls.BarChart> e)
     {
       base.OnElementChanged(e);
       if (e.OldElement != null || this.Element == null)
@@ -32,7 +32,7 @@ namespace MobileCRM.iOS.Renderers
       base.OnElementPropertyChanged(sender, e);
       if (this.Element == null || this.Control == null)
         return;
-      if (e.PropertyName == MobileCRM.CustomViews.BarChart.ItemsProperty.PropertyName)
+      if (e.PropertyName == MobileCRM.CustomControls.BarChart.ItemsProperty.PropertyName)
       {
         Control.ItemsSource = Element.Items.Select(item => new BarChart.BarModel
         {

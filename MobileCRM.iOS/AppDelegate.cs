@@ -5,8 +5,11 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using Xamarin.Forms;
 using Xamarin;
-using MobileCRM.Shared.CustomViews;
+using MobileCRM.CustomControls;
 using MobileCRM.Shared.Pages;
+using MobileCRM.Shared;
+using MobileCRM.Shared.Interfaces;
+using MobileCRM.Shared.Services;
 
 namespace MobileCRM.iOS
 {
@@ -18,11 +21,9 @@ namespace MobileCRM.iOS
         public override bool FinishedLaunching (UIApplication app, NSDictionary options)
         {
             window = new UIWindow (UIScreen.MainScreen.Bounds);
-            
-            MobileCRMApp.Init(typeof(MobileCRMApp).Assembly);
+
             Forms.Init();
             FormsMaps.Init();
-
 
             UINavigationBar.Appearance.BackgroundColor = UIColor.FromRGBA(0, 0, 0, 0);
             UINavigationBar.Appearance.TintColor = MobileCRM.Shared.Helpers.Color.Blue.ToUIColor();
@@ -31,19 +32,14 @@ namespace MobileCRM.iOS
             {
                 TextColor = UIColor.White
             });
-   
-            window.RootViewController = BuildView();
+
+            window.RootViewController = MobileCRM.Shared.App.RootPage.CreateViewController();
             window.MakeKeyAndVisible ();
             
             return true;
         }
 
-        static UIViewController BuildView()
-        {
-            var root = new RootPage();
-            var controller = root.CreateViewController();
-            return controller;
-        }
+      
     }
 }
 

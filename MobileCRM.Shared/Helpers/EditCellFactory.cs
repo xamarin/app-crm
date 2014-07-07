@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using MobileCRM.Helpers;
-using MobileCRM.Models;
-using MobileCRM.Services;
+using MobileCRM.Shared.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using System.Linq.Expressions;
@@ -12,11 +10,11 @@ using System.Diagnostics;
 
 [assembly:Dependency(typeof(EditCellFactory))]
 
-namespace MobileCRM.Helpers
+namespace MobileCRM.Shared.Helpers
 {
-    public class EditCellFactory : ICellFactory
+    public class EditCellFactory
     {
-        static readonly IValueConverter AddressConverter;
+        /*static readonly IValueConverter AddressConverter;
         static readonly IValueConverter AddressToStringConverter;
         static readonly IValueConverter DefaultConverter;
         static readonly IValueConverter OwnerConverter;
@@ -68,7 +66,7 @@ namespace MobileCRM.Helpers
         {
             var label = CreateLabel(property);
             var entryCell = new EntryCell();
-            entryCell.LabelColor = Color.FromHex("999999");
+            entryCell.LabelColor = Xamarin.Forms.Color.FromHex("999999");
             entryCell.SetValue(EntryCell.LabelProperty, label);
             entryCell.SetBinding(EntryCell.TextProperty, new Binding(property.Name, BindingMode.TwoWay));
             entryCell.BindingContext = context;
@@ -80,7 +78,7 @@ namespace MobileCRM.Helpers
             var label = CreateLabel(property);
             var entryCell = new EntryCell();
             entryCell.SetValue(EntryCell.LabelProperty, label);
-            entryCell.LabelColor = Color.FromHex("999999");
+            entryCell.LabelColor = Xamarin.Forms.Color.FromHex("999999");
             entryCell.SetBinding(EntryCell.TextProperty, new Binding(property.Name, mode: BindingMode.TwoWay, converter: DefaultConverter));
             entryCell.BindingContext = context;
             return entryCell;
@@ -92,7 +90,7 @@ namespace MobileCRM.Helpers
             var currencyAttrib = property.GetCustomAttribute<CurrencyAttribute>();
             var entryCell = new EntryCell();
             entryCell.SetValue(EntryCell.LabelProperty, label);
-            entryCell.LabelColor = Color.FromHex("999999");
+            entryCell.LabelColor = Xamarin.Forms.Color.FromHex("999999");
             entryCell.SetBinding(EntryCell.TextProperty, new Binding(property.Name, mode: BindingMode.TwoWay, converter: DefaultConverter, converterParameter: currencyAttrib));
             entryCell.BindingContext = context;
             return entryCell;
@@ -166,7 +164,7 @@ namespace MobileCRM.Helpers
         internal static Cell DefaultCell(PropertyInfo property, IContact context, Page parent = null)
         {
             return StringCell(property, context, parent);
-        }
+        }*/
     }
 }
 

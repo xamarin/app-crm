@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
-using MobileCRM.Shared.CustomViews;
+using MobileCRM.CustomControls;
 using MobileCRMAndroid;
 using Android.Widget;
 using Android.Graphics.Drawables.Shapes;

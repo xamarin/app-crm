@@ -1,4 +1,4 @@
-﻿using MobileCRM.Services;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,20 +8,34 @@ namespace MobileCRM.Shared.ViewModels
 {
   public abstract class BaseViewModel : INotifyPropertyChanged
   {
-    private IEnumerable<IUser> users = new IUser[0];
-    private string title = string.Empty;
+    public bool IsInitialized { get; set; }
 
+    private bool canLoadMore;
     /// <summary>
-    /// Gets or sets the "Users" property.
+    /// Gets or sets the "IsBusy" property
     /// </summary>
-    /// <value>The users.</value>
-    public const string UsersPropertyName = "Users";
-    public IEnumerable<IUser> Users
+    /// <value>The isbusy property.</value>
+    public const string CanLoadMorePropertyName = "CanLoadMore";
+    public bool CanLoadMore
     {
-      get { return users; }
-      set { SetProperty(ref users, value, UsersPropertyName); }
+      get { return canLoadMore; }
+      set { SetProperty(ref canLoadMore, value, CanLoadMorePropertyName); }
     }
 
+    private bool isBusy;
+    /// <summary>
+    /// Gets or sets the "IsBusy" property
+    /// </summary>
+    /// <value>The isbusy property.</value>
+    public const string IsBusyPropertyName = "IsBusy";
+    public bool IsBusy
+    {
+      get { return isBusy; }
+      set { SetProperty(ref isBusy, value, IsBusyPropertyName); }
+    }
+
+    
+    private string title = string.Empty;
     /// <summary>
     /// Gets or sets the "Title" property
     /// </summary>

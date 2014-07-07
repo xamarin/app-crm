@@ -3,12 +3,14 @@ using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;
 using MobileCRM.Shared.Interfaces;
 using MobileCRM.Shared.Models;
+using MobileCRM.Shared.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+[assembly: Xamarin.Forms.Dependency(typeof(AzureService))]
 
 namespace MobileCRM.Shared.Services
 {
@@ -25,14 +27,26 @@ namespace MobileCRM.Shared.Services
 #if __ANDROID__ || __IOS__
         Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 #endif
+#if __IOS__
+        SQLitePCL.CurrentPlatform.Init();
+#endif
+
 
         //comment back in to enable Azure Mobile Services.
         MobileService = new MobileServiceClient(
-          "https://" + "dotnetrocks" + ".azure-mobile.net/",
-          "crxRndhkdBSjxbvYgzpGuElxmgvWfz81");
+          "https://" + "xamarindemos" + ".azure-mobile.net/",
+          "TyohPJmeLEvNnEzTmXfLcrMGGWSgwZ43");
 
-        var path = "mobilecrm.db";
 
+        
+      }
+
+      public async Task Init()
+      {
+        if (MobileService.SyncContext.IsInitialized)
+          return;
+
+        var path = "syncstore.db";
 #if __ANDROID__
         path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), path);
 
@@ -40,28 +54,41 @@ namespace MobileCRM.Shared.Services
         {
           System.IO.File.Create(path).Dispose();
         }
-#elif __IOS__
-        var docsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-        var libraryPath = System.IO.Path.Combine(docsPath, "../Library/");
-        path = System.IO.Path.Combine(libraryPath, path);
 #elif WINDOWS_PHONE
         path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, path);
 #endif
-
         var store = new MobileServiceSQLiteStore(path);
         store.DefineTable<Job>();
         store.DefineTable<Account>();
         store.DefineTable<Contact>();
 
-        MobileService.SyncContext.InitializeAsync(store).Wait();
+        try
+        {
+          await MobileService.SyncContext.InitializeAsync(store);
+
+        }
+        catch(Exception ex)
+        {
+          Debug.WriteLine(@"Sync Failed: {0}", ex.Message);
+       
+        }
+        
+
+        jobTable = MobileService.GetSyncTable<Job>();
+        accountTable = MobileService.GetSyncTable<Account>();
+        contactTable = MobileService.GetSyncTable<Contact>(); 
       }
 
 #region Jobs
 
-      public async Task SyncJobs()
+      
+      private async Task SyncJobs()
       {
+
         try
         {
+        
+          await Init();
           await MobileService.SyncContext.PushAsync();
           await jobTable.PullAsync();
         }
@@ -72,7 +99,7 @@ namespace MobileCRM.Shared.Services
       }
 
 
-      public Task SaveJob(Job item)
+      public Task SaveJobAsync(Job item)
       {
         if (item.Id == null)
           return jobTable.InsertAsync(item);
@@ -80,7 +107,7 @@ namespace MobileCRM.Shared.Services
         return jobTable.UpdateAsync(item);
       }
 
-      public async Task DeleteJob(Job item)
+      public async Task DeleteJobAsync(Job item)
       {
         try
         {
@@ -101,11 +128,11 @@ namespace MobileCRM.Shared.Services
 
 #region Accounts
 
-      public async Task SyncAccounts()
+      private async Task SyncAccounts()
       {
         try
         {
-
+          await Init();
           await MobileService.SyncContext.PushAsync();
           await accountTable.PullAsync();
         }
@@ -115,17 +142,19 @@ namespace MobileCRM.Shared.Services
         }
       }
 
-      
 
-      public Task SaveAccount(Account item)
+
+      public async Task SaveAccountAsync(Account item)
       {
         if (item.Id == null)
-          return accountTable.InsertAsync(item);
+          await accountTable.InsertAsync(item);
+        else
+          await accountTable.UpdateAsync(item);
 
-        return accountTable.UpdateAsync(item);
+        await SyncAccounts();
       }
 
-      public async Task DeleteAccount(Account item)
+      public async Task DeleteAccountAsync(Account item)
       {
         try
         {
@@ -142,12 +171,12 @@ namespace MobileCRM.Shared.Services
 
       }
 
-      public async Task<IEnumerable<Account>> GetAccounts()
+      public async Task<IEnumerable<Account>> GetAccountsAsync(bool leads = false)
       {
         try
         {
           await SyncAccounts();
-          return await accountTable.ReadAsync();
+          return await accountTable.Where(a =>a.IsLead == leads).ToEnumerableAsync();
         }
         catch (MobileServiceInvalidOperationException ex)
         {
@@ -160,14 +189,14 @@ namespace MobileCRM.Shared.Services
         return new List<Account>();
       }
 
-      public async Task<IEnumerable<Job>> GetAccountJobs(string accountId, bool proposed = false, bool archived = false)
+      public async Task<IEnumerable<Job>> GetAccountJobsAsync(string accountId, bool proposed = false, bool archived = false)
       {
         try
         {
           await SyncJobs();
           return await jobTable.Where(j => j.AccountId == accountId &&
-                                           j.IsProposed == proposed &&
-                                           j.IsArchived == archived).ToEnumerableAsync();
+                                         j.IsProposed == proposed &&
+                                         j.IsArchived == archived).ToEnumerableAsync();
         }
         catch (MobileServiceInvalidOperationException ex)
         {
@@ -185,11 +214,11 @@ namespace MobileCRM.Shared.Services
 
 #region Contacts
 
-      public async Task SyncContacts()
+      private async Task SyncContacts()
       {
         try
         {
-
+          await Init();
           await MobileService.SyncContext.PushAsync();
           await contactTable.PullAsync();
         }
@@ -199,15 +228,24 @@ namespace MobileCRM.Shared.Services
         }
       }
 
-      public Task SaveContact(Contact item)
+      public async Task SaveContactAsync(Contact item)
       {
-        if (item.Id == null)
-          return contactTable.InsertAsync(item);
+        try
+        { 
+          if (item.Id == null)
+            await contactTable.InsertAsync(item);
+          else
+            await contactTable.UpdateAsync(item);
 
-        return contactTable.UpdateAsync(item);
+          //await SyncContacts();
+        }
+        catch (MobileServiceInvalidOperationException e)
+        {
+          Debug.WriteLine(@"Sync Failed: {0}", e.Message);
+        }
       }
 
-      public async Task DeleteContact(Contact item)
+      public async Task DeleteContactAsync(Contact item)
       {
         try
         {
@@ -224,7 +262,7 @@ namespace MobileCRM.Shared.Services
 
       }
 
-      public async Task<IEnumerable<Contact>> GetContacts()
+      public async Task<IEnumerable<Contact>> GetContactsAsync()
       {
         try
         {
@@ -235,6 +273,10 @@ namespace MobileCRM.Shared.Services
         {
           Debug.WriteLine(@"ERROR {0}", ex.Message);
         }
+        catch(SQLitePCL.SQLiteException sqex)
+        {
+          Debug.WriteLine(@"ERROR {0}", sqex.Message);
+        }
         catch (Exception ex2)
         {
           Debug.WriteLine(@"ERROR {0}", ex2.Message);
@@ -242,7 +284,7 @@ namespace MobileCRM.Shared.Services
         return new List<Contact>();
       }
 
-      public async Task<Contact> GetContact(string contactId)
+      public async Task<Contact> GetContactAsync(string contactId)
       {
         try
         {

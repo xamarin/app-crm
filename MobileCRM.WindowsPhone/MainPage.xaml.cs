@@ -10,8 +10,9 @@ using Microsoft.Phone.Shell;
 using MobileCRM.WindowsPhone.Resources;
 using Xamarin.Forms;
 using Xamarin;
-using MobileCRM.Shared.CustomViews;
+using MobileCRM.CustomControls;
 using MobileCRM.Shared.Pages;
+using MobileCRM.Shared;
 
 namespace MobileCRM.WindowsPhone
 {
@@ -23,33 +24,13 @@ namespace MobileCRM.WindowsPhone
 			InitializeComponent();
 
 
-            MobileCRMApp.Init(typeof(MobileCRMApp).Assembly);
-			Forms.Init();
+      Forms.Init();
 			FormsMaps.Init();
 
 			// Set our view from the "main" layout resource
-			Content = BuildView().ConvertPageToUIElement(this);
+			Content = MobileCRM.Shared.App.RootPage.ConvertPageToUIElement(this);
 		}
 
-		static Xamarin.Forms.Page BuildView()
-		{
-			return new RootPage();
-		}
-
-		// Sample code for building a localized ApplicationBar
-		//private void BuildLocalizedApplicationBar()
-		//{
-		//    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-		//    ApplicationBar = new ApplicationBar();
-
-		//    // Create a new button and set the text value to the localized string from AppResources.
-		//    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-		//    appBarButton.Text = AppResources.AppBarButtonText;
-		//    ApplicationBar.Buttons.Add(appBarButton);
-
-		//    // Create a new menu item with the localized string from AppResources.
-		//    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-		//    ApplicationBar.MenuItems.Add(appBarMenuItem);
-		//}
+	
 	}
 }

@@ -8,13 +8,13 @@ using Xamarin.Forms;
 using MobileCRM.WindowsPhone.Renderers;
 using System.ComponentModel;
 using System.Windows.Controls.DataVisualization.Charting;
-[assembly: ExportRenderer(typeof(MobileCRM.CustomViews.BarChart), typeof(BarChartRenderer))]
+[assembly: ExportRenderer(typeof(MobileCRM.CustomControls.BarChart), typeof(BarChartRenderer))]
 namespace MobileCRM.WindowsPhone.Renderers
 {
 
-  public class BarChartRenderer : ViewRenderer<MobileCRM.CustomViews.BarChart, Chart>
+  public class BarChartRenderer : ViewRenderer<MobileCRM.CustomControls.BarChart, Chart>
   {
-    protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.CustomViews.BarChart> e)
+    protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.CustomControls.BarChart> e)
     {
       base.OnElementChanged(e);
       if (e.OldElement != null || this.Element == null)
@@ -36,7 +36,7 @@ namespace MobileCRM.WindowsPhone.Renderers
       base.OnElementPropertyChanged(sender, e);
       if (this.Element == null || this.Control == null)
         return;
-      if (e.PropertyName == MobileCRM.CustomViews.BarChart.ItemsProperty.PropertyName)
+      if (e.PropertyName == MobileCRM.CustomControls.BarChart.ItemsProperty.PropertyName)
       {
         this.Control.Series.Clear();
         var series = new ColumnSeries();

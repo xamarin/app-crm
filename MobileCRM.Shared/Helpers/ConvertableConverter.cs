@@ -1,10 +1,10 @@
 ﻿using System;
 using Xamarin.Forms;
 using System.Globalization;
-using MobileCRM.Services;
 using System.Diagnostics;
+using MobileCRM.Shared.Attributes;
 
-namespace MobileCRM.Helpers
+namespace MobileCRM.Shared.Helpers
 {
     public class ConvertableConverter : IValueConverter
     {

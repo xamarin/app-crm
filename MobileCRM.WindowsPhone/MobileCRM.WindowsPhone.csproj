@@ -24,7 +24,7 @@
     <ValidateXaml>true</ValidateXaml>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
-    <NuGetPackageImportStamp>444c6c1d</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>3a79c60d</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\BarChartRenderer.cs" />
+    <Compile Include="Renderers\SignaturePadRenderer.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,6 +119,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -125,15 +127,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="add.png" />
     <Content Include="lead.png" />
-    <Content Include="opportunity.png" />
     <Content Include="account.png" />
     <Content Include="contact.png" />
     <Content Include="README_FIRST.txt" />
-    <Content Include="search.png" />
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="filter.png" />
-    <Content Include="settings.png" />
+    <BundleResource Include="refresh.png" />
+    <Content Include="slideout.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -165,9 +167,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MobileCRM.Services\MobileCRM.Services.csproj">
-      <Project>{abde5def-a5d7-410a-b9be-ff897688eb8f}</Project>
-      <Name>MobileCRM.Services</Name>
+    <ProjectReference Include="..\Common\SignaturePad.WP7\SignaturePad.WP7.csproj">
+      <Project>{105d08de-982a-4f39-9fb2-82735cf2f3f1}</Project>
+      <Name>SignaturePad.WP7</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">
+      <Project>{a2a445b4-e291-4224-8b31-5fd82adec085}</Project>
+      <Name>MobileCRM.CustomControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

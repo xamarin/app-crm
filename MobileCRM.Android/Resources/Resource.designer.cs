@@ -1060,7 +1060,7 @@ namespace MobileCRMAndroid
 			public const int opportunity = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int settings = 2130837643;
+			public const int slideout = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
 			public const int zoom_in = 2130837644;
