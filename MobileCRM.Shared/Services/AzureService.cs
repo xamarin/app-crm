@@ -53,8 +53,6 @@ namespace MobileCRM.Shared.Services
         {
           System.IO.File.Create(path).Dispose();
         }
-#elif WINDOWS_PHONE
-        path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, path);
 #endif
         var store = new MobileServiceSQLiteStore(path);
         store.DefineTable<Order>();
