@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 					   x:Class="MobileCRM.Shared.Pages.Contacts.ContactsView"  
-                       Title="{Binding Title}"
+                       xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
+					   Title="{Binding Title}"
                        Icon="{Binding Icon}">
     <ContentPage.Content>
         <StackLayout>
@@ -10,7 +11,7 @@
             <ListView x:Name="ContactList" ItemsSource="{Binding Contacts}" ItemTapped="OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding DisplayName}" Detail="{Binding Company}"/>
+                        <controls:ListTextCell Text="{Binding DisplayName}" Detail="{Binding Company}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

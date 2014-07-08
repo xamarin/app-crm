@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+					   x:Class="MobileCRM.Shared.Pages.Accounts.AccountOrderDetailsView" 
+             xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls">
+	<StackLayout VerticalOptions="FillAndExpand" Padding="0,20,0,0">
+
+        <Label Text="Order Invoice" HorizontalOptions="Center"/>
+        <TableView HasUnevenRows="True" VerticalOptions="FillAndExpand">
+            <TableView.Root>
+                <TableRoot>
+                    <TableSection Title="Product">
+                        <TextCell Text="Item:" Detail="{Binding Order.Item}"/>
+                        <TextCell Text="Level:" Detail="{Binding Order.ItemLevel}"/>
+                    </TableSection>
+                    <TableSection Title="Price">
+                        <TextCell Text="Quote:" Detail="{Binding Order.Quote}"/>
+                        <EntryCell Label="Final Price" Text="{Binding Price}" Keyboard="Numeric"/>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Spacing="20"  Padding="20,10,20,10">
+                                <Label Text="Discount: "/>
+                                <Label Text="{Binding DiscountDisplay}"/>
+                                <Stepper Minimum="0" Maximum="100" Increment="1" Value="{Binding Discount}"  HorizontalOptions="End"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Invoice">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Spacing="20"  Padding="20,10,20,10">
+                                <Label Text="Completed Date: "/>
+                                <DatePicker Date="{Binding Order.ClosedDate}"/>
+                            </StackLayout>
+                        </ViewCell>
+
+                    </TableSection>
+                </TableRoot>
+            </TableView.Root>
+        </TableView>
+
+        <StackLayout Padding="20">
+            <Label Text="SignatureRequired:"/>
+            <controls:SignaturePad x:Name="Signature" HeightRequest="200" HorizontalOptions="FillAndExpand" DefaultPoints="{Binding Order.Signature}"/>
+            <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button x:Name="CloseOrderButton" Text="Close Order" Clicked="ApproveOrderClicked"  HorizontalOptions="Center"/>
+                <Button x:Name="CancelButton" Text="Cancel" Clicked="CancelClicked"  HorizontalOptions="Center"/>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

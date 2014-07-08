@@ -15,11 +15,10 @@ namespace MobileCRM.Shared.ViewModels.Accounts
     {
       
       IDataManager dataManager;
-      INavigation navigation;
       Geocoder coder;
       public Account Account { get; set; }
 
-      public AccountDetailsViewModel(INavigation navigation, Account account)
+      public AccountDetailsViewModel(Account account)
       {
         if (account == null)
         {
@@ -29,11 +28,10 @@ namespace MobileCRM.Shared.ViewModels.Accounts
         else
         {
           Account = account;
-          this.Title = "Edit Account";
+          this.Title = "Account";
         }
         
         dataManager = DependencyService.Get<IDataManager>();
-        this.navigation = navigation;
         coder = new Geocoder();
       }
 
@@ -68,11 +66,11 @@ namespace MobileCRM.Shared.ViewModels.Accounts
         }
         await dataManager.SaveAccountAsync(Account);
 
-        MessagingCenter.Send(Account, "NewAccount");
+        MessagingCenter.Send(Account, "Account");
 
         IsBusy = false;
 
-        navigation.PopAsync();
+        Navigation.PopAsync();
 
       }
 

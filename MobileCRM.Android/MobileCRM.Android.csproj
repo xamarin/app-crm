@@ -121,7 +121,6 @@
     <Compile Include="Renderers\MenuCellRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -189,28 +188,28 @@
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\drawable-hdpi\refresh.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\refresh.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\drawable-mdpi\refresh.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\refresh.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\drawable-xhdpi\refresh.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\refresh.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\drawable-xxhdpi\refresh.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\refresh.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\drawable-hdpi\add.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\add.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\drawable-mdpi\add.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\add.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\drawable-xhdpi\add.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\add.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\drawable-xxhdpi\add.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\add.png" />
   </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -16,8 +16,6 @@ namespace MobileCRM.Shared.ViewModels.Leads
     INavigation navigation;
     Geocoder coder;
     public Account Account { get; set; }
-    public Job Job {get;set;}
-    public string[] JobTypes = new string[] { "Mechanical", "Electrical", "Software" };
     public NewLeadViewModel(INavigation navigation)
     {
 
@@ -26,11 +24,6 @@ namespace MobileCRM.Shared.ViewModels.Leads
         IsLead = true
       };
 
-      Job = new Models.Job
-      {
-        IsProposed = true,
-        JobType = "Mechanical"
-      };
       this.Title = "New Lead";
       
       
@@ -40,11 +33,12 @@ namespace MobileCRM.Shared.ViewModels.Leads
       coder = new Geocoder();
     }
 
-    private int jobType = 0;
-    public int JobType
+
+    private int industryType = 0;
+    public int IndustryType
     {
-      get { return jobType; }
-      set { jobType = value; Job.JobType = JobTypes[jobType]; ; }
+      get { return industryType; }
+      set { industryType = value; Account.Industry = Account.IndustryTypes[industryType]; }
     }
 
     private Command saveLeadCommand;
@@ -79,10 +73,9 @@ namespace MobileCRM.Shared.ViewModels.Leads
 
 
       await dataManager.SaveAccountAsync(Account);
-      Job.AccountId = Account.Id;
-      await dataManager.SaveJobAsync(Job);
 
-      MessagingCenter.Send(Account, "NewLead");
+
+      MessagingCenter.Send(Account, "Lead");
 
       IsBusy = false;
 

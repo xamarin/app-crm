@@ -1,26 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                        xmlns:converters="clr-namespace:MobileCRM.CustomControls.Converters;assembly=MobileCRM.CustomControls"
-					  
 					   x:Class="MobileCRM.Shared.Pages.Leads.NewLeadView">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-
-
-            <converters:ConvertableConverter x:Key="intConverter" />
-
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.Content>
-        
         <TableView HasUnevenRows="True" VerticalOptions="FillAndExpand">
             <TableView.Root>
                 <TableRoot>
                     <TableSection Title="Information">
+                        <EntryCell Label="Company" Text="{Binding Account.Company}"/>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="20">
+                                <Label Text="Industry: "/>
+                                <Picker x:Name="IndustryTypePicker" SelectedIndex="{Binding Industry}" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Main Contact">
                         <EntryCell Label="First" Text="{Binding Account.FirstName}"/>
                         <EntryCell Label="Last" Text="{Binding Account.LastName}"/>
-                        <EntryCell Label="Company" Text="{Binding Account.Company}"/>
                         <EntryCell Label="Phone" Text="{Binding Account.Phone}" Keyboard="Telephone"/>
                     </TableSection>
                     <TableSection Title="Address">
@@ -29,17 +26,6 @@
                         <EntryCell Label="State" Text="{Binding Account.State}"/>
                         <EntryCell Label="Postal Code" Text="{Binding Account.PostalCode}"  Keyboard="Numeric"/>
                         <EntryCell Label="Country" Text="{Binding Account.Country}"/>
-                    </TableSection>
-                    <TableSection Title="Job">
-                        <SwitchCell Text="Is Qualified?" On="{Binding Job.IsQualified}"/>
-                        <EntryCell Label="Estimated Amount" Text ="{Binding Job.EstimatedAmount}" Keyboard="Numeric"/>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="10">
-                                <Label Text="Job Type: "/>
-                                <Picker x:Name="JobTypePicker" SelectedIndex="{Binding JobType}" HorizontalOptions="FillAndExpand"/>
-                            </StackLayout>
-                        </ViewCell>
-                        <EntryCell Label="Source" Text="{Binding Job.Source}"/>
                     </TableSection>
                 </TableRoot>
             </TableView.Root>

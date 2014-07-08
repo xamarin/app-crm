@@ -28,6 +28,26 @@ namespace MobileCRMAndroid.Renderers
         
       };
 
+      if(!string.IsNullOrWhiteSpace(Element.DefaultPoints))
+      {
+        try
+        {
+          signaturePad.LoadPoints(Newtonsoft.Json.JsonConvert.DeserializeObject<System.Windows.Point[]>(Element.DefaultPoints));
+        }
+        catch(Exception ex)
+        {
+
+        }
+      }
+
+      Element.GetPointString = () =>
+      {
+        if (signaturePad.Points == null)
+          return string.Empty;
+
+
+        return Newtonsoft.Json.JsonConvert.SerializeObject(signaturePad.Points);
+      };
 
       this.Element.GetImageEvent += Element_GetImageEvent;
 

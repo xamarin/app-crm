@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace MobileCRM.Shared.ViewModels
 {
   public abstract class BaseViewModel : INotifyPropertyChanged
   {
+    public INavigation Navigation { get; set; }
     public bool IsInitialized { get; set; }
 
     private bool canLoadMore;

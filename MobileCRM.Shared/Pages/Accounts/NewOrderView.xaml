@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+					   x:Class="MobileCRM.Shared.Pages.Accounts.NewOrderView">
+    <ContentPage.Content>
+        <TableView HasUnevenRows="True" VerticalOptions="FillAndExpand">
+            <TableView.Root>
+                <TableRoot>
+                    <TableSection Title="Product">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="20,10,20,10">
+                                <Label Text="Item: "/>
+                                <Picker x:Name="ItemPicker" SelectedIndex="{Binding Item}" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="20,10,20,10">
+                                <Label Text="Type: "/>
+                                <Picker x:Name="ItemLevelPicker" SelectedIndex="{Binding ItemLevel}" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Price">
+                        <EntryCell Label="Quote" Text="{Binding Price}" Keyboard="Numeric"/>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Spacing="20"  Padding="20,10,20,10">
+                                <Label Text="Discount: "/>
+                                <Label Text="{Binding DiscountDisplay}"/>
+                                <Stepper Minimum="0" Maximum="100" Increment="1" Value="{Binding Discount}"  HorizontalOptions="End"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Invoice">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Spacing="20"  Padding="20,10,20,10">
+                                <Label Text="Due Date: "/>
+                                <DatePicker Date="{Binding Order.DueDate}"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Button x:Name="SaveOrder" Text="Save Order"  Command="{Binding SaveOrderCommand}"  HorizontalOptions="Center"/>
+                                <Button x:Name="CancelButton" Text="Cancel"   HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView.Root>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>

@@ -2,20 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
-					   x:Class="MobileCRM.Shared.Pages.Accounts.AccountDetailsView">
+					   x:Class="MobileCRM.Shared.Pages.Accounts.AccountDetailsView"
+                       xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
 	<ContentPage.Content>
-        <StackLayout>
-        <TableView HasUnevenRows="True" VerticalOptions="FillAndExpand">
-            <TableView.Root>
-                <TableRoot>
-                    <TableSection Title="Information">
-                        <EntryCell Label="Company" Text="{Binding Account.Company}"/>
-                            <EntryCell Label="Phone" Text="{Binding Account.Phone}" Keyboard="Telephone"/>
-                    </TableSection>
-                </TableRoot>
-            </TableView.Root>
-        </TableView>
-         <controls:BarChart/>  
+        <StackLayout VerticalOptions="FillAndExpand">
+            <TableView HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                <TableView.Root>
+                    <TableRoot>
+                        <TableSection Title="Contact">
+                            <TextCell Text="{Binding Account.Company}"/>
+                            <TextCell Text="{Binding Account.DisplayName}"/>
+                            <TextCell Text="{Binding Account.Phone}"/>
+                        </TableSection>
+                        <TableSection Title="Location">
+                              <ViewCell>
+                                    <maps:Map HeightRequest="200"
+                                        x:Name="MainMap"
+                                        IsShowingUser="true" 
+                                        MapType="Hybrid"/>
+                                </ViewCell>  
+                        </TableSection>
+                    </TableRoot>
+                </TableView.Root>
+            </TableView>
+            <controls:BarChart x:Name="Chart" HeightRequest="200"/>  
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

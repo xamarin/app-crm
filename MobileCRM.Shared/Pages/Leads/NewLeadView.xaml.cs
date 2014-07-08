@@ -37,8 +37,12 @@ namespace MobileCRM.Shared.Pages.Leads
         }
       }));
 
-      foreach (var item in viewModel.JobTypes)
-        JobTypePicker.Items.Add(item);
+      foreach (var item in Account.IndustryTypes)
+      {
+        IndustryTypePicker.Items.Add(item);
+      }
+
+      IndustryTypePicker.SelectedIndex = viewModel.IndustryType;
 
 		}
 	}

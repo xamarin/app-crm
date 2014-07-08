@@ -18,6 +18,7 @@ namespace MobileCRM.Shared.ViewModels.Leads
         set;
       }
 
+      public bool NeedsRefresh { get; set; }
       IDataManager dataManager;
       public LeadsViewModel()
       {
@@ -27,17 +28,11 @@ namespace MobileCRM.Shared.ViewModels.Leads
         dataManager = DependencyService.Get<IDataManager>();
         Leads = new ObservableCollection<Account>();
 
-        /*MessagingCenter.Subscribe<Account>(this, "NewLead", async (account) =>
+        MessagingCenter.Subscribe<Account>(this, "Lead", (account) =>
           {
-            Leads.Add(account);
+            IsInitialized = false;
           });
 
-        MessagingCenter.Subscribe<Account>(this, "ApproveLead", (account) =>
-        {
-          var index = Leads.IndexOf(account);
-          if (index >= 0)
-            Leads.RemoveAt(index);
-        });*/
       }
 
       private Command loadLeadsCommand;

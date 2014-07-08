@@ -26,10 +26,13 @@ namespace MobileCRMAndroid.Renderers
         return;
       var barChart = new BarChart.BarChartView(Forms.Context)
       {
+        LegendColor = Android.Graphics.Color.Black,
+        BarCaptionOuterColor = Android.Graphics.Color.Black,
+        BarCaptionInnerColor = Android.Graphics.Color.Black,
         ItemsSource = Element.Items.Select(item => new BarChart.BarModel
         {
           Value = item.Value,
-          Legend = item.Name
+          Legend = item.Name,
         })
       };
       SetNativeControl(barChart);

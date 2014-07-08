@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MobileCRM.CustomControls
@@ -75,6 +76,18 @@ namespace MobileCRM.CustomControls
         get { return (Color)GetValue(CaptionColorProperty); }
         set { SetValue(CaptionColorProperty, value); }
       }
+
+      public static readonly BindableProperty DefaultPointsProperty =
+       BindableProperty.Create<SignaturePad, string>(p => p.DefaultPoints, string.Empty);
+
+      public string DefaultPoints
+      {
+        get { return (string)GetValue(DefaultPointsProperty); }
+        set { SetValue(DefaultPointsProperty, value); }
+      }
+
+      public Func<string> GetPointString { get; set; }
+
 
 
       public event EventHandler GetImageEvent;

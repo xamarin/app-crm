@@ -56,12 +56,13 @@ namespace MobileCRM.Shared.Pages.Leads
     protected override void OnAppearing()
     {
       base.OnAppearing();
-      /*if (ViewModel.IsInitialized)
+      if (ViewModel.IsInitialized)
       {
         return;
-      }*/
+      }
       ViewModel.LoadLeadsCommand.Execute(null);
       ViewModel.IsInitialized = true;
+
     }
 	}
 }

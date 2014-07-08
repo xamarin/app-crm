@@ -42,6 +42,26 @@ namespace MobileCRMAndroid.Renderers
       signaturePad.Caption.SetTextColor(Element.CaptionColor.ToAndroid());
 
 
+      if (!string.IsNullOrWhiteSpace(Element.DefaultPoints))
+      {
+        try
+        {
+          signaturePad.LoadPoints(Newtonsoft.Json.JsonConvert.DeserializeObject<System.Drawing.PointF[]>(Element.DefaultPoints));
+        }
+        catch (Exception ex)
+        {
+
+        }
+      }
+
+      Element.GetPointString = () =>
+        {
+          if (signaturePad.Points == null)
+            return string.Empty;
+
+          return Newtonsoft.Json.JsonConvert.SerializeObject(signaturePad.Points);
+        };
+
       this.Element.GetImageEvent += Element_GetImageEvent;
 
       ((Android.Widget.RelativeLayout)signaturePad).LayoutParameters = new ViewGroup.LayoutParams (ViewGroup.LayoutParams.FillParent, ViewGroup.LayoutParams.WrapContent);
@@ -49,6 +69,8 @@ namespace MobileCRMAndroid.Renderers
 
       
     }
+
+
 
     void Element_GetImageEvent(object sender, EventArgs e)
     {

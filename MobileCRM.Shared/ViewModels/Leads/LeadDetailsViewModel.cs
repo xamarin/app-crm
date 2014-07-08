@@ -17,7 +17,6 @@ namespace MobileCRM.Shared.ViewModels.Leads
     INavigation navigation;
     Geocoder coder;
     public Account Account { get; set; }
-    public ObservableCollection<Job> Jobs { get; set; }
 
     public LeadDetailsViewModel(INavigation navigation, Account account)
     {
@@ -32,7 +31,6 @@ namespace MobileCRM.Shared.ViewModels.Leads
         this.Title = account.DisplayName;
       }
 
-      Jobs = new ObservableCollection<Job>();
       dataManager = DependencyService.Get<IDataManager>();
       this.navigation = navigation;
       coder = new Geocoder();
@@ -59,17 +57,9 @@ namespace MobileCRM.Shared.ViewModels.Leads
 
       Account.IsLead = false;
       
-
-
       await dataManager.SaveAccountAsync(Account);
-      //approve all jobs
-      foreach(var job in Jobs)
-      {
-        job.IsProposed = false;
-        await dataManager.SaveJobAsync(job);
-      }
 
-      MessagingCenter.Send(Account, "ApproveLead");
+      MessagingCenter.Send(Account, "Lead");
 
       IsBusy = false;
 
@@ -113,41 +103,11 @@ namespace MobileCRM.Shared.ViewModels.Leads
       await dataManager.SaveAccountAsync(Account);
 
 
-      MessagingCenter.Send(Account, "SaveLead");
+      MessagingCenter.Send(Account, "Lead");
 
       IsBusy = false;
 
       navigation.PopAsync();
-
-    }
-
-    private Command loadJobsCommand;
-    /// <summary>
-    /// Command to load accounts
-    /// </summary>
-    public Command LoadJobsCommand
-    {
-      get
-      {
-        return loadJobsCommand ??
-               (loadJobsCommand = new Command(async () =>
-                await ExecuteLoadJobsCommand()));
-      }
-    }
-
-    private async Task ExecuteLoadJobsCommand()
-    {
-      if (IsBusy)
-        return;
-
-      IsBusy = true;
-
-      Jobs.Clear();
-      var jobs = await dataManager.GetAccountJobsAsync(Account.Id, true, false);
-      foreach (var job in jobs)
-        Jobs.Add(job);
-
-      IsBusy = false;
 
     }
   }

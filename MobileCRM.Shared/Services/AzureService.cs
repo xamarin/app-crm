@@ -16,7 +16,7 @@ namespace MobileCRM.Shared.Services
 {
     public class AzureService : IDataManager
     {
-      IMobileServiceSyncTable<Job> jobTable;
+      IMobileServiceSyncTable<Order> orderTable;
       IMobileServiceSyncTable<Contact> contactTable;
       IMobileServiceSyncTable<Account> accountTable;
 
@@ -37,8 +37,7 @@ namespace MobileCRM.Shared.Services
           "https://" + "xamarindemos" + ".azure-mobile.net/",
           "TyohPJmeLEvNnEzTmXfLcrMGGWSgwZ43");
 
-
-        
+        Init().Wait();//testing
       }
 
       public async Task Init()
@@ -58,7 +57,7 @@ namespace MobileCRM.Shared.Services
         path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, path);
 #endif
         var store = new MobileServiceSQLiteStore(path);
-        store.DefineTable<Job>();
+        store.DefineTable<Order>();
         store.DefineTable<Account>();
         store.DefineTable<Contact>();
 
@@ -74,15 +73,15 @@ namespace MobileCRM.Shared.Services
         }
         
 
-        jobTable = MobileService.GetSyncTable<Job>();
+        orderTable = MobileService.GetSyncTable<Order>();
         accountTable = MobileService.GetSyncTable<Account>();
         contactTable = MobileService.GetSyncTable<Contact>(); 
       }
 
-#region Jobs
+#region Orders
 
       
-      public async Task SyncJobs()
+      public async Task SyncOrders()
       {
 
         try
@@ -90,7 +89,7 @@ namespace MobileCRM.Shared.Services
         
           await Init();
           await MobileService.SyncContext.PushAsync();
-          await jobTable.PullAsync();
+          await orderTable.PullAsync();
         }
         catch (MobileServiceInvalidOperationException e)
         {
@@ -99,19 +98,19 @@ namespace MobileCRM.Shared.Services
       }
 
 
-      public Task SaveJobAsync(Job item)
+      public Task SaveOrderAsync(Order item)
       {
         if (item.Id == null)
-          return jobTable.InsertAsync(item);
+          return orderTable.InsertAsync(item);
 
-        return jobTable.UpdateAsync(item);
+        return orderTable.UpdateAsync(item);
       }
 
-      public async Task DeleteJobAsync(Job item)
+      public async Task DeleteOrderAsync(Order item)
       {
         try
         {
-          await jobTable.DeleteAsync(item);
+          await orderTable.DeleteAsync(item);
         }
         catch (MobileServiceInvalidOperationException ex)
         {
@@ -146,10 +145,23 @@ namespace MobileCRM.Shared.Services
 
       public async Task SaveAccountAsync(Account item)
       {
-        if (item.Id == null)
-          await accountTable.InsertAsync(item);
-        else
-          await accountTable.UpdateAsync(item);
+        try
+        { 
+          if (item.Id == null)
+            await accountTable.InsertAsync(item);
+          else
+            await accountTable.UpdateAsync(item);
+
+        }
+        catch (MobileServiceInvalidOperationException ex)
+        {
+          Debug.WriteLine(@"ERROR {0}", ex.Message);
+        }
+        catch (Exception ex2)
+        {
+          Debug.WriteLine(@"ERROR {0}", ex2.Message);
+        }
+
       }
 
       public async Task DeleteAccountAsync(Account item)
@@ -174,7 +186,6 @@ namespace MobileCRM.Shared.Services
         try
         {
           await SyncAccounts();
-          await SyncJobs();
           return await accountTable.Where(a =>a.IsLead == leads).ToEnumerableAsync();
         }
         catch (MobileServiceInvalidOperationException ex)
@@ -188,15 +199,13 @@ namespace MobileCRM.Shared.Services
         return new List<Account>();
       }
 
-      public async Task<IEnumerable<Job>> GetAccountJobsAsync(string accountId, bool proposed = false, bool archived = false)
+      public async Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId, bool open)
       {
         try
         {
-          await SyncAccounts();
-          await SyncJobs();
-          return await jobTable.Where(j => j.AccountId == accountId &&
-                                         j.IsProposed == proposed &&
-                                         j.IsArchived == archived).ToEnumerableAsync();
+          await SyncOrders();
+          return await orderTable.Where(j => j.AccountId == accountId &&
+                                         j.IsOpen == open).ToEnumerableAsync();
         }
         catch (MobileServiceInvalidOperationException ex)
         {
@@ -206,7 +215,7 @@ namespace MobileCRM.Shared.Services
         {
           Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
-        return new List<Job>();
+        return new List<Order>();
       }
       
 

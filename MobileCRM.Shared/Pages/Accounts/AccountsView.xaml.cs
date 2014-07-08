@@ -13,22 +13,18 @@ namespace MobileCRM.Shared.Pages.Accounts
 {
 	public partial class AccountsView
 	{
-    private AccountsViewModel ViewModel
-    {
-      get { return BindingContext as AccountsViewModel; }
-    }
-
-    public AccountsView(AccountsViewModel vm)
+    AccountsViewModel viewModel;
+    public AccountsView(AccountsViewModel viewModel)
 		{
 			InitializeComponent ();
 
-      this.BindingContext = vm;
+      this.BindingContext = this.viewModel = viewModel;
 
       ToolbarItems.Add(new ToolbarItem
       {
         Icon = "refresh.png",
         Name = "refresh",
-        Command = ViewModel.LoadAccountsCommand
+        Command = viewModel.LoadAccountsCommand
       });
 
 		}
@@ -37,7 +33,7 @@ namespace MobileCRM.Shared.Pages.Accounts
     {
       if (e.Item == null)
         return;
-
+      
       Navigation.PushAsync(new AccountDetailsTabView(e.Item as Account));
 
       ContactList.SelectedItem = null;
@@ -46,12 +42,12 @@ namespace MobileCRM.Shared.Pages.Accounts
     protected override void OnAppearing()
     {
       base.OnAppearing();
-      if (ViewModel.IsInitialized)
+      if (viewModel.IsInitialized)
       {
         return;
       }
-      ViewModel.LoadAccountsCommand.Execute(null);
-      ViewModel.IsInitialized = true;
+      viewModel.LoadAccountsCommand.Execute(null);
+      viewModel.IsInitialized = true;
     }
 	}
 }

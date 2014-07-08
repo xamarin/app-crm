@@ -30,6 +30,27 @@ namespace MobileCRMAndroid.Renderers
         
       };
 
+
+      if (!string.IsNullOrWhiteSpace(Element.DefaultPoints))
+      {
+        try
+        {
+          signaturePad.LoadPoints(Newtonsoft.Json.JsonConvert.DeserializeObject<System.Drawing.PointF[]>(Element.DefaultPoints));
+        }
+        catch (Exception ex)
+        {
+
+        }
+      }
+
+      Element.GetPointString = () =>
+      {
+        if (signaturePad.Points == null)
+          return string.Empty;
+
+        return Newtonsoft.Json.JsonConvert.SerializeObject(signaturePad.Points);
+      };
+
       signaturePad.SignaturePrompt.Text = Element.SignaturePrompt;
       signaturePad.SignaturePrompt.TextColor = (Element.SignaturePromptColor.ToUIColor());
       signaturePad.Caption.Text = Element.Caption;

@@ -22,12 +22,5 @@ namespace MobileCRM.Shared.Pages.Leads
           Navigation.PopModalAsync();
         };
 		}
-
-    protected override void OnAppearing()
-    {
-      base.OnAppearing();
-      if (viewModel.Jobs.Count == 0)
-        viewModel.LoadJobsCommand.Execute(null);
-    }
 	}
 }

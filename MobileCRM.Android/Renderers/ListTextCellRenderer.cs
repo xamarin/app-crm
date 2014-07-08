@@ -29,7 +29,7 @@ namespace MobileCRMAndroid
 
             var div = new ShapeDrawable();
             div.SetIntrinsicHeight(1);
-            //div.Paint.Set(new Paint { Color = Color.FromHex("00FFFFFF").ToAndroid() });
+            div.Paint.Set(new Paint { Color = MobileCRM.Shared.Helpers.Color.DarkGray.ToAndroidColor() });
 
             if (parent is ListView) {
                 ((ListView)parent).Divider = div;

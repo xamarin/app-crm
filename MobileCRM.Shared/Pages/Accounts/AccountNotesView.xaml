@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+					   x:Class="MobileCRM.Shared.Pages.Accounts.AccountNotesView">
+    <StackLayout Padding="20" Spacing="20">
+	    <Label Text="Notes" />
+        <Editor Text="{Binding Notes}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+    </StackLayout>
+</ContentPage>

@@ -16,20 +16,26 @@ namespace MobileCRM.Shared.ViewModels
       MenuItems.Add(new MenuItem
       {
         Id = 0,
+        Title = "Dashboard",
+        MenuType = MenuType.Dashboard,
+        Icon = "account.png"
+      }); MenuItems.Add(new MenuItem
+      {
+        Id = 1,
         Title = "Accounts",
         MenuType = MenuType.Accounts,
         Icon = "account.png"
       });
       MenuItems.Add(new MenuItem
       {
-        Id = 1,
+        Id = 2,
         Title = "Leads",
         MenuType = MenuType.Leads,
         Icon = "lead.png"
       });
       MenuItems.Add(new MenuItem
       {
-        Id = 2,
+        Id = 3,
         Title = "Contacts",
         MenuType = MenuType.Contacts,
         Icon = "contact.png"

@@ -14,9 +14,39 @@ namespace MobileCRM.Shared.Pages.Accounts
       public AccountDetailsTabView(Account account)
       {
         this.Title = account.DisplayName;
-        viewModel = new AccountDetailsViewModel(Navigation, account);
+        viewModel = new AccountDetailsViewModel(account) { Navigation = Navigation };
         this.Children.Add(new AccountDetailsView(viewModel));
-        this.Children.Add(new AccountDetailsMapView(viewModel));
+        this.Children.Add(new AccountOrdersView(account.Id)
+        {
+          Title = "Orders"
+        });
+
+        this.Children.Add(new AccountHistoryView(account.Id)
+        {
+          Title = "History"
+        });
+
+
+        this.Children.Add(new AccountNotesView(account)
+        {
+          Title = "Notes"
+        });
+
+
+        ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
+        {
+          var confirmed = await DisplayAlert("Unsaved Changes", "Save changes?", "Save", "Discard");
+          if (confirmed)
+          {
+            // TODO: Tell the view model, aka BindingContext, to save.
+            viewModel.SaveContactCommand.Execute(null);
+
+          }
+          else
+          {
+            Console.WriteLine("cancel changes!");
+          }
+        }));
 
       }
     }

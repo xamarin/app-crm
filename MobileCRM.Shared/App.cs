@@ -1,4 +1,4 @@
-﻿using MobileCRM.Shared.Pages;
+﻿using MobileCRM.Shared.Pages.Home;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +11,7 @@ namespace MobileCRM.Shared
       private static Page homeView;
       public static Page RootPage
       {
-        get { return homeView ?? (homeView = new HomeView()); }
+        get { return homeView ?? (homeView = new RootView()); }
       }
     }
 }

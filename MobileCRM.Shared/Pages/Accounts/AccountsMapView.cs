@@ -8,7 +8,7 @@ using Xamarin.Forms.Maps;
 using System.Linq;
 using MobileCRM.Shared.ViewModels.Accounts;
 
-namespace MobileCRM.Shared.Pages.Contacts
+namespace MobileCRM.Shared.Pages.Accounts
 {
     public class AccountsMapView : BaseView
     {
@@ -56,7 +56,6 @@ namespace MobileCRM.Shared.Pages.Contacts
 
         map.Pins.Clear();
 
-
         if(pins.Count > 0)
         {
           foreach (var p in pins)
@@ -64,7 +63,7 @@ namespace MobileCRM.Shared.Pages.Contacts
             map.Pins.Add(p);
           }
           
-          map.MoveToRegion(MapSpan.FromCenterAndRadius(pins[0].Position, Distance.FromMiles(0.3)));
+          map.MoveToRegion(MapSpan.FromCenterAndRadius(pins[0].Position, Distance.FromMiles(5)));
         }
 
         return map;

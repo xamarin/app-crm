@@ -12,8 +12,11 @@ namespace MobileCRM.Shared.Pages.Base
       {
         Title = title;
         this.BindingContext = viewModel;
+        viewModel.Navigation = Navigation;
         foreach (var page in pages)
+        {
           this.Children.Add(page);
+        }
       }
     }
 }

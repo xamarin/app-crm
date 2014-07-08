@@ -8,18 +8,18 @@ namespace MobileCRM.Shared.Interfaces
 {
     public interface IDataManager
     {
-      Task SyncJobs();
-      Task SyncAccounts();
       Task SyncContacts();
+      Task SyncAccounts();
+      Task SyncOrders();
 
-      Task SaveJobAsync(Job item);
-      Task DeleteJobAsync(Job item);
+      Task SaveOrderAsync(Order item);
+      Task DeleteOrderAsync(Order item);
 
       Task SaveAccountAsync(Account item);
       Task DeleteAccountAsync(Account item);
       Task<IEnumerable<Account>> GetAccountsAsync(bool leads);
 
-      Task<IEnumerable<Job>> GetAccountJobsAsync(string accountId, bool proposed, bool archived);
+      Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId, bool open);
 
 
       Task SaveContactAsync(Contact item);

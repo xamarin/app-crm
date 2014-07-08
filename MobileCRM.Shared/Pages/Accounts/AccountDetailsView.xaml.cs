@@ -1,4 +1,5 @@
-﻿using MobileCRM.Shared.Models;
+﻿using MobileCRM.CustomControls;
+using MobileCRM.Shared.Models;
 using MobileCRM.Shared.ViewModels.Accounts;
 using MobileCRM.Shared.ViewModels.Contacts;
 using System;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace MobileCRM.Shared.Pages.Accounts
 {
@@ -21,20 +23,26 @@ namespace MobileCRM.Shared.Pages.Accounts
       SetBinding(Page.IconProperty, new Binding("Icon"));
 
       this.BindingContext = vm;
-      ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
+
+
+      var items = new List<BarItem>();
+      items.Add(new BarItem { Name = "a", Value = 10 });
+      items.Add(new BarItem { Name = "b", Value = 15 });
+      items.Add(new BarItem { Name = "c", Value = 20 });
+      items.Add(new BarItem { Name = "d", Value = 5 });
+      items.Add(new BarItem { Name = "e", Value = 14 });
+      Chart.Items = items;
+
+      var pin = new Pin
       {
-        var confirmed = await DisplayAlert("Unsaved Changes", "Save changes?", "Save", "Discard");
-        if (confirmed)
-        {
-          // TODO: Tell the view model, aka BindingContext, to save.
-          viewModel.SaveContactCommand.Execute(null);
-          
-        }
-        else
-        {
-          Console.WriteLine("cancel changes!");
-        }
-      }));
+        Type = PinType.Place,
+        Position = new Position(vm.Account.Latitude, vm.Account.Longitude),
+        Label = vm.Account.Company,
+        Address = vm.Account.AddressString
+      };
+      MainMap.Pins.Add(pin);
+      MainMap.MoveToRegion(MapSpan.FromCenterAndRadius(pin.Position, Distance.FromMiles(.25)));
+      
 		}
 	}
 }

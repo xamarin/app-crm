@@ -6,6 +6,7 @@ namespace MobileCRM.Shared.Models
 {
   public enum MenuType
   {
+    Dashboard,
     Accounts,
     Leads,
     Contacts

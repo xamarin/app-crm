@@ -6,12 +6,13 @@ using System.Text;
 
 namespace MobileCRM.Shared.Models
 {
-    public class Account : BaseModel
+    public class Account : Contact
     {
       public Account()
         : base()
       {
-        Industry = ContactId  = string.Empty;
+        ContactId = Notes = string.Empty;
+        Industry = IndustryTypes[IndustryTypes.Length - 1];
       }
 
       [JsonProperty(PropertyName = "contactid")]
@@ -23,11 +24,10 @@ namespace MobileCRM.Shared.Models
       [JsonProperty(PropertyName = "industry")]
       public string Industry { get; set; }
 
+      [JsonProperty(PropertyName="notes")]
+      public string Notes { get; set; }
 
-      public override string ToString()
-      {
-        return Company;
-      }
-      
+      [JsonIgnore]
+      public static string[] IndustryTypes = new string[] { "Aerospace", "Education", "Electrical", "Entertainment", "Logistic", "Retail", "Software", "Other" };
     }
 }
