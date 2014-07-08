@@ -18,9 +18,9 @@
                         <EntryCell Label="Final Price" Text="{Binding Price}" Keyboard="Numeric"/>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Spacing="20"  Padding="20,10,20,10">
-                                <Label Text="Discount: "/>
-                                <Label Text="{Binding DiscountDisplay}"/>
-                                <Stepper Minimum="0" Maximum="100" Increment="1" Value="{Binding Discount}"  HorizontalOptions="End"/>
+                                <Label Text="Discount: " VerticalOptions="Center"/>
+                                <Label Text="{Binding DiscountDisplay}" VerticalOptions="Center"/>
+                                <Stepper Minimum="0" Maximum="100" Increment="1" Value="{Binding Discount}"  HorizontalOptions="FillAndExpand"  VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                     </TableSection>
@@ -28,7 +28,7 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Spacing="20"  Padding="20,10,20,10">
                                 <Label Text="Completed Date: "/>
-                                <DatePicker Date="{Binding Order.ClosedDate}"/>
+                                <DatePicker Date="{Binding Order.ClosedDate}" HorizontalOptions="FillAndExpand"/>
                             </StackLayout>
                         </ViewCell>
 
@@ -37,9 +37,9 @@
             </TableView.Root>
         </TableView>
 
-        <StackLayout Padding="20">
-            <Label Text="SignatureRequired:"/>
-            <controls:SignaturePad x:Name="Signature" HeightRequest="200" HorizontalOptions="FillAndExpand" DefaultPoints="{Binding Order.Signature}"/>
+        <StackLayout Padding="20,10,20,10">
+            <Label Text="Signature:"/>
+            <controls:SignaturePad x:Name="Signature" HeightRequest="100" HorizontalOptions="FillAndExpand" DefaultPoints="{Binding Order.Signature}"/>
             <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Button x:Name="CloseOrderButton" Text="Close Order" Clicked="ApproveOrderClicked"  HorizontalOptions="Center"/>
                 <Button x:Name="CancelButton" Text="Cancel" Clicked="CancelClicked"  HorizontalOptions="Center"/>

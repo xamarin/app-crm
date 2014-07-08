@@ -37,7 +37,7 @@ namespace MobileCRM.Shared.Services
           "https://" + "xamarindemos" + ".azure-mobile.net/",
           "TyohPJmeLEvNnEzTmXfLcrMGGWSgwZ43");
 
-        Init().Wait();//testing
+        //Init().Wait();//testing
       }
 
       public async Task Init()

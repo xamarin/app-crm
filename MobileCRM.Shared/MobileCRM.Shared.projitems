@@ -26,20 +26,8 @@
       <SubType>Code</SubType>
       <DependentUpon>AccountDetailsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountHistoryView.xaml.cs">
-      <DependentUpon>AccountHistoryView.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountNotesView.xaml.cs">
       <DependentUpon>AccountNotesView.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountOrderDetailsView.xaml.cs">
-      <DependentUpon>AccountOrderDetailsView.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountOrdersView.xaml.cs">
-      <DependentUpon>AccountOrdersView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountsView.xaml.cs">
@@ -47,10 +35,6 @@
       <DependentUpon>AccountsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountsMapView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\NewOrderView.xaml.cs">
-      <DependentUpon>NewOrderView.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Base\BaseView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Base\TabView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactDetailsView.xaml.cs">
@@ -80,6 +64,22 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Leads\LeadsView.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>LeadsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Orders\AccountHistoryView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>AccountHistoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Orders\AccountOrderDetailsView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>AccountOrderDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Orders\AccountOrdersView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>AccountOrdersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Orders\NewOrderView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>NewOrderView.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Services\AzureService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Accounts\AccountDetailsViewModel.cs" />
@@ -119,6 +119,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Orders\AccountHistoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Orders\AccountOrderDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Orders\AccountOrdersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Orders\NewOrderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactDetailsView.xaml">
@@ -139,34 +155,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountOrdersView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountNotesView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountHistoryView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountOrderDetailsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Pages\Orders\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Accounts\NewOrderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

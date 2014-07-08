@@ -18,7 +18,10 @@ namespace MobileCRM.Shared.Pages.Accounts
 			InitializeComponent ();
       this.accountId = accountId; ;
       this.BindingContext = this.viewModel = new OrdersViewModel(true, accountId);
-		}
+
+    }
+
+
 
     public void NewOrderClicked(object sender, EventArgs e)
     {
@@ -36,6 +39,8 @@ namespace MobileCRM.Shared.Pages.Accounts
 
       OrdersList.SelectedItem = null;
     }
+
+    
 
     protected override void OnAppearing()
     {
