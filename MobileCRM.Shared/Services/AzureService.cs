@@ -9,7 +9,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
+
 [assembly: Xamarin.Forms.Dependency(typeof(AzureService))]
 
 namespace MobileCRM.Shared.Services
@@ -274,7 +276,11 @@ namespace MobileCRM.Shared.Services
         try
         {
           await SyncContacts();
-          return await contactTable.ReadAsync();
+          //return await contactTable.ReadAsync();
+
+          //SYI - Sort contacts by last name
+          IMobileServiceTableQuery<Contact> query = contactTable.OrderBy(c => c.LastName);
+          return await query.ToListAsync();
         }
         catch (MobileServiceInvalidOperationException ex)
         {

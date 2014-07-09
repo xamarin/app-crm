@@ -41,6 +41,7 @@
       <DependentUpon>ContactDetailsView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactDetailsView2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactsView.xaml.cs">
       <DependentUpon>ContactsView.xaml</DependentUpon>
       <SubType>Code</SubType>

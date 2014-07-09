@@ -13,9 +13,10 @@ namespace MobileCRM.Shared.Models
         FirstName = LastName  = string.Empty;
         Company = string.Empty;
         Street = Unit = City = PostalCode = State = Country = string.Empty;
-        Phone = Title = Email = Website = Phone = Mobile = Fax = string.Empty;
+        Phone = JobTitle = Email = Website = Phone = Mobile = Fax = string.Empty;
         Twitter = LinkedIn = Facebook = Skype = string.Empty;
       }
+
 
       [JsonProperty(PropertyName = "firstname")]
       public string FirstName { get; set; }
@@ -26,8 +27,8 @@ namespace MobileCRM.Shared.Models
       [JsonProperty(PropertyName = "company")]
       public string Company { get; set; }
 
-      [JsonProperty(PropertyName = "title")]
-      public string Title { get; set; }
+      [JsonProperty(PropertyName = "jobtitle")]
+      public string JobTitle { get; set; }
 
       [JsonProperty(PropertyName = "email")]
       public string Email { get; set; }

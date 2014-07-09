@@ -33,7 +33,8 @@ namespace MobileCRM.Shared.ViewModels.Contacts
         dataManager = DependencyService.Get<IDataManager>();
         this.navigation = navigation;
         coder = new Geocoder();
-      }
+      }  //end ctor
+
 
 
       private Command saveContactCommand;
@@ -57,15 +58,13 @@ namespace MobileCRM.Shared.ViewModels.Contacts
 
         IsBusy = true;
 
-        IEnumerable<Position> points = await coder.GetPositionsForAddressAsync(Contact.AddressString);
-        if(points != null && points.Count() > 0)
-        {
-          var point = points.ElementAt(0);
-          Contact.Latitude = point.Latitude;
-          Contact.Longitude = point.Longitude;
-        }
-
-       
+        //IEnumerable<Position> points = await coder.GetPositionsForAddressAsync(Contact.AddressString);
+        //if (points != null && points.Count() > 0)
+        //{
+        //    var point = points.ElementAt(0);
+        //    Contact.Latitude = point.Latitude;
+        //    Contact.Longitude = point.Longitude;
+        //}
 
         await dataManager.SaveContactAsync(Contact);
 
@@ -77,5 +76,12 @@ namespace MobileCRM.Shared.ViewModels.Contacts
         navigation.PopAsync();
 
       }
+
+
+      public async Task GoBack()
+      {
+          await navigation.PopAsync();
+      }
+
     }
 }

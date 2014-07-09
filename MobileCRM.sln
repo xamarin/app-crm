@@ -138,7 +138,6 @@ Global
 		{91CD0EDB-85F3-4281-B340-1DA6977C233B}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{91CD0EDB-85F3-4281-B340-1DA6977C233B}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
 		{91CD0EDB-85F3-4281-B340-1DA6977C233B}.Debug|Mixed Platforms.ActiveCfg = Debug|ARM
-		{91CD0EDB-85F3-4281-B340-1DA6977C233B}.Debug|Mixed Platforms.Build.0 = Debug|ARM
 		{91CD0EDB-85F3-4281-B340-1DA6977C233B}.Debug|Mixed Platforms.Deploy.0 = Debug|ARM
 		{91CD0EDB-85F3-4281-B340-1DA6977C233B}.Debug|x86.ActiveCfg = Debug|x86
 		{91CD0EDB-85F3-4281-B340-1DA6977C233B}.Debug|x86.Build.0 = Debug|x86
@@ -244,7 +243,6 @@ Global
 		{105D08DE-982A-4F39-9FB2-82735CF2F3F1}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{105D08DE-982A-4F39-9FB2-82735CF2F3F1}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
 		{105D08DE-982A-4F39-9FB2-82735CF2F3F1}.Debug|Mixed Platforms.ActiveCfg = Debug|ARM
-		{105D08DE-982A-4F39-9FB2-82735CF2F3F1}.Debug|Mixed Platforms.Build.0 = Debug|ARM
 		{105D08DE-982A-4F39-9FB2-82735CF2F3F1}.Debug|x86.ActiveCfg = Debug|x86
 		{105D08DE-982A-4F39-9FB2-82735CF2F3F1}.Debug|x86.Build.0 = Debug|x86
 		{105D08DE-982A-4F39-9FB2-82735CF2F3F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
