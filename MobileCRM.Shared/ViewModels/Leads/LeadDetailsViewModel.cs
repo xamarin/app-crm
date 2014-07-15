@@ -14,11 +14,13 @@ namespace MobileCRM.Shared.ViewModels.Leads
   public class LeadDetailsViewModel : BaseViewModel
   {
     IDataManager dataManager;
-    INavigation navigation;
+    //INavigation navigation;
     Geocoder coder;
     public Account Account { get; set; }
 
-    public LeadDetailsViewModel(INavigation navigation, Account account)
+    //public LeadDetailsViewModel(INavigation navigation, Account account)
+    //SYI - made consistent w/ AccountDetailsViewModel constructor.  Changing to tabbed view
+    public LeadDetailsViewModel(Account account)
     {
       if (account == null)
       {
@@ -32,7 +34,7 @@ namespace MobileCRM.Shared.ViewModels.Leads
       }
 
       dataManager = DependencyService.Get<IDataManager>();
-      this.navigation = navigation;
+      //this.navigation = navigation;
       coder = new Geocoder();
     }
 
@@ -63,7 +65,7 @@ namespace MobileCRM.Shared.ViewModels.Leads
 
       IsBusy = false;
 
-      navigation.PopModalAsync();
+      Navigation.PopModalAsync();
 
     }
 
@@ -107,7 +109,7 @@ namespace MobileCRM.Shared.ViewModels.Leads
 
       IsBusy = false;
 
-      navigation.PopAsync();
+      Navigation.PopAsync();
 
     }
   }

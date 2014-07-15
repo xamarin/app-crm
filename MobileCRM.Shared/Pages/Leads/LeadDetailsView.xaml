@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-					   x:Class="MobileCRM.Shared.Pages.Leads.LeadDetailsView"
-                       xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
-					  >
-    <ContentPage.Content>
-        <StackLayout Spacing="30" Padding="20">
-            <TableView HasUnevenRows="True" VerticalOptions="Fill">
-                <TableView.Root>
-                    <TableRoot>
-                        <TableSection Title="Information">
-                            <TextCell Text="{Binding Account.Company}"/>
-                            <TextCell Text="{Binding Account.Phone}"/>
-                        </TableSection>
-                  
-                        <TableSection Title="Approve Lead">
-                        </TableSection>
-                    </TableRoot>
-                </TableView.Root>
-            </TableView>
-            <Label Text="Signature Required"/>
-            <controls:SignaturePad HeightRequest="200" HorizontalOptions="FillAndExpand"/>
-            <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Button x:Name="ApproveLead" Text="Approve Lead"  Command="{Binding ApproveLeadCommand}"  HorizontalOptions="Center"/>
-                <Button x:Name="CancelButton" Text="Cancel"   HorizontalOptions="Center"/>
-            </StackLayout>
-        </StackLayout>
-    </ContentPage.Content>
+						 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+						 x:Class="MobileCRM.Shared.Pages.Leads.LeadDetailsView"
+											 xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
+						>
+		<ContentPage.Content>
+				<StackLayout Spacing="30" Padding="20">
+						<TableView HasUnevenRows="True" VerticalOptions="Fill">
+								<TableView.Root>
+										<TableRoot>
+												<TableSection Title="Information">
+														<TextCell Text="{Binding Account.Company}"/>
+														<TextCell Text="{Binding Account.Phone}"/>
+												</TableSection>
+									
+												<TableSection Title="Approve Lead">
+												</TableSection>
+										</TableRoot>
+								</TableView.Root>
+						</TableView>
+						<Label Text="Signature Required"/>
+						<controls:SignaturePad HeightRequest="200" HorizontalOptions="FillAndExpand"/>
+						<StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+								<Button x:Name="ApproveLead" Text="Approve Lead"  Command="{Binding ApproveLeadCommand}"  HorizontalOptions="Center"/>
+								<Button x:Name="CancelButton" Text="Cancel"   HorizontalOptions="Center"/>
+						</StackLayout>
+				</StackLayout>
+		</ContentPage.Content>
 </ContentPage>

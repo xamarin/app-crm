@@ -93,6 +93,13 @@ namespace MobileCRM.Shared.Models
         get { return this.ToString(); }
       }
 
+
+      [JsonIgnore]
+      public string CitySt
+      {
+          get { return City + ", " + State; }
+      }
+
       public override string ToString()
       {
         return FirstName + " " + LastName;

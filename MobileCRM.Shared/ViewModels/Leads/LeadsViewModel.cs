@@ -20,6 +20,7 @@ namespace MobileCRM.Shared.ViewModels.Leads
 
       public bool NeedsRefresh { get; set; }
       IDataManager dataManager;
+
       public LeadsViewModel()
       {
         this.Title = "Leads";

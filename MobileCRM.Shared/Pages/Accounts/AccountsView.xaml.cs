@@ -13,41 +13,41 @@ namespace MobileCRM.Shared.Pages.Accounts
 {
 	public partial class AccountsView
 	{
-    AccountsViewModel viewModel;
-    public AccountsView(AccountsViewModel viewModel)
+		AccountsViewModel viewModel;
+		public AccountsView(AccountsViewModel viewModel)
 		{
 			InitializeComponent ();
 
-      this.BindingContext = this.viewModel = viewModel;
+			this.BindingContext = this.viewModel = viewModel;
 
-      ToolbarItems.Add(new ToolbarItem
-      {
-        Icon = "refresh.png",
-        Name = "refresh",
-        Command = viewModel.LoadAccountsCommand
-      });
+			ToolbarItems.Add(new ToolbarItem
+			{
+				Icon = "refresh.png",
+				Name = "refresh",
+				Command = viewModel.LoadAccountsCommand
+			});
 
 		}
 
-    public void OnItemSelected(object sender, ItemTappedEventArgs e)
-    {
-      if (e.Item == null)
-        return;
-      
-      Navigation.PushAsync(new AccountDetailsTabView(e.Item as Account));
+		public void OnItemSelected(object sender, ItemTappedEventArgs e)
+		{
+			if (e.Item == null)
+				return;
+			
+			Navigation.PushAsync(new AccountDetailsTabView(e.Item as Account));
 
-      ContactList.SelectedItem = null;
-    }
+			ContactList.SelectedItem = null;
+		}
 
-    protected override void OnAppearing()
-    {
-      base.OnAppearing();
-      if (viewModel.IsInitialized)
-      {
-        return;
-      }
-      viewModel.LoadAccountsCommand.Execute(null);
-      viewModel.IsInitialized = true;
-    }
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			if (viewModel.IsInitialized)
+			{
+				return;
+			}
+			viewModel.LoadAccountsCommand.Execute(null);
+			viewModel.IsInitialized = true;
+		}
 	}
 }

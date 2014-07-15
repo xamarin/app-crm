@@ -186,7 +186,7 @@ namespace MobileCRM.Shared.Services
         try
         {
           await SyncAccounts();
-          return await accountTable.Where(a =>a.IsLead == leads).ToEnumerableAsync();
+          return await accountTable.Where(a =>a.IsLead == leads).OrderBy(b => b.Company).ToEnumerableAsync();
         }
         catch (MobileServiceInvalidOperationException ex)
         {
