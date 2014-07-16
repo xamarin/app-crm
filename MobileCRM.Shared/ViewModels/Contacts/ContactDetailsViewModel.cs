@@ -57,8 +57,10 @@ namespace MobileCRM.Shared.ViewModels.Contacts
       {
           var address = Contact.AddressString;
 
-          //Lookup Lat/Long if empty or address has changed
-          if (Contact.Latitude == 0)
+          //Lookup Lat/Long all the time.
+          //TODO: Only look up if no value, or if address properties have changed.
+          //if (Contact.Latitude == 0)
+          if (true)
           {
               Task<IEnumerable<Position>> getPosTask = coder.GetPositionsForAddressAsync(Contact.AddressString);
               IEnumerable<Position> pos = await getPosTask;
@@ -76,7 +78,7 @@ namespace MobileCRM.Shared.ViewModels.Contacts
           {
               Type = PinType.Place,
               Position = position,
-              Label = Contact.Company,
+              Label = Contact.DisplayName,
               Address = address.ToString()
           };
 
