@@ -88,11 +88,13 @@ namespace MobileCRM.Shared.Pages.Home
             case MenuType.Contacts:
               {
                 var vm = new ContactsViewModel();
-                return new TabView("Contacts", new Page[]
-                  {
-                    new Contacts.ContactsView(vm),
-                    new Contacts.ContactsMapView(vm)
-                  }, vm);   
+                return new Contacts.ContactsView(vm);
+
+                //return new TabView("Contacts", new Page[]
+                //  {
+                //    new Contacts.ContactsView(vm),
+                //    new Contacts.ContactsMapView(vm)
+                //  }, vm);   
               }
           }
             

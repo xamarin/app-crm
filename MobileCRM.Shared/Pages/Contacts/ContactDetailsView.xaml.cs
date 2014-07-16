@@ -11,31 +11,32 @@ namespace MobileCRM.Shared.Pages.Contacts
 {
 	public partial class ContactDetailsView
 	{
-		ContactDetailsViewModel viewModel;
-		public ContactDetailsView (Contact contact)
+
+		public ContactDetailsView (ContactDetailsViewModel viewModel)
 		{
 				InitializeComponent ();
 
 				SetBinding(Page.TitleProperty, new Binding("Title"));
 				SetBinding(Page.IconProperty, new Binding("Icon"));
 
-				this.BindingContext = viewModel = new ContactDetailsViewModel(Navigation, contact);
-				ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
-				{
-						//var confirmed = await DisplayAlert("Unsaved Changes", "Save changes?", "Save", "Discard");
-						var confirmed = await DisplayAlert("Save Changes?", "", "Cancel", "Save");
-						if (!confirmed)
-						{
-								// TODO: Tell the view model, aka BindingContext, to save.
-								viewModel.SaveContactCommand.Execute(null);
+        this.BindingContext = viewModel;
+
+        //ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
+        //{
+        //    //var confirmed = await DisplayAlert("Unsaved Changes", "Save changes?", "Save", "Discard");
+        //    var confirmed = await DisplayAlert("Save Changes?", "", "Cancel", "Save");
+        //    if (!confirmed)
+        //    {
+        //        // TODO: Tell the view model, aka BindingContext, to save.
+        //        viewModel.SaveContactCommand.Execute(null);
 					
-						}
-						else
-						{
-								await viewModel.GoBack();
-								Console.WriteLine("cancel changes!");
-						}
-				}));
+        //    }
+        //    else
+        //    {
+        //        await viewModel.GoBack();
+        //        Console.WriteLine("cancel changes!");
+        //    }
+        //}));
 
 		} //end ctor
 

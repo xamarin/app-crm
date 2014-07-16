@@ -48,7 +48,7 @@ namespace MobileCRM.Shared.Pages.Contacts
 	  if (e.Item == null)
 		return;
 
-	  Navigation.PushAsync(new ContactDetailsView(e.Item as Contact));
+	  Navigation.PushAsync(new ContactDetailsTabView(e.Item as Contact));
 
 	  ContactList.SelectedItem = null;
 	}

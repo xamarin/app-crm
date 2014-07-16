@@ -29,6 +29,12 @@ namespace MobileCRM.Shared.Pages.Leads
                 Title = "Contact"
             });
 
+            this.Children.Add(new AccountMapView(viewModel)
+            {
+
+                Title = "Map"
+            });
+
 
             ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
             {

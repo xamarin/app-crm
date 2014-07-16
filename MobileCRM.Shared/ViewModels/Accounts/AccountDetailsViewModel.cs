@@ -74,6 +74,25 @@ namespace MobileCRM.Shared.ViewModels.Accounts
 
       }
 
+
+      public static readonly Position NullPosition = new Position(0, 0);
+      public Pin LoadPin()
+      {
+          var address = Account.AddressString;
+          var position = address != null ? new Position(Account.Latitude, Account.Longitude) : NullPosition;
+
+          var pin = new Pin
+          {
+              Type = PinType.Place,
+              Position = position,
+              Label = Account.Company,
+              Address = address.ToString()
+          };
+
+          return pin;
+      }
+
+
       public async Task<Pin> UpdateAddressAsync()
       {
         IEnumerable<Position> points = await coder.GetPositionsForAddressAsync(Account.AddressString);

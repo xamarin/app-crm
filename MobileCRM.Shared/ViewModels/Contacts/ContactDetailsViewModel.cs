@@ -13,11 +13,11 @@ namespace MobileCRM.Shared.ViewModels.Contacts
     public class ContactDetailsViewModel : BaseViewModel
     {
       IDataManager dataManager;
-      INavigation navigation;
+      //INavigation navigation;
       Geocoder coder;
       public Contact Contact { get; set; }
      
-      public ContactDetailsViewModel(INavigation navigation, Contact contact)
+      public ContactDetailsViewModel(Contact contact)
       {
         if(contact == null)
         {
@@ -31,7 +31,7 @@ namespace MobileCRM.Shared.ViewModels.Contacts
         }
         
         dataManager = DependencyService.Get<IDataManager>();
-        this.navigation = navigation;
+        //this.navigation = navigation;
         coder = new Geocoder();
       }  //end ctor
 
@@ -49,6 +49,38 @@ namespace MobileCRM.Shared.ViewModels.Contacts
                  (saveContactCommand = new Command(async () =>
                   await ExecuteSaveContactCommand()));
         }
+      }
+
+
+      public static readonly Position NullPosition = new Position(0, 0);
+      public async Task<Pin> LoadPin()
+      {
+          var address = Contact.AddressString;
+
+          //Lookup Lat/Long if empty or address has changed
+          if (Contact.Latitude == 0)
+          {
+              Task<IEnumerable<Position>> getPosTask = coder.GetPositionsForAddressAsync(Contact.AddressString);
+              IEnumerable<Position> pos = await getPosTask;
+
+              if (pos.Count() > 0)
+              {
+                  Contact.Latitude = pos.First().Latitude;
+                  Contact.Longitude = pos.Last().Longitude;
+              } 
+          }
+
+          var position = address != null ? new Position(Contact.Latitude, Contact.Longitude) : NullPosition;
+
+          var pin = new Pin
+          {
+              Type = PinType.Place,
+              Position = position,
+              Label = Contact.Company,
+              Address = address.ToString()
+          };
+
+          return pin;
       }
 
       private async Task ExecuteSaveContactCommand()
@@ -73,14 +105,14 @@ namespace MobileCRM.Shared.ViewModels.Contacts
 
         IsBusy = false;
 
-        navigation.PopAsync();
+        Navigation.PopAsync();
 
       }
 
 
       public async Task GoBack()
       {
-          await navigation.PopAsync();
+          await Navigation.PopAsync();
       }
 
     }

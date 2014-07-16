@@ -30,6 +30,7 @@
       <SubType>Code</SubType>
       <DependentUpon>AccountDetailsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountMapView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountNotesView.xaml.cs">
       <DependentUpon>AccountNotesView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -41,11 +42,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountsMapView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Base\BaseView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Base\TabView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactDetailsTabView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactDetailsView.xaml.cs">
       <DependentUpon>ContactDetailsView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactDetailsView2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactMapView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactsView.xaml.cs">
       <DependentUpon>ContactsView.xaml</DependentUpon>
       <SubType>Code</SubType>

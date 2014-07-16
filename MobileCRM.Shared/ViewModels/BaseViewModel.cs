@@ -9,6 +9,12 @@ namespace MobileCRM.Shared.ViewModels
 {
   public abstract class BaseViewModel : INotifyPropertyChanged
   {
+    //private bool isChanged;
+    //public bool IsChanged
+    //{
+    //    get { return isChanged; }
+    //}
+
     public INavigation Navigation { get; set; }
     public bool IsInitialized { get; set; }
 
@@ -115,6 +121,7 @@ namespace MobileCRM.Shared.ViewModels
       if (PropertyChanged == null)
         return;
 
+      //isChanged = true;
       PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
     }
   }
