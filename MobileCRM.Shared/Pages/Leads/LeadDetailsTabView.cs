@@ -17,9 +17,20 @@ namespace MobileCRM.Shared.Pages.Leads
 
         public LeadDetailsTabView(Account l)
         {
+            if (l != null)
+            {
+                this.Title = l.Company;
+            }
+            else
+            {
+                this.Title = "New Lead";
+            }
+            
+
+
             Account lead = l == null ? new Account() { IsLead = true } : l;
 
-            this.Title = lead.Company;
+            
             viewModel = new AccountDetailsViewModel(lead) { Navigation = Navigation };
 
             //this.Children.Add(new LeadDetailsView(viewModel)

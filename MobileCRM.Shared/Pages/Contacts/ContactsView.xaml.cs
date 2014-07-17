@@ -13,55 +13,55 @@ namespace MobileCRM.Shared.Pages.Contacts
 	{
 	private ContactsViewModel ViewModel
 	{
-	  get { return BindingContext as ContactsViewModel; }
+		get { return BindingContext as ContactsViewModel; }
 	}
 
 	public ContactsView(ContactsViewModel vm)
 		{
 			InitializeComponent ();
 
-	      this.BindingContext = vm;
+				this.BindingContext = vm;
 
-	      ToolbarItems.Add(new ToolbarItem
-	      {
-		    Icon = "add.png",
-		    Name = "add",
-		    Command = new Command(() =>
-		    {
-			      //navigate to new page
-			      Navigation.PushAsync(new ContactDetailsTabView(null));
+				ToolbarItems.Add(new ToolbarItem
+				{
+				Icon = "add.png",
+				Name = "add",
+				Command = new Command(() =>
+				{
+						//navigate to new page
+						Navigation.PushAsync(new ContactDetailsTabView(null));
 
-		    })
-	      });
+				})
+				});
 
-	      ToolbarItems.Add(new ToolbarItem
-	      {
-		    Icon = "refresh.png",
-		    Name = "refresh",
-		    Command = ViewModel.LoadContactsCommand
-	      });
+				ToolbarItems.Add(new ToolbarItem
+				{
+				Icon = "refresh.png",
+				Name = "refresh",
+				Command = ViewModel.LoadContactsCommand
+				});
 
 		}
 
 	public void OnItemSelected(object sender, ItemTappedEventArgs e)
 	{
-	  if (e.Item == null)
+		if (e.Item == null)
 		return;
 
-	  Navigation.PushAsync(new ContactDetailsTabView(e.Item as Contact));
+		Navigation.PushAsync(new ContactDetailsTabView(e.Item as Contact));
 
-	  ContactList.SelectedItem = null;
+		ContactList.SelectedItem = null;
 	}
 
 	protected override void OnAppearing()
 	{
-	  base.OnAppearing();
-	  if (ViewModel.IsInitialized)
-	  {
+		base.OnAppearing();
+		if (ViewModel.IsInitialized)
+		{
 		return;
-	  }
-	  ViewModel.LoadContactsCommand.Execute(null);
-	  ViewModel.IsInitialized = true;
+		}
+		ViewModel.LoadContactsCommand.Execute(null);
+		ViewModel.IsInitialized = true;
 	}
 	}
 }

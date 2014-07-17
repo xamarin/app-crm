@@ -16,12 +16,18 @@ namespace MobileCRM.Shared.Pages.Contacts
 
         public ContactDetailsTabView(Contact contact)
         {
-            Contact c = contact == null ? new Contact() : contact;
+            if (contact != null)
+            {
+                this.Title = contact.DisplayName;
+            } else {
+                this.Title = "New Contact";
+            }
 
-            this.Title = c.DisplayName;
-            viewModel = new ContactDetailsViewModel(c) { Navigation = Navigation };
+
+            viewModel = new ContactDetailsViewModel(contact) { Navigation = Navigation };
 
             this.Children.Add(new ContactDetailsView(viewModel) { Title = "Contact" });
+
 
             this.Children.Add(new ContactMapView(viewModel) { Title = "Map" });
 

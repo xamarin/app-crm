@@ -13,7 +13,20 @@ namespace MobileCRM.Shared.Pages.Accounts
 
       public AccountDetailsTabView(Account account)
       {
-        this.Title = account.DisplayName;
+        
+          if (account != null)
+          {
+              this.Title = account.DisplayName;
+          }
+          else
+          {
+              this.Title = "New Lead";
+          }
+          
+          
+
+
+
         viewModel = new AccountDetailsViewModel(account) { Navigation = Navigation };
         this.Children.Add(new AccountDetailsView(viewModel));
         this.Children.Add(new AccountOrdersView(account.Id)

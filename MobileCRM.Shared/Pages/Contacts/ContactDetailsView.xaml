@@ -1,40 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-					   x:Class="MobileCRM.Shared.Pages.Contacts.ContactDetailsView">
+						 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+						 x:Class="MobileCRM.Shared.Pages.Contacts.ContactDetailsView">
 	<ContentPage.Content>
-        <TableView HasUnevenRows="True" VerticalOptions="FillAndExpand">
-            <TableView.Root>
-                <TableRoot>                 
-                    <TableSection Title="Name">
-                        <EntryCell Label="Company" Text="{Binding Contact.Company}" Keyboard="Text"/>
-                        <EntryCell Label="Title" Text="{Binding Contact.JobTitle}" Keyboard="Text"/>
-                        <EntryCell Label="First" Text="{Binding Contact.FirstName}" Keyboard="Text" />
-                        <EntryCell Label="Last" Text="{Binding Contact.LastName}" Keyboard="Text"/>
-                    </TableSection>
-                    <TableSection Title ="Contact Details">
-                        <EntryCell Label="Phone" Text="{Binding Contact.Phone}" Keyboard="Telephone"/>
-                        <EntryCell Label="Email" Text="{Binding Contact.Email}" Keyboard="Email"/>
-                        <!--<TextCell x:Name="CallCell"  Text="Call"/>--> <!--PUt in image here-->
-                        <!--TODO: Email and Call buttons & functionality-->
-                    </TableSection>
-                    <TableSection Title="Address">
-                        <EntryCell Label="Street" Text="{Binding Contact.Street}" Keyboard="Text"/>
-                        <EntryCell Label="City" Text ="{Binding Contact.City}" Keyboard="Text"/>
-                        <EntryCell Label="State" Text="{Binding Contact.State}" Keyboard="Text"/>
-                        <EntryCell Label="Postal Code" Text="{Binding Contact.PostalCode}"  Keyboard="Numeric"/>
-                        <EntryCell Label="Country" Text="{Binding Contact.Country}" Keyboard="Text"/>
+				<TableView HasUnevenRows="True" VerticalOptions="FillAndExpand">
+						<TableView.Root>
+								<TableRoot>                 
+										<TableSection Title="Name">
+												<EntryCell Label="Company" Text="{Binding Contact.Company}" Keyboard="Text"/>
+												<EntryCell Label="Title" Text="{Binding Contact.JobTitle}" Keyboard="Text"/>
+												<EntryCell Label="First" Text="{Binding Contact.FirstName}" Keyboard="Text" />
+												<EntryCell Label="Last" Text="{Binding Contact.LastName}" Keyboard="Text"/>
+										</TableSection>
+										<TableSection Title ="Contact Details">
+												<EntryCell Label="Phone" Text="{Binding Contact.Phone}" Keyboard="Telephone"/>
+												<EntryCell Label="Email" Text="{Binding Contact.Email}" Keyboard="Email"/>
+												<!--<TextCell x:Name="CallCell"  Text="Call"/>--> <!--PUt in image here-->
+												<!--TODO: Email and Call buttons & functionality-->
+										</TableSection>
+										<TableSection Title="Address">
+												<EntryCell Label="Street" Text="{Binding Contact.Street}" Keyboard="Text"/>
+												<EntryCell Label="City" Text ="{Binding Contact.City}" Keyboard="Text"/>
+												<EntryCell Label="State" Text="{Binding Contact.State}" Keyboard="Text"/>
+												<EntryCell Label="Postal Code" Text="{Binding Contact.PostalCode}"  Keyboard="Numeric"/>
+												<EntryCell Label="Country" Text="{Binding Contact.Country}" Keyboard="Text"/>
 
-                        <!--<ViewCell>
-                            <StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                                <Button x:Name="CancelButton" Text="Cancel"  HorizontalOptions="Center"/>
-                            </StackLayout>
-                        </ViewCell>-->
-                    </TableSection>
-                    
-                    
-                </TableRoot>
-            </TableView.Root>
-        </TableView>
-    </ContentPage.Content>
+												<!--<ViewCell>
+														<StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+																<Button x:Name="CancelButton" Text="Cancel"  HorizontalOptions="Center"/>
+														</StackLayout>
+												</ViewCell>-->
+										</TableSection>
+										
+										
+								</TableRoot>
+						</TableView.Root>
+				</TableView>
+		</ContentPage.Content>
 </ContentPage>

@@ -16,13 +16,23 @@ namespace MobileCRM.Shared.Helpers
 
       public async static Task<Position> GeoCodeAddress(string addressString)
       {
-          Task<IEnumerable<Position>> getPosTask = geoCoder.GetPositionsForAddressAsync(addressString);
-          IEnumerable<Position> pos = await getPosTask;
-
           Position p = NullPosition;
 
-          p = pos == null ? p : pos.First();
+          try
+          {
+              Task<IEnumerable<Position>> getPosTask = geoCoder.GetPositionsForAddressAsync(addressString);
+              IEnumerable<Position> pos = await getPosTask;
+              p = pos == null ? p : pos.First();
 
+          }
+          catch (Exception exc)
+          {
+              Console.WriteLine("ERROR: MobileCRM.Shared.Helpers.GeoCodeAddress(): " + exc.Message);
+          }
+          finally 
+          { 
+          
+          }
           return p;
       }
 

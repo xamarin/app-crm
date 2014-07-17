@@ -64,6 +64,7 @@ namespace MobileCRM.Shared.ViewModels.Contacts
           if (true)
           {
               p = await Utils.GeoCodeAddress(address);
+              //p = p == null ? Utils.NullPosition : p;
 
               Contact.Latitude = p.Latitude;
               Contact.Longitude = p.Longitude;
