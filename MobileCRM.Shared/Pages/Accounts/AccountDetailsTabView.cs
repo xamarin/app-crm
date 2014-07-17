@@ -39,7 +39,7 @@ namespace MobileCRM.Shared.Pages.Accounts
           if (confirmed)
           {
             // TODO: Tell the view model, aka BindingContext, to save.
-            viewModel.SaveContactCommand.Execute(null);
+            viewModel.SaveAccountCommand.Execute(null);
 
           }
           else

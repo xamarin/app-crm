@@ -58,7 +58,7 @@ namespace MobileCRM.Shared.ViewModels.Leads
         IsBusy = true;
 
         Leads.Clear();
-        var accounts = await dataManager.GetAccountsAsync(true);
+        IEnumerable<Account> accounts = await dataManager.GetAccountsAsync(true);
         foreach (var account in accounts)
           Leads.Add(account);
 

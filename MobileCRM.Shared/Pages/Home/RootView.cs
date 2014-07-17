@@ -83,7 +83,7 @@ namespace MobileCRM.Shared.Pages.Home
               }
             case MenuType.Leads:
               {
-                return new Leads.LeadsView(new ViewModels.Leads.LeadsViewModel()); ;
+                  return new Leads.LeadsView(new ViewModels.Leads.LeadsViewModel() { Navigation = Navigation }); 
               }
             case MenuType.Contacts:
               {

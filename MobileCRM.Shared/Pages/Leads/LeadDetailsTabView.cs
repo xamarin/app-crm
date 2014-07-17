@@ -15,12 +15,15 @@ namespace MobileCRM.Shared.Pages.Leads
         //private LeadDetailsViewModel viewModel;
         private AccountDetailsViewModel viewModel;
 
-        public LeadDetailsTabView(Account lead)
+        public LeadDetailsTabView(Account l)
         {
+            Account lead = l == null ? new Account() { IsLead = true } : l;
+
             this.Title = lead.Company;
             viewModel = new AccountDetailsViewModel(lead) { Navigation = Navigation };
 
-            this.Children.Add(new LeadDetailsView(viewModel)
+            //this.Children.Add(new LeadDetailsView(viewModel)
+            this.Children.Add(new LeadDetailsView2(viewModel)
                 {
                     Title = "Lead"
                 });
@@ -42,11 +45,12 @@ namespace MobileCRM.Shared.Pages.Leads
                 if (confirmed)
                 {
                     // TODO: Tell the view model, aka BindingContext, to save.
-                    //viewModel.SaveLeadCommand.Execute(null);
+                    viewModel.SaveAccountCommand.Execute(null);
 
                 }
                 else
                 {
+                    viewModel.GoBack();
                     Console.WriteLine("cancel changes!");
                 }
             }));

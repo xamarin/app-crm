@@ -12,9 +12,9 @@ namespace MobileCRM.Shared.Pages.Leads
 {
 	public partial class LeadDetailsView
 	{
-		//LeadDetailsViewModel viewModel;
-			AccountDetailsViewModel viewModel;
-      public LeadDetailsView(AccountDetailsViewModel vm)
+
+
+		public LeadDetailsView(AccountDetailsViewModel vm)
 		{
 			InitializeComponent ();
 
@@ -23,10 +23,49 @@ namespace MobileCRM.Shared.Pages.Leads
 
 			this.BindingContext = vm;
 
-			CancelButton.Clicked += (sender, args) =>
-				{
-					Navigation.PopModalAsync();
-				};
-		}
+
+
+			foreach (var item in Account.IndustryTypes)
+			{
+					IndustryTypePicker.Items.Add(item);
+			}
+
+			foreach (var opt in Account.OpportunityStages)
+			{
+					OpportunityStagePicker.Items.Add(opt);
+			}
+
+			//IndustryTypePicker.SelectedIndex = viewModel.IndustryType;
+			//OpportunityStagePicker.SelectedIndex = viewModel.OpptStage;
+
+
+			//IndustryTypePicker.SelectedIndexChanged += IndustryTypePicker_SelectedIndexChanged;
+			//OpportunityStagePicker.SelectedIndexChanged += OpportunityStagePicker_SelectedIndexChanged;
+
+			//OpptSize.TextChanged += OpptSize_TextChanged;
+
+
+			//CancelButton.Clicked += (sender, args) =>
+			//  {
+			//    Navigation.PopModalAsync();
+			//  };
+
+		} //end ctor
+
+		//void OpptSize_TextChanged(object sender, TextChangedEventArgs e)
+		//{
+		//    viewModel.OpportunitySize = OpptSize.Text;
+		//}
+
+		//void OpportunityStagePicker_SelectedIndexChanged(object sender, EventArgs e)
+		//{
+		//    viewModel.OpptStage = OpportunityStagePicker.SelectedIndex;
+		//}
+
+		//void IndustryTypePicker_SelectedIndexChanged(object sender, EventArgs e)
+		//{
+		//    viewModel.IndustryType = IndustryTypePicker.SelectedIndex;
+		//}
+
 	}
 }

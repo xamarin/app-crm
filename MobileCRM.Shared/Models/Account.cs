@@ -12,7 +12,9 @@ namespace MobileCRM.Shared.Models
         : base()
       {
         ContactId = Notes = string.Empty;
-        Industry = IndustryTypes[IndustryTypes.Length - 1];
+        //Industry = IndustryTypes[IndustryTypes.Length - 1];
+        Industry = IndustryTypes[0];
+        OpportunityStage = OpportunityStages[0];
       }
 
       [JsonProperty(PropertyName = "contactid")]
@@ -24,10 +26,20 @@ namespace MobileCRM.Shared.Models
       [JsonProperty(PropertyName = "industry")]
       public string Industry { get; set; }
 
+      [JsonProperty(PropertyName = "oppt_size")]
+      public double OpportunitySize { get; set; }
+
+      [JsonProperty(PropertyName = "oppt_stage")]
+      public string OpportunityStage { get; set; }
+
       [JsonProperty(PropertyName="notes")]
       public string Notes { get; set; }
 
       [JsonIgnore]
-      public static string[] IndustryTypes = new string[] { "Aerospace", "Education", "Electrical", "Entertainment", "Logistic", "Retail", "Software", "Other" };
+      public static string[] IndustryTypes = new string[] { "None Selected", "Aerospace", "Education", "Electrical", "Entertainment", "Logistic", "Retail", "Software", "Other" };
+
+      [JsonIgnore]
+      public static string[] OpportunityStages = new string[] { "None Selected", "10% - Prospect", "50% - Value Proposition", "75% - Proposal" }; 
+
     }
 }

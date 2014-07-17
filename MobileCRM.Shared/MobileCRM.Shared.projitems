@@ -66,6 +66,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Leads\LeadDetailsTabView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Leads\LeadDetailsView2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Leads\NewLeadView.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>NewLeadView.xaml</DependentUpon>

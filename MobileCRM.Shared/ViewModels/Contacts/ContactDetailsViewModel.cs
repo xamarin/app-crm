@@ -1,5 +1,6 @@
 ﻿using MobileCRM.Shared.Interfaces;
 using MobileCRM.Shared.Models;
+using MobileCRM.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -52,9 +53,9 @@ namespace MobileCRM.Shared.ViewModels.Contacts
       }
 
 
-      public static readonly Position NullPosition = new Position(0, 0);
       public async Task<Pin> LoadPin()
       {
+          Position p = Utils.NullPosition;
           var address = Contact.AddressString;
 
           //Lookup Lat/Long all the time.
@@ -62,22 +63,16 @@ namespace MobileCRM.Shared.ViewModels.Contacts
           //if (Contact.Latitude == 0)
           if (true)
           {
-              Task<IEnumerable<Position>> getPosTask = coder.GetPositionsForAddressAsync(Contact.AddressString);
-              IEnumerable<Position> pos = await getPosTask;
+              p = await Utils.GeoCodeAddress(address);
 
-              if (pos.Count() > 0)
-              {
-                  Contact.Latitude = pos.First().Latitude;
-                  Contact.Longitude = pos.Last().Longitude;
-              } 
+              Contact.Latitude = p.Latitude;
+              Contact.Longitude = p.Longitude;
           }
-
-          var position = address != null ? new Position(Contact.Latitude, Contact.Longitude) : NullPosition;
 
           var pin = new Pin
           {
               Type = PinType.Place,
-              Position = position,
+              Position = p,
               Label = Contact.DisplayName,
               Address = address.ToString()
           };

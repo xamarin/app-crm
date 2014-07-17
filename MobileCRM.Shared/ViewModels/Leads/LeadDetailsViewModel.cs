@@ -38,6 +38,14 @@ namespace MobileCRM.Shared.ViewModels.Leads
       coder = new Geocoder();
     }
 
+    //private int industryType = 0;
+    //public int IndustryType
+    //{
+    //    get { return industryType; }
+    //    set { industryType = value; Account.Industry = Account.IndustryTypes[industryType]; }
+    //}
+
+
     private Command approveLeadCommand;
     public Command ApproveLeadCommand
     {

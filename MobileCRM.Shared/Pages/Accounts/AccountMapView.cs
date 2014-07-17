@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using System.Linq;
@@ -49,16 +50,15 @@ namespace MobileCRM.Shared.Pages.Accounts
             Content = stack;
         }
 
-        public Map MakeMap()
+        public async void MakeMap()
         {
-            Pin pin = ViewModel.LoadPin();
+            Task<Pin> getPinTask = ViewModel.LoadPin();
+            Pin pin = await getPinTask;
 
             map.Pins.Clear();
             map.Pins.Add(pin);
             
             map.MoveToRegion(MapSpan.FromCenterAndRadius(pin.Position, Distance.FromMiles(5)));
-
-            return map;
         }
 
         protected override void OnAppearing()

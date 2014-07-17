@@ -29,7 +29,7 @@ namespace MobileCRM.Shared.Pages.Contacts
 		    Command = new Command(() =>
 		    {
 			      //navigate to new page
-			      Navigation.PushAsync(new ContactDetailsView(null));
+			      Navigation.PushAsync(new ContactDetailsTabView(null));
 
 		    })
 	      });

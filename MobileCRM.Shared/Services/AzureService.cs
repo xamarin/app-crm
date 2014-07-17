@@ -20,6 +20,8 @@ namespace MobileCRM.Shared.Services
     {
       IMobileServiceSyncTable<Order> orderTable;
       IMobileServiceSyncTable<Contact> contactTable;
+
+
       IMobileServiceSyncTable<Account> accountTable;
 
       public IMobileServiceClient MobileService { get; set; }
@@ -74,8 +76,11 @@ namespace MobileCRM.Shared.Services
         
 
         orderTable = MobileService.GetSyncTable<Order>();
+
         accountTable = MobileService.GetSyncTable<Account>();
-        contactTable = MobileService.GetSyncTable<Contact>(); 
+
+        contactTable = MobileService.GetSyncTable<Contact>();
+
       }
 
 #region Orders
@@ -146,7 +151,11 @@ namespace MobileCRM.Shared.Services
       public async Task SaveAccountAsync(Account item)
       {
         try
-        { 
+        {
+            //IMobileServiceTable<Account> acctTbl = MobileService.GetTable<Account>();
+            //await acctTbl.InsertAsync(item);
+
+
           if (item.Id == null)
             await accountTable.InsertAsync(item);
           else

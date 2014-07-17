@@ -12,37 +12,37 @@ namespace MobileCRM.Shared.Pages.Leads
 {
 	public partial class NewLeadView
 	{
-    NewLeadViewModel viewModel;
-    public NewLeadView()
+		NewLeadViewModel viewModel;
+		public NewLeadView()
 		{
 			InitializeComponent ();
 
-      SetBinding(Page.TitleProperty, new Binding("Title"));
-      SetBinding(Page.IconProperty, new Binding("Icon"));
+			SetBinding(Page.TitleProperty, new Binding("Title"));
+			SetBinding(Page.IconProperty, new Binding("Icon"));
 
-      this.BindingContext = viewModel = new NewLeadViewModel(Navigation);
-      ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
-      {
-        var confirmed = await DisplayAlert("Unsaved Changes", "Save changes?", "Save", "Discard");
-        if (confirmed)
-        {
-          // TODO: Tell the view model, aka BindingContext, to save.
-          viewModel.SaveLeadCommand.Execute(null);
-          
-        }
-        else
-        {
-          Console.WriteLine("cancel changes!");
-          Navigation.PopAsync();
-        }
-      }));
+			this.BindingContext = viewModel = new NewLeadViewModel(Navigation);
+			ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
+			{
+				var confirmed = await DisplayAlert("Unsaved Changes", "Save changes?", "Save", "Discard");
+				if (confirmed)
+				{
+					// TODO: Tell the view model, aka BindingContext, to save.
+					viewModel.SaveLeadCommand.Execute(null);
+					
+				}
+				else
+				{
+					Console.WriteLine("cancel changes!");
+					Navigation.PopAsync();
+				}
+			}));
 
-      foreach (var item in Account.IndustryTypes)
-      {
-        IndustryTypePicker.Items.Add(item);
-      }
+			foreach (var item in Account.IndustryTypes)
+			{
+				IndustryTypePicker.Items.Add(item);
+			}
 
-      IndustryTypePicker.SelectedIndex = viewModel.IndustryType;
+			IndustryTypePicker.SelectedIndex = viewModel.IndustryType;
 
 		}
 	}

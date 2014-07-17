@@ -13,13 +13,18 @@ namespace MobileCRM.Shared.Pages.Leads
 {
 	public partial class LeadsView
 	{
-		LeadsViewModel viewModel;
+
+    private LeadsViewModel ViewModel
+    {
+        get { return BindingContext as LeadsViewModel; }
+    }
+
 
 		public LeadsView(LeadsViewModel vm)
 		{
 			InitializeComponent ();
 
-			this.BindingContext = this.viewModel = vm;
+			this.BindingContext = vm;
 
 			ToolbarItems.Add(new ToolbarItem
 			{
@@ -27,8 +32,9 @@ namespace MobileCRM.Shared.Pages.Leads
 				Name = "add",
 				Command = new Command(() =>
 				{
-					//navigate to new page
-					Navigation.PushAsync(new NewLeadView());
+            //navigate to new page
+            Navigation.PushAsync(new LeadDetailsTabView(null));
+
 				})
 			});
 
@@ -36,7 +42,7 @@ namespace MobileCRM.Shared.Pages.Leads
 			{
 				Icon = "refresh.png",
 				Name = "refresh",
-				Command = viewModel.LoadLeadsCommand
+				Command = ViewModel.LoadLeadsCommand
 			});
 
 		}
@@ -46,21 +52,28 @@ namespace MobileCRM.Shared.Pages.Leads
 			if (e.Item == null)
 				return;
 
-			Navigation.PushAsync(new LeadDetailsTabView(e.Item as Account));
+      try
+      {
+          Account acct = (Account)e.Item;
+          Navigation.PushAsync(new LeadDetailsTabView(acct));
 
-			LeadsList.SelectedItem = null;
+          LeadsList.SelectedItem = null;
+      } catch (Exception ex)
+      {
+          Console.WriteLine(ex.Message);
+      } //end catch
 			
 		}
 
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			if (viewModel.IsInitialized)
+			if (ViewModel.IsInitialized)
 			{
 				return;
 			}
-			viewModel.LoadLeadsCommand.Execute(null);
-			viewModel.IsInitialized = true;
+			ViewModel.LoadLeadsCommand.Execute(null);
+			ViewModel.IsInitialized = true;
 
 		}
 	}

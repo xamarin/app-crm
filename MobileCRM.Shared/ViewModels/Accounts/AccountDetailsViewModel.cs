@@ -23,6 +23,9 @@ namespace MobileCRM.Shared.ViewModels.Accounts
         if (account == null)
         {
           Account = new Models.Account();
+          Account.Industry = Account.IndustryTypes[0];
+          Account.OpportunityStage = Account.OpportunityStages[0];
+
           this.Title = "New Account";
         }
         else
@@ -35,35 +38,92 @@ namespace MobileCRM.Shared.ViewModels.Accounts
         coder = new Geocoder();
       }
 
+      private int industryIndex = 0;
+      public int IndustryIndex
+      {
+          get 
+          {
+              for (int i = 0; i < Account.IndustryTypes.Length; i++)
+              {
+                  if (Account.Industry.Equals(Account.IndustryTypes[i]))
+                  {
+                      industryIndex = i;
+                      break;
+                  } //end if
+              }
 
-      private Command saveContactCommand;
+              return industryIndex;
+          }
+          set 
+          { 
+              industryIndex = value;
+              Account.Industry = Account.IndustryTypes[industryIndex]; 
+          }
+      } //end IndustryIndex
+
+
+      private int opptStageIndex = 0;
+      public int OpptStageIndex
+      {
+          get
+          {
+              for (int i = 0; i < Account.OpportunityStages.Length; i++ )
+              {
+                  if (Account.OpportunityStage.Equals(Account.OpportunityStages[i]))
+                  {
+                      opptStageIndex = i;
+                      break;
+                  }
+              }
+              return opptStageIndex;
+          }
+          set 
+          {
+              opptStageIndex = value;
+              Account.OpportunityStage = Account.OpportunityStages[opptStageIndex];
+          }
+      }
+
+
+      private double dblParsed = 0;
+      public string OpportunitySize
+      {
+          get { return Account.OpportunitySize.ToString(); }
+          set 
+          {
+             
+              if (double.TryParse(value, out dblParsed))
+              {
+                  Account.OpportunitySize = dblParsed;
+              }
+          }
+      }
+
+
+      private Command saveAccountCommand;
       /// <summary>
       /// Command to load contacts
       /// </summary>
-      public Command SaveContactCommand
+      public Command SaveAccountCommand
       {
         get
         {
-          return saveContactCommand ??
-                 (saveContactCommand = new Command(async () =>
-                  await ExecuteSaveContactCommand()));
+          return saveAccountCommand ??
+                 (saveAccountCommand = new Command(async () =>
+                  await ExecuteSaveAccountCommand()));
         }
       }
 
-      private async Task ExecuteSaveContactCommand()
+      private async Task ExecuteSaveAccountCommand()
       {
         if (IsBusy)
           return;
 
         IsBusy = true;
 
-        IEnumerable<Position> points = await coder.GetPositionsForAddressAsync(Account.AddressString);
-        if(points != null && points.Count() > 0)
-        {
-          var point = points.ElementAt(0);
-          Account.Latitude = point.Latitude;
-          Account.Longitude = point.Longitude;
-        }
+
+
+
         await dataManager.SaveAccountAsync(Account);
 
         MessagingCenter.Send(Account, "Account");
@@ -75,47 +135,81 @@ namespace MobileCRM.Shared.ViewModels.Accounts
       }
 
 
-      public static readonly Position NullPosition = new Position(0, 0);
-      public Pin LoadPin()
+      public async Task GoBack()
       {
+          await Navigation.PopAsync();
+      }
+
+
+      //public static readonly Position NullPosition = new Position(0, 0);
+      //public Pin LoadPin()
+      //{
+      //    var address = Account.AddressString;
+      //    var position = address != null ? new Position(Account.Latitude, Account.Longitude) : NullPosition;
+
+      //    var pin = new Pin
+      //    {
+      //        Type = PinType.Place,
+      //        Position = position,
+      //        Label = Account.Company,
+      //        Address = address.ToString()
+      //    };
+
+      //    return pin;
+      //}
+
+
+      public async Task<Pin> LoadPin()
+      {
+          Position p = Utils.NullPosition;
           var address = Account.AddressString;
-          var position = address != null ? new Position(Account.Latitude, Account.Longitude) : NullPosition;
+
+          //Lookup Lat/Long all the time.
+          //TODO: Only look up if no value, or if address properties have changed.
+          //if (Contact.Latitude == 0)
+          if (true)
+          {
+              p = await Utils.GeoCodeAddress(address);
+
+              Account.Latitude = p.Latitude;
+              Account.Longitude = p.Longitude;
+          }
 
           var pin = new Pin
           {
               Type = PinType.Place,
-              Position = position,
-              Label = Account.Company,
+              Position = p,
+              Label = Account.DisplayName,
               Address = address.ToString()
           };
 
           return pin;
       }
 
-
-      public async Task<Pin> UpdateAddressAsync()
-      {
-        IEnumerable<Position> points = await coder.GetPositionsForAddressAsync(Account.AddressString);
-        if (points != null && points.Count() > 0)
-        {
-          var point = points.ElementAt(0);
-          Account.Latitude = point.Latitude;
-          Account.Longitude = point.Longitude;
-        }
+      //public async Task<Pin> UpdateAddressAsync()
+      //{
+      //  IEnumerable<Position> points = await coder.GetPositionsForAddressAsync(Account.AddressString);
+      //  if (points != null && points.Count() > 0)
+      //  {
+      //    var point = points.ElementAt(0);
+      //    Account.Latitude = point.Latitude;
+      //    Account.Longitude = point.Longitude;
+      //  }
 
         
-        var address = Account.AddressString;
+      //  var address = Account.AddressString;
 
-        var position = address != null ? new Position(Account.Latitude, Account.Longitude) : Utils.NullPosition;
-        var pin = new Pin
-        {
-          Type = PinType.Place,
-          Position = position,
-          Label = Account.ToString(),
-          Address = address.ToString()
-        };
+      //  var position = address != null ? new Position(Account.Latitude, Account.Longitude) : Utils.NullPosition;
+      //  var pin = new Pin
+      //  {
+      //    Type = PinType.Place,
+      //    Position = position,
+      //    Label = Account.ToString(),
+      //    Address = address.ToString()
+      //  };
 
-        return pin;
-      }
+      //  return pin;
+      //}
+
     }
 }

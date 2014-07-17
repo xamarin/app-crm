@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using System.Linq;
 using Xamarin.Forms.Maps;
 
 namespace MobileCRM.Shared.Helpers
@@ -10,5 +12,20 @@ namespace MobileCRM.Shared.Helpers
 
       public static readonly Position NullPosition = new Position(0, 0);
      
+      private static Geocoder geoCoder = new Geocoder();
+
+      public async static Task<Position> GeoCodeAddress(string addressString)
+      {
+          Task<IEnumerable<Position>> getPosTask = geoCoder.GetPositionsForAddressAsync(addressString);
+          IEnumerable<Position> pos = await getPosTask;
+
+          Position p = NullPosition;
+
+          p = pos == null ? p : pos.First();
+
+          return p;
+      }
+
+        
     }
 }
