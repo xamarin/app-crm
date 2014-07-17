@@ -99,6 +99,11 @@ namespace MobileCRM.Shared.ViewModels.Accounts
           }
       }
 
+      
+      public string DisplayContact
+      {
+          get { return Account.DisplayName + ", " + Account.JobTitle; }
+      }
 
       private Command saveAccountCommand;
       /// <summary>
@@ -122,6 +127,8 @@ namespace MobileCRM.Shared.ViewModels.Accounts
         IsBusy = true;
 
 
+        //Temp - change some records to accounts
+        Account.IsLead = false;
 
 
         await dataManager.SaveAccountAsync(Account);
@@ -186,30 +193,6 @@ namespace MobileCRM.Shared.ViewModels.Accounts
           return pin;
       }
 
-      //public async Task<Pin> UpdateAddressAsync()
-      //{
-      //  IEnumerable<Position> points = await coder.GetPositionsForAddressAsync(Account.AddressString);
-      //  if (points != null && points.Count() > 0)
-      //  {
-      //    var point = points.ElementAt(0);
-      //    Account.Latitude = point.Latitude;
-      //    Account.Longitude = point.Longitude;
-      //  }
-
-        
-      //  var address = Account.AddressString;
-
-      //  var position = address != null ? new Position(Account.Latitude, Account.Longitude) : Utils.NullPosition;
-      //  var pin = new Pin
-      //  {
-      //    Type = PinType.Place,
-      //    Position = position,
-      //    Label = Account.ToString(),
-      //    Address = address.ToString()
-      //  };
-
-      //  return pin;
-      //}
 
     }
 }

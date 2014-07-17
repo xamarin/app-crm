@@ -74,12 +74,14 @@ namespace MobileCRM.Shared.Pages.Home
               }
             case MenuType.Accounts:
               {
-                var vm = new AccountsViewModel();
-                return new TabView("Accounts", new Page[]
-                  {
-                    new AccountsView(vm),
-                    new AccountsMapView(vm)
-                  }, vm);      
+                var vm = new AccountsViewModel() { Navigation = Navigation };
+                return new AccountsView(vm);
+
+                //return new TabView("Accounts", new Page[]
+                //  {
+                //    new AccountsView(vm),
+                //    new AccountsMapView(vm)
+                //  }, vm);      
               }
             case MenuType.Leads:
               {
@@ -88,13 +90,7 @@ namespace MobileCRM.Shared.Pages.Home
             case MenuType.Contacts:
               {
                 var vm = new ContactsViewModel();
-                return new Contacts.ContactsView(vm);
-
-                //return new TabView("Contacts", new Page[]
-                //  {
-                //    new Contacts.ContactsView(vm),
-                //    new Contacts.ContactsMapView(vm)
-                //  }, vm);   
+                return new Contacts.ContactsView(vm); 
               }
           }
             

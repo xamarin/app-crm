@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 using System.Threading.Tasks;
 
 namespace MobileCRM.Shared.Pages.Accounts
@@ -13,6 +14,7 @@ namespace MobileCRM.Shared.Pages.Accounts
 		{
 			InitializeComponent ();
       this.BindingContext = account;
+
 		}
 	}
 }

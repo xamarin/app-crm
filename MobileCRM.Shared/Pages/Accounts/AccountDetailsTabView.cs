@@ -16,7 +16,7 @@ namespace MobileCRM.Shared.Pages.Accounts
         
           if (account != null)
           {
-              this.Title = account.DisplayName;
+              this.Title = account.Company;
           }
           else
           {
@@ -28,7 +28,11 @@ namespace MobileCRM.Shared.Pages.Accounts
 
 
         viewModel = new AccountDetailsViewModel(account) { Navigation = Navigation };
+
+
         this.Children.Add(new AccountDetailsView(viewModel));
+        //this.Children.Add(new AccountDetailsView2(viewModel));
+
         this.Children.Add(new AccountOrdersView(account.Id)
         {
           Title = "Orders"
@@ -40,9 +44,14 @@ namespace MobileCRM.Shared.Pages.Accounts
         });
 
 
-        this.Children.Add(new AccountNotesView(account)
+        //this.Children.Add(new AccountNotesView(account)
+        //{
+        //  Title = "Notes"
+        //});
+
+        this.Children.Add(new AccountNotesView2(viewModel)
         {
-          Title = "Notes"
+            Title = "Notes"
         });
 
 

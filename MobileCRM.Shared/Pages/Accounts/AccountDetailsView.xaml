@@ -1,31 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
-					   x:Class="MobileCRM.Shared.Pages.Accounts.AccountDetailsView"
-                       xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
+						 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+											 xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
+						 x:Class="MobileCRM.Shared.Pages.Accounts.AccountDetailsView"
+											 xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
 	<ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand">
-            <TableView HasUnevenRows="True" VerticalOptions="FillAndExpand">
-                <TableView.Root>
-                    <TableRoot>
-                        <TableSection Title="Contact">
-                            <TextCell Text="{Binding Account.Company}"/>
-                            <TextCell Text="{Binding Account.DisplayName}"/>
-                            <TextCell Text="{Binding Account.Phone}"/>
-                        </TableSection>
-                        <TableSection Title="Location">
-                              <ViewCell>
-                                    <maps:Map HeightRequest="200"
-                                        x:Name="MainMap"
-                                        IsShowingUser="true" 
-                                        MapType="Hybrid"/>
-                                </ViewCell>  
-                        </TableSection>
-                    </TableRoot>
-                </TableView.Root>
-            </TableView>
-            <controls:BarChart x:Name="Chart" HeightRequest="200"/>  
-        </StackLayout>
-    </ContentPage.Content>
+				<StackLayout VerticalOptions="FillAndExpand">
+
+						
+						<TableView HasUnevenRows="True" VerticalOptions="FillAndExpand">
+								<TableView.Root>
+										<TableRoot>
+												
+												<TableSection Title="COMPANY INFO">
+														<TextCell Text="Company" Detail="{Binding Account.Company}" />
+														<TextCell Text="Industry" Detail="{Binding Account.Industry}" />
+														<TextCell Text="Contact" Detail="{Binding DisplayContact}" />
+														<TextCell Text="Phone" Detail="{Binding Account.Phone}" />
+														<TextCell Text="Address" Detail="{Binding Account.AddressString}" />
+												</TableSection>
+
+
+												<!--<TableSection Title="Location">
+															<ViewCell>
+																		<maps:Map HeightRequest="200"
+																				x:Name="MainMap"
+																				IsShowingUser="true" 
+																				MapType="Hybrid"/>
+																</ViewCell>  
+												</TableSection>-->
+												
+												<TableSection Title="SALES">
+														<ViewCell>
+																<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
+																		<controls:BarChart x:Name="Chart" HeightRequest="200"/>
+																</StackLayout>
+														</ViewCell>
+												</TableSection>
+												
+										</TableRoot>
+									 
+										
+								</TableView.Root>
+						</TableView>
+
+
+				</StackLayout>
+		</ContentPage.Content>
 </ContentPage>

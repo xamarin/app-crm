@@ -214,7 +214,7 @@ namespace MobileCRM.Shared.Services
         {
           await SyncOrders();
           return await orderTable.Where(j => j.AccountId == accountId &&
-                                         j.IsOpen == open).ToEnumerableAsync();
+                                         j.IsOpen == open).OrderByDescending(j => j.DueDate).ToEnumerableAsync();
         }
         catch (MobileServiceInvalidOperationException ex)
         {

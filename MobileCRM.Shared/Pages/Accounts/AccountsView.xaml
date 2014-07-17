@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-					   x:Class="MobileCRM.Shared.Pages.Accounts.AccountsView"  
-                       xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
-					   Title="{Binding Title}"
-                       Icon="{Binding Icon}">
-    <ContentPage.Content>
-        <StackLayout>
-            <ActivityIndicator IsRunning = "{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
-            <ListView x:Name="ContactList" ItemsSource="{Binding Accounts}" ItemTapped="OnItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <controls:ListTextCell Text="{Binding DisplayName}" Detail="{Binding Company}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-    </ContentPage.Content>
+						 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+						 x:Class="MobileCRM.Shared.Pages.Accounts.AccountsView"  
+											 xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
+						 Title="{Binding Title}"
+											 Icon="{Binding Icon}">
+		<ContentPage.Content>
+				<StackLayout>
+						<ActivityIndicator IsRunning = "{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+						<ListView x:Name="ContactList" ItemsSource="{Binding Accounts}" ItemTapped="OnItemSelected">
+								<ListView.ItemTemplate>
+										<DataTemplate>
+												<controls:ListTextCell Text="{Binding Company}" Detail="{Binding DisplayName}"/>
+										</DataTemplate>
+								</ListView.ItemTemplate>
+						</ListView>
+				</StackLayout>
+		</ContentPage.Content>
 </ContentPage>

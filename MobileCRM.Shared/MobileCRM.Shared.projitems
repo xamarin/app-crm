@@ -31,6 +31,7 @@
       <DependentUpon>AccountDetailsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountMapView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountNotesView2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountNotesView.xaml.cs">
       <DependentUpon>AccountNotesView.xaml</DependentUpon>
       <SubType>Code</SubType>
