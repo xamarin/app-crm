@@ -15,7 +15,8 @@ namespace MobileCRM.Shared.Pages.Accounts
       AccountDetailsView viewAcctDetails;
       AccountOrdersView viewAcctOrders;
       AccountHistoryView viewAcctHistory;
-      AccountNotesView2 viewAcctNotes;
+      //AccountNotesView2 viewAcctNotes;
+      AccountMapView viewAcctMap;
 
 
       public AccountDetailsTabView(Account account)
@@ -34,8 +35,7 @@ namespace MobileCRM.Shared.Pages.Accounts
 
         viewAcctDetails = new AccountDetailsView(viewModel);
         this.Children.Add(viewAcctDetails);
-        //this.Children.Add(new AccountDetailsView(viewModel));
-        //this.Children.Add(new AccountDetailsView2(viewModel));
+
 
         viewAcctOrders = new AccountOrdersView(account.Id) { Title = "Orders" };
         this.Children.Add(viewAcctOrders);
@@ -44,31 +44,34 @@ namespace MobileCRM.Shared.Pages.Accounts
         viewAcctHistory = new AccountHistoryView(account.Id) { Title = "History" };
         this.Children.Add(viewAcctHistory);
 
+        viewAcctMap = new AccountMapView(viewModel);
+        this.Children.Add(viewAcctMap);
 
         //this.Children.Add(new AccountNotesView(account)
         //{
         //  Title = "Notes"
         //});
-        this.Children.Add(new AccountNotesView2(viewModel)
-        {
-            Title = "Notes"
-        });
+        //this.Children.Add(new AccountNotesView2(viewModel)
+        //{
+        //    Title = "Notes"
+        //});
 
 
-        ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
-        {
-          var confirmed = await DisplayAlert("Unsaved Changes", "Save changes?", "Save", "Discard");
-          if (confirmed)
-          {
-            // TODO: Tell the view model, aka BindingContext, to save.
-            viewModel.SaveAccountCommand.Execute(null);
 
-          }
-          else
-          {
-            Console.WriteLine("cancel changes!");
-          }
-        }));
+        //ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
+        //{
+        //  var confirmed = await DisplayAlert("Unsaved Changes", "Save changes?", "Save", "Discard");
+        //  if (confirmed)
+        //  {
+        //    // TODO: Tell the view model, aka BindingContext, to save.
+        //    viewModel.SaveAccountCommand.Execute(null);
+
+        //  }
+        //  else
+        //  {
+        //    Console.WriteLine("cancel changes!");
+        //  }
+        //}));
 
       }  //end ctor
 

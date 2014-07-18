@@ -171,22 +171,26 @@ namespace MobileCRM.Shared.ViewModels.Accounts
           Position p = Utils.NullPosition;
           var address = Account.AddressString;
 
-          //Lookup Lat/Long all the time.
+          //Lookup Lat/Long all the time unless an account where the address is read-only
           //TODO: Only look up if no value, or if address properties have changed.
           //if (Contact.Latitude == 0)
-          if (true)
+          if (Account.IsLead)
           {
               p = await Utils.GeoCodeAddress(address);
 
               Account.Latitude = p.Latitude;
               Account.Longitude = p.Longitude;
           }
+          else
+          {
+              p = new Position(Account.Latitude, Account.Longitude);
+          }
 
           var pin = new Pin
           {
               Type = PinType.Place,
               Position = p,
-              Label = Account.DisplayName,
+              Label = Account.Company,
               Address = address.ToString()
           };
 
