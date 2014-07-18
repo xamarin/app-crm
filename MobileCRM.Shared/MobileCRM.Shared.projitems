@@ -80,6 +80,7 @@
       <SubType>Code</SubType>
       <DependentUpon>AccountHistoryView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Orders\AccountOrderDetailsView2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Orders\AccountOrderDetailsView.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>AccountOrderDetailsView.xaml</DependentUpon>
@@ -92,6 +93,7 @@
       <SubType>Code</SubType>
       <DependentUpon>NewOrderView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Orders\NewOrderView2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\AzureService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Accounts\AccountDetailsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Accounts\AccountsViewModel.cs" />

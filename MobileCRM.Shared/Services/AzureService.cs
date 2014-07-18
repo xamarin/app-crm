@@ -208,13 +208,13 @@ namespace MobileCRM.Shared.Services
         return new List<Account>();
       }
 
-      public async Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId, bool open)
+      public async Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId)
       {
         try
         {
           await SyncOrders();
           return await orderTable.Where(j => j.AccountId == accountId &&
-                                         j.IsOpen == open).OrderByDescending(j => j.DueDate).ToEnumerableAsync();
+                                         j.IsOpen == true).OrderBy(j => j.DueDate).ToEnumerableAsync();
         }
         catch (MobileServiceInvalidOperationException ex)
         {
@@ -226,7 +226,27 @@ namespace MobileCRM.Shared.Services
         }
         return new List<Order>();
       }
-      
+
+      public async Task<IEnumerable<Order>> GetAccountOrderHistoryAsync(string accountId)
+      {
+          try
+          {
+              await SyncOrders();
+              return await orderTable.Where(j => j.AccountId == accountId &&
+                                             j.IsOpen == false).OrderByDescending(j => j.ClosedDate).ToEnumerableAsync();
+          }
+          catch (MobileServiceInvalidOperationException ex)
+          {
+              Debug.WriteLine(@"ERROR {0}", ex.Message);
+          }
+          catch (Exception ex2)
+          {
+              Debug.WriteLine(@"ERROR {0}", ex2.Message);
+          }
+          return new List<Order>();
+      }
+
+
 
 #endregion
 

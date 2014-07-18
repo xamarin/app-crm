@@ -19,12 +19,18 @@ namespace MobileCRM.Shared.Interfaces
       Task DeleteAccountAsync(Account item);
       Task<IEnumerable<Account>> GetAccountsAsync(bool leads);
 
-      Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId, bool open);
+      //Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId, bool open);
+      Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId);
+      Task<IEnumerable<Order>> GetAccountOrderHistoryAsync(string accountId);
 
 
       Task SaveContactAsync(Contact item);
       Task DeleteContactAsync(Contact item);
       Task<IEnumerable<Contact>> GetContactsAsync();
       Task<Contact> GetContactAsync(string contactId);
+
+
+
+
     }
 }

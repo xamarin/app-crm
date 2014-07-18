@@ -25,7 +25,9 @@ namespace MobileCRM.Shared.Pages.Accounts
 
     public void NewOrderClicked(object sender, EventArgs e)
     {
-      Navigation.PushAsync(new NewOrderView(accountId));
+      //Navigation.PushAsync(new NewOrderView(accountId));
+
+      Navigation.PushAsync(new NewOrderView2(accountId));
     }
 
 
@@ -34,13 +36,13 @@ namespace MobileCRM.Shared.Pages.Accounts
       if (e.Item == null)
         return;
 
-      //we push modal for signature pad
-      Navigation.PushModalAsync(new AccountOrderDetailsView(e.Item as Order));
+
+      //Navigation.PushModalAsync(new AccountOrderDetailsView(e.Item as Order));
+      Navigation.PushAsync(new AccountOrderDetailsView2(e.Item as Order));
 
       OrdersList.SelectedItem = null;
     }
 
-    
 
     protected override void OnAppearing()
     {
@@ -51,7 +53,19 @@ namespace MobileCRM.Shared.Pages.Accounts
       }
       viewModel.LoadOrdersCommand.Execute(null);
       viewModel.IsInitialized = true;
-
     }
+
+    /// <summary>
+    /// Refresh orders only if true passed in.  Called by AccountDetailsTabView. Bool flag prevents it from loading data twice upon initial load of parent Tab View page.
+    /// </summary>
+    /// <param name="bolLoadOrders"></param>
+    public void RefreshView(bool bolLoadOrders)
+    {
+        if (bolLoadOrders)
+        {
+            viewModel.LoadOrdersCommand.Execute(null);
+        } //end if
+    }
+
 	}
 }

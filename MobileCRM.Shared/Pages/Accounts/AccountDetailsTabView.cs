@@ -11,6 +11,13 @@ namespace MobileCRM.Shared.Pages.Accounts
     {
       private AccountDetailsViewModel viewModel;
 
+
+      AccountDetailsView viewAcctDetails;
+      AccountOrdersView viewAcctOrders;
+      AccountHistoryView viewAcctHistory;
+      AccountNotesView2 viewAcctNotes;
+
+
       public AccountDetailsTabView(Account account)
       {
         
@@ -23,32 +30,25 @@ namespace MobileCRM.Shared.Pages.Accounts
               this.Title = "New Lead";
           }
           
-          
-
-
-
         viewModel = new AccountDetailsViewModel(account) { Navigation = Navigation };
 
-
-        this.Children.Add(new AccountDetailsView(viewModel));
+        viewAcctDetails = new AccountDetailsView(viewModel);
+        this.Children.Add(viewAcctDetails);
+        //this.Children.Add(new AccountDetailsView(viewModel));
         //this.Children.Add(new AccountDetailsView2(viewModel));
 
-        this.Children.Add(new AccountOrdersView(account.Id)
-        {
-          Title = "Orders"
-        });
+        viewAcctOrders = new AccountOrdersView(account.Id) { Title = "Orders" };
+        this.Children.Add(viewAcctOrders);
 
-        this.Children.Add(new AccountHistoryView(account.Id)
-        {
-          Title = "History"
-        });
+
+        viewAcctHistory = new AccountHistoryView(account.Id) { Title = "History" };
+        this.Children.Add(viewAcctHistory);
 
 
         //this.Children.Add(new AccountNotesView(account)
         //{
         //  Title = "Notes"
         //});
-
         this.Children.Add(new AccountNotesView2(viewModel)
         {
             Title = "Notes"
@@ -70,6 +70,24 @@ namespace MobileCRM.Shared.Pages.Accounts
           }
         }));
 
+      }  //end ctor
+
+
+
+      protected override void OnAppearing()
+      {
+          base.OnAppearing();
+
+          viewAcctOrders.RefreshView(viewModel.IsInitialized);
+          viewAcctHistory.RefreshView(viewModel.IsInitialized);
+
+          if (viewModel.IsInitialized)
+          {
+              return;
+          }
+
+          viewModel.IsInitialized = true;
       }
-    }
+
+    } //end class
 }

@@ -17,7 +17,8 @@ namespace MobileCRM.Shared.ViewModels.Orders
     public Order Order { get; set; }
     public OrderDetailsViewModel(INavigation navigation, Order order)
     {
-      order.ClosedDate = DateTime.Today;
+
+      //order.ClosedDate = DateTime.Today;
       Order = order;
       price = order.Price.ToString();
       discount = (double)order.Discount;
@@ -67,6 +68,56 @@ namespace MobileCRM.Shared.ViewModels.Orders
     }
 
 
+    private int intItemIndex = 0;
+    public int ItemIndex
+    {
+        get 
+        { 
+            for (int i=0; i< Order.ItemTypes.Length; i++)
+            {
+                if (Order.Item.Equals(Order.ItemTypes[i]))
+                {
+                    intItemIndex = i;
+                    break;
+
+                }
+            }
+            return intItemIndex;
+        }
+        set
+        {
+            intItemIndex = value;
+            Order.Item = Order.ItemTypes[intItemIndex];
+        }
+    }
+
+
+    private Command saveOrderCommand;
+
+    public Command SaveOrderCommand
+    {
+        get
+        {
+            return saveOrderCommand ?? (saveOrderCommand = new Command(async () => await ExecuteSaveOrderCommand()));
+        }
+    }
+
+
+    private async Task ExecuteSaveOrderCommand()
+    {
+        if (IsBusy)
+            return;
+
+        IsBusy = true;
+
+        await dataManager.SaveOrderAsync(Order);
+        MessagingCenter.Send(Order, "Order");
+        IsBusy = false;
+
+        navigation.PopAsync();
+    }
+
+
     private Command approveOrderCommand;
     /// <summary>
     /// Command to save lead
@@ -83,19 +134,22 @@ namespace MobileCRM.Shared.ViewModels.Orders
 
     private async Task ExecuteApproveOrderCommand()
     {
-      if (IsBusy)
-        return;
+        Order.IsOpen = false;
+        await ExecuteSaveOrderCommand();
 
-      IsBusy = true;
+      //if (IsBusy)
+      //  return;
 
-      Order.IsOpen = false;
-      await dataManager.SaveOrderAsync(Order);
+      //IsBusy = true;
 
-      MessagingCenter.Send(Order, "Order");
+      //Order.IsOpen = false;
+      //await dataManager.SaveOrderAsync(Order);
 
-      IsBusy = false;
+      //MessagingCenter.Send(Order, "Order");
 
-      navigation.PopModalAsync();
+      //IsBusy = false;
+
+      //navigation.PopAsync();
 
 
     }

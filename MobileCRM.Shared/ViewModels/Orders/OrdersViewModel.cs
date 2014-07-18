@@ -21,6 +21,7 @@ namespace MobileCRM.Shared.ViewModels.Orders
       private bool openOrders;
       private string accountId;
       IDataManager dataManager;
+
       public OrdersViewModel(bool openOrders, string accountId)
       {
         this.accountId = accountId;
@@ -60,7 +61,16 @@ namespace MobileCRM.Shared.ViewModels.Orders
         IsBusy = true;
 
         Orders.Clear();
-        var orders = await dataManager.GetAccountOrdersAsync(accountId, openOrders);
+
+        IEnumerable<Order> orders = new List<Order>();
+
+        if (openOrders)
+        {
+            orders = await dataManager.GetAccountOrdersAsync(accountId);    
+        } else {
+            orders = await dataManager.GetAccountOrderHistoryAsync(accountId);
+        }
+        
         foreach (var order in orders)
           Orders.Add(order);
 

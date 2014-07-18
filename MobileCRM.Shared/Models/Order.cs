@@ -11,11 +11,16 @@ namespace MobileCRM.Shared.Models
         : base()
       {
         AccountId = string.Empty;
+
+        //New orders default to open status. 
+        IsOpen = true;
+
         Item = ItemTypes[0];
-        ItemLevel = ItemLevels[0];
-        Discount = 0;
+        //ItemLevel = ItemLevels[0];
+        //Discount = 0;
         Signature = string.Empty;
         OrderDate = DateTime.Today;
+        ClosedDate = DateTime.Today;
         DueDate = DateTime.Today.AddDays(7);
       }
 
@@ -43,8 +48,10 @@ namespace MobileCRM.Shared.Models
       [JsonProperty(PropertyName="signature_points")]
       public string Signature { get; set; }
 
+
       [JsonProperty(PropertyName="order_date")]
       public DateTime OrderDate { get; set; }
+
 
       [JsonProperty(PropertyName="due_date")]
       public DateTime DueDate { get; set; }
@@ -56,22 +63,22 @@ namespace MobileCRM.Shared.Models
       [JsonIgnore]
       public string Quote
       {
-        get { return Price.ToString(); }
+          get { return Price.ToString(); }
       }
 
       [JsonIgnore]
       public static string[] ItemTypes = new string[] { "Paper", "Ink", "Printer", "Scanner", "Combo" };
-   
+
 
       [JsonIgnore]
-      public static string[] ItemLevels = new string[] { "Individual", "Business", "Enterprise"};
+      public static string[] ItemLevels = new string[] { "Individual", "Business", "Enterprise" };
 
       [JsonIgnore]
       public string Description
       {
         get
         {
-          return "Quote: $" + Price + " | Due: " + DueDate.ToShortDateString(); 
+          return "Price Quote: $" + Price + " | Due: " + DueDate.ToShortDateString(); 
         }
       }
 
