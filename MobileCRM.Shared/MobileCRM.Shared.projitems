@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\CurrencyAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\DisplayAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\BarGraphHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Color.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Utils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IDataManager.cs" />

@@ -53,7 +53,7 @@ namespace MobileCRM.Shared.ViewModels.Orders
         }
       }
 
-      private async Task ExecuteLoadOrdersCommand()
+      public async Task ExecuteLoadOrdersCommand()
       {
         if (IsBusy)
           return;
