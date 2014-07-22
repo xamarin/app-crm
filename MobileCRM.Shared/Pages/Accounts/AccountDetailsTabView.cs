@@ -61,12 +61,13 @@ namespace MobileCRM.Shared.Pages.Accounts
           viewAcctOrders.RefreshView(viewModel.IsInitialized);
           viewAcctHistory.RefreshView(viewModel.IsInitialized);
 
-          if (viewModel.IsInitialized)
-          {
-              return;
-          }
+          //TODO:  (SteveYi) temporarily commented out.  Uncomment once graphing in AccountDetailsView is fixed.
+          //if (viewModel.IsInitialized)
+          //{
+          //    return;
+          //}
 
-          viewModel.IsInitialized = true;
+          //viewModel.IsInitialized = true;
       }
 
     } //end class

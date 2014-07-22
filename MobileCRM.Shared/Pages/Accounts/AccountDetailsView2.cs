@@ -17,7 +17,7 @@ namespace MobileCRM.Shared.Pages.Accounts
     public class AccountDetailsView2 : BaseView
     {
         AccountDetailsViewModel viewModel;
-        OrdersViewModel ordersviewModel;
+        //OrdersViewModel ordersviewModel;
 
         CustomControls.BarChart barChart;
 
@@ -29,7 +29,7 @@ namespace MobileCRM.Shared.Pages.Accounts
 
             this.BindingContext = viewModel = vm;
 
-            ordersviewModel = new OrdersViewModel(false, vm.Account.Id);
+            //ordersviewModel = new OrdersViewModel(false, vm.Account.Id);
 
             this.Content = this.BuildView();
         }
@@ -64,7 +64,7 @@ namespace MobileCRM.Shared.Pages.Accounts
 
             barChart = new CustomControls.BarChart() { HeightRequest = 200 };
 
-            this.PopulateChart();
+            this.InitChart();
 
             StackLayout stackChart = new StackLayout()
             {
@@ -89,6 +89,10 @@ namespace MobileCRM.Shared.Pages.Accounts
             };
 
 
+            ActivityIndicator activityBusy = new ActivityIndicator();
+            activityBusy.SetBinding(ActivityIndicator.IsVisibleProperty, "IsBusy");
+            activityBusy.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+
             StackLayout stack = new StackLayout()
             {
                 Padding = 10,
@@ -96,6 +100,7 @@ namespace MobileCRM.Shared.Pages.Accounts
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 Children =
                 {
+                    activityBusy,
                     tblMain
                 }
             };
@@ -106,29 +111,55 @@ namespace MobileCRM.Shared.Pages.Accounts
         } //end BuildView
 
 
+        private void InitChart()
+        {
+            var items = new List<BarItem>();
+            items.Add(new BarItem { Name = "", Value = 0 });
+            barChart.Items = items;
+        }
+
         private async void PopulateChart()
         {
-            //await ordersviewModel.ExecuteLoadOrdersCommand();
-
-            //var items = new List<BarItem>();
-
-            //BarGraphHelper b = new BarGraphHelper(ordersviewModel.Orders, false);
-            //for (int i = b.SalesData.Count - 1; i >= 0; i--)
-            //{
-            //    WeeklySalesData salesData = b.SalesData.ElementAt(i);
-            //    items.Add(new BarItem() { Name = salesData.DateEndString, Value = Convert.ToInt32(salesData.Amount) });
-            //} //end foreach
-
-            //barChart.Items = items;
+            barChart.Items.Clear();
 
             var items = new List<BarItem>();
-            items.Add(new BarItem { Name = "July 20", Value = 10 });
-            items.Add(new BarItem { Name = "July 13", Value = 15 });
-            items.Add(new BarItem { Name = "July 6", Value = 20 });
-            items.Add(new BarItem { Name = "d", Value = 5 });
-            items.Add(new BarItem { Name = "e", Value = 14 });
+
+            BarGraphHelper b = new BarGraphHelper(viewModel.Orders, false);
+            for (int i = b.SalesData.Count - 1; i >= 0; i--)
+            {
+                WeeklySalesData salesData = b.SalesData.ElementAt(i);
+                items.Add(new BarItem() { Name = salesData.DateEndString, Value = Convert.ToInt32(salesData.Amount) });
+            } //end foreach
+
             barChart.Items = items;
 
+            //barChart.Items.Clear();
+
+            //items.Add(new BarItem { Name = "July 20", Value = 10 });
+            //items.Add(new BarItem { Name = "July 13", Value = 15 });
+            //items.Add(new BarItem { Name = "July 6", Value = 20 });
+            //items.Add(new BarItem { Name = "d", Value = 5 });
+            //items.Add(new BarItem { Name = "e", Value = 14 });
+            //barChart.Items = items;
+
+
+        }
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+
+            if (viewModel.IsInitialized)
+            {
+                return;
+            }
+            viewModel.LoadOrdersCommand.Execute(null);
+            this.PopulateChart();
+
+
+            viewModel.IsInitialized = true;
         }
 
 

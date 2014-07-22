@@ -2,6 +2,7 @@
 using MobileCRM.Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -36,6 +37,13 @@ namespace MobileCRM.Shared.ViewModels.Accounts
         
         dataManager = DependencyService.Get<IDataManager>();
         coder = new Geocoder();
+
+
+        MessagingCenter.Subscribe<Account>(this, "Account", (Account) =>
+        {
+            IsInitialized = false;
+        });
+
       }
 
       private int industryIndex = 0;
@@ -180,5 +188,58 @@ namespace MobileCRM.Shared.ViewModels.Accounts
       }
 
 
+
+
+      private IEnumerable<Order> orders;
+
+      public IEnumerable<Order> Orders
+      {
+          get
+          {
+              return orders;
+          }
+          set
+          {
+              orders = value;
+          }
+      }
+
+      private Command loadOrdersCommand;
+      /// <summary>
+      /// Command to load accounts
+      /// </summary>
+      public Command LoadOrdersCommand
+      {
+        get
+        {
+            orders = new ObservableCollection<Order>();
+
+          return loadOrdersCommand ??
+                 (loadOrdersCommand = new Command(async () =>
+                  await ExecuteLoadOrdersCommand()));
+        }
+      }
+
+      public async Task ExecuteLoadOrdersCommand()
+      {
+        if (IsBusy)
+          return;
+
+        IsBusy = true;
+
+        orders = new List<Order>();
+
+        if (false)
+        {
+            orders = await dataManager.GetAccountOrdersAsync(Account.Id);    
+        } else {
+            orders = await dataManager.GetAccountOrderHistoryAsync(Account.Id);
+        }
+
+        IsBusy = false;
+
+      }
     }
+
+
 }
