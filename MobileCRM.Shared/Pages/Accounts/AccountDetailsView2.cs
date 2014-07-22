@@ -120,28 +120,19 @@ namespace MobileCRM.Shared.Pages.Accounts
 
         private async void PopulateChart()
         {
-            barChart.Items.Clear();
 
-            var items = new List<BarItem>();
+           
+           var barData = new BarGraphHelper(viewModel.Orders, false);
 
-            BarGraphHelper b = new BarGraphHelper(viewModel.Orders, false);
-            for (int i = b.SalesData.Count - 1; i >= 0; i--)
-            {
-                WeeklySalesData salesData = b.SalesData.ElementAt(i);
-                items.Add(new BarItem() { Name = salesData.DateEndString, Value = Convert.ToInt32(salesData.Amount) });
-            } //end foreach
 
-            barChart.Items = items;
+           var orderedData = (from data in barData.SalesData
+                              orderby data.DateStart
+                              select new BarItem{
+                                Name = data.DateStartString, 
+                                Value = Convert.ToInt32(data.Amount)
+                              }).ToList();
 
-            //barChart.Items.Clear();
-
-            //items.Add(new BarItem { Name = "July 20", Value = 10 });
-            //items.Add(new BarItem { Name = "July 13", Value = 15 });
-            //items.Add(new BarItem { Name = "July 6", Value = 20 });
-            //items.Add(new BarItem { Name = "d", Value = 5 });
-            //items.Add(new BarItem { Name = "e", Value = 14 });
-            //barChart.Items = items;
-
+            barChart.Items = orderedData;
 
         }
 
