@@ -91,10 +91,10 @@ namespace MobileCRM.Shared.Services
 
         try
         {
-        
-          await Init();
-          await MobileService.SyncContext.PushAsync();
-          await orderTable.PullAsync();
+
+            await Init();
+            await MobileService.SyncContext.PushAsync();
+            await orderTable.PullAsync();
         }
         catch (MobileServiceInvalidOperationException e)
         {

@@ -12,7 +12,8 @@ namespace MobileCRM.Shared.Pages.Accounts
       private AccountDetailsViewModel viewModel;
 
 
-      AccountDetailsView viewAcctDetails;
+      //AccountDetailsView viewAcctDetails;
+      AccountDetailsView2 viewAcctDetails;
       AccountOrdersView viewAcctOrders;
       AccountHistoryView viewAcctHistory;
       //AccountNotesView2 viewAcctNotes;
@@ -33,7 +34,8 @@ namespace MobileCRM.Shared.Pages.Accounts
           
         viewModel = new AccountDetailsViewModel(account) { Navigation = Navigation };
 
-        viewAcctDetails = new AccountDetailsView(viewModel);
+        //viewAcctDetails = new AccountDetailsView(viewModel);
+        viewAcctDetails = new AccountDetailsView2(viewModel);
         this.Children.Add(viewAcctDetails);
 
 
@@ -47,31 +49,6 @@ namespace MobileCRM.Shared.Pages.Accounts
         viewAcctMap = new AccountMapView(viewModel);
         this.Children.Add(viewAcctMap);
 
-        //this.Children.Add(new AccountNotesView(account)
-        //{
-        //  Title = "Notes"
-        //});
-        //this.Children.Add(new AccountNotesView2(viewModel)
-        //{
-        //    Title = "Notes"
-        //});
-
-
-
-        //ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
-        //{
-        //  var confirmed = await DisplayAlert("Unsaved Changes", "Save changes?", "Save", "Discard");
-        //  if (confirmed)
-        //  {
-        //    // TODO: Tell the view model, aka BindingContext, to save.
-        //    viewModel.SaveAccountCommand.Execute(null);
-
-        //  }
-        //  else
-        //  {
-        //    Console.WriteLine("cancel changes!");
-        //  }
-        //}));
 
       }  //end ctor
 

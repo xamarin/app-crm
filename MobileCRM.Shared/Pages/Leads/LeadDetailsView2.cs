@@ -22,10 +22,6 @@ namespace MobileCRM.Shared.Pages.Leads
 
             this.BindingContext = viewModel = vm;
 
-
-            //Test statement
-            //viewModel.Account.Company = "Hi There";
-
             this.Content = this.BuildView();
 
         } //end ctor
