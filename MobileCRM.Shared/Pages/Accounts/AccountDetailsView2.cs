@@ -146,7 +146,7 @@ namespace MobileCRM.Shared.Pages.Accounts
         }
 
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
 
@@ -155,7 +155,8 @@ namespace MobileCRM.Shared.Pages.Accounts
             {
                 return;
             }
-            viewModel.LoadOrdersCommand.Execute(null);
+            //viewModel.LoadOrdersCommand.Execute(null);
+            await viewModel.ExecuteLoadOrdersCommand();
             this.PopulateChart();
 
 
