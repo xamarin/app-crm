@@ -124,6 +124,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\portable-net40+sl4+wp7+win8\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="OxyPlot">
+      <HintPath>..\packages\OxyPlot.Core.2014.1.319.1\lib\portable-net4+sl4+wp71+win8\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.XamarinIOS">
+      <HintPath>..\packages\OxyPlot.XamarinIOS.2014.1.319.1\lib\MonoTouch\OxyPlot.XamarinIOS.dll</HintPath>
+    </Reference>
     <Reference Include="SignaturePad.iOS">
       <HintPath>..\Components\signature-pad-1.3.3\lib\ios\SignaturePad.iOS.dll</HintPath>
     </Reference>
@@ -191,6 +197,7 @@
     <BundleResource Include="Resources\item.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
@@ -200,6 +207,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\BarChartRenderer.cs" />
     <Compile Include="Renderers\DarkTextCellRenderer.cs" />
+    <Compile Include="Renderers\PieChartRenderer.cs" />
     <Compile Include="Renderers\SignaturePadRenderer.cs" />
   </ItemGroup>
   <Import Project="..\MobileCRM.Shared\MobileCRM.Shared.projitems" Label="Shared" Condition="Exists('..\MobileCRM.Shared\MobileCRM.Shared.projitems')" />

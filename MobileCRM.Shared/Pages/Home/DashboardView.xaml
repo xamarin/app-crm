@@ -4,8 +4,13 @@
 					   x:Class="MobileCRM.Shared.Pages.Home.DashboardView"
                        xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
                        Title ="Mobile CRM">
+    <ScrollView>
 	 <StackLayout Padding="20" Spacing="20">
         <Label Text="Stats" />
         <controls:BarChart x:Name="Chart"  HeightRequest="300" HorizontalOptions="FillAndExpand"/>
+        <controls:PieChart x:Name="MyPie"  HeightRequest="300" HorizontalOptions="FillAndExpand"/>
+
     </StackLayout>
+
+    </ScrollView>
 </ContentPage>

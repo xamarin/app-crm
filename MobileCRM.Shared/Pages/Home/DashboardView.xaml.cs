@@ -19,6 +19,8 @@ namespace MobileCRM.Shared.Pages.Home
         items.Add(new BarItem { Name = "d", Value = 5 });
         items.Add(new BarItem { Name = "e", Value = 14 });
         Chart.Items = items;
+
+        MyPie.Items = items;
 		}
 	}
 }
