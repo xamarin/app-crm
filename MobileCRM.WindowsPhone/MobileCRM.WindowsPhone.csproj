@@ -203,6 +203,9 @@
     <Reference Include="OxyPlot">
       <HintPath>..\packages\OxyPlot.Core.2014.1.319.1\lib\portable-net4+sl4+wp71+win8\OxyPlot.dll</HintPath>
     </Reference>
+    <Reference Include="OxyPlot.WP8">
+      <HintPath>..\packages\OxyPlot.WP8.2014.1.319.1\lib\wp80\OxyPlot.WP8.dll</HintPath>
+    </Reference>
     <Reference Include="SQLitePCL, Version=3.8.4.2, Culture=neutral, PublicKeyToken=bddade01e9c850c5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SQLitePCL.3.8.4.3\lib\wp8\SQLitePCL.dll</HintPath>

@@ -51,11 +51,10 @@ namespace MobileCRM.iOS.Renderers
         return;
       if (e.PropertyName == MobileCRM.CustomControls.BarChart.ItemsProperty.PropertyName)
       {
+        var pieSeries1 = Control.Model.Series[0] as PieSeries;
+        pieSeries1.Slices.Clear();
         foreach(var item in Element.Items)
         {
-       
-         var pieSeries1 = Control.Model.Series[0] as PieSeries;
-         pieSeries1.Slices.Clear();
          pieSeries1.Slices.Add(new PieSlice
            {
              Label = item.Name,
