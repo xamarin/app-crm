@@ -14,6 +14,7 @@ namespace MobileCRM.Shared.Pages.Accounts
 
       //AccountDetailsView viewAcctDetails;
       AccountDetailsView2 viewAcctDetails;
+
       AccountOrdersView viewAcctOrders;
       AccountHistoryView viewAcctHistory;
       //AccountNotesView2 viewAcctNotes;
@@ -22,33 +23,41 @@ namespace MobileCRM.Shared.Pages.Accounts
 
       public AccountDetailsTabView(Account account)
       {
-        
-          if (account != null)
+
+          try
           {
-              this.Title = account.Company;
+
+              if (account != null)
+              {
+                  this.Title = account.Company;
+              }
+              else
+              {
+                  this.Title = "New Lead";
+              }
+
+              viewModel = new AccountDetailsViewModel(account) { Navigation = Navigation };
+
+              //viewAcctDetails = new AccountDetailsView(viewModel);
+              viewAcctDetails = new AccountDetailsView2(viewModel);
+              this.Children.Add(viewAcctDetails);
+
+
+              viewAcctOrders = new AccountOrdersView(account.Id) { Title = "Orders" };
+              this.Children.Add(viewAcctOrders);
+
+
+              viewAcctHistory = new AccountHistoryView(account.Id) { Title = "History" };
+              this.Children.Add(viewAcctHistory);
+
+              viewAcctMap = new AccountMapView(viewModel);
+              this.Children.Add(viewAcctMap);
+
           }
-          else
+          catch (Exception exc)
           {
-              this.Title = "New Lead";
+              Console.WriteLine("EXCEPTION: AccountDetailsTabView.Constructor(): " + exc.Message + "  |  " + exc.StackTrace);
           }
-          
-        viewModel = new AccountDetailsViewModel(account) { Navigation = Navigation };
-
-        //viewAcctDetails = new AccountDetailsView(viewModel);
-        viewAcctDetails = new AccountDetailsView2(viewModel);
-        this.Children.Add(viewAcctDetails);
-
-
-        viewAcctOrders = new AccountOrdersView(account.Id) { Title = "Orders" };
-        this.Children.Add(viewAcctOrders);
-
-
-        viewAcctHistory = new AccountHistoryView(account.Id) { Title = "History" };
-        this.Children.Add(viewAcctHistory);
-
-        viewAcctMap = new AccountMapView(viewModel);
-        this.Children.Add(viewAcctMap);
-
 
       }  //end ctor
 

@@ -20,21 +20,22 @@ namespace MobileCRM.Shared.Pages.Accounts
 	public partial class AccountDetailsView
 	{
 		AccountDetailsViewModel viewModel;
-    OrdersViewModel vmOrders;
+    //OrdersViewModel vmOrders;
 
 		public AccountDetailsView(AccountDetailsViewModel vm)
 		{
 			InitializeComponent ();
 
 
-      vmOrders = new OrdersViewModel(false, vm.Account.Id);
+      //vmOrders = new OrdersViewModel(false, vm.Account.Id);
 
 
 			SetBinding(Page.TitleProperty, new Binding("Title"));
 			SetBinding(Page.IconProperty, new Binding("Icon"));
 
-			this.BindingContext = vm;
+			this.BindingContext = viewModel = vm;
 
+      this.InitChart();
 
       //var items = new List<BarItem>();
       //items.Add(new BarItem { Name = "July 20", Value = 10 });
@@ -45,46 +46,78 @@ namespace MobileCRM.Shared.Pages.Accounts
       //Chart.Items = items;
 
 
-
-      //Task t = vmOrders.ExecuteLoadOrdersCommand();
-      this.DrawGraph();
-
 		}
 
 
-    protected override void OnAppearing()
+    private void InitChart()
     {
-        base.OnAppearing();
-        if (vmOrders.IsInitialized)
-        {
-            return;
-        }
-        
-
-        vmOrders.IsInitialized = true;
+        var items = new List<BarItem>();
+        items.Add(new BarItem { Name = "No Orders", Value = 1 });
+        Chart.Items = items;
     }
 
 
-    private async void DrawGraph()
+    private async void PopulateChart()
     {
-        IDataManager dataManager = DependencyService.Get<IDataManager>();
-        IEnumerable<Order> orders = await dataManager.GetAccountOrderHistoryAsync(viewModel.Account.Id);
+        try
+        {
+            Chart.Items.Clear();
+
+
+            if (viewModel.Orders.Count() > 0)
+            {
+
+                var barData = new BarGraphHelper(viewModel.Orders, false);
+
+
+                var orderedData = (from data in barData.SalesData
+                                   orderby data.DateStart
+                                   select new BarItem
+                                   {
+                                       Name = data.DateStartString,
+                                       Value = Convert.ToInt32(data.Amount)
+                                   }).ToList();
+
+                Chart.Items = orderedData;
+            } 
+        
+        }
+        catch (Exception exc)
+        {
+            Console.WriteLine("EXCEPTION: AccountDetailsView.PopulateChart(): " + exc.Message + "  |  " + exc.StackTrace);
+        }
+
+    }   
+
+    protected async override void OnAppearing()
+    {
+            try
+            {
+
+                base.OnAppearing();
+
+
+                if (viewModel.IsInitialized)
+                {
+                    return;
+                }
+                
+                await viewModel.ExecuteLoadOrdersCommand();
+                this.PopulateChart();
+
+
+                viewModel.IsInitialized = true;
+
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("EXCEPTION: AccountDetailsView.OnAppearing(): " + exc.Message + "  |  " + exc.StackTrace);
+            }
 
         
+    }
 
 
-        var items = new List<BarItem>();
-            
-        BarGraphHelper b = new BarGraphHelper(orders, false);
-        for (int i=b.SalesData.Count-1; i>=0; i--)
-        {
-            WeeklySalesData salesData = b.SalesData.ElementAt(i);
-            items.Add(new BarItem() { Name = salesData.DateEndString, Value = Convert.ToInt32(salesData.Amount) });
-        } //end foreach
-
-        Chart.Items = items;
-
-    } //end DrawGraph
 
 	}
 }

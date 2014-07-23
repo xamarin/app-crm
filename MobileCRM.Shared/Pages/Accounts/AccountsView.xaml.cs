@@ -31,12 +31,19 @@ namespace MobileCRM.Shared.Pages.Accounts
 
 		public void OnItemSelected(object sender, ItemTappedEventArgs e)
 		{
-			if (e.Item == null)
-				return;
+        try { 
+			    if (e.Item == null)
+				    return;
 			
-			Navigation.PushAsync(new AccountDetailsTabView(e.Item as Account));
+			    Navigation.PushAsync(new AccountDetailsTabView(e.Item as Account));
 
-			ContactList.SelectedItem = null;
+			    ContactList.SelectedItem = null;
+        }
+        catch (Exception exc)
+        {
+            Console.WriteLine("EXCEPTION: AccountsView.OnItemSelected(): " + exc.Message + "  |  " + exc.StackTrace);
+        }
+
 		}
 
 		protected override void OnAppearing()

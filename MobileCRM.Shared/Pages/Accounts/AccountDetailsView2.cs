@@ -20,9 +20,13 @@ namespace MobileCRM.Shared.Pages.Accounts
         //OrdersViewModel ordersviewModel;
 
         CustomControls.BarChart barChart;
+        TableSection sectionSales;
+        TextCell txtNoOrders;
 
         public AccountDetailsView2(AccountDetailsViewModel vm)
         {
+            Console.WriteLine("AccountDetailsView2 Constructor called...");
+
 
             SetBinding(Page.TitleProperty, new Binding("Title"));
             SetBinding(Page.IconProperty, new Binding("Icon"));
@@ -31,81 +35,105 @@ namespace MobileCRM.Shared.Pages.Accounts
 
             //ordersviewModel = new OrdersViewModel(false, vm.Account.Id);
 
+
             this.Content = this.BuildView();
         }
 
 
         private Layout BuildView()
         {
-            TableSection sectionInfo = new TableSection("COMPANY INFO");
+            ScrollView scroll = new ScrollView();
+            //ContentView scroll = new ContentView();
 
-            TextCell cellCompany = new TextCell() { Text = "Company" };
-            cellCompany.SetBinding(TextCell.DetailProperty, "Account.Company");
-            sectionInfo.Add(cellCompany);
-
-            TextCell cellIndustry= new TextCell() { Text = "Industry" };
-            cellIndustry.SetBinding(TextCell.DetailProperty, "Account.Industry");
-            sectionInfo.Add(cellIndustry);
-
-            TextCell cellContact = new TextCell() { Text = "Contact" };
-            cellContact.SetBinding(TextCell.DetailProperty, "DisplayContact");
-            sectionInfo.Add(cellContact);
-
-            TextCell cellPhone = new TextCell() { Text = "Phone" };
-            cellPhone.SetBinding(TextCell.DetailProperty, "Account.Phone");
-            sectionInfo.Add(cellPhone);
-
-            TextCell cellAddr = new TextCell() { Text = "Address" };
-            cellAddr.SetBinding(TextCell.DetailProperty, "Account.AddressString");
-            sectionInfo.Add(cellAddr);
-
-
-            TableSection sectionSales = new TableSection("SALES");
-
-            barChart = new CustomControls.BarChart() { HeightRequest = 200 };
-
-            this.InitChart();
-
-            StackLayout stackChart = new StackLayout()
+            try
             {
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                Padding = 10,
-                Children = { barChart }
-            };
+                TableSection sectionInfo = new TableSection("COMPANY INFO");
 
-            ViewCell viewChart = new ViewCell() { View = stackChart };
-            sectionSales.Add(viewChart);
+                TextCell cellCompany = new TextCell() { Text = "Company" };
+                cellCompany.SetBinding(TextCell.DetailProperty, "Account.Company");
+                sectionInfo.Add(cellCompany);
 
-            TableView tblMain = new TableView()
-            {
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HasUnevenRows = true,
-                Root = new TableRoot()
-                { 
-                    sectionInfo,
-                    sectionSales
-                }
-            };
+                TextCell cellIndustry = new TextCell() { Text = "Industry" };
+                cellIndustry.SetBinding(TextCell.DetailProperty, "Account.Industry");
+                sectionInfo.Add(cellIndustry);
+
+                TextCell cellContact = new TextCell() { Text = "Contact" };
+                cellContact.SetBinding(TextCell.DetailProperty, "DisplayContact");
+                sectionInfo.Add(cellContact);
+
+                TextCell cellPhone = new TextCell() { Text = "Phone" };
+                cellPhone.SetBinding(TextCell.DetailProperty, "Account.Phone");
+                sectionInfo.Add(cellPhone);
+
+                TextCell cellAddr = new TextCell() { Text = "Address" };
+                cellAddr.SetBinding(TextCell.DetailProperty, "Account.AddressString");
+                sectionInfo.Add(cellAddr);
 
 
-            ActivityIndicator activityBusy = new ActivityIndicator();
-            activityBusy.SetBinding(ActivityIndicator.IsVisibleProperty, "IsBusy");
-            activityBusy.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+                sectionSales = new TableSection("SALES");
 
-            StackLayout stack = new StackLayout()
-            {
-                Padding = 10,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                Children =
+                //TODO - Renders in iOS but not Android
+                //txtNoOrders = new TextCell() { Text = " ", Detail = " " };
+                //sectionSales.Add(txtNoOrders);
+
+
+                barChart = new CustomControls.BarChart() { HeightRequest = 200 };
+
+                this.InitChart();
+
+                StackLayout stackChart = new StackLayout()
+                {
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    Padding = 10,
+                    Children = { barChart }
+                };
+
+                ViewCell viewChart = new ViewCell() { View = stackChart };
+                sectionSales.Add(viewChart);
+
+
+
+                TableView tblMain = new TableView()
+                {
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    HasUnevenRows = true,
+                    Root = new TableRoot()
+                    { 
+                        sectionInfo,
+                        sectionSales
+                    }
+                };
+
+
+                ActivityIndicator activityBusy = new ActivityIndicator();
+                activityBusy.SetBinding(ActivityIndicator.IsVisibleProperty, "IsBusy");
+                activityBusy.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+
+                StackLayout stack = new StackLayout()
+                {
+                    Padding = 10,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    Children =
                 {
                     activityBusy,
                     tblMain
                 }
-            };
+                };
 
-            ScrollView scroll = new ScrollView() { Content = stack };
+                scroll = new ScrollView() { Content = stack };
+                //scroll = new ContentView() { Content = stack };
+
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("EXCEPTION: AccountDetailsView2.BuildView(): " + exc.Message + "  |  " + exc.StackTrace);
+            }
+            finally
+            {
+               
+            }
 
             return scroll;
         } //end BuildView
@@ -114,44 +142,69 @@ namespace MobileCRM.Shared.Pages.Accounts
         private void InitChart()
         {
             var items = new List<BarItem>();
-            items.Add(new BarItem { Name = "", Value = 0 });
+            items.Add(new BarItem { Name = "No Orders", Value = 1 });
             barChart.Items = items;
         }
 
         private async void PopulateChart()
         {
+            try {
 
-           
-           var barData = new BarGraphHelper(viewModel.Orders, false);
+                if (viewModel.Orders.Count() > 0)
+                {
+                    var barData = new BarGraphHelper(viewModel.Orders, false);
 
 
-           var orderedData = (from data in barData.SalesData
-                              orderby data.DateStart
-                              select new BarItem{
-                                Name = data.DateStartString, 
-                                Value = Convert.ToInt32(data.Amount)
-                              }).ToList();
+                    var orderedData = (from data in barData.SalesData
+                                       orderby data.DateStart
+                                       select new BarItem
+                                       {
+                                           Name = data.DateStartString,
+                                           Value = Convert.ToInt32(data.Amount)
+                                       }).ToList();
 
-            barChart.Items = orderedData;
+                    barChart.Items = orderedData;
+                }
+                else
+                {
+                    //TODO - Renders in iOS but not Android.
+
+                    //txtNoOrders.Text = "No Orders";
+                    //txtNoOrders.Detail = "No Orders";
+                    //txtNoOrders.DetailColor = Xamarin.Forms.Color.Gray;
+                }
+            } catch (Exception exc) {
+                Console.WriteLine("EXCEPTION: AccountDetailsView2.PopulateChart(): " + exc.Message + "  |  " + exc.StackTrace);
+            }
 
         }
 
 
         protected async override void OnAppearing()
         {
-            base.OnAppearing();
-
-
-            if (viewModel.IsInitialized)
+            try
             {
-                return;
+
+                base.OnAppearing();
+
+
+                if (viewModel.IsInitialized)
+                {
+                    return;
+                }
+                
+                await viewModel.ExecuteLoadOrdersCommand();
+                this.PopulateChart();
+
+
+                viewModel.IsInitialized = true;
+
             }
-            //viewModel.LoadOrdersCommand.Execute(null);
-            await viewModel.ExecuteLoadOrdersCommand();
-            this.PopulateChart();
+            catch (Exception exc)
+            {
+                Console.WriteLine("EXCEPTION: AccountDetailsView2.OnAppearing(): " + exc.Message + "  |  " + exc.StackTrace);
+            }
 
-
-            viewModel.IsInitialized = true;
         }
 
 

@@ -25,6 +25,7 @@ namespace MobileCRM.Shared.ViewModels.Leads
       if (account == null)
       {
         Account = new Models.Account();
+        Account.IsLead = true;
         this.Title = "New Lead";
       }
       else

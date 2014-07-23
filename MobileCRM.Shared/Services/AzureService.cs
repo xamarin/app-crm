@@ -257,7 +257,7 @@ namespace MobileCRM.Shared.Services
         try
         {
           await Init();
-          await MobileService.SyncContext.PushAsync();
+          //await MobileService.SyncContext.PushAsync();
           await contactTable.PullAsync();
         }
         catch(MobileServiceInvalidOperationException e)

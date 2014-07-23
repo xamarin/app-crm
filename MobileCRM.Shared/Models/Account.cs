@@ -36,7 +36,7 @@ namespace MobileCRM.Shared.Models
       public string Notes { get; set; }
 
       [JsonIgnore]
-      public static string[] IndustryTypes = new string[] { "None Selected", "Aerospace", "Education", "Electrical", "Entertainment", "Logistic", "Retail", "Software", "Other" };
+      public static string[] IndustryTypes = new string[] { "None Selected", "Aerospace", "Education", "Electrical", "Entertainment", "Financial Services", "Logistic", "Healthcare", "Manufacturing", "Retail", "Other" };
 
       [JsonIgnore]
       public static string[] OpportunityStages = new string[] { "None Selected", "10% - Prospect", "50% - Value Proposition", "75% - Proposal" }; 

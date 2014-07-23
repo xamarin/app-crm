@@ -135,10 +135,6 @@ namespace MobileCRM.Shared.ViewModels.Accounts
         IsBusy = true;
 
 
-        //Temp - change some records to accounts
-        Account.IsLead = false;
-
-
         await dataManager.SaveAccountAsync(Account);
 
         MessagingCenter.Send(Account, "Account");
