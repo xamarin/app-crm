@@ -6,7 +6,18 @@
                        Title ="Mobile CRM">
     <ScrollView>
 	 <StackLayout Padding="20" Spacing="20">
-        <Label Text="Stats" />
+
+
+        <!--Label header = new Label
+            {
+                Text = "EntryCell",
+                Font = Font.BoldSystemFontOfSize(50),
+                HorizontalOptions = LayoutOptions.Center
+            };-->
+
+
+        <Label Text="Sales Dashboard" Font="Bold, Large" HorizontalOptions="Center" />
+        <Label Text="6-Week Sales" HorizontalOptions="Center" />
         <controls:BarChart x:Name="Chart"  HeightRequest="300" HorizontalOptions="FillAndExpand"/>
         <controls:PieChart x:Name="MyPie"  HeightRequest="300" HorizontalOptions="FillAndExpand"/>
 

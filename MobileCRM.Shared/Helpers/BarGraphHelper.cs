@@ -122,7 +122,7 @@ namespace MobileCRM.Shared.Helpers
         {
             get
             {
-                return dateStart.ToString("M");
+                return dateStart.ToString("M/dd");
             }
         }
 
@@ -131,7 +131,7 @@ namespace MobileCRM.Shared.Helpers
         {
             get
             {
-                return dateEnd.ToString("M");
+                return dateEnd.ToString("M/dd");
             }
         }
 
