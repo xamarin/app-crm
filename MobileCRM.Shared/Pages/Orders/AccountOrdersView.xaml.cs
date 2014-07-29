@@ -37,8 +37,8 @@ namespace MobileCRM.Shared.Pages.Accounts
         return;
 
 
-      //Navigation.PushModalAsync(new AccountOrderDetailsView(e.Item as Order));
       Navigation.PushAsync(new AccountOrderDetailsView2(e.Item as Order));
+      //Navigation.PushModalAsync(new AccountOrderDetailsView2(e.Item as Order));
 
       OrdersList.SelectedItem = null;
     }

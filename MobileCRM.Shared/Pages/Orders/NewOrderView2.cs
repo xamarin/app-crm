@@ -39,7 +39,7 @@ namespace MobileCRM.Shared.Pages.Accounts
             pickerItem.SetBinding(Picker.SelectedIndexProperty, "ItemIndex");
 
             Label lblPrice = new Label() { Text = "Price:" };
-            Entry entryPrice = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand };
+            Entry entryPrice = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric };
             entryPrice.SetBinding(Entry.TextProperty, "Price");
 
             Label lblDateDue = new Label() { Text = "Date Due:" };

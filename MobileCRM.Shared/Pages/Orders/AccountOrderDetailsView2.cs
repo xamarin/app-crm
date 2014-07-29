@@ -84,7 +84,7 @@ namespace MobileCRM.Shared.Pages.Accounts
             {
                 stack = new StackLayout()
                 {
-                    Padding = 10,
+                    Padding = new Thickness(10, 30, 10, 10),
                     Children =  
                     {
                         lblInv,

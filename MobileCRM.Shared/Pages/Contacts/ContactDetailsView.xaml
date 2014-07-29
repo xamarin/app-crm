@@ -7,7 +7,7 @@
 						<TableView.Root>
 								<TableRoot>                 
 										<TableSection Title="Name">
-												<EntryCell Label="Company" Text="{Binding Contact.Company}" Keyboard="Text"/>
+                        <EntryCell Label="Company" Text="{Binding Contact.Company}" Keyboard="Text"/>
 												<EntryCell Label="Title" Text="{Binding Contact.JobTitle}" Keyboard="Text"/>
 												<EntryCell Label="First" Text="{Binding Contact.FirstName}" Keyboard="Text" />
 												<EntryCell Label="Last" Text="{Binding Contact.LastName}" Keyboard="Text"/>
