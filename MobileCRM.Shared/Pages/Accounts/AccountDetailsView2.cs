@@ -53,23 +53,18 @@ namespace MobileCRM.Shared.Pages.Accounts
                 TableSection sectionInfo = new TableSection("COMPANY INFO");
 
                 TextCell cellCompany = new TextCell() { Text = "Company", Detail = acct.Company };
-                //cellCompany.SetBinding(TextCell.DetailProperty, "Account.Company");
                 sectionInfo.Add(cellCompany);
 
                 TextCell cellIndustry = new TextCell() { Text = "Industry", Detail = acct.Industry };
-                //cellIndustry.SetBinding(TextCell.DetailProperty, "Account.Industry");
                 sectionInfo.Add(cellIndustry);
 
                 TextCell cellContact = new TextCell() { Text = "Contact", Detail = viewModelAcct.DisplayContact };
-                //cellContact.SetBinding(TextCell.DetailProperty, "DisplayContact");
                 sectionInfo.Add(cellContact);
 
                 TextCell cellPhone = new TextCell() { Text = "Phone", Detail = acct.Phone };
-                //cellPhone.SetBinding(TextCell.DetailProperty, "Account.Phone");
                 sectionInfo.Add(cellPhone);
 
                 TextCell cellAddr = new TextCell() { Text = "Address", Detail = acct.AddressString };
-                //cellAddr.SetBinding(TextCell.DetailProperty, "Account.AddressString");
                 sectionInfo.Add(cellAddr);
 
 
@@ -173,6 +168,7 @@ namespace MobileCRM.Shared.Pages.Accounts
 
 
         protected async override void OnAppearing()
+        //protected override void OnAppearing()
         {
             try
             {

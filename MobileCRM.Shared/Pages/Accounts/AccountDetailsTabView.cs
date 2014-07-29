@@ -35,20 +35,25 @@ namespace MobileCRM.Shared.Pages.Accounts
                   this.Title = "New Lead";
               }
 
+
+              ToolbarItems.Add(new ToolbarItem
+              {
+                  Icon = "refresh.png",
+                  Name = "refresh"
+                  //Command = viewModelOrder.LoadOrdersCommand
+              });
+
               viewModelAcct = new AccountDetailsViewModel(account) { Navigation = Navigation };
               viewModelOrder = new OrdersViewModel(true, account.Id) { Navigation = Navigation };
               viewModelHistory = new OrdersViewModel(false, account.Id) { Navigation = Navigation };
 
-              //viewAcctDetails = new AccountDetailsView2(viewModelAcct, viewModelHistory);
-              //this.Children.Add(viewAcctDetails);
+              viewAcctDetails = new AccountDetailsView2(viewModelAcct, viewModelHistory);
+              this.Children.Add(viewAcctDetails);
 
 
-              //viewAcctOrders = new AccountOrdersView(account.Id) { Title = "Orders" };
               viewAcctOrders = new AccountOrdersView(account.Id, viewModelOrder) { Title = "Orders" };
               this.Children.Add(viewAcctOrders);
 
-
-              //viewAcctHistory = new AccountHistoryView(account.Id) { Title = "History" };
               viewAcctHistory = new AccountHistoryView(viewModelHistory) { Title = "History" };
               this.Children.Add(viewAcctHistory);
 

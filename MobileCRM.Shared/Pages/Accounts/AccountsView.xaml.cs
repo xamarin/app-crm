@@ -31,18 +31,13 @@ namespace MobileCRM.Shared.Pages.Accounts
 
 		public void OnItemSelected(object sender, ItemTappedEventArgs e)
 		{
-        try { 
 			    if (e.Item == null)
 				    return;
-			
-			    Navigation.PushAsync(new AccountDetailsTabView(e.Item as Account));
+
+          var page = new AccountDetailsTabView(e.Item as Account);
+			    Navigation.PushAsync(page);
 
 			    ContactList.SelectedItem = null;
-        }
-        catch (Exception exc)
-        {
-            Console.WriteLine("EXCEPTION: AccountsView.OnItemSelected(): " + exc.Message + "  |  " + exc.StackTrace);
-        }
 
 		}
 

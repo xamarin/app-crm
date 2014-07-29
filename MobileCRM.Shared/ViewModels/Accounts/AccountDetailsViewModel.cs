@@ -34,7 +34,10 @@ namespace MobileCRM.Shared.ViewModels.Accounts
           Account = account;
           this.Title = "Account";
         }
-        
+
+
+        this.Icon = "list.png";
+
         dataManager = DependencyService.Get<IDataManager>();
         coder = new Geocoder();
 
