@@ -13,11 +13,11 @@ namespace MobileCRM.Shared.Pages.Accounts
 	{
     OrdersViewModel viewModel;
     string accountId;
-		public AccountOrdersView (string accountId)
+		public AccountOrdersView (string acctId, OrdersViewModel vm)
 		{
 			InitializeComponent ();
-      this.accountId = accountId; ;
-      this.BindingContext = this.viewModel = new OrdersViewModel(true, accountId);
+      this.accountId = acctId;
+      this.BindingContext = this.viewModel = vm;
 
     }
 
@@ -53,16 +53,12 @@ namespace MobileCRM.Shared.Pages.Accounts
       viewModel.IsInitialized = true;
     }
 
-    /// <summary>
-    /// Refresh orders only if true passed in.  Called by AccountDetailsTabView. Bool flag prevents it from loading data twice upon initial load of parent Tab View page.
-    /// </summary>
-    /// <param name="bolLoadOrders"></param>
-    public void RefreshView(bool bolLoadOrders)
+
+    public void RefreshView()
     {
-        if (bolLoadOrders)
-        {
-            viewModel.LoadOrdersCommand.Execute(null);
-        } //end if
+
+        viewModel.LoadOrdersCommand.Execute(null);
+        viewModel.IsInitialized = true;
     }
 
 	}

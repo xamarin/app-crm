@@ -97,7 +97,7 @@ namespace MobileCRM.Shared.Services
         {
 
             await Init();
-            await MobileService.SyncContext.PushAsync();
+            //await MobileService.SyncContext.PushAsync();
             await orderTable.PullAsync();
         }
         catch (MobileServiceInvalidOperationException e)
@@ -141,7 +141,7 @@ namespace MobileCRM.Shared.Services
         try
         {
           await Init();
-          await MobileService.SyncContext.PushAsync();
+          //await MobileService.SyncContext.PushAsync();
           await accountTable.PullAsync();
         }
         catch (MobileServiceInvalidOperationException e)

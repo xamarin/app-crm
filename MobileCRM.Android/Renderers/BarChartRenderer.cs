@@ -90,6 +90,8 @@ namespace MobileCRMAndroid.Renderers
                     categoryAxis1.ActualLabels.Add(item.Name);
                 }
 
+
+
                 //InvokeOnMainThread(() =>
                 //{
                 Control.Model.InvalidatePlot(true);

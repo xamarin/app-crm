@@ -186,55 +186,59 @@ namespace MobileCRM.Shared.ViewModels.Accounts
 
 
 
-      private IEnumerable<Order> orders;
+    //  private IEnumerable<Order> orders;
 
-      public IEnumerable<Order> Orders
-      {
-          get
-          {
-              return orders;
-          }
-          set
-          {
-              orders = value;
-          }
-      }
+    //  public IEnumerable<Order> Orders
+    //  {
+    //      get
+    //      {
+    //          return orders;
+    //      }
+    //      set
+    //      {
+    //          orders = value;
+    //      }
+    //  }
 
-      private Command loadOrdersCommand;
-      /// <summary>
-      /// Command to load accounts
-      /// </summary>
-      public Command LoadOrdersCommand
-      {
-        get
-        {
-            orders = new ObservableCollection<Order>();
+    //  private Command loadOrdersCommand;
+    //  /// <summary>
+    //  /// Command to load accounts
+    //  /// </summary>
+    //  public Command LoadOrdersCommand
+    //  {
+    //    get
+    //    {
+    //        orders = new ObservableCollection<Order>();
 
-          return loadOrdersCommand ??
-                 (loadOrdersCommand = new Command(async () =>
-                  await ExecuteLoadOrdersCommand()));
-        }
-      }
+    //      return loadOrdersCommand ??
+    //             (loadOrdersCommand = new Command(async () =>
+    //              await ExecuteLoadOrdersCommand()));
+    //    }
+    //  }
 
-      public async Task ExecuteLoadOrdersCommand()
-      {
-        if (IsBusy)
-          return;
+    //  public async Task ExecuteLoadOrdersCommand()
+    //  {
+    //    if (IsBusy)
+    //      return;
 
-        IsBusy = true;
+    //    IsBusy = true;
 
-        orders = new List<Order>();
+    //    orders = new List<Order>();
 
-        if (false)
-        {
-            orders = await dataManager.GetAccountOrdersAsync(Account.Id);    
-        } else {
-            orders = await dataManager.GetAccountOrderHistoryAsync(Account.Id);
-        }
+    //    if (false)
+    //    {
+    //        orders = await dataManager.GetAccountOrdersAsync(Account.Id);    
+    //    } else {
+    //        orders = await dataManager.GetAccountOrderHistoryAsync(Account.Id);
+    //    }
 
-        IsBusy = false;
+    //    IsBusy = false;
 
-      }
+    //  }
+
+
+
+
     }
 
 

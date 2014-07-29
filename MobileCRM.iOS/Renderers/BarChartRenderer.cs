@@ -58,6 +58,7 @@ namespace MobileCRM.iOS.Renderers
 
             var plotView = new PlotView();
 
+
             plotView.Model = plotModel1;
             SetNativeControl(plotView);
         }
@@ -82,6 +83,8 @@ namespace MobileCRM.iOS.Renderers
                     //categoryAxis1.Labels.Add(item.Name);
                     categoryAxis1.ActualLabels.Add(item.Name);
                 }
+
+
 
                 //InvokeOnMainThread(() =>
                 //{

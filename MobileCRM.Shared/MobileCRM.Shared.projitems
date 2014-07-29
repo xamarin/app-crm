@@ -27,10 +27,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountDetailsTabView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountDetailsView.xaml.cs">
-      <SubType>Code</SubType>
-      <DependentUpon>AccountDetailsView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountDetailsView2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountMapView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountNotesView2.cs" />
@@ -110,10 +106,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Orders\OrdersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountDetailsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Accounts\AccountsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

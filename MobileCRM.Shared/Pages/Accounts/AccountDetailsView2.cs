@@ -16,24 +16,27 @@ namespace MobileCRM.Shared.Pages.Accounts
 
     public class AccountDetailsView2 : BaseView
     {
-        AccountDetailsViewModel viewModel;
-        //OrdersViewModel ordersviewModel;
+        AccountDetailsViewModel viewModelAcct;
+        Account acct;
+        OrdersViewModel viewModelOrders;
+
 
         CustomControls.BarChart barChart;
         TableSection sectionSales;
         TextCell txtNoOrders;
 
-        public AccountDetailsView2(AccountDetailsViewModel vm)
+        public AccountDetailsView2(AccountDetailsViewModel vmAcct, OrdersViewModel vmOrders)
         {
             Console.WriteLine("AccountDetailsView2 Constructor called...");
 
+            this.BindingContext = viewModelOrders = vmOrders;
+            viewModelAcct = vmAcct;
+            acct = viewModelAcct.Account;
 
-            SetBinding(Page.TitleProperty, new Binding("Title"));
-            SetBinding(Page.IconProperty, new Binding("Icon"));
-
-            this.BindingContext = viewModel = vm;
-
-            //ordersviewModel = new OrdersViewModel(false, vm.Account.Id);
+            //SetBinding(Page.TitleProperty, new Binding("Title"));
+            //SetBinding(Page.IconProperty, new Binding("Icon"));
+            this.Title = viewModelAcct.Title;
+            this.Icon = viewModelAcct.Icon;
 
 
             this.Content = this.BuildView();
@@ -49,37 +52,33 @@ namespace MobileCRM.Shared.Pages.Accounts
             {
                 TableSection sectionInfo = new TableSection("COMPANY INFO");
 
-                TextCell cellCompany = new TextCell() { Text = "Company" };
-                cellCompany.SetBinding(TextCell.DetailProperty, "Account.Company");
+                TextCell cellCompany = new TextCell() { Text = "Company", Detail = acct.Company };
+                //cellCompany.SetBinding(TextCell.DetailProperty, "Account.Company");
                 sectionInfo.Add(cellCompany);
 
-                TextCell cellIndustry = new TextCell() { Text = "Industry" };
-                cellIndustry.SetBinding(TextCell.DetailProperty, "Account.Industry");
+                TextCell cellIndustry = new TextCell() { Text = "Industry", Detail = acct.Industry };
+                //cellIndustry.SetBinding(TextCell.DetailProperty, "Account.Industry");
                 sectionInfo.Add(cellIndustry);
 
-                TextCell cellContact = new TextCell() { Text = "Contact" };
-                cellContact.SetBinding(TextCell.DetailProperty, "DisplayContact");
+                TextCell cellContact = new TextCell() { Text = "Contact", Detail = viewModelAcct.DisplayContact };
+                //cellContact.SetBinding(TextCell.DetailProperty, "DisplayContact");
                 sectionInfo.Add(cellContact);
 
-                TextCell cellPhone = new TextCell() { Text = "Phone" };
-                cellPhone.SetBinding(TextCell.DetailProperty, "Account.Phone");
+                TextCell cellPhone = new TextCell() { Text = "Phone", Detail = acct.Phone };
+                //cellPhone.SetBinding(TextCell.DetailProperty, "Account.Phone");
                 sectionInfo.Add(cellPhone);
 
-                TextCell cellAddr = new TextCell() { Text = "Address" };
-                cellAddr.SetBinding(TextCell.DetailProperty, "Account.AddressString");
+                TextCell cellAddr = new TextCell() { Text = "Address", Detail = acct.AddressString };
+                //cellAddr.SetBinding(TextCell.DetailProperty, "Account.AddressString");
                 sectionInfo.Add(cellAddr);
 
 
                 sectionSales = new TableSection("SALES");
 
-                //TODO - Renders in iOS but not Android
-                //txtNoOrders = new TextCell() { Text = " ", Detail = " " };
-                //sectionSales.Add(txtNoOrders);
-
 
                 barChart = new CustomControls.BarChart() { HeightRequest = 200 };
 
-                this.InitChart();
+                //this.InitChart();
 
                 StackLayout stackChart = new StackLayout()
                 {
@@ -150,9 +149,9 @@ namespace MobileCRM.Shared.Pages.Accounts
         {
             try {
 
-                if (viewModel.Orders.Count() > 0)
+                if (viewModelOrders.Orders.Count() > 0)
                 {
-                    var barData = new BarGraphHelper(viewModel.Orders, false);
+                    var barData = new BarGraphHelper(viewModelOrders.Orders, false);
 
 
                     var orderedData = (from data in barData.SalesData
@@ -164,15 +163,8 @@ namespace MobileCRM.Shared.Pages.Accounts
                                        }).ToList();
 
                     barChart.Items = orderedData;
-                }
-                else
-                {
-                    //TODO - Renders in iOS but not Android.
+                } //end if
 
-                    //txtNoOrders.Text = "No Orders";
-                    //txtNoOrders.Detail = "No Orders";
-                    //txtNoOrders.DetailColor = Xamarin.Forms.Color.Gray;
-                }
             } catch (Exception exc) {
                 Console.WriteLine("EXCEPTION: AccountDetailsView2.PopulateChart(): " + exc.Message + "  |  " + exc.StackTrace);
             }
@@ -187,17 +179,18 @@ namespace MobileCRM.Shared.Pages.Accounts
 
                 base.OnAppearing();
 
+                //this.PopulateChart();
 
-                //if (viewModel.IsInitialized)
-                //{
-                //    return;
-                //}
+                if (viewModelOrders.IsInitialized)
+                {
+                    return;
+                }
                 
-                await viewModel.ExecuteLoadOrdersCommand();
+                await viewModelOrders.ExecuteLoadOrdersCommand();
+
                 this.PopulateChart();
 
-
-                viewModel.IsInitialized = true;
+                viewModelOrders.IsInitialized = true;
 
             }
             catch (Exception exc)
@@ -207,6 +200,13 @@ namespace MobileCRM.Shared.Pages.Accounts
 
         }
 
+
+        public void RefreshView()
+        {
+            //viewModelOrders.LoadOrdersCommand.Execute(null);
+            //viewModelOrders.IsInitialized = true;
+            this.PopulateChart();
+        }
 
     } //end class
 }

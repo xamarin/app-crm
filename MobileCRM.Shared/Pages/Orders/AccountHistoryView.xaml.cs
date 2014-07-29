@@ -12,12 +12,13 @@ namespace MobileCRM.Shared.Pages.Accounts
 	public partial class AccountHistoryView
 	{
     OrdersViewModel viewModel;
-    string accountId;
-		public AccountHistoryView (string accountId)
+    //string accountId;
+
+		public AccountHistoryView (OrdersViewModel vm)
 		{
 			InitializeComponent ();
-      this.accountId = accountId;
-      this.BindingContext = this.viewModel = new OrdersViewModel(false, accountId);
+      //this.accountId = accountId;
+      this.BindingContext = this.viewModel = vm;
 		}
 
     public void OnItemSelected(object sender, ItemTappedEventArgs e)
@@ -49,12 +50,10 @@ namespace MobileCRM.Shared.Pages.Accounts
     /// Refresh orders only if true passed in.  Called by AccountDetailsTabView. Bool flag prevents it from loading data twice upon initial load of parent Tab View page.
     /// </summary>
     /// <param name="bolLoadOrders"></param>
-    public void RefreshView(bool bolLoadOrders)
+    public void RefreshView()
     {
-        if (bolLoadOrders)
-        {
-            viewModel.LoadOrdersCommand.Execute(null);
-        } //end if
+        viewModel.LoadOrdersCommand.Execute(null);
+        viewModel.IsInitialized = true;
     }
 
 
