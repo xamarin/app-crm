@@ -40,6 +40,11 @@ namespace MobileCRM.iOS.Renderers
       }
 
       var plotView = new PlotView();
+
+
+      //Add padding to prevent cropping
+      plotModel1.Padding = new OxyPlot.OxyThickness(45);
+
       plotView.Model = plotModel1;
       
       SetNativeControl(plotView);

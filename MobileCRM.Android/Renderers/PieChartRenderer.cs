@@ -37,11 +37,18 @@ namespace MobileCRMAndroid.Renderers
            Label = item.Name,
            Value = item.Value
          });
-      }
+      }    
 
       var plotView = new PlotView(Forms.Context);
+
+      //Add padding to prevent cropping
+      plotModel1.Padding = new OxyPlot.OxyThickness(30);
+
+        
       plotView.Model = plotModel1;
+
       
+
       SetNativeControl(plotView);
     }
     protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)

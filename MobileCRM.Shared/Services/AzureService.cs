@@ -37,9 +37,13 @@ namespace MobileCRM.Shared.Services
 
 
         //comment back in to enable Azure Mobile Services.
+        //MobileService = new MobileServiceClient(
+        //  "https://" + "xamarindemos" + ".azure-mobile.net/",
+        //  "TyohPJmeLEvNnEzTmXfLcrMGGWSgwZ43");
+
         MobileService = new MobileServiceClient(
-          "https://" + "xamarindemos" + ".azure-mobile.net/",
-          "TyohPJmeLEvNnEzTmXfLcrMGGWSgwZ43");
+            "https://" + "xamarin3crmdemo" + ".azure-mobile.net/",
+            "PNfTdzPtNRKsHrYynemqXBFDLrUipU26");
 
         //Init().Wait();//testing
       }
