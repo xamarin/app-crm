@@ -188,10 +188,10 @@ namespace MobileCRM.Shared.Pages.Accounts
                 base.OnAppearing();
 
 
-                if (viewModel.IsInitialized)
-                {
-                    return;
-                }
+                //if (viewModel.IsInitialized)
+                //{
+                //    return;
+                //}
                 
                 await viewModel.ExecuteLoadOrdersCommand();
                 this.PopulateChart();

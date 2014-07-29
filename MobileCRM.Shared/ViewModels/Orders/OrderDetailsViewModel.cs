@@ -135,7 +135,19 @@ namespace MobileCRM.Shared.ViewModels.Orders
     private async Task ExecuteApproveOrderCommand()
     {
         Order.IsOpen = false;
-        await ExecuteSaveOrderCommand();
+        //await ExecuteSaveOrderCommand();
+
+        if (IsBusy)
+            return;
+
+        IsBusy = true;
+
+        await dataManager.SaveOrderAsync(Order);
+        MessagingCenter.Send(Order, "Order");
+        IsBusy = false;
+
+        await navigation.PopModalAsync();
+
 
       //if (IsBusy)
       //  return;
