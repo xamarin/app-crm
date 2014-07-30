@@ -44,6 +44,10 @@ namespace MobileCRMAndroid.Renderers
       //Add padding to prevent cropping
       plotModel1.Padding = new OxyPlot.OxyThickness(30);
 
+      pieSeries1.FontWeight = FontWeights.Bold;
+      //pieSeries1.TextColor = OxyColors.White;
+      pieSeries1.InsideLabelColor = OxyColors.White;
+
         
       plotView.Model = plotModel1;
 
@@ -69,6 +73,10 @@ namespace MobileCRMAndroid.Renderers
              Value = item.Value
            });
         }
+
+        Control.Model.InvalidatePlot(true);
+        Control.InvalidatePlot(true);
+
       }
     }
   }

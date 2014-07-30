@@ -92,12 +92,11 @@ namespace MobileCRM.Shared.Services
       
       public async Task SyncOrders()
       {
-
         try
         {
 
             await Init();
-            //await MobileService.SyncContext.PushAsync();
+            await MobileService.SyncContext.PushAsync();
             await orderTable.PullAsync();
         }
         catch (MobileServiceInvalidOperationException e)
@@ -156,9 +155,6 @@ namespace MobileCRM.Shared.Services
       {
         try
         {
-            //IMobileServiceTable<Account> acctTbl = MobileService.GetTable<Account>();
-            //await acctTbl.InsertAsync(item);
-
 
           if (item.Id == null)
             await accountTable.InsertAsync(item);
@@ -250,6 +246,24 @@ namespace MobileCRM.Shared.Services
           return new List<Order>();
       }
 
+
+      public async Task<IEnumerable<Order>> GetAllAccountOrdersAsync()
+      {
+          try
+          {
+              await SyncOrders();
+              return await orderTable.Where(j => j.IsOpen == false).ToEnumerableAsync();
+          }
+          catch (MobileServiceInvalidOperationException ex)
+          {
+              Debug.WriteLine(@"ERROR {0}", ex.Message);
+          }
+          catch (Exception ex2)
+          {
+              Debug.WriteLine(@"ERROR {0}", ex2.Message);
+          }
+          return new List<Order>();
+      }
 
 
 #endregion

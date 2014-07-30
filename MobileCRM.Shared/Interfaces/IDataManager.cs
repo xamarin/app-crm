@@ -23,6 +23,7 @@ namespace MobileCRM.Shared.Interfaces
       Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId);
       Task<IEnumerable<Order>> GetAccountOrderHistoryAsync(string accountId);
 
+      Task<IEnumerable<Order>> GetAllAccountOrdersAsync();
 
       Task SaveContactAsync(Contact item);
       Task DeleteContactAsync(Contact item);

@@ -23,7 +23,6 @@ namespace MobileCRM.Shared.Pages.Accounts
 
         CustomControls.BarChart barChart;
         TableSection sectionSales;
-        TextCell txtNoOrders;
 
         public AccountDetailsView2(AccountDetailsViewModel vmAcct, OrdersViewModel vmOrders)
         {

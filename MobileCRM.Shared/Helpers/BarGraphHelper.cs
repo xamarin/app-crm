@@ -12,6 +12,7 @@ namespace MobileCRM.Shared.Helpers
     public class BarGraphHelper
     {
         private List<WeeklySalesData> listSales;
+        private List<CategorySalesData> listCategory;
         private IEnumerable<Order> orders;
         private bool bolIsOpen;
 
@@ -19,11 +20,13 @@ namespace MobileCRM.Shared.Helpers
         public BarGraphHelper(IEnumerable<Order> Orders, bool IsOpen)
         {
             listSales = new List<WeeklySalesData>();
+            listCategory = new List<CategorySalesData>();
 
             orders = Orders;
             bolIsOpen = IsOpen;
 
             this.ProcessDates();
+            this.ProcessCategories();
         } //end ctor
 
 
@@ -33,6 +36,40 @@ namespace MobileCRM.Shared.Helpers
             {
                 return listSales;
             }
+        }
+
+        public List<CategorySalesData> CategoryData
+        {
+            get
+            {
+                return listCategory;
+            }
+        }
+
+        private void ProcessCategories()
+        {
+            foreach(string s in Order.ItemTypes)
+            {
+                double dblAmt = this.ProcessCategoryOrders(s);
+                listCategory.Add(new CategorySalesData() { Category = s, Amount = dblAmt });
+            }
+        }
+
+        private double ProcessCategoryOrders(string category)
+        {
+            double dblTotal = 0;
+
+            var results = from o in orders
+                          where o.IsOpen == bolIsOpen
+                          && o.Item == category
+                          select o;
+
+            foreach (var order in results)
+            {
+                dblTotal = dblTotal + order.Price;
+            }
+
+            return dblTotal;
         }
 
 
@@ -79,6 +116,28 @@ namespace MobileCRM.Shared.Helpers
 
     } //end class
 
+
+    public class CategorySalesData
+    {
+          private string category;
+
+	        public string Category
+	        {
+		        get { return category;}
+		        set { category = value;}
+	        }
+
+          
+        private double amount;
+
+	        public double Amount
+	        {
+		        get { return amount;}
+		        set { amount = value;}
+	        }
+	
+
+    }
 
     public class WeeklySalesData
     {

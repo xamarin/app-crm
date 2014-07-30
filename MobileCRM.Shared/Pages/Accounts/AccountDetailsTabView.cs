@@ -75,13 +75,11 @@ namespace MobileCRM.Shared.Pages.Accounts
       {
           base.OnAppearing();
 
-
-          //viewAcctOrders.RefreshView();
-          //viewAcctHistory.RefreshView();
-
-
-          await viewModelOrder.ExecuteLoadOrdersCommand();
-          await viewModelHistory.ExecuteLoadOrdersCommand();
+          if (!viewModelOrder.IsInitialized)
+          {
+              await viewModelOrder.ExecuteLoadOrdersCommand();
+              await viewModelHistory.ExecuteLoadOrdersCommand();
+          }
 
           viewModelAcct.IsInitialized = true;
           viewModelHistory.IsInitialized = true;

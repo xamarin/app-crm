@@ -77,6 +77,9 @@ namespace MobileCRM.Shared.Pages.Accounts
             Button btnComplete = new Button() { Text = "Order Complete", HorizontalOptions = LayoutOptions.Center };
             btnComplete.Clicked += btnComplete_Clicked;
 
+            Button btnCancel = new Button() { Text = "Go Back", HorizontalOptions = LayoutOptions.Center };
+            btnCancel.Clicked += btnCancel_Clicked;
+
             StackLayout stack;
 
             //Present read-only view if order is closed and viewing it from History
@@ -84,7 +87,7 @@ namespace MobileCRM.Shared.Pages.Accounts
             {
                 stack = new StackLayout()
                 {
-                    Padding = new Thickness(10, 30, 10, 10),
+                    Padding = new Thickness(10, 20, 10, 5),
                     Children =  
                     {
                         lblInv,
@@ -107,7 +110,8 @@ namespace MobileCRM.Shared.Pages.Accounts
                         lblSig,
                         sigPad,
 
-                        btnComplete              
+                        btnComplete,
+                        btnCancel
                     }
                 };            
             }
@@ -150,6 +154,11 @@ namespace MobileCRM.Shared.Pages.Accounts
             return stack;
         }
 
+        void btnCancel_Clicked(object sender, System.EventArgs e)
+        {
+            viewModel.GoBack();
+        }
+
 
         public void btnComplete_Clicked(object sender, EventArgs e)
         {
@@ -163,6 +172,9 @@ namespace MobileCRM.Shared.Pages.Accounts
                 return;
             }
             viewModel.Order.Signature = signature;
+
+            viewModel.IsInitialized = false;
+
             viewModel.ApproveOrderCommand.Execute(null);
         }
 

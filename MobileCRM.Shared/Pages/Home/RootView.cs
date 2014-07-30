@@ -3,6 +3,7 @@ using MobileCRM.Shared.Pages.Accounts;
 using MobileCRM.Shared.Pages.Base;
 using MobileCRM.Shared.ViewModels.Accounts;
 using MobileCRM.Shared.ViewModels.Contacts;
+using MobileCRM.Shared.ViewModels.Home;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -70,7 +71,9 @@ namespace MobileCRM.Shared.Pages.Home
           {
             case MenuType.Dashboard:
               {
-                return new DashboardView();
+                  var vm = new DashboardViewModel() { Navigation = Navigation };
+
+                  return new DashboardView(vm);
               }
             case MenuType.Accounts:
               {

@@ -25,9 +25,11 @@ namespace MobileCRM.iOS.Renderers
       var plotModel1 = new PlotModel();
       plotModel1.Title = string.Empty;
       var pieSeries1 = new PieSeries();
-      pieSeries1.InsideLabelPosition = 0.8;
+      pieSeries1.InsideLabelPosition = 0.7;
       pieSeries1.StrokeThickness = 2;
       plotModel1.Series.Add(pieSeries1);
+
+      pieSeries1.InsideLabelColor = OxyColors.White;
 
       foreach(var item in Element.Items)
       {
@@ -44,6 +46,8 @@ namespace MobileCRM.iOS.Renderers
 
       //Add padding to prevent cropping
       plotModel1.Padding = new OxyPlot.OxyThickness(45);
+
+      //plotModel1.Title = "Sales by Category";
 
       plotView.Model = plotModel1;
       
@@ -66,6 +70,10 @@ namespace MobileCRM.iOS.Renderers
              Value = item.Value
            });
         }
+
+        Control.Model.InvalidatePlot(true);
+        Control.InvalidatePlot(true);
+
       }
     }
   }

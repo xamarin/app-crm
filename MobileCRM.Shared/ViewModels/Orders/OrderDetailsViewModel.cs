@@ -147,23 +147,13 @@ namespace MobileCRM.Shared.ViewModels.Orders
         IsBusy = false;
 
         await navigation.PopModalAsync();
-
-
-      //if (IsBusy)
-      //  return;
-
-      //IsBusy = true;
-
-      //Order.IsOpen = false;
-      //await dataManager.SaveOrderAsync(Order);
-
-      //MessagingCenter.Send(Order, "Order");
-
-      //IsBusy = false;
-
-      //navigation.PopAsync();
-
-
     }
+
+
+    public async Task GoBack()
+    {
+        await navigation.PopModalAsync();
+    }
+
   }
 }

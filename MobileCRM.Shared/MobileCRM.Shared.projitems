@@ -46,7 +46,6 @@
       <DependentUpon>ContactDetailsView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactDetailsView2.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactMapView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Contacts\ContactsView.xaml.cs">
       <DependentUpon>ContactsView.xaml</DependentUpon>
@@ -79,10 +78,6 @@
       <DependentUpon>AccountHistoryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Orders\AccountOrderDetailsView2.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\Orders\AccountOrderDetailsView.xaml.cs">
-      <SubType>Code</SubType>
-      <DependentUpon>AccountOrderDetailsView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Orders\AccountOrdersView.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>AccountOrdersView.xaml</DependentUpon>
@@ -94,6 +89,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Contacts\ContactDetailsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Contacts\ContactsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Home\DashboardViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Home\LoginViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Leads\NewLeadViewModel.cs" />
@@ -123,10 +119,6 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Orders\AccountHistoryView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Orders\AccountOrderDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

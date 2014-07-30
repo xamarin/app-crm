@@ -9,8 +9,14 @@
 
         <Label Text="Sales Dashboard" Font="Bold, Large" HorizontalOptions="Center" />
         <Label Text="6-Week Sales" HorizontalOptions="Center" />
-        <controls:BarChart x:Name="Chart"  HeightRequest="300" HorizontalOptions="FillAndExpand"/>
-        <controls:PieChart x:Name="MyPie"  HeightRequest="300" HorizontalOptions="FillAndExpand" />
+
+        <ActivityIndicator IsRunning = "{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+
+        <controls:BarChart x:Name="BarChart"  HeightRequest="300" HorizontalOptions="FillAndExpand"/>
+
+            <Label Text="Sales by Category" HorizontalOptions="Center" />
+
+            <controls:PieChart x:Name="MyPie"  HeightRequest="300" HorizontalOptions="FillAndExpand" />
 
     </StackLayout>
 
