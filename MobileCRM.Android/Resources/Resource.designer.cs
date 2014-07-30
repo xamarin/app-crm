@@ -1072,103 +1072,118 @@ namespace MobileCRMAndroid
 			public const int common_signin_btn_text_pressed_light = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int contact = 2130837617;
+			public const int companycard = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int filter = 2130837618;
+			public const int contact = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int ic_plusone_medium_off_client = 2130837619;
+			public const int contactcard = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int ic_plusone_small_off_client = 2130837620;
+			public const int dashboard = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int ic_plusone_standard_off_client = 2130837621;
+			public const int filter = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int ic_plusone_tall_off_client = 2130837622;
+			public const int ic_plusone_medium_off_client = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int Icon = 2130837623;
+			public const int ic_plusone_small_off_client = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int lead = 2130837624;
+			public const int ic_plusone_standard_off_client = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int map = 2130837625;
+			public const int ic_plusone_tall_off_client = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int mr_ic_audio_vol = 2130837626;
+			public const int Icon = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int mr_ic_media_route_connecting_holo_dark = 2130837627;
+			public const int lead = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int mr_ic_media_route_connecting_holo_light = 2130837628;
+			public const int map = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int mr_ic_media_route_disabled_holo_dark = 2130837629;
+			public const int mr_ic_audio_vol = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int mr_ic_media_route_disabled_holo_light = 2130837630;
+			public const int mr_ic_media_route_connecting_holo_dark = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int mr_ic_media_route_holo_dark = 2130837631;
+			public const int mr_ic_media_route_connecting_holo_light = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int mr_ic_media_route_holo_light = 2130837632;
+			public const int mr_ic_media_route_disabled_holo_dark = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int mr_ic_media_route_off_holo_dark = 2130837633;
+			public const int mr_ic_media_route_disabled_holo_light = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int mr_ic_media_route_off_holo_light = 2130837634;
+			public const int mr_ic_media_route_holo_dark = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int mr_ic_media_route_on_0_holo_dark = 2130837635;
+			public const int mr_ic_media_route_holo_light = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int mr_ic_media_route_on_0_holo_light = 2130837636;
+			public const int mr_ic_media_route_off_holo_dark = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int mr_ic_media_route_on_1_holo_dark = 2130837637;
+			public const int mr_ic_media_route_off_holo_light = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int mr_ic_media_route_on_1_holo_light = 2130837638;
+			public const int mr_ic_media_route_on_0_holo_dark = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int mr_ic_media_route_on_2_holo_dark = 2130837639;
+			public const int mr_ic_media_route_on_0_holo_light = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int mr_ic_media_route_on_2_holo_light = 2130837640;
+			public const int mr_ic_media_route_on_1_holo_dark = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int mr_ic_media_route_on_holo_dark = 2130837641;
+			public const int mr_ic_media_route_on_1_holo_light = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int mr_ic_media_route_on_holo_light = 2130837642;
+			public const int mr_ic_media_route_on_2_holo_dark = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int opportunity = 2130837643;
+			public const int mr_ic_media_route_on_2_holo_light = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int powered_by_google_dark = 2130837644;
+			public const int mr_ic_media_route_on_holo_dark = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int powered_by_google_light = 2130837645;
+			public const int mr_ic_media_route_on_holo_light = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int refresh = 2130837646;
+			public const int opportunity = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int slideout = 2130837647;
+			public const int order = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int zoom_in = 2130837648;
+			public const int orderhistory = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int zoom_out = 2130837649;
+			public const int powered_by_google_dark = 2130837649;
+			
+			// aapt resource value: 0x7f020092
+			public const int powered_by_google_light = 2130837650;
+			
+			// aapt resource value: 0x7f020093
+			public const int refresh = 2130837651;
+			
+			// aapt resource value: 0x7f020094
+			public const int slideout = 2130837652;
+			
+			// aapt resource value: 0x7f020095
+			public const int zoom_in = 2130837653;
+			
+			// aapt resource value: 0x7f020096
+			public const int zoom_out = 2130837654;
 			
 			static Drawable()
 			{

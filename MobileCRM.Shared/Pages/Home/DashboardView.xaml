@@ -5,7 +5,7 @@
                        xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
                        Title ="Mobile CRM">
     <ScrollView>
-	 <StackLayout Padding="20" Spacing="20">
+	 <StackLayout Padding="20" Spacing="20" BackgroundColor="White">
 
         <Label Text="Sales Dashboard" Font="Bold, Large" HorizontalOptions="Center" />
         <Label Text="6-Week Sales" HorizontalOptions="Center" />
