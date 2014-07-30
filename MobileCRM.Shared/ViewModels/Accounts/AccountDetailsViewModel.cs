@@ -36,7 +36,7 @@ namespace MobileCRM.Shared.ViewModels.Accounts
         }
 
 
-        this.Icon = "list.png";
+        this.Icon = "companycard.png";
 
         dataManager = DependencyService.Get<IDataManager>();
         coder = new Geocoder();

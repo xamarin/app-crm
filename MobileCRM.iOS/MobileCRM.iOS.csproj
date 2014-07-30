@@ -261,6 +261,48 @@
   <ItemGroup>
     <BundleResource Include="Resources\add%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\contact%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dashboard%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\account%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lead2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lead%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\contactcard%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\contactcard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\companycard%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\companycard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\order%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\orderhistory%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\orderhistory.png" />
+  </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.17-beta\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.17-beta\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

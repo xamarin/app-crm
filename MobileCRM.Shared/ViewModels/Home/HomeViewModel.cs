@@ -18,7 +18,7 @@ namespace MobileCRM.Shared.ViewModels
         Id = 0,
         Title = "Dashboard",
         MenuType = MenuType.Dashboard,
-        Icon = "account.png"
+        Icon = "dashboard.png"
       }); MenuItems.Add(new MenuItem
       {
         Id = 1,

@@ -27,7 +27,7 @@ namespace MobileCRM.Shared.ViewModels.Orders
         this.accountId = accountId;
         this.openOrders = openOrders;
         this.Title = openOrders ? "Orders" : "History";
-        this.Icon = "list.png";
+        this.Icon = openOrders ? "order.png" : "orderhistory.png";
 
         dataManager = DependencyService.Get<IDataManager>();
         Orders = new ObservableCollection<Order>();

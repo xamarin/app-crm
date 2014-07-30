@@ -17,7 +17,7 @@ namespace MobileCRM.Shared.Pages.Home
         this.Title = "menu";
         BindingContext = viewModel = new HomeViewModel();
 
-        BackgroundColor = Helpers.Color.DarkGray.ToFormsColor();
+        BackgroundColor = Helpers.Color.LightGray.ToFormsColor();
 
 
         var label = new ContentView
