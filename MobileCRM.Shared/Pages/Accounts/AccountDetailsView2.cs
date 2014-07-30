@@ -108,7 +108,7 @@ namespace MobileCRM.Shared.Pages.Accounts
                     Padding = 10,
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     VerticalOptions = LayoutOptions.FillAndExpand,
-                    BackgroundColor = Xamarin.Forms.Color.White,
+                    BackgroundColor = Device.OnPlatform(Xamarin.Forms.Color.White, Xamarin.Forms.Color.White, Xamarin.Forms.Color.Transparent),
                     Children =
                 {
                     activityBusy,

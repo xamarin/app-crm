@@ -24,6 +24,7 @@ namespace MobileCRM.WindowsPhone.Renderers
 
       var plotModel1 = new PlotModel();
       plotModel1.Title = string.Empty;
+      plotModel1.TextColor = OxyColors.White;
       var pieSeries1 = new PieSeries();
       pieSeries1.InsideLabelPosition = 0.8;
       pieSeries1.StrokeThickness = 2;

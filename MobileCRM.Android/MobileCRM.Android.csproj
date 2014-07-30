@@ -189,10 +189,6 @@
     <AndroidResource Include="Resources\drawable\contact.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\BarChart.Android\BarChart.Android.csproj">
-      <Project>{5abe3f17-568e-4599-aefa-ec68db16503a}</Project>
-      <Name>BarChart.Android</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">
       <Project>{a2a445b4-e291-4224-8b31-5fd82adec085}</Project>
       <Name>MobileCRM.CustomControls</Name>
