@@ -54,49 +54,60 @@ namespace MobileCRM.Shared.Pages.Home
 
             var displayPage = PageForOption(option);
 
+            displayPage.BarBackgroundColor = Helpers.Color.Blue.ToFormsColor();
+            displayPage.BarTextColor = Color.White;
+            
+             
 #if WINDOWS_PHONE
             Detail = new ContentPage();
 #endif
 
-            Detail = new NavigationPage(displayPage)
-            {
-              BarBackgroundColor = Helpers.Color.Blue.ToFormsColor(),
-              BarTextColor = Color.White
-            };
+            Detail = displayPage;
 
             IsPresented = false;
         }
 
-        Page PageForOption (MenuType option)
+        NavigationPage dashboard, accounts, leads, contacts;
+        NavigationPage PageForOption (MenuType option)
         {
 
           switch (option)
           {
             case MenuType.Dashboard:
               {
-                  var vm = new DashboardViewModel() { Navigation = Navigation };
+                if (dashboard != null)
+                  return dashboard;
+                  
+                var vm = new DashboardViewModel() { Navigation = Navigation };
 
-                  return new DashboardView(vm);
+                dashboard = new NavigationPage(new DashboardView(vm));
+                return dashboard;
               }
             case MenuType.Accounts:
               {
-                var vm = new AccountsViewModel() { Navigation = Navigation };
-                return new AccountsView(vm);
+                if (accounts != null)
+                  return accounts;
 
-                //return new TabView("Accounts", new Page[]
-                //  {
-                //    new AccountsView(vm),
-                //    new AccountsMapView(vm)
-                //  }, vm);      
+                var vm = new AccountsViewModel() { Navigation = Navigation };
+                accounts = new NavigationPage(new AccountsView(vm));
+
+                return accounts; 
               }
             case MenuType.Leads:
               {
-                  return new Leads.LeadsView(new ViewModels.Leads.LeadsViewModel() { Navigation = Navigation }); 
+                if (leads != null)
+                  return leads;
+                
+                leads =  new NavigationPage(new Leads.LeadsView(new ViewModels.Leads.LeadsViewModel() { Navigation = Navigation }));
+                return leads;
               }
             case MenuType.Contacts:
               {
+                if (contacts != null)
+                  return contacts;
                 var vm = new ContactsViewModel();
-                return new Contacts.ContactsView(vm); 
+                contacts = new NavigationPage(new Contacts.ContactsView(vm));
+                return contacts;
               }
           }
             
