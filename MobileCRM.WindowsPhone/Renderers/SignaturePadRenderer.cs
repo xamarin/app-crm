@@ -25,7 +25,8 @@ namespace MobileCRMAndroid.Renderers
 
       var signaturePad = new SignaturePadView()
       {
-        
+        BackgroundColor = System.Windows.Media.Colors.White,
+        StrokeColor = System.Windows.Media.Colors.Black
       };
 
       if(!string.IsNullOrWhiteSpace(Element.DefaultPoints))

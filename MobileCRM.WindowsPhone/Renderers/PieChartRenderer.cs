@@ -64,6 +64,10 @@ namespace MobileCRM.WindowsPhone.Renderers
              Value = item.Value
            });
         }
+
+        Control.Model.InvalidatePlot(true);
+        Control.InvalidatePlot(true);
+       
       }
     }
   }

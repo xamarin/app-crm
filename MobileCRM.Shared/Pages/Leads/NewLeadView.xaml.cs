@@ -21,7 +21,7 @@ namespace MobileCRM.Shared.Pages.Leads
 			SetBinding(Page.IconProperty, new Binding("Icon"));
 
 			this.BindingContext = viewModel = new NewLeadViewModel(Navigation);
-			ToolbarItems.Add(new ToolbarItem("Done", null, async () =>
+			ToolbarItems.Add(new ToolbarItem("Done", Device.OnPlatform<string>(null, null, "done.png"), async () =>
 			{
 				var confirmed = await DisplayAlert("Unsaved Changes", "Save changes?", "Save", "Discard");
 				if (confirmed)

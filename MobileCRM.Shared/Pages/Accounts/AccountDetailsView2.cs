@@ -76,6 +76,7 @@ namespace MobileCRM.Shared.Pages.Accounts
 
                 StackLayout stackChart = new StackLayout()
                 {
+                    HeightRequest = 300,
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     VerticalOptions = LayoutOptions.FillAndExpand,
                     Padding = 10,

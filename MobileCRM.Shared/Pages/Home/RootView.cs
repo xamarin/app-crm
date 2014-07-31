@@ -27,6 +27,7 @@ namespace MobileCRM.Shared.Pages.Home
                 return;
 
               NavigateTo(item.MenuType);
+              optionsPage.Menu.SelectedItem = null;
             };
 
             Master = optionsPage;
@@ -54,11 +55,13 @@ namespace MobileCRM.Shared.Pages.Home
             var displayPage = PageForOption(option);
 
 #if WINDOWS_PHONE
-            Detail = new ContentPage();//work around to clear current page.
+            Detail = new ContentPage();
 #endif
+
             Detail = new NavigationPage(displayPage)
             {
-              Tint = Helpers.Color.Blue.ToFormsColor(),
+              BarBackgroundColor = Helpers.Color.Blue.ToFormsColor(),
+              BarTextColor = Color.White
             };
 
             IsPresented = false;
