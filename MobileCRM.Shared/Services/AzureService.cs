@@ -53,7 +53,7 @@ namespace MobileCRM.Shared.Services
         if (MobileService.SyncContext.IsInitialized)
           return;
 
-        var path = "syncstore.db";
+        var path = "test1.db";
 #if __ANDROID__
         path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), path);
 
@@ -95,13 +95,17 @@ namespace MobileCRM.Shared.Services
         try
         {
 
-            await Init();
-            await MobileService.SyncContext.PushAsync();
-            await orderTable.PullAsync();
+          await Init();
+          await MobileService.SyncContext.PushAsync();
+          await orderTable.PullAsync();
         }
         catch (MobileServiceInvalidOperationException e)
         {
           Debug.WriteLine(@"Sync Failed: {0}", e.Message);
+        }
+        catch (Exception ex2)
+        {
+          Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
       }
 
@@ -140,12 +144,16 @@ namespace MobileCRM.Shared.Services
         try
         {
           await Init();
-          //await MobileService.SyncContext.PushAsync();
+          await MobileService.SyncContext.PushAsync();
           await accountTable.PullAsync();
         }
         catch (MobileServiceInvalidOperationException e)
         {
           Debug.WriteLine(@"Sync Failed: {0}", e.Message);
+        }
+        catch (Exception ex2)
+        {
+          Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
       }
 
@@ -275,12 +283,16 @@ namespace MobileCRM.Shared.Services
         try
         {
           await Init();
-          //await MobileService.SyncContext.PushAsync();
+          await MobileService.SyncContext.PushAsync();
           await contactTable.PullAsync();
         }
         catch(MobileServiceInvalidOperationException e)
         {
           Debug.WriteLine(@"Sync Failed: {0}", e.Message);
+        }
+        catch (Exception ex2)
+        {
+          Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
       }
 
