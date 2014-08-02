@@ -7,7 +7,6 @@ using System.Linq;
 using Xamarin.Forms;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
 namespace MobileCRM.Shared.ViewModels.Accounts

@@ -54,7 +54,7 @@ namespace MobileCRM.Shared.Services
 
         try
         {
-          await MobileService.SyncContext.InitializeAsync(store);
+          await MobileService.SyncContext.InitializeAsync(store, new MobileServiceSyncHandler());
 
         }
         catch(Exception ex)
