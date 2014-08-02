@@ -34,7 +34,7 @@ namespace MobileCRM.Shared.Pages.Contacts
 				//    else
 				//    {
 				//        await viewModel.GoBack();
-				//        Console.WriteLine("cancel changes!");
+				//        System.Diagnostics.Debug.WriteLine("cancel changes!");
 				//    }
 				//}));
 

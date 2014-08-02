@@ -200,12 +200,6 @@
     <AndroidResource Include="Resources\drawable\contact.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">
-      <Project>{a2a445b4-e291-4224-8b31-5fd82adec085}</Project>
-      <Name>MobileCRM.CustomControls</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <XamarinComponentReference Include="signature-pad">
       <Visible>False</Visible>
       <Version>1.3.3</Version>
@@ -369,6 +363,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\slideout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MobileCRM.Shared\MobileCRM.Shared.csproj">
+      <Project>{40d46760-e7fd-4053-ad6b-07dc84d23bed}</Project>
+      <Name>MobileCRM.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

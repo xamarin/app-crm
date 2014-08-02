@@ -62,7 +62,7 @@ namespace MobileCRM.Shared.Pages.Leads
                 else
                 {
                     viewModel.GoBack();
-                    Console.WriteLine("cancel changes!");
+                    System.Diagnostics.Debug.WriteLine("cancel changes!");
                 }
             }));
             

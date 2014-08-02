@@ -20,14 +20,14 @@ using OxyPlot.Axes;
 using OxyPlot.Series;
 
 
-[assembly: ExportRenderer(typeof(MobileCRM.CustomControls.BarChart), typeof(BarChartRenderer))]
+[assembly: ExportRenderer(typeof(MobileCRM.Shared.CustomControls.BarChart), typeof(BarChartRenderer))]
 namespace MobileCRMAndroid.Renderers
 {
 
 
-    public class BarChartRenderer : ViewRenderer<MobileCRM.CustomControls.BarChart, PlotView>
+    public class BarChartRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.BarChart, PlotView>
     {
-        protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.CustomControls.BarChart> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.Shared.CustomControls.BarChart> e)
         {
             base.OnElementChanged(e);
             if (e.OldElement != null || this.Element == null)
@@ -73,7 +73,7 @@ namespace MobileCRMAndroid.Renderers
             base.OnElementPropertyChanged(sender, e);
             if (this.Element == null || this.Control == null)
                 return;
-            if (e.PropertyName == MobileCRM.CustomControls.BarChart.ItemsProperty.PropertyName)
+            if (e.PropertyName == MobileCRM.Shared.CustomControls.BarChart.ItemsProperty.PropertyName)
             {
                 var columnSeries1 = Control.Model.Series[0] as ColumnSeries;
                 var categoryAxis1 = Control.Model.Axes[0] as CategoryAxis;
@@ -107,9 +107,9 @@ namespace MobileCRMAndroid.Renderers
 
 
     //OXYPLOT LOGARITHMIC
-//    public class BarChartRenderer : ViewRenderer<MobileCRM.CustomControls.BarChart, PlotView>
+//    public class BarChartRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.BarChart, PlotView>
 //    {
-//        protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.CustomControls.BarChart> e)
+//        protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.Shared.CustomControls.BarChart> e)
 //        {
 //            base.OnElementChanged(e);
 //            if (e.OldElement != null || this.Element == null)
@@ -153,7 +153,7 @@ namespace MobileCRMAndroid.Renderers
 //            base.OnElementPropertyChanged(sender, e);
 //            if (this.Element == null || this.Control == null)
 //                return;
-//            if (e.PropertyName == MobileCRM.CustomControls.BarChart.ItemsProperty.PropertyName)
+//            if (e.PropertyName == MobileCRM.Shared.CustomControls.BarChart.ItemsProperty.PropertyName)
 //            {
 //                var columnSeries1 = Control.Model.Series[0] as ColumnSeries;
 //                var categoryAxis1 = Control.Model.Axes[0] as CategoryAxis;
@@ -185,9 +185,9 @@ namespace MobileCRMAndroid.Renderers
 
 //OLD COMPONENT BAR CHART
 
-//  public class BarChartRenderer : ViewRenderer<MobileCRM.CustomControls.BarChart, BarChart.BarChartView>
+//  public class BarChartRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.BarChart, BarChart.BarChartView>
 //  {
-//    protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.CustomControls.BarChart> e)
+//    protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.Shared.CustomControls.BarChart> e)
 //    {
 //      base.OnElementChanged(e);
 //      if (e.OldElement != null || this.Element == null)
@@ -209,7 +209,7 @@ namespace MobileCRMAndroid.Renderers
 //      base.OnElementPropertyChanged(sender, e);
 //      if (this.Element == null || this.Control == null)
 //        return;
-//      if (e.PropertyName == MobileCRM.CustomControls.BarChart.ItemsProperty.PropertyName)
+//      if (e.PropertyName == MobileCRM.Shared.CustomControls.BarChart.ItemsProperty.PropertyName)
 //      {
 //        Control.ItemsSource = Element.Items.Select(item => new BarChart.BarModel
 //        {

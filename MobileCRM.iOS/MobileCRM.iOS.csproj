@@ -235,12 +235,6 @@
     <Error Condition="!Exists('..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets'))" />
   </Target>
   <ItemGroup>
-    <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">
-      <Project>{a2a445b4-e291-4224-8b31-5fd82adec085}</Project>
-      <Name>MobileCRM.CustomControls</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <XamarinComponentReference Include="barchart">
       <Visible>False</Visible>
       <Version>1.1</Version>
@@ -303,6 +297,12 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\orderhistory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MobileCRM.Shared\MobileCRM.Shared.csproj">
+      <Project>{40d46760-e7fd-4053-ad6b-07dc84d23bed}</Project>
+      <Name>MobileCRM.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.17-beta\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.17-beta\tools\Microsoft.Bcl.Build.targets')" />

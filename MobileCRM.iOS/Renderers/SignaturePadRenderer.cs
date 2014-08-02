@@ -8,15 +8,15 @@ using Xamarin.Forms;
 using MobileCRMAndroid.Renderers;
 using System.ComponentModel;
 using SignaturePad;
-using MobileCRM.CustomControls;
+using MobileCRM.Shared.CustomControls;
 
-[assembly: ExportRenderer(typeof(MobileCRM.CustomControls.SignaturePad), typeof(SignaturePadRenderer))]
+[assembly: ExportRenderer(typeof(MobileCRM.Shared.CustomControls.SignaturePad), typeof(SignaturePadRenderer))]
 namespace MobileCRMAndroid.Renderers
 {
 
-  public class SignaturePadRenderer : ViewRenderer<MobileCRM.CustomControls.SignaturePad, SignaturePadView>
+  public class SignaturePadRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.SignaturePad, SignaturePadView>
   {
-    protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.CustomControls.SignaturePad> e)
+    protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.Shared.CustomControls.SignaturePad> e)
     {
       base.OnElementChanged(e);
       if (e.OldElement != null || this.Element == null)

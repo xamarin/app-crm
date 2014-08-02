@@ -1,7 +1,7 @@
 ﻿using System;
 using MobileCRM.Shared.Models;
 using MobileCRM.Shared.ViewModels.Orders;
-using MobileCRM.CustomControls;
+using MobileCRM.Shared.CustomControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,11 +43,11 @@ namespace MobileCRM.Shared.Pages.Accounts
 
 
             Label lblDateEntered = new Label() { Text = "Date Entered:", TextColor = Color.Blue };
-            Label lblDateEnteredData = new Label() { Text = viewModel.Order.OrderDate.ToShortDateString() };
+            Label lblDateEnteredData = new Label() { Text = viewModel.Order.OrderDate.ToString("d") };
 
 
             Label lblDateDue = new Label() { Text = "Date Due:", TextColor = Color.Blue };
-            Label lblDateDueData = new Label() { Text = viewModel.Order.DueDate.ToShortDateString() };
+            Label lblDateDueData = new Label() { Text = viewModel.Order.DueDate.ToString("d") };
 
             
             Label lblFinalPrice = new Label() { Text = "Final Price:", TextColor = Color.Blue };
@@ -63,7 +63,7 @@ namespace MobileCRM.Shared.Pages.Accounts
             dateClosed.SetBinding(DatePicker.DateProperty, "Order.ClosedDate");
 
             //Closed order
-            Label lblDateClosedData = new Label() { Text = viewModel.Order.ClosedDate.ToShortDateString() };
+            Label lblDateClosedData = new Label() { Text = viewModel.Order.ClosedDate.ToString("d") };
 
 
             Label lblSig = new Label() { Text = "Signature:", TextColor = Color.Blue };

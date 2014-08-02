@@ -150,11 +150,11 @@ namespace MobileCRM.Shared.Helpers
                 InputTransparent = false,
             };
             pin.PropertyChanged  += (sender, e) => {
-                Console.WriteLine("Pin." + e.PropertyName + " Changed");
+                System.Diagnostics.Debug.WriteLine("Pin." + e.PropertyName + " Changed");
                 map.MoveToRegion(MapSpan.FromCenterAndRadius(pin.Position, Distance.FromMiles(0.1D)));
             };
             map.PropertyChanging += (sender, e) => 
-                Console.WriteLine("Map." + e.PropertyName + " Changed");
+                System.Diagnostics.Debug.WriteLine("Map." + e.PropertyName + " Changed");
             pin.BindingContext = context;
             map.Pins.Add(pin);
             viewCell.View = map;

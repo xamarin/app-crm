@@ -60,7 +60,7 @@ namespace MobileCRM.Shared.Pages.Leads
           LeadsList.SelectedItem = null;
       } catch (Exception ex)
       {
-          Console.WriteLine(ex.Message);
+          System.Diagnostics.Debug.WriteLine(ex.Message);
       } //end catch
 			
 		}

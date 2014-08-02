@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 						 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 						 x:Class="MobileCRM.Shared.Pages.Leads.LeadDetailsView"
-											 xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
+											 xmlns:controls="clr-namespace:MobileCRM.Shared.CustomControls;assembly=MobileCRM.Shared"
 						>
 		<ContentPage.Content>
 				<StackLayout Spacing="30" Padding="20">

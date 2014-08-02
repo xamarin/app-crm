@@ -1,4 +1,4 @@
-﻿using MobileCRM.CustomControls;
+﻿using MobileCRM.Shared.CustomControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,7 +61,7 @@ namespace MobileCRM.Shared.Pages.Home
         }
         catch (Exception exc)
         {
-            Console.WriteLine("EXCEPTION: DashboardView.PopulateBarChart(): " + exc.Message + "  |  " + exc.StackTrace);
+            System.Diagnostics.Debug.WriteLine("EXCEPTION: DashboardView.PopulateBarChart(): " + exc.Message + "  |  " + exc.StackTrace);
         }
 
     }
@@ -98,7 +98,7 @@ namespace MobileCRM.Shared.Pages.Home
         }
         catch (Exception exc)
         {
-            Console.WriteLine("EXCEPTION: DashboardView.PopulatePieChart(): " + exc.Message + "  |  " + exc.StackTrace);
+            System.Diagnostics.Debug.WriteLine("EXCEPTION: DashboardView.PopulatePieChart(): " + exc.Message + "  |  " + exc.StackTrace);
         }
     }
 

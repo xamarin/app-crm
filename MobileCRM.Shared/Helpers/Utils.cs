@@ -27,7 +27,7 @@ namespace MobileCRM.Shared.Helpers
           }
           catch (Exception exc)
           {
-              Console.WriteLine("ERROR: MobileCRM.Shared.Helpers.GeoCodeAddress(): " + exc.Message);
+              System.Diagnostics.Debug.WriteLine("ERROR: MobileCRM.Shared.Helpers.GeoCodeAddress(): " + exc.Message);
           }
           finally 
           { 

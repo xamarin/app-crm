@@ -5,7 +5,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using Xamarin.Forms;
 using Xamarin;
-using MobileCRM.CustomControls;
+using MobileCRM.Shared.CustomControls;
 using MobileCRM.Shared.Pages;
 using MobileCRM.Shared;
 using MobileCRM.Shared.Interfaces;
@@ -18,15 +18,23 @@ namespace MobileCRM.iOS
     {
         UIWindow window;
 
+        public UIColor ToUIColor(MobileCRM.Shared.Helpers.Color color)
+        {
+          return UIColor.FromRGB((float)color.R, (float)color.G, (float)color.B);
+        }
+
         public override bool FinishedLaunching (UIApplication app, NSDictionary options)
         {
+
+          Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+          SQLitePCL.CurrentPlatform.Init();
             window = new UIWindow (UIScreen.MainScreen.Bounds);
 
             Forms.Init();
             FormsMaps.Init();
 
             UINavigationBar.Appearance.BackgroundColor = UIColor.FromRGBA(0, 0, 0, 0);
-            UINavigationBar.Appearance.TintColor = MobileCRM.Shared.Helpers.Color.Blue.ToUIColor();
+            UINavigationBar.Appearance.TintColor = ToUIColor(MobileCRM.Shared.Helpers.Color.Blue);
             UINavigationBar.Appearance.BarTintColor = UIColor.White;
             UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
             {

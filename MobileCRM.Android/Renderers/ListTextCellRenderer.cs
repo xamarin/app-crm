@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
-using MobileCRM.CustomControls;
+using MobileCRM.Shared.CustomControls;
 using MobileCRMAndroid;
 using Android.Widget;
 using Android.Graphics.Drawables.Shapes;
@@ -21,6 +21,11 @@ namespace MobileCRMAndroid
 {
     public class ListTextCellRenderer : TextCellRenderer
     {
+      public global::Android.Graphics.Color ToAndroidColor(MobileCRM.Shared.Helpers.Color color)
+      {
+        return global::Android.Graphics.Color.Rgb((int)(255 * color.R), (int)(255 * color.G), (int)(255 * color.B));
+      }
+
         protected override View GetCellCore (Cell item, View convertView, ViewGroup parent, Context context)
         {
             var cell = (LinearLayout)base.GetCellCore (item, convertView, parent, context);
@@ -29,7 +34,7 @@ namespace MobileCRMAndroid
 
             var div = new ShapeDrawable();
             div.SetIntrinsicHeight(1);
-            div.Paint.Set(new Paint { Color = MobileCRM.Shared.Helpers.Color.DarkGray.ToAndroidColor() });
+            div.Paint.Set(new Paint { Color =ToAndroidColor( MobileCRM.Shared.Helpers.Color.DarkGray) });
 
             if (parent is ListView) {
                 ((ListView)parent).Divider = div;

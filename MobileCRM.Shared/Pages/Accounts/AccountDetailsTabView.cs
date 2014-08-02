@@ -63,7 +63,7 @@ namespace MobileCRM.Shared.Pages.Accounts
           }
           catch (Exception exc)
           {
-              Console.WriteLine("EXCEPTION: AccountDetailsTabView.Constructor(): " + exc.Message + "  |  " + exc.StackTrace);
+              System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsTabView.Constructor(): " + exc.Message + "  |  " + exc.StackTrace);
           }
 
       }  //end ctor

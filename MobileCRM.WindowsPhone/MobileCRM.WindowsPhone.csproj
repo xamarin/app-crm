@@ -173,9 +173,9 @@
       <Project>{105d08de-982a-4f39-9fb2-82735cf2f3f1}</Project>
       <Name>SignaturePad.WP7</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">
-      <Project>{a2a445b4-e291-4224-8b31-5fd82adec085}</Project>
-      <Name>MobileCRM.CustomControls</Name>
+    <ProjectReference Include="..\MobileCRM.Shared\MobileCRM.Shared.csproj">
+      <Project>{40d46760-e7fd-4053-ad6b-07dc84d23bed}</Project>
+      <Name>MobileCRM.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

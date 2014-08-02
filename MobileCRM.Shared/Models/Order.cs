@@ -78,7 +78,7 @@ namespace MobileCRM.Shared.Models
       {
         get
         {
-          return "Price Quote: $" + Price + " | Due: " + DueDate.ToShortDateString(); 
+          return "Price Quote: $" + Price + " | Due: " + DueDate.ToString("d"); 
         }
       }
 
@@ -87,7 +87,7 @@ namespace MobileCRM.Shared.Models
       {
         get
         {
-          return "Total: $" + Price + " | Closed: " + ClosedDate.ToShortDateString();
+          return "Total: $" + Price + " | Closed: " + ClosedDate.ToString("d");
         }
       }
    

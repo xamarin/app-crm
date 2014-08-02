@@ -1,7 +1,7 @@
 ﻿using MobileCRM.Shared.Models;
 using MobileCRM.Shared.ViewModels.Accounts;
 using MobileCRM.Shared.ViewModels.Orders;
-using MobileCRM.CustomControls;
+using MobileCRM.Shared.CustomControls;
 using MobileCRM.Shared.Helpers;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,7 @@ namespace MobileCRM.Shared.Pages.Accounts
 
         public AccountDetailsView2(AccountDetailsViewModel vmAcct, OrdersViewModel vmOrders)
         {
-            Console.WriteLine("AccountDetailsView2 Constructor called...");
+            System.Diagnostics.Debug.WriteLine("AccountDetailsView2 Constructor called...");
 
             this.BindingContext = viewModelOrders = vmOrders;
             viewModelAcct = vmAcct;
@@ -123,7 +123,7 @@ namespace MobileCRM.Shared.Pages.Accounts
             }
             catch (Exception exc)
             {
-                Console.WriteLine("EXCEPTION: AccountDetailsView2.BuildView(): " + exc.Message + "  |  " + exc.StackTrace);
+                System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsView2.BuildView(): " + exc.Message + "  |  " + exc.StackTrace);
             }
             finally
             {
@@ -162,7 +162,7 @@ namespace MobileCRM.Shared.Pages.Accounts
                 } //end if
 
             } catch (Exception exc) {
-                Console.WriteLine("EXCEPTION: AccountDetailsView2.PopulateChart(): " + exc.Message + "  |  " + exc.StackTrace);
+                System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsView2.PopulateChart(): " + exc.Message + "  |  " + exc.StackTrace);
             }
 
         }
@@ -192,7 +192,7 @@ namespace MobileCRM.Shared.Pages.Accounts
             }
             catch (Exception exc)
             {
-                Console.WriteLine("EXCEPTION: AccountDetailsView2.OnAppearing(): " + exc.Message + "  |  " + exc.StackTrace);
+                System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsView2.OnAppearing(): " + exc.Message + "  |  " + exc.StackTrace);
             }
 
         }

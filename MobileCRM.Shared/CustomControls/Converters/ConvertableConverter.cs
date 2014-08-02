@@ -2,9 +2,8 @@
 using Xamarin.Forms;
 using System.Globalization;
 using System.Diagnostics;
-using MobileCRM.Shared.Attributes;
 
-namespace MobileCRM.Shared.Helpers
+namespace MobileCRM.Shared.CustomControls.Converters
 {
     public class ConvertableConverter : IValueConverter
     {
@@ -13,7 +12,7 @@ namespace MobileCRM.Shared.Helpers
         public object Convert (object value, Type targetType, object parameter, CultureInfo culture)
         {
             Debug.WriteLine(value.ToString(), new []{"ConvertableConverter.Convert"});
-            if ((parameter == null || !(parameter is CurrencyAttribute)))
+            if ((parameter == null))
                 return System.Convert.ChangeType(value, targetType);
 
             return string.Format(culture.NumberFormat, "{0:C}", value);
@@ -24,11 +23,19 @@ namespace MobileCRM.Shared.Helpers
             Debug.WriteLine(value.ToString(), new []{ "ConvertableConverter.ConvertBack"});
 
 
+#if WINDOWS_PHONE
             // Handle money in a localization-aware manner.
-            if (targetType == typeof(Decimal) && value is string && ((string)value).StartsWith(NumberFormatInfo.CurrentInfo.CurrencySymbol, StringComparison.CurrentCultureIgnoreCase)){
+            if (targetType == typeof(Decimal) && value is string && ((string)value).StartsWith(NumberFormatInfo.CurrentInfo.CurrencySymbol, StringComparison.InvariantCultureIgnoreCase)){
                 var val = Decimal.Parse((string)value, NumberStyles.Currency);
                 return val;
             }
+#else
+          // Handle money in a localization-aware manner.
+            if (targetType == typeof(Decimal) && value is string && ((string)value).StartsWith(NumberFormatInfo.CurrentInfo.CurrencySymbol)){
+                var val = Decimal.Parse((string)value, NumberStyles.Currency);
+                return val;
+            }
+#endif
             var result = Convert(value, targetType, parameter, culture);
             return result;
         }

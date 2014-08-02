@@ -1,4 +1,4 @@
-﻿using MobileCRM.CustomControls;
+﻿using MobileCRM.Shared.CustomControls;
 using MobileCRM.Shared.ViewModels;
 using System;
 using System.Collections.Generic;

@@ -10,7 +10,7 @@ using Microsoft.Phone.Shell;
 using MobileCRM.WindowsPhone.Resources;
 using Xamarin.Forms;
 using Xamarin;
-using MobileCRM.CustomControls;
+using MobileCRM.Shared.CustomControls;
 using MobileCRM.Shared.Pages;
 using MobileCRM.Shared;
 

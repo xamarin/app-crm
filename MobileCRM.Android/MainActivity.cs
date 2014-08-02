@@ -17,6 +17,7 @@ namespace MobileCRMAndroid
         protected override void OnCreate (Bundle bundle)
         {
             base.OnCreate (bundle);
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 
             Forms.Init(this, bundle);
             FormsMaps.Init(this, bundle);

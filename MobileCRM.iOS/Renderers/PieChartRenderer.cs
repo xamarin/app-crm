@@ -10,13 +10,13 @@ using System.ComponentModel;
 using OxyPlot.Series;
 using OxyPlot;
 using OxyPlot.XamarinIOS;
-[assembly: ExportRenderer(typeof(MobileCRM.CustomControls.PieChart), typeof(PieChartRenderer))]
+[assembly: ExportRenderer(typeof(MobileCRM.Shared.CustomControls.PieChart), typeof(PieChartRenderer))]
 namespace MobileCRM.iOS.Renderers
 {
 
-  public class PieChartRenderer : ViewRenderer<MobileCRM.CustomControls.PieChart, PlotView>
+  public class PieChartRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.PieChart, PlotView>
   {
-    protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.CustomControls.PieChart> e)
+    protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.Shared.CustomControls.PieChart> e)
     {
       base.OnElementChanged(e);
       if (e.OldElement != null || this.Element == null)
@@ -58,7 +58,7 @@ namespace MobileCRM.iOS.Renderers
       base.OnElementPropertyChanged(sender, e);
       if (this.Element == null || this.Control == null)
         return;
-      if (e.PropertyName == MobileCRM.CustomControls.BarChart.ItemsProperty.PropertyName)
+      if (e.PropertyName == MobileCRM.Shared.CustomControls.BarChart.ItemsProperty.PropertyName)
       {
         var pieSeries1 = Control.Model.Series[0] as PieSeries;
         pieSeries1.Slices.Clear();

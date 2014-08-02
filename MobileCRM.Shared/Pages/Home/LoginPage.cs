@@ -1,4 +1,4 @@
-﻿using MobileCRM.CustomControls;
+﻿using MobileCRM.Shared.CustomControls;
 using MobileCRM.Shared.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace MobileCRM.Shared.Pages
 
             BackgroundColor = Helpers.Color.Blue.ToFormsColor();
 
-            var sig = new MobileCRM.CustomControls.SignaturePad()
+            var sig = new MobileCRM.Shared.CustomControls.SignaturePad()
             {
               HeightRequest = 200
             };  
@@ -55,7 +55,7 @@ namespace MobileCRM.Shared.Pages
             items.Add(new BarItem { Name = "c", Value = 20 });
             items.Add(new BarItem { Name = "d", Value = 5 });
             items.Add(new BarItem { Name = "e", Value = 14 });
-            var chart = new MobileCRM.CustomControls.BarChart
+            var chart = new MobileCRM.Shared.CustomControls.BarChart
             {
               Items = items,
               HeightRequest = 500

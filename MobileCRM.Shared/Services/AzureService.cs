@@ -28,13 +28,6 @@ namespace MobileCRM.Shared.Services
 
       public AzureService()
       {
-#if __ANDROID__ || __IOS__
-        Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
-#endif
-#if __IOS__
-        SQLitePCL.CurrentPlatform.Init();
-#endif
-
 
         //comment back in to enable Azure Mobile Services.
         //MobileService = new MobileServiceClient(
@@ -45,7 +38,7 @@ namespace MobileCRM.Shared.Services
             "https://" + "xamarin3crmdemo" + ".azure-mobile.net/",
             "PNfTdzPtNRKsHrYynemqXBFDLrUipU26");
 
-        //Init().Wait();//testing
+
       }
 
       public async Task Init()
@@ -53,15 +46,7 @@ namespace MobileCRM.Shared.Services
         if (MobileService.SyncContext.IsInitialized)
           return;
 
-        var path = "test1.db";
-#if __ANDROID__
-        path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), path);
-
-        if (!System.IO.File.Exists(path))
-        {
-          System.IO.File.Create(path).Dispose();
-        }
-#endif
+        var path = "syncstore.db";
         var store = new MobileServiceSQLiteStore(path);
         store.DefineTable<Order>();
         store.DefineTable<Account>();
