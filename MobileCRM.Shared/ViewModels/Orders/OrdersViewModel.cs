@@ -17,6 +17,7 @@ namespace MobileCRM.Shared.ViewModels.Orders
         set;
       }
 
+      public Account Account { get; set; }
       public bool NeedsRefresh { get; set; }
       private bool openOrders;
       private string accountId;

@@ -14,7 +14,7 @@ namespace MobileCRM.Shared.Pages.Accounts
       private OrdersViewModel viewModelOrder;
       private OrdersViewModel viewModelHistory;
 
-      AccountDetailsView2 viewAcctDetails;
+      AccountDetailsView viewAcctDetails;
       AccountOrdersView viewAcctOrders;
       AccountHistoryView viewAcctHistory;
       AccountMapView viewAcctMap;
@@ -47,7 +47,7 @@ namespace MobileCRM.Shared.Pages.Accounts
               viewModelOrder = new OrdersViewModel(true, account.Id) { Navigation = Navigation };
               viewModelHistory = new OrdersViewModel(false, account.Id) { Navigation = Navigation };
 
-              viewAcctDetails = new AccountDetailsView2(viewModelAcct, viewModelHistory);
+              viewAcctDetails = new AccountDetailsView(viewModelAcct, viewModelHistory);
               this.Children.Add(viewAcctDetails);
 
 

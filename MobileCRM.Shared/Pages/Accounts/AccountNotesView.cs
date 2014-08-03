@@ -10,12 +10,12 @@ using Xamarin.Forms;
 
 namespace MobileCRM.Shared.Pages.Accounts
 {
-    public class AccountNotesView2 : BaseView
+    public class AccountNotesView : BaseView
     {
 
         AccountDetailsViewModel viewModel;
 
-        public AccountNotesView2(AccountDetailsViewModel vm)
+        public AccountNotesView(AccountDetailsViewModel vm)
         {
 
             SetBinding(Page.TitleProperty, new Binding("Title"));

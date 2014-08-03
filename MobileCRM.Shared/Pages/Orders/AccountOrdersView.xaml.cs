@@ -25,7 +25,7 @@ namespace MobileCRM.Shared.Pages.Accounts
 
     public void NewOrderClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new NewOrderView2(accountId));
+        Navigation.PushAsync(new NewOrderView(accountId));
     }
 
 
@@ -35,8 +35,8 @@ namespace MobileCRM.Shared.Pages.Accounts
         return;
 
 
-      //Navigation.PushAsync(new AccountOrderDetailsView2(e.Item as Order));
-      Navigation.PushModalAsync(new AccountOrderDetailsView2(e.Item as Order));
+      //Navigation.PushAsync(new AccountOrderDetailsView(e.Item as Order));
+      Navigation.PushModalAsync(new AccountOrderDetailsView(e.Item as Order));
 
       OrdersList.SelectedItem = null;
     }

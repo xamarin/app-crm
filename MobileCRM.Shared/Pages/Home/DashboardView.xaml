@@ -18,11 +18,11 @@
 
         <ActivityIndicator IsRunning = "{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
 
-        <controls:BarChart x:Name="BarChart"  HeightRequest="300" HorizontalOptions="FillAndExpand"/>
+        <controls:BarChart x:Name="BarChart"  HeightRequest="250" HorizontalOptions="FillAndExpand"/>
 
-            <Label Text="Sales by Category" HorizontalOptions="Center" />
+        <Label Text="Sales by Category" HorizontalOptions="Center" />
 
-            <controls:PieChart x:Name="MyPie"  HeightRequest="300" HorizontalOptions="FillAndExpand" />
+         <controls:PieChart x:Name="MyPie"  HeightRequest="250" HorizontalOptions="FillAndExpand" />
 
     </StackLayout>
 

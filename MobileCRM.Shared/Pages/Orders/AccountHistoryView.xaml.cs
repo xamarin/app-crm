@@ -26,7 +26,7 @@ namespace MobileCRM.Shared.Pages.Accounts
       if (e.Item == null)
         return;
 
-      Navigation.PushAsync(new AccountOrderDetailsView2(e.Item as Order) { IsEnabled = false });
+      Navigation.PushAsync(new AccountOrderDetailsView(e.Item as Order) { IsEnabled = false });
 
       OrdersList.SelectedItem = null;
     }

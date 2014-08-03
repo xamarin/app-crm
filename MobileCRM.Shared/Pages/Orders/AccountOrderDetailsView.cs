@@ -12,13 +12,13 @@ using Xamarin.Forms;
 
 namespace MobileCRM.Shared.Pages.Accounts
 {
-    public class AccountOrderDetailsView2 : BaseView
+    public class AccountOrderDetailsView : BaseView
     {
         private OrderDetailsViewModel viewModel;
 
         private CustomControls.SignaturePad sigPad;
 
-        public AccountOrderDetailsView2(Order order)
+        public AccountOrderDetailsView(Order order)
         {
             SetBinding(Page.TitleProperty, new Binding("Title"));
             SetBinding(Page.IconProperty, new Binding("Icon"));

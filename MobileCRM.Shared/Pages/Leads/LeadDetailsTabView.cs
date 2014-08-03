@@ -34,7 +34,7 @@ namespace MobileCRM.Shared.Pages.Leads
             viewModel = new AccountDetailsViewModel(lead) { Navigation = Navigation };
 
             //this.Children.Add(new LeadDetailsView(viewModel)
-            this.Children.Add(new LeadDetailsView2(viewModel)
+            this.Children.Add(new LeadDetailsView(viewModel)
                 {
                     Title = "Company"
                 });

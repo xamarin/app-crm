@@ -10,11 +10,11 @@ using Xamarin.Forms;
 
 namespace MobileCRM.Shared.Pages.Leads
 {
-    public class LeadDetailsView2 : BaseView
+    public class LeadDetailsView : BaseView
     {
         AccountDetailsViewModel viewModel;
 
-        public LeadDetailsView2(AccountDetailsViewModel vm)
+        public LeadDetailsView(AccountDetailsViewModel vm)
         {
 
             SetBinding(Page.TitleProperty, new Binding("Title"));

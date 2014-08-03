@@ -9,11 +9,11 @@ using Xamarin.Forms;
 
 namespace MobileCRM.Shared.Pages.Accounts
 {
-    public class NewOrderView2 : BaseView
+    public class NewOrderView : BaseView
     {
         OrderDetailsViewModel viewModel;
 
-        public NewOrderView2(string accountId)
+        public NewOrderView(string accountId)
         {
             this.BindingContext = viewModel = new OrderDetailsViewModel(Navigation, new Order() { AccountId = accountId });
 

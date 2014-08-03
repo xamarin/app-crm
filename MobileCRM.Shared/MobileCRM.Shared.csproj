@@ -70,12 +70,11 @@
       <DependentUpon>AccountContactView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Accounts\AccountDetailsTabView.cs" />
-    <Compile Include="Pages\Accounts\AccountDetailsView2.cs" />
-    <Compile Include="Pages\Accounts\AccountMapView.cs" />
-    <Compile Include="Pages\Accounts\AccountNotesView.xaml.cs">
-      <DependentUpon>AccountNotesView.xaml</DependentUpon>
+    <Compile Include="Pages\Accounts\AccountDetailsView.xaml.cs">
+      <DependentUpon>AccountDetailsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Accounts\AccountNotesView2.cs" />
+    <Compile Include="Pages\Accounts\AccountMapView.cs" />
+    <Compile Include="Pages\Accounts\AccountNotesView.cs" />
     <Compile Include="Pages\Accounts\AccountsMapView.cs" />
     <Compile Include="Pages\Accounts\AccountsView.xaml.cs">
       <DependentUpon>AccountsView.xaml</DependentUpon>
@@ -98,10 +97,7 @@
     <Compile Include="Pages\Home\MenuView.cs" />
     <Compile Include="Pages\Home\RootView.cs" />
     <Compile Include="Pages\Leads\LeadDetailsTabView.cs" />
-    <Compile Include="Pages\Leads\LeadDetailsView.xaml.cs">
-      <DependentUpon>LeadDetailsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Leads\LeadDetailsView2.cs" />
+    <Compile Include="Pages\Leads\LeadDetailsView.cs" />
     <Compile Include="Pages\Leads\LeadsView.xaml.cs">
       <DependentUpon>LeadsView.xaml</DependentUpon>
     </Compile>
@@ -111,11 +107,11 @@
     <Compile Include="Pages\Orders\AccountHistoryView.xaml.cs">
       <DependentUpon>AccountHistoryView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Orders\AccountOrderDetailsView2.cs" />
+    <Compile Include="Pages\Orders\AccountOrderDetailsView.cs" />
     <Compile Include="Pages\Orders\AccountOrdersView.xaml.cs">
       <DependentUpon>AccountOrdersView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Orders\NewOrderView2.cs" />
+    <Compile Include="Pages\Orders\NewOrderView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AzureService.cs" />
     <Compile Include="ViewModels\Accounts\AccountDetailsViewModel.cs" />
@@ -132,12 +128,6 @@
     <Compile Include="ViewModels\Orders\NewOrderViewModel.cs" />
     <Compile Include="ViewModels\Orders\OrderDetailsViewModel.cs" />
     <Compile Include="ViewModels\Orders\OrdersViewModel.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\Accounts\AccountNotesView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Accounts\AccountsView.xaml">
@@ -159,12 +149,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Home\DashboardView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\Leads\LeadDetailsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -227,6 +211,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Accounts\AccountDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
