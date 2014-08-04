@@ -95,12 +95,14 @@ namespace MobileCRM.Shared.Services
       }
 
 
-      public Task SaveOrderAsync(Order item)
-      {
+      public async Task SaveOrderAsync(Order item)
+      { 
         if (item.Id == null)
-          return orderTable.InsertAsync(item);
+          await orderTable.InsertAsync(item);
+        else 
+          await orderTable.UpdateAsync(item);
 
-        return orderTable.UpdateAsync(item);
+        await SyncOrders();
       }
 
       public async Task DeleteOrderAsync(Order item)
@@ -108,6 +110,7 @@ namespace MobileCRM.Shared.Services
         try
         {
           await orderTable.DeleteAsync(item);
+          await SyncOrders(); ;
         }
         catch (MobileServiceInvalidOperationException ex)
         {
@@ -154,6 +157,8 @@ namespace MobileCRM.Shared.Services
           else
             await accountTable.UpdateAsync(item);
 
+          await SyncAccounts();
+
         }
         catch (MobileServiceInvalidOperationException ex)
         {
@@ -171,6 +176,7 @@ namespace MobileCRM.Shared.Services
         try
         {
           await accountTable.DeleteAsync(item);
+          await SyncAccounts();
         }
         catch (MobileServiceInvalidOperationException ex)
         {
@@ -290,7 +296,7 @@ namespace MobileCRM.Shared.Services
           else
             await contactTable.UpdateAsync(item);
 
-          //await SyncContacts();
+          await SyncContacts();
         }
         catch (MobileServiceInvalidOperationException e)
         {
@@ -303,6 +309,7 @@ namespace MobileCRM.Shared.Services
         try
         {
           await contactTable.DeleteAsync(item);
+          await SyncContacts();
         }
         catch (MobileServiceInvalidOperationException ex)
         {
