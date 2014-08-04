@@ -133,6 +133,7 @@
     <Content Include="lead.png" />
     <Content Include="account.png" />
     <Content Include="contact.png" />
+    <BundleResource Include="menubk.png" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="filter.png" />

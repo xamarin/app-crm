@@ -17,7 +17,9 @@ namespace MobileCRM.Shared.Pages.Home
         this.Title = "menu";
         BindingContext = viewModel = new HomeViewModel();
 
-        BackgroundColor = Helpers.Color.LightGray.ToFormsColor();
+
+        this.BackgroundImage = "menubk.png";
+
 
 
         var label = new ContentView
@@ -25,7 +27,7 @@ namespace MobileCRM.Shared.Pages.Home
           Padding = new Thickness(10, 36, 0, 5),
           Content = new Xamarin.Forms.Label
           {
-            TextColor = Helpers.Color.LightGray.ToFormsColor(),
+            TextColor = Color.White,
             Text = "MENU",
           }
         };
@@ -34,7 +36,7 @@ namespace MobileCRM.Shared.Pages.Home
         Menu = new ListView
         {
           ItemsSource = viewModel.MenuItems,
-          VerticalOptions = LayoutOptions.FillAndExpand,
+          VerticalOptions = LayoutOptions.FillAndExpand,          
           BackgroundColor = Color.Transparent,
         };
 
