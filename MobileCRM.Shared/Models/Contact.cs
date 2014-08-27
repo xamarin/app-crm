@@ -17,6 +17,13 @@ namespace MobileCRM.Shared.Models
         Twitter = LinkedIn = Facebook = Skype = string.Empty;
       }
 
+      public string DisplayContact
+      {
+          get
+          {
+              return FirstName + " " + LastName;
+          }
+      }
 
       [JsonProperty(PropertyName = "firstname")]
       public string FirstName { get; set; }

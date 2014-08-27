@@ -17,7 +17,7 @@
             <TableSection Title="COMPANY INFO">
               <TextCell Text="Company" Detail="{Binding Account.Company}" />
               <TextCell Text="Indusry" Detail="{Binding Account.Industry}" />
-              <TextCell Text="Contact" Detail="{Binding DisplayContact}" />
+              <TextCell Text="Contact" Detail="{Binding Account.DisplayContact}" />
               <TextCell x:Name="PhoneCell" Text="Phone" Detail="{Binding Account.Phone}" />
               <TextCell Text="Address" Detail="{Binding Account.AddressString}" />
             </TableSection>

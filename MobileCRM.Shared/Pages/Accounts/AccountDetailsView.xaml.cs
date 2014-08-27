@@ -20,7 +20,10 @@ namespace MobileCRM.Shared.Pages.Accounts
       InitializeComponent();
       vmOrders.Account = vmAcct.Account;
       this.BindingContext = viewModelOrders = vmOrders;
-     
+
+      this.Icon = "companycard.png";
+      this.Title = "Account";
+
     }
 
     private void PopulateChart()
