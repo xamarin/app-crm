@@ -69,7 +69,6 @@ namespace MobileCRM.Shared.Services
         accountTable = MobileService.GetSyncTable<Account>();
 
         contactTable = MobileService.GetSyncTable<Contact>();
-
       }
 
 #region Orders

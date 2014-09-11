@@ -44,8 +44,11 @@ namespace MobileCRM.iOS.Renderers
             plotModel1.Axes.Add(linearAxis1);
 
             var columnSeries1 = new ColumnSeries();
-            columnSeries1.LabelFormatString = "{0:C0}";
-            columnSeries1.LabelPlacement = LabelPlacement.Inside;
+
+            //STEVEYI: Removed label per Jo Ann's request for cosmetic reasons
+            //columnSeries1.LabelFormatString = "{0:C0}";
+            //columnSeries1.LabelPlacement = LabelPlacement.Inside;
+            
             columnSeries1.StrokeThickness = 1;
             plotModel1.Series.Add(columnSeries1);
 
