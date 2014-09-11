@@ -1624,104 +1624,86 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f050011
 			public const int abc_shareactionprovider_share_with_application = 2131034129;
 			
-			// aapt resource value: 0x7f050034
-			public const int app_name = 2131034164;
-			
-			// aapt resource value: 0x7f050014
-			public const int auth_client_needs_enabling_title = 2131034132;
-			
-			// aapt resource value: 0x7f050015
-			public const int auth_client_needs_installation_title = 2131034133;
-			
-			// aapt resource value: 0x7f050016
-			public const int auth_client_needs_update_title = 2131034134;
-			
-			// aapt resource value: 0x7f050017
-			public const int auth_client_play_services_err_notification_msg = 2131034135;
-			
-			// aapt resource value: 0x7f050018
-			public const int auth_client_requested_by_msg = 2131034136;
-			
-			// aapt resource value: 0x7f050013
-			public const int auth_client_using_bad_version_title = 2131034131;
-			
-			// aapt resource value: 0x7f050024
-			public const int common_google_play_services_enable_button = 2131034148;
-			
-			// aapt resource value: 0x7f050023
-			public const int common_google_play_services_enable_text = 2131034147;
-			
-			// aapt resource value: 0x7f050022
-			public const int common_google_play_services_enable_title = 2131034146;
-			
-			// aapt resource value: 0x7f05001d
-			public const int common_google_play_services_error_notification_requested_by_msg = 2131034141;
-			
-			// aapt resource value: 0x7f050021
-			public const int common_google_play_services_install_button = 2131034145;
-			
-			// aapt resource value: 0x7f05001f
-			public const int common_google_play_services_install_text_phone = 2131034143;
-			
-			// aapt resource value: 0x7f050020
-			public const int common_google_play_services_install_text_tablet = 2131034144;
+			// aapt resource value: 0x7f05002e
+			public const int app_name = 2131034158;
 			
 			// aapt resource value: 0x7f05001e
-			public const int common_google_play_services_install_title = 2131034142;
+			public const int common_google_play_services_enable_button = 2131034142;
 			
-			// aapt resource value: 0x7f05002a
-			public const int common_google_play_services_invalid_account_text = 2131034154;
-			
-			// aapt resource value: 0x7f050029
-			public const int common_google_play_services_invalid_account_title = 2131034153;
+			// aapt resource value: 0x7f05001d
+			public const int common_google_play_services_enable_text = 2131034141;
 			
 			// aapt resource value: 0x7f05001c
-			public const int common_google_play_services_needs_enabling_title = 2131034140;
+			public const int common_google_play_services_enable_title = 2131034140;
 			
-			// aapt resource value: 0x7f050028
-			public const int common_google_play_services_network_error_text = 2131034152;
-			
-			// aapt resource value: 0x7f050027
-			public const int common_google_play_services_network_error_title = 2131034151;
-			
-			// aapt resource value: 0x7f05001a
-			public const int common_google_play_services_notification_needs_installation_title = 2131034138;
+			// aapt resource value: 0x7f050017
+			public const int common_google_play_services_error_notification_requested_by_msg = 2131034135;
 			
 			// aapt resource value: 0x7f05001b
-			public const int common_google_play_services_notification_needs_update_title = 2131034139;
+			public const int common_google_play_services_install_button = 2131034139;
 			
 			// aapt resource value: 0x7f050019
-			public const int common_google_play_services_notification_ticker = 2131034137;
+			public const int common_google_play_services_install_text_phone = 2131034137;
 			
-			// aapt resource value: 0x7f05002b
-			public const int common_google_play_services_unknown_issue = 2131034155;
+			// aapt resource value: 0x7f05001a
+			public const int common_google_play_services_install_text_tablet = 2131034138;
 			
-			// aapt resource value: 0x7f05002e
-			public const int common_google_play_services_unsupported_date_text = 2131034158;
+			// aapt resource value: 0x7f050018
+			public const int common_google_play_services_install_title = 2131034136;
 			
-			// aapt resource value: 0x7f05002d
-			public const int common_google_play_services_unsupported_text = 2131034157;
+			// aapt resource value: 0x7f050024
+			public const int common_google_play_services_invalid_account_text = 2131034148;
 			
-			// aapt resource value: 0x7f05002c
-			public const int common_google_play_services_unsupported_title = 2131034156;
+			// aapt resource value: 0x7f050023
+			public const int common_google_play_services_invalid_account_title = 2131034147;
 			
-			// aapt resource value: 0x7f05002f
-			public const int common_google_play_services_update_button = 2131034159;
+			// aapt resource value: 0x7f050016
+			public const int common_google_play_services_needs_enabling_title = 2131034134;
 			
-			// aapt resource value: 0x7f050026
-			public const int common_google_play_services_update_text = 2131034150;
+			// aapt resource value: 0x7f050022
+			public const int common_google_play_services_network_error_text = 2131034146;
+			
+			// aapt resource value: 0x7f050021
+			public const int common_google_play_services_network_error_title = 2131034145;
+			
+			// aapt resource value: 0x7f050014
+			public const int common_google_play_services_notification_needs_installation_title = 2131034132;
+			
+			// aapt resource value: 0x7f050015
+			public const int common_google_play_services_notification_needs_update_title = 2131034133;
+			
+			// aapt resource value: 0x7f050013
+			public const int common_google_play_services_notification_ticker = 2131034131;
 			
 			// aapt resource value: 0x7f050025
-			public const int common_google_play_services_update_title = 2131034149;
+			public const int common_google_play_services_unknown_issue = 2131034149;
 			
-			// aapt resource value: 0x7f050030
-			public const int common_signin_button_text = 2131034160;
+			// aapt resource value: 0x7f050028
+			public const int common_google_play_services_unsupported_date_text = 2131034152;
 			
-			// aapt resource value: 0x7f050031
-			public const int common_signin_button_text_long = 2131034161;
+			// aapt resource value: 0x7f050027
+			public const int common_google_play_services_unsupported_text = 2131034151;
 			
-			// aapt resource value: 0x7f050033
-			public const int hello = 2131034163;
+			// aapt resource value: 0x7f050026
+			public const int common_google_play_services_unsupported_title = 2131034150;
+			
+			// aapt resource value: 0x7f050029
+			public const int common_google_play_services_update_button = 2131034153;
+			
+			// aapt resource value: 0x7f050020
+			public const int common_google_play_services_update_text = 2131034144;
+			
+			// aapt resource value: 0x7f05001f
+			public const int common_google_play_services_update_title = 2131034143;
+			
+			// aapt resource value: 0x7f05002a
+			public const int common_signin_button_text = 2131034154;
+			
+			// aapt resource value: 0x7f05002b
+			public const int common_signin_button_text_long = 2131034155;
+			
+			// aapt resource value: 0x7f05002d
+			public const int hello = 2131034157;
 			
 			// aapt resource value: 0x7f050002
 			public const int mr_media_route_button_content_description = 2131034114;
@@ -1741,8 +1723,8 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f050001
 			public const int mr_user_route_category_name = 2131034113;
 			
-			// aapt resource value: 0x7f050032
-			public const int wallet_buy_button_place_holder = 2131034162;
+			// aapt resource value: 0x7f05002c
+			public const int wallet_buy_button_place_holder = 2131034156;
 			
 			static String()
 			{
