@@ -123,6 +123,9 @@
     <AssemblyName>MobileCRMiOS</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Calabash">
+      <HintPath>..\Components\calabash-10.0\lib\ios\Calabash.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Mobile">
       <HintPath>..\packages\WindowsAzure.MobileServices.1.3.0-beta\lib\monotouch\Microsoft.WindowsAzure.Mobile.dll</HintPath>
     </Reference>
@@ -245,6 +248,10 @@
       <Visible>False</Visible>
       <Version>1.1</Version>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="calabash">
+      <Visible>False</Visible>
+      <Version>10.0</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="signature-pad">
       <Visible>False</Visible>
       <Version>1.3.3</Version>
@@ -315,6 +322,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\menubk%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\catalog_printer.jpg" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />

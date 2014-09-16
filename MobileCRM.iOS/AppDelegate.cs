@@ -26,6 +26,10 @@ namespace MobileCRM.iOS
         public override bool FinishedLaunching (UIApplication app, NSDictionary options)
         {
 
+#if DEBUG
+            Xamarin.Calabash.Start();
+#endif
+
           Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
           SQLitePCL.CurrentPlatform.Init();
             window = new UIWindow (UIScreen.MainScreen.Bounds);

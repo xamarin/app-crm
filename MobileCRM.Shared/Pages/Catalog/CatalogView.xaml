@@ -14,6 +14,8 @@
       </OnPlatform>
     </StackLayout.BackgroundColor>
 
+    <Image Source="catalog_printer.jpg" />
+    
     <Label Text="Sales Dashboard" Font="Bold, Large" HorizontalOptions="Center" />
     <Label Text="6-Week Sales" HorizontalOptions="Center" />
 
