@@ -81,6 +81,10 @@
     </Compile>
     <Compile Include="Pages\Base\BaseView.cs" />
     <Compile Include="Pages\Base\TabView.cs" />
+    <Compile Include="Pages\Catalog\CatalogCarouselView.cs" />
+    <Compile Include="Pages\Catalog\CatalogView.xaml.cs">
+      <DependentUpon>CatalogView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Contacts\ContactDetailsTabView.cs" />
     <Compile Include="Pages\Contacts\ContactDetailsView.xaml.cs">
       <DependentUpon>ContactDetailsView.xaml</DependentUpon>
@@ -117,6 +121,7 @@
     <Compile Include="ViewModels\Accounts\AccountDetailsViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AccountsViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Catalog\CatalogViewModel.cs" />
     <Compile Include="ViewModels\Contacts\ContactDetailsViewModel.cs" />
     <Compile Include="ViewModels\Contacts\ContactsViewModel.cs" />
     <Compile Include="ViewModels\Home\DashboardViewModel.cs" />
@@ -214,6 +219,13 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Accounts\AccountDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Catalog\CatalogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

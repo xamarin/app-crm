@@ -1,9 +1,12 @@
 ﻿using MobileCRM.Shared.Models;
 using MobileCRM.Shared.Pages.Accounts;
+using MobileCRM.Shared.Pages.Catalog;
 using MobileCRM.Shared.Pages.Base;
 using MobileCRM.Shared.ViewModels.Accounts;
 using MobileCRM.Shared.ViewModels.Contacts;
 using MobileCRM.Shared.ViewModels.Home;
+using MobileCRM.Shared.ViewModels.Catalog;
+
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -67,7 +70,7 @@ namespace MobileCRM.Shared.Pages.Home
             IsPresented = false;
         }
 
-        NavigationPage dashboard, accounts, leads, contacts;
+        NavigationPage dashboard, accounts, leads, contacts, catalog;
         NavigationPage PageForOption (MenuType option)
         {
 
@@ -108,6 +111,15 @@ namespace MobileCRM.Shared.Pages.Home
                 var vm = new ContactsViewModel();
                 contacts = new NavigationPage(new Contacts.ContactsView(vm));
                 return contacts;
+              }
+            case MenuType.Catalog:
+              {
+                  if (catalog != null)
+                      return catalog;
+
+                  //var vm = new CatalogViewModel() { Navigation = Navigation };
+                  catalog = new NavigationPage(new Catalog.CatalogCarouselView());
+                  return catalog;
               }
           }
             

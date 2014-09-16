@@ -19,7 +19,9 @@ namespace MobileCRM.Shared.ViewModels
         Title = "Dashboard",
         MenuType = MenuType.Dashboard,
         Icon = "dashboard.png"
-      }); MenuItems.Add(new MenuItem
+      }); 
+        
+      MenuItems.Add(new MenuItem
       {
         Id = 1,
         Title = "Accounts",
@@ -40,6 +42,15 @@ namespace MobileCRM.Shared.ViewModels
         MenuType = MenuType.Contacts,
         Icon = "contact.png"
       });
+
+      MenuItems.Add(new MenuItem
+          {
+              Id = 4,
+              Title = "Product Catalog",
+              MenuType = MenuType.Catalog,
+              Icon = "contact.png"
+          });
+
     }
 
   }

@@ -9,7 +9,8 @@ namespace MobileCRM.Shared.Models
     Dashboard,
     Accounts,
     Leads,
-    Contacts
+    Contacts,
+    Catalog
   }
 
   public class MenuItem

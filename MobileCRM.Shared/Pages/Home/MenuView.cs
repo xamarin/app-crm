@@ -11,6 +11,7 @@ namespace MobileCRM.Shared.Pages.Home
     {
       public ListView Menu { get; private set; }
       private HomeViewModel viewModel;
+
       public MenuView()
       {
         this.Icon = "slideout.png";

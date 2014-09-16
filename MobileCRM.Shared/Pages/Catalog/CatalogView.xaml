@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+					   x:Class="MobileCRM.Shared.Pages.Catalog.CatalogView">
+
+  <!--<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />-->
+
+
+  <StackLayout Padding="20" Spacing="20">
+    <StackLayout.BackgroundColor>
+      <OnPlatform x:TypeArguments="Color">
+        <OnPlatform.iOS>White</OnPlatform.iOS>
+        <OnPlatform.Android>White</OnPlatform.Android>
+      </OnPlatform>
+    </StackLayout.BackgroundColor>
+
+    <Label Text="Sales Dashboard" Font="Bold, Large" HorizontalOptions="Center" />
+    <Label Text="6-Week Sales" HorizontalOptions="Center" />
+
+
+    <Label Text="Sales by Category" HorizontalOptions="Center" />
+
+
+
+  </StackLayout>
+  
+</ContentPage>
