@@ -48,7 +48,7 @@ namespace MobileCRM.Shared.ViewModels
               Id = 4,
               Title = "Product Catalog",
               MenuType = MenuType.Catalog,
-              Icon = "contact.png"
+              Icon = "productcatalog.png"
           });
 
     }

@@ -63,6 +63,7 @@
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\CatalogItem.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Order.cs" />

@@ -128,13 +128,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="add.png" />
+    <Content Include="catalog_combo.jpg" />
+    <Content Include="catalog_ink.jpg" />
+    <Content Include="catalog_paper.jpg" />
     <Content Include="catalog_printer.jpg" />
+    <Content Include="catalog_scanner.jpg" />
     <Content Include="done.png" />
     <Content Include="dashboard.png" />
     <Content Include="lead.png" />
     <Content Include="account.png" />
     <Content Include="contact.png" />
     <BundleResource Include="menubk.png" />
+    <Content Include="productcatalog.png" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="filter.png" />
