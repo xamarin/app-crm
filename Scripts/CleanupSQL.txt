@@ -1,0 +1,29 @@
+USE [xamarin3crmdemo_db]
+GO
+
+SELECT [id]
+      ,[__createdAt]
+      ,[__updatedAt]
+      ,[__version]
+      ,[is_open]
+      ,[account_id]
+      ,[price]
+      ,[discount]
+      ,[item]
+      ,[item_level]
+      ,[signature_points]
+      ,[order_date]
+      ,[due_date]
+      ,[closed_date]
+  FROM [xamarin3crmdemo].[Order]
+GO
+
+select count (*) FROM [xamarin3crmdemo].[Order] where is_open = 1
+
+select * from [xamarin3crmdemo].[Order] where is_open = 1
+
+delete from [xamarin3crmdemo].[Order] where item = 'Paper' AND is_open = 1
+
+delete from [xamarin3crmdemo].[Order] where __createdAt > '09/18/2014' AND is_open = 1
+
+select count(*) from [xamarin3crmdemo].[Order] where __createdAt > '09/18/2014' AND is_open = 1
