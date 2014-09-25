@@ -43,7 +43,7 @@ namespace MobileCRM.Test
                 timeout: TimeSpan.FromSeconds(longTimeout),
                 postTimeout: TimeSpan.FromSeconds(2)
             );
-            app.Screenshot("Screen shot of the dashboad.");
+            app.Screenshot("Screenshot of the dashboard");
 
             //tap on the menu button
             app.Tap (PlatformQueries.SlideoutMenu);
@@ -52,7 +52,7 @@ namespace MobileCRM.Test
                 timeout: TimeSpan.FromSeconds(longTimeout),
                 postTimeout: TimeSpan.FromSeconds(2)
             );
-            app.Screenshot ("Tapped on the Menu button");
+            app.Screenshot ("Tapped the Menu button");
         }
     }
 }

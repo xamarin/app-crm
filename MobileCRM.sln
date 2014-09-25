@@ -498,7 +498,7 @@ Global
 		{105D08DE-982A-4F39-9FB2-82735CF2F3F1} = {B8AB4E34-5324-4F81-A850-E99C16C02C85}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = MobileCRM.Test.Android\MobileCRM.Test.Android.csproj
+		StartupItem = MobileCRM.Android\MobileCRM.Android.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

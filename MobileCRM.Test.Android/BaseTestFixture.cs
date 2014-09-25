@@ -9,8 +9,8 @@ namespace MobileCRM.Test
     public class BaseTestFixture
     {
         protected static AndroidApp app;
-		private static readonly string apkPath = "../../com.xamarin.Meetum-Signed.apk";
-        private static readonly string keystorePath = @"debug.keystore";
+		private static readonly string apkPath = "../../../com.xamarin.Meetum.apk";
+		private static readonly string keystorePath = @"../../../debug.keystore";
         protected static int longTimeout = 180;
         protected static int shortTimeout = 30;
 
@@ -35,7 +35,7 @@ namespace MobileCRM.Test
                 timeout: TimeSpan.FromSeconds(longTimeout),
                 postTimeout: TimeSpan.FromSeconds(2)
             );
-            app.Screenshot("Screen shot of the dashboad.");
+            app.Screenshot("Dashboard");
 
             //tap on the menu button
             app.Tap (PlatformQueries.SlideoutMenu);
@@ -44,7 +44,7 @@ namespace MobileCRM.Test
                 timeout: TimeSpan.FromSeconds(longTimeout),
                 postTimeout: TimeSpan.FromSeconds(2)
             );
-            app.Screenshot ("Tapped on the Menu button");
+            app.Screenshot ("Tapped the Menu button");
         }
     }
 }
