@@ -9,7 +9,6 @@
     <RootNamespace>MobileCRM.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <NuGetPackageImportStamp>5c31aaad</NuGetPackageImportStamp>
-    <AssemblyName>MobileCRM</AssemblyName>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -33,16 +32,10 @@
     </MtouchExtraArgs>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
     <AssemblyName>MobileCRM</AssemblyName>
-    <MtouchProfiling>False</MtouchProfiling>
-    <MtouchFastDev>False</MtouchFastDev>
-    <MtouchEnableGenericValueTypeSharing>True</MtouchEnableGenericValueTypeSharing>
-    <MtouchUseLlvm>False</MtouchUseLlvm>
-    <MtouchUseThumb>False</MtouchUseThumb>
-    <MtouchUseSGen>False</MtouchUseSGen>
-    <MtouchUseRefCounting>False</MtouchUseRefCounting>
-    <BuildIpa>False</BuildIpa>
-    <IpaMetadata />
-    <IpaPackageName />
+    <IpaMetadata>
+    </IpaMetadata>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -75,18 +68,12 @@
     <MtouchArch>Default, ARMv7</MtouchArch>
     <AssemblyName>MobileCRMiOS</AssemblyName>
     <MtouchSdkVersion>7.1</MtouchSdkVersion>
-    <MtouchLink>SdkOnly</MtouchLink>
-    <MtouchProfiling>False</MtouchProfiling>
-    <MtouchExtraArgs />
-    <MtouchFastDev>False</MtouchFastDev>
-    <MtouchEnableGenericValueTypeSharing>True</MtouchEnableGenericValueTypeSharing>
-    <MtouchUseLlvm>False</MtouchUseLlvm>
-    <MtouchUseThumb>False</MtouchUseThumb>
-    <MtouchUseSGen>False</MtouchUseSGen>
-    <MtouchUseRefCounting>False</MtouchUseRefCounting>
+    <MtouchExtraArgs>
+    </MtouchExtraArgs>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
     <BuildIpa>True</BuildIpa>
-    <IpaMetadata />
+    <IpaMetadata>
+    </IpaMetadata>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -129,7 +116,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Calabash">
-      <HintPath>..\Components\calabash-10.0\lib\ios\Calabash.dll</HintPath>
+      <HintPath>..\Components\calabash-10.2\lib\ios\Calabash.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Mobile">
       <HintPath>..\packages\WindowsAzure.MobileServices.1.3.0-beta\lib\monotouch\Microsoft.WindowsAzure.Mobile.dll</HintPath>
@@ -149,9 +136,6 @@
     <Reference Include="OxyPlot.XamarinIOS">
       <HintPath>..\packages\OxyPlot.XamarinIOS.2014.1.319.1\lib\MonoTouch\OxyPlot.XamarinIOS.dll</HintPath>
     </Reference>
-    <Reference Include="SignaturePad.iOS">
-      <HintPath>..\Components\signature-pad-1.3.3\lib\ios\SignaturePad.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="SQLitePCL">
       <HintPath>..\packages\SQLitePCL.3.8.5.0\lib\MonoTouch\SQLitePCL.dll</HintPath>
     </Reference>
@@ -169,28 +153,26 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
-    <Reference Include="Xamarin.Controls.BarChart.iOS">
-      <HintPath>..\Components\barchart-1.1\lib\ios\Xamarin.Controls.BarChart.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Core, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoTouch10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Maps, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Xamarin.Forms.Maps">
       <HintPath>..\packages\Xamarin.Forms.Maps.1.2.2.6243\lib\MonoTouch10\Xamarin.Forms.Maps.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Maps.iOS, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Xamarin.Forms.Maps.iOS">
       <HintPath>..\packages\Xamarin.Forms.Maps.1.2.2.6243\lib\MonoTouch10\Xamarin.Forms.Maps.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Platform.iOS, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Xamarin.Forms.Platform.iOS">
       <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoTouch10\Xamarin.Forms.Platform.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Xaml, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoTouch10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="SignaturePad.iOS">
+      <HintPath>..\Components\signature-pad-1.3.3\lib\ios\SignaturePad.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Controls.BarChart.iOS">
+      <HintPath>..\Components\barchart-1.1\lib\ios\Xamarin.Controls.BarChart.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -232,7 +214,6 @@
     <Compile Include="Renderers\PieChartRenderer.cs" />
     <Compile Include="Renderers\SignaturePadRenderer.cs" />
   </ItemGroup>
-  <Import Project="..\MobileCRM.Shared\MobileCRM.Shared.projitems" Label="Shared" Condition="Exists('..\MobileCRM.Shared\MobileCRM.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
     <BundleResource Include="Resources\xamarin-icon-simplified.png" />
@@ -252,16 +233,16 @@
   </Target>
   <ItemGroup>
     <XamarinComponentReference Include="barchart">
-      <Visible>False</Visible>
       <Version>1.1</Version>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="calabash">
       <Visible>False</Visible>
-      <Version>10.1</Version>
     </XamarinComponentReference>
     <XamarinComponentReference Include="signature-pad">
-      <Visible>False</Visible>
       <Version>1.3.3</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="calabash">
+      <Version>10.2</Version>
+      <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
@@ -320,7 +301,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileCRM.Shared\MobileCRM.Shared.csproj">
-      <Project>{40d46760-e7fd-4053-ad6b-07dc84d23bed}</Project>
+      <Project>{40D46760-E7FD-4053-AD6B-07DC84D23BED}</Project>
       <Name>MobileCRM.Shared</Name>
     </ProjectReference>
   </ItemGroup>

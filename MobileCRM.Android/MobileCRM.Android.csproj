@@ -22,6 +22,7 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,18 +33,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkSkip />
-    <AndroidLinkMode>None</AndroidLinkMode>
-    <BundleAssemblies>False</BundleAssemblies>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-    <AndroidStoreUncompressedFileExtensions />
-    <MandroidI18n />
-    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
-    <JavaOptions />
-    <MonoDroidExtraArgs />
+    <MonoDroidExtraArgs>
+    </MonoDroidExtraArgs>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -52,24 +45,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GooglePlayServicesLib">
       <HintPath>..\packages\Xamarin.GooglePlayServices.19.0.0\lib\MonoAndroid10\GooglePlayServicesLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Mobile, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WindowsAzure.MobileServices.1.3.0-beta\lib\monoandroid\Microsoft.WindowsAzure.Mobile.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Mobile.Ext, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WindowsAzure.MobileServices.1.3.0-beta\lib\monoandroid\Microsoft.WindowsAzure.Mobile.Ext.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Mobile.SQLiteStore, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WindowsAzure.MobileServices.SQLiteStore.1.0.0-beta\lib\portable-win+net45+wp8+wpa81+monotouch+monoandroid\Microsoft.WindowsAzure.Mobile.SQLiteStore.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Security" />
     <Reference Include="Newtonsoft.Json">
@@ -80,13 +60,6 @@
     </Reference>
     <Reference Include="OxyPlot.XamarinAndroid">
       <HintPath>..\packages\OxyPlot.XamarinAndroid.2014.1.319.1\lib\MonoAndroid\OxyPlot.XamarinAndroid.dll</HintPath>
-    </Reference>
-    <Reference Include="SignaturePad.Android">
-      <HintPath>..\Components\signature-pad-1.3.3\lib\android\SignaturePad.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLitePCL, Version=3.8.5.0, Culture=neutral, PublicKeyToken=bddade01e9c850c5, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SQLitePCL.3.8.5.0\lib\MonoAndroid\SQLitePCL.dll</HintPath>
     </Reference>
     <Reference Include="SQLitePCL.Ext">
       <HintPath>..\packages\SQLitePCL.3.8.5.0\lib\MonoAndroid\SQLitePCL.Ext.dll</HintPath>
@@ -105,33 +78,41 @@
     <Reference Include="Xamarin.Android.Support.v4">
       <HintPath>..\packages\Xamarin.Android.Support.v4.20.0.0.3\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.AppCompat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.WindowsAzure.Mobile">
+      <HintPath>..\packages\WindowsAzure.MobileServices.1.3.0-beta\lib\monoandroid\Microsoft.WindowsAzure.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Mobile.Ext">
+      <HintPath>..\packages\WindowsAzure.MobileServices.1.3.0-beta\lib\monoandroid\Microsoft.WindowsAzure.Mobile.Ext.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Mobile.SQLiteStore">
+      <HintPath>..\packages\WindowsAzure.MobileServices.SQLiteStore.1.0.0-beta\lib\portable-win+net45+wp8+wpa81+monotouch+monoandroid\Microsoft.WindowsAzure.Mobile.SQLiteStore.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCL">
+      <HintPath>..\packages\SQLitePCL.3.8.5.0\lib\MonoAndroid\SQLitePCL.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
       <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.20.0.0\lib\MonoAndroid10\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.MediaRouter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
       <HintPath>..\packages\Xamarin.Android.Support.v7.MediaRouter.20.0.0\lib\MonoAndroid10\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Core, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Maps, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Xamarin.Forms.Maps">
       <HintPath>..\packages\Xamarin.Forms.Maps.1.2.2.6243\lib\MonoAndroid10\Xamarin.Forms.Maps.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Maps.Android, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Xamarin.Forms.Maps.Android">
       <HintPath>..\packages\Xamarin.Forms.Maps.1.2.2.6243\lib\MonoAndroid10\Xamarin.Forms.Maps.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Platform.Android, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Xamarin.Forms.Platform.Android">
       <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Xaml, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.1.2.2.6243\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="SignaturePad.Android">
+      <HintPath>..\Components\signature-pad-1.3.3\lib\android\SignaturePad.Android.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +143,6 @@
     <AndroidResource Include="Resources\drawable\zoom_in.png" />
     <AndroidResource Include="Resources\drawable\slideout.png" />
   </ItemGroup>
-  <Import Project="..\MobileCRM.Shared\MobileCRM.Shared.projitems" Label="Shared" Condition="Exists('..\MobileCRM.Shared\MobileCRM.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\filter.png" />
@@ -195,12 +175,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\contact.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="signature-pad">
-      <Visible>False</Visible>
-      <Version>1.3.3</Version>
-    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\refresh.png" />
@@ -363,7 +337,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileCRM.Shared\MobileCRM.Shared.csproj">
-      <Project>{40d46760-e7fd-4053-ad6b-07dc84d23bed}</Project>
+      <Project>{40D46760-E7FD-4053-AD6B-07DC84D23BED}</Project>
       <Name>MobileCRM.Shared</Name>
     </ProjectReference>
   </ItemGroup>
@@ -432,4 +406,10 @@
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
+  <ItemGroup>
+    <XamarinComponentReference Include="signature-pad">
+      <Version>1.3.3</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
 </Project>
