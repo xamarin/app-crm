@@ -60,6 +60,41 @@ The `Map` control in Windows Phone requires the **ID_Cap_Map** capability to be 
 To set this value in a new Windows Phone app, click the **Properties** folder and double-click the **WMAppManifest.xml** file. Go to the **Capabilities** tab and tick **ID_Cap_Map**.
 
 
+# Testing MobileCRM with Xamarin.UITest
+
+Xamarin-Only docs:
+
+Configuring and installing:
+
+Make sure you have google services on device/emulator.
+
+Installing Google Services in Geny (but for evolve we should use our Android player!):
+
+https://docs.google.com/a/xamarin.com/document/d/10ayBOFA-Qr-c2scS-DC3VP9PB-rPGXpUzyOU9HxRiAE/edit
+
+Building:
+Make sure you sign with the shared debug keystore so maps work in Test Cloud:
+
+When building I did: Select MobileCRM.Android as startup item (I used Debug). Then Project > Publish Android Application . Make sure you use the debug.keystore supplied in the root of the project.
+Password: android
+Alias: androiddebugkey
+Key pass: android
+
+For iOS you should build and .ipa and install on device,  and/or build the .app bundle for simulator and make sure the test can see those.
+
+Submitting to Test Cloud:
+
+Replace [API_KEY] and [DEVICES] below
+
+```
+mono packages/Xamarin.UITest.0.5.0.411-dev/tools/test-cloud.exe submit com.xamarin.Meetum.apk [API_KEY] --devices [DEVICES] --series "master" --locale "en_US" --assembly-dir MobileCRM.Test.Android/bin/Debug --keystore debug.keystore android androiddebugkey android --nunit-xml android.xml
+
+mono packages/Xamarin.UITest.0.5.0.411-dev/tools/test-cloud.exe submit MobileCRMiOS-1.0.ipa [API_KEY] --devices [DEVICES] --series "master" --locale "en_US" --assembly-dir MobileCRM.Test.iOS/bin/Debug --nunit-xml ios.xml --dsym MobileCRM.Test.iOS/MobileCRMiOS.app.dSym --category AccountReview
+```
+
+You can omit the dSym, but I recommend that you collect it and submit to Test Cloud - also makes a nice opportunity to talk about crash analysis in Test Cloud.
+
+
 Authors
 -------
 
