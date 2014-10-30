@@ -27,7 +27,7 @@ namespace MobileCRM.iOS
         {
 
 #if DEBUG
-            Xamarin.Calabash.Start();
+            //Xamarin.Calabash.Start();
 #endif
 
           Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();

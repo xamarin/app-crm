@@ -28,22 +28,20 @@ namespace MobileCRM.Shared.Services
 
       public AzureService()
       {
-
-        //comment back in to enable Azure Mobile Services.
         //MobileService = new MobileServiceClient(
-        //  "https://" + "xamarindemos" + ".azure-mobile.net/",
-        //  "TyohPJmeLEvNnEzTmXfLcrMGGWSgwZ43");
+        //    "https://" + "xamarin3crmdemo" + ".azure-mobile.net/",
+        //    "PNfTdzPtNRKsHrYynemqXBFDLrUipU26");
 
-        MobileService = new MobileServiceClient(
-            "https://" + "xamarin3crmdemo" + ".azure-mobile.net/",
-            "PNfTdzPtNRKsHrYynemqXBFDLrUipU26");
 
+          MobileService = new MobileServiceClient(
+              "https://xamarin3crmdemoprod.azure-mobile.net/",
+              "eeEXCKVPqNtEOIhypkxzgAMUUdEjhN69");
 
       }
 
       public async Task Init()
       {
-        if (MobileService.SyncContext.IsInitialized)
+        if (MobileService.SyncContext.IsInitialized)    
           return;
 
         var path = "syncstore.db";
