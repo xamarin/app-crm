@@ -28,15 +28,9 @@ namespace MobileCRM.Shared.Services
 
       public AzureService()
       {
-        //MobileService = new MobileServiceClient(
-        //    "https://" + "xamarin3crmdemo" + ".azure-mobile.net/",
-        //    "PNfTdzPtNRKsHrYynemqXBFDLrUipU26");
-
-
           MobileService = new MobileServiceClient(
               "https://xamarin3crmdemoprod.azure-mobile.net/",
               "eeEXCKVPqNtEOIhypkxzgAMUUdEjhN69");
-
       }
 
       public async Task Init()
@@ -78,8 +72,13 @@ namespace MobileCRM.Shared.Services
         {
 
           await Init();
-          await MobileService.SyncContext.PushAsync();
-          await orderTable.PullAsync();
+
+
+            //SYI: For public demo, only allow pull, not push.
+            //await MobileService.SyncContext.PushAsync();
+
+
+            await orderTable.PullAsync();
         }
         catch (MobileServiceInvalidOperationException e)
         {
@@ -271,7 +270,10 @@ namespace MobileCRM.Shared.Services
         try
         {
           await Init();
-          await MobileService.SyncContext.PushAsync();
+
+          //SYI: Only pull in public demo
+          //await MobileService.SyncContext.PushAsync();
+
           await contactTable.PullAsync();
         }
         catch(MobileServiceInvalidOperationException e)
@@ -293,7 +295,7 @@ namespace MobileCRM.Shared.Services
           else
             await contactTable.UpdateAsync(item);
 
-          await SyncContacts();
+          //await SyncContacts();
         }
         catch (MobileServiceInvalidOperationException e)
         {
@@ -306,7 +308,7 @@ namespace MobileCRM.Shared.Services
         try
         {
           await contactTable.DeleteAsync(item);
-          await SyncContacts();
+          //await SyncContacts();
         }
         catch (MobileServiceInvalidOperationException ex)
         {
@@ -323,8 +325,7 @@ namespace MobileCRM.Shared.Services
       {
         try
         {
-          await SyncContacts();
-          //return await contactTable.ReadAsync();
+          //await SyncContacts();
 
           //SYI - Sort contacts by last name
           IMobileServiceTableQuery<Contact> query = contactTable.OrderBy(c => c.LastName);

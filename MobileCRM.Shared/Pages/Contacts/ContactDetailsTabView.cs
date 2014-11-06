@@ -41,7 +41,7 @@ namespace MobileCRM.Shared.Pages.Contacts
                 else
                 {
                     viewModel.GoBack();
-                    System.Diagnostics.Debug.WriteLine("cancel changes!");
+                    System.Diagnostics.Debug.WriteLine("ContactDetailsTabView - cancel changes!");
                 }
             }));
 

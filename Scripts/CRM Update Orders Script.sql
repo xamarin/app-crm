@@ -1,17 +1,20 @@
--- ==========================================================
--- Create Stored Procedure Template for Windows Azure SQL Database
--- ==========================================================
+USE [mobilecrm_prod_db]
+GO
+
+/****** Object:  StoredProcedure [xamarin3crmdemoprod].[RefreshOrders]    Script Date: 11/6/2014 1:08:11 AM ******/
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
+
+
 -- =============================================
 -- Author:		Steven Yi
 -- Create date: 10/30/2014
 -- Description:	Run nightly to reset orders and set dates for trailing 6 weeks to render nice sales graphs.
 -- =============================================
-ALTER PROCEDURE xamarin3crmdemoprod.RefreshOrders
-	@OrderCount int OUTPUT
+CREATE PROCEDURE [xamarin3crmdemoprod].[RefreshOrders]
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -188,7 +191,13 @@ BEGIN
 
 
     
-	SELECT @OrderCount = Count(*) FROM [xamarin3crmdemoprod].[Order]
+	SELECT Count(*) AS ChangedRecords FROM [xamarin3crmdemoprod].[Order]
 
+	RETURN 0
+	
 END
+
+
 GO
+
+

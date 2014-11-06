@@ -1,3 +1,7 @@
+exec [xamarin3crmdemoprod].[RefreshOrders]
+
+
+
 select count (*) FROM [xamarin3crmdemo].[Order] 
 
 select count(*) from [xamarin3crmdemo].[Order] where __createdAt > '09/18/2014' AND is_open = 1

@@ -34,12 +34,13 @@ namespace MobileCRM.Shared.Pages.Contacts
 				})
 				});
 
-				ToolbarItems.Add(new ToolbarItem
-				{
-				Icon = "refresh.png",
-				Name = "refresh",
-				Command = ViewModel.LoadContactsCommand
-				});
+				//SYI: Removed - Pull contacts only on initial load.  
+				//ToolbarItems.Add(new ToolbarItem
+				//{
+				//Icon = "refresh.png",
+				//Name = "refresh",
+				//Command = ViewModel.LoadContactsCommand
+				//});
 
 		}
 

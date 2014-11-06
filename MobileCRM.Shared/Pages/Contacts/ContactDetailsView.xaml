@@ -25,11 +25,7 @@
 												<EntryCell Label="Postal Code" Text="{Binding Contact.PostalCode}"  Keyboard="Numeric"/>
 												<EntryCell Label="Country" Text="{Binding Contact.Country}" Keyboard="Text"/>
 
-												<!--<ViewCell>
-														<StackLayout Spacing="30" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-																<Button x:Name="CancelButton" Text="Cancel"  HorizontalOptions="Center"/>
-														</StackLayout>
-												</ViewCell>-->
+
 										</TableSection>
 										
 										
