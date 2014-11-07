@@ -2,13 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 						 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 						 x:Class="MobileCRM.Shared.Pages.Contacts.ContactsView"  
-											 xmlns:controls="clr-namespace:MobileCRM.Shared.CustomControls;assembly=MobileCRM.Shared"
+						 xmlns:controls="clr-namespace:MobileCRM.Shared.CustomControls;assembly=MobileCRM.Shared"
+						 xmlns:local="clr-namespace:MobileCRM.Shared.Helpers;assembly=MobileCRM.Shared"
 						 Title="{Binding Title}"
 											 Icon="{Binding Icon}">
 		<ContentPage.Content>
 				<StackLayout>
 						<ActivityIndicator IsRunning = "{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
-						<ListView x:Name="ContactList" ItemsSource="{Binding Contacts}" ItemTapped="OnItemSelected">
+						<ListView x:Name="ContactList" ItemsSource="{Binding Contacts}" ItemTapped="OnItemSelected" BackgroundColor="{x:Static local:AppColors.CONTENTBKGCOLOR}" >
 								<ListView.ItemTemplate>
 										<DataTemplate>
 												<controls:ListTextCell Text="{Binding DisplayName}" Detail="{Binding Company}"/>
