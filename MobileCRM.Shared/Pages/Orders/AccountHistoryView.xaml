@@ -3,12 +3,17 @@
 					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 					   x:Class="MobileCRM.Shared.Pages.Accounts.AccountHistoryView"
                        xmlns:controls="clr-namespace:MobileCRM.Shared.CustomControls;assembly=MobileCRM.Shared"
+             xmlns:local="clr-namespace:MobileCRM.Shared.Helpers;assembly=MobileCRM.Shared"
 					   Title="{Binding Title}"
-                       Icon="{Binding Icon}">
+             Icon="{Binding Icon}">
+  
+  
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout  BackgroundColor="{x:Static local:AppColors.CONTENTBKGCOLOR}">
             <ActivityIndicator IsRunning = "{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
-            <ListView x:Name="OrdersList" ItemsSource="{Binding Orders}" VerticalOptions="FillAndExpand" ItemTapped="OnItemSelected">
+            <ListView x:Name="OrdersList" ItemsSource="{Binding Orders}" VerticalOptions="FillAndExpand" ItemTapped="OnItemSelected"
+                       BackgroundColor="{x:Static local:AppColors.CONTENTLIGHTBKG}"
+                      >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <controls:ListTextCell Text="{Binding Item}" Detail="{Binding HistoryDescription}"/>
