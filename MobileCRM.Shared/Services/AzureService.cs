@@ -44,6 +44,9 @@ namespace MobileCRM.Shared.Services
         store.DefineTable<Account>();
         store.DefineTable<Contact>();
 
+
+
+
         try
         {
           await MobileService.SyncContext.InitializeAsync(store, new MobileServiceSyncHandler());
@@ -61,6 +64,29 @@ namespace MobileCRM.Shared.Services
         accountTable = MobileService.GetSyncTable<Account>();
 
         contactTable = MobileService.GetSyncTable<Contact>();
+      }
+
+
+      public async Task SeedData()
+      {
+          try
+          {
+              await Init();
+
+              //await orderTable.PurgeAsync();
+              //await accountTable.PurgeAsync();
+              //await contactTable.PurgeAsync();
+
+              await orderTable.PullAsync();
+              await accountTable.PullAsync();
+              await contactTable.PullAsync();
+
+          }
+          catch (Exception exc)
+          {
+              Debug.WriteLine("ERROR AzureService.SeedData(): " + exc.Message);
+          }
+
       }
 
 #region Orders
@@ -98,7 +124,7 @@ namespace MobileCRM.Shared.Services
         else 
           await orderTable.UpdateAsync(item);
 
-        await SyncOrders();
+        //await SyncOrders();
       }
 
       public async Task DeleteOrderAsync(Order item)
@@ -106,7 +132,7 @@ namespace MobileCRM.Shared.Services
         try
         {
           await orderTable.DeleteAsync(item);
-          await SyncOrders(); ;
+          //await SyncOrders(); ;
         }
         catch (MobileServiceInvalidOperationException ex)
         {
@@ -128,7 +154,7 @@ namespace MobileCRM.Shared.Services
         try
         {
           await Init();
-          await MobileService.SyncContext.PushAsync();
+          //await MobileService.SyncContext.PushAsync();
           await accountTable.PullAsync();
         }
         catch (MobileServiceInvalidOperationException e)
@@ -153,7 +179,7 @@ namespace MobileCRM.Shared.Services
           else
             await accountTable.UpdateAsync(item);
 
-          await SyncAccounts();
+          //await SyncAccounts();
 
         }
         catch (MobileServiceInvalidOperationException ex)
@@ -172,7 +198,7 @@ namespace MobileCRM.Shared.Services
         try
         {
           await accountTable.DeleteAsync(item);
-          await SyncAccounts();
+          //await SyncAccounts();
         }
         catch (MobileServiceInvalidOperationException ex)
         {
@@ -189,7 +215,8 @@ namespace MobileCRM.Shared.Services
       {
         try
         {
-          await SyncAccounts();
+          //await SyncAccounts();
+
           return await accountTable.Where(a =>a.IsLead == leads).OrderBy(b => b.Company).ToEnumerableAsync();
         }
         catch (MobileServiceInvalidOperationException ex)
@@ -207,7 +234,8 @@ namespace MobileCRM.Shared.Services
       {
         try
         {
-          await SyncOrders();
+          //await SyncOrders();
+
           return await orderTable.Where(j => j.AccountId == accountId &&
                                          j.IsOpen == true).OrderBy(j => j.DueDate).ToEnumerableAsync();
         }
@@ -226,7 +254,8 @@ namespace MobileCRM.Shared.Services
       {
           try
           {
-              await SyncOrders();
+              //await SyncOrders();
+
               return await orderTable.Where(j => j.AccountId == accountId &&
                                              j.IsOpen == false).OrderByDescending(j => j.ClosedDate).ToEnumerableAsync();
           }
@@ -246,7 +275,8 @@ namespace MobileCRM.Shared.Services
       {
           try
           {
-              await SyncOrders();
+              //await SyncOrders();
+
               return await orderTable.Where(j => j.IsOpen == false).ToEnumerableAsync();
           }
           catch (MobileServiceInvalidOperationException ex)

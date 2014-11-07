@@ -8,6 +8,8 @@ namespace MobileCRM.Shared.Interfaces
 {
     public interface IDataManager
     {
+        Task SeedData();
+
       Task SyncContacts();
       Task SyncAccounts();
       Task SyncOrders();

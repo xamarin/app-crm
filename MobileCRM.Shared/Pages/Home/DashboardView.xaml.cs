@@ -102,7 +102,8 @@ namespace MobileCRM.Shared.Pages.Home
 						return;
 				}
 
-				await ViewModel.ExecuteLoadOrdersCommand();
+        //await ViewModel.ExecuteLoadOrdersCommand();
+        await ViewModel.ExecuteLoadSeedDataCommand();
 
 				this.PopulateBarChart();
 				this.PopulatePieChart();

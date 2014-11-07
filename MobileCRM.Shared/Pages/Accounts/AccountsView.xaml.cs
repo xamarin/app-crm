@@ -20,24 +20,24 @@ namespace MobileCRM.Shared.Pages.Accounts
 
 			this.BindingContext = this.viewModel = viewModel;
 
-			ToolbarItems.Add(new ToolbarItem
-			{
-				Icon = "refresh.png",
-				Name = "refresh",
-				Command = viewModel.LoadAccountsCommand
-			});
+			//ToolbarItems.Add(new ToolbarItem
+			//{
+			//  Icon = "refresh.png",
+			//  Name = "refresh",
+			//  Command = viewModel.LoadAccountsCommand
+			//});
 
 		}
 
 		public void OnItemSelected(object sender, ItemTappedEventArgs e)
 		{
-			    if (e.Item == null)
-				    return;
+					if (e.Item == null)
+						return;
 
-          var page = new AccountDetailsTabView(e.Item as Account);
-			    Navigation.PushAsync(page);
+					var page = new AccountDetailsTabView(e.Item as Account);
+					Navigation.PushAsync(page);
 
-			    ContactList.SelectedItem = null;
+					ContactList.SelectedItem = null;
 
 		}
 

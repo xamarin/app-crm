@@ -62,7 +62,43 @@ namespace MobileCRM.Shared.ViewModels.Home
                 Orders.Add(order);
 
             IsBusy = false;
-
         }
+
+
+
+        private Command loadSeedDataCommand;
+
+        public Command LoadSeedDataCommand
+        {
+            get
+            {
+                return loadSeedDataCommand ??
+                    (loadSeedDataCommand = new Command(async () =>
+                        await ExecuteLoadSeedDataCommand()));
+            }
+        }
+
+        public async Task ExecuteLoadSeedDataCommand()
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            //await dataManager.SyncAccounts();
+            //await dataManager.SyncContacts();
+            //await dataManager.SyncOrders();
+            await dataManager.SeedData();
+
+            IEnumerable<Order> orders = new List<Order>();
+            orders = await dataManager.GetAllAccountOrdersAsync();
+
+            foreach (var order in orders)
+                Orders.Add(order);
+
+            IsBusy = false;
+        }
+
+
     }
 }
