@@ -1,5 +1,6 @@
 ﻿using MobileCRM.Shared.Models;
 using MobileCRM.Shared.ViewModels.Accounts;
+using MobileCRM.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +30,14 @@ namespace MobileCRM.Shared.Pages.Leads
 
         private StackLayout BuildView()
         {
-            Label lblCompany = new Label() { Text = "Company Name: " };
-            Entry entryCompany = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand };
+            this.BackgroundColor = AppColors.CONTENTLIGHTBKG;
+
+            Label lblCompany = new Label() { Text = "Company Name: ", TextColor = AppColors.LABELBLUE };
+            Entry entryCompany = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand, BackgroundColor = AppColors.LABELGRAY };
             entryCompany.SetBinding(Entry.TextProperty, "Account.Company");
 
-            Label lblIndustry = new Label() { Text = "Industry: " };
-            Picker pickerIndustry = new Picker() { HorizontalOptions = LayoutOptions.FillAndExpand };
+            Label lblIndustry = new Label() { Text = "Industry: ", TextColor = AppColors.LABELBLUE };
+            Picker pickerIndustry = new Picker() { HorizontalOptions = LayoutOptions.FillAndExpand, BackgroundColor = AppColors.LABELGRAY };
             
             //Populate Industry Picker
             foreach (var i in Account.IndustryTypes)
@@ -44,12 +47,15 @@ namespace MobileCRM.Shared.Pages.Leads
             pickerIndustry.SetBinding(Picker.SelectedIndexProperty, "IndustryIndex");
 
 
-            Label lblOpptSize = new Label() { Text = "Opportunity Size $: " };
-            Entry entryOpptSize = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric };
+            Label lblOpptSize = new Label() { Text = "Opportunity Size $: ", TextColor = AppColors.LABELBLUE };
+            Entry entryOpptSize = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric, 
+                BackgroundColor = AppColors.LABELGRAY };
             entryOpptSize.SetBinding(Entry.TextProperty, "OpportunitySize");
 
-            Label lblOpptStage = new Label() { Text = "Opportunity Stage: " };
-            Picker pickerOpptStage = new Picker() { HorizontalOptions = LayoutOptions.FillAndExpand };
+            Label lblOpptStage = new Label() { Text = "Opportunity Stage: ", TextColor = AppColors.LABELBLUE };
+           
+            Picker pickerOpptStage = new Picker() { HorizontalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = AppColors.LABELGRAY};
 
             //Populate Oppt Stage Picker
             foreach (var o in Account.OpportunityStages)
