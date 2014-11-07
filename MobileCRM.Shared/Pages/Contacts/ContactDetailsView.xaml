@@ -11,7 +11,7 @@
 				<TableView HasUnevenRows="True" VerticalOptions="FillAndExpand" BackgroundColor="{x:Static local:AppColors.CONTENTLIGHTBKG}" >
 						<TableView.Root>
 								<TableRoot>                 
-										<TableSection>
+										<TableSection Title="Name">
                         <EntryCell Label="Company" Text="{Binding Contact.Company}" Keyboard="Text"
                                    LabelColor="{x:Static local:AppColors.LABELBLUE}"
                                    XAlign="End"
