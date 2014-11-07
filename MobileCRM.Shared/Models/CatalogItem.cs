@@ -26,6 +26,8 @@ namespace MobileCRM.Shared.Models
 
         public int SuggestedPrice { get; set; }
 
+        public string Summary { get; set; }
+
         public string Description { get; set; }
 
 
@@ -41,8 +43,8 @@ namespace MobileCRM.Shared.Models
                         ItemName = ITEM_PAPER,
                         ImageSrc = "catalog_paper.jpg",
                         SuggestedPrice = 200,
-                        Description = "Copy & Print Paper, 8 1/2 x 11, 20 Lb." + Environment.NewLine 
-                            + "Highest quality, brightest whites.  Guaranteed to make TPS reports shine and please the Pointy Haired Boss",
+                        Summary = "Copy & Print Paper, 8 1/2 x 11, 20 Lb.",
+                        Description = "Highest quality, brightest whites. Guaranteed to make TPS reports shine and please the Pointy Haired Boss",
                     };
                     break;
 
@@ -52,8 +54,8 @@ namespace MobileCRM.Shared.Models
                         ItemName = ITEM_PRINTER,
                         ImageSrc = "catalog_printer.jpg",
                         SuggestedPrice = 800,
-                        Description = "Multifunction Laser All-In-One Color Printer." + Environment.NewLine
-                           + "Prints up to 35 pages per minute. 50,000 sheet monthly volume. Compatible with PCs and Macs.",
+                        Summary = "Multifunction Laser All-In-One Color Printer.",
+                        Description = "Prints up to 35 pages per minute. 50,000 sheet monthly volume. Compatible with PCs and Macs.",
                     };
                     break;
 
@@ -63,8 +65,8 @@ namespace MobileCRM.Shared.Models
                         ItemName = ITEM_SCANNER,
                         ImageSrc = "catalog_scanner.jpg",
                         SuggestedPrice = 1500,
-                        Description = "XL9000 Industrial Scanner." + Environment.NewLine
-                            + "Efficient color scanning at 25 pages per minute. Automatic document feeder. Scans non-standard sizes.",
+                        Summary = "XL9000 Industrial Scanner.",
+                        Description =  "Efficient color scanning at 25 pages per minute. Automatic document feeder. Scans non-standard sizes.",
                     };
                     break;
 
@@ -74,8 +76,8 @@ namespace MobileCRM.Shared.Models
                         ItemName = ITEM_INK,
                         ImageSrc = "catalog_ink.jpg",
                         SuggestedPrice = 350,
-                        Description = "Replacement CMYK Inkjet Ink." + Environment.NewLine
-                           + "Compatible with all AP9000 printers. Prints up to 300 pages. Compatible with regular and high-gloss paper stock.",
+                        Summary =  "Replacement CMYK Inkjet Ink.",
+                        Description = "Compatible with all AP9000 printers. Prints up to 300 pages. Compatible with regular and high-gloss paper stock.",
                     };
                     break;
 
@@ -85,8 +87,8 @@ namespace MobileCRM.Shared.Models
                         ItemName = ITEM_COMBO,
                         ImageSrc = "catalog_combo.jpg",
                         SuggestedPrice = 2500,
-                        Description = "All In One Monthly Combo." + Environment.NewLine
-                            + "Unlimited monthly supplies of paper, ink, and scanner and printer maintenance. Not valid for late-night office parties.",
+                        Summary = "All In One Monthly Combo.",
+                        Description = "Unlimited monthly supplies of paper, ink, and scanner and printer maintenance. Not valid for late-night office parties.",
                     };
                     break;
             }

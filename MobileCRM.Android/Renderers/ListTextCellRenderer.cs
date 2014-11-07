@@ -45,14 +45,14 @@ namespace MobileCRMAndroid
             var label = (TextView)((LinearLayout)cell.GetChildAt(1)).GetChildAt(0);
 
 
-            label.SetTextColor(MobileCRM.Shared.Helpers.AppColors.LABELCOLOR.ToAndroid());
+            label.SetTextColor(MobileCRM.Shared.Helpers.AppColors.LABELWHITE.ToAndroid());
 
             
             label.TextSize = Font.SystemFontOfSize(NamedSize.Large).ToScaledPixel();
 
             var secondaryLabel = (TextView)((LinearLayout)cell.GetChildAt(1)).GetChildAt(1);
 
-            secondaryLabel.SetTextColor(MobileCRM.Shared.Helpers.AppColors.LABEL2NDCOLOR.ToAndroid());
+            secondaryLabel.SetTextColor(MobileCRM.Shared.Helpers.AppColors.LABELBLUE.ToAndroid());
            
             secondaryLabel.TextSize = Font.SystemFontOfSize(NamedSize.Medium).ToScaledPixel();
 

@@ -19,10 +19,10 @@ namespace MobileCRM.iOS
             cellView.BackgroundColor = Color.Transparent.ToUIColor();
 
             //cellView.TextLabel.TextColor = Color.FromHex("FFFFFF").ToUIColor();
-            cellView.TextLabel.TextColor = AppColors.LABELCOLOR.ToUIColor();
+            cellView.TextLabel.TextColor = AppColors.LABELWHITE.ToUIColor();
             
             //cellView.DetailTextLabel.TextColor = Color.FromHex("AAAAAA").ToUIColor();
-            cellView.DetailTextLabel.TextColor = AppColors.LABEL2NDCOLOR.ToUIColor();
+            cellView.DetailTextLabel.TextColor = AppColors.LABELBLUE.ToUIColor();
 
             //tv.SeparatorColor = Color.FromHex("444444").ToUIColor();
             tv.SeparatorColor = AppColors.SEPARATOR.ToUIColor();

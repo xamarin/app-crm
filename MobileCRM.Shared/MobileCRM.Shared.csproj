@@ -86,6 +86,9 @@
     <Compile Include="Pages\Catalog\CatalogView.xaml.cs">
       <DependentUpon>CatalogView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Catalog\CatalogView2.xaml.cs">
+      <DependentUpon>CatalogView2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Contacts\ContactDetailsTabView.cs" />
     <Compile Include="Pages\Contacts\ContactDetailsView.xaml.cs">
       <DependentUpon>ContactDetailsView.xaml</DependentUpon>
@@ -224,7 +227,12 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Catalog\CatalogView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Catalog\CatalogView.xaml">
       <SubType>Designer</SubType>

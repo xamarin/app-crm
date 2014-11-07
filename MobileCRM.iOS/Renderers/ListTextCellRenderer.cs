@@ -28,9 +28,9 @@ namespace MobileCRM.iOS.Renderers
       cell.BackgroundColor = Color.Transparent.ToUIColor();
 
 
-      cell.TextLabel.TextColor = AppColors.LABELCOLOR.ToUIColor();
+      cell.TextLabel.TextColor = AppColors.LABELWHITE.ToUIColor();
 
-      cell.DetailTextLabel.TextColor = AppColors.LABEL2NDCOLOR.ToUIColor();
+      cell.DetailTextLabel.TextColor = AppColors.LABELBLUE.ToUIColor();
 
       tv.SeparatorColor = AppColors.SEPARATOR.ToUIColor();
 
