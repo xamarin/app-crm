@@ -1,29 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 						 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-						 x:Class="MobileCRM.Shared.Pages.Contacts.ContactDetailsView">
+						 x:Class="MobileCRM.Shared.Pages.Contacts.ContactDetailsView"
+             xmlns:local="clr-namespace:MobileCRM.Shared.Helpers;assembly=MobileCRM.Shared"
+             >
+  
+  
+  
 	<ContentPage.Content>
-				<TableView HasUnevenRows="True" VerticalOptions="FillAndExpand">
+				<TableView HasUnevenRows="True" VerticalOptions="FillAndExpand" BackgroundColor="{x:Static local:AppColors.CONTENTLIGHTBKG}" >
 						<TableView.Root>
 								<TableRoot>                 
-										<TableSection Title="Name">
-                        <EntryCell Label="Company" Text="{Binding Contact.Company}" Keyboard="Text"/>
-												<EntryCell Label="Title" Text="{Binding Contact.JobTitle}" Keyboard="Text"/>
-												<EntryCell Label="First" Text="{Binding Contact.FirstName}" Keyboard="Text" />
-												<EntryCell Label="Last" Text="{Binding Contact.LastName}" Keyboard="Text"/>
+										<TableSection>
+                        <EntryCell Label="Company" Text="{Binding Contact.Company}" Keyboard="Text"
+                                   LabelColor="{x:Static local:AppColors.LABELBLUE}"
+                                   XAlign="End"
+                                    />
+												<EntryCell Label="Title" Text="{Binding Contact.JobTitle}" Keyboard="Text"
+                                   LabelColor="{x:Static local:AppColors.LABELBLUE}"
+                                   XAlign="End"
+                                    />
+												<EntryCell Label="First" Text="{Binding Contact.FirstName}" Keyboard="Text"
+                                   LabelColor="{x:Static local:AppColors.LABELBLUE}"
+                                   XAlign="End"
+                                    />
+												<EntryCell Label="Last" Text="{Binding Contact.LastName}" Keyboard="Text"
+                                   LabelColor="{x:Static local:AppColors.LABELBLUE}"
+                                   XAlign="End"
+                                    />
 										</TableSection>
 										<TableSection Title ="Contact Details">
-												<EntryCell Label="Phone" Text="{Binding Contact.Phone}" Keyboard="Telephone"/>
-												<EntryCell Label="Email" Text="{Binding Contact.Email}" Keyboard="Email"/>
-												<!--<TextCell x:Name="CallCell"  Text="Call"/>--> <!--PUt in image here-->
-												<!--TODO: Email and Call buttons & functionality-->
+												<EntryCell Label="Phone" Text="{Binding Contact.Phone}" Keyboard="Telephone"
+                                   LabelColor="{x:Static local:AppColors.LABELBLUE}"
+                                   XAlign="End"
+                                    />
+												<EntryCell Label="Email" Text="{Binding Contact.Email}" Keyboard="Email"
+                                   LabelColor="{x:Static local:AppColors.LABELBLUE}"
+                                   XAlign="End"
+                                    />
 										</TableSection>
 										<TableSection Title="Address">
-												<EntryCell Label="Street" Text="{Binding Contact.Street}" Keyboard="Text"/>
-												<EntryCell Label="City" Text ="{Binding Contact.City}" Keyboard="Text"/>
-												<EntryCell Label="State" Text="{Binding Contact.State}" Keyboard="Text"/>
-												<EntryCell Label="Postal Code" Text="{Binding Contact.PostalCode}"  Keyboard="Numeric"/>
-												<EntryCell Label="Country" Text="{Binding Contact.Country}" Keyboard="Text"/>
+												<EntryCell Label="Street" Text="{Binding Contact.Street}" Keyboard="Text"
+                                   LabelColor="{x:Static local:AppColors.LABELBLUE}"
+                                   XAlign="End"
+                                    />
+												<EntryCell Label="City" Text ="{Binding Contact.City}" Keyboard="Text"
+                                   LabelColor="{x:Static local:AppColors.LABELBLUE}"
+                                   XAlign="End"
+                                    />
+												<EntryCell Label="State" Text="{Binding Contact.State}" Keyboard="Text"
+                                   LabelColor="{x:Static local:AppColors.LABELBLUE}"
+                                   XAlign="End"
+                                    />
+												<EntryCell Label="Postal Code" Text="{Binding Contact.PostalCode}"  Keyboard="Numeric"
+                                   LabelColor="{x:Static local:AppColors.LABELBLUE}"
+                                   XAlign="End"
+                                    />
+												<EntryCell Label="Country" Text="{Binding Contact.Country}" Keyboard="Text"
+                                   LabelColor="{x:Static local:AppColors.LABELBLUE}"
+                                   XAlign="End"
+                                    />
 
 
 										</TableSection>

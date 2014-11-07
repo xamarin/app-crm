@@ -13,6 +13,7 @@ namespace MobileCRM.Shared.Helpers
         public static readonly Color BARBKGCOLOR = Color.FromHex("3498DB");
 
         public static readonly Color CONTENTBKGCOLOR = Color.FromHex("1D2A37");
+        public static readonly Color CONTENTLIGHTBKG = Color.FromHex("5F89B3");
         public static readonly Color DARKBLUEBKG = Color.FromHex("141D26");
 
         public static readonly Color LABELWHITE = Color.White;

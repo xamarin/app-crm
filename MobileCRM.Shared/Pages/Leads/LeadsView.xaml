@@ -11,7 +11,8 @@
 		<ContentPage.Content>
 				<StackLayout>
 						<ActivityIndicator IsRunning = "{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
-						<ListView x:Name="LeadsList" ItemsSource="{Binding Leads}" ItemTapped="OnItemSelected" BackgroundColor="{x:Static local:AppColors.CONTENTBKGCOLOR}" >
+						<ListView x:Name="LeadsList" ItemsSource="{Binding Leads}" ItemTapped="OnItemSelected" 
+                      BackgroundColor="{x:Static local:AppColors.CONTENTBKGCOLOR}" >
 								<ListView.ItemTemplate>
 										<DataTemplate>
 												<controls:ListTextCell Text="{Binding Company}" Detail="{Binding CitySt}"/>
