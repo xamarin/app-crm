@@ -57,7 +57,10 @@ namespace MobileCRM.Shared.Pages.Home
 
             var displayPage = PageForOption(option);
 
-            displayPage.BarBackgroundColor = Helpers.Color.Blue.ToFormsColor();
+            //displayPage.BarBackgroundColor = Helpers.Color.Blue.ToFormsColor();
+            displayPage.BarBackgroundColor = Helpers.AppColors.BARBKGCOLOR;
+            
+
             displayPage.BarTextColor = Color.White;
             
              

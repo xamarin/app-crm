@@ -18,10 +18,6 @@ namespace MobileCRM.iOS
     {
         UIWindow window;
 
-        public UIColor ToUIColor(MobileCRM.Shared.Helpers.Color color)
-        {
-          return UIColor.FromRGB((float)color.R, (float)color.G, (float)color.B);
-        }
 
         public override bool FinishedLaunching (UIApplication app, NSDictionary options)
         {

@@ -2,6 +2,7 @@
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
 using MobileCRM.Shared.CustomControls;
+using MobileCRM.Shared;
 using MobileCRMAndroid;
 using Android.Widget;
 using Android.Graphics.Drawables.Shapes;
@@ -21,10 +22,7 @@ namespace MobileCRMAndroid
 {
     public class ListTextCellRenderer : TextCellRenderer
     {
-      public global::Android.Graphics.Color ToAndroidColor(MobileCRM.Shared.Helpers.Color color)
-      {
-        return global::Android.Graphics.Color.Rgb((int)(255 * color.R), (int)(255 * color.G), (int)(255 * color.B));
-      }
+
 
         protected override View GetCellCore (Cell item, View convertView, ViewGroup parent, Context context)
         {
@@ -34,7 +32,9 @@ namespace MobileCRMAndroid
 
             var div = new ShapeDrawable();
             div.SetIntrinsicHeight(1);
-            div.Paint.Set(new Paint { Color =ToAndroidColor( MobileCRM.Shared.Helpers.Color.DarkGray) });
+
+            div.Paint.Set(new Paint { Color = MobileCRM.Shared.Helpers.AppColors.SEPARATOR.ToAndroid() });
+
 
             if (parent is ListView) {
                 ((ListView)parent).Divider = div;
@@ -43,11 +43,17 @@ namespace MobileCRMAndroid
 
 
             var label = (TextView)((LinearLayout)cell.GetChildAt(1)).GetChildAt(0);
-            label.SetTextColor(Color.FromHex("000000").ToAndroid());
+
+
+            label.SetTextColor(MobileCRM.Shared.Helpers.AppColors.LABELCOLOR.ToAndroid());
+
+            
             label.TextSize = Font.SystemFontOfSize(NamedSize.Large).ToScaledPixel();
 
             var secondaryLabel = (TextView)((LinearLayout)cell.GetChildAt(1)).GetChildAt(1);
-            secondaryLabel.SetTextColor(Color.FromHex("738182").ToAndroid());
+
+            secondaryLabel.SetTextColor(MobileCRM.Shared.Helpers.AppColors.LABEL2NDCOLOR.ToAndroid());
+           
             secondaryLabel.TextSize = Font.SystemFontOfSize(NamedSize.Medium).ToScaledPixel();
 
 

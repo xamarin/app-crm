@@ -1,5 +1,6 @@
 using Xamarin.Forms.Platform.iOS;
 using MobileCRM.Shared.CustomControls;
+using MobileCRM.Shared.Helpers;
 using Xamarin.Forms;
 using MonoTouch.UIKit;
 using MobileCRM.iOS;
@@ -16,10 +17,15 @@ namespace MobileCRM.iOS
             var cellView = base.GetCell (item, tv);
 
             cellView.BackgroundColor = Color.Transparent.ToUIColor();
-            cellView.TextLabel.TextColor = Color.FromHex("FFFFFF").ToUIColor();
-            cellView.DetailTextLabel.TextColor = Color.FromHex("AAAAAA").ToUIColor();
 
-            tv.SeparatorColor = Color.FromHex("444444").ToUIColor();
+            //cellView.TextLabel.TextColor = Color.FromHex("FFFFFF").ToUIColor();
+            cellView.TextLabel.TextColor = AppColors.LABELCOLOR.ToUIColor();
+            
+            //cellView.DetailTextLabel.TextColor = Color.FromHex("AAAAAA").ToUIColor();
+            cellView.DetailTextLabel.TextColor = AppColors.LABEL2NDCOLOR.ToUIColor();
+
+            //tv.SeparatorColor = Color.FromHex("444444").ToUIColor();
+            tv.SeparatorColor = AppColors.SEPARATOR.ToUIColor();
 
             return cellView;
         }

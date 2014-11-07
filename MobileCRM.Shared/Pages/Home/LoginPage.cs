@@ -13,7 +13,7 @@ namespace MobileCRM.Shared.Pages
         {
             BindingContext = new LoginViewModel(Navigation);
 
-            BackgroundColor = Helpers.Color.Blue.ToFormsColor();
+            //BackgroundColor = Helpers.Color.Blue.ToFormsColor();
 
             var sig = new MobileCRM.Shared.CustomControls.SignaturePad()
             {

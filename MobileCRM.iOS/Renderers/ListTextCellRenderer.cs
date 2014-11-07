@@ -9,6 +9,7 @@ using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms;
 using MobileCRM.iOS.Renderers;
 using MobileCRM.Shared.CustomControls;
+using MobileCRM.Shared.Helpers;
 
 [assembly: ExportCell(typeof(ListTextCell), typeof(ListTextCellRenderer))]
 
@@ -22,6 +23,16 @@ namespace MobileCRM.iOS.Renderers
       var cell = base.GetCell(item, tv);
 
       cell.Accessory = MonoTouch.UIKit.UITableViewCellAccessory.DisclosureIndicator;
+
+
+      cell.BackgroundColor = Color.Transparent.ToUIColor();
+
+
+      cell.TextLabel.TextColor = AppColors.LABELCOLOR.ToUIColor();
+
+      cell.DetailTextLabel.TextColor = AppColors.LABEL2NDCOLOR.ToUIColor();
+
+      tv.SeparatorColor = AppColors.SEPARATOR.ToUIColor();
 
       return cell;
     }

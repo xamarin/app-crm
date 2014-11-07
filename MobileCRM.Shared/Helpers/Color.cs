@@ -1,30 +1,47 @@
 ﻿using System;
-#if __IOS__
-using MonoTouch.UIKit;
-using MonoTouch.CoreGraphics;
-#endif
+using Xamarin.Forms;
+
+//#if __IOS__
+//using MonoTouch.UIKit;
+//using MonoTouch.CoreGraphics;
+//#endif
 
 namespace MobileCRM.Shared.Helpers
 {
-    public struct Color
+    public static class AppColors
     {
-        public static readonly Color Purple = 0xB455B6;
-        public static readonly Color Blue = 0x3498DB;
-        public static readonly Color DarkBlue = 0x2C3E50;
-        public static readonly Color Green = 0x77D065;
-        public static readonly Color Gray = 0x738182;
-        public static readonly Color LightGray = 0xB4BCBC;
-        public static readonly Color Tan = 0xDAD0C8;
-        public static readonly Color DarkGray = 0x333333;
-        public static readonly Color Tint = 0x5AA09B;
+        public static readonly Color BARBKGCOLOR = Color.FromHex("3498DB");
+
+        public static readonly Color CONTENTBKGCOLOR = Color.FromHex("1D2A37");
+
+        public static readonly Color LABELCOLOR = Color.White;
+
+        public static readonly Color LABEL2NDCOLOR = Color.FromHex("46BBE5");
+
+        public static readonly Color SEPARATOR = Color.FromHex("333333");
+
+    }
+
+
+    public struct ConvertedColor
+    {
+        public static readonly ConvertedColor Purple = 0xB455B6;
+        public static readonly ConvertedColor Blue = 0x3498DB;
+        public static readonly ConvertedColor DarkBlue = 0x2C3E50;
+        public static readonly ConvertedColor Green = 0x77D065;
+        public static readonly ConvertedColor Gray = 0x738182;
+        public static readonly ConvertedColor LightGray = 0xB4BCBC;
+        public static readonly ConvertedColor Tan = 0xDAD0C8;
+        public static readonly ConvertedColor DarkGray = 0x333333;
+        public static readonly ConvertedColor Tint = 0x5AA09B;
 
 
         public double R, G, B;
 
-        public static Color FromHex(int hex)
+        public static ConvertedColor FromHex(int hex)
         {
             Func<int, int> at = offset => (hex >> offset) & 0xFF;
-            return new Color
+            return new ConvertedColor
             {
                 R = at(16) / 255.0,
                 G = at(8) / 255.0,
@@ -32,32 +49,32 @@ namespace MobileCRM.Shared.Helpers
             };
         }
 
-        public static implicit operator Color(int hex)
+        public static implicit operator ConvertedColor(int hex)
         {
             return FromHex(hex);
         }
 
 #if __IOS__
-		public UIColor ToUIColor ()
-		{
-			return UIColor.FromRGB ((float)R, (float)G, (float)B);
-		}
+    public UIColor ToUIColor ()
+    {
+      return UIColor.FromRGB ((float)R, (float)G, (float)B);
+    }
 
-		public static implicit operator UIColor (Color color)
-		{
-			return color.ToUIColor ();
-		}
+    public static implicit operator UIColor (Color color)
+    {
+      return color.ToUIColor ();
+    }
 
-		public static implicit operator CGColor (Color color)
-		{
-			return color.ToUIColor ().CGColor;
-		}
+    public static implicit operator CGColor (Color color)
+    {
+      return color.ToUIColor ().CGColor;
+    }
 #endif
 
-        public Xamarin.Forms.Color ToFormsColor()
-        {
-            return Xamarin.Forms.Color.FromRgb((int)(255 * R), (int)(255 * G), (int)(255 * B));
-        }
+        //public Xamarin.Forms.Color ToFormsColor()
+        //{
+        //    return Xamarin.Forms.Color.FromRgb((int)(255 * R), (int)(255 * G), (int)(255 * B));
+        //}
 
 #if __ANDROID__
         public global::Android.Graphics.Color ToAndroidColor()
@@ -71,4 +88,7 @@ namespace MobileCRM.Shared.Helpers
         }
 #endif
     }
+
+
+
 }
