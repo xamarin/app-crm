@@ -1,6 +1,7 @@
 ﻿using System;
 using MobileCRM.Shared.Models;
 using MobileCRM.Shared.ViewModels.Orders;
+using MobileCRM.Shared.Helpers;
 using MobileCRM.Shared.CustomControls;
 using System;
 using System.Collections.Generic;
@@ -32,41 +33,88 @@ namespace MobileCRM.Shared.Pages.Accounts
 
         private Layout BuildView()
         {
-            Label lblInv = new Label() { Text = "ORDER INVOICE", HorizontalOptions = LayoutOptions.Center, TextColor = Color.Blue };
+            Label lblInv = new Label() { Text = "ORDER INVOICE", 
+                HorizontalOptions = LayoutOptions.FillAndExpand, 
+                XAlign = TextAlignment.Center,
+                TextColor = AppColors.LABELWHITE,
+                BackgroundColor = AppColors.CONTENTBKGCOLOR,
+                Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold),
+            };
+            StackLayout stackHeaderInv = new StackLayout()
+            {
+                Padding = new Thickness(0, 10),
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = AppColors.CONTENTBKGCOLOR,
+            };
+            stackHeaderInv.Children.Add(lblInv);
 
-            Label lblProd = new Label() { Text = "Product:", TextColor = Color.Blue };
-            Label lblProdData = new Label();
+            Label lblProd = new Label() { Text = "Product:", TextColor = AppColors.LABELBLUE, 
+                Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold) };
+            Label lblProdData = new Label() { TextColor = AppColors.LABELWHITE };
             lblProdData.SetBinding(Label.TextProperty, "Order.Item");
 
-            Label lblPrice = new Label() { Text = "Original Price Quote:", TextColor = Color.Blue };
-            Label lblPriceData = new Label() { Text = "$" + viewModel.Price };
+            Label lblPrice = new Label() { Text = "Original Price Quote:", TextColor = AppColors.LABELBLUE,
+                 Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold) };
+            Label lblPriceData = new Label() { Text = "$" + viewModel.Price, TextColor = AppColors.LABELWHITE };
 
 
-            Label lblDateEntered = new Label() { Text = "Date Entered:", TextColor = Color.Blue };
-            Label lblDateEnteredData = new Label() { Text = viewModel.Order.OrderDate.ToString("d") };
+            Label lblDateEntered = new Label() { Text = "Date Entered:", TextColor = AppColors.LABELBLUE,
+                 Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold) };
+            Label lblDateEnteredData = new Label() { Text = viewModel.Order.OrderDate.ToString("d"), TextColor = AppColors.LABELWHITE };
 
 
-            Label lblDateDue = new Label() { Text = "Date Due:", TextColor = Color.Blue };
-            Label lblDateDueData = new Label() { Text = viewModel.Order.DueDate.ToString("d") };
+            Label lblDateDue = new Label()
+            {
+                Text = "Date Due:",
+                TextColor = AppColors.LABELBLUE,
+                Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold)
+            };
+            Label lblDateDueData = new Label() { Text = viewModel.Order.DueDate.ToString("d"), TextColor = AppColors.LABELWHITE };
 
-            
-            Label lblFinalPrice = new Label() { Text = "Final Price:", TextColor = Color.Blue };
-            Entry entryPrice = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric };
+
+            Label lblFinalPrice = new Label()
+            {
+                Text = "Final Price:",
+                TextColor = AppColors.LABELBLUE,
+                Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold)
+            };
+            Entry entryPrice = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric,
+                TextColor = AppColors.LABELWHITE };
             entryPrice.SetBinding(Entry.TextProperty, "Price");
 
             //Closed Order
-            Label lblFinalPriceData = new Label() { Text = viewModel.Price };
+            Label lblFinalPriceData = new Label() { Text = viewModel.Price, TextColor = AppColors.LABELWHITE };
 
 
-            Label lblDateClosed = new Label() { Text = "Date Completed:", TextColor = Color.Blue };
+            Label lblDateClosed = new Label()
+            {
+                Text = "Date Completed:",
+                TextColor = AppColors.LABELBLUE,
+                Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold)
+            };
             DatePicker dateClosed = new DatePicker();
             dateClosed.SetBinding(DatePicker.DateProperty, "Order.ClosedDate");
 
             //Closed order
-            Label lblDateClosedData = new Label() { Text = viewModel.Order.ClosedDate.ToString("d") };
+            Label lblDateClosedData = new Label() { Text = viewModel.Order.ClosedDate.ToString("d"), TextColor = AppColors.LABELWHITE };
 
 
-            Label lblSig = new Label() { Text = "Signature:", TextColor = Color.Blue };
+            Label lblSig = new Label() { Text = "SIGNATURE",
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                XAlign = TextAlignment.Center,
+                TextColor = AppColors.LABELWHITE,
+                BackgroundColor = AppColors.CONTENTBKGCOLOR,
+                Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold),
+            };
+            StackLayout stackHeaderSig = new StackLayout()
+            {
+                Padding = new Thickness(0, 10),
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = AppColors.CONTENTBKGCOLOR,
+            };
+            stackHeaderSig.Children.Add(lblSig);
+
+
             sigPad = new CustomControls.SignaturePad() { HeightRequest = 100, HorizontalOptions = LayoutOptions.FillAndExpand };
             sigPad.SetBinding(CustomControls.SignaturePad.DefaultPointsProperty, "Order.Signature");
             
@@ -74,10 +122,10 @@ namespace MobileCRM.Shared.Pages.Accounts
             sigPad.SetBinding(CustomControls.SignaturePad.IsEnabledProperty, "Order.IsOpen");
 
 
-            Button btnComplete = new Button() { Text = "Order Complete", HorizontalOptions = LayoutOptions.Center };
+            Button btnComplete = new Button() { Text = "Order Complete", HorizontalOptions = LayoutOptions.Center, TextColor = AppColors.LABELWHITE };
             btnComplete.Clicked += btnComplete_Clicked;
 
-            Button btnCancel = new Button() { Text = "Go Back", HorizontalOptions = LayoutOptions.Center };
+            Button btnCancel = new Button() { Text = "Go Back", HorizontalOptions = LayoutOptions.Center, TextColor = AppColors.LABELWHITE };
             btnCancel.Clicked += btnCancel_Clicked;
 
             StackLayout stack;
@@ -88,9 +136,10 @@ namespace MobileCRM.Shared.Pages.Accounts
                 stack = new StackLayout()
                 {
                     Padding = new Thickness(10, 20, 10, 5),
+                    Spacing = 0,
                     Children =  
                     {
-                        lblInv,
+                        stackHeaderInv,
                     
                         lblProd,
                         lblProdData,
@@ -107,7 +156,7 @@ namespace MobileCRM.Shared.Pages.Accounts
                         lblDateClosed,
                         dateClosed,
 
-                        lblSig,
+                        stackHeaderSig,
                         sigPad,
 
                         btnComplete,
@@ -119,29 +168,41 @@ namespace MobileCRM.Shared.Pages.Accounts
             {
                 stack = new StackLayout()
                 {
-                    Padding = 10,
+                    Padding = 0,
+                    Spacing = 0,
                     Children =  
                     {
-                        lblInv,
+                        stackHeaderInv,
+
+                        new StackLayout()
+                        {
+                            Spacing = 5,
+                            Padding = 10,
+                            Children = 
+                            {
+                                 lblProd,
+                                lblProdData,
+
+                                lblPrice,
+                                lblPriceData,
+
+                                lblDateDue,
+                                lblDateDueData,
+
+                                lblFinalPrice,
+                                //entryPrice,
+                                lblFinalPriceData,
+
+                                lblDateClosed,
+                                //dateClosed,
+                                lblDateClosedData,
+                            }
+
+                        },
                     
-                        lblProd,
-                        lblProdData,
+                       
 
-                        lblPrice,
-                        lblPriceData,
-
-                        lblDateDue,
-                        lblDateDueData,
-
-                        lblFinalPrice,
-                        //entryPrice,
-                        lblFinalPriceData,
-
-                        lblDateClosed,
-                        //dateClosed,
-                        lblDateClosedData,
-
-                        lblSig,
+                        stackHeaderSig,
                         sigPad
 
                         //btnComplete              
@@ -149,7 +210,8 @@ namespace MobileCRM.Shared.Pages.Accounts
                 }; 
             } //end else
 
-            
+
+            stack.BackgroundColor = AppColors.CONTENTLIGHTBKG;
 
             return stack;
         }

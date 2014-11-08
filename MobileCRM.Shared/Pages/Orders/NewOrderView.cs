@@ -1,5 +1,6 @@
 ﻿using MobileCRM.Shared.Models;
 using MobileCRM.Shared.ViewModels.Orders;
+using MobileCRM.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,8 +30,10 @@ namespace MobileCRM.Shared.Pages.Accounts
 
         private Layout BuildView()
         {
-            Label lblItem = new Label() { Text = "Product:" };
-            Picker pickerItem = new Picker() { HorizontalOptions = LayoutOptions.FillAndExpand };
+            this.BackgroundColor = AppColors.CONTENTLIGHTBKG;
+
+            Label lblItem = new Label() { Text = "Product:",  TextColor = AppColors.LABELBLUE };
+            Picker pickerItem = new Picker() { HorizontalOptions = LayoutOptions.FillAndExpand, BackgroundColor = AppColors.LABELGRAY };
 
             foreach(var a in Order.ItemTypes)
             {
@@ -38,15 +41,16 @@ namespace MobileCRM.Shared.Pages.Accounts
             }
             pickerItem.SetBinding(Picker.SelectedIndexProperty, "ItemIndex");
 
-            Label lblPrice = new Label() { Text = "Price:" };
-            Entry entryPrice = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric };
+            Label lblPrice = new Label() { Text = "Price:", TextColor = AppColors.LABELBLUE };
+            Entry entryPrice = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric,
+                BackgroundColor = AppColors.LABELGRAY };
             entryPrice.SetBinding(Entry.TextProperty, "Price");
 
-            Label lblDateDue = new Label() { Text = "Date Due:" };
-            DatePicker dateDue = new DatePicker() { HorizontalOptions = LayoutOptions.FillAndExpand };
+            Label lblDateDue = new Label() { Text = "Date Due:", TextColor = AppColors.LABELBLUE };
+            DatePicker dateDue = new DatePicker() { HorizontalOptions = LayoutOptions.FillAndExpand, BackgroundColor = AppColors.LABELGRAY };
             dateDue.SetBinding(DatePicker.DateProperty, "Order.DueDate");
 
-            Button btnOrder = new Button() { Text = "Place Order", HorizontalOptions = LayoutOptions.Center };
+            Button btnOrder = new Button() { Text = "Place Order", HorizontalOptions = LayoutOptions.Center, TextColor = AppColors.LABELWHITE };
             btnOrder.Clicked += btnOrder_Clicked;
 
             StackLayout stack = new StackLayout()
