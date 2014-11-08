@@ -12,6 +12,7 @@ using Android.Widget;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
 using MobileCRMAndroid.Renderers;
+using MobileCRM.Shared.Helpers;
 using System.ComponentModel;
 
 using OxyPlot.XamarinAndroid;
@@ -34,6 +35,8 @@ namespace MobileCRMAndroid.Renderers
                 return;
 
             var plotModel1 = new PlotModel();
+
+            plotModel1.Background = OxyColor.FromHsv(210, 47, 54);
 
 
             plotModel1.LegendBorderThickness = 0;
@@ -86,20 +89,14 @@ namespace MobileCRMAndroid.Renderers
                 categoryAxis1.ActualLabels.Clear();
                 foreach (var item in Element.Items)
                 {
-
-                    //columnSeries1.Items.Add(new ColumnItem(item.Value));
                     columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColors.Orange });
-                    //categoryAxis1.Labels.Add(item.Name);
                     categoryAxis1.ActualLabels.Add(item.Name);
                 }
 
 
-
-                //InvokeOnMainThread(() =>
-                //{
                 Control.Model.InvalidatePlot(true);
                 Control.InvalidatePlot(true);
-                //});
+
             }
         }
 

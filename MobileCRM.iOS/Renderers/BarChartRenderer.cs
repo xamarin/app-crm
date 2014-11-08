@@ -28,6 +28,8 @@ namespace MobileCRM.iOS.Renderers
 
             var plotModel1 = new PlotModel();
 
+            plotModel1.Background = OxyColors.Transparent;
+
 
             plotModel1.LegendBorderThickness = 0;
             plotModel1.LegendOrientation = LegendOrientation.Horizontal;
@@ -43,19 +45,25 @@ namespace MobileCRM.iOS.Renderers
             linearAxis1.MinimumPadding = 0;
             plotModel1.Axes.Add(linearAxis1);
 
-            var columnSeries1 = new ColumnSeries();
+            var columnSeries1 = new ColumnSeries()
+            {
+                StrokeThickness = 0,
+                //FillColor = OxyColor.FromRgb(70, 187, 229),
+            };
 
             //STEVEYI: Removed label per Jo Ann's request for cosmetic reasons
             //columnSeries1.LabelFormatString = "{0:C0}";
             //columnSeries1.LabelPlacement = LabelPlacement.Inside;
-            
-            columnSeries1.StrokeThickness = 1;
+
+
             plotModel1.Series.Add(columnSeries1);
 
             foreach (var item in Element.Items)
             {
 
-                columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColors.Orange });
+                //columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColors.Orange });  OxyColor.FromRgb(70, 187, 229)
+                columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColor.FromRgb(70, 187, 229) }); 
+                //columnSeries1.Items.Add(new ColumnItem(item.Value, -1));
                 categoryAxis1.ActualLabels.Add(item.Name);
             }
 
@@ -78,10 +86,12 @@ namespace MobileCRM.iOS.Renderers
                 columnSeries1.Items.Clear();
                 categoryAxis1.Labels.Clear();
                 categoryAxis1.ActualLabels.Clear();
+
+
                 foreach (var item in Element.Items)
                 {
 
-                    columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColors.Orange });
+                    columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColor.FromRgb(70, 187, 229) });
                     categoryAxis1.ActualLabels.Add(item.Name);
                 }
 
