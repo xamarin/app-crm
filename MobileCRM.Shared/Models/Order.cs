@@ -7,6 +7,12 @@ namespace MobileCRM.Shared.Models
 {
     public class Order : BaseModel
     {
+        public static string COMBO = "Combo";
+        public static string PAPER = "Paper";
+        public static string INK = "Ink";
+        public static string PRINTER = "Printer";
+        public static string SCANNER = "Scanner";
+
       public Order()
         : base()
       {
@@ -67,7 +73,8 @@ namespace MobileCRM.Shared.Models
       }
 
       [JsonIgnore]
-      public static string[] ItemTypes = new string[] { "Paper", "Ink", "Printer", "Scanner", "Combo" };
+      //public static string[] ItemTypes = new string[] { "Paper", "Ink", "Printer", "Scanner", "Combo" };
+      public static string[] ItemTypes = new string[] { PAPER, INK, PRINTER, SCANNER, COMBO };
 
 
       [JsonIgnore]

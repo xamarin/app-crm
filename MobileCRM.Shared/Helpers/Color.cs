@@ -20,7 +20,7 @@ namespace MobileCRM.Shared.Helpers
         public static readonly Color LABELGRAY = Color.FromHex("B4BCBC");
         public static readonly Color LABELBLUE = Color.FromHex("46BBE5");
 
-        public static readonly Color SEPARATOR = Color.FromHex("333333");
+        public static readonly Color SEPARATOR = Color.FromHex("4A4A4A");
 
     }
 

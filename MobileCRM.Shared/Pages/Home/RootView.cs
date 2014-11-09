@@ -20,6 +20,9 @@ namespace MobileCRM.Shared.Pages.Home
         public RootView ()
         {
           this.Title = "Mobile CRM";
+
+          this.BackgroundImage = "menubk.png";
+
             var optionsPage = new MenuView ();
 
             optionsPage.Menu.ItemSelected += (sender, e) =>
@@ -57,10 +60,8 @@ namespace MobileCRM.Shared.Pages.Home
 
             var displayPage = PageForOption(option);
 
-            //displayPage.BarBackgroundColor = Helpers.Color.Blue.ToFormsColor();
-            displayPage.BarBackgroundColor = Helpers.AppColors.BARBKGCOLOR;
-            
 
+            displayPage.BarBackgroundColor = Helpers.AppColors.CONTENTBKGCOLOR;
             displayPage.BarTextColor = Color.White;
             
              

@@ -1,30 +1,86 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-					   x:Class="MobileCRM.Shared.Pages.Home.DashboardView"
-                       xmlns:controls="clr-namespace:MobileCRM.Shared.CustomControls;assembly=MobileCRM.Shared"
-                       Title ="Mobile CRM">
-    <ScrollView>
-	 <StackLayout Padding="20" Spacing="20">
-        <StackLayout.BackgroundColor>
-            <OnPlatform x:TypeArguments="Color">
-                <OnPlatform.iOS>White</OnPlatform.iOS>
-                <OnPlatform.Android>White</OnPlatform.Android>
-            </OnPlatform>
-        </StackLayout.BackgroundColor>
+						 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+						 x:Class="MobileCRM.Shared.Pages.Home.DashboardView"
+						 xmlns:controls="clr-namespace:MobileCRM.Shared.CustomControls;assembly=MobileCRM.Shared"
+             xmlns:local="clr-namespace:MobileCRM.Shared.Helpers;assembly=MobileCRM.Shared"
+						 Title="{Binding Title}"
+						 Icon="{Binding Icon}"
+             BackgroundImage="menubk.png"
+              >
+	
+		<ScrollView>
+			
+		<StackLayout Padding="0" Spacing="0">
 
-        <Label Text="Sales Dashboard" Font="Bold, Large" HorizontalOptions="Center" />
-        <Label Text="6-Week Sales" HorizontalOptions="Center" />
+        <StackLayout Padding="5, 10, 5, 5">
+            <ActivityIndicator IsRunning = "{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+				    <Label Text="6-Week Sales" Font="Bold" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELBLUE}" />
+				    <controls:BarChart x:Name="BarChart"  HeightRequest="250" HorizontalOptions="FillAndExpand"/>
+         </StackLayout>
+      
+        <StackLayout Padding="5, 10, 5, 5" BackgroundColor="{x:Static local:AppColors.CONTENTBKGCOLOR}">
+				   <Label Text="Sales by Category" Font="Bold" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELBLUE}" />
+				   
+         
+            
+           	<StackLayout Padding="5,5,5,5" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+				      <Label Text="{Binding ComboSalesPct}" Font="Bold, Large" HorizontalOptions="StartAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+				      <Label Text="Combo" Font="Bold" HorizontalOptions="EndAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+			      </StackLayout> 
+          
+          <BoxView Color="{x:Static local:AppColors.SEPARATOR}" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+            
+            <StackLayout Padding="5,5,5,5" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+				      <Label Text="{Binding InkSalesPct}" Font="Bold, Large" HorizontalOptions="StartAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+				      <Label Text="Ink" Font="Bold" HorizontalOptions="EndAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+			      </StackLayout> 
+      
+        
+         <BoxView Color="{x:Static local:AppColors.SEPARATOR}" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+            
+            <StackLayout Padding="5,5,5,5" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+				      <Label Text="{Binding PaperSalesPct}" Font="Bold, Large" HorizontalOptions="StartAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+				      <Label Text="Paper" Font="Bold" HorizontalOptions="EndAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+			      </StackLayout> 
+
+         <BoxView Color="{x:Static local:AppColors.SEPARATOR}" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+            
+            <StackLayout Padding="5,5,5,5" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+				      <Label Text="{Binding PrinterSalesPct}" Font="Bold, Large" HorizontalOptions="StartAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+				      <Label Text="Printer" Font="Bold" HorizontalOptions="EndAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+			      </StackLayout>   
+        
+         <BoxView Color="{x:Static local:AppColors.SEPARATOR}" HeightRequest="1" HorizontalOptions="FillAndExpand" />
+            
+            <StackLayout Padding="5,5,5,5" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+				      <Label Text="{Binding ScannerSalesPct}" Font="Bold, Large" HorizontalOptions="StartAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+				      <Label Text="Scanner" Font="Bold" HorizontalOptions="EndAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+			      </StackLayout>     
+        
+      
+        </StackLayout>  
+      
+		</StackLayout>
+      
+    
+
+      <!--ORIGINAL-->
+		<!--<StackLayout Padding="20" Spacing="20" >
 
         <ActivityIndicator IsRunning = "{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
 
-        <controls:BarChart x:Name="BarChart"  HeightRequest="250" HorizontalOptions="FillAndExpand"/>
+				<Label Text="6-Week Sales" Font="Bold, Large" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELWHITE}" />
 
-        <Label Text="Sales by Category" HorizontalOptions="Center" />
+				<controls:BarChart x:Name="BarChart"  HeightRequest="250" HorizontalOptions="FillAndExpand"/>
 
-         <controls:PieChart x:Name="MyPie"  HeightRequest="250" HorizontalOptions="FillAndExpand" />
+				<Label Text="Sales by Category" HorizontalOptions="Center" />
 
-    </StackLayout>
+				 <controls:PieChart x:Name="MyPie"  HeightRequest="250" HorizontalOptions="FillAndExpand" />
 
-    </ScrollView>
+		</StackLayout>-->
+
+
+
+		</ScrollView>
 </ContentPage>

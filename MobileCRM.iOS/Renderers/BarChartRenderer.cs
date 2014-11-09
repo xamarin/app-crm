@@ -18,8 +18,10 @@ namespace MobileCRM.iOS.Renderers
 {
 
 
-        public class BarChartRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.BarChart, PlotView>
+    public class BarChartRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.BarChart, PlotView>
     {
+        private static OxyColor FILLCOLOR = OxyColor.FromRgb(180, 188, 188);
+
         protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.Shared.CustomControls.BarChart> e)
         {
             base.OnElementChanged(e);
@@ -62,7 +64,7 @@ namespace MobileCRM.iOS.Renderers
             foreach (var item in Element.Items)
             {
 
-                columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColor.FromRgb(70, 187, 229) }); 
+                columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = FILLCOLOR }); 
                 categoryAxis1.ActualLabels.Add(item.Name);
             }
 
@@ -90,7 +92,7 @@ namespace MobileCRM.iOS.Renderers
                 foreach (var item in Element.Items)
                 {
 
-                    columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColor.FromRgb(70, 187, 229) });
+                    columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = FILLCOLOR });
                     categoryAxis1.ActualLabels.Add(item.Name);
                 }
 

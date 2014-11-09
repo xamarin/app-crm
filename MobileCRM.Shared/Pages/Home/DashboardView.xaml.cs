@@ -25,15 +25,15 @@ namespace MobileCRM.Shared.Pages.Home
 
 				this.BindingContext = vm;
 
-				var items = new List<BarItem>();
-				items.Add(new BarItem { Name = "a", Value = 10 });
-				items.Add(new BarItem { Name = "b", Value = 15 });
-				items.Add(new BarItem { Name = "c", Value = 20 });
-				items.Add(new BarItem { Name = "d", Value = 5 });
-				items.Add(new BarItem { Name = "e", Value = 14 });
+        //var items = new List<BarItem>();
+        //items.Add(new BarItem { Name = "a", Value = 10 });
+        //items.Add(new BarItem { Name = "b", Value = 15 });
+        //items.Add(new BarItem { Name = "c", Value = 20 });
+        //items.Add(new BarItem { Name = "d", Value = 5 });
+        //items.Add(new BarItem { Name = "e", Value = 14 });
 				//Chart.Items = items;
 
-				MyPie.Items = items;
+        //MyPie.Items = items;
 		}
 
 
@@ -67,29 +67,29 @@ namespace MobileCRM.Shared.Pages.Home
 		}
 
 
-		private async void PopulatePieChart()
-		{
-				try
-				{
+    //private async void PopulatePieChart()
+    //{
+    //    try
+    //    {
 
-						if (ViewModel.Orders.Count() > 0)
-						{
-								var orderedData = (from data in barData.CategoryData
-																	 select new BarItem
-																	 {
-																			 Name = data.Category,
-																			 Value = Convert.ToInt32(data.Amount)
-																	 }).ToList();
+    //        if (ViewModel.Orders.Count() > 0)
+    //        {
+    //            var orderedData = (from data in barData.CategoryData
+    //                               select new BarItem
+    //                               {
+    //                                   Name = data.Category,
+    //                                   Value = Convert.ToInt32(data.Amount)
+    //                               }).ToList();
 
-								MyPie.Items = orderedData;
-						} //end if
+    //            MyPie.Items = orderedData;
+    //        } //end if
 
-				}
-				catch (Exception exc)
-				{
-						System.Diagnostics.Debug.WriteLine("EXCEPTION: DashboardView.PopulatePieChart(): " + exc.Message + "  |  " + exc.StackTrace);
-				}
-		}
+    //    }
+    //    catch (Exception exc)
+    //    {
+    //        System.Diagnostics.Debug.WriteLine("EXCEPTION: DashboardView.PopulatePieChart(): " + exc.Message + "  |  " + exc.StackTrace);
+    //    }
+    //}
 
 
 
@@ -106,7 +106,7 @@ namespace MobileCRM.Shared.Pages.Home
         await ViewModel.ExecuteLoadSeedDataCommand();
 
 				this.PopulateBarChart();
-				this.PopulatePieChart();
+        //this.PopulatePieChart();
 
 				ViewModel.IsInitialized = true;
 
