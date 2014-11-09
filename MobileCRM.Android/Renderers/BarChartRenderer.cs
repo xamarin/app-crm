@@ -36,7 +36,8 @@ namespace MobileCRMAndroid.Renderers
 
             var plotModel1 = new PlotModel();
 
-            plotModel1.Background = OxyColor.FromHsv(210, 47, 54);
+            plotModel1.Background = OxyColors.Transparent;
+            plotModel1.LegendTextColor = OxyColor.FromRgb(180, 188, 188);
 
 
             plotModel1.LegendBorderThickness = 0;
@@ -53,7 +54,11 @@ namespace MobileCRMAndroid.Renderers
             linearAxis1.MinimumPadding = 0;
             plotModel1.Axes.Add(linearAxis1);
 
-            var columnSeries1 = new ColumnSeries();
+            var columnSeries1 = new ColumnSeries()
+            {
+                StrokeThickness = 0,
+                StrokeColor = OxyColors.Transparent,
+            };
 
             //STEVEYI: Removed labels for cosmetic reasons
             //columnSeries1.LabelFormatString = "{0}";
@@ -65,7 +70,7 @@ namespace MobileCRMAndroid.Renderers
             foreach (var item in Element.Items)
             {
 
-                columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColors.Orange });
+                columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColor.FromRgb(70, 187, 229) });
                 categoryAxis1.ActualLabels.Add(item.Name);
             }
 
@@ -89,7 +94,9 @@ namespace MobileCRMAndroid.Renderers
                 categoryAxis1.ActualLabels.Clear();
                 foreach (var item in Element.Items)
                 {
-                    columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColors.Orange });
+                    columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { 
+                        Color = OxyColor.FromRgb(70, 187, 229),
+                    });
                     categoryAxis1.ActualLabels.Add(item.Name);
                 }
 

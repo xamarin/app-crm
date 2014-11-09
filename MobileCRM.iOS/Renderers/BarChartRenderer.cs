@@ -28,8 +28,8 @@ namespace MobileCRM.iOS.Renderers
 
             var plotModel1 = new PlotModel();
 
+            //Set Color of chart
             plotModel1.Background = OxyColors.Transparent;
-
 
             plotModel1.LegendBorderThickness = 0;
             plotModel1.LegendOrientation = LegendOrientation.Horizontal;
@@ -48,10 +48,11 @@ namespace MobileCRM.iOS.Renderers
             var columnSeries1 = new ColumnSeries()
             {
                 StrokeThickness = 0,
-                //FillColor = OxyColor.FromRgb(70, 187, 229),
             };
 
-            //STEVEYI: Removed label per Jo Ann's request for cosmetic reasons
+
+
+            //SYI: Removed label for cosmetic reasons
             //columnSeries1.LabelFormatString = "{0:C0}";
             //columnSeries1.LabelPlacement = LabelPlacement.Inside;
 
@@ -61,9 +62,7 @@ namespace MobileCRM.iOS.Renderers
             foreach (var item in Element.Items)
             {
 
-                //columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColors.Orange });  OxyColor.FromRgb(70, 187, 229)
                 columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColor.FromRgb(70, 187, 229) }); 
-                //columnSeries1.Items.Add(new ColumnItem(item.Value, -1));
                 categoryAxis1.ActualLabels.Add(item.Name);
             }
 
