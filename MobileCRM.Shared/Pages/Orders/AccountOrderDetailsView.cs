@@ -79,7 +79,7 @@ namespace MobileCRM.Shared.Pages.Accounts
                 Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold)
             };
             Entry entryPrice = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric,
-                TextColor = AppColors.LABELWHITE };
+                BackgroundColor = AppColors.LABELGRAY};
             entryPrice.SetBinding(Entry.TextProperty, "Price");
 
             //Closed Order
@@ -93,6 +93,7 @@ namespace MobileCRM.Shared.Pages.Accounts
                 Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold)
             };
             DatePicker dateClosed = new DatePicker();
+            dateClosed.BackgroundColor = AppColors.LABELGRAY;
             dateClosed.SetBinding(DatePicker.DateProperty, "Order.ClosedDate");
 
             //Closed order
@@ -135,26 +136,37 @@ namespace MobileCRM.Shared.Pages.Accounts
             {
                 stack = new StackLayout()
                 {
-                    Padding = new Thickness(10, 20, 10, 5),
+                    Padding = 0,
                     Spacing = 0,
                     Children =  
                     {
                         stackHeaderInv,
                     
-                        lblProd,
-                        lblProdData,
+                        new StackLayout()
+                        {
+                            Spacing = 5,
+                            Padding = 10,
+                            Children = 
+                            {
+                                lblProd,
+                                lblProdData,
 
-                        lblPrice,
-                        lblPriceData,
+                                lblPrice,
+                                lblPriceData,
 
-                        lblDateDue,
-                        lblDateDueData,
+                                lblDateDue,
+                                lblDateDueData,
 
-                        lblFinalPrice,
-                        entryPrice,
+                                lblFinalPrice,
+                                entryPrice,
 
-                        lblDateClosed,
-                        dateClosed,
+                                lblDateClosed,
+                                dateClosed,
+
+                            }
+                        },
+
+                       
 
                         stackHeaderSig,
                         sigPad,

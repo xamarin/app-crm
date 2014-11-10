@@ -38,12 +38,12 @@ namespace MobileCRM.Shared.Pages.Leads
 				})
 			});
 
-			ToolbarItems.Add(new ToolbarItem
-			{
-				Icon = "refresh.png",
-				Name = "refresh",
-				Command = ViewModel.LoadLeadsCommand
-			});
+      //ToolbarItems.Add(new ToolbarItem
+      //{
+      //  Icon = "refresh.png",
+      //  Name = "refresh",
+      //  Command = ViewModel.LoadLeadsCommand
+      //});
 
 		}
 
