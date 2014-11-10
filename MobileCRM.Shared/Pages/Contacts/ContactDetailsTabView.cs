@@ -31,6 +31,7 @@ namespace MobileCRM.Shared.Pages.Contacts
 
             this.Children.Add(new ContactMapView(viewModel) { Title = "Map" });
 
+
             ToolbarItems.Add(new ToolbarItem("Done", Device.OnPlatform<string>(null, null, "done.png"),  async () =>
             {
                 var confirmed = await DisplayAlert("Unsaved Changes", "Save changes?", "Save", "Discard");
