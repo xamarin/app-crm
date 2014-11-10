@@ -133,7 +133,6 @@
     <Content Include="catalog_paper.jpg" />
     <Content Include="catalog_printer.jpg" />
     <Content Include="catalog_scanner.jpg" />
-    <Content Include="done.png" />
     <Content Include="dashboard.png" />
     <Content Include="lead.png" />
     <Content Include="account.png" />
@@ -144,6 +143,7 @@
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="filter.png" />
     <Content Include="refresh.png" />
+    <Content Include="save.png" />
     <Content Include="slideout.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -6,17 +6,22 @@ using System.Text;
 using Xamarin.Forms.Platform.WinPhone;
 using Xamarin.Forms;
 using MobileCRM.WindowsPhone.Renderers;
+using MobileCRM.Shared.Helpers;
 using System.ComponentModel;
 using OxyPlot.WP8;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+
+
 [assembly: ExportRenderer(typeof(MobileCRM.Shared.CustomControls.BarChart), typeof(BarChartRenderer))]
 namespace MobileCRM.WindowsPhone.Renderers
 {
 
   public class BarChartRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.BarChart, PlotView>
   {
+      private static OxyColor FILLCOLOR = OxyColor.FromRgb(180, 188, 188);
+
     protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.Shared.CustomControls.BarChart> e)
     {
       base.OnElementChanged(e);
@@ -24,6 +29,8 @@ namespace MobileCRM.WindowsPhone.Renderers
         return;
 
       var plotModel1 = new PlotModel();
+
+      plotModel1.Background = OxyColors.Transparent;
 
 
       plotModel1.LegendBorderThickness = 0;
@@ -55,15 +62,15 @@ namespace MobileCRM.WindowsPhone.Renderers
       var columnSeries1 = new ColumnSeries();
       columnSeries1.LabelFormatString = "{0}";
       columnSeries1.LabelPlacement = LabelPlacement.Inside;
-      columnSeries1.StrokeThickness = 1;
+      columnSeries1.StrokeThickness = 0;
       columnSeries1.TextColor = OxyColors.White;
-      columnSeries1.StrokeColor = OxyColors.White;
+      columnSeries1.StrokeColor = OxyColors.Transparent;
       plotModel1.Series.Add(columnSeries1);
 
       foreach (var item in Element.Items)
       {
 
-        columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColors.Orange });
+        columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = FILLCOLOR });
         categoryAxis1.ActualLabels.Add(item.Name);
       }
 
@@ -90,7 +97,7 @@ namespace MobileCRM.WindowsPhone.Renderers
         {
 
           //columnSeries1.Items.Add(new ColumnItem(item.Value));
-          columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = OxyColors.Orange });
+          columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = FILLCOLOR });
           //categoryAxis1.Labels.Add(item.Name);
           categoryAxis1.ActualLabels.Add(item.Name);
         }
