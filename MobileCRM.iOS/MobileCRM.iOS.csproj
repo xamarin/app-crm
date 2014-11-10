@@ -197,7 +197,6 @@
     <BundleResource Include="Resources\slideout%402x.png" />
     <BundleResource Include="Resources\zoom_in.png" />
     <BundleResource Include="Resources\zoom_out.png" />
-    <BundleResource Include="Resources\filter.png" />
     <BundleResource Include="Resources\Default-Portrait.png" />
     <BundleResource Include="Resources\Default-Portrait%402x.png" />
     <BundleResource Include="Resources\contact.png" />
@@ -225,9 +224,6 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
     <BundleResource Include="Resources\xamarin-icon-simplified.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\filter%402x.png" />
   </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -352,6 +348,12 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\icon-76.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\save%402x.png" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

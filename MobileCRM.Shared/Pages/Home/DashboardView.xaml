@@ -62,23 +62,7 @@
         </StackLayout>  
       
 		</StackLayout>
-      
-    
 
-      <!--ORIGINAL-->
-		<!--<StackLayout Padding="20" Spacing="20" >
-
-        <ActivityIndicator IsRunning = "{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
-
-				<Label Text="6-Week Sales" Font="Bold, Large" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELWHITE}" />
-
-				<controls:BarChart x:Name="BarChart"  HeightRequest="250" HorizontalOptions="FillAndExpand"/>
-
-				<Label Text="Sales by Category" HorizontalOptions="Center" />
-
-				 <controls:PieChart x:Name="MyPie"  HeightRequest="250" HorizontalOptions="FillAndExpand" />
-
-		</StackLayout>-->
 
 
 
