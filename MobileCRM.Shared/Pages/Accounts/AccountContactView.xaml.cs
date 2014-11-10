@@ -19,7 +19,7 @@ namespace MobileCRM.Shared.Pages.Accounts
 				SetBinding(Page.TitleProperty, new Binding("Title"));
         //SetBinding(Page.IconProperty, new Binding("Icon"));
 
-        this.Icon = "contactcard.png";
+        this.Icon = "contact.png";
 
 				this.BindingContext = vm;
 

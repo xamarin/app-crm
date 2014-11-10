@@ -21,7 +21,7 @@ namespace MobileCRM.Shared.Pages.Accounts
       vmOrders.Account = vmAcct.Account;
       this.BindingContext = viewModelOrders = vmOrders;
 
-      this.Icon = "companycard.png";
+      this.Icon = "account.png";
       this.Title = "Account";
 
     }

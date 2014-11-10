@@ -31,7 +31,7 @@ namespace MobileCRM.Shared.ViewModels.Contacts
           this.Title = contact.FirstName;
         }
 
-        this.Icon = "contactcard.png";
+        this.Icon = "contact.png";
 
         dataManager = DependencyService.Get<IDataManager>();
         //this.navigation = navigation;

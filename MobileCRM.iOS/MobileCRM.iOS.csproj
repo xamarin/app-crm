@@ -191,8 +191,6 @@
     <BundleResource Include="Resources\Icon-60%402x.png" />
     <BundleResource Include="Resources\Icon-76%402x.png" />
     <BundleResource Include="Resources\Icon.png" />
-    <BundleResource Include="Resources\list.png" />
-    <BundleResource Include="Resources\list%402x.png" />
     <BundleResource Include="Resources\map.png" />
     <BundleResource Include="Resources\map%402x.png" />
     <BundleResource Include="Resources\slideout.png" />
@@ -227,9 +225,6 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
     <BundleResource Include="Resources\xamarin-icon-simplified.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\chart.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\filter%402x.png" />
@@ -281,9 +276,6 @@
     <BundleResource Include="Resources\account%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\lead2x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\lead%402x.png" />
   </ItemGroup>
   <ItemGroup>
@@ -291,12 +283,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\contactcard.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\companycard%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\companycard.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\order%402x.png" />

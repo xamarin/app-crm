@@ -1,6 +1,7 @@
 ﻿using MobileCRM.Shared.Models;
 using MobileCRM.Shared.ViewModels.Accounts;
 using MobileCRM.Shared.ViewModels.Orders;
+using MobileCRM.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,6 +27,7 @@ namespace MobileCRM.Shared.Pages.Accounts
           try
           {
 
+
               if (account != null)
               {
                   this.Title = account.Company;
@@ -36,12 +38,12 @@ namespace MobileCRM.Shared.Pages.Accounts
               }
 
 
-              ToolbarItems.Add(new ToolbarItem
-              {
-                  Icon = "refresh.png",
-                  Name = "refresh"
-                  //Command = viewModelOrder.LoadOrdersCommand
-              });
+              //ToolbarItems.Add(new ToolbarItem
+              //{
+              //    Icon = "refresh.png",
+              //    Name = "refresh"
+              //    //Command = viewModelOrder.LoadOrdersCommand
+              //});
 
               viewModelAcct = new AccountDetailsViewModel(account) { Navigation = Navigation };
               viewModelOrder = new OrdersViewModel(true, account.Id) { Navigation = Navigation };
