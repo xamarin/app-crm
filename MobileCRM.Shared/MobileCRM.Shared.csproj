@@ -116,6 +116,13 @@
       <DependentUpon>AccountOrdersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Orders\NewOrderView.cs" />
+    <Compile Include="Pages\Settings\DataSettingsView.xaml.cs">
+      <DependentUpon>DataSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings\SettingsTabView.cs" />
+    <Compile Include="Pages\Settings\UserSettingsView.xaml.cs">
+      <DependentUpon>UserSettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AzureService.cs" />
     <Compile Include="ViewModels\Accounts\AccountDetailsViewModel.cs" />
@@ -225,6 +232,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Catalog\CatalogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Settings\DataSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Settings\UserSettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

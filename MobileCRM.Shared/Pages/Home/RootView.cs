@@ -1,6 +1,7 @@
 ﻿using MobileCRM.Shared.Models;
 using MobileCRM.Shared.Pages.Accounts;
 using MobileCRM.Shared.Pages.Catalog;
+using MobileCRM.Shared.Pages.Settings;
 using MobileCRM.Shared.Pages.Base;
 using MobileCRM.Shared.ViewModels.Accounts;
 using MobileCRM.Shared.ViewModels.Contacts;
@@ -74,7 +75,8 @@ namespace MobileCRM.Shared.Pages.Home
             IsPresented = false;
         }
 
-        NavigationPage dashboard, accounts, leads, contacts, catalog;
+        NavigationPage dashboard, accounts, leads, contacts, catalog, settings;
+
         NavigationPage PageForOption (MenuType option)
         {
 
@@ -115,7 +117,7 @@ namespace MobileCRM.Shared.Pages.Home
                 var vm = new ContactsViewModel();
                 contacts = new NavigationPage(new Contacts.ContactsView(vm));
                 return contacts;
-              }
+              } 
             case MenuType.Catalog:
               {
                   if (catalog != null)
@@ -125,6 +127,16 @@ namespace MobileCRM.Shared.Pages.Home
                   catalog = new NavigationPage(new Catalog.CatalogCarouselView());
                   return catalog;
               }
+
+              case MenuType.Settings:
+              {
+                  if (settings != null)
+                      return settings;
+
+                  settings = new NavigationPage(new Settings.SettingsTabView());
+                  return settings;
+              }
+
           }
             
           throw new NotImplementedException("Unknown menu option: " + option.ToString());

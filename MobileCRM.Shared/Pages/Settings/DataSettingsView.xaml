@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+					   x:Class="MobileCRM.Shared.Pages.Settings.DataSettingsView"
+             xmlns:local="clr-namespace:MobileCRM.Shared.Helpers;assembly=MobileCRM.Shared"
+             >
+
+
+  <StackLayout Padding="0" Spacing="0" BackgroundColor="{x:Static local:AppColors.CONTENTBKGCOLOR}">
+
+    <!--<Image Source="{Binding Product.ImageSrc}" />-->
+
+    <StackLayout Padding="5,10,5,10" Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="{x:Static local:AppColors.DARKBLUEBKG}">
+      <Label Text="Data Settings" Font="Bold" HorizontalOptions="StartAndExpand" TextColor="{x:Static local:AppColors.LABELWHITE}" />
+      <Label Text="Here" Font="Bold" HorizontalOptions="EndAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+    </StackLayout>
+
+
+
+
+  </StackLayout>
+
+</ContentPage>

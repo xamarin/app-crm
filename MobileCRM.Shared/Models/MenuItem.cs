@@ -10,7 +10,8 @@ namespace MobileCRM.Shared.Models
     Accounts,
     Leads,
     Contacts,
-    Catalog
+    Catalog,
+    Settings
   }
 
   public class MenuItem

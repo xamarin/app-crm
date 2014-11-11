@@ -51,6 +51,14 @@ namespace MobileCRM.Shared.ViewModels
               Icon = "productcatalog.png"
           });
 
+      MenuItems.Add(new MenuItem
+      {
+          Id = 5,
+          Title = "Settings",
+          MenuType = MenuType.Settings,
+          Icon = "settings.png"
+      });
+
     }
 
   }
