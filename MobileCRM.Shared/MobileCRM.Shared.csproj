@@ -61,11 +61,13 @@
     <Compile Include="Interfaces\IDataManager.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\AuthInfo.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CatalogItem.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Pages\Accounts\AccountContactView.xaml.cs">
       <DependentUpon>AccountContactView.xaml</DependentUpon>
     </Compile>
@@ -97,7 +99,7 @@
     <Compile Include="Pages\Home\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Home\LoginPage.cs" />
+    <Compile Include="Pages\Home\LoginView.cs" />
     <Compile Include="Pages\Home\MenuView.cs" />
     <Compile Include="Pages\Home\RootView.cs" />
     <Compile Include="Pages\Leads\LeadDetailsTabView.cs" />

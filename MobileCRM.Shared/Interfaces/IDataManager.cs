@@ -8,7 +8,11 @@ namespace MobileCRM.Shared.Interfaces
 {
     public interface IDataManager
     {
+
         Task SeedData();
+
+        bool DoesLocalDBExist();
+
 
       Task SyncContacts();
       Task SyncAccounts();

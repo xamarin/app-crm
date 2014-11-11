@@ -42,14 +42,11 @@ namespace MobileCRM.Shared.Pages.Home
             previousItem = MenuType.Leads;//set first time to force
             NavigateTo(MenuType.Dashboard);
 
-            //ShowLoginDialog();    
-        }
-
-        async void ShowLoginDialog()
-        {
-            var page = new LoginPage();
-
-            await Navigation.PushModalAsync(page);
+            //Authentication notifications
+            MessagingCenter.Subscribe<ILogin>(this, "Authenticated", (sender) =>
+            {
+                this.CloseAuth();
+            });    
         }
 
         void NavigateTo(MenuType option)
@@ -141,5 +138,34 @@ namespace MobileCRM.Shared.Pages.Home
             
           throw new NotImplementedException("Unknown menu option: " + option.ToString());
         }
+
+
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            this.CheckUserAuthenticated();
+        }
+
+        private void CheckUserAuthenticated()
+        {
+            if (AuthInfo.Instance.User == null)
+            {
+                Navigation.PushModalAsync(new LoginPage());
+            }
+        //    else
+        //    {
+        //        this.SetBinding();
+        //    }
+        }
+
+
+        private void CloseAuth()
+        {
+            Navigation.PopModalAsync();
+        }
+
     }
 }

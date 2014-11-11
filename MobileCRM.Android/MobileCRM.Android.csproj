@@ -125,6 +125,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\BarChartRenderer.cs" />
     <Compile Include="Renderers\ListTextCellRenderer.cs" />
+    <Compile Include="Renderers\LoginPageRenderer_Android.cs" />
     <Compile Include="Renderers\PieChartRenderer.cs" />
     <Compile Include="Renderers\SignaturePadRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />

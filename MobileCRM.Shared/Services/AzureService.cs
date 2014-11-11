@@ -26,6 +26,7 @@ namespace MobileCRM.Shared.Services
 
       public IMobileServiceClient MobileService { get; set; }
 
+
       public AzureService()
       {
           MobileService = new MobileServiceClient(
@@ -33,8 +34,18 @@ namespace MobileCRM.Shared.Services
               "eeEXCKVPqNtEOIhypkxzgAMUUdEjhN69");
       }
 
+
+      public bool DoesLocalDBExist()
+      {
+
+          return MobileService.SyncContext.IsInitialized;
+      }
+
+
       public async Task Init()
       {
+          
+
         if (MobileService.SyncContext.IsInitialized)    
           return;
 
@@ -43,9 +54,6 @@ namespace MobileCRM.Shared.Services
         store.DefineTable<Order>();
         store.DefineTable<Account>();
         store.DefineTable<Contact>();
-
-
-
 
         try
         {
@@ -72,10 +80,6 @@ namespace MobileCRM.Shared.Services
           try
           {
               await Init();
-
-              //await orderTable.PurgeAsync();
-              //await accountTable.PurgeAsync();
-              //await contactTable.PurgeAsync();
 
               await orderTable.PullAsync();
               await accountTable.PullAsync();
@@ -399,6 +403,8 @@ namespace MobileCRM.Shared.Services
 
 
       static readonly AzureService instance = new AzureService();
+
+
       /// <summary>
       /// Gets the instance of the Azure Web Service
       /// </summary>

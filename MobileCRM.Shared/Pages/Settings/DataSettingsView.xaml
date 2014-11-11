@@ -12,7 +12,7 @@
 
     <StackLayout Padding="5,10,5,10" Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="{x:Static local:AppColors.DARKBLUEBKG}">
       <Label Text="Data Settings" Font="Bold" HorizontalOptions="StartAndExpand" TextColor="{x:Static local:AppColors.LABELWHITE}" />
-      <Label Text="Here" Font="Bold" HorizontalOptions="EndAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+      <Label x:Name="lblDataInit" Text="Here" Font="Bold" HorizontalOptions="EndAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
     </StackLayout>
 
 
