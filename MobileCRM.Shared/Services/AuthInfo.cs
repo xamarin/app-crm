@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 using Microsoft.WindowsAzure.MobileServices;
+using MobileCRM.Shared.Models;
 
 
-namespace MobileCRM.Shared.Models
+namespace MobileCRM.Shared.Services
 {
     public class AuthInfo
     {
@@ -69,7 +71,14 @@ namespace MobileCRM.Shared.Models
 
         public async Task GetUserInfo()
         {
-            userInfo = await client.InvokeApiAsync<UserInfo>("getidentities", System.Net.Http.HttpMethod.Get, null);
+            try
+            {
+                UserInfo = await client.InvokeApiAsync<UserInfo>("getidentities", System.Net.Http.HttpMethod.Get, null);
+            }
+            catch (Exception exc)
+            {
+                Debug.WriteLine("ERROR AuthInfo.GetUserInf(): " + exc.Message);
+            }
         }
 
 

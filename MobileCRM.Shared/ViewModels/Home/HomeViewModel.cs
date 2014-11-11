@@ -54,7 +54,7 @@ namespace MobileCRM.Shared.ViewModels
       MenuItems.Add(new MenuItem
       {
           Id = 5,
-          Title = "Settings",
+          Title = "About",
           MenuType = MenuType.Settings,
           Icon = "settings.png"
       });

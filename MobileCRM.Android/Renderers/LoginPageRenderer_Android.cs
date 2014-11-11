@@ -16,7 +16,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 using MobileCRM.Shared.Pages.Home;
-using MobileCRM.Shared.Models;
+using MobileCRM.Shared.Services;
 using MobileCRMAndroid.Renderers;
 
 [assembly: ExportRenderer(typeof(LoginPage), typeof(LoginPageRenderer_Android))]
@@ -33,6 +33,8 @@ namespace MobileCRMAndroid.Renderers
             MobileServiceClient client = AuthInfo.Instance.GetMobileServiceClient();
 
             AuthInfo.Instance.User = await client.LoginAsync(this.Context, AuthInfo.AUTH_PROVIDER);
+
+            //Will implement in v2.
             await AuthInfo.Instance.GetUserInfo();
 
             MessagingCenter.Send<ILogin>(this, "Authenticated");

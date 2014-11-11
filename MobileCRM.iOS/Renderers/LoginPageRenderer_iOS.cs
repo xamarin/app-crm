@@ -11,6 +11,7 @@ using Xamarin.Forms.Platform.iOS;
 using Microsoft.WindowsAzure.MobileServices;
 
 using MobileCRM.Shared.Pages.Home;
+using MobileCRM.Shared.Services;
 using MobileCRM.Shared.Models;
 using MobileCRM.iOS.Renderers;
 
@@ -33,7 +34,9 @@ namespace MobileCRM.iOS.Renderers
                     MobileServiceClient client = AuthInfo.Instance.GetMobileServiceClient();
 
                     AuthInfo.Instance.User = await client.LoginAsync(this.ViewController, AuthInfo.AUTH_PROVIDER);
-                    await AuthInfo.Instance.GetUserInfo();
+                    
+                    //SYI: Will implement user info return in v2.
+                    //await AuthInfo.Instance.GetUserInfo();
 
                     MessagingCenter.Send<ILogin>(this, "Authenticated");
                 } //end if

@@ -17,6 +17,123 @@
     </StackLayout>
 
 
+    <Label
+			HorizontalOptions="FillAndExpand"
+			Text="Display Name:"
+			TextColor="Red">
+      <Label.Font>
+        <OnPlatform x:TypeArguments="Font">
+          <OnPlatform.iOS>GillSans-Light, 16</OnPlatform.iOS>
+          <OnPlatform.Android>Droid Sans, 16</OnPlatform.Android>
+        </OnPlatform>
+      </Label.Font>
+    </Label>
+    <Label
+			HorizontalOptions="FillAndExpand"
+			Text="{Binding UserInfo.DisplayName}">
+      <Label.Font>
+        <OnPlatform x:TypeArguments="Font">
+          <OnPlatform.iOS>GillSans-Light, 12</OnPlatform.iOS>
+          <OnPlatform.Android>Droid Sans Mono, 14</OnPlatform.Android>
+        </OnPlatform>
+      </Label.Font>
+    </Label>
+
+
+    <Label
+			HorizontalOptions="FillAndExpand"
+			Text="Principal Name:"
+			TextColor="Red">
+      <Label.Font>
+        <OnPlatform x:TypeArguments="Font">
+          <OnPlatform.iOS>GillSans-Light, 16</OnPlatform.iOS>
+          <OnPlatform.Android>Droid Sans, 16</OnPlatform.Android>
+        </OnPlatform>
+      </Label.Font>
+    </Label>
+    <Label
+			HorizontalOptions="FillAndExpand"
+			Text="{Binding UserInfo.UserPrincipalName}">
+      <Label.Font>
+        <OnPlatform x:TypeArguments="Font">
+          <OnPlatform.iOS>GillSans-Light, 12</OnPlatform.iOS>
+          <OnPlatform.Android>Droid Sans Mono, 14</OnPlatform.Android>
+        </OnPlatform>
+      </Label.Font>
+    </Label>
+
+    <!--Job Title-->
+
+    <Label
+			HorizontalOptions="FillAndExpand"
+			Text="Job Title:"
+			TextColor="Red">
+      <Label.Font>
+        <OnPlatform x:TypeArguments="Font">
+          <OnPlatform.iOS>GillSans-Light, 16</OnPlatform.iOS>
+          <OnPlatform.Android>Droid Sans, 16</OnPlatform.Android>
+        </OnPlatform>
+      </Label.Font>
+    </Label>
+    <Label
+			HorizontalOptions="FillAndExpand"
+			Text="{Binding UserInfo.JobTitle}">
+      <Label.Font>
+        <OnPlatform x:TypeArguments="Font">
+          <OnPlatform.iOS>GillSans-Light, 12</OnPlatform.iOS>
+          <OnPlatform.Android>Droid Sans Mono, 14</OnPlatform.Android>
+        </OnPlatform>
+      </Label.Font>
+    </Label>
+
+    <!--Phone-->
+
+    <Label
+			HorizontalOptions="FillAndExpand"
+			Text="Mobile Phone:"
+			TextColor="Red">
+      <Label.Font>
+        <OnPlatform x:TypeArguments="Font">
+          <OnPlatform.iOS>GillSans-Light, 16</OnPlatform.iOS>
+          <OnPlatform.Android>Droid Sans, 16</OnPlatform.Android>
+        </OnPlatform>
+      </Label.Font>
+    </Label>
+    <Label
+			HorizontalOptions="FillAndExpand"
+			Text="{Binding UserInfo.Mobile}">
+      <Label.Font>
+        <OnPlatform x:TypeArguments="Font">
+          <OnPlatform.iOS>GillSans-Light, 12</OnPlatform.iOS>
+          <OnPlatform.Android>Droid Sans Mono, 14</OnPlatform.Android>
+        </OnPlatform>
+      </Label.Font>
+    </Label>
+
+
+    <!--Address-->
+
+    <Label
+			HorizontalOptions="FillAndExpand"
+			Text="Address:"
+			TextColor="Red">
+      <Label.Font>
+        <OnPlatform x:TypeArguments="Font">
+          <OnPlatform.iOS>GillSans-Light, 16</OnPlatform.iOS>
+          <OnPlatform.Android>Droid Sans, 16</OnPlatform.Android>
+        </OnPlatform>
+      </Label.Font>
+    </Label>
+    <Label
+			HorizontalOptions="FillAndExpand"
+			Text="{Binding DisplayAddress}">
+      <Label.Font>
+        <OnPlatform x:TypeArguments="Font">
+          <OnPlatform.iOS>GillSans-Light, 12</OnPlatform.iOS>
+          <OnPlatform.Android>Droid Sans Mono, 14</OnPlatform.Android>
+        </OnPlatform>
+      </Label.Font>
+    </Label>
 
 
   </StackLayout>

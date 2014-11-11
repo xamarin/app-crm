@@ -30,8 +30,7 @@ namespace MobileCRM.Shared.Services
       public AzureService()
       {
           MobileService = new MobileServiceClient(
-              "https://xamarin3crmdemoprod.azure-mobile.net/",
-              "eeEXCKVPqNtEOIhypkxzgAMUUdEjhN69");
+              AuthInfo.APPLICATION_URL, AuthInfo.APPLICATION_KEY);
       }
 
 

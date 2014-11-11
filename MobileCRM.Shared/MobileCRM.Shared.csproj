@@ -61,7 +61,7 @@
     <Compile Include="Interfaces\IDataManager.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Address.cs" />
-    <Compile Include="Models\AuthInfo.cs" />
+    <Compile Include="Services\AuthInfo.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CatalogItem.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -142,6 +142,7 @@
     <Compile Include="ViewModels\Orders\NewOrderViewModel.cs" />
     <Compile Include="ViewModels\Orders\OrderDetailsViewModel.cs" />
     <Compile Include="ViewModels\Orders\OrdersViewModel.cs" />
+    <Compile Include="ViewModels\Settings\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Accounts\AccountsView.xaml">
