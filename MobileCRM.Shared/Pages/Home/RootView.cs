@@ -131,7 +131,7 @@ namespace MobileCRM.Shared.Pages.Home
                   if (settings != null)
                       return settings;
 
-                  settings = new NavigationPage(new Settings.SettingsTabView());
+                  settings = new NavigationPage(new Settings.UserSettingsView());
                   return settings;
               }
 

@@ -19,6 +19,8 @@ namespace MobileCRM.Shared.Pages.Settings
         {
             InitializeComponent();
 
+            this.Title = "About Mobile CRM";
+
             //SYI: v2 feature.
             //this.BindingContext = vm = new UserViewModel(); 
 

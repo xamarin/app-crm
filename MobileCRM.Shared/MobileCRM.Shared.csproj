@@ -45,8 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Attributes\CurrencyAttribute.cs" />
-    <Compile Include="Attributes\DisplayAttribute.cs" />
+    <Compile Include="Properties\Attributes\CurrencyAttribute.cs" />
+    <Compile Include="Properties\Attributes\DisplayAttribute.cs" />
     <Compile Include="CustomControls\BarChart.cs" />
     <Compile Include="CustomControls\Converters\ConvertableConverter.cs" />
     <Compile Include="CustomControls\ListTextCell.cs" />
