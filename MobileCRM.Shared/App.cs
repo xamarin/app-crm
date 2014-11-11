@@ -11,7 +11,8 @@ namespace MobileCRM.Shared
       private static Page homeView;
       public static Page RootPage
       {
-        get { return homeView ?? (homeView = new RootView()); }
+        //get { return homeView ?? (homeView = new RootView()); }
+        get { return homeView ?? (homeView = new SplashPage()); }
       }
     }
 }

@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Pages\Home\SplashPage.xaml.cs">
+      <DependentUpon>SplashPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Attributes\CurrencyAttribute.cs" />
     <Compile Include="Properties\Attributes\DisplayAttribute.cs" />
     <Compile Include="CustomControls\BarChart.cs" />
@@ -247,6 +250,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Settings\UserSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Home\SplashPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
