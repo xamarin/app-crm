@@ -13,10 +13,20 @@ namespace MobileCRM.Shared.ViewModels.Home
 {
     public class DashboardViewModel : BaseViewModel
     {
+        private ObservableCollection<Order> orders;
+        bool bolDataSeeded;
+
         public ObservableCollection<Order> Orders
         {
-            get;
-            set;
+            get
+            {
+                return orders;
+            }
+            set
+            {
+                orders = value;
+                OnPropertyChanged("Orders");
+            }
         }
 
         IDataManager dataManager;
@@ -33,41 +43,8 @@ namespace MobileCRM.Shared.ViewModels.Home
 
             IsInitialized = false;
 
+            bolDataSeeded = false;
         }
-
-        //private Command loadOrdersCommand;
-        ///// <summary>
-        ///// Command to load accounts
-        ///// </summary>
-        //public Command LoadOrdersCommand
-        //{
-        //    get
-        //    {
-        //        return loadOrdersCommand ??
-        //               (loadOrdersCommand = new Command(async () =>
-        //                await ExecuteLoadOrdersCommand()));
-        //    }
-        //}
-
-        //public async Task ExecuteLoadOrdersCommand()
-        //{
-        //    if (IsBusy)
-        //        return;
-
-        //    IsBusy = true;
-
-        //    Orders.Clear();
-
-        //    IEnumerable<Order> orders = new List<Order>();
-
-        //    orders = await dataManager.GetAllAccountOrdersAsync();
-
-        //    foreach (var order in orders)
-        //        Orders.Add(order);
-
-        //    IsBusy = false;
-        //}
-
 
 
         private Command loadSeedDataCommand;
@@ -89,17 +66,21 @@ namespace MobileCRM.Shared.ViewModels.Home
 
             IsBusy = true;
 
-            //await dataManager.SyncAccounts();
-            //await dataManager.SyncContacts();
-            //await dataManager.SyncOrders();
-            await dataManager.SeedData();
+            if (!bolDataSeeded)
+            {
+                await dataManager.SeedData();
+                bolDataSeeded = true;
+            }
 
             IEnumerable<Order> orders = new List<Order>();
             orders = await dataManager.GetAllAccountOrdersAsync();
 
-            foreach (var order in orders)
-                Orders.Add(order);
+            ObservableCollection<Order> orderRefreshed = new ObservableCollection<Order>();
 
+            foreach (var order in orders)
+                orderRefreshed.Add(order);
+
+            this.Orders = orderRefreshed;
 
             chartHelper = new BarGraphHelper(Orders, false);
             this.GetSalesPcts();
@@ -139,7 +120,7 @@ namespace MobileCRM.Shared.ViewModels.Home
                                     where o.Category == Order.SCANNER
                                     select o).First().Amount / dblTotalSales * 100;
 
-            this.ComboSalesPct = String.Format("{0:0}%", dblSalesPaper);
+            this.ComboSalesPct = String.Format("{0:0}%", dblSalesCombo);
             this.InkSalesPct = String.Format("{0:0}%", dblSalesInk);
             this.PaperSalesPct = String.Format("{0:0}%", dblSalesPaper);
             this.PrinterSalesPct = String.Format("{0:0}%", dblSalesPrinter);

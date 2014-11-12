@@ -64,10 +64,10 @@ namespace MobileCRM.Shared.Pages.Accounts
         base.OnAppearing();
 
 
-        if (viewModelOrders.IsInitialized)
-        {
-          return;
-        }
+        //if (viewModelOrders.IsInitialized)
+        //{
+        //  return;
+        //}
 
         await viewModelOrders.ExecuteLoadOrdersCommand();
 

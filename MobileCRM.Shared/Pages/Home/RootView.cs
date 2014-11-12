@@ -157,13 +157,13 @@ namespace MobileCRM.Shared.Pages.Home
             //Show splash page only iOS & Android. 
             //WP implementation has some quirks.
 
-            //if ((Device.OS == TargetPlatform.iOS) || (Device.OS == TargetPlatform.Android))
-            //{
-            //    if (!bolSplashShown)
-            //    {
-            //        Navigation.PushModalAsync(new SplashPage());
-            //    }
-            //} //end if
+            if ((Device.OS == TargetPlatform.iOS) || (Device.OS == TargetPlatform.Android))
+            {
+                if (!bolSplashShown)
+                {
+                    Navigation.PushModalAsync(new SplashPage());
+                }
+            } //end if
 
 
         }

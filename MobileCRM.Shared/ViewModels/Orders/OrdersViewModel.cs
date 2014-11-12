@@ -54,9 +54,11 @@ namespace MobileCRM.Shared.ViewModels.Orders
           }
           else
           {
-              MessagingCenter.Subscribe<Order>(this, "OrderApproved", (order) =>
+              MessagingCenter.Subscribe<Order>(this, "OrderApproved", async (order) =>
               {
                   IsInitialized = false;
+
+
               });
           }
 

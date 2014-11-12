@@ -97,10 +97,10 @@ namespace MobileCRM.Shared.Pages.Home
 		{
 				base.OnAppearing();
 
-				if (ViewModel.IsInitialized)
-				{
-						return;
-				}
+        //if (ViewModel.IsInitialized)
+        //{
+        //    return;
+        //}
 
         //await ViewModel.ExecuteLoadOrdersCommand();
         await ViewModel.ExecuteLoadSeedDataCommand();
