@@ -110,9 +110,6 @@
     <Compile Include="Pages\Leads\LeadsView.xaml.cs">
       <DependentUpon>LeadsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Leads\NewLeadView.xaml.cs">
-      <DependentUpon>NewLeadView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Orders\AccountHistoryView.xaml.cs">
       <DependentUpon>AccountHistoryView.xaml</DependentUpon>
     </Compile>
@@ -139,9 +136,7 @@
     <Compile Include="ViewModels\Home\DashboardViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="ViewModels\Home\LoginViewModel.cs" />
-    <Compile Include="ViewModels\Leads\LeadDetailsViewModel.cs" />
     <Compile Include="ViewModels\Leads\LeadsViewModel.cs" />
-    <Compile Include="ViewModels\Leads\NewLeadViewModel.cs" />
     <Compile Include="ViewModels\Orders\NewOrderViewModel.cs" />
     <Compile Include="ViewModels\Orders\OrderDetailsViewModel.cs" />
     <Compile Include="ViewModels\Orders\OrdersViewModel.cs" />
@@ -173,12 +168,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Leads\LeadsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\Leads\NewLeadView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -140,7 +140,7 @@ namespace MobileCRM.Shared.ViewModels.Accounts
 
         await dataManager.SaveAccountAsync(Account);
 
-        MessagingCenter.Send(Account, "Account");
+        MessagingCenter.Send(Account, "SaveAccount");
 
         IsBusy = false;
 

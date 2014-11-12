@@ -14,10 +14,20 @@ namespace MobileCRM.Shared.ViewModels.Contacts
 {
     public class ContactsViewModel : BaseViewModel
     {
+        private ObservableCollection<Contact> contacts;
+
       public ObservableCollection<Contact> Contacts
       {
-        get;
-        set;
+          get
+          {
+              return contacts;
+          }
+
+          set
+          {
+              contacts = value;
+              OnPropertyChanged("Contacts");
+          }
       }
 
       IDataManager dataManager;
@@ -36,6 +46,8 @@ namespace MobileCRM.Shared.ViewModels.Contacts
               Contacts[index] = contact;
             else
               Contacts.Add(contact);
+
+            Contacts = new ObservableCollection<Contact>(from c in Contacts orderby c.LastName select c);
           });
       }
 

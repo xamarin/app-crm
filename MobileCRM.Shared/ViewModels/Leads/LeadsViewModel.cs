@@ -12,10 +12,20 @@ namespace MobileCRM.Shared.ViewModels.Leads
 {
     public class LeadsViewModel : BaseViewModel
     {
+
+        private ObservableCollection<Account> leads;
+
       public ObservableCollection<Account> Leads
       {
-        get;
-        set;
+          get
+          {
+              return leads;
+          }
+          set
+          {
+              leads = value;
+              OnPropertyChanged("Leads");
+          }
       }
 
       public bool NeedsRefresh { get; set; }
@@ -29,9 +39,18 @@ namespace MobileCRM.Shared.ViewModels.Leads
         dataManager = DependencyService.Get<IDataManager>();
         Leads = new ObservableCollection<Account>();
 
-        MessagingCenter.Subscribe<Account>(this, "Lead", (account) =>
+          MessagingCenter.Subscribe<Account>(this, "SaveAccount", (account) =>
           {
-            IsInitialized = false;
+              var index = Leads.IndexOf(account);
+              if (index >= 0)
+              {
+                  Leads[index] = account;
+              }
+              else
+              {
+                  Leads.Add(account);
+              }
+              Leads = new ObservableCollection<Account>(from l in Leads orderby l.Company select l);
           });
 
       }
