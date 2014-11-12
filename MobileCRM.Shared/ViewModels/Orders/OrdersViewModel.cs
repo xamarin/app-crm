@@ -11,14 +11,25 @@ namespace MobileCRM.Shared.ViewModels.Orders
 {
     public class OrdersViewModel : BaseViewModel
     {
+        private ObservableCollection<Order> orders;
+
       public ObservableCollection<Order> Orders
       {
-        get;
-        set;
+            get
+            {
+                return orders;
+            }
+            set
+            {
+                orders = value;
+                OnPropertyChanged("Orders");
+            }
       }
 
       public Account Account { get; set; }
-      public bool NeedsRefresh { get; set; }
+
+      //public bool NeedsRefresh { get; set; }
+
       private bool openOrders;
       private string accountId;
       IDataManager dataManager;
@@ -33,10 +44,23 @@ namespace MobileCRM.Shared.ViewModels.Orders
         dataManager = DependencyService.Get<IDataManager>();
         Orders = new ObservableCollection<Order>();
 
-        MessagingCenter.Subscribe<Order>(this, "Order", (account) =>
+
+          if (openOrders)
           {
-            IsInitialized = false;
-          });
+              MessagingCenter.Subscribe<Order>(this, "OrderUpdate", (order) =>
+              {
+                  IsInitialized = false;
+              });
+          }
+          else
+          {
+              MessagingCenter.Subscribe<Order>(this, "OrderApproved", (order) =>
+              {
+                  IsInitialized = false;
+              });
+          }
+
+       
 
       }
 
@@ -71,9 +95,14 @@ namespace MobileCRM.Shared.ViewModels.Orders
         } else {
             orders = await dataManager.GetAccountOrderHistoryAsync(accountId);
         }
-        
+
+        ObservableCollection<Order> ordersSorted = new ObservableCollection<Order>();
         foreach (var order in orders)
-          Orders.Add(order);
+        {
+            ordersSorted.Add(order);
+        }
+
+        Orders = ordersSorted;
 
         IsBusy = false;
 

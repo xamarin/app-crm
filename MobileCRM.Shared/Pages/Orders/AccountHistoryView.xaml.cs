@@ -17,7 +17,6 @@ namespace MobileCRM.Shared.Pages.Accounts
 		public AccountHistoryView (OrdersViewModel vm)
 		{
 			InitializeComponent ();
-      //this.accountId = accountId;
       this.BindingContext = this.viewModel = vm;
 		}
 
@@ -34,10 +33,10 @@ namespace MobileCRM.Shared.Pages.Accounts
     protected override void OnAppearing()
     {
       base.OnAppearing();
-      if (viewModel.IsInitialized)
-      {
-        return;
-      }
+      //if (viewModel.IsInitialized)
+      //{
+      //  return;
+      //}
       viewModel.LoadOrdersCommand.Execute(null);
       viewModel.IsInitialized = true;
 

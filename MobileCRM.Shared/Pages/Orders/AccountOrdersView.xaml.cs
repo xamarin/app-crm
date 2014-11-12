@@ -45,10 +45,10 @@ namespace MobileCRM.Shared.Pages.Accounts
     protected override void OnAppearing()
     {
       base.OnAppearing();
-      if (viewModel.IsInitialized)
-      {
-        return;
-      }
+      //if (viewModel.IsInitialized)
+      //{
+      //  return;
+      //}
       viewModel.LoadOrdersCommand.Execute(null);
       viewModel.IsInitialized = true;
     }

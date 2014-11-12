@@ -137,7 +137,6 @@
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="ViewModels\Home\LoginViewModel.cs" />
     <Compile Include="ViewModels\Leads\LeadsViewModel.cs" />
-    <Compile Include="ViewModels\Orders\NewOrderViewModel.cs" />
     <Compile Include="ViewModels\Orders\OrderDetailsViewModel.cs" />
     <Compile Include="ViewModels\Orders\OrdersViewModel.cs" />
     <Compile Include="ViewModels\Settings\UserViewModel.cs" />
