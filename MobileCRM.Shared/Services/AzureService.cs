@@ -29,8 +29,10 @@ namespace MobileCRM.Shared.Services
 
       public AzureService()
       {
-          MobileService = new MobileServiceClient(
-              AuthInfo.APPLICATION_URL, AuthInfo.APPLICATION_KEY);
+          MobileService = AuthInfo.Instance.GetMobileServiceClient();
+
+          //MobileService = new MobileServiceClient(
+          //    AuthInfo.APPLICATION_URL, AuthInfo.APPLICATION_KEY);
       }
 
 

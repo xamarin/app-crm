@@ -75,11 +75,7 @@ namespace MobileCRM.Shared.Pages.Home
             displayPage.BarBackgroundColor = Helpers.AppColors.CONTENTBKGCOLOR;
             displayPage.BarTextColor = Color.White;
             
-             
-#if WINDOWS_PHONE
-            Detail = new ContentPage();
-#endif
-
+      
             Detail = displayPage;
 
             IsPresented = false;
@@ -158,30 +154,37 @@ namespace MobileCRM.Shared.Pages.Home
         {
             base.OnAppearing();
 
-            //Show splash page
-            if (!bolSplashShown)
+            //Show splash page only iOS & Android. 
+            //WP implementation has some quirks.
+            if ((Device.OS == TargetPlatform.iOS) || (Device.OS == TargetPlatform.Android))
             {
-                Navigation.PushModalAsync(new SplashPage());
-            }
-           
+                if (!bolSplashShown)
+                {
+                    Navigation.PushModalAsync(new SplashPage());
+                }
+            } //end if
+
+
         }
 
+        //private void CheckUserAuthenticated()
+        //{
+        //    if (AuthInfo.Instance.User == null)
+        //    {
+        //        Navigation.PushModalAsync(new LoginPage());
+        //    }
 
-        private void CheckUserAuthenticated()
-        {
-            if (AuthInfo.Instance.User == null)
-            {
-                Navigation.PushModalAsync(new LoginPage());
-            }
-
-        }
+        //}
 
 
         private void CloseAuth()
         {
             Navigation.PopModalAsync();
+
         }
 
+        //Close splash page, show login page.
+        //For demo purposes we remove cached login and prompt for credentials every time.
         private void CloseSplash()
         {
             Navigation.PopModalAsync();
