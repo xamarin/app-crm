@@ -18,14 +18,14 @@
       
 
     <StackLayout Padding="5, 20, 5, 20" Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand">
-      <Label Text="Demo User ID and Password" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELGRAY}" />
-      <Label Text="joe@xamarinmobilecrm.onmicrosoft.com" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELWHITE}" />
-      <Label Text="P@ssword" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELWHITE}" />
+      <Label Text="Demo User ID and Password:" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELWHITE}" />
+      <Label Text="sally@xamcrm.onmicrosoft.com" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+      <Label Text="P@ssword" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELGRAY}" />
     </StackLayout>
     
 
-
-    <Button Text="Login" TextColor="{x:Static local:AppColors.LABELWHITE}" HorizontalOptions="Center" />
+    <Button Text="Login" TextColor="{x:Static local:AppColors.LABELWHITE}" HorizontalOptions="Center"
+      Clicked="OnLoginClicked" />
 
   </StackLayout>
 

@@ -18,9 +18,13 @@ namespace MobileCRM.Shared.Pages.Home
 {
     public class RootView : MasterDetailPage
     {
+        bool bolSplashShown;
+
         MenuType previousItem;
         public RootView ()
         {
+          bolSplashShown = false;
+
           this.Title = "Mobile CRM";
 
           this.BackgroundImage = "menubk.png";
@@ -48,6 +52,14 @@ namespace MobileCRM.Shared.Pages.Home
             {
                 this.CloseAuth();
             });    
+
+            //Splash page notification
+            MessagingCenter.Subscribe<SplashPage>(this, "SplashShown", (sender) =>
+            {
+                bolSplashShown = true;
+                this.CloseSplash();
+            });    
+
         }
 
         void NavigateTo(MenuType option)
@@ -121,7 +133,6 @@ namespace MobileCRM.Shared.Pages.Home
                   if (catalog != null)
                       return catalog;
 
-                  //var vm = new CatalogViewModel() { Navigation = Navigation };
                   catalog = new NavigationPage(new Catalog.CatalogCarouselView());
                   return catalog;
               }
@@ -147,8 +158,14 @@ namespace MobileCRM.Shared.Pages.Home
         {
             base.OnAppearing();
 
-            this.CheckUserAuthenticated();
+            //Show splash page
+            if (!bolSplashShown)
+            {
+                Navigation.PushModalAsync(new SplashPage());
+            }
+           
         }
+
 
         private void CheckUserAuthenticated()
         {
@@ -156,16 +173,24 @@ namespace MobileCRM.Shared.Pages.Home
             {
                 Navigation.PushModalAsync(new LoginPage());
             }
-        //    else
-        //    {
-        //        this.SetBinding();
-        //    }
+
         }
 
 
         private void CloseAuth()
         {
             Navigation.PopModalAsync();
+        }
+
+        private void CloseSplash()
+        {
+            Navigation.PopModalAsync();
+
+            AuthInfo.Instance.GetMobileServiceClient().Logout();
+            AuthInfo.Instance.User = null;
+
+            Navigation.PushModalAsync(new LoginPage());
+
         }
 
     }
