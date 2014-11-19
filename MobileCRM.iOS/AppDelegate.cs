@@ -33,6 +33,8 @@ namespace MobileCRM.iOS
             Forms.Init();
             FormsMaps.Init();
 
+            //UIStatusBarStyle = UIStatusBarStyle.LightContent;
+
             window.RootViewController = MobileCRM.Shared.App.RootPage.CreateViewController();
             window.MakeKeyAndVisible ();
             
