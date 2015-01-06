@@ -36,7 +36,7 @@ The demo app utilizes several technologies and frameworks to reflect a real-worl
 
 ##Cloud & Mobile Architecture
 
-**[Azure Mobile Services](http://azure.microsoft.com/en-us/services/mobile-services/)**: this app uses Azure Mobile Services (AMS) as the cloud backend for authentication and data.  It integrates with Azure Active Directory to create a consistent sign-on experience for mobile users.  The AMS component simplifies the implementation and uses oAuth to both authenticate a user and provide a token.
+**[Azure Mobile Services](http://azure.microsoft.com/en-us/services/mobile-services/)**: The app uses Azure Mobile Services (AMS) as the cloud backend for authentication and data.  It integrates with Azure Active Directory to create a consistent sign-on experience for mobile users.  The AMS component simplifies the implementation and uses oAuth to both authenticate a user and provide a token.
 
 Data is synchronized with an Azure SQL cloud database and a [SQLite](http://sqlite.org/) database that runs on the device – providing fast, offline data access and a consistent data access API.
 
