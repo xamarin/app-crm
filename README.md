@@ -8,6 +8,10 @@ This [video overview](https://www.youtube.com/watch?v=19Hs8wzeC7w) provides an o
 
 ![](https://github.com/xamarin/VervetaCRM/blob/master/markdown-graphics/VervetaDashboard.png)
 
+![](https://github.com/xamarin/VervetaCRM/blob/master/markdown-graphics/VervetaMaps.png)
+
+![](https://github.com/xamarin/VervetaCRM/blob/master/markdown-graphics/VervetaCatalog.png)
+
 #Installation
 Instructions for viewing and compiling the code are available in the [setup guide](https://github.com/xamarin/VervetaCRM/wiki/Setup-Instructions).
 
