@@ -6,14 +6,15 @@ Using [Xamarin.Forms](http://xamarin.com/forms), over 90% code was re-used to cr
 
 This [video overview](https://www.youtube.com/watch?v=19Hs8wzeC7w) provides an overview of how the app was created and architected.
 
+##Installation
+Instructions for viewing and compiling the code are available in the [setup guide](https://github.com/xamarin/VervetaCRM/wiki/Setup-Instructions).
+
 ![](https://github.com/xamarin/VervetaCRM/blob/master/markdown-graphics/VervetaDashboard.png)
 
 ![](https://github.com/xamarin/VervetaCRM/blob/master/markdown-graphics/VervetaMaps.png)
 
 ![](https://github.com/xamarin/VervetaCRM/blob/master/markdown-graphics/VervetaCatalog.png)
 
-#Installation
-Instructions for viewing and compiling the code are available in the [setup guide](https://github.com/xamarin/VervetaCRM/wiki/Setup-Instructions).
 
 #Featured Technologies
 The demo app utilizes several technologies and frameworks to reflect a real-world mobile app architecture and maximum code re-use across mobile platforms:
