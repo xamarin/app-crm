@@ -33,6 +33,7 @@
               <TextCell x:Name="PhoneCell" Text="Phone" Detail="{Binding Account.Phone}" 
                         TextColor="{x:Static local:AppColors.LABELBLUE}"
                         DetailColor="{x:Static local:AppColors.LABELWHITE}"
+                        Tapped="OnPhoneTapped"
                         />
               <TextCell Text="Address" Detail="{Binding Account.AddressString}" 
                         TextColor="{x:Static local:AppColors.LABELBLUE}"

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MobileCRM.Shared.Interfaces;
 using Xamarin.Forms;
 
 namespace MobileCRM.Shared.Pages.Contacts
@@ -24,5 +25,36 @@ namespace MobileCRM.Shared.Pages.Contacts
 		} //end ctor
 
 
+	    async private void OnPhoneTapped(object sender, EventArgs e)
+	    {
+	        if (sender == null)
+	        {
+	            return;
+	        }
+
+	        string phoneCell = ((EntryCell) sender).Text;
+
+	        if (String.IsNullOrEmpty(phoneCell) == true)
+	        {
+	            return;
+	        }            
+
+	        if (await this.DisplayAlert(
+	            "Dial a Number",
+	            "Would you like to call " + phoneCell + "?",
+	            "Yes",
+	            "No"))
+	        {
+
+	            var dialer = DependencyService.Get<IDialer>();
+	            phoneCell = phoneCell.Replace("-", "");
+	            if (dialer == null)
+	            {
+	                return;
+	            }
+
+	            dialer.Dial(phoneCell);
+	        }
+	    }
 	} //end class
 }
