@@ -19,9 +19,6 @@ namespace MobileCRMAndroid
 {
     public class PhoneDialer : IDialer
     {
-        /// <summary>
-        /// Dial the phone
-        /// </summary>
         public bool Dial(string number)
         {
             var context = Forms.Context;
@@ -40,9 +37,6 @@ namespace MobileCRMAndroid
             return false;
         }
 
-        /// <summary>
-        /// Checks if an intent can be handled.
-        /// </summary>
         public static bool IsIntentAvailable(Context context, Intent intent)
         {
             var packageManager = context.PackageManager;

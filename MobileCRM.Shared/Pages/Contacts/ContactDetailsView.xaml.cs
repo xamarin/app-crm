@@ -32,7 +32,7 @@ namespace MobileCRM.Shared.Pages.Contacts
 	            return;
 	        }
 
-	        string phoneCell = ((EntryCell) sender).Text;
+            string phoneCell = ((EntryCell)sender).Text;
 
 	        if (String.IsNullOrEmpty(phoneCell) == true)
 	        {

@@ -47,15 +47,14 @@
 																		/>
 										</TableSection>
 										<TableSection Title ="Contact Details">
-												<EntryCell Label="Phone" Text="{Binding Account.Phone}" Keyboard="Telephone"
-																	 LabelColor="{x:Static local:AppColors.LABELBLUE}"
-																	 XAlign="End" Tapped="OnPhoneTapped"
-																		/>
+                        <EntryCell Label="Phone" Text="{Binding Account.Phone}" Keyboard ="Telephone"
+                                   LabelColor="{x:Static local:AppColors.LABELBLUE}" XAlign="End"
+                                   Tapped="OnPhoneTapped"
+                                    />
 												<EntryCell Label="Email" Text="{Binding Account.Email}" Keyboard="Email"
 																	 LabelColor="{x:Static local:AppColors.LABELBLUE}"
 																	 XAlign="End"
 																		/>
-
 										</TableSection>
 
 
