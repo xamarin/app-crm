@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Xamarin;
 
 using Microsoft.WindowsAzure.MobileServices;
 using MobileCRM.Shared.Models;
@@ -54,6 +55,13 @@ namespace MobileCRM.Shared.Services
             set
             {
                 user = value;
+
+                //Insights user tracking
+                if (value != null)
+                {
+                    Insights.Identify(user.UserId, "email", "sally@xamcrm.onmicrosoft.com");
+                } //end if
+
             }
         }
 

@@ -6,7 +6,9 @@ using System.Windows.Markup;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Xamarin;
 using MobileCRM.WindowsPhone.Resources;
+
 
 namespace MobileCRM.WindowsPhone
 {
@@ -34,6 +36,11 @@ namespace MobileCRM.WindowsPhone
 
 			// Language display initialization
 			InitializeLanguage();
+
+
+      //SYI - Insights
+      Insights.Initialize("5f085f0e12b1bf6b15592ad059354f7e416571e4");
+
 
 			// Show graphics profiling information while debugging.
 			if (Debugger.IsAttached)

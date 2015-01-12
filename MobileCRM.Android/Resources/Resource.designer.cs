@@ -26,6 +26,8 @@ namespace MobileCRMAndroid
 		
 		public static void UpdateIdValues()
 		{
+			global::Xamarin.InsightsCore.Resource.String.ApplicationName = global::MobileCRMAndroid.Resource.String.ApplicationName;
+			global::Xamarin.InsightsCore.Resource.String.Hello = global::MobileCRMAndroid.Resource.String.Hello;
 		}
 		
 		public partial class Animation
@@ -1594,6 +1596,12 @@ namespace MobileCRMAndroid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f05002e
+			public const int ApplicationName = 2131034158;
+			
+			// aapt resource value: 0x7f05002d
+			public const int Hello = 2131034157;
+			
 			// aapt resource value: 0x7f050007
 			public const int abc_action_bar_home_description = 2131034119;
 			
@@ -1633,8 +1641,8 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f050011
 			public const int abc_shareactionprovider_share_with_application = 2131034129;
 			
-			// aapt resource value: 0x7f05002e
-			public const int app_name = 2131034158;
+			// aapt resource value: 0x7f050030
+			public const int app_name = 2131034160;
 			
 			// aapt resource value: 0x7f05001e
 			public const int common_google_play_services_enable_button = 2131034142;
@@ -1711,8 +1719,8 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f05002b
 			public const int common_signin_button_text_long = 2131034155;
 			
-			// aapt resource value: 0x7f05002d
-			public const int hello = 2131034157;
+			// aapt resource value: 0x7f05002f
+			public const int hello = 2131034159;
 			
 			// aapt resource value: 0x7f050002
 			public const int mr_media_route_button_content_description = 2131034114;
