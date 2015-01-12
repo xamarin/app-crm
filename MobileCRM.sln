@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileCRM.Android", "MobileCRM.Android\MobileCRM.Android.csproj", "{83491F6D-BA09-477D-9DC0-3E670794579F}"
 EndProject
@@ -23,11 +23,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileCRM.Analysis", "MobileCRM.Analysis\MobileCRM.Analysis.csproj", "{0466351D-9A60-488B-A93A-A8F8BC945E0C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileCRM.iOS", "MobileCRM.iOS\MobileCRM.iOS.csproj", "{6A02ABA0-EE87-4C04-A065-BEF98D7F4E53}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6DECB166-F625-425A-96C9-9992FD19C1DB}"
-	ProjectSection(SolutionItems) = preProject
-		Performance1.psess = Performance1.psess
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

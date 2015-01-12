@@ -124,7 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
-    <Compile Include="PhoneDialer.cs" />
+    <Compile Include="Renderers\PhoneDialer.cs" />
     <Compile Include="Renderers\BarChartRenderer.cs" />
     <Compile Include="Renderers\ListTextCellRenderer.cs" />
     <Compile Include="Renderers\LoginPageRenderer_Android.cs" />

@@ -210,7 +210,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="PhoneDialer.cs" />
+    <Compile Include="Renderers\PhoneDialer.cs" />
     <Compile Include="Renderers\BarChartRenderer.cs" />
     <Compile Include="Renderers\LoginPageRenderer_iOS.cs" />
     <Compile Include="Renderers\MenuCellRenderer.cs" />

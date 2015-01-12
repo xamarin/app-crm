@@ -99,7 +99,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PhoneDialer.cs" />
+    <Compile Include="Renderers\PhoneDialer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\BarChartRenderer.cs" />
     <Compile Include="Renderers\LoginPageRenderer_WP.cs" />
