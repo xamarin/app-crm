@@ -27,6 +27,8 @@ namespace MobileCRM.WindowsPhone
       Forms.Init();
 			FormsMaps.Init();
 
+      Insights.Initialize("f8cb964d6e0bc656722c764f04366e3a28e35906");
+
 			// Set our view from the "main" layout resource
 			Content = MobileCRM.Shared.App.RootPage.ConvertPageToUIElement(this);
 		}

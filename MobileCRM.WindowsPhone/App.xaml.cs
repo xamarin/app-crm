@@ -38,10 +38,6 @@ namespace MobileCRM.WindowsPhone
 			InitializeLanguage();
 
 
-      //SYI - Insights
-      Insights.Initialize("5f085f0e12b1bf6b15592ad059354f7e416571e4");
-
-
 			// Show graphics profiling information while debugging.
 			if (Debugger.IsAttached)
 			{
