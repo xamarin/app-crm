@@ -30,9 +30,8 @@
                                     />
 										</TableSection>
 										<TableSection Title ="Contact Details">
-												<EntryCell Label="Phone" Text="{Binding Contact.Phone}" Keyboard="Telephone"
-                                   LabelColor="{x:Static local:AppColors.LABELBLUE}"
-                                   XAlign="End"
+                      	<EntryCell Label="Phone" Text="{Binding Contact.Phone}" LabelColor="{x:Static local:AppColors.LABELBLUE}"
+                                   Keyboard="Telephone" XAlign="End" Tapped="OnPhoneTapped" 
                                     />
 												<EntryCell Label="Email" Text="{Binding Contact.Email}" Keyboard="Email"
                                    LabelColor="{x:Static local:AppColors.LABELBLUE}"

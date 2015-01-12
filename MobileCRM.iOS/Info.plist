@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>MobileCRM</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.stevenyi.mobilecrm</string>
+	<string>com.glennwester.mobilecrm</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -46,11 +46,7 @@
 	<string></string>
 	<key>NSMainNibFile~ipad</key>
 	<string></string>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-	<key>UIStatusBarHidden</key>
 	<false/>
 </dict>
 </plist>
