@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MobileCRM.Shared.ViewModels.Home;
 using MobileCRM.Shared.Helpers;
+using Xamarin;
 
 
 namespace MobileCRM.Shared.Pages.Home
@@ -61,6 +62,7 @@ namespace MobileCRM.Shared.Pages.Home
 				}
 				catch (Exception exc)
 				{
+            Insights.Report(exc, ReportSeverity.Error);
 						System.Diagnostics.Debug.WriteLine("EXCEPTION: DashboardView.PopulateBarChart(): " + exc.Message + "  |  " + exc.StackTrace);
 				}
 
@@ -97,19 +99,14 @@ namespace MobileCRM.Shared.Pages.Home
 		{
 				base.OnAppearing();
 
-        //if (ViewModel.IsInitialized)
-        //{
-        //    return;
-        //}
-
-        //await ViewModel.ExecuteLoadOrdersCommand();
         await ViewModel.ExecuteLoadSeedDataCommand();
 
 				this.PopulateBarChart();
-        //this.PopulatePieChart();
 
 				ViewModel.IsInitialized = true;
 
+
+        Insights.Track("Dashboard Page");
 		}
 
 	}

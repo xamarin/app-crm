@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin;
 
 
 namespace MobileCRM.Shared.Pages.Leads
@@ -24,6 +25,8 @@ namespace MobileCRM.Shared.Pages.Leads
             this.BindingContext = viewModel = vm;
 
             this.Content = this.BuildView();
+
+            Insights.Track("Lead Details Page");
 
         } //end ctor
 

@@ -6,6 +6,7 @@ using System.Diagnostics;
 
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using Microsoft.WindowsAzure.MobileServices;
@@ -25,6 +26,8 @@ namespace MobileCRM.iOS.Renderers
         public async override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
+
+            Insights.Track("Login Page");
 
             try
             {

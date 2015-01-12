@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using System.Linq;
-using MobileCRM.Shared.ViewModels.Contacts;
+using Xamarin;
 
 
 namespace MobileCRM.Shared.Pages.Contacts
@@ -70,6 +70,7 @@ namespace MobileCRM.Shared.Pages.Contacts
 
             this.MakeMap();
 
+            Insights.Track("Contact Map Page");
         }
     }
 }

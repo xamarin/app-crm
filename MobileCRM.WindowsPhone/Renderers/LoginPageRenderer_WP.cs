@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.WindowsAzure.MobileServices;
+using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.WinPhone;
 
@@ -23,6 +24,8 @@ namespace MobileCRM.WindowsPhone.Renderers
         protected async override void OnElementChanged(ElementChangedEventArgs<Page> e)
         {
             base.OnElementChanged(e);
+
+            Insights.Track("Login Page");
 
             MobileServiceClient client = AuthInfo.Instance.GetMobileServiceClient();
 

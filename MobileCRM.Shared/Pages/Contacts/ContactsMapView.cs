@@ -6,6 +6,8 @@ using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using System.Linq;
+using Xamarin;
+
 
 namespace MobileCRM.Shared.Pages.Contacts
 {
@@ -72,7 +74,6 @@ namespace MobileCRM.Shared.Pages.Contacts
       {
         base.OnAppearing();
         MakeMap();
-        
       }
     }
 }

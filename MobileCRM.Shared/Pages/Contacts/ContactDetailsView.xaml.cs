@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MobileCRM.Shared.Interfaces;
 using Xamarin.Forms;
+using Xamarin;
 
 namespace MobileCRM.Shared.Pages.Contacts
 {
@@ -22,6 +23,7 @@ namespace MobileCRM.Shared.Pages.Contacts
 
 				this.BindingContext = viewModel;
 
+        Insights.Track("Contact Details Page");
 		} //end ctor
 
 

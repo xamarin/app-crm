@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin;
+
 
 namespace MobileCRM.Shared.Pages.Accounts
 {
@@ -24,6 +26,8 @@ namespace MobileCRM.Shared.Pages.Accounts
             this.Title = "New Order";
 
             this.Content = this.BuildView();
+
+            Insights.Track("New Order Page");
 
         } //end ctor
 

@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using System.Linq;
 using MobileCRM.Shared.ViewModels.Accounts;
+using Xamarin;
+
 
 namespace MobileCRM.Shared.Pages.Accounts
 {
@@ -66,6 +68,7 @@ namespace MobileCRM.Shared.Pages.Accounts
             base.OnAppearing();
             MakeMap();
 
+            Insights.Track("Account Contact Map Page");
         }
     }
 }

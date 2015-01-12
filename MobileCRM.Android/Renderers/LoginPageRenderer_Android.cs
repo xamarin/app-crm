@@ -12,6 +12,7 @@ using Android.Widget;
 
 using Microsoft.WindowsAzure.MobileServices;
 
+using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -29,6 +30,8 @@ namespace MobileCRMAndroid.Renderers
         protected async override void OnElementChanged(ElementChangedEventArgs<Page> e)
         {
             base.OnElementChanged(e);
+
+            Insights.Track("Login Page");
 
             MobileServiceClient client = AuthInfo.Instance.GetMobileServiceClient();
             client.Logout();

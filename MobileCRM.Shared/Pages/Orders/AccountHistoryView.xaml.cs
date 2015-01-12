@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin;
+
 
 namespace MobileCRM.Shared.Pages.Accounts
 {
@@ -39,6 +41,8 @@ namespace MobileCRM.Shared.Pages.Accounts
       //}
       viewModel.LoadOrdersCommand.Execute(null);
       viewModel.IsInitialized = true;
+
+      Insights.Track("Account Details Order History Page");
 
     }
 

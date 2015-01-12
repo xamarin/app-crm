@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin;
 
 
 namespace MobileCRM.Shared.Pages.Accounts
@@ -29,6 +30,8 @@ namespace MobileCRM.Shared.Pages.Accounts
             this.BindingContext = this.viewModel = new OrderDetailsViewModel(Navigation, order);
 
             this.Content = this.BuildView();
+
+            Insights.Track("Account Details Order Detail Page");
         } //end ctor
 
         private Layout BuildView()

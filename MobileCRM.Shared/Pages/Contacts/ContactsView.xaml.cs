@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin;
 
 namespace MobileCRM.Shared.Pages.Contacts
 {
@@ -57,9 +58,12 @@ namespace MobileCRM.Shared.Pages.Contacts
 	protected override void OnAppearing()
 	{
 		base.OnAppearing();
+
+    Insights.Track("Contact List Page");
+
 		if (ViewModel.IsInitialized)
 		{
-		return;
+		    return;
 		}
 		ViewModel.LoadContactsCommand.Execute(null);
 		ViewModel.IsInitialized = true;

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MobileCRM.Shared.Interfaces;
 using Xamarin.Forms;
+using Xamarin;
 
 namespace MobileCRM.Shared.Pages.Accounts
 {
@@ -51,6 +52,7 @@ namespace MobileCRM.Shared.Pages.Accounts
       }
       catch (Exception exc)
       {
+          Insights.Report(exc, ReportSeverity.Error);
         System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsView.PopulateChart(): " + exc.Message + "  |  " + exc.StackTrace);
       }
 
@@ -64,21 +66,18 @@ namespace MobileCRM.Shared.Pages.Accounts
 
         base.OnAppearing();
 
-
-        //if (viewModelOrders.IsInitialized)
-        //{
-        //  return;
-        //}
-
         await viewModelOrders.ExecuteLoadOrdersCommand();
 
         this.PopulateChart();
 
         viewModelOrders.IsInitialized = true;
 
+        Insights.Track("Account Details Page");
+
       }
       catch (Exception exc)
       {
+          Insights.Report(exc, ReportSeverity.Error);
         System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsView.OnAppearing(): " + exc.Message + "  |  " + exc.StackTrace);
       }
 

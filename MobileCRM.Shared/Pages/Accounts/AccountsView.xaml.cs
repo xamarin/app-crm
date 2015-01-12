@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin;
 
 namespace MobileCRM.Shared.Pages.Accounts
 {
@@ -38,6 +39,9 @@ namespace MobileCRM.Shared.Pages.Accounts
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
+
+      Insights.Track("Accounts Page");
+
 			if (viewModel.IsInitialized)
 			{
 				return;

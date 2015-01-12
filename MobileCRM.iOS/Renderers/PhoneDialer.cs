@@ -9,6 +9,7 @@ using MobileCRM.Shared.Interfaces;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
+
 [assembly: Dependency(typeof(PhoneDialer))]
 namespace MobileCRM.iOS.Renderers
 {

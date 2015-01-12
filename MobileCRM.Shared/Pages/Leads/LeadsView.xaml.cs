@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin;
 
 namespace MobileCRM.Shared.Pages.Leads
 {
@@ -68,6 +69,9 @@ namespace MobileCRM.Shared.Pages.Leads
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
+
+      Insights.Track("Leads List Page");
+
 			if (ViewModel.IsInitialized)
 			{
 				return;

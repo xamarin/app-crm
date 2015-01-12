@@ -11,6 +11,8 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin;
+
 
 [assembly: Xamarin.Forms.Dependency(typeof(AzureService))]
 
@@ -63,7 +65,9 @@ namespace MobileCRM.Shared.Services
         }
         catch(Exception ex)
         {
+          
           Debug.WriteLine(@"Sync Failed: {0}", ex.Message);
+          Insights.Report(ex, ReportSeverity.Error);
        
         }
         
@@ -89,6 +93,7 @@ namespace MobileCRM.Shared.Services
           }
           catch (Exception exc)
           {
+              Insights.Report(exc, ReportSeverity.Error);
               Debug.WriteLine("ERROR AzureService.SeedData(): " + exc.Message);
           }
 
@@ -113,10 +118,12 @@ namespace MobileCRM.Shared.Services
         }
         catch (MobileServiceInvalidOperationException e)
         {
+            Insights.Report(e, ReportSeverity.Error);
           Debug.WriteLine(@"Sync Failed: {0}", e.Message);
         }
         catch (Exception ex2)
         {
+            Insights.Report(ex2, ReportSeverity.Error);
           Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
       }
@@ -141,10 +148,12 @@ namespace MobileCRM.Shared.Services
         }
         catch (MobileServiceInvalidOperationException ex)
         {
+            Insights.Report(ex, ReportSeverity.Error);
           Debug.WriteLine(@"ERROR {0}", ex.Message);
         }
         catch (Exception ex2)
         {
+            Insights.Report(ex2, ReportSeverity.Error);
           Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
 
@@ -164,10 +173,12 @@ namespace MobileCRM.Shared.Services
         }
         catch (MobileServiceInvalidOperationException e)
         {
+            Insights.Report(e, ReportSeverity.Error);
           Debug.WriteLine(@"Sync Failed: {0}", e.Message);
         }
         catch (Exception ex2)
         {
+            Insights.Report(ex2, ReportSeverity.Error);
           Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
       }
@@ -189,10 +200,12 @@ namespace MobileCRM.Shared.Services
         }
         catch (MobileServiceInvalidOperationException ex)
         {
+            Insights.Report(ex, ReportSeverity.Error);
           Debug.WriteLine(@"ERROR {0}", ex.Message);
         }
         catch (Exception ex2)
         {
+            Insights.Report(ex2, ReportSeverity.Error);
           Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
 
@@ -207,10 +220,12 @@ namespace MobileCRM.Shared.Services
         }
         catch (MobileServiceInvalidOperationException ex)
         {
+            Insights.Report(ex, ReportSeverity.Error);
           Debug.WriteLine(@"ERROR {0}", ex.Message);
         }
         catch (Exception ex2)
         {
+            Insights.Report(ex2, ReportSeverity.Error);
           Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
 
@@ -226,10 +241,12 @@ namespace MobileCRM.Shared.Services
         }
         catch (MobileServiceInvalidOperationException ex)
         {
+            Insights.Report(ex, ReportSeverity.Error);
           Debug.WriteLine(@"ERROR {0}", ex.Message);
         }
         catch (Exception ex2)
         {
+            Insights.Report(ex2, ReportSeverity.Error);
           Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
         return new List<Account>();
@@ -246,10 +263,12 @@ namespace MobileCRM.Shared.Services
         }
         catch (MobileServiceInvalidOperationException ex)
         {
+            Insights.Report(ex, ReportSeverity.Error);
           Debug.WriteLine(@"ERROR {0}", ex.Message);
         }
         catch (Exception ex2)
         {
+            Insights.Report(ex2, ReportSeverity.Error);
           Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
         return new List<Order>();
@@ -266,10 +285,12 @@ namespace MobileCRM.Shared.Services
           }
           catch (MobileServiceInvalidOperationException ex)
           {
+              Insights.Report(ex, ReportSeverity.Error);
               Debug.WriteLine(@"ERROR {0}", ex.Message);
           }
           catch (Exception ex2)
           {
+              Insights.Report(ex2, ReportSeverity.Error);
               Debug.WriteLine(@"ERROR {0}", ex2.Message);
           }
           return new List<Order>();
@@ -286,10 +307,12 @@ namespace MobileCRM.Shared.Services
           }
           catch (MobileServiceInvalidOperationException ex)
           {
+              Insights.Report(ex, ReportSeverity.Error);
               Debug.WriteLine(@"ERROR {0}", ex.Message);
           }
           catch (Exception ex2)
           {
+              Insights.Report(ex2, ReportSeverity.Error);
               Debug.WriteLine(@"ERROR {0}", ex2.Message);
           }
           return new List<Order>();

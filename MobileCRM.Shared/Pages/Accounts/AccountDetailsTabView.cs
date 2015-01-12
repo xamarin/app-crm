@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin;
 
 namespace MobileCRM.Shared.Pages.Accounts
 {
@@ -26,8 +27,6 @@ namespace MobileCRM.Shared.Pages.Accounts
 
           try
           {
-
-
               if (account != null)
               {
                   this.Title = account.Company;
@@ -65,6 +64,7 @@ namespace MobileCRM.Shared.Pages.Accounts
           }
           catch (Exception exc)
           {
+              Insights.Report(exc, ReportSeverity.Error);
               System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsTabView.Constructor(): " + exc.Message + "  |  " + exc.StackTrace);
           }
 
@@ -89,6 +89,7 @@ namespace MobileCRM.Shared.Pages.Accounts
 
           viewAcctDetails.RefreshView();
 
+          
       }
 
     } //end class
