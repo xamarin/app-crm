@@ -351,9 +351,6 @@
     <BundleResource Include="Resources\icon-114.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon-72%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\icon-76.png" />
   </ItemGroup>
   <ItemGroup>
