@@ -19,7 +19,7 @@ namespace MobileCRM.Shared.Pages.Settings
         {
             InitializeComponent();
 
-            this.Title = "About Mobile CRM";
+            this.Title = "About VervetaCRM";
 
             //SYI: v2 feature.
             //this.BindingContext = vm = new UserViewModel(); 

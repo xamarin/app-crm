@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>MobileCRM</string>
+	<string>VervetaCRM</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.glennwester.mobilecrm</string>
 	<key>CFBundleShortVersionString</key>

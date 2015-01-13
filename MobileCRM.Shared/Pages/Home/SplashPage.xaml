@@ -12,7 +12,7 @@
       <Image Source="icon" HeightRequest="80" WidthRequest="80" />
     </StackLayout>
     
-    <Label Text="Mobile" Font="Bold, Large" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELBLUE}" />
+    <Label Text="Verveta" Font="Bold, Large" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELBLUE}" />
     <Label Text="CRM" Font="Bold, Large" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELGRAY}" />
 
       

@@ -25,7 +25,7 @@ namespace MobileCRM.Shared.Pages.Home
         {
           bolSplashShown = false;
 
-          this.Title = "Mobile CRM";
+          this.Title = "Verveta CRM";
 
           this.BackgroundImage = "menubk.png";
 
@@ -168,14 +168,6 @@ namespace MobileCRM.Shared.Pages.Home
 
         }
 
-        //private void CheckUserAuthenticated()
-        //{
-        //    if (AuthInfo.Instance.User == null)
-        //    {
-        //        Navigation.PushModalAsync(new LoginPage());
-        //    }
-
-        //}
 
 
         private void CloseAuth()

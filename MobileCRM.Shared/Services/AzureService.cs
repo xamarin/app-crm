@@ -32,9 +32,6 @@ namespace MobileCRM.Shared.Services
       public AzureService()
       {
           MobileService = AuthInfo.Instance.GetMobileServiceClient();
-
-          //MobileService = new MobileServiceClient(
-          //    AuthInfo.APPLICATION_URL, AuthInfo.APPLICATION_KEY);
       }
 
 
@@ -82,6 +79,10 @@ namespace MobileCRM.Shared.Services
 
       public async Task SeedData()
       {
+          //Insights tracking
+          var handle = Insights.TrackTime("TimeToSyncDB");
+          handle.Start();
+
           try
           {
               await Init();
@@ -89,12 +90,16 @@ namespace MobileCRM.Shared.Services
               await orderTable.PullAsync();
               await accountTable.PullAsync();
               await contactTable.PullAsync();
-
           }
           catch (Exception exc)
           {
               Insights.Report(exc, ReportSeverity.Error);
               Debug.WriteLine("ERROR AzureService.SeedData(): " + exc.Message);
+          } 
+          finally
+          {
+              //Insights
+              handle.Stop();
           }
 
       }
@@ -107,34 +112,37 @@ namespace MobileCRM.Shared.Services
         try
         {
 
-          await Init();
-
+            await Init();
 
             //SYI: For public demo, only allow pull, not push.
             //await MobileService.SyncContext.PushAsync();
-
-
             await orderTable.PullAsync();
         }
         catch (MobileServiceInvalidOperationException e)
         {
             Insights.Report(e, ReportSeverity.Error);
-          Debug.WriteLine(@"Sync Failed: {0}", e.Message);
+            Debug.WriteLine(@"Sync Failed: {0}", e.Message);
         }
         catch (Exception ex2)
         {
             Insights.Report(ex2, ReportSeverity.Error);
-          Debug.WriteLine(@"ERROR {0}", ex2.Message);
+            Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
       }
 
 
       public async Task SaveOrderAsync(Order item)
-      { 
-        if (item.Id == null)
-          await orderTable.InsertAsync(item);
-        else 
-          await orderTable.UpdateAsync(item);
+      {
+          //Insights
+          using (var handle = Insights.TrackTime("TimeToSaveOrder"))
+          {
+              if (item.Id == null)
+                  await orderTable.InsertAsync(item);
+              else
+                  await orderTable.UpdateAsync(item);
+          }
+
+
 
         //await SyncOrders();
       }
@@ -143,18 +151,21 @@ namespace MobileCRM.Shared.Services
       {
         try
         {
-          await orderTable.DeleteAsync(item);
+            using (var handle = Insights.TrackTime("TimeToDeleteOrder"))
+            {
+                await orderTable.DeleteAsync(item);
+            }
           //await SyncOrders(); ;
         }
         catch (MobileServiceInvalidOperationException ex)
         {
             Insights.Report(ex, ReportSeverity.Error);
-          Debug.WriteLine(@"ERROR {0}", ex.Message);
+            Debug.WriteLine(@"ERROR {0}", ex.Message);
         }
         catch (Exception ex2)
         {
             Insights.Report(ex2, ReportSeverity.Error);
-          Debug.WriteLine(@"ERROR {0}", ex2.Message);
+            Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
 
       }
@@ -189,11 +200,13 @@ namespace MobileCRM.Shared.Services
       {
         try
         {
-
-          if (item.Id == null)
-            await accountTable.InsertAsync(item);
-          else
-            await accountTable.UpdateAsync(item);
+            using (var handle = Insights.TrackTime("TimeToSaveAccount"))
+            {
+                if (item.Id == null)
+                    await accountTable.InsertAsync(item);
+                else
+                    await accountTable.UpdateAsync(item);
+            }
 
           //await SyncAccounts();
 
@@ -201,12 +214,12 @@ namespace MobileCRM.Shared.Services
         catch (MobileServiceInvalidOperationException ex)
         {
             Insights.Report(ex, ReportSeverity.Error);
-          Debug.WriteLine(@"ERROR {0}", ex.Message);
+            Debug.WriteLine(@"ERROR {0}", ex.Message);
         }
         catch (Exception ex2)
         {
             Insights.Report(ex2, ReportSeverity.Error);
-          Debug.WriteLine(@"ERROR {0}", ex2.Message);
+            Debug.WriteLine(@"ERROR {0}", ex2.Message);
         }
 
       }
@@ -233,45 +246,50 @@ namespace MobileCRM.Shared.Services
 
       public async Task<IEnumerable<Account>> GetAccountsAsync(bool leads = false)
       {
-        try
-        {
-          //await SyncAccounts();
+          try
+          {
+              //await SyncAccounts();
 
-          return await accountTable.Where(a =>a.IsLead == leads).OrderBy(b => b.Company).ToEnumerableAsync();
-        }
-        catch (MobileServiceInvalidOperationException ex)
-        {
-            Insights.Report(ex, ReportSeverity.Error);
-          Debug.WriteLine(@"ERROR {0}", ex.Message);
-        }
-        catch (Exception ex2)
-        {
-            Insights.Report(ex2, ReportSeverity.Error);
-          Debug.WriteLine(@"ERROR {0}", ex2.Message);
-        }
-        return new List<Account>();
+              using (var handle = Insights.TrackTime("TimeToGetAccountList"))
+              {
+                  return await accountTable.Where(a => a.IsLead == leads).OrderBy(b => b.Company).ToEnumerableAsync();
+              }
+          }
+          catch (MobileServiceInvalidOperationException ex)
+          {
+              Insights.Report(ex, ReportSeverity.Error);
+              Debug.WriteLine(@"ERROR {0}", ex.Message);
+          }
+          catch (Exception ex2)
+          {
+              Insights.Report(ex2, ReportSeverity.Error);
+              Debug.WriteLine(@"ERROR {0}", ex2.Message);
+          }
+          return new List<Account>();
       }
 
       public async Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId)
       {
-        try
-        {
-          //await SyncOrders();
-
-          return await orderTable.Where(j => j.AccountId == accountId &&
-                                         j.IsOpen == true).OrderBy(j => j.DueDate).ToEnumerableAsync();
-        }
-        catch (MobileServiceInvalidOperationException ex)
-        {
-            Insights.Report(ex, ReportSeverity.Error);
-          Debug.WriteLine(@"ERROR {0}", ex.Message);
-        }
-        catch (Exception ex2)
-        {
-            Insights.Report(ex2, ReportSeverity.Error);
-          Debug.WriteLine(@"ERROR {0}", ex2.Message);
-        }
-        return new List<Order>();
+          try
+          {
+              //await SyncOrders();
+              using (var handle = Insights.TrackTime("TimeToGetAccountOrders"))
+              {
+                  return await orderTable.Where(j => j.AccountId == accountId &&
+                        j.IsOpen == true).OrderBy(j => j.DueDate).ToEnumerableAsync();
+              }
+          }
+          catch (MobileServiceInvalidOperationException ex)
+          {
+              Insights.Report(ex, ReportSeverity.Error);
+              Debug.WriteLine(@"ERROR {0}", ex.Message);
+          }
+          catch (Exception ex2)
+          {
+              Insights.Report(ex2, ReportSeverity.Error);
+              Debug.WriteLine(@"ERROR {0}", ex2.Message);
+          }
+          return new List<Order>();
       }
 
       public async Task<IEnumerable<Order>> GetAccountOrderHistoryAsync(string accountId)
@@ -279,9 +297,11 @@ namespace MobileCRM.Shared.Services
           try
           {
               //await SyncOrders();
-
-              return await orderTable.Where(j => j.AccountId == accountId &&
-                                             j.IsOpen == false).OrderByDescending(j => j.ClosedDate).ToEnumerableAsync();
+              using (var handle = Insights.TrackTime("TimeToGetAccountHistory"))
+              {
+                  return await orderTable.Where(j => j.AccountId == accountId &&
+                    j.IsOpen == false).OrderByDescending(j => j.ClosedDate).ToEnumerableAsync();
+              }
           }
           catch (MobileServiceInvalidOperationException ex)
           {
@@ -303,7 +323,10 @@ namespace MobileCRM.Shared.Services
           {
               //await SyncOrders();
 
-              return await orderTable.Where(j => j.IsOpen == false).ToEnumerableAsync();
+              using (var handle = Insights.TrackTime("TimeToGetAllAccountOrders"))
+              {
+                  return await orderTable.Where(j => j.IsOpen == false).ToEnumerableAsync();
+              }
           }
           catch (MobileServiceInvalidOperationException ex)
           {
@@ -347,11 +370,14 @@ namespace MobileCRM.Shared.Services
       public async Task SaveContactAsync(Contact item)
       {
         try
-        { 
-          if (item.Id == null)
-            await contactTable.InsertAsync(item);
-          else
-            await contactTable.UpdateAsync(item);
+        {
+            using (var handle = Insights.TrackTime("TimeToSaveContact"))
+            {
+                if (item.Id == null)
+                    await contactTable.InsertAsync(item);
+                else
+                    await contactTable.UpdateAsync(item);
+            }
 
           //await SyncContacts();
         }
@@ -385,9 +411,12 @@ namespace MobileCRM.Shared.Services
         {
           //await SyncContacts();
 
-          //SYI - Sort contacts by last name
-          IMobileServiceTableQuery<Contact> query = contactTable.OrderBy(c => c.LastName);
-          return await query.ToListAsync();
+            using (var handle = Insights.TrackTime("TimeToGetContacts"))
+            {
+                //SYI - Sort contacts by last name
+                IMobileServiceTableQuery<Contact> query = contactTable.OrderBy(c => c.LastName);
+                return await query.ToListAsync();
+            }
         }
         catch (MobileServiceInvalidOperationException ex)
         {
@@ -408,8 +437,11 @@ namespace MobileCRM.Shared.Services
       {
         try
         {
-          await SyncContacts();
-          return await contactTable.LookupAsync(contactId);
+            using (var handle = Insights.TrackTime("TimeToGetContact"))
+            {
+                await SyncContacts();
+                return await contactTable.LookupAsync(contactId);
+            }
         }
         catch (MobileServiceInvalidOperationException ex)
         {

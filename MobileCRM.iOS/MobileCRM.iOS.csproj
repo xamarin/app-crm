@@ -28,7 +28,8 @@
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>Default, ARMv7</MtouchArch>
-    <MtouchSdkVersion>7.1</MtouchSdkVersion>
+    <MtouchSdkVersion>
+    </MtouchSdkVersion>
     <MtouchExtraArgs>
     </MtouchExtraArgs>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
@@ -37,6 +38,13 @@
     </IpaMetadata>
     <IpaPackageName>
     </IpaPackageName>
+    <MtouchProfiling>False</MtouchProfiling>
+    <MtouchFastDev>False</MtouchFastDev>
+    <MtouchEnableGenericValueTypeSharing>True</MtouchEnableGenericValueTypeSharing>
+    <MtouchUseLlvm>False</MtouchUseLlvm>
+    <MtouchUseThumb>False</MtouchUseThumb>
+    <MtouchUseSGen>False</MtouchUseSGen>
+    <MtouchUseRefCounting>False</MtouchUseRefCounting>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
