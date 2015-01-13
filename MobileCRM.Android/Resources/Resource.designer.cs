@@ -1113,91 +1113,88 @@ namespace MobileCRMAndroid
 			public const int icon = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int Iconoriginal = 2130837630;
+			public const int lead = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int lead = 2130837631;
+			public const int menubk = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int menubk = 2130837632;
+			public const int mr_ic_audio_vol = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int mr_ic_audio_vol = 2130837633;
+			public const int mr_ic_media_route_connecting_holo_dark = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int mr_ic_media_route_connecting_holo_dark = 2130837634;
+			public const int mr_ic_media_route_connecting_holo_light = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int mr_ic_media_route_connecting_holo_light = 2130837635;
+			public const int mr_ic_media_route_disabled_holo_dark = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int mr_ic_media_route_disabled_holo_dark = 2130837636;
+			public const int mr_ic_media_route_disabled_holo_light = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int mr_ic_media_route_disabled_holo_light = 2130837637;
+			public const int mr_ic_media_route_holo_dark = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int mr_ic_media_route_holo_dark = 2130837638;
+			public const int mr_ic_media_route_holo_light = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int mr_ic_media_route_holo_light = 2130837639;
+			public const int mr_ic_media_route_off_holo_dark = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int mr_ic_media_route_off_holo_dark = 2130837640;
+			public const int mr_ic_media_route_off_holo_light = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int mr_ic_media_route_off_holo_light = 2130837641;
+			public const int mr_ic_media_route_on_0_holo_dark = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int mr_ic_media_route_on_0_holo_dark = 2130837642;
+			public const int mr_ic_media_route_on_0_holo_light = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int mr_ic_media_route_on_0_holo_light = 2130837643;
+			public const int mr_ic_media_route_on_1_holo_dark = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int mr_ic_media_route_on_1_holo_dark = 2130837644;
+			public const int mr_ic_media_route_on_1_holo_light = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int mr_ic_media_route_on_1_holo_light = 2130837645;
+			public const int mr_ic_media_route_on_2_holo_dark = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int mr_ic_media_route_on_2_holo_dark = 2130837646;
+			public const int mr_ic_media_route_on_2_holo_light = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int mr_ic_media_route_on_2_holo_light = 2130837647;
+			public const int mr_ic_media_route_on_holo_dark = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int mr_ic_media_route_on_holo_dark = 2130837648;
+			public const int mr_ic_media_route_on_holo_light = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int mr_ic_media_route_on_holo_light = 2130837649;
+			public const int powered_by_google_dark = 2130837649;
 			
 			// aapt resource value: 0x7f020092
-			public const int powered_by_google_dark = 2130837650;
+			public const int powered_by_google_light = 2130837650;
 			
 			// aapt resource value: 0x7f020093
-			public const int powered_by_google_light = 2130837651;
+			public const int productcatalog = 2130837651;
 			
 			// aapt resource value: 0x7f020094
-			public const int productcatalog = 2130837652;
+			public const int refresh = 2130837652;
 			
 			// aapt resource value: 0x7f020095
-			public const int refresh = 2130837653;
+			public const int save = 2130837653;
 			
 			// aapt resource value: 0x7f020096
-			public const int save = 2130837654;
+			public const int settings = 2130837654;
 			
 			// aapt resource value: 0x7f020097
-			public const int settings = 2130837655;
+			public const int slideout = 2130837655;
 			
 			// aapt resource value: 0x7f020098
-			public const int slideout = 2130837656;
+			public const int zoom_in = 2130837656;
 			
 			// aapt resource value: 0x7f020099
-			public const int zoom_in = 2130837657;
-			
-			// aapt resource value: 0x7f02009a
-			public const int zoom_out = 2130837658;
+			public const int zoom_out = 2130837657;
 			
 			static Drawable()
 			{
