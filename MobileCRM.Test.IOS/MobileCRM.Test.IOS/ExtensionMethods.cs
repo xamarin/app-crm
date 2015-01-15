@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using NUnit.Framework;
 
-namespace MobileCRM.Test.Android
+namespace MobileCRM.Test.iOS
 {
 	public static class Extensions
 	{
@@ -79,7 +79,7 @@ namespace MobileCRM.Test.Android
 
 			return new AppResult[0];
 		}
-			
+
 		public static void WaitThenEnterText(this IApp app, Func<AppQuery, AppQuery> lambda, string text, string screenshot = null)
 		{
 			app.WaitForElement(lambda);
@@ -222,13 +222,13 @@ namespace MobileCRM.Test.Android
             app.Tap(lambda);
             Screenshot(app, screenShotText);
         }
-        
+
         public static void WaitFor(this IApp app, Func<AppQuery, AppQuery> lambda)//, string screenShotText)
         {
             app.WaitForElement(lambda, "Timed out after 30 seconds", new TimeSpan(0, 0, 0, 30, 0), null, null);
             //Screenshot(app, screenShotText);
         }
-        
+
         public static void WaitForThenEnterText(this IApp app, Func<AppQuery, AppQuery> lambda, string text, string screenShotText)
         {
             WaitFor(app, lambda);
@@ -273,7 +273,7 @@ namespace MobileCRM.Test.Android
             {
                 Assert.Fail(string.Format("FAILURE: {0}"), screenShotText);
             }
-            
+
         }
 
 
