@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>VervetaCRM</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.glennwester.mobilecrm</string>
+	<string>com.stevenyi.mobilecrm</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -33,7 +33,6 @@
 	</array>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Icon-72@2x.png</string>
 		<string>Icon@2x.png</string>
 		<string>Icon.png</string>
 		<string>Icon-60@2x.png</string>
