@@ -87,9 +87,14 @@ namespace MobileCRM.Shared.Services
           {
               await Init();
 
-              await orderTable.PullAsync();
-              await accountTable.PullAsync();
-              await contactTable.PullAsync();
+              //await orderTable.PullAsync();
+              //await accountTable.PullAsync();
+              //await contactTable.PullAsync();
+
+              await orderTable.PullAsync(null, orderTable.CreateQuery());
+              await accountTable.PullAsync(null, accountTable.CreateQuery());
+              await contactTable.PullAsync(null, contactTable.CreateQuery());
+
           }
           catch (Exception exc)
           {
@@ -116,7 +121,9 @@ namespace MobileCRM.Shared.Services
 
             //SYI: For public demo, only allow pull, not push.
             //await MobileService.SyncContext.PushAsync();
-            await orderTable.PullAsync();
+            
+            //await orderTable.PullAsync();
+            await orderTable.PullAsync(null, orderTable.CreateQuery());
         }
         catch (MobileServiceInvalidOperationException e)
         {
@@ -180,7 +187,9 @@ namespace MobileCRM.Shared.Services
         {
           await Init();
           //await MobileService.SyncContext.PushAsync();
-          await accountTable.PullAsync();
+
+          //await accountTable.PullAsync();
+          await accountTable.PullAsync(null, accountTable.CreateQuery());
         }
         catch (MobileServiceInvalidOperationException e)
         {
@@ -355,7 +364,8 @@ namespace MobileCRM.Shared.Services
           //SYI: Only pull in public demo
           //await MobileService.SyncContext.PushAsync();
 
-          await contactTable.PullAsync();
+          //await contactTable.PullAsync();
+          await contactTable.PullAsync(null, contactTable.CreateQuery());
         }
         catch(MobileServiceInvalidOperationException e)
         {
