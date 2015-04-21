@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.xamarin.Meetum" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="15" />
+	<uses-sdk android:minSdkVersion="17" />
 	<application android:theme="@style/MyTheme" android:label="VervetaCRM" android:icon="@drawable/icon">
 		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDcLfO8j4seP9AGrC7w9h6gihYyvUcEXy8" />
 		<!--<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAWknoAcLGX8Wyq78kwens4eaVfs5zocrU" />-->
