@@ -36,7 +36,7 @@
     </IpaMetadata>
     <IpaPackageName>
     </IpaPackageName>
-    <BuildIpa>True</BuildIpa>
+    <BuildIpa>False</BuildIpa>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -61,7 +61,7 @@
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>True</MtouchDebug>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignKey>iPhone Developer: Steven Yi %28446THZZP8K%29</CodesignKey>
     <IpaPackageName>
     </IpaPackageName>
     <MtouchI18n>
@@ -75,7 +75,7 @@
     <BuildIpa>True</BuildIpa>
     <IpaMetadata>
     </IpaMetadata>
-    <CodesignProvision />
+    <CodesignProvision>bd7dd386-86dc-40f8-865b-0850eea149fb</CodesignProvision>
     <CodesignResourceRules />
     <CodesignExtraArgs />
   </PropertyGroup>
@@ -90,6 +90,13 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
     <AssemblyName>MobileCRMiOS</AssemblyName>
+    <CodesignProvision>
+    </CodesignProvision>
+    <CodesignResourceRules />
+    <CodesignExtraArgs />
+    <BuildIpa>True</BuildIpa>
+    <IpaMetadata />
+    <IpaPackageName />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>full</DebugType>
@@ -136,8 +143,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PLCrashReporter">
-      <HintPath>..\packages\Xamarin.Insights.1.8.2.105\lib\MonoTouch10\PLCrashReporter.dll</HintPath>
+    <Reference Include="PLCrashReporter, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xamarin.Insights.1.9.1.107\lib\MonoTouch10\PLCrashReporter.dll</HintPath>
     </Reference>
     <Reference Include="SQLitePCL, Version=3.8.7.2, Culture=neutral, PublicKeyToken=bddade01e9c850c5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -181,11 +189,12 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.1.2.3.6257\lib\MonoTouch10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Insights">
-      <HintPath>..\packages\Xamarin.Insights.1.8.2.105\lib\MonoTouch10\Xamarin.Insights.dll</HintPath>
-    </Reference>
     <Reference Include="SignaturePad.iOS">
       <HintPath>..\Components\signature-pad-1.3.6\lib\ios\SignaturePad.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Insights, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xamarin.Insights.1.9.1.107\lib\MonoTouch10\Xamarin.Insights.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

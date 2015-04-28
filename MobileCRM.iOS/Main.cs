@@ -16,7 +16,7 @@ namespace MobileCRM.iOS
           //var platform = SQLite3Provider.Instance;
 
 
-            Insights.Initialize("f10683d3b439eb285201591cf4c9f4577e95fb08");
+            Insights.Initialize("e548c92073ff9ed3a0bc529d2edf896009d81c9c");
 
 
             // if you want to use a different Application Delegate class from "AppDelegate"

@@ -22,7 +22,7 @@ namespace MobileCRMAndroid
             Forms.Init(this, bundle);
             FormsMaps.Init(this, bundle);
 
-            Insights.Initialize("be25cc3485829d5bca63e3ba54797cdd9365186c", this);
+            Insights.Initialize("e548c92073ff9ed3a0bc529d2edf896009d81c9c", this);
 
             // Set our view from the "main" layout resource
             SetPage (MobileCRM.Shared.App.RootPage);
