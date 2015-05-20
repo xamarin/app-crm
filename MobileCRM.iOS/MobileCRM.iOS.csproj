@@ -11,7 +11,6 @@
     <NuGetPackageImportStamp>261c51be</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <AssemblyName>MobileCRM</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -27,7 +26,7 @@
     <MtouchDebug>True</MtouchDebug>
     <MtouchI18n>
     </MtouchI18n>
-    <MtouchArch>Default, ARMv7</MtouchArch>
+    <MtouchArch>ARMv7</MtouchArch>
     <MtouchExtraArgs>
     </MtouchExtraArgs>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
@@ -36,7 +35,7 @@
     </IpaMetadata>
     <IpaPackageName>
     </IpaPackageName>
-    <BuildIpa>False</BuildIpa>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -49,6 +48,7 @@
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <AssemblyName>MobileCRM</AssemblyName>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,12 +61,12 @@
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>True</MtouchDebug>
-    <CodesignKey>iPhone Developer: Steven Yi %28446THZZP8K%29</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <IpaPackageName>
     </IpaPackageName>
     <MtouchI18n>
     </MtouchI18n>
-    <MtouchArch>Default, ARMv7</MtouchArch>
+    <MtouchArch>ARMv7</MtouchArch>
     <AssemblyName>MobileCRMiOS</AssemblyName>
     <MtouchSdkVersion>8.1</MtouchSdkVersion>
     <MtouchExtraArgs>
@@ -75,9 +75,6 @@
     <BuildIpa>True</BuildIpa>
     <IpaMetadata>
     </IpaMetadata>
-    <CodesignProvision>bd7dd386-86dc-40f8-865b-0850eea149fb</CodesignProvision>
-    <CodesignResourceRules />
-    <CodesignExtraArgs />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -90,13 +87,11 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
     <AssemblyName>MobileCRMiOS</AssemblyName>
-    <CodesignProvision>
-    </CodesignProvision>
-    <CodesignResourceRules />
-    <CodesignExtraArgs />
     <BuildIpa>True</BuildIpa>
-    <IpaMetadata />
-    <IpaPackageName />
+    <IpaMetadata>
+    </IpaMetadata>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>full</DebugType>
@@ -108,11 +103,8 @@
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>00e9379b-e760-4663-adf9-5121aa378eac</CodesignProvision>
-    <CodesignKey>iPhone Developer: Steven Yi %28446THZZP8K%29</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <AssemblyName>MobileCRMiOS</AssemblyName>
-    <CodesignResourceRules />
-    <CodesignExtraArgs />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>full</DebugType>
@@ -190,7 +182,7 @@
       <HintPath>..\packages\Xamarin.Forms.1.2.3.6257\lib\MonoTouch10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="SignaturePad.iOS">
-      <HintPath>..\Components\signature-pad-1.3.6\lib\ios\SignaturePad.iOS.dll</HintPath>
+      <HintPath>..\Components\signature-pad-1.3.7\lib\ios\SignaturePad.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Insights, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -353,8 +345,8 @@
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="signature-pad">
-      <Visible>False</Visible>
       <Version>1.3.7</Version>
+      <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
