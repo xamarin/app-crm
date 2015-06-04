@@ -12,9 +12,9 @@ namespace MobileCRM.iOS
 
     public class MenuCellRenderer : ImageCellRenderer
     {
-        public override UITableViewCell GetCell (Cell item, UITableView tv)
+        public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UITableView tv)
         {
-            var cellView = base.GetCell (item, tv);
+            var cellView = base.GetCell(item, reusableCell, tv);
 
             cellView.BackgroundColor = Color.Transparent.ToUIColor();
 

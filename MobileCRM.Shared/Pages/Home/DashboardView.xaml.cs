@@ -62,7 +62,7 @@ namespace MobileCRM.Shared.Pages.Home
 				}
 				catch (Exception exc)
 				{
-            Insights.Report(exc, ReportSeverity.Error);
+            Insights.Report(exc, Insights.Severity.Error);
 						System.Diagnostics.Debug.WriteLine("EXCEPTION: DashboardView.PopulateBarChart(): " + exc.Message + "  |  " + exc.StackTrace);
 				}
 

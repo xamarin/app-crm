@@ -64,7 +64,7 @@ namespace MobileCRM.Shared.Pages.Accounts
           }
           catch (Exception exc)
           {
-              Insights.Report(exc, ReportSeverity.Error);
+                Insights.Report(exc, Insights.Severity.Error);
               System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsTabView.Constructor(): " + exc.Message + "  |  " + exc.StackTrace);
           }
 

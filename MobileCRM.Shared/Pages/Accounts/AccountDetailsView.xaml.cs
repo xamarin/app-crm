@@ -52,7 +52,7 @@ namespace MobileCRM.Shared.Pages.Accounts
       }
       catch (Exception exc)
       {
-          Insights.Report(exc, ReportSeverity.Error);
+          Insights.Report(exc, Insights.Severity.Error);
         System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsView.PopulateChart(): " + exc.Message + "  |  " + exc.StackTrace);
       }
 
@@ -77,7 +77,7 @@ namespace MobileCRM.Shared.Pages.Accounts
       }
       catch (Exception exc)
       {
-          Insights.Report(exc, ReportSeverity.Error);
+          Insights.Report(exc, Insights.Severity.Error);
         System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsView.OnAppearing(): " + exc.Message + "  |  " + exc.StackTrace);
       }
 

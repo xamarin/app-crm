@@ -17,10 +17,10 @@ namespace MobileCRM.iOS.Renderers
 {
   public class ListTextCellRenderer : TextCellRenderer
   {
-    public override UITableViewCell GetCell(Xamarin.Forms.Cell item, UITableView tv)
+    public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UITableView tv)
     {
 
-      var cell = base.GetCell(item, tv);
+      var cell = base.GetCell(item, reusableCell, tv);
 
       cell.Accessory = MonoTouch.UIKit.UITableViewCellAccessory.DisclosureIndicator;
 

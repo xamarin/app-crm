@@ -29,20 +29,7 @@ namespace MobileCRM.Shared.Pages.Home
 
           this.BackgroundImage = "menubk.png";
 
-            var optionsPage = new MenuView ();
-
-            optionsPage.Menu.ItemSelected += (sender, e) =>
-            {
-
-              var item = e.SelectedItem as MenuItem;
-              if (item == null)
-                return;
-
-              NavigateTo(item.MenuType);
-              optionsPage.Menu.SelectedItem = null;
-            };
-
-            Master = optionsPage;
+            Master = new ContentPage() { Title = "MENU" };
 
             previousItem = MenuType.Leads;//set first time to force
             NavigateTo(MenuType.Dashboard);
@@ -51,6 +38,21 @@ namespace MobileCRM.Shared.Pages.Home
             MessagingCenter.Subscribe<ILogin>(this, "Authenticated", (sender) =>
             {
                 this.CloseAuth();
+
+                var optionsPage = new MenuView ();
+
+                optionsPage.Menu.ItemSelected += (s, e) =>
+                    {
+
+                        var item = e.SelectedItem as MobileCRM.Shared.Models.MenuItem;
+                        if (item == null)
+                            return;
+
+                        NavigateTo(item.MenuType);
+                        optionsPage.Menu.SelectedItem = null;
+                    };
+
+                Master = optionsPage;
             });    
 
             //Splash page notification
