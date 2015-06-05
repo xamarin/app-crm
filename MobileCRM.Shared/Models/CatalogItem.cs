@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace MobileCRM.Shared.Models
 {
     public class CatalogItem
@@ -18,7 +13,8 @@ namespace MobileCRM.Shared.Models
         {
             ItemName = ImageSrc = Description = string.Empty;
             SuggestedPrice = 0;
-        } //end ctor
+        }
+        //end ctor
 
         public string ItemName { get; set; }
 
@@ -29,7 +25,6 @@ namespace MobileCRM.Shared.Models
         public string Summary { get; set; }
 
         public string Description { get; set; }
-
 
         public static CatalogItem CreateCatalogItem(string catalogItem)
         {
@@ -66,7 +61,7 @@ namespace MobileCRM.Shared.Models
                         ImageSrc = "catalog_scanner.jpg",
                         SuggestedPrice = 1500,
                         Summary = "XL9000 Industrial Scanner.",
-                        Description =  "Efficient color scanning at 25 pages per minute. Automatic document feeder. Scans non-standard sizes.",
+                        Description = "Efficient color scanning at 25 pages per minute. Automatic document feeder. Scans non-standard sizes.",
                     };
                     break;
 
@@ -76,7 +71,7 @@ namespace MobileCRM.Shared.Models
                         ItemName = ITEM_INK,
                         ImageSrc = "catalog_ink.jpg",
                         SuggestedPrice = 350,
-                        Summary =  "Replacement CMYK Inkjet Ink.",
+                        Summary = "Replacement CMYK Inkjet Ink.",
                         Description = "Compatible with all AP9000 printers. Prints up to 300 pages. Compatible with regular and high-gloss paper stock.",
                     };
                     break;
@@ -95,6 +90,5 @@ namespace MobileCRM.Shared.Models
 
             return ci;
         }
-
     }
 }

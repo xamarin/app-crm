@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Xamarin;
-
 using Microsoft.WindowsAzure.MobileServices;
 using MobileCRM.Shared.Models;
-
 
 namespace MobileCRM.Shared.Services
 {
@@ -17,24 +12,22 @@ namespace MobileCRM.Shared.Services
         public static string APPLICATION_URL = "https://xamarin3crmdemoprod.azure-mobile.net/";
         public static string APPLICATION_KEY = "eeEXCKVPqNtEOIhypkxzgAMUUdEjhN69";
 
-        private static AuthInfo instance;
+        static AuthInfo instance;
 
-        private MobileServiceUser user;
-        private MobileServiceClient client;
-        private UserInfo userInfo;
+        MobileServiceUser user;
+        MobileServiceClient client;
+        UserInfo userInfo;
 
         public const MobileServiceAuthenticationProvider AUTH_PROVIDER = MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory;
 
-
-        private AuthInfo()
+        AuthInfo()
         {
             user = null;
             userInfo = null;
             client = new MobileServiceClient(
-                        AuthInfo.APPLICATION_URL,
-                        AuthInfo.APPLICATION_KEY);
+                AuthInfo.APPLICATION_URL,
+                AuthInfo.APPLICATION_KEY);
         }
-
 
         public static AuthInfo Instance
         {
@@ -47,7 +40,6 @@ namespace MobileCRM.Shared.Services
                 return instance;
             }
         }
-
 
         public MobileServiceUser User
         {
@@ -76,7 +68,6 @@ namespace MobileCRM.Shared.Services
             return client;
         }
 
-
         public async Task GetUserInfo()
         {
             try
@@ -88,7 +79,5 @@ namespace MobileCRM.Shared.Services
                 Debug.WriteLine("ERROR AuthInfo.GetUserInf(): " + exc.Message);
             }
         }
-
-
     }
 }

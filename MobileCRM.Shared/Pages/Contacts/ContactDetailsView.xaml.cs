@@ -1,62 +1,57 @@
-﻿using MobileCRM.Shared.Models;
-using MobileCRM.Shared.ViewModels.Contacts;
+﻿using MobileCRM.Shared.ViewModels.Contacts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MobileCRM.Shared.Interfaces;
 using Xamarin.Forms;
 using Xamarin;
 
 namespace MobileCRM.Shared.Pages.Contacts
 {
-	public partial class ContactDetailsView
-	{
+    public partial class ContactDetailsView
+    {
+        public ContactDetailsView(ContactDetailsViewModel viewModel)
+        {
+            InitializeComponent();
 
-		public ContactDetailsView (ContactDetailsViewModel viewModel)
-		{
-				InitializeComponent ();
+            SetBinding(Page.TitleProperty, new Binding("Title"));
+            SetBinding(Page.IconProperty, new Binding("Icon"));
 
-				SetBinding(Page.TitleProperty, new Binding("Title"));
-				SetBinding(Page.IconProperty, new Binding("Icon"));
+            this.BindingContext = viewModel;
 
-				this.BindingContext = viewModel;
+            Insights.Track("Contact Details Page");
+        }
+        //end ctor
 
-        Insights.Track("Contact Details Page");
-		} //end ctor
-
-
-	    async private void OnPhoneTapped(object sender, EventArgs e)
-	    {
-	        if (sender == null)
-	        {
-	            return;
-	        }
+        async void OnPhoneTapped(object sender, EventArgs e)
+        {
+            if (sender == null)
+            {
+                return;
+            }
 
             string phoneCell = ((EntryCell)sender).Text;
 
-	        if (String.IsNullOrEmpty(phoneCell) == true)
-	        {
-	            return;
-	        }            
+            if (String.IsNullOrEmpty(phoneCell) == true)
+            {
+                return;
+            }            
 
-	        if (await this.DisplayAlert(
-	            "Dial a Number",
-	            "Would you like to call " + phoneCell + "?",
-	            "Yes",
-	            "No"))
-	        {
+            if (await this.DisplayAlert(
+                 "Dial a Number",
+                 "Would you like to call " + phoneCell + "?",
+                 "Yes",
+                 "No"))
+            {
 
-	            var dialer = DependencyService.Get<IDialer>();
-	            phoneCell = phoneCell.Replace("-", "");
-	            if (dialer == null)
-	            {
-	                return;
-	            }
+                var dialer = DependencyService.Get<IDialer>();
+                phoneCell = phoneCell.Replace("-", "");
+                if (dialer == null)
+                {
+                    return;
+                }
 
-	            dialer.Dial(phoneCell);
-	        }
-	    }
-	} //end class
+                dialer.Dial(phoneCell);
+            }
+        }
+    }
+    //end class
 }

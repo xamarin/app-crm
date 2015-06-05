@@ -1,43 +1,44 @@
 ﻿using MobileCRM.Shared.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MobileCRM.Shared.Interfaces
 {
     public interface IDataManager
     {
-
         Task SeedData();
 
         bool DoesLocalDBExist();
 
+        Task SyncContacts();
 
-      Task SyncContacts();
-      Task SyncAccounts();
-      Task SyncOrders();
+        Task SyncAccounts();
 
-      Task SaveOrderAsync(Order item);
-      Task DeleteOrderAsync(Order item);
+        Task SyncOrders();
 
-      Task SaveAccountAsync(Account item);
-      Task DeleteAccountAsync(Account item);
-      Task<IEnumerable<Account>> GetAccountsAsync(bool leads);
+        Task SaveOrderAsync(Order item);
 
-      //Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId, bool open);
-      Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId);
-      Task<IEnumerable<Order>> GetAccountOrderHistoryAsync(string accountId);
+        Task DeleteOrderAsync(Order item);
 
-      Task<IEnumerable<Order>> GetAllAccountOrdersAsync();
+        Task SaveAccountAsync(Account item);
 
-      Task SaveContactAsync(Contact item);
-      Task DeleteContactAsync(Contact item);
-      Task<IEnumerable<Contact>> GetContactsAsync();
-      Task<Contact> GetContactAsync(string contactId);
+        Task DeleteAccountAsync(Account item);
 
+        Task<IEnumerable<Account>> GetAccountsAsync(bool leads);
 
+        //Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId, bool open);
+        Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId);
 
+        Task<IEnumerable<Order>> GetAccountOrderHistoryAsync(string accountId);
 
+        Task<IEnumerable<Order>> GetAllAccountOrdersAsync();
+
+        Task SaveContactAsync(Contact item);
+
+        Task DeleteContactAsync(Contact item);
+
+        Task<IEnumerable<Contact>> GetContactsAsync();
+
+        Task<Contact> GetContactAsync(string contactId);
     }
 }

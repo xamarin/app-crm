@@ -1,14 +1,8 @@
 ﻿using MobileCRM.Shared.ViewModels.Contacts;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using System.Linq;
 using Xamarin;
-
 
 namespace MobileCRM.Shared.Pages.Contacts
 {
@@ -19,7 +13,8 @@ namespace MobileCRM.Shared.Pages.Contacts
             get { return BindingContext as ContactDetailsViewModel; }
         }
 
-        private Map map;
+        Map map;
+
         public ContactMapView(ContactDetailsViewModel vm)
         {
             this.Title = "Map";
@@ -33,7 +28,6 @@ namespace MobileCRM.Shared.Pages.Contacts
                 if (args.PropertyName == "Contact")
                     MakeMap();
             };
-
 
             map = new Map()
             {

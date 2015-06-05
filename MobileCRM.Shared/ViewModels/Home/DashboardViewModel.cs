@@ -5,7 +5,6 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -13,7 +12,7 @@ namespace MobileCRM.Shared.ViewModels.Home
 {
     public class DashboardViewModel : BaseViewModel
     {
-        private ObservableCollection<Order> orders;
+        ObservableCollection<Order> orders;
         bool bolDataSeeded;
 
         public ObservableCollection<Order> Orders
@@ -46,15 +45,14 @@ namespace MobileCRM.Shared.ViewModels.Home
             bolDataSeeded = false;
         }
 
-
-        private Command loadSeedDataCommand;
+        Command loadSeedDataCommand;
 
         public Command LoadSeedDataCommand
         {
             get
             {
                 return loadSeedDataCommand ??
-                    (loadSeedDataCommand = new Command(async () =>
+                (loadSeedDataCommand = new Command(async () =>
                         await ExecuteLoadSeedDataCommand()));
             }
         }
@@ -88,37 +86,36 @@ namespace MobileCRM.Shared.ViewModels.Home
             IsBusy = false;
         }
 
+        string salesPctCombo;
+        string salesPctInk;
+        string salesPctPaper;
+        string salesPctPrinter;
+        string salesPctScanner;
 
-        private string salesPctCombo;
-        private string salesPctInk;
-        private string salesPctPaper;
-        private string salesPctPrinter;
-        private string salesPctScanner;
-
-        private void GetSalesPcts()
+        void GetSalesPcts()
         {
             double dblTotalSales = (from o in chartHelper.CategoryData
-                                    select o.Amount).Sum();
+                                             select o.Amount).Sum();
 
             double dblSalesPaper = (from o in chartHelper.CategoryData
-                                    where o.Category == Order.PAPER
-                                    select o).First().Amount / dblTotalSales * 100;
+                                             where o.Category == Order.PAPER
+                                             select o).First().Amount / dblTotalSales * 100;
 
             double dblSalesCombo = (from o in chartHelper.CategoryData
-                                    where o.Category == Order.COMBO
-                                    select o).First().Amount / dblTotalSales * 100;
+                                             where o.Category == Order.COMBO
+                                             select o).First().Amount / dblTotalSales * 100;
 
             double dblSalesInk = (from o in chartHelper.CategoryData
-                                    where o.Category == Order.INK
-                                    select o).First().Amount / dblTotalSales * 100;
+                                           where o.Category == Order.INK
+                                           select o).First().Amount / dblTotalSales * 100;
 
             double dblSalesPrinter = (from o in chartHelper.CategoryData
-                                    where o.Category == Order.PRINTER
-                                    select o).First().Amount / dblTotalSales * 100;
+                                               where o.Category == Order.PRINTER
+                                               select o).First().Amount / dblTotalSales * 100;
 
             double dblSalesScanner = (from o in chartHelper.CategoryData
-                                    where o.Category == Order.SCANNER
-                                    select o).First().Amount / dblTotalSales * 100;
+                                               where o.Category == Order.SCANNER
+                                               select o).First().Amount / dblTotalSales * 100;
 
             this.ComboSalesPct = String.Format("{0:0}%", dblSalesCombo);
             this.InkSalesPct = String.Format("{0:0}%", dblSalesInk);
@@ -194,7 +191,5 @@ namespace MobileCRM.Shared.ViewModels.Home
                 OnPropertyChanged("ScannerSalesPct");
             }
         }
-
-
     }
 }

@@ -7,34 +7,29 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-
 namespace MobileCRM.Shared.Pages.Accounts
 {
     public class AccountNotesView : BaseView
     {
-
         AccountDetailsViewModel viewModel;
 
         public AccountNotesView(AccountDetailsViewModel vm)
         {
-
             SetBinding(Page.TitleProperty, new Binding("Title"));
             SetBinding(Page.IconProperty, new Binding("Icon"));
-
             this.BindingContext = viewModel = vm;
-
             this.Content = this.BuildView();
+        }
+        //end ctor
 
-        } //end ctor
-
-        private StackLayout BuildView()
+        StackLayout BuildView()
         {
             Editor editor = new Editor();
             editor.SetBinding(Editor.TextProperty, "Account.Notes");
          
-            TableView tblView = new TableView() 
+            TableView tblView = new TableView()
             {
-                Root = new TableRoot() 
+                Root = new TableRoot()
                 {
                     new TableSection("NOTES")
                 }
@@ -44,7 +39,7 @@ namespace MobileCRM.Shared.Pages.Accounts
             {
                 Padding = 10,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                Children = 
+                Children =
                 {
                     tblView,
                     editor
@@ -52,7 +47,7 @@ namespace MobileCRM.Shared.Pages.Accounts
             };
 
             return stack;
-        } //end BuildView
-
+        }
+        //end BuildView
     }
 }

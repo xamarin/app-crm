@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -9,13 +6,16 @@ namespace MobileCRM.Shared.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private INavigation navigation;
+        INavigation navigation;
+
         public LoginViewModel(INavigation navigation)
         {
             this.navigation = navigation;
         }
+
         public const string UsernamePropertyName = "Username";
-        private string username = string.Empty;
+        string username = string.Empty;
+
         public string Username
         {
             get { return username; }
@@ -23,15 +23,17 @@ namespace MobileCRM.Shared.ViewModels
         }
 
         public const string PasswordPropertyName = "Password";
-        private string password = string.Empty;
+        string password = string.Empty;
+
         public string Password
         {
             get { return password; }
             set { SetProperty(ref password, value, PasswordPropertyName); }
         }
 
-        private Command loginCommand;
+        Command loginCommand;
         public const string LoginCommandPropertyName = "LoginCommand";
+
         public Command LoginCommand
         {
             get

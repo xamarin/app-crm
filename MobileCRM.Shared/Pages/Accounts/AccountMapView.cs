@@ -1,15 +1,8 @@
-﻿using MobileCRM.Shared.ViewModels.Contacts;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using System.Linq;
 using MobileCRM.Shared.ViewModels.Accounts;
 using Xamarin;
-
 
 namespace MobileCRM.Shared.Pages.Accounts
 {
@@ -20,7 +13,8 @@ namespace MobileCRM.Shared.Pages.Accounts
             get { return BindingContext as AccountDetailsViewModel; }
         }
 
-        private Map map;
+        Map map;
+
         public AccountMapView(AccountDetailsViewModel vm)
         {
             this.Title = "Map";
@@ -28,14 +22,12 @@ namespace MobileCRM.Shared.Pages.Accounts
 
             this.BindingContext = vm;
 
-
             ViewModel.PropertyChanged += (sender, args) =>
             {
                 if (args.PropertyName == "Account")
                     MakeMap();
             };
-
-
+                    
             map = new Map()
             {
                 IsShowingUser = true

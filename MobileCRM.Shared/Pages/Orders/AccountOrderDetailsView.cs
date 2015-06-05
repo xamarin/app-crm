@@ -1,24 +1,17 @@
-﻿using System;
-using MobileCRM.Shared.Models;
+﻿using MobileCRM.Shared.Models;
 using MobileCRM.Shared.ViewModels.Orders;
 using MobileCRM.Shared.Helpers;
-using MobileCRM.Shared.CustomControls;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin;
-
 
 namespace MobileCRM.Shared.Pages.Accounts
 {
     public class AccountOrderDetailsView : BaseView
     {
-        private OrderDetailsViewModel viewModel;
+        OrderDetailsViewModel viewModel;
 
-        private CustomControls.SignaturePad sigPad;
+        CustomControls.SignaturePad sigPad;
 
         public AccountOrderDetailsView(Order order)
         {
@@ -32,11 +25,12 @@ namespace MobileCRM.Shared.Pages.Accounts
             this.Content = this.BuildView();
 
             Insights.Track("Account Details Order Detail Page");
-        } //end ctor
+        }
 
-        private Layout BuildView()
+        Layout BuildView()
         {
-            Label lblInv = new Label() { Text = "ORDER INVOICE", 
+            Label lblInv = new Label()
+            { Text = "ORDER INVOICE", 
                 HorizontalOptions = LayoutOptions.FillAndExpand, 
                 XAlign = TextAlignment.Center,
                 TextColor = AppColors.LABELWHITE,
@@ -51,20 +45,25 @@ namespace MobileCRM.Shared.Pages.Accounts
             };
             stackHeaderInv.Children.Add(lblInv);
 
-            Label lblProd = new Label() { Text = "Product:", TextColor = AppColors.LABELBLUE, 
-                Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold) };
+            Label lblProd = new Label()
+            { Text = "Product:", TextColor = AppColors.LABELBLUE, 
+                Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold)
+            };
             Label lblProdData = new Label() { TextColor = AppColors.LABELWHITE };
             lblProdData.SetBinding(Label.TextProperty, "Order.Item");
 
-            Label lblPrice = new Label() { Text = "Original Price Quote:", TextColor = AppColors.LABELBLUE,
-                 Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold) };
+            Label lblPrice = new Label()
+            { Text = "Original Price Quote:", TextColor = AppColors.LABELBLUE,
+                Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold)
+            };
             Label lblPriceData = new Label() { Text = "$" + viewModel.Price, TextColor = AppColors.LABELWHITE };
 
 
-            Label lblDateEntered = new Label() { Text = "Date Entered:", TextColor = AppColors.LABELBLUE,
-                 Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold) };
+            Label lblDateEntered = new Label()
+            { Text = "Date Entered:", TextColor = AppColors.LABELBLUE,
+                Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold)
+            };
             Label lblDateEnteredData = new Label() { Text = viewModel.Order.OrderDate.ToString("d"), TextColor = AppColors.LABELWHITE };
-
 
             Label lblDateDue = new Label()
             {
@@ -81,8 +80,10 @@ namespace MobileCRM.Shared.Pages.Accounts
                 TextColor = AppColors.LABELBLUE,
                 Font = Font.SystemFontOfSize(NamedSize.Medium, FontAttributes.Bold)
             };
-            Entry entryPrice = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric,
-                BackgroundColor = AppColors.LABELGRAY};
+            Entry entryPrice = new Entry()
+            { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric,
+                BackgroundColor = AppColors.LABELGRAY
+            };
             entryPrice.SetBinding(Entry.TextProperty, "Price");
 
             //Closed Order
@@ -103,7 +104,8 @@ namespace MobileCRM.Shared.Pages.Accounts
             Label lblDateClosedData = new Label() { Text = viewModel.Order.ClosedDate.ToString("d"), TextColor = AppColors.LABELWHITE };
 
 
-            Label lblSig = new Label() { Text = "SIGNATURE",
+            Label lblSig = new Label()
+            { Text = "SIGNATURE",
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 XAlign = TextAlignment.Center,
                 TextColor = AppColors.LABELWHITE,
@@ -141,7 +143,7 @@ namespace MobileCRM.Shared.Pages.Accounts
                 {
                     Padding = 0,
                     Spacing = 0,
-                    Children =  
+                    Children =
                     {
                         stackHeaderInv,
                     
@@ -149,7 +151,7 @@ namespace MobileCRM.Shared.Pages.Accounts
                         {
                             Spacing = 5,
                             Padding = 10,
-                            Children = 
+                            Children =
                             {
                                 lblProd,
                                 lblProdData,
@@ -169,8 +171,6 @@ namespace MobileCRM.Shared.Pages.Accounts
                             }
                         },
 
-                       
-
                         stackHeaderSig,
                         sigPad,
 
@@ -185,7 +185,7 @@ namespace MobileCRM.Shared.Pages.Accounts
                 {
                     Padding = 0,
                     Spacing = 0,
-                    Children =  
+                    Children =
                     {
                         stackHeaderInv,
 
@@ -193,9 +193,9 @@ namespace MobileCRM.Shared.Pages.Accounts
                         {
                             Spacing = 5,
                             Padding = 10,
-                            Children = 
+                            Children =
                             {
-                                 lblProd,
+                                lblProd,
                                 lblProdData,
 
                                 lblPrice,
@@ -212,10 +212,7 @@ namespace MobileCRM.Shared.Pages.Accounts
                                 //dateClosed,
                                 lblDateClosedData,
                             }
-
                         },
-                    
-                       
 
                         stackHeaderSig,
                         sigPad
@@ -224,7 +221,6 @@ namespace MobileCRM.Shared.Pages.Accounts
                     }
                 }; 
             } //end else
-
 
             stack.BackgroundColor = AppColors.CONTENTLIGHTBKG;
 
@@ -235,7 +231,6 @@ namespace MobileCRM.Shared.Pages.Accounts
         {
             viewModel.GoBack();
         }
-
 
         public void btnComplete_Clicked(object sender, EventArgs e)
         {
@@ -254,6 +249,6 @@ namespace MobileCRM.Shared.Pages.Accounts
 
             viewModel.ApproveOrderCommand.Execute(null);
         }
-
-    } //end class
+    }
+    //end class
 }

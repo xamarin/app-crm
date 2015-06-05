@@ -2,112 +2,66 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MobileCRM.Shared.ViewModels.Home;
 using MobileCRM.Shared.Helpers;
 using Xamarin;
 
-
 namespace MobileCRM.Shared.Pages.Home
 {
-	public partial class DashboardView
-	{
-			private BarGraphHelper barData;
+    public partial class DashboardView
+    {
+        BarGraphHelper barData;
 
-			private DashboardViewModel ViewModel
-			{
-					get { return BindingContext as DashboardViewModel; }
-			}
+        DashboardViewModel ViewModel
+        {
+            get { return BindingContext as DashboardViewModel; }
+        }
 
-		public DashboardView (DashboardViewModel vm)
-		{
-				InitializeComponent ();
+        public DashboardView(DashboardViewModel vm)
+        {
+            InitializeComponent();
 
-				this.BindingContext = vm;
+            this.BindingContext = vm;
+        }
 
-        //var items = new List<BarItem>();
-        //items.Add(new BarItem { Name = "a", Value = 10 });
-        //items.Add(new BarItem { Name = "b", Value = 15 });
-        //items.Add(new BarItem { Name = "c", Value = 20 });
-        //items.Add(new BarItem { Name = "d", Value = 5 });
-        //items.Add(new BarItem { Name = "e", Value = 14 });
-				//Chart.Items = items;
+        async void PopulateBarChart()
+        {
+            try
+            {
+                if (ViewModel.Orders.Count() > 0)
+                {
+                    barData = new BarGraphHelper(ViewModel.Orders, false);
 
-        //MyPie.Items = items;
-		}
+                    var orderedData = (from data in barData.SalesData
+                                          orderby data.DateStart
+                                          select new BarItem
+                    {
+                        Name = data.DateStartString,
+                        Value = Convert.ToInt32(data.Amount)
+                    }).ToList();
 
+                    BarChart.Items = orderedData;
+                } //end if
 
-		private async void PopulateBarChart()
-		{
-				try
-				{
+            }
+            catch (Exception exc)
+            {
+                Insights.Report(exc, Insights.Severity.Error);
+                System.Diagnostics.Debug.WriteLine("EXCEPTION: DashboardView.PopulateBarChart(): " + exc.Message + "  |  " + exc.StackTrace);
+            }
+        }
 
-						if (ViewModel.Orders.Count() > 0)
-						{
-								barData = new BarGraphHelper(ViewModel.Orders, false);
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
 
+            await ViewModel.ExecuteLoadSeedDataCommand();
 
-								var orderedData = (from data in barData.SalesData
-																	 orderby data.DateStart
-																	 select new BarItem
-																	 {
-																			 Name = data.DateStartString,
-																			 Value = Convert.ToInt32(data.Amount)
-																	 }).ToList();
+            this.PopulateBarChart();
 
-								BarChart.Items = orderedData;
-						} //end if
+            ViewModel.IsInitialized = true;
 
-				}
-				catch (Exception exc)
-				{
-            Insights.Report(exc, Insights.Severity.Error);
-						System.Diagnostics.Debug.WriteLine("EXCEPTION: DashboardView.PopulateBarChart(): " + exc.Message + "  |  " + exc.StackTrace);
-				}
-
-		}
-
-
-    //private async void PopulatePieChart()
-    //{
-    //    try
-    //    {
-
-    //        if (ViewModel.Orders.Count() > 0)
-    //        {
-    //            var orderedData = (from data in barData.CategoryData
-    //                               select new BarItem
-    //                               {
-    //                                   Name = data.Category,
-    //                                   Value = Convert.ToInt32(data.Amount)
-    //                               }).ToList();
-
-    //            MyPie.Items = orderedData;
-    //        } //end if
-
-    //    }
-    //    catch (Exception exc)
-    //    {
-    //        System.Diagnostics.Debug.WriteLine("EXCEPTION: DashboardView.PopulatePieChart(): " + exc.Message + "  |  " + exc.StackTrace);
-    //    }
-    //}
-
-
-
-		protected async override void OnAppearing()
-		{
-				base.OnAppearing();
-
-        await ViewModel.ExecuteLoadSeedDataCommand();
-
-				this.PopulateBarChart();
-
-				ViewModel.IsInitialized = true;
-
-
-        Insights.Track("Dashboard Page");
-		}
-
-	}
+            Insights.Track("Dashboard Page");
+        }
+    }
 }
