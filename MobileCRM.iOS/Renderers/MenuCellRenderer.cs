@@ -5,7 +5,7 @@ using Xamarin.Forms;
 using MonoTouch.UIKit;
 using MobileCRM.iOS;
 
-[assembly: ExportCell (typeof (MenuCell), typeof (MenuCellRenderer))]
+[assembly: ExportCell(typeof(MenuCell), typeof(MenuCellRenderer))]
 
 namespace MobileCRM.iOS
 {
@@ -30,5 +30,4 @@ namespace MobileCRM.iOS
             return cellView;
         }
     }
-    
 }
