@@ -9,7 +9,7 @@ namespace MobileCRM.Shared
 
         public static Page RootPage
         {
-            get { return _HomeView ?? (_HomeView = new RootView()); }
+            get { return _HomeView ?? (_HomeView = new RootPage()); }
         }
     }
 }

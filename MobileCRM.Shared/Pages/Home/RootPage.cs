@@ -33,7 +33,7 @@ namespace MobileCRM.Shared.Pages.Home
                 {
                     this.CloseAuth();
 
-                    var optionsPage = new MenuView();
+                    var optionsPage = new MenuPage();
 
                     optionsPage.Menu.ItemSelected += (s, e) =>
                     {
