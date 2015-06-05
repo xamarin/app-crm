@@ -1,17 +1,15 @@
 ﻿using MobileCRM.Shared.Pages.Home;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace MobileCRM.Shared
 {
     public static class App
     {
-      private static Page homeView;
-      public static Page RootPage
-      {
-          get { return homeView ?? (homeView = new RootView()); }
-      }
+        static Page _HomeView;
+
+        public static Page RootPage
+        {
+            get { return _HomeView ?? (_HomeView = new RootView()); }
+        }
     }
 }
