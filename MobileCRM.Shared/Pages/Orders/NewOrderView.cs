@@ -2,13 +2,8 @@
 using MobileCRM.Shared.ViewModels.Orders;
 using MobileCRM.Shared.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin;
-
 
 namespace MobileCRM.Shared.Pages.Accounts
 {
@@ -28,26 +23,26 @@ namespace MobileCRM.Shared.Pages.Accounts
             this.Content = this.BuildView();
 
             Insights.Track("New Order Page");
+        }
 
-        } //end ctor
-
-
-        private Layout BuildView()
+        Layout BuildView()
         {
             this.BackgroundColor = AppColors.CONTENTLIGHTBKG;
 
             Label lblItem = new Label() { Text = "Product:",  TextColor = AppColors.LABELBLUE };
             Picker pickerItem = new Picker() { HorizontalOptions = LayoutOptions.FillAndExpand, BackgroundColor = AppColors.LABELGRAY };
 
-            foreach(var a in Order.ItemTypes)
+            foreach (var a in Order.ItemTypes)
             {
                 pickerItem.Items.Add(a);
             }
             pickerItem.SetBinding(Picker.SelectedIndexProperty, "ItemIndex");
 
             Label lblPrice = new Label() { Text = "Price:", TextColor = AppColors.LABELBLUE };
-            Entry entryPrice = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric,
-                BackgroundColor = AppColors.LABELGRAY };
+            Entry entryPrice = new Entry()
+            { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric,
+                BackgroundColor = AppColors.LABELGRAY
+            };
             entryPrice.SetBinding(Entry.TextProperty, "Price");
 
             Label lblDateDue = new Label() { Text = "Date Due:", TextColor = AppColors.LABELBLUE };
@@ -70,20 +65,15 @@ namespace MobileCRM.Shared.Pages.Accounts
                     lblDateDue,
                     dateDue,
                     btnOrder
-
                 }
-
             };
 
             return stack;
         }
 
-        private void btnOrder_Clicked(object sender, EventArgs e)
+        void btnOrder_Clicked(object sender, EventArgs e)
         {
             viewModel.SaveOrderCommand.Execute(null);
         }
-
-
-
     }
 }

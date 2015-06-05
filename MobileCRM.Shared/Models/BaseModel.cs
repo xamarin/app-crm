@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.WindowsAzure.MobileServices;
-using MobileCRM.Shared.Attributes;
-using Newtonsoft.Json;
-
+﻿using Newtonsoft.Json;
 
 namespace MobileCRM.Shared.Models
 {
@@ -15,12 +9,10 @@ namespace MobileCRM.Shared.Models
         
       }
 
-
       [JsonProperty(PropertyName = "id")]
       public string Id { get; set; }
 
       [Microsoft.WindowsAzure.MobileServices.Version]
       public string Version { get; set; }
-
     }
 }

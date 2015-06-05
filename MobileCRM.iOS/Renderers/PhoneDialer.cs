@@ -1,14 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Xamarin.Forms;
-using System.Text;
-using MobileCRM.iOS;
 using MobileCRM.iOS.Renderers;
 using MobileCRM.Shared.Interfaces;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-
 
 [assembly: Dependency(typeof(PhoneDialer))]
 namespace MobileCRM.iOS.Renderers
@@ -22,6 +16,5 @@ namespace MobileCRM.iOS.Renderers
 
             return UIApplication.SharedApplication.OpenUrl(new NSUrl("tel:" + number));
         }
-
     }
 }

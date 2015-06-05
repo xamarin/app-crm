@@ -1,17 +1,10 @@
 ﻿using MobileCRM.Shared.Models;
 using MobileCRM.Shared.Services;
 using MobileCRM.Shared.Pages.Accounts;
-using MobileCRM.Shared.Pages.Catalog;
-using MobileCRM.Shared.Pages.Settings;
-using MobileCRM.Shared.Pages.Base;
 using MobileCRM.Shared.ViewModels.Accounts;
 using MobileCRM.Shared.ViewModels.Contacts;
 using MobileCRM.Shared.ViewModels.Home;
-using MobileCRM.Shared.ViewModels.Catalog;
-
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace MobileCRM.Shared.Pages.Home
@@ -21,13 +14,14 @@ namespace MobileCRM.Shared.Pages.Home
         bool bolSplashShown;
 
         MenuType previousItem;
-        public RootView ()
+
+        public RootView()
         {
-          bolSplashShown = false;
+            bolSplashShown = false;
 
-          this.Title = "Verveta CRM";
+            this.Title = "Verveta CRM";
 
-          this.BackgroundImage = "menubk.png";
+            this.BackgroundImage = "menubk.png";
 
             Master = new ContentPage() { Title = "MENU" };
 
@@ -36,12 +30,12 @@ namespace MobileCRM.Shared.Pages.Home
 
             //Authentication notifications
             MessagingCenter.Subscribe<ILogin>(this, "Authenticated", (sender) =>
-            {
-                this.CloseAuth();
+                {
+                    this.CloseAuth();
 
-                var optionsPage = new MenuView ();
+                    var optionsPage = new MenuView();
 
-                optionsPage.Menu.ItemSelected += (s, e) =>
+                    optionsPage.Menu.ItemSelected += (s, e) =>
                     {
 
                         var item = e.SelectedItem as MobileCRM.Shared.Models.MenuItem;
@@ -52,22 +46,21 @@ namespace MobileCRM.Shared.Pages.Home
                         optionsPage.Menu.SelectedItem = null;
                     };
 
-                Master = optionsPage;
-            });    
+                    Master = optionsPage;
+                });    
 
             //Splash page notification
             MessagingCenter.Subscribe<SplashPage>(this, "SplashShown", (sender) =>
-            {
-                bolSplashShown = true;
-                this.CloseSplash();
-            });    
-
+                {
+                    bolSplashShown = true;
+                    this.CloseSplash();
+                });
         }
 
         void NavigateTo(MenuType option)
         {
             if (previousItem == option)
-              return;
+                return;
            
             previousItem = option;
 
@@ -85,72 +78,68 @@ namespace MobileCRM.Shared.Pages.Home
 
         NavigationPage dashboard, accounts, leads, contacts, catalog, settings;
 
-        NavigationPage PageForOption (MenuType option)
+        NavigationPage PageForOption(MenuType option)
         {
 
-          switch (option)
-          {
-            case MenuType.Dashboard:
-              {
-                if (dashboard != null)
-                  return dashboard;
+            switch (option)
+            {
+                case MenuType.Dashboard:
+                    {
+                        if (dashboard != null)
+                            return dashboard;
                   
-                var vm = new DashboardViewModel() { Navigation = Navigation };
+                        var vm = new DashboardViewModel() { Navigation = Navigation };
 
-                dashboard = new NavigationPage(new DashboardView(vm));
-                return dashboard;
-              }
-            case MenuType.Accounts:
-              {
-                if (accounts != null)
-                  return accounts;
+                        dashboard = new NavigationPage(new DashboardView(vm));
+                        return dashboard;
+                    }
+                case MenuType.Accounts:
+                    {
+                        if (accounts != null)
+                            return accounts;
 
-                var vm = new AccountsViewModel() { Navigation = Navigation };
-                accounts = new NavigationPage(new AccountsView(vm));
+                        var vm = new AccountsViewModel() { Navigation = Navigation };
+                        accounts = new NavigationPage(new AccountsView(vm));
 
-                return accounts; 
-              }
-            case MenuType.Leads:
-              {
-                if (leads != null)
-                  return leads;
+                        return accounts; 
+                    }
+                case MenuType.Leads:
+                    {
+                        if (leads != null)
+                            return leads;
                 
-                leads =  new NavigationPage(new Leads.LeadsView(new ViewModels.Leads.LeadsViewModel() { Navigation = Navigation }));
-                return leads;
-              }
-            case MenuType.Contacts:
-              {
-                if (contacts != null)
-                  return contacts;
-                var vm = new ContactsViewModel();
-                contacts = new NavigationPage(new Contacts.ContactsView(vm));
-                return contacts;
-              } 
-            case MenuType.Catalog:
-              {
-                  if (catalog != null)
-                      return catalog;
+                        leads = new NavigationPage(new Leads.LeadsView(new ViewModels.Leads.LeadsViewModel() { Navigation = Navigation }));
+                        return leads;
+                    }
+                case MenuType.Contacts:
+                    {
+                        if (contacts != null)
+                            return contacts;
+                        var vm = new ContactsViewModel();
+                        contacts = new NavigationPage(new Contacts.ContactsView(vm));
+                        return contacts;
+                    } 
+                case MenuType.Catalog:
+                    {
+                        if (catalog != null)
+                            return catalog;
 
-                  catalog = new NavigationPage(new Catalog.CatalogCarouselView());
-                  return catalog;
-              }
+                        catalog = new NavigationPage(new Catalog.CatalogCarouselView());
+                        return catalog;
+                    }
 
-              case MenuType.Settings:
-              {
-                  if (settings != null)
-                      return settings;
+                case MenuType.Settings:
+                    {
+                        if (settings != null)
+                            return settings;
 
-                  settings = new NavigationPage(new Settings.UserSettingsView());
-                  return settings;
-              }
-
-          }
+                        settings = new NavigationPage(new Settings.UserSettingsView());
+                        return settings;
+                    }
+            }
             
-          throw new NotImplementedException("Unknown menu option: " + option.ToString());
+            throw new NotImplementedException("Unknown menu option: " + option.ToString());
         }
-
-
-
 
         protected override void OnAppearing()
         {
@@ -166,21 +155,16 @@ namespace MobileCRM.Shared.Pages.Home
                     Navigation.PushModalAsync(new SplashPage());
                 }
             } //end if
-
-
         }
 
-
-
-        private void CloseAuth()
+        void CloseAuth()
         {
             Navigation.PopModalAsync();
-
         }
 
         //Close splash page, show login page.
         //For demo purposes we remove cached login and prompt for credentials every time.
-        private void CloseSplash()
+        void CloseSplash()
         {
             Navigation.PopModalAsync();
 
@@ -190,6 +174,5 @@ namespace MobileCRM.Shared.Pages.Home
             Navigation.PushModalAsync(new LoginPage());
 
         }
-
     }
 }

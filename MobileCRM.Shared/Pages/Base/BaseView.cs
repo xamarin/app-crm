@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace MobileCRM.Shared.Pages
 {
-  public class BaseView : ContentPage
-  {
-    public BaseView()
+    public class BaseView : ContentPage
     {
-      SetBinding(Page.TitleProperty, new Binding("Title"));
-      SetBinding(Page.IconProperty, new Binding("Icon"));
+        public BaseView()
+        {
+            SetBinding(Page.TitleProperty, new Binding("Title"));
+            SetBinding(Page.IconProperty, new Binding("Icon"));
+        }
     }
-  }
 }

@@ -1,34 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
 using MobileCRMAndroid.Renderers;
-using MobileCRM.Shared.Helpers;
 using System.ComponentModel;
-
 using OxyPlot.XamarinAndroid;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 
-
 [assembly: ExportRenderer(typeof(MobileCRM.Shared.CustomControls.BarChart), typeof(BarChartRenderer))]
+
 namespace MobileCRMAndroid.Renderers
 {
-
-
     public class BarChartRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.BarChart, PlotView>
     {
-        private static OxyColor FILLCOLOR = OxyColor.FromRgb(180, 188, 188);
+        static OxyColor FILLCOLOR = OxyColor.FromRgb(180, 188, 188);
 
         protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.Shared.CustomControls.BarChart> e)
         {
@@ -40,7 +25,6 @@ namespace MobileCRMAndroid.Renderers
 
             plotModel1.Background = OxyColors.Transparent;
             plotModel1.LegendTextColor = OxyColor.FromRgb(180, 188, 188);
-
 
             plotModel1.LegendBorderThickness = 0;
             plotModel1.LegendOrientation = LegendOrientation.Horizontal;
@@ -71,7 +55,6 @@ namespace MobileCRMAndroid.Renderers
 
             foreach (var item in Element.Items)
             {
-
                 columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = FILLCOLOR });
                 categoryAxis1.ActualLabels.Add(item.Name);
             }
@@ -81,6 +64,7 @@ namespace MobileCRMAndroid.Renderers
             plotView.Model = plotModel1;
             SetNativeControl(plotView);
         }
+
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
@@ -96,19 +80,17 @@ namespace MobileCRMAndroid.Renderers
                 categoryAxis1.ActualLabels.Clear();
                 foreach (var item in Element.Items)
                 {
-                    columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { 
-                        Color = FILLCOLOR,
-                    });
+                    columnSeries1.Items.Add(new ColumnItem(item.Value, -1)
+                        { 
+                            Color = FILLCOLOR,
+                        });
                     categoryAxis1.ActualLabels.Add(item.Name);
                 }
 
-
                 Control.Model.InvalidatePlot(true);
                 Control.InvalidatePlot(true);
-
             }
         }
-
     }
 }
 

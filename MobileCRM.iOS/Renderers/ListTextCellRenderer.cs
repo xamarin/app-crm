@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms;
@@ -15,28 +9,23 @@ using MobileCRM.Shared.Helpers;
 
 namespace MobileCRM.iOS.Renderers
 {
-  public class ListTextCellRenderer : TextCellRenderer
-  {
-    public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UITableView tv)
+    public class ListTextCellRenderer : TextCellRenderer
     {
+        public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UITableView tv)
+        {
+            var cell = base.GetCell(item, reusableCell, tv);
 
-      var cell = base.GetCell(item, reusableCell, tv);
+            cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
-      cell.Accessory = MonoTouch.UIKit.UITableViewCellAccessory.DisclosureIndicator;
+            cell.BackgroundColor = Color.Transparent.ToUIColor();
 
+            cell.TextLabel.TextColor = AppColors.LABELWHITE.ToUIColor();
 
-      cell.BackgroundColor = Color.Transparent.ToUIColor();
+            cell.DetailTextLabel.TextColor = AppColors.LABELBLUE.ToUIColor();
 
+            tv.SeparatorColor = AppColors.SEPARATOR.ToUIColor();
 
-      cell.TextLabel.TextColor = AppColors.LABELWHITE.ToUIColor();
-
-      cell.DetailTextLabel.TextColor = AppColors.LABELBLUE.ToUIColor();
-
-      tv.SeparatorColor = AppColors.SEPARATOR.ToUIColor();
-
-      return cell;
+            return cell;
+        }
     }
-
-  }
-
 }

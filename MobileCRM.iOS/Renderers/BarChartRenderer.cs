@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms;
 using MobileCRM.iOS.Renderers;
@@ -12,15 +7,12 @@ using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 
-
 [assembly: ExportRenderer(typeof(MobileCRM.Shared.CustomControls.BarChart), typeof(BarChartRenderer))]
 namespace MobileCRM.iOS.Renderers
 {
-
-
     public class BarChartRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.BarChart, PlotView>
     {
-        private static OxyColor FILLCOLOR = OxyColor.FromRgb(180, 188, 188);
+        static OxyColor FILLCOLOR = OxyColor.FromRgb(180, 188, 188);
 
         protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.Shared.CustomControls.BarChart> e)
         {
@@ -52,28 +44,24 @@ namespace MobileCRM.iOS.Renderers
                 StrokeThickness = 0,
             };
 
-
-
             //SYI: Removed label for cosmetic reasons
             //columnSeries1.LabelFormatString = "{0:C0}";
             //columnSeries1.LabelPlacement = LabelPlacement.Inside;
-
 
             plotModel1.Series.Add(columnSeries1);
 
             foreach (var item in Element.Items)
             {
-
                 columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = FILLCOLOR }); 
                 categoryAxis1.ActualLabels.Add(item.Name);
             }
 
             var plotView = new PlotView();
 
-
             plotView.Model = plotModel1;
             SetNativeControl(plotView);
         }
+
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
@@ -88,22 +76,15 @@ namespace MobileCRM.iOS.Renderers
                 categoryAxis1.Labels.Clear();
                 categoryAxis1.ActualLabels.Clear();
 
-
                 foreach (var item in Element.Items)
                 {
-
                     columnSeries1.Items.Add(new ColumnItem(item.Value, -1) { Color = FILLCOLOR });
                     categoryAxis1.ActualLabels.Add(item.Name);
                 }
 
-
-
                 Control.Model.InvalidatePlot(true);
                 Control.InvalidatePlot(true);
-    
             }
         }
-
     }
 }
-

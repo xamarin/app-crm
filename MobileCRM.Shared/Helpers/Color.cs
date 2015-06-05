@@ -56,7 +56,7 @@ namespace MobileCRM.Shared.Helpers
             return FromHex(hex);
         }
 
-#if __IOS__
+        #if __IOS__
     public UIColor ToUIColor ()
     {
       return UIColor.FromRGB ((float)R, (float)G, (float)B);
@@ -78,7 +78,7 @@ namespace MobileCRM.Shared.Helpers
         //    return Xamarin.Forms.Color.FromRgb((int)(255 * R), (int)(255 * G), (int)(255 * B));
         //}
 
-#if __ANDROID__
+        #if __ANDROID__
         public global::Android.Graphics.Color ToAndroidColor()
         {
           return global::Android.Graphics.Color.Rgb((int)(255 * R), (int)(255 * G), (int)(255 * B));

@@ -2,13 +2,8 @@
 using MobileCRM.Shared.ViewModels.Accounts;
 using MobileCRM.Shared.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin;
-
 
 namespace MobileCRM.Shared.Pages.Leads
 {
@@ -18,7 +13,6 @@ namespace MobileCRM.Shared.Pages.Leads
 
         public LeadDetailsView(AccountDetailsViewModel vm)
         {
-
             SetBinding(Page.TitleProperty, new Binding("Title"));
             SetBinding(Page.IconProperty, new Binding("Icon"));
 
@@ -27,11 +21,10 @@ namespace MobileCRM.Shared.Pages.Leads
             this.Content = this.BuildView();
 
             Insights.Track("Lead Details Page");
+        }
+        //end ctor
 
-        } //end ctor
-
-
-        private StackLayout BuildView()
+        StackLayout BuildView()
         {
             this.BackgroundColor = AppColors.CONTENTLIGHTBKG;
 
@@ -51,14 +44,18 @@ namespace MobileCRM.Shared.Pages.Leads
 
 
             Label lblOpptSize = new Label() { Text = "Opportunity Size $: ", TextColor = AppColors.LABELBLUE };
-            Entry entryOpptSize = new Entry() { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric, 
-                BackgroundColor = AppColors.LABELGRAY };
+            Entry entryOpptSize = new Entry()
+            { HorizontalOptions = LayoutOptions.FillAndExpand, Keyboard = Keyboard.Numeric, 
+                BackgroundColor = AppColors.LABELGRAY
+            };
             entryOpptSize.SetBinding(Entry.TextProperty, "OpportunitySize");
 
             Label lblOpptStage = new Label() { Text = "Opportunity Stage: ", TextColor = AppColors.LABELBLUE };
            
-            Picker pickerOpptStage = new Picker() { HorizontalOptions = LayoutOptions.FillAndExpand,
-                BackgroundColor = AppColors.LABELGRAY};
+            Picker pickerOpptStage = new Picker()
+            { HorizontalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = AppColors.LABELGRAY
+            };
 
             //Populate Oppt Stage Picker
             foreach (var o in Account.OpportunityStages)
@@ -67,12 +64,11 @@ namespace MobileCRM.Shared.Pages.Leads
             }
             pickerOpptStage.SetBinding(Picker.SelectedIndexProperty, "OpptStageIndex");
 
-
             StackLayout stack = new StackLayout()
             {
                 Padding = 10, 
 
-                Children = 
+                Children =
                 { 
                     lblCompany, 
                     entryCompany,
@@ -90,8 +86,11 @@ namespace MobileCRM.Shared.Pages.Leads
             };
 
             return stack;
-        } //end BuildView
+        }
+        //end BuildView
 
 
-    } //end class
-} //end ns
+    }
+    //end class
+}
+ //end ns

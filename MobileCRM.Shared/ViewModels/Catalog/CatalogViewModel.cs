@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using MobileCRM.Shared.Interfaces;
-using MobileCRM.Shared.Models;
+﻿using MobileCRM.Shared.Models;
 
 namespace MobileCRM.Shared.ViewModels.Catalog
 {
     public class CatalogViewModel : BaseViewModel
     {
-        private CatalogItem catalogItem;
+        CatalogItem catalogItem;
 
         public CatalogViewModel(string catalogItem)
         {
@@ -19,8 +12,8 @@ namespace MobileCRM.Shared.ViewModels.Catalog
             this.Icon = "list.png";
 
             this.catalogItem = CatalogItem.CreateCatalogItem(catalogItem);
-        } //end ctor
-
+        }
+        //end ctor
 
         public CatalogItem Product
         {
@@ -36,11 +29,10 @@ namespace MobileCRM.Shared.ViewModels.Catalog
 
         public string SuggestedPrice
         {
-            get 
+            get
             {
                 return "Suggested Price: $" + catalogItem.SuggestedPrice.ToString() + " USD";
             }
         }
-
     }
 }

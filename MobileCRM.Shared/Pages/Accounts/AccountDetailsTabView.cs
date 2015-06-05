@@ -1,10 +1,7 @@
 ﻿using MobileCRM.Shared.Models;
 using MobileCRM.Shared.ViewModels.Accounts;
 using MobileCRM.Shared.ViewModels.Orders;
-using MobileCRM.Shared.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 using Xamarin;
 
@@ -12,85 +9,69 @@ namespace MobileCRM.Shared.Pages.Accounts
 {
     public class AccountDetailsTabView : TabbedPage
     {
-      private AccountDetailsViewModel viewModelAcct;
-      private OrdersViewModel viewModelOrder;
-      private OrdersViewModel viewModelHistory;
+        AccountDetailsViewModel viewModelAcct;
+        OrdersViewModel viewModelOrder;
+        OrdersViewModel viewModelHistory;
 
-      AccountDetailsView viewAcctDetails;
-      AccountOrdersView viewAcctOrders;
-      AccountHistoryView viewAcctHistory;
-      AccountMapView viewAcctMap;
+        AccountDetailsView viewAcctDetails;
+        AccountOrdersView viewAcctOrders;
+        AccountHistoryView viewAcctHistory;
+        AccountMapView viewAcctMap;
 
+        public AccountDetailsTabView(Account account)
+        {
+            try
+            {
+                if (account != null)
+                {
+                    this.Title = account.Company;
+                }
+                else
+                {
+                    this.Title = "New Lead";
+                }
 
-      public AccountDetailsTabView(Account account)
-      {
+                viewModelAcct = new AccountDetailsViewModel(account) { Navigation = Navigation };
+                viewModelOrder = new OrdersViewModel(true, account.Id) { Navigation = Navigation };
+                viewModelHistory = new OrdersViewModel(false, account.Id) { Navigation = Navigation };
 
-          try
-          {
-              if (account != null)
-              {
-                  this.Title = account.Company;
-              }
-              else
-              {
-                  this.Title = "New Lead";
-              }
+                viewAcctDetails = new AccountDetailsView(viewModelAcct, viewModelHistory);
+                this.Children.Add(viewAcctDetails);
 
+                viewAcctOrders = new AccountOrdersView(account.Id, viewModelOrder) { Title = "Orders" };
+                this.Children.Add(viewAcctOrders);
 
-              //ToolbarItems.Add(new ToolbarItem
-              //{
-              //    Icon = "refresh.png",
-              //    Name = "refresh"
-              //    //Command = viewModelOrder.LoadOrdersCommand
-              //});
+                viewAcctHistory = new AccountHistoryView(viewModelHistory) { Title = "History" };
+                this.Children.Add(viewAcctHistory);
 
-              viewModelAcct = new AccountDetailsViewModel(account) { Navigation = Navigation };
-              viewModelOrder = new OrdersViewModel(true, account.Id) { Navigation = Navigation };
-              viewModelHistory = new OrdersViewModel(false, account.Id) { Navigation = Navigation };
-
-              viewAcctDetails = new AccountDetailsView(viewModelAcct, viewModelHistory);
-              this.Children.Add(viewAcctDetails);
-
-
-              viewAcctOrders = new AccountOrdersView(account.Id, viewModelOrder) { Title = "Orders" };
-              this.Children.Add(viewAcctOrders);
-
-              viewAcctHistory = new AccountHistoryView(viewModelHistory) { Title = "History" };
-              this.Children.Add(viewAcctHistory);
-
-              viewAcctMap = new AccountMapView(viewModelAcct);
-              this.Children.Add(viewAcctMap);
-
-          }
-          catch (Exception exc)
-          {
+                viewAcctMap = new AccountMapView(viewModelAcct);
+                this.Children.Add(viewAcctMap);
+            }
+            catch (Exception exc)
+            {
                 Insights.Report(exc, Insights.Severity.Error);
-              System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsTabView.Constructor(): " + exc.Message + "  |  " + exc.StackTrace);
-          }
+                System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsTabView.Constructor(): " + exc.Message + "  |  " + exc.StackTrace);
+            }
 
-      }  //end ctor
+        }
+        //end ctor
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
 
+            if (!viewModelOrder.IsInitialized)
+            {
+                await viewModelOrder.ExecuteLoadOrdersCommand();
+                await viewModelHistory.ExecuteLoadOrdersCommand();
+            }
 
-      //protected override void OnAppearing()
-      protected async override void OnAppearing()
-      {
-          base.OnAppearing();
+            viewModelAcct.IsInitialized = true;
+            viewModelHistory.IsInitialized = true;
+            viewModelOrder.IsInitialized = true;
 
-          if (!viewModelOrder.IsInitialized)
-          {
-              await viewModelOrder.ExecuteLoadOrdersCommand();
-              await viewModelHistory.ExecuteLoadOrdersCommand();
-          }
-
-          viewModelAcct.IsInitialized = true;
-          viewModelHistory.IsInitialized = true;
-          viewModelOrder.IsInitialized = true;
-
-          viewAcctDetails.RefreshView();
-
-          
-      }
-
-    } //end class
+            viewAcctDetails.RefreshView();
+        }
+    }
+    //end class
 }

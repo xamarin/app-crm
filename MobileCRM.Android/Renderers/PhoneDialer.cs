@@ -1,22 +1,14 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Telephony;
-using Android.Views;
-using Android.Widget;
 using MobileCRM.Shared.Interfaces;
-using MobileCRMAndroid;
 using MobileCRMAndroid.Renderers;
 using Xamarin.Forms;
 using Uri = Android.Net.Uri;
 
-
 [assembly: Dependency(typeof(PhoneDialer))]
+
 namespace MobileCRMAndroid.Renderers
 {
     public class PhoneDialer : IDialer
@@ -25,7 +17,6 @@ namespace MobileCRMAndroid.Renderers
         {
             //Since this is a demo we're not going to dial the actual number.  This is a temporary toll-free number we've set up.
             number = "8555826555";
-
 
             var context = Forms.Context;
             if (context == null)
