@@ -103,9 +103,6 @@
     <Compile Include="Pages\Home\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Home\LoginView.cs" />
-    <Compile Include="Pages\Home\MenuView.cs" />
-    <Compile Include="Pages\Home\RootView.cs" />
     <Compile Include="Pages\Leads\LeadDetailsTabView.cs" />
     <Compile Include="Pages\Leads\LeadDetailsView.cs" />
     <Compile Include="Pages\Leads\LeadsView.xaml.cs">
@@ -141,6 +138,9 @@
     <Compile Include="ViewModels\Orders\OrderDetailsViewModel.cs" />
     <Compile Include="ViewModels\Orders\OrdersViewModel.cs" />
     <Compile Include="ViewModels\Settings\UserViewModel.cs" />
+    <Compile Include="Pages\Home\MenuPage.cs" />
+    <Compile Include="Pages\Home\RootPage.cs" />
+    <Compile Include="Pages\Home\LoginPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Accounts\AccountsView.xaml">
