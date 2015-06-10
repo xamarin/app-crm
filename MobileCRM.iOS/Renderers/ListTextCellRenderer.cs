@@ -2,8 +2,8 @@ using MonoTouch.UIKit;
 using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms;
 using MobileCRM.iOS.Renderers;
-using MobileCRM.Shared.CustomControls;
-using MobileCRM.Shared.Helpers;
+using MobileCRM.CustomControls;
+using MobileCRM.Helpers;
 
 [assembly: ExportCell(typeof(ListTextCell), typeof(ListTextCellRenderer))]
 

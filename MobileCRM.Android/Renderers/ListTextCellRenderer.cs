@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
-using MobileCRM.Shared.CustomControls;
+using MobileCRM.CustomControls;
 using MobileCRMAndroid;
 using Android.Widget;
 using Android.Graphics.Drawables;
@@ -26,7 +26,7 @@ namespace MobileCRMAndroid
             var div = new ShapeDrawable();
             div.SetIntrinsicHeight(1);
 
-            div.Paint.Set(new Paint { Color = MobileCRM.Shared.Helpers.AppColors.SEPARATOR.ToAndroid() });
+            div.Paint.Set(new Paint { Color = MobileCRM.Helpers.AppColors.SEPARATOR.ToAndroid() });
 
             if (parent is ListView)
             {
@@ -36,13 +36,13 @@ namespace MobileCRMAndroid
 
             var label = (TextView)((LinearLayout)cell.GetChildAt(1)).GetChildAt(0);
 
-            label.SetTextColor(MobileCRM.Shared.Helpers.AppColors.LABELWHITE.ToAndroid());
+            label.SetTextColor(MobileCRM.Helpers.AppColors.LABELWHITE.ToAndroid());
 
             label.TextSize = Font.SystemFontOfSize(NamedSize.Large).ToScaledPixel();
 
             var secondaryLabel = (TextView)((LinearLayout)cell.GetChildAt(1)).GetChildAt(1);
 
-            secondaryLabel.SetTextColor(MobileCRM.Shared.Helpers.AppColors.LABELBLUE.ToAndroid());
+            secondaryLabel.SetTextColor(MobileCRM.Helpers.AppColors.LABELBLUE.ToAndroid());
            
             secondaryLabel.TextSize = Font.SystemFontOfSize(NamedSize.Medium).ToScaledPixel();
 

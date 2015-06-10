@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+					   x:Class="MobileCRM.Pages.Home.SplashPage"
+             xmlns:local="clr-namespace:MobileCRM.Helpers;assembly=MobileCRM"
+             BackgroundImage="menubk"           
+             >
+
+  <StackLayout Padding="0" Spacing="0" VerticalOptions="Center">
+
+    <StackLayout Padding="0, 0, 0, 20" Spacing="0" Orientation="Vertical" HorizontalOptions="Center">
+      <Image Source="icon" HeightRequest="80" WidthRequest="80" />
+    </StackLayout>
+    
+    <Label Text="Verveta" Font="Bold, Large" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELBLUE}" />
+    <Label Text="CRM" Font="Bold, Large" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+
+      
+
+    <StackLayout Padding="5, 20, 5, 20" Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+      <Label Text="Demo User ID and Password:" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELWHITE}" />
+      <Label Text="sally@xamcrm.onmicrosoft.com" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+      <Label Text="P@ssword" HorizontalOptions="Center" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+    </StackLayout>
+    
+
+    <Button Text="Login" TextColor="{x:Static local:AppColors.LABELWHITE}" HorizontalOptions="Center"
+      Clicked="OnLoginClicked" />
+
+  </StackLayout>
+
+
+  
+  
+</ContentPage>

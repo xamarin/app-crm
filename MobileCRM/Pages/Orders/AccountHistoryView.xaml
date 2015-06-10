@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+					   x:Class="MobileCRM.Pages.Orders.AccountHistoryView"
+                       xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
+             xmlns:local="clr-namespace:MobileCRM.Helpers;assembly=MobileCRM"
+					   Title="{Binding Title}"
+             Icon="{Binding Icon}">
+  
+  
+    <ContentPage.Content>
+        <StackLayout  BackgroundColor="{x:Static local:AppColors.CONTENTBKGCOLOR}">
+            <ActivityIndicator IsRunning = "{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+            <ListView x:Name="OrdersList" ItemsSource="{Binding Orders}" VerticalOptions="FillAndExpand" ItemTapped="OnItemSelected"
+                       BackgroundColor="{x:Static local:AppColors.CONTENTLIGHTBKG}"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:ListTextCell Text="{Binding Item}" Detail="{Binding HistoryDescription}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

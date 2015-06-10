@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Android.Content;
 using Android.Telephony;
-using MobileCRM.Shared.Interfaces;
+using MobileCRM.Interfaces;
 using MobileCRMAndroid.Renderers;
 using Xamarin.Forms;
 using Uri = Android.Net.Uri;
