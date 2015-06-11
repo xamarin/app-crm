@@ -22,7 +22,7 @@ namespace MobileCRM.iOS
             Forms.Init();
             FormsMaps.Init();
 
-            window.RootViewController = MobileCRM.Shared.App.RootPage.CreateViewController();
+            window.RootViewController = MobileCRM.App.RootPage.CreateViewController();
             window.MakeKeyAndVisible();
             
             return true;

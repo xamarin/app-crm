@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+					   x:Class="MobileCRM.Pages.Accounts.AccountDetailsView"
+             xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
+             xmlns:local="clr-namespace:MobileCRM.Helpers;assembly=MobileCRM"
+             Title="{Binding Title}"
+             Icon="{Binding Icon}">
+  <ContentPage.Content>
+    
+    
+    <StackLayout BackgroundColor="{x:Static local:AppColors.CONTENTLIGHTBKG}" >
+     
+      
+      <ActivityIndicator IsRunning = "{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+      <TableView HasUnevenRows="True" VerticalOptions="FillAndExpand" BackgroundColor="{x:Static local:AppColors.CONTENTLIGHTBKG}" >
+        <TableView.Root>
+          <TableRoot>
+            <TableSection Title="COMPANY INFO">
+              <TextCell Text="Company" Detail="{Binding Account.Company}" 
+                        TextColor="{x:Static local:AppColors.LABELBLUE}"
+                        DetailColor="{x:Static local:AppColors.LABELWHITE}"
+                        />
+              <TextCell Text="Indusry" Detail="{Binding Account.Industry}" 
+                        TextColor="{x:Static local:AppColors.LABELBLUE}"
+                        DetailColor="{x:Static local:AppColors.LABELWHITE}"
+                        />
+              <TextCell Text="Contact" Detail="{Binding Account.DisplayContact}" 
+                        TextColor="{x:Static local:AppColors.LABELBLUE}"
+                        DetailColor="{x:Static local:AppColors.LABELWHITE}"
+                        />
+              <TextCell x:Name="PhoneCell" Text="Phone" TextColor="{x:Static local:AppColors.LABELBLUE}" 
+                         Detail="{Binding Account.Phone}" 
+                         DetailColor="{x:Static local:AppColors.LABELWHITE}"
+                         Tapped="OnPhoneTapped"
+                        />
+              <TextCell Text="Address" Detail="{Binding Account.AddressString}" 
+                        TextColor="{x:Static local:AppColors.LABELBLUE}"
+                        DetailColor="{x:Static local:AppColors.LABELWHITE}"
+                        />
+            </TableSection>
+            <TableSection Title="Sales">
+              <ViewCell Height="250">
+                <controls:BarChart x:Name="BarChart"  HeightRequest="300" HorizontalOptions="FillAndExpand"/>
+              </ViewCell>
+            </TableSection>
+          </TableRoot>
+        </TableView.Root>
+      </TableView>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

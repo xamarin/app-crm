@@ -26,11 +26,9 @@
     <MtouchDebug>True</MtouchDebug>
     <MtouchI18n>
     </MtouchI18n>
-    <MtouchArch>ARMv7</MtouchArch>
-    <MtouchExtraArgs>
-    </MtouchExtraArgs>
+    <MtouchArch>i386</MtouchArch>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
-    <AssemblyName>MobileCRM</AssemblyName>
+    <AssemblyName>MobileCRM.iOS</AssemblyName>
     <IpaMetadata>
     </IpaMetadata>
     <IpaPackageName>
@@ -277,12 +275,6 @@
     <BundleResource Include="Resources\orderhistory.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MobileCRM.Shared\MobileCRM.Shared.csproj">
-      <Project>{40D46760-E7FD-4053-AD6B-07DC84D23BED}</Project>
-      <Name>MobileCRM.Shared</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\menubk.png" />
   </ItemGroup>
   <ItemGroup>
@@ -345,4 +337,14 @@
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <ItemGroup>
+    <ProjectReference Include="..\MobileCRM\MobileCRM.csproj">
+      <Project>{458941D2-77A4-4B2C-8520-B6EF75947B09}</Project>
+      <Name>MobileCRM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">
+      <Project>{A2A445B4-E291-4224-8B31-5FD82ADEC085}</Project>
+      <Name>MobileCRM.CustomControls</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

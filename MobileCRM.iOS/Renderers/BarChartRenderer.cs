@@ -6,15 +6,17 @@ using OxyPlot.XamarinIOS;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+using MobileCRM.CustomControls;
 
-[assembly: ExportRenderer(typeof(MobileCRM.Shared.CustomControls.BarChart), typeof(BarChartRenderer))]
+[assembly: ExportRenderer(typeof(BarChart), typeof(BarChartRenderer))]
+
 namespace MobileCRM.iOS.Renderers
 {
-    public class BarChartRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.BarChart, PlotView>
+    public class BarChartRenderer : ViewRenderer<BarChart, PlotView>
     {
         static OxyColor FILLCOLOR = OxyColor.FromRgb(180, 188, 188);
 
-        protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.Shared.CustomControls.BarChart> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<BarChart> e)
         {
             base.OnElementChanged(e);
             if (e.OldElement != null || this.Element == null)
@@ -67,7 +69,7 @@ namespace MobileCRM.iOS.Renderers
             base.OnElementPropertyChanged(sender, e);
             if (this.Element == null || this.Control == null)
                 return;
-            if (e.PropertyName == MobileCRM.Shared.CustomControls.BarChart.ItemsProperty.PropertyName)
+            if (e.PropertyName == MobileCRM.CustomControls.BarChart.ItemsProperty.PropertyName)
             {
                 var columnSeries1 = Control.Model.Series[0] as ColumnSeries;
                 var categoryAxis1 = Control.Model.Axes[0] as CategoryAxis;

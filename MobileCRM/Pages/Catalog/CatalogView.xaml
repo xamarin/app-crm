@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+						 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+						 x:Class="MobileCRM.Pages.Catalog.CatalogView"
+						 xmlns:local="clr-namespace:MobileCRM.Helpers;assembly=MobileCRM"
+						 >
+
+	<ScrollView>
+
+		<StackLayout Padding="0" Spacing="0" BackgroundColor="{x:Static local:AppColors.CONTENTBKGCOLOR}">
+
+			<Image Source="{Binding Product.ImageSrc}" />
+
+			<StackLayout Padding="5,10,5,10" Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="{x:Static local:AppColors.DARKBLUEBKG}">
+				<Label Text="{Binding Product.ItemName}" Font="Bold" HorizontalOptions="StartAndExpand" TextColor="{x:Static local:AppColors.LABELWHITE}" />
+				<Label Text="{Binding SuggestedPrice}" Font="Bold" HorizontalOptions="EndAndExpand" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+			</StackLayout>
+
+      <StackLayout Padding="15, 10, 15, 0">
+        <Label Text="{Binding Product.Summary}" Font="Bold" HorizontalOptions="CenterAndExpand" XAlign="Center" 
+               TextColor="{x:Static local:AppColors.LABELBLUE}" />
+        <Label Text="{Binding Product.Description}" TextColor="{x:Static local:AppColors.LABELGRAY}" />
+      </StackLayout>
+
+
+
+    </StackLayout>
+
+	</ScrollView>
+
+</ContentPage>

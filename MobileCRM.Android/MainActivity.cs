@@ -20,7 +20,7 @@ namespace MobileCRMAndroid
             Insights.Initialize("e548c92073ff9ed3a0bc529d2edf896009d81c9c", this);
 
             // Set our view from the "main" layout resource
-            SetPage(MobileCRM.Shared.App.RootPage);
+            SetPage(MobileCRM.App.RootPage);
         }
     }
 }

@@ -4,8 +4,8 @@ using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using Microsoft.WindowsAzure.MobileServices;
-using MobileCRM.Shared.Pages.Home;
-using MobileCRM.Shared.Services;
+using MobileCRM.Pages.Home;
+using MobileCRM.Services;
 using MobileCRM.iOS.Renderers;
 
 [assembly: ExportRenderer(typeof(LoginPage), typeof(LoginPageRenderer_iOS))]

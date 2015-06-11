@@ -1,6 +1,6 @@
 using Xamarin.Forms;
 using MobileCRM.iOS.Renderers;
-using MobileCRM.Shared.Interfaces;
+using MobileCRM.Interfaces;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 

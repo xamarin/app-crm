@@ -2,8 +2,8 @@ using Microsoft.WindowsAzure.MobileServices;
 using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using MobileCRM.Shared.Pages.Home;
-using MobileCRM.Shared.Services;
+using MobileCRM.Pages.Home;
+using MobileCRM.Services;
 using MobileCRMAndroid.Renderers;
 
 [assembly: ExportRenderer(typeof(LoginPage), typeof(LoginPageRenderer_Android))]

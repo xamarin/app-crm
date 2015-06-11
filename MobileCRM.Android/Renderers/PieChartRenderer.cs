@@ -6,13 +6,13 @@ using OxyPlot.Series;
 using OxyPlot;
 using OxyPlot.XamarinAndroid;
 
-[assembly: ExportRenderer(typeof(MobileCRM.Shared.CustomControls.PieChart), typeof(PieChartRenderer))]
+[assembly: ExportRenderer(typeof(MobileCRM.CustomControls.PieChart), typeof(PieChartRenderer))]
 
 namespace MobileCRMAndroid.Renderers
 {
-    public class PieChartRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.PieChart, PlotView>
+    public class PieChartRenderer : ViewRenderer<MobileCRM.CustomControls.PieChart, PlotView>
     {
-        protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.Shared.CustomControls.PieChart> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.CustomControls.PieChart> e)
         {
             base.OnElementChanged(e);
             if (e.OldElement != null || this.Element == null)
@@ -53,7 +53,7 @@ namespace MobileCRMAndroid.Renderers
             base.OnElementPropertyChanged(sender, e);
             if (this.Element == null || this.Control == null)
                 return;
-            if (e.PropertyName == MobileCRM.Shared.CustomControls.BarChart.ItemsProperty.PropertyName)
+            if (e.PropertyName == MobileCRM.CustomControls.BarChart.ItemsProperty.PropertyName)
             {
 
                 var pieSeries1 = Control.Model.Series[0] as PieSeries;
