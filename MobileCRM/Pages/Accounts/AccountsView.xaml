@@ -4,7 +4,7 @@
 						 x:Class="MobileCRM.Pages.Accounts.AccountsView"  
 						 xmlns:controls="clr-namespace:MobileCRM.CustomControls;assembly=MobileCRM.CustomControls"
 						 
-						 xmlns:local="clr-namespace:MobileCRM.Core.Helpers;assembly=MobileCRM.Core"
+						 xmlns:local="clr-namespace:MobileCRM.Helpers;assembly=MobileCRM"
 						 
 						 Title="{Binding Title}"
 						 Icon="{Binding Icon}"

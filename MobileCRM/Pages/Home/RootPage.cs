@@ -23,7 +23,7 @@ namespace MobileCRM.Pages.Home
 
             this.BackgroundImage = "menubk.png";
 
-            Master = new ContentPage() { Title = "MENU" };
+            Master = new ContentPage() { Title = "☰" };
 
             previousItem = MenuType.Leads;//set first time to force
             NavigateTo(MenuType.Dashboard);
