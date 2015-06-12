@@ -11,6 +11,7 @@
     <NuGetPackageImportStamp>261c51be</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <AssemblyName>MobileCRMiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,7 +29,7 @@
     </MtouchI18n>
     <MtouchArch>i386</MtouchArch>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
-    <AssemblyName>MobileCRM.iOS</AssemblyName>
+    <AssemblyName>MobileCRMiOS</AssemblyName>
     <IpaMetadata>
     </IpaMetadata>
     <IpaPackageName>
@@ -153,12 +154,6 @@
     <Reference Include="System.Net.Http.Primitives">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\monotouch\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Insights">
-      <HintPath>..\packages\Xamarin.Insights.1.10.3.111\lib\MonoTouch10\Xamarin.Insights.dll</HintPath>
-    </Reference>
-    <Reference Include="PLCrashReporter">
-      <HintPath>..\packages\Xamarin.Insights.1.10.3.111\lib\MonoTouch10\PLCrashReporter.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Forms.Platform.iOS.Classic">
       <HintPath>..\packages\Xamarin.Forms.1.4.2.6359\lib\MonoTouch10\Xamarin.Forms.Platform.iOS.Classic.dll</HintPath>
     </Reference>
@@ -179,6 +174,12 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.10.4.112\lib\MonoTouch10\Xamarin.Insights.dll</HintPath>
+    </Reference>
+    <Reference Include="PLCrashReporter">
+      <HintPath>..\packages\Xamarin.Insights.1.10.4.112\lib\MonoTouch10\PLCrashReporter.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
