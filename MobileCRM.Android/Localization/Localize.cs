@@ -1,6 +1,5 @@
 ﻿using System;
 using Xamarin.Forms;
-using MobileCRM;
 using MobileCRM.Localization;
 
 [assembly:Dependency(typeof(MobileCRMAndroid.Localize))]
