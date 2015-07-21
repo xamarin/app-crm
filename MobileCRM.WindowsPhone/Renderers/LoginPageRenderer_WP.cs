@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Microsoft.WindowsAzure.MobileServices;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using MobileCRM.Pages.Home;
+using MobileCRM.Services;
+using MobileCRM.WindowsPhone.Renderers;
 using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.WinPhone;
+using LoginPage = MobileCRM.Pages.Home.LoginPage;
 
-using MobileCRM.Shared.Pages.Home;
-using MobileCRM.Shared.Services;
-
-using MobileCRM.WindowsPhone.Renderers;
-
-[assembly: ExportRenderer(typeof(MobileCRM.Shared.Pages.Home.LoginPage), typeof(LoginPageRenderer_WP))]
+[assembly: ExportRenderer(typeof(LoginPage), typeof(LoginPageRenderer_WP))]
 
 namespace MobileCRM.WindowsPhone.Renderers
 {

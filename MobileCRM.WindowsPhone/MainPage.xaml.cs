@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using MobileCRM.WindowsPhone.Resources;
-using Xamarin.Forms;
+﻿using Microsoft.Phone.Controls;
 using Xamarin;
-using MobileCRM.Shared.CustomControls;
-using MobileCRM.Shared.Pages;
-using MobileCRM.Shared;
+using Xamarin.Forms;
 
 namespace MobileCRM.WindowsPhone
 {
@@ -30,7 +18,7 @@ namespace MobileCRM.WindowsPhone
       Insights.Initialize("e548c92073ff9ed3a0bc529d2edf896009d81c9c");
 
 			// Set our view from the "main" layout resource
-			Content = MobileCRM.Shared.App.RootPage.ConvertPageToUIElement(this);
+			Content = MobileCRM.App.RootPage.ConvertPageToUIElement(this);
 		}
 
 	

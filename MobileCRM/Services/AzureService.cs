@@ -2,12 +2,13 @@
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;
 using MobileCRM.Interfaces;
-using MobileCRM.Models;
+using MobileCRM;
 using MobileCRM.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using MobileCRM.Models;
 using Xamarin;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AzureService))]

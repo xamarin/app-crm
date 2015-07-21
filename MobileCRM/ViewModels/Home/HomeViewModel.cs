@@ -1,5 +1,5 @@
-﻿using MobileCRM.Models;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using MobileCRM.Models;
 
 namespace MobileCRM.ViewModels.Home
 {

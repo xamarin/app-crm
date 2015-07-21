@@ -1,10 +1,12 @@
-﻿using MobileCRM.Models;
+﻿using MobileCRM;
 using MobileCRM.ViewModels.Orders;
 using MobileCRM.Helpers;
 using System;
 using Xamarin.Forms;
 using Xamarin;
 using MobileCRM.CustomControls;
+using MobileCRM.Models;
+using MobileCRM.Pages.Base;
 
 namespace MobileCRM.Pages.Orders
 {

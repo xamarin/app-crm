@@ -1,8 +1,9 @@
 ﻿using MobileCRM.Interfaces;
-using MobileCRM.Models;
+using MobileCRM;
 using MobileCRM.Helpers;
 using System;
 using System.Threading.Tasks;
+using MobileCRM.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -20,7 +21,7 @@ namespace MobileCRM.ViewModels.Contacts
         {
             if (contact == null)
             {
-                Contact = new Models.Contact();
+                Contact = new Contact();
                 this.Title = "New Contact";
             }
             else

@@ -1,4 +1,5 @@
-﻿using MobileCRM.Models;
+﻿using MobileCRM;
+using MobileCRM.Models;
 
 namespace MobileCRM.ViewModels.Catalog
 {

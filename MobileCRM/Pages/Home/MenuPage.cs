@@ -1,6 +1,8 @@
 ﻿using Xamarin.Forms;
-using MobileCRM.ViewModels.Home;
+using MobileCRM;
 using MobileCRM.CustomControls;
+using MobileCRM.ViewModels;
+using MobileCRM.ViewModels.Home;
 
 namespace MobileCRM.Pages.Home
 {

@@ -141,6 +141,7 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Localization\Localize.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="add.png" />
@@ -208,9 +209,13 @@
       <Project>{105d08de-982a-4f39-9fb2-82735cf2f3f1}</Project>
       <Name>SignaturePad.WP7</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MobileCRM.Shared\MobileCRM.Shared.csproj">
-      <Project>{40d46760-e7fd-4053-ad6b-07dc84d23bed}</Project>
-      <Name>MobileCRM.Shared</Name>
+    <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">
+      <Project>{A2A445B4-E291-4224-8B31-5FD82ADEC085}</Project>
+      <Name>MobileCRM.CustomControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MobileCRM\MobileCRM.csproj">
+      <Project>{458941D2-77A4-4B2C-8520-B6EF75947B09}</Project>
+      <Name>MobileCRM</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +257,15 @@
     <Reference Include="SQLitePCL.Ext.WindowsPhone8.RuntimeProxy, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SQLitePCL.3.8.7.2\lib\wp81\SQLitePCL.Ext.WindowsPhone8.RuntimeProxy.winmd</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.WP8">
+      <HintPath>..\lib\SyncFusion\wp8\Syncfusion.SfChart.WP8.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\lib\SyncFusion\wp8\Syncfusion.SfChart.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms.WinPhone">
+      <HintPath>..\lib\SyncFusion\wp8\Syncfusion.SfChart.XForms.WinPhone.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -315,4 +329,5 @@
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="..\packages\Xamarin.Forms.1.2.3.6257\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.2.3.6257\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
   <Import Project="..\packages\SQLitePCL.3.8.7.2\build\wp81\SQLitePCL.targets" Condition="Exists('..\packages\SQLitePCL.3.8.7.2\build\wp81\SQLitePCL.targets')" />
+  <ItemGroup />
 </Project>

@@ -1,25 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms.Platform.WinPhone;
-using Xamarin.Forms;
 using System.ComponentModel;
-using OxyPlot.Series;
-using OxyPlot;
-using OxyPlot.WP8;
+using MobileCRM.CustomControls;
 using MobileCRM.WindowsPhone.Renderers;
-[assembly: ExportRenderer(typeof(MobileCRM.Shared.CustomControls.PieChart), typeof(PieChartRenderer))]
+using OxyPlot;
+using OxyPlot.Series;
+using OxyPlot.WP8;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.WinPhone;
+
+[assembly: ExportRenderer(typeof(PieChart), typeof(PieChartRenderer))]
 namespace MobileCRM.WindowsPhone.Renderers
 {
 
-  public class PieChartRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.PieChart, PlotView>
+  public class PieChartRenderer : ViewRenderer<CustomControls.PieChart, PlotView>
   {
-    protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.Shared.CustomControls.PieChart> e)
+    protected override void OnElementChanged(ElementChangedEventArgs<CustomControls.PieChart> e)
     {
       base.OnElementChanged(e);
-      if (e.OldElement != null || this.Element == null)
+      if (e.OldElement != null || Element == null)
         return;
 
       var plotModel1 = new PlotModel();
@@ -48,9 +45,9 @@ namespace MobileCRM.WindowsPhone.Renderers
     protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
     {
       base.OnElementPropertyChanged(sender, e);
-      if (this.Element == null || this.Control == null)
+      if (Element == null || Control == null)
         return;
-      if (e.PropertyName == MobileCRM.Shared.CustomControls.BarChart.ItemsProperty.PropertyName)
+      if (e.PropertyName == CustomControls.BarChart.ItemsProperty.PropertyName)
       {
 
         var pieSeries1 = Control.Model.Series[0] as PieSeries;

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -10,6 +10,8 @@
     <AssemblyName>MobileCRM</AssemblyName>
     <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +32,12 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Cells\LeadListItemCell.cs" />
+    <Compile Include="Converters\WholePercentToDecimalPercent.cs" />
+    <Compile Include="Pages\Sales\BaseLeadDetailPage.cs" />
+    <Compile Include="Pages\Sales\LeadContactDetailPage.cs" />
+    <Compile Include="Pages\Sales\LeadDetailPage.cs" />
+    <Compile Include="Pages\Sales\LeadDetailTabbedPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Helpers\BarGraphHelper.cs" />
@@ -80,7 +88,6 @@
     </Compile>
     <Compile Include="Pages\Home\LoginPage.cs" />
     <Compile Include="Pages\Home\MenuPage.cs" />
-    <Compile Include="Pages\Home\RootPage.cs" />
     <Compile Include="Pages\Home\SplashPage.xaml.cs">
       <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Home\SplashPage.xaml</DependentUpon>
     </Compile>
@@ -121,10 +128,50 @@
     <Compile Include="ViewModels\Orders\OrderDetailsViewModel.cs" />
     <Compile Include="ViewModels\Orders\OrdersViewModel.cs" />
     <Compile Include="ViewModels\Settings\UserViewModel.cs" />
+    <Compile Include="Localization\TextResources.Designer.cs">
+      <DependentUpon>TextResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Palette.cs" />
+    <Compile Include="Localization\TranslateExtension.cs" />
+    <Compile Include="Localization\ILocalization.cs" />
+    <Compile Include="Converters\ToUpperConverter.cs" />
+    <Compile Include="Views\Sales\LeadListHeaderView.cs" />
+    <Compile Include="Views\Sales\LeadListView.cs" />
+    <Compile Include="Views\Sales\SalesChartHeaderView_new.xaml.cs">
+      <DependentUpon>SalesChartHeaderView_new.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SalesChartHeaderView.cs" />
+    <Compile Include="Pages\Sales\SalesDashboardPage_new_new.xaml.cs">
+      <DependentUpon>SalesDashboardPage_new.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Base\BaseContentPage.cs" />
+    <Compile Include="Pages\Sales\SalesDashboardPage.cs" />
+    <Compile Include="Views\Sales\SalesChartView.cs" />
+    <Compile Include="Views\TabbedPageHeaderView.cs" />
+    <Compile Include="Pages\Home\RootPage_old.cs" />
+    <Compile Include="Pages\RootPage.cs" />
+    <Compile Include="Pages\Products\CategoryListPage.cs" />
+    <Compile Include="Pages\Products\ProductDetailPage.cs" />
+    <Compile Include="Pages\Products\ProductListPage.cs" />
+    <Compile Include="Pages\Products\ProductNavigationPage.cs" />
+    <Compile Include="ViewModels\Products\CategoriesViewModel.cs" />
+    <Compile Include="ViewModels\Products\ProductsViewModel.cs" />
+    <Compile Include="Clients\ICatalogClient.cs" />
+    <Compile Include="Models\CatalogCategory.cs" />
+    <Compile Include="Models\CatalogProduct.cs" />
+    <Compile Include="Clients\CatalogClient.cs" />
+    <Compile Include="Clients\ResponseFetcher.cs" />
+    <Compile Include="Views\Products\CategoryListView.cs" />
+    <Compile Include="Views\Products\ProductDetailDescriptionView.cs" />
+    <Compile Include="Views\Products\ProductDetailRibbon.cs" />
+    <Compile Include="Views\Products\ProductListView.cs" />
+    <Compile Include="Cells\ProductListItemCell.cs" />
+    <Compile Include="Cells\CategoryListItemCell.cs" />
+    <Compile Include="Sizes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <ItemGroup>
     <EmbeddedResource Include="Pages\Accounts\AccountContactView.xaml">
       <SubType>Designer</SubType>
@@ -178,16 +225,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Localization\TextResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
+      <LogicalName>MobileCRM.TextResources.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SalesChartHeaderView_new.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Sales\SalesDashboardPage_new.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\packages\Xamarin.Forms.1.4.2.6359\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\packages\Xamarin.Forms.1.4.2.6359\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform">
-      <HintPath>..\packages\Xamarin.Forms.1.4.2.6359\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    <Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\lib\SyncFusion\pcl\Syncfusion.SfChart.XForms.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
@@ -207,18 +259,37 @@
     <Reference Include="Microsoft.WindowsAzure.Mobile.SQLiteStore">
       <HintPath>..\packages\WindowsAzure.MobileServices.SQLiteStore.1.0.4\lib\portable-win+net45+wp8+wpa81+monotouch+monoandroid\Microsoft.WindowsAzure.Mobile.SQLiteStore.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Maps">
-      <HintPath>..\packages\Xamarin.Forms.Maps.1.4.2.6359\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Insights">
       <HintPath>..\packages\Xamarin.Insights.1.10.4.112\lib\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.1.4.3.6376\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.1.4.3.6376\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.1.4.3.6376\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Maps">
+      <HintPath>..\packages\Xamarin.Forms.Maps.1.4.3.6376\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Customers\" />
+    <Folder Include="Pages\Products\" />
+    <Folder Include="Views\Customers\" />
+    <Folder Include="Views\Products\" />
+    <Folder Include="ViewModels\Sales\" />
+    <Folder Include="ViewModels\Customers\" />
+    <Folder Include="ViewModels\Products\" />
+    <Folder Include="Clients\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">
@@ -226,4 +297,11 @@
       <Name>MobileCRM.CustomControls</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>

@@ -1,15 +1,22 @@
-﻿using MobileCRM.Pages.Home;
+﻿using MobileCRM.Localization;
+using MobileCRM.Pages.Home;
 using Xamarin.Forms;
 
 namespace MobileCRM
 {
     public class App : Application
     {
-        static Page _HomeView;
+        public App()
+        {
+            if (Device.OS != TargetPlatform.WinPhone)
+                TextResources.Culture = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+        }
+
+        static Page _RootPage;
 
         public static Page RootPage
         {
-            get { return _HomeView ?? (_HomeView = new RootPage()); }
+            get { return _RootPage ?? (_RootPage = new RootPage()); }
         }
     }
 }

@@ -1,35 +1,33 @@
-﻿using MobileCRM.Interfaces;
-using MobileCRM.Models;
-using MobileCRM.Helpers;
-using System;
-using System.Linq;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
+using MobileCRM.Helpers;
+using MobileCRM.Interfaces;
+using MobileCRM.Models;
+using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 
 namespace MobileCRM.ViewModels.Home
 {
     public class DashboardViewModel : BaseViewModel
     {
-        ObservableCollection<Order> orders;
         bool bolDataSeeded;
-
-        public ObservableCollection<Order> Orders
-        {
-            get
-            {
-                return orders;
-            }
-            set
-            {
-                orders = value;
-                OnPropertyChanged("Orders");
-            }
-        }
 
         IDataManager dataManager;
         BarGraphHelper chartHelper;
+
+        Command loadSeedDataCommand;
+        Command loadLeadsCommand;
+
+        ObservableCollection<Order> orders;
+        ObservableCollection<Account> leads;
+        ObservableCollection<ChartDataPoint> salesChartDataPoints;
+
+        string salesAverage;
+
+        public bool NeedsRefresh { get; set; }
 
         public DashboardViewModel()
         {
@@ -37,15 +35,28 @@ namespace MobileCRM.ViewModels.Home
             this.Icon = "dashboard.png";
 
             dataManager = DependencyService.Get<IDataManager>();
+
+            Leads = new ObservableCollection<Account>();
             Orders = new ObservableCollection<Order>();
 
-
+            MessagingCenter.Subscribe<Account>(this, "SaveAccount", (account) =>
+                {
+                    var index = Leads.IndexOf(account);
+                    if (index >= 0)
+                    {
+                        Leads[index] = account;
+                    }
+                    else
+                    {
+                        Leads.Add(account);
+                    }
+                    Leads = new ObservableCollection<Account>(Leads.OrderBy(x => x.Company).Select(x => x));
+                });
+            
             IsInitialized = false;
 
             bolDataSeeded = false;
         }
-
-        Command loadSeedDataCommand;
 
         public Command LoadSeedDataCommand
         {
@@ -57,12 +68,25 @@ namespace MobileCRM.ViewModels.Home
             }
         }
 
+        /// <summary>
+        /// Used for pull-to-refresh of Leads list
+        /// </summary>
+        /// <value>The load leads command, used for pull-to-refresh.</value>
+        public Command LoadLeadsCommand
+        { 
+            get
+            { 
+                return loadLeadsCommand ?? (loadLeadsCommand = new Command(ExecuteLoadLeadsCommand, () => !IsBusy)); 
+            } 
+        }
+
         public async Task ExecuteLoadSeedDataCommand()
         {
             if (IsBusy)
                 return;
 
             IsBusy = true;
+            IsModelLoaded = false;
 
             if (!bolDataSeeded)
             {
@@ -70,125 +94,88 @@ namespace MobileCRM.ViewModels.Home
                 bolDataSeeded = true;
             }
 
-            IEnumerable<Order> orders = new List<Order>();
-            orders = await dataManager.GetAllAccountOrdersAsync();
+            Orders = 
+                new ObservableCollection<Order>(
+                await dataManager.GetAllAccountOrdersAsync());
 
-            ObservableCollection<Order> orderRefreshed = new ObservableCollection<Order>();
-
-            foreach (var order in orders)
-                orderRefreshed.Add(order);
-
-            this.Orders = orderRefreshed;
+            Leads = 
+                new ObservableCollection<Account>(
+                    await dataManager.GetAccountsAsync(true));
 
             chartHelper = new BarGraphHelper(Orders, false);
-            this.GetSalesPcts();
+
+            SalesChartDataPoints = new ObservableCollection<ChartDataPoint>(
+                chartHelper.SalesData
+                .OrderBy(x => x.DateStart)
+                .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)));
+
+            SalesAverage = String.Format("{0:C}", SalesChartDataPoints.Average(x => x.YValue));
 
             IsBusy = false;
+            IsModelLoaded = true;
         }
 
-        string salesPctCombo;
-        string salesPctInk;
-        string salesPctPaper;
-        string salesPctPrinter;
-        string salesPctScanner;
+        /// <summary>
+        /// Executes the LoadLeadsCommand.
+        /// </summary>
+        async void ExecuteLoadLeadsCommand()
+        { 
+            if (IsBusy)
+                return; 
+            
+            IsBusy = true; 
+            IsModelLoaded = false;
+            LoadLeadsCommand.ChangeCanExecute(); 
 
-        void GetSalesPcts()
+            Leads = 
+                new ObservableCollection<Account>(
+                    await dataManager.GetAccountsAsync(true));
+
+            IsBusy = false; 
+            IsModelLoaded = true;
+            LoadLeadsCommand.ChangeCanExecute(); 
+        }
+
+        public ObservableCollection<Order> Orders
         {
-            double dblTotalSales = (from o in chartHelper.CategoryData
-                                             select o.Amount).Sum();
-
-            double dblSalesPaper = (from o in chartHelper.CategoryData
-                                             where o.Category == Order.PAPER
-                                             select o).First().Amount / dblTotalSales * 100;
-
-            double dblSalesCombo = (from o in chartHelper.CategoryData
-                                             where o.Category == Order.COMBO
-                                             select o).First().Amount / dblTotalSales * 100;
-
-            double dblSalesInk = (from o in chartHelper.CategoryData
-                                           where o.Category == Order.INK
-                                           select o).First().Amount / dblTotalSales * 100;
-
-            double dblSalesPrinter = (from o in chartHelper.CategoryData
-                                               where o.Category == Order.PRINTER
-                                               select o).First().Amount / dblTotalSales * 100;
-
-            double dblSalesScanner = (from o in chartHelper.CategoryData
-                                               where o.Category == Order.SCANNER
-                                               select o).First().Amount / dblTotalSales * 100;
-
-            this.ComboSalesPct = String.Format("{0:0}%", dblSalesCombo);
-            this.InkSalesPct = String.Format("{0:0}%", dblSalesInk);
-            this.PaperSalesPct = String.Format("{0:0}%", dblSalesPaper);
-            this.PrinterSalesPct = String.Format("{0:0}%", dblSalesPrinter);
-            this.ScannerSalesPct = String.Format("{0:0}%", dblSalesScanner);
-                           
+            get { return orders; }
+            set
+            {
+                orders = value;
+                OnPropertyChanged("Orders");
+            }
         }
 
+        public ObservableCollection<Account> Leads
+        {
+            get { return leads; }
+            set
+            {
+                leads = value;
+                OnPropertyChanged("Leads");
+            }
+        }
 
-        public string ComboSalesPct
+        public ObservableCollection<ChartDataPoint> SalesChartDataPoints
+        {
+            get { return salesChartDataPoints; }
+            set
+            {
+                salesChartDataPoints = value;
+                OnPropertyChanged("SalesChartDataPoints");
+            }
+        }
+
+        public string SalesAverage
         {
             get
             {
-                return salesPctCombo;
+                return salesAverage;
             }
             set
             {
-                salesPctCombo = value;
-                OnPropertyChanged("ComboSalesPct");
-            }
-        }
-
-
-        public string InkSalesPct
-        {
-            get
-            {
-                return salesPctInk;
-            }
-            set
-            {
-                salesPctInk = value;
-                OnPropertyChanged("InkSalesPct");
-            }
-        }
-
-        public string PaperSalesPct
-        {
-            get
-            {
-                return salesPctPaper;
-            }
-            set
-            {
-                salesPctPaper = value;
-                OnPropertyChanged("PaperSalesPct");
-            }
-        }
-
-        public string PrinterSalesPct
-        {
-            get
-            {
-                return salesPctPrinter;
-            }
-            set
-            {
-                salesPctPrinter = value;
-                OnPropertyChanged("PrinterSalesPct");
-            }
-        }
-
-        public string ScannerSalesPct
-        {
-            get
-            {
-                return salesPctScanner;
-            }
-            set
-            {
-                salesPctScanner = value;
-                OnPropertyChanged("ScannerSalesPct");
+                salesAverage = value;
+                OnPropertyChanged("SalesAverage");
             }
         }
     }

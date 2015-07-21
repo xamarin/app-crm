@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+
+
+	<data name="Save" xml:space="preserve">
+    	<value>Save</value>
+	</data>
+	<data name="Cancel" xml:space="preserve">
+    	<value>Cancel</value>
+	</data>
+	<data name="Details" xml:space="preserve">
+    	<value>Details</value>
+	</data>
+	<data name="Contact" xml:space="preserve">
+    	<value>Contact</value>
+	</data>
+
+
+
+	<data name="Leads_LeadListHeaderTitle" xml:space="preserve">
+    	<value>Leads</value>
+	</data>
+	<data name="Leads_NewLead" xml:space="preserve">
+    	<value>New Lead</value>
+	</data>
+	<data name="Leads_EditLead" xml:space="preserve">
+    	<value>Edit Lead</value>
+	</data>
+	<data name="Leads_SaveConfirmTitle" xml:space="preserve">
+    	<value>Save?</value>
+	</data>
+	<data name="Leads_SaveConfirmDescription" xml:space="preserve">
+    	<value>Would you like to save changes to this lead?</value>
+	</data>
+
+
+	<data name="Sales" xml:space="preserve">
+    	<value>Sales</value>
+	</data>
+	<data name="SalesChartHeaderTitle" xml:space="preserve">
+		<value>6-Week Sales</value>
+	</data>
+	<data name="SalesChartHeaderWeeklyAverageTitle" xml:space="preserve">
+		<value>Weekly Average</value>
+	</data>
+
+
+	<data name="Products" xml:space="preserve">
+    	<value>Products</value>
+	</data>
+</root>

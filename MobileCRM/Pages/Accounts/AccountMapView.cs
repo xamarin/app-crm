@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using MobileCRM.Pages.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using MobileCRM.ViewModels.Accounts;

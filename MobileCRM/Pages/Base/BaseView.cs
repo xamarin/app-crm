@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace MobileCRM.Pages
+namespace MobileCRM.Pages.Base
 {
     public class BaseView : ContentPage
     {

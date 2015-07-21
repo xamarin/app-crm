@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:i18n="clr-namespace:MobileCRM;assembly=MobileCRM"
+	xmlns:localization="clr-namespace:MobileCRM.Localization;assembly=MobileCRM"
+	x:Class="MobileCRM.Views.Sales.SalesChartHeaderView_new" 
+	BackgroundColor="{x:Static local:Palette._008}" 
+	HeightRequest="40">
+	<ContentView.Content>
+		<RelativeLayout>
+			<Label 
+				x:Name="HeaderTitleLabel"
+				Text="{localization:Translate SalesChartHeaderTitle}" 
+				FontSize="{x:Static HeaderTitleLabelFontSize}"
+				RelativeLayout.XConstraint= "{ConstraintExpression Type=Constant, Constant=0}" 
+				RelativeLayout.YConstraint= "{ConstraintExpression Type=Constant, Constant=0}" 
+				RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}" 
+				RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+			</Label>
+			<Label 
+				x:Name="WeeklyAverageTitleLabel" 
+				Text="{localization:Translate SalesChartHeaderWeeklyAverageTitle}" 
+				FontSize="{x:Static WeeklyAverageTitleLabelFontSize}" 
+				RelativeLayout.XConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}" 
+				RelativeLayout.YConstraint= "{ConstraintExpression Type=Constant, Constant=0}" 
+				RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}" 
+				RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}" />
+			<Label 
+				x:Name="WeeklyAverageValueLabel" 
+				Text="{localization:Translate SalesChartHeaderWeeklyAverageTitle}" 
+				FontSize="{x:Static WeeklyAverageValueLabelFontSize}" 
+				RelativeLayout.XConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}" 
+				RelativeLayout.YConstraint= "{ConstraintExpression Type=Constant, Constant=0}" 
+				RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}" 
+				RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}" />
+		</RelativeLayout>
+	</ContentView.Content>
+</ContentView>

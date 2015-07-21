@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MobileCRM.Attributes
+namespace MobileCRM.Properties.Attributes
 {
     public class CurrencyAttribute : Attribute { }
 }

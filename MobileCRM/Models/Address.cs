@@ -1,7 +1,4 @@
-﻿using MobileCRM.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MobileCRM.Properties.Attributes;
 
 namespace MobileCRM.Models
 {

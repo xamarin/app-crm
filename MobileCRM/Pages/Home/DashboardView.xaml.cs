@@ -2,10 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MobileCRM.ViewModels.Home;
+using MobileCRM;
 using MobileCRM.Helpers;
 using Xamarin;
 using MobileCRM.CustomControls;
+using MobileCRM.ViewModels.Home;
 
 namespace MobileCRM.Pages.Home
 {

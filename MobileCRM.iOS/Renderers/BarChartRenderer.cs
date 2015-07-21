@@ -2,11 +2,11 @@ using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms;
 using MobileCRM.iOS.Renderers;
 using System.ComponentModel;
+using MobileCRM.CustomControls;
 using OxyPlot.XamarinIOS;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
-using MobileCRM.CustomControls;
 
 [assembly: ExportRenderer(typeof(BarChart), typeof(BarChartRenderer))]
 

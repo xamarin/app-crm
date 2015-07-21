@@ -1,10 +1,11 @@
 ﻿using MobileCRM.Interfaces;
-using MobileCRM.Models;
+using MobileCRM;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using MobileCRM.Helpers;
+using MobileCRM.Models;
 
 namespace MobileCRM.ViewModels.Accounts
 {
@@ -19,7 +20,7 @@ namespace MobileCRM.ViewModels.Accounts
         {
             if (account == null)
             {
-                Account = new Models.Account();
+                Account = new Account();
                 Account.Industry = Account.IndustryTypes[0];
                 Account.OpportunityStage = Account.OpportunityStages[0];
 

@@ -1,7 +1,8 @@
 ﻿using MobileCRM.Interfaces;
-using MobileCRM.Models;
+using MobileCRM;
 using System;
 using System.Threading.Tasks;
+using MobileCRM.Models;
 using Xamarin.Forms;
 
 namespace MobileCRM.ViewModels.Orders

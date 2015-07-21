@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MobileCRM.Services;
+using MobileCRM;
 using MobileCRM.Models;
 
 namespace MobileCRM.ViewModels.Settings

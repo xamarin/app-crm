@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using System.Globalization;
 using System.Diagnostics;
-using MobileCRM.Attributes;
+using MobileCRM.Properties.Attributes;
 
 namespace MobileCRM.Helpers
 {

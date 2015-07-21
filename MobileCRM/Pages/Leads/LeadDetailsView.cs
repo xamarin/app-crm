@@ -1,7 +1,9 @@
-﻿using MobileCRM.Models;
+﻿using MobileCRM;
 using MobileCRM.ViewModels.Accounts;
 using MobileCRM.Helpers;
 using System;
+using MobileCRM.Models;
+using MobileCRM.Pages.Base;
 using Xamarin.Forms;
 using Xamarin;
 

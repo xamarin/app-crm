@@ -1,23 +1,20 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms.Platform.WinPhone;
-using Xamarin.Forms;
-using MobileCRMAndroid.Renderers;
 using System.ComponentModel;
-
-using MobileCRM.Shared.CustomControls;
+using System.Windows.Media;
+using MobileCRMAndroid.Renderers;
+using Newtonsoft.Json;
 using Xamarin.Controls;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.WinPhone;
+using Point = System.Windows.Point;
 
-[assembly: ExportRenderer(typeof(MobileCRM.Shared.CustomControls.SignaturePad), typeof(SignaturePadRenderer))]
+[assembly: ExportRenderer(typeof(MobileCRM.CustomControls.SignaturePad), typeof(SignaturePadRenderer))]
 namespace MobileCRMAndroid.Renderers
 {
 
-  public class SignaturePadRenderer : ViewRenderer<MobileCRM.Shared.CustomControls.SignaturePad, SignaturePadView>
+  public class SignaturePadRenderer : ViewRenderer<MobileCRM.CustomControls.SignaturePad, SignaturePadView>
   {
-    protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.Shared.CustomControls.SignaturePad> e)
+    protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.CustomControls.SignaturePad> e)
     {
       base.OnElementChanged(e);
       if (e.OldElement != null || this.Element == null)
@@ -25,15 +22,15 @@ namespace MobileCRMAndroid.Renderers
 
       var signaturePad = new SignaturePadView()
       {
-        BackgroundColor = System.Windows.Media.Colors.White,
-        StrokeColor = System.Windows.Media.Colors.Black
+        BackgroundColor = Colors.White,
+        StrokeColor = Colors.Black
       };
 
       if(!string.IsNullOrWhiteSpace(Element.DefaultPoints))
       {
         try
         {
-          signaturePad.LoadPoints(Newtonsoft.Json.JsonConvert.DeserializeObject<System.Windows.Point[]>(Element.DefaultPoints));
+          signaturePad.LoadPoints(JsonConvert.DeserializeObject<Point[]>(Element.DefaultPoints));
         }
         catch(Exception ex)
         {
@@ -47,7 +44,7 @@ namespace MobileCRMAndroid.Renderers
           return string.Empty;
 
 
-        return Newtonsoft.Json.JsonConvert.SerializeObject(signaturePad.Points);
+        return JsonConvert.SerializeObject(signaturePad.Points);
       };
 
       this.Element.GetImageEvent += Element_GetImageEvent;

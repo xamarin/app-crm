@@ -1,7 +1,8 @@
-﻿using MobileCRM.Models;
+﻿using MobileCRM;
 using MobileCRM.ViewModels.Contacts;
 using MobileCRM.Pages.Contacts;
 using System;
+using MobileCRM.Models;
 using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Contacts

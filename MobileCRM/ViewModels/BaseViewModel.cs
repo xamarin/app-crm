@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
 
-namespace MobileCRM
+namespace MobileCRM.ViewModels
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
@@ -35,6 +35,15 @@ namespace MobileCRM
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value, IsBusyPropertyName); }
+        }
+
+        bool isModelLoaded;
+        public const string IsModelLoadedPropertyName = "IsModelLoaded";
+
+        public bool IsModelLoaded
+        {
+            get { return isModelLoaded; }
+            set { SetProperty(ref isModelLoaded, value, IsModelLoadedPropertyName); }
         }
     
         string title = string.Empty;

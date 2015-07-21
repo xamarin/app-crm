@@ -1,4 +1,5 @@
-﻿using MobileCRM.Models;
+﻿using MobileCRM;
+using MobileCRM.Models;
 using MobileCRM.ViewModels.Contacts;
 using Xamarin.Forms;
 using Xamarin;

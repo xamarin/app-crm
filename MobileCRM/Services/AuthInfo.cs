@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using Xamarin;
 using Microsoft.WindowsAzure.MobileServices;
+using MobileCRM;
 using MobileCRM.Models;
 
 namespace MobileCRM.Services

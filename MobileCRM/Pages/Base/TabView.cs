@@ -1,8 +1,8 @@
-﻿using MobileCRM.ViewModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MobileCRM.ViewModels;
 using Xamarin.Forms;
 
-namespace MobileCRM.Pages
+namespace MobileCRM.Pages.Base
 {
     public class TabView : TabbedPage
     {

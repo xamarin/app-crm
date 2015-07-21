@@ -1,6 +1,7 @@
-﻿using MobileCRM.Models;
+﻿using MobileCRM;
 using MobileCRM.ViewModels.Orders;
 using System;
+using MobileCRM.Models;
 using Xamarin.Forms;
 using Xamarin;
 

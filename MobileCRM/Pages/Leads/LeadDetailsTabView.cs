@@ -1,7 +1,8 @@
-﻿using MobileCRM.Models;
+﻿using MobileCRM;
 using MobileCRM.ViewModels.Accounts;
 using MobileCRM.Pages.Accounts;
 using System;
+using MobileCRM.Models;
 using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Leads
