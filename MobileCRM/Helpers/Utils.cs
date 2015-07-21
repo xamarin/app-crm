@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms.Maps;
 
 namespace MobileCRM.Helpers
@@ -25,7 +26,7 @@ namespace MobileCRM.Helpers
             }
             catch (Exception exc)
             {
-                System.Diagnostics.Debug.WriteLine("ERROR: MobileCRM.Shared.Helpers.GeoCodeAddress(): " + exc.Message);
+                Debug.WriteLine("ERROR: MobileCRM.Shared.Helpers.GeoCodeAddress(): " + exc.Message);
             }
             finally
             { 

@@ -1,7 +1,8 @@
-﻿using MonoTouch.Foundation;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-using Xamarin.Forms;
 using Xamarin;
+using Xamarin.Forms;
 
 namespace MobileCRM.iOS
 {
@@ -15,14 +16,14 @@ namespace MobileCRM.iOS
 #if DEBUG
             //Xamarin.Calabash.Start();
 #endif
-            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+            CurrentPlatform.Init();
             SQLitePCL.CurrentPlatform.Init();
             window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             Forms.Init();
             FormsMaps.Init();
 
-            window.RootViewController = MobileCRM.App.RootPage.CreateViewController();
+            window.RootViewController = App.RootPage.CreateViewController();
             window.MakeKeyAndVisible();
             
             return true;

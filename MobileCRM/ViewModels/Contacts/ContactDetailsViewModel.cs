@@ -1,8 +1,6 @@
-﻿using MobileCRM.Interfaces;
-using MobileCRM;
+﻿using System.Threading.Tasks;
 using MobileCRM.Helpers;
-using System;
-using System.Threading.Tasks;
+using MobileCRM.Interfaces;
 using MobileCRM.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;

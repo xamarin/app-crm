@@ -1,9 +1,9 @@
-﻿using MobileCRM;
-using MobileCRM.ViewModels.Leads;
-using System;
+﻿using System;
+using System.Diagnostics;
 using MobileCRM.Models;
-using Xamarin.Forms;
+using MobileCRM.ViewModels.Leads;
 using Xamarin;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Leads
 {
@@ -47,7 +47,7 @@ namespace MobileCRM.Pages.Leads
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message);
             } //end catch
         }
 

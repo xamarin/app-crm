@@ -1,11 +1,9 @@
-﻿using MobileCRM;
-using MobileCRM.ViewModels.Accounts;
-using MobileCRM.Helpers;
-using System;
+﻿using MobileCRM.Helpers;
 using MobileCRM.Models;
 using MobileCRM.Pages.Base;
-using Xamarin.Forms;
+using MobileCRM.ViewModels.Accounts;
 using Xamarin;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Leads
 {
@@ -15,8 +13,8 @@ namespace MobileCRM.Pages.Leads
 
         public LeadDetailsView(AccountDetailsViewModel vm)
         {
-            SetBinding(Page.TitleProperty, new Binding("Title"));
-            SetBinding(Page.IconProperty, new Binding("Icon"));
+            SetBinding(TitleProperty, new Binding("Title"));
+            SetBinding(IconProperty, new Binding("Icon"));
 
             this.BindingContext = viewModel = vm;
 

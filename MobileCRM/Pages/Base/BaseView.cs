@@ -6,8 +6,8 @@ namespace MobileCRM.Pages.Base
     {
         public BaseView()
         {
-            SetBinding(Page.TitleProperty, new Binding("Title"));
-            SetBinding(Page.IconProperty, new Binding("Icon"));
+            SetBinding(TitleProperty, new Binding("Title"));
+            SetBinding(IconProperty, new Binding("Icon"));
         }
     }
 }

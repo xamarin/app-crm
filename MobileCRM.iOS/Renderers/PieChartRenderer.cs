@@ -1,18 +1,19 @@
-using Xamarin.Forms.Platform.iOS;
-using Xamarin.Forms;
-using MobileCRM.iOS.Renderers;
 using System.ComponentModel;
-using OxyPlot.Series;
+using MobileCRM.CustomControls;
+using MobileCRM.iOS.Renderers;
 using OxyPlot;
+using OxyPlot.Series;
 using OxyPlot.XamarinIOS;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(MobileCRM.CustomControls.PieChart), typeof(PieChartRenderer))]
+[assembly: ExportRenderer(typeof(PieChart), typeof(PieChartRenderer))]
 
 namespace MobileCRM.iOS.Renderers
 {
-    public class PieChartRenderer : ViewRenderer<MobileCRM.CustomControls.PieChart, PlotView>
+    public class PieChartRenderer : ViewRenderer<PieChart, PlotView>
     {
-        protected override void OnElementChanged(ElementChangedEventArgs<MobileCRM.CustomControls.PieChart> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<PieChart> e)
         {
             base.OnElementChanged(e);
             if (e.OldElement != null || this.Element == null)
@@ -40,7 +41,7 @@ namespace MobileCRM.iOS.Renderers
             var plotView = new PlotView();
 
             //Add padding to prevent cropping
-            plotModel1.Padding = new OxyPlot.OxyThickness(45);
+            plotModel1.Padding = new OxyThickness(45);
 
             plotView.Model = plotModel1;
       
@@ -52,7 +53,7 @@ namespace MobileCRM.iOS.Renderers
             base.OnElementPropertyChanged(sender, e);
             if (this.Element == null || this.Control == null)
                 return;
-            if (e.PropertyName == MobileCRM.CustomControls.BarChart.ItemsProperty.PropertyName)
+            if (e.PropertyName == BarChart.ItemsProperty.PropertyName)
             {
                 var pieSeries1 = Control.Model.Series[0] as PieSeries;
                 pieSeries1.Slices.Clear();

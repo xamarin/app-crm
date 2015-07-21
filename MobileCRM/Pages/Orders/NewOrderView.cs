@@ -1,11 +1,10 @@
-﻿using MobileCRM;
-using MobileCRM.ViewModels.Orders;
+﻿using System;
 using MobileCRM.Helpers;
-using System;
 using MobileCRM.Models;
 using MobileCRM.Pages.Base;
-using Xamarin.Forms;
+using MobileCRM.ViewModels.Orders;
 using Xamarin;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Orders
 {
@@ -17,8 +16,8 @@ namespace MobileCRM.Pages.Orders
         {
             this.BindingContext = viewModel = new OrderDetailsViewModel(Navigation, new Order() { AccountId = accountId });
 
-            SetBinding(Page.TitleProperty, new Binding("Title"));
-            SetBinding(Page.IconProperty, new Binding("Icon"));
+            SetBinding(TitleProperty, new Binding("Title"));
+            SetBinding(IconProperty, new Binding("Icon"));
 
             this.Title = "New Order";
 

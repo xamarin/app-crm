@@ -1,6 +1,5 @@
-﻿using MobileCRM.ViewModels.Contacts;
-using System.Collections.Generic;
-using MobileCRM.Pages.Base;
+﻿using MobileCRM.Pages.Base;
+using MobileCRM.ViewModels.Contacts;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 

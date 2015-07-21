@@ -1,9 +1,9 @@
-﻿using Xamarin.Forms;
+﻿using MobileCRM.Localization;
+using MobileCRM.Models;
 using MobileCRM.Pages.Base;
 using MobileCRM.ViewModels.Products;
-using MobileCRM.Localization;
-using MobileCRM.Models;
 using MobileCRM.Views.Products;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Products
 {

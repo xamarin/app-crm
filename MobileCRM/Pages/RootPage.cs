@@ -1,11 +1,10 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using MobileCRM.Pages.Home;
+using MobileCRM.Pages.Products;
 using MobileCRM.Pages.Sales;
 using MobileCRM.ViewModels.Home;
-using MobileCRM.Pages.Products;
-using MobileCRM.Pages.Home;
+using Xamarin.Forms;
 
-namespace MobileCRM
+namespace MobileCRM.Pages
 {
     public class RootPage : TabbedPage
     {

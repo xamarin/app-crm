@@ -1,17 +1,18 @@
-﻿using Microsoft.WindowsAzure.MobileServices;
-using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
-using Microsoft.WindowsAzure.MobileServices.Sync;
-using MobileCRM.Interfaces;
-using MobileCRM;
-using MobileCRM.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.MobileServices;
+using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
+using Microsoft.WindowsAzure.MobileServices.Sync;
+using MobileCRM.Interfaces;
 using MobileCRM.Models;
+using MobileCRM.Services;
+using SQLitePCL;
 using Xamarin;
+using Xamarin.Forms;
 
-[assembly: Xamarin.Forms.Dependency(typeof(AzureService))]
+[assembly: Dependency(typeof(AzureService))]
 
 namespace MobileCRM.Services
 {
@@ -384,7 +385,7 @@ namespace MobileCRM.Services
             {
                 Debug.WriteLine(@"ERROR {0}", ex.Message);
             }
-            catch (SQLitePCL.SQLiteException sqex)
+            catch (SQLiteException sqex)
             {
                 Debug.WriteLine(@"ERROR {0}", sqex.Message);
             }

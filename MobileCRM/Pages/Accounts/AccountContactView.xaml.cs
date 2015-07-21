@@ -1,8 +1,8 @@
-﻿using MobileCRM.ViewModels.Accounts;
-using System;
+﻿using System;
 using MobileCRM.Interfaces;
-using Xamarin.Forms;
+using MobileCRM.ViewModels.Accounts;
 using Xamarin;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Accounts
 {
@@ -12,7 +12,7 @@ namespace MobileCRM.Pages.Accounts
         {
             InitializeComponent();
 
-            SetBinding(Page.TitleProperty, new Binding("Title"));
+            SetBinding(TitleProperty, new Binding("Title"));
 
             this.Icon = "contact.png";
 

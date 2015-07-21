@@ -1,12 +1,12 @@
 using System;
 using System.Diagnostics;
+using Microsoft.WindowsAzure.MobileServices;
+using MobileCRM.iOS.Renderers;
+using MobileCRM.Pages.Home;
+using MobileCRM.Services;
 using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using Microsoft.WindowsAzure.MobileServices;
-using MobileCRM.Pages.Home;
-using MobileCRM.Services;
-using MobileCRM.iOS.Renderers;
 
 [assembly: ExportRenderer(typeof(LoginPage), typeof(LoginPageRenderer_iOS))]
 

@@ -1,15 +1,16 @@
-﻿using System;
+﻿using System.Globalization;
+using MobileCRM.iOS;
 using MobileCRM.Localization;
-using Xamarin.Forms;
 using MonoTouch.Foundation;
+using Xamarin.Forms;
 
-[assembly:Dependency(typeof(MobileCRM.iOS.Localize))]
+[assembly:Dependency(typeof(Localize))]
 
 namespace MobileCRM.iOS
 {
     public class Localize : ILocalize
     {
-        public System.Globalization.CultureInfo GetCurrentCultureInfo()
+        public CultureInfo GetCurrentCultureInfo()
         {
             var netLanguage = "en";
             if (NSLocale.PreferredLanguages.Length > 0)
@@ -21,7 +22,7 @@ namespace MobileCRM.iOS
                     pref = "pt-BR"; // get the correct Brazilian language strings from the PCL RESX
                 //(note the local iOS folder is still "pt")
             }
-            return new System.Globalization.CultureInfo(netLanguage);
+            return new CultureInfo(netLanguage);
         }
     }
 }

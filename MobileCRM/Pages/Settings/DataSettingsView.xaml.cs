@@ -1,5 +1,5 @@
-﻿using Xamarin.Forms;
-using MobileCRM.Interfaces;
+﻿using MobileCRM.Interfaces;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Settings
 {

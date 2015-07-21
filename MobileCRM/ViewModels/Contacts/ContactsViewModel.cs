@@ -1,14 +1,12 @@
-﻿using MobileCRM.Interfaces;
-using MobileCRM;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
+using MobileCRM.Helpers;
+using MobileCRM.Interfaces;
+using MobileCRM.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using System.Linq;
-using MobileCRM.Helpers;
-using MobileCRM.Models;
 
 namespace MobileCRM.ViewModels.Contacts
 {

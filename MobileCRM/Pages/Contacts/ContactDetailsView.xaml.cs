@@ -1,8 +1,8 @@
-﻿using MobileCRM.ViewModels.Contacts;
-using System;
+﻿using System;
 using MobileCRM.Interfaces;
-using Xamarin.Forms;
+using MobileCRM.ViewModels.Contacts;
 using Xamarin;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Contacts
 {
@@ -12,8 +12,8 @@ namespace MobileCRM.Pages.Contacts
         {
             InitializeComponent();
 
-            SetBinding(Page.TitleProperty, new Binding("Title"));
-            SetBinding(Page.IconProperty, new Binding("Icon"));
+            SetBinding(TitleProperty, new Binding("Title"));
+            SetBinding(IconProperty, new Binding("Icon"));
 
             this.BindingContext = viewModel;
 

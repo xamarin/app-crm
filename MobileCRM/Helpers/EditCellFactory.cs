@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using MobileCRM.Helpers;
+﻿using MobileCRM.Helpers;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
-using System.Linq.Expressions;
-using MobileCRM.ViewModels;
-using System.Diagnostics;
 
 [assembly:Dependency(typeof(EditCellFactory))]
 

@@ -1,12 +1,10 @@
-﻿using MobileCRM.Interfaces;
-using MobileCRM;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Xamarin.Forms;
 using System.Threading.Tasks;
+using MobileCRM.Interfaces;
 using MobileCRM.Models;
+using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
 namespace MobileCRM.ViewModels.Accounts

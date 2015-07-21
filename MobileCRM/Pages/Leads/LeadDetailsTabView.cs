@@ -1,8 +1,7 @@
-﻿using MobileCRM;
-using MobileCRM.ViewModels.Accounts;
-using MobileCRM.Pages.Accounts;
-using System;
+﻿using System.Diagnostics;
 using MobileCRM.Models;
+using MobileCRM.Pages.Accounts;
+using MobileCRM.ViewModels.Accounts;
 using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Leads
@@ -51,7 +50,7 @@ namespace MobileCRM.Pages.Leads
                         else
                         {
                             viewModel.GoBack();
-                            System.Diagnostics.Debug.WriteLine("cancel changes!");
+                            Debug.WriteLine("cancel changes!");
                         }
                     }));
         }

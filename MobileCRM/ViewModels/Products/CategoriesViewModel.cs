@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using Xamarin.Forms;
-using MobileCRM.Models;
 using MobileCRM.Clients;
+using MobileCRM.Models;
+using Xamarin.Forms;
 
 namespace MobileCRM.ViewModels.Products
 {

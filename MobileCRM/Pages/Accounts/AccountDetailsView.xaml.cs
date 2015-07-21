@@ -1,14 +1,13 @@
-﻿using MobileCRM.CustomControls;
+﻿using System;
+using System.Diagnostics;
+using System.Linq;
+using MobileCRM.CustomControls;
 using MobileCRM.Helpers;
+using MobileCRM.Interfaces;
 using MobileCRM.ViewModels.Accounts;
 using MobileCRM.ViewModels.Orders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using MobileCRM.Interfaces;
-using Xamarin.Forms;
 using Xamarin;
-using MobileCRM.CustomControls;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Accounts
 {
@@ -50,7 +49,7 @@ namespace MobileCRM.Pages.Accounts
             catch (Exception exc)
             {
                 Insights.Report(exc, Insights.Severity.Error);
-                System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsView.PopulateChart(): " + exc.Message + "  |  " + exc.StackTrace);
+                Debug.WriteLine("EXCEPTION: AccountDetailsView.PopulateChart(): " + exc.Message + "  |  " + exc.StackTrace);
             }
         }
 
@@ -72,7 +71,7 @@ namespace MobileCRM.Pages.Accounts
             catch (Exception exc)
             {
                 Insights.Report(exc, Insights.Severity.Error);
-                System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsView.OnAppearing(): " + exc.Message + "  |  " + exc.StackTrace);
+                Debug.WriteLine("EXCEPTION: AccountDetailsView.OnAppearing(): " + exc.Message + "  |  " + exc.StackTrace);
             }
         }
 

@@ -1,9 +1,9 @@
-using Xamarin.Forms.Platform.iOS;
 using MobileCRM.CustomControls;
 using MobileCRM.Helpers;
-using Xamarin.Forms;
-using MonoTouch.UIKit;
 using MobileCRM.iOS;
+using MonoTouch.UIKit;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportCell(typeof(MenuCell), typeof(MenuCellRenderer))]
 

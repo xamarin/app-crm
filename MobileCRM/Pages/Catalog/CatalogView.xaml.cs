@@ -1,5 +1,5 @@
-﻿using Xamarin;
-using MobileCRM.ViewModels.Catalog;
+﻿using MobileCRM.ViewModels.Catalog;
+using Xamarin;
 
 namespace MobileCRM.Pages.Catalog
 {

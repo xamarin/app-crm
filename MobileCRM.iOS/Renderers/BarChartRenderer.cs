@@ -1,12 +1,12 @@
-using Xamarin.Forms.Platform.iOS;
-using Xamarin.Forms;
-using MobileCRM.iOS.Renderers;
 using System.ComponentModel;
 using MobileCRM.CustomControls;
-using OxyPlot.XamarinIOS;
+using MobileCRM.iOS.Renderers;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+using OxyPlot.XamarinIOS;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(BarChart), typeof(BarChartRenderer))]
 
@@ -69,7 +69,7 @@ namespace MobileCRM.iOS.Renderers
             base.OnElementPropertyChanged(sender, e);
             if (this.Element == null || this.Control == null)
                 return;
-            if (e.PropertyName == MobileCRM.CustomControls.BarChart.ItemsProperty.PropertyName)
+            if (e.PropertyName == BarChart.ItemsProperty.PropertyName)
             {
                 var columnSeries1 = Control.Model.Series[0] as ColumnSeries;
                 var categoryAxis1 = Control.Model.Axes[0] as CategoryAxis;

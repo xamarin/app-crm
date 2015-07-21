@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MobileCRM.Localization;
+﻿using MobileCRM.Localization;
 using MobileCRM.Models;
 using MobileCRM.Pages.Base;
 using MobileCRM.Views;

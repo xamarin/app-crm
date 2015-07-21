@@ -1,12 +1,10 @@
-﻿using MobileCRM.CustomControls;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
-using MobileCRM;
-using MobileCRM.Helpers;
-using Xamarin;
 using MobileCRM.CustomControls;
+using MobileCRM.Helpers;
 using MobileCRM.ViewModels.Home;
+using Xamarin;
 
 namespace MobileCRM.Pages.Home
 {
@@ -49,7 +47,7 @@ namespace MobileCRM.Pages.Home
             catch (Exception exc)
             {
                 Insights.Report(exc, Insights.Severity.Error);
-                System.Diagnostics.Debug.WriteLine("EXCEPTION: DashboardView.PopulateBarChart(): " + exc.Message + "  |  " + exc.StackTrace);
+                Debug.WriteLine("EXCEPTION: DashboardView.PopulateBarChart(): " + exc.Message + "  |  " + exc.StackTrace);
             }
         }
 

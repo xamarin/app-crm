@@ -1,8 +1,8 @@
-using Xamarin.Forms;
 using MobileCRM.iOS.Renderers;
 using MobileCRM.Interfaces;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using Xamarin.Forms;
 
 [assembly: Dependency(typeof(PhoneDialer))]
 namespace MobileCRM.iOS.Renderers

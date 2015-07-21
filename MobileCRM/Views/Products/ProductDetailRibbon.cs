@@ -1,5 +1,5 @@
-﻿using Xamarin.Forms;
-using MobileCRM.Models;
+﻿using MobileCRM.Models;
+using Xamarin.Forms;
 
 namespace MobileCRM.Views.Products
 {

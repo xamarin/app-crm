@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using MobileCRM.Cells;
 using MobileCRM.Localization;
 using MobileCRM.Models;
 using MobileCRM.Pages.Base;
@@ -7,8 +8,6 @@ using MobileCRM.ViewModels.Home;
 using MobileCRM.Views.Sales;
 using Xamarin;
 using Xamarin.Forms;
-using MobileCRM.Cells;
-using MobileCRM.Converters;
 
 namespace MobileCRM.Pages.Sales
 {
@@ -21,7 +20,7 @@ namespace MobileCRM.Pages.Sales
 
         public SalesDashboardPage(DashboardViewModel viewModel)
         {
-            SetBinding(Page.TitleProperty, new Binding() { Source = TextResources.Sales });
+            SetBinding(TitleProperty, new Binding() { Source = TextResources.Sales });
 
             BindingContext = viewModel;
 
@@ -38,9 +37,9 @@ namespace MobileCRM.Pages.Sales
             // LeadListHeaderView is an example of a custom view composed with Xamarin.Forms.
             // It takes an action as a constructor parameter, which will be used by the add new lead button ("+").
             LeadListHeaderView leadListHeaderView = new LeadListHeaderView(async () => await PushTabbedLeadPage());
-            leadListHeaderView.SetBinding(ActivityIndicator.IsEnabledProperty, "IsModelLoaded");
+            leadListHeaderView.SetBinding(IsEnabledProperty, "IsModelLoaded");
             leadListHeaderView.SetBinding(ActivityIndicator.IsRunningProperty, "IsModelLoaded");
-            leadListHeaderView.SetBinding(ActivityIndicator.IsVisibleProperty, "IsModelLoaded");
+            leadListHeaderView.SetBinding(IsVisibleProperty, "IsModelLoaded");
             #endregion
 
             #region leads list activity inidicator
@@ -49,10 +48,9 @@ namespace MobileCRM.Pages.Sales
                 BindingContext = ViewModel,
                 HeightRequest = Sizes.MediumRowHeight
             };
-            leadListActivityIndicator.SetBinding(ActivityIndicator.IsEnabledProperty, "IsBusy");
+            leadListActivityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
             leadListActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
-            leadListActivityIndicator.SetBinding(ActivityIndicator.IsVisibleProperty, "IsBusy");
-
+            leadListActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
             #endregion
 
             #region leadsListView
@@ -64,9 +62,8 @@ namespace MobileCRM.Pages.Sales
             leadListView.SetBinding(LeadListView.ItemsSourceProperty, "Leads");
             leadListView.SetBinding(LeadListView.RefreshCommandProperty, "LoadLeadsCommand");
             leadListView.SetBinding(LeadListView.IsRefreshingProperty, "IsBusy", BindingMode.OneWay);
-            leadListView.SetBinding(LeadListView.IsEnabledProperty, "IsModelLoaded");
-            leadListView.SetBinding(LeadListView.IsVisibleProperty, "IsModelLoaded");
-
+            leadListView.SetBinding(IsEnabledProperty, "IsModelLoaded");
+            leadListView.SetBinding(IsVisibleProperty, "IsModelLoaded");
 
             leadListView.ItemTapped += async (sender, e) =>
             {

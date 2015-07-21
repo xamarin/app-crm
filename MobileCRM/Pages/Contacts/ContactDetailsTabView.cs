@@ -1,8 +1,6 @@
-﻿using MobileCRM;
-using MobileCRM.ViewModels.Contacts;
-using MobileCRM.Pages.Contacts;
-using System;
+﻿using System.Diagnostics;
 using MobileCRM.Models;
+using MobileCRM.ViewModels.Contacts;
 using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Contacts
@@ -38,7 +36,7 @@ namespace MobileCRM.Pages.Contacts
                         else
                         {
                             viewModel.GoBack();
-                            System.Diagnostics.Debug.WriteLine("ContactDetailsTabView - cancel changes!");
+                            Debug.WriteLine("ContactDetailsTabView - cancel changes!");
                         }
                     }));
         }

@@ -1,11 +1,11 @@
-﻿using MobileCRM;
+﻿using System;
+using System.Diagnostics;
+using MobileCRM.Models;
+using MobileCRM.Pages.Orders;
 using MobileCRM.ViewModels.Accounts;
 using MobileCRM.ViewModels.Orders;
-using System;
-using MobileCRM.Models;
-using Xamarin.Forms;
 using Xamarin;
-using MobileCRM.Pages.Orders;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Accounts
 {
@@ -52,7 +52,7 @@ namespace MobileCRM.Pages.Accounts
             catch (Exception exc)
             {
                 Insights.Report(exc, Insights.Severity.Error);
-                System.Diagnostics.Debug.WriteLine("EXCEPTION: AccountDetailsTabView.Constructor(): " + exc.Message + "  |  " + exc.StackTrace);
+                Debug.WriteLine("EXCEPTION: AccountDetailsTabView.Constructor(): " + exc.Message + "  |  " + exc.StackTrace);
             }
 
         }

@@ -1,11 +1,16 @@
-﻿using MobileCRM.Services;
+﻿using System;
+using MobileCRM.Helpers;
+using MobileCRM.Models;
 using MobileCRM.Pages.Accounts;
+using MobileCRM.Pages.Catalog;
+using MobileCRM.Pages.Contacts;
+using MobileCRM.Pages.Leads;
+using MobileCRM.Pages.Settings;
+using MobileCRM.Services;
 using MobileCRM.ViewModels.Accounts;
 using MobileCRM.ViewModels.Contacts;
-using MobileCRM;
-using System;
-using MobileCRM.Models;
 using MobileCRM.ViewModels.Home;
+using MobileCRM.ViewModels.Leads;
 using Xamarin.Forms;
 using MenuItem = MobileCRM.Models.MenuItem;
 
@@ -69,7 +74,7 @@ namespace MobileCRM.Pages.Home
             var displayPage = PageForOption(option);
 
 
-            displayPage.BarBackgroundColor = Helpers.AppColors.CONTENTBKGCOLOR;
+            displayPage.BarBackgroundColor = AppColors.CONTENTBKGCOLOR;
             displayPage.BarTextColor = Color.White;
             
       
@@ -110,7 +115,7 @@ namespace MobileCRM.Pages.Home
                         if (leads != null)
                             return leads;
                 
-                        leads = new NavigationPage(new Leads.LeadsView(new ViewModels.Leads.LeadsViewModel() { Navigation = Navigation }));
+                        leads = new NavigationPage(new LeadsView(new LeadsViewModel() { Navigation = Navigation }));
                         return leads;
                     }
                 case MenuType.Contacts:
@@ -118,7 +123,7 @@ namespace MobileCRM.Pages.Home
                         if (contacts != null)
                             return contacts;
                         var vm = new ContactsViewModel();
-                        contacts = new NavigationPage(new Contacts.ContactsView(vm));
+                        contacts = new NavigationPage(new ContactsView(vm));
                         return contacts;
                     } 
                 case MenuType.Catalog:
@@ -126,7 +131,7 @@ namespace MobileCRM.Pages.Home
                         if (catalog != null)
                             return catalog;
 
-                        catalog = new NavigationPage(new Catalog.CatalogCarouselView());
+                        catalog = new NavigationPage(new CatalogCarouselView());
                         return catalog;
                     }
 
@@ -135,7 +140,7 @@ namespace MobileCRM.Pages.Home
                         if (settings != null)
                             return settings;
 
-                        settings = new NavigationPage(new Settings.UserSettingsView());
+                        settings = new NavigationPage(new UserSettingsView());
                         return settings;
                     }
             }

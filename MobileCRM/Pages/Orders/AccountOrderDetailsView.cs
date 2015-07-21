@@ -1,12 +1,11 @@
-﻿using MobileCRM;
-using MobileCRM.ViewModels.Orders;
-using MobileCRM.Helpers;
-using System;
-using Xamarin.Forms;
-using Xamarin;
+﻿using System;
 using MobileCRM.CustomControls;
+using MobileCRM.Helpers;
 using MobileCRM.Models;
 using MobileCRM.Pages.Base;
+using MobileCRM.ViewModels.Orders;
+using Xamarin;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Orders
 {
@@ -18,8 +17,8 @@ namespace MobileCRM.Pages.Orders
 
         public AccountOrderDetailsView(Order order)
         {
-            SetBinding(Page.TitleProperty, new Binding("Title"));
-            SetBinding(Page.IconProperty, new Binding("Icon"));
+            SetBinding(TitleProperty, new Binding("Title"));
+            SetBinding(IconProperty, new Binding("Icon"));
 
             this.Title = "Complete Order";
 
@@ -128,7 +127,7 @@ namespace MobileCRM.Pages.Orders
             sigPad.SetBinding(SignaturePad.DefaultPointsProperty, "Order.Signature");
             
             //Display but disable signature pad on completed orders.
-            sigPad.SetBinding(SignaturePad.IsEnabledProperty, "Order.IsOpen");
+            sigPad.SetBinding(IsEnabledProperty, "Order.IsOpen");
 
 
             Button btnComplete = new Button() { Text = "Order Complete", HorizontalOptions = LayoutOptions.Center, TextColor = AppColors.LABELWHITE };
@@ -230,7 +229,7 @@ namespace MobileCRM.Pages.Orders
             return stack;
         }
 
-        void btnCancel_Clicked(object sender, System.EventArgs e)
+        void btnCancel_Clicked(object sender, EventArgs e)
         {
             viewModel.GoBack();
         }

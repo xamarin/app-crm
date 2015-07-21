@@ -1,9 +1,8 @@
-﻿using MobileCRM;
-using MobileCRM.ViewModels.Orders;
-using System;
+﻿using System;
 using MobileCRM.Models;
-using Xamarin.Forms;
+using MobileCRM.ViewModels.Orders;
 using Xamarin;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Orders
 {

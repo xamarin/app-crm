@@ -1,5 +1,5 @@
 ﻿using MobileCRM.Localization;
-using MobileCRM.Pages.Home;
+using MobileCRM.Pages;
 using Xamarin.Forms;
 
 namespace MobileCRM

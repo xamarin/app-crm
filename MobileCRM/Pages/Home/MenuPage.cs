@@ -1,8 +1,7 @@
-﻿using Xamarin.Forms;
-using MobileCRM;
-using MobileCRM.CustomControls;
+﻿using MobileCRM.CustomControls;
 using MobileCRM.ViewModels;
 using MobileCRM.ViewModels.Home;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Home
 {
@@ -23,7 +22,7 @@ namespace MobileCRM.Pages.Home
             var label = new ContentView
             {
                 Padding = new Thickness(10, 36, 0, 5),
-                Content = new Xamarin.Forms.Label
+                Content = new Label
                 {
                     TextColor = Color.White,
                             Text = "☰",
@@ -40,7 +39,7 @@ namespace MobileCRM.Pages.Home
             var cell = new DataTemplate(typeof(MenuCell));
             cell.SetBinding(TextCell.TextProperty, BaseViewModel.TitlePropertyName);
             cell.SetBinding(ImageCell.ImageSourceProperty, BaseViewModel.IconPropertyName);
-            cell.SetValue(VisualElement.BackgroundColorProperty, Color.Transparent);
+            cell.SetValue(BackgroundColorProperty, Color.Transparent);
 
             Menu.ItemTemplate = cell;
 

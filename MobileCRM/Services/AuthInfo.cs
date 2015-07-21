@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Diagnostics;
-using Xamarin;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
-using MobileCRM;
 using MobileCRM.Models;
+using Xamarin;
 
 namespace MobileCRM.Services
 {
@@ -26,8 +26,8 @@ namespace MobileCRM.Services
             user = null;
             userInfo = null;
             client = new MobileServiceClient(
-                AuthInfo.APPLICATION_URL,
-                AuthInfo.APPLICATION_KEY);
+                APPLICATION_URL,
+                APPLICATION_KEY);
         }
 
         public static AuthInfo Instance
@@ -73,7 +73,7 @@ namespace MobileCRM.Services
         {
             try
             {
-                UserInfo = await client.InvokeApiAsync<UserInfo>("getidentities", System.Net.Http.HttpMethod.Get, null);
+                UserInfo = await client.InvokeApiAsync<UserInfo>("getidentities", HttpMethod.Get, null);
             }
             catch (Exception exc)
             {

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MobileCRM.ViewModels.Home;
 using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
-using MobileCRM.ViewModels.Home;
 
 namespace MobileCRM.Views.Sales
 {
@@ -35,9 +29,9 @@ namespace MobileCRM.Views.Sales
             {
                 HeightRequest = Sizes.MediumRowHeight
             };
-            chartActivityIndicator.SetBinding(ActivityIndicator.IsEnabledProperty, "IsBusy");
+            chartActivityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
             chartActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
-            chartActivityIndicator.SetBinding(ActivityIndicator.IsVisibleProperty, "IsBusy");
+            chartActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
 
             ColumnSeries columnSeries = new ColumnSeries()
             {
@@ -75,9 +69,9 @@ namespace MobileCRM.Views.Sales
 
                 Series = new ChartSeriesCollection() { columnSeries }
             };
-            chart.SetBinding(ActivityIndicator.IsEnabledProperty, "IsModelLoaded");
+            chart.SetBinding(IsEnabledProperty, "IsModelLoaded");
             chart.SetBinding(ActivityIndicator.IsRunningProperty, "IsModelLoaded");
-            chart.SetBinding(ActivityIndicator.IsVisibleProperty, "IsModelLoaded");
+            chart.SetBinding(IsVisibleProperty, "IsModelLoaded");
 
             StackLayout stackLayout = new StackLayout()
             { 

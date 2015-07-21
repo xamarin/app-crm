@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using MobileCRM.Clients;
 using MobileCRM.Models;
+using Xamarin.Forms;
 
 [assembly: Dependency(typeof(CatalogClient))]
 

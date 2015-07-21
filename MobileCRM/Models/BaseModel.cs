@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using Newtonsoft.Json;
 
 namespace MobileCRM.Models
 {
@@ -12,7 +13,7 @@ namespace MobileCRM.Models
       [JsonProperty(PropertyName = "id")]
       public string Id { get; set; }
 
-      [Microsoft.WindowsAzure.MobileServices.Version]
+      [Version]
       public string Version { get; set; }
     }
 }

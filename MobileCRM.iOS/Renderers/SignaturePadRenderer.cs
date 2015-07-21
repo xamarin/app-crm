@@ -1,9 +1,11 @@
 using System;
-using Xamarin.Forms.Platform.iOS;
-using Xamarin.Forms;
-using MobileCRMAndroid.Renderers;
 using System.ComponentModel;
+using System.Drawing;
+using MobileCRMAndroid.Renderers;
+using Newtonsoft.Json;
 using SignaturePad;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(MobileCRM.CustomControls.SignaturePad), typeof(SignaturePadRenderer))]
 
@@ -28,7 +30,7 @@ namespace MobileCRMAndroid.Renderers
             {
                 try
                 {
-                    signaturePad.LoadPoints(Newtonsoft.Json.JsonConvert.DeserializeObject<System.Drawing.PointF[]>(Element.DefaultPoints));
+                    signaturePad.LoadPoints(JsonConvert.DeserializeObject<PointF[]>(Element.DefaultPoints));
                 }
                 catch (Exception ex)
                 {
@@ -40,7 +42,7 @@ namespace MobileCRMAndroid.Renderers
             {
                 if (signaturePad.Points == null)
                     return string.Empty;
-                return Newtonsoft.Json.JsonConvert.SerializeObject(signaturePad.Points);
+                return JsonConvert.SerializeObject(signaturePad.Points);
             };
 
             signaturePad.SignaturePrompt.Text = Element.SignaturePrompt;
