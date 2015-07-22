@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using MobileCRM.iOS;
 using MobileCRM.Localization;
-using MonoTouch.Foundation;
+using Foundation;
 using Xamarin.Forms;
 
 [assembly:Dependency(typeof(Localize))]

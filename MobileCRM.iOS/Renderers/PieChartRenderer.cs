@@ -3,9 +3,9 @@ using MobileCRM.CustomControls;
 using MobileCRM.iOS.Renderers;
 using OxyPlot;
 using OxyPlot.Series;
-using OxyPlot.XamarinIOS;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using OxyPlot.Xamarin.iOS;
 
 [assembly: ExportRenderer(typeof(PieChart), typeof(PieChartRenderer))]
 

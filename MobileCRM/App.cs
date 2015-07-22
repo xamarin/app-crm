@@ -1,6 +1,7 @@
 ﻿using MobileCRM.Localization;
 using MobileCRM.Pages;
 using Xamarin.Forms;
+using Xamarin;
 
 namespace MobileCRM
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using Xamarin;
 using Xamarin.Forms;
 
@@ -16,6 +16,7 @@ namespace MobileCRM.iOS
 #if DEBUG
             //Xamarin.Calabash.Start();
 #endif
+
             CurrentPlatform.Init();
             SQLitePCL.CurrentPlatform.Init();
             window = new UIWindow(UIScreen.MainScreen.Bounds);

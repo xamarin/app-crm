@@ -21,17 +21,17 @@ namespace MobileCRMAndroid.Renderers
 
             Insights.Track("Login Page");
 
-//            await AuthenticationManager.Authenticate(new PlatformParameters((Activity)this.Context));
+            await Authenticator.Authenticate(new PlatformParameters((Activity)this.Context));
 
 
 
-            MobileServiceClient client = AuthInfo.Instance.GetMobileServiceClient();
-            client.Logout();
-
-            AuthInfo.Instance.User = await client.LoginAsync(this.Context, AuthInfo.AUTH_PROVIDER);
-
-            // Will implement in v2.
-            await AuthInfo.Instance.GetUserInfo();
+//            MobileServiceClient client = AuthInfo.Instance.GetMobileServiceClient();
+//            client.Logout();
+//
+//            AuthInfo.Instance.User = await client.LoginAsync(this.Context, AuthInfo.AUTH_PROVIDER);
+//
+//            // Will implement in v2.
+//            await AuthInfo.Instance.GetUserInfo();
 
             MessagingCenter.Send<ILogin>(this, "Authenticated");
         }

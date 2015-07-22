@@ -1,7 +1,7 @@
 using MobileCRM.iOS.Renderers;
 using MobileCRM.Interfaces;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(PhoneDialer))]

@@ -1,6 +1,6 @@
 using System;
 using System.ComponentModel;
-using System.Drawing;
+using CoreGraphics;
 using MobileCRMAndroid.Renderers;
 using Newtonsoft.Json;
 using SignaturePad;
@@ -30,7 +30,7 @@ namespace MobileCRMAndroid.Renderers
             {
                 try
                 {
-                    signaturePad.LoadPoints(JsonConvert.DeserializeObject<PointF[]>(Element.DefaultPoints));
+                    signaturePad.LoadPoints(JsonConvert.DeserializeObject<CGPoint[]>(Element.DefaultPoints));
                 }
                 catch (Exception ex)
                 {
