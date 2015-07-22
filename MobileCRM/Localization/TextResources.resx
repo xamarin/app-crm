@@ -47,11 +47,11 @@
 	<data name="Leads_LeadDetail_OpportunityHeading" xml:space="preserve">
     	<value>Opportunity</value>
 	</data>
-	<data name="Leads_LeadDetail_Name" xml:space="preserve">
-    	<value>Name</value>
+	<data name="Leads_LeadDetail_CompanyName" xml:space="preserve">
+    	<value>Company</value>
 	</data>
-	<data name="Leads_LeadDetail_NamePlaceholder" xml:space="preserve">
-    	<value>Name</value>
+	<data name="Leads_LeadDetail_CompanyNamePlaceholder" xml:space="preserve">
+    	<value>Company Name</value>
 	</data>
 	<data name="Leads_LeadDetail_Industry" xml:space="preserve">
     	<value>Industry</value>

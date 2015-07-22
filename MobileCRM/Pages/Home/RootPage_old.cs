@@ -57,7 +57,7 @@ namespace MobileCRM.Pages.Home
                 });    
 
             //Splash page notification
-            MessagingCenter.Subscribe<SplashPage>(this, "SplashShown", (sender) =>
+            MessagingCenter.Subscribe<SplashPage>(this, MessagingServiceConstants.SPLASH_DOWN, (sender) =>
                 {
                     bolSplashShown = true;
                     this.CloseSplash();

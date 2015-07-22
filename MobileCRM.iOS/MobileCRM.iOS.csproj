@@ -220,12 +220,12 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\PhoneDialer.cs" />
     <Compile Include="Renderers\BarChartRenderer.cs" />
-    <Compile Include="Renderers\LoginPageRenderer_iOS.cs" />
     <Compile Include="Renderers\MenuCellRenderer.cs" />
     <Compile Include="Renderers\ListTextCellRenderer.cs" />
     <Compile Include="Renderers\PieChartRenderer.cs" />
     <Compile Include="Renderers\SignaturePadRenderer.cs" />
     <Compile Include="Localization\Localize.cs" />
+    <Compile Include="Renderers\LoginPageRenderer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>

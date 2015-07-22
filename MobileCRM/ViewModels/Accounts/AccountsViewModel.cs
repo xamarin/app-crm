@@ -27,7 +27,7 @@ namespace MobileCRM.ViewModels.Accounts
             dataManager = DependencyService.Get<IDataManager>();
             Accounts = new ObservableCollection<Account>();
 
-            MessagingCenter.Subscribe<Account>(this, "Account", (account) =>
+            MessagingCenter.Subscribe<Account>(this, MessagingServiceConstants.ACCOUNT, (account) =>
                 {
                     IsInitialized = false;
                 });

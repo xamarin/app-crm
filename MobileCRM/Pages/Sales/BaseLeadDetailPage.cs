@@ -3,6 +3,7 @@ using MobileCRM.Views;
 using Xamarin.Forms;
 using MobileCRM.ViewModels.Sales;
 using System;
+using MobileCRM.Localization;
 
 namespace MobileCRM.Pages.Sales
 {

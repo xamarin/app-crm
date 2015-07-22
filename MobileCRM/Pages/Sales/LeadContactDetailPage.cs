@@ -1,6 +1,7 @@
 ﻿using MobileCRM.Models;
 using Xamarin.Forms;
 using MobileCRM.ViewModels.Sales;
+using MobileCRM.Localization;
 
 namespace MobileCRM.Pages.Sales
 {
@@ -42,7 +43,8 @@ namespace MobileCRM.Pages.Sales
             EntryCell phoneEntryCell = new EntryCell()
             {
                 BindingContext = ViewModel,
-                Label = TextResources.Leads_LeadContactDetail_Phone
+                Label = TextResources.Leads_LeadContactDetail_Phone,
+                Keyboard = Keyboard.Telephone
             };
             phoneEntryCell.SetBinding(EntryCell.TextProperty, "Lead.Phone", BindingMode.TwoWay);
             #endregion
@@ -51,7 +53,8 @@ namespace MobileCRM.Pages.Sales
             EntryCell emailEntryCell = new EntryCell()
             {
                 BindingContext = ViewModel,
-                Label = TextResources.Leads_LeadContactDetail_Email
+                Label = TextResources.Leads_LeadContactDetail_Email,
+                Keyboard = Keyboard.Email
             };
             emailEntryCell.SetBinding(EntryCell.TextProperty, "Lead.Email", BindingMode.TwoWay);
             #endregion
@@ -69,7 +72,8 @@ namespace MobileCRM.Pages.Sales
             EntryCell postalCodeEntryCell = new EntryCell()
             {
                 BindingContext = ViewModel,
-                Label = TextResources.Leads_LeadContactDetail_PostalCode
+                Label = TextResources.Leads_LeadContactDetail_PostalCode,
+                Keyboard = Keyboard.Numeric
             };
             postalCodeEntryCell.SetBinding(EntryCell.TextProperty, "Lead.PostalCode", BindingMode.TwoWay);
             #endregion

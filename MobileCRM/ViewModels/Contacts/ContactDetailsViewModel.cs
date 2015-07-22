@@ -88,7 +88,7 @@ namespace MobileCRM.ViewModels.Contacts
 
             await dataManager.SaveContactAsync(Contact);
 
-            MessagingCenter.Send(Contact, "SaveContact");
+            MessagingCenter.Send(Contact, MessagingServiceConstants.SAVE_CONTACT);
 
             IsBusy = false;
 

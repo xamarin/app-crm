@@ -12,7 +12,7 @@ namespace MobileCRM.Pages.Home
 
         void OnLoginClicked(object sender, EventArgs args)
         {
-            MessagingCenter.Send<SplashPage>(this, "SplashShown");
+            MessagingCenter.Send<SplashPage>(this, MessagingServiceConstants.SPLASH_DOWN);
         }
     }
 }

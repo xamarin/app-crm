@@ -40,7 +40,7 @@ namespace MobileCRM.ViewModels.Sales
             Leads = new ObservableCollection<Account>();
             Orders = new ObservableCollection<Order>();
 
-            MessagingCenter.Subscribe<Account>(this, "SaveAccount", (account) =>
+            MessagingCenter.Subscribe<Account>(this, MessagingServiceConstants.SAVE_ACCOUNT, (account) =>
                 {
                     var index = Leads.IndexOf(account);
                     if (index >= 0)
@@ -51,7 +51,7 @@ namespace MobileCRM.ViewModels.Sales
                     {
                         Leads.Add(account);
                     }
-                    Leads = new ObservableCollection<Account>(Leads.OrderBy(x => x.Company).Select(x => x));
+                    Leads = new ObservableCollection<Account>(Leads.OrderBy(l => l.Company));
                 });
             
             IsInitialized = false;

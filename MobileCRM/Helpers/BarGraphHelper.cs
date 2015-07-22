@@ -54,10 +54,7 @@ namespace MobileCRM.Helpers
         {
             double dblTotal = 0;
 
-            var results = from o in orders
-                             where o.IsOpen == bolIsOpen
-                                 && o.Item == category
-                             select o;
+            var results = orders.Where(o => o.IsOpen == bolIsOpen && o.Item == category);
 
             foreach (var order in results)
             {
@@ -92,11 +89,7 @@ namespace MobileCRM.Helpers
         {
             double dblTotal = 0;
 
-            var results = from o in orders
-                             where o.IsOpen == bolIsOpen
-                                 && o.ClosedDate >= dateStart
-                                 && o.ClosedDate <= dateEnd
-                             select o;
+            var results = orders.Where(o => o.IsOpen == bolIsOpen && o.ClosedDate >= dateStart && o.ClosedDate <= dateEnd);
 
             foreach (var order in results)
             {

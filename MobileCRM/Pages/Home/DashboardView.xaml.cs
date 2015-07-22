@@ -29,17 +29,15 @@ namespace MobileCRM.Pages.Home
         {
             try
             {
-                if (ViewModel.Orders.Count() > 0)
+                if (ViewModel.Orders.Any())
                 {
                     barData = new BarGraphHelper(ViewModel.Orders, false);
 
-                    var orderedData = (from data in barData.SalesData
-                                          orderby data.DateStart
-                                          select new BarItem
-                    {
-                        Name = data.DateStartString,
-                        Value = Convert.ToInt32(data.Amount)
-                    }).ToList();
+                    var orderedData = (barData.SalesData.OrderBy(data => data.DateStart).Select(data => new BarItem
+                        {
+                            Name = data.DateStartString,
+                            Value = Convert.ToInt32(data.Amount)
+                        })).ToList();
 
                     BarChart.Items = orderedData;
                 } //end if

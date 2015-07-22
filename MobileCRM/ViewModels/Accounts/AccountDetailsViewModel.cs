@@ -35,7 +35,7 @@ namespace MobileCRM.ViewModels.Accounts
             dataManager = DependencyService.Get<IDataManager>();
             coder = new Geocoder();
 
-            MessagingCenter.Subscribe<Account>(this, "Account", (Account) =>
+            MessagingCenter.Subscribe<Account>(this, MessagingServiceConstants.ACCOUNT, (Account) =>
                 {
                     IsInitialized = false;
                 });
@@ -134,7 +134,7 @@ namespace MobileCRM.ViewModels.Accounts
 
             await dataManager.SaveAccountAsync(Account);
 
-            MessagingCenter.Send(Account, "SaveAccount");
+            MessagingCenter.Send(Account, MessagingServiceConstants.SAVE_ACCOUNT);
 
             IsBusy = false;
 

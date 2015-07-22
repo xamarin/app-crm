@@ -37,7 +37,7 @@ namespace MobileCRM.ViewModels.Leads
             dataManager = DependencyService.Get<IDataManager>();
             Leads = new ObservableCollection<Account>();
 
-            MessagingCenter.Subscribe<Account>(this, "SaveAccount", (account) =>
+            MessagingCenter.Subscribe<Account>(this, MessagingServiceConstants.SAVE_LEAD, (account) =>
                 {
                     var index = Leads.IndexOf(account);
                     if (index >= 0)
@@ -48,10 +48,7 @@ namespace MobileCRM.ViewModels.Leads
                     {
                         Leads.Add(account);
                     }
-                    Leads = new ObservableCollection<Account>(
-                        from l in Leads
-                        orderby l.Company
-                        select l);
+                    Leads = new ObservableCollection<Account>(Leads.OrderBy(l => l.Company));
                 });
         }
 

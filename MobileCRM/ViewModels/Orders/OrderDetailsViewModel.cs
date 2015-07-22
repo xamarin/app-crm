@@ -106,7 +106,7 @@ namespace MobileCRM.ViewModels.Orders
             IsBusy = true;
 
             await dataManager.SaveOrderAsync(Order);
-            MessagingCenter.Send(Order, "OrderUpdate");
+            MessagingCenter.Send(Order, MessagingServiceConstants.ORDER_UPDATE);
             IsBusy = false;
 
             navigation.PopAsync();
@@ -138,7 +138,7 @@ namespace MobileCRM.ViewModels.Orders
             IsBusy = true;
 
             await dataManager.SaveOrderAsync(Order);
-            MessagingCenter.Send(Order, "OrderApproved");
+            MessagingCenter.Send(Order, MessagingServiceConstants.ORDER_APPROVED);
             IsBusy = false;
 
             await navigation.PopModalAsync();

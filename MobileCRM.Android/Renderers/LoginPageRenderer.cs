@@ -5,12 +5,15 @@ using Xamarin.Forms.Platform.Android;
 using MobileCRM.Pages.Home;
 using MobileCRM.Services;
 using MobileCRMAndroid.Renderers;
+using MobileCRM;
+//using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Android.App;
 
-[assembly: ExportRenderer(typeof(LoginPage), typeof(LoginPageRenderer_Android))]
+[assembly: ExportRenderer(typeof(LoginPage), typeof(LoginPageRenderer))]
 
 namespace MobileCRMAndroid.Renderers
 {
-    public class LoginPageRenderer_Android : PageRenderer, ILogin
+    public class LoginPageRenderer : PageRenderer, ILogin
     {
         protected async override void OnElementChanged(ElementChangedEventArgs<Page> e)
         {
@@ -18,13 +21,17 @@ namespace MobileCRMAndroid.Renderers
 
             Insights.Track("Login Page");
 
+//            await AuthenticationManager.Authenticate(new PlatformParameters((Activity)this.Context));
+
+
+
             MobileServiceClient client = AuthInfo.Instance.GetMobileServiceClient();
             client.Logout();
 
             AuthInfo.Instance.User = await client.LoginAsync(this.Context, AuthInfo.AUTH_PROVIDER);
 
-            //Will implement in v2.
-            //await AuthInfo.Instance.GetUserInfo();
+            // Will implement in v2.
+            await AuthInfo.Instance.GetUserInfo();
 
             MessagingCenter.Send<ILogin>(this, "Authenticated");
         }

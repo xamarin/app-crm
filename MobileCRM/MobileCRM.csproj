@@ -171,6 +171,7 @@
     <Compile Include="ViewModels\Sales\LeadDetailViewModel.cs" />
     <Compile Include="Cells\PickerCell.cs" />
     <Compile Include="MessagingServiceConstants.cs" />
+    <Compile Include="Converters\CurrencyConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -231,7 +232,6 @@
     <EmbeddedResource Include="Localization\TextResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
-      <LogicalName>MobileCRM.TextResources.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales\SalesChartHeaderView_new.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

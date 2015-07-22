@@ -38,7 +38,7 @@ namespace MobileCRM.ViewModels.Contacts
             dataManager = DependencyService.Get<IDataManager>();
             Contacts = new ObservableCollection<Contact>();
 
-            MessagingCenter.Subscribe<Contact>(this, "SaveContact", (contact) =>
+            MessagingCenter.Subscribe<Contact>(this, MessagingServiceConstants.SAVE_CONTACT, (contact) =>
                 {
                     var index = Contacts.IndexOf(contact);
                     if (index >= 0)
@@ -46,9 +46,7 @@ namespace MobileCRM.ViewModels.Contacts
                     else
                         Contacts.Add(contact);
 
-                    Contacts = new ObservableCollection<Contact>(from c in Contacts
-                                                                           orderby c.LastName
-                                                                           select c);
+                    Contacts = new ObservableCollection<Contact>(Contacts.OrderBy(c => c.LastName));
                 });
         }
 

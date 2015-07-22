@@ -6,6 +6,7 @@ using MobileCRM.Models;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using MobileCRM.Helpers;
+using MobileCRM.Localization;
 
 namespace MobileCRM.ViewModels.Sales
 {
@@ -82,7 +83,7 @@ namespace MobileCRM.ViewModels.Sales
                 Type = PinType.Place,
                 Position = p,
                 Label = Lead.DisplayName,
-                Address = address.ToString()
+                Address = address
             };
 
             return pin;
@@ -97,7 +98,7 @@ namespace MobileCRM.ViewModels.Sales
 
             await _DataManager.SaveAccountAsync(Lead);
 
-            MessagingCenter.Send(Lead, "SaveContact");
+            MessagingCenter.Send(Lead, MessagingServiceConstants.SAVE_LEAD);
 
             IsBusy = false;
         }

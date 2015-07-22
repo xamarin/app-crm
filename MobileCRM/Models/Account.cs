@@ -62,10 +62,8 @@ namespace MobileCRM.Models
         [JsonIgnore]
         public int IndustryTypeCurrentIndex
         {
-            get 
-            {
-                return IndustryTypes.ToList().IndexOf(Industry);
-            }
+            get { return IndustryTypes.ToList().IndexOf(Industry); }
+            set { Industry = IndustryTypes[value]; }
         }
 
         [JsonIgnore]
@@ -74,10 +72,8 @@ namespace MobileCRM.Models
         [JsonIgnore]
         public int OpportunityStageCurrentIndex
         {
-            get 
-            {
-                return OpportunityStages.ToList().IndexOf(OpportunityStage);
-            }
+            get { return OpportunityStages.ToList().IndexOf(OpportunityStage); }
+            set { OpportunityStage = OpportunityStages[value]; }
         }
 
         [JsonIgnore]

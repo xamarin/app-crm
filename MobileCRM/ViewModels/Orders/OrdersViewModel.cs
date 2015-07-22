@@ -42,14 +42,14 @@ namespace MobileCRM.ViewModels.Orders
 
             if (openOrders)
             {
-                MessagingCenter.Subscribe<Order>(this, "OrderUpdate", (order) =>
+                MessagingCenter.Subscribe<Order>(this, MessagingServiceConstants.ORDER_UPDATE, (order) =>
                     {
                         IsInitialized = false;
                     });
             }
             else
             {
-                MessagingCenter.Subscribe<Order>(this, "OrderApproved", async (order) =>
+                MessagingCenter.Subscribe<Order>(this, MessagingServiceConstants.ORDER_APPROVED, async (order) =>
                     {
                         IsInitialized = false;
                     });

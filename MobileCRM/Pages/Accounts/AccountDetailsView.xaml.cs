@@ -34,13 +34,11 @@ namespace MobileCRM.Pages.Accounts
                 {
                     var barData = new BarGraphHelper(viewModelOrders.Orders, false);
 
-                    var orderedData = (from data in barData.SalesData
-                                            orderby data.DateStart
-                                            select new BarItem
-                    {
-                        Name = data.DateStartString,
-                        Value = Convert.ToInt32(data.Amount)
-                    }).ToList();
+                    var orderedData = (barData.SalesData.OrderBy(data => data.DateStart).Select(data => new BarItem
+                        {
+                            Name = data.DateStartString,
+                            Value = Convert.ToInt32(data.Amount)
+                        })).ToList();
 
                     BarChart.Items = orderedData;
                 } //end if
@@ -90,10 +88,10 @@ namespace MobileCRM.Pages.Accounts
             }
 
             if (await this.DisplayAlert(
-                "Dial a Number",
-                "Would you like to call " + phoneCell + "?",
-                "Yes",
-                "No"))
+                    "Dial a Number",
+                    "Would you like to call " + phoneCell + "?",
+                    "Yes",
+                    "No"))
             {
                 var dialer = DependencyService.Get<IDialer>();
                 phoneCell = phoneCell.Replace("-", "");
