@@ -8,9 +8,9 @@ using MobileCRM.Models;
 using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 
-namespace MobileCRM.ViewModels.Home
+namespace MobileCRM.ViewModels.Sales
 {
-    public class DashboardViewModel : BaseViewModel
+    public class SalesDashboardViewModel : BaseViewModel
     {
         bool bolDataSeeded;
 
@@ -28,8 +28,10 @@ namespace MobileCRM.ViewModels.Home
 
         public bool NeedsRefresh { get; set; }
 
-        public DashboardViewModel()
+        public SalesDashboardViewModel(INavigation navigation)
         {
+            Navigation = navigation;
+
             this.Title = "Sales Dashboard";
             this.Icon = "dashboard.png";
 

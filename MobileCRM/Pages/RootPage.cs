@@ -1,8 +1,8 @@
 ﻿using MobileCRM.Pages.Home;
 using MobileCRM.Pages.Products;
 using MobileCRM.Pages.Sales;
-using MobileCRM.ViewModels.Home;
 using Xamarin.Forms;
+using MobileCRM.ViewModels.Sales;
 
 namespace MobileCRM.Pages
 {
@@ -10,10 +10,13 @@ namespace MobileCRM.Pages
     {
         public RootPage ()
         {
-            MessagingCenter.Subscribe<ILogin>(this, "Authenticated", (sender) => Navigation.PopModalAsync());
+            MessagingCenter.Subscribe<ILogin>(this, MessagingServiceConstants.AUTHENTICATED, (sender) => Navigation.PopModalAsync());
 
-            this.Children.Add (new SalesDashboardPage(new DashboardViewModel() { Navigation = Navigation }) { Title = "Sales", });
+            // the Sales tab page
+            this.Children.Add (new SalesDashboardPage(new SalesDashboardViewModel(Navigation)) { Title = "Sales", });
+            // the Customers tab page
             this.Children.Add (new ContentPage () { Title = "Customers" });
+            // the Products tab page
             this.Children.Add (new NavigationPage(new CategoryListPage()) { Title = "Products" });
         }
     }

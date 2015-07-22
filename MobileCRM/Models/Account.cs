@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace MobileCRM.Models
@@ -11,7 +12,6 @@ namespace MobileCRM.Models
             ContactId = Notes = string.Empty;
             Industry = IndustryTypes[0];
             OpportunityStage = OpportunityStages[0];
-            OpportunityStagePercent = OpportunityStagePercentages[0];
         }
 
         [JsonProperty(PropertyName = "contactid")]
@@ -30,14 +30,13 @@ namespace MobileCRM.Models
         public string OpportunityStage { get; set; }
 
 
-        private double _OpportunityStagePercent;
         [JsonIgnore]
         public double OpportunityStagePercent
         { 
             get
             {
                 if (OpportunityStages.Length != OpportunityStagePercentages.Length)
-                    throw new IndexOutOfRangeException("The OpportunityStages array and the OpportunityStagePercentages array must be of equal lenght.");
+                    throw new IndexOutOfRangeException("The OpportunityStages array and the OpportunityStagePercentages array must be of equal length.");
 
                 double result = 0;
 
@@ -50,11 +49,8 @@ namespace MobileCRM.Models
                     }
                 }
 
-                _OpportunityStagePercent = result;
-
                 return result;
-            } 
-            private set { _OpportunityStagePercent = value; }
+            }
         }
 
         [JsonProperty(PropertyName = "notes")]
@@ -64,7 +60,25 @@ namespace MobileCRM.Models
         public static string[] IndustryTypes = { "None Selected", "Aerospace", "Education", "Electrical", "Entertainment", "Financial Services", "Logistic", "Healthcare", "Manufacturing", "Retail", "Other" };
 
         [JsonIgnore]
+        public int IndustryTypeCurrentIndex
+        {
+            get 
+            {
+                return IndustryTypes.ToList().IndexOf(Industry);
+            }
+        }
+
+        [JsonIgnore]
         public static string[] OpportunityStages = { "None Selected", "10% - Prospect", "50% - Value Proposition", "75% - Proposal" };
+
+        [JsonIgnore]
+        public int OpportunityStageCurrentIndex
+        {
+            get 
+            {
+                return OpportunityStages.ToList().IndexOf(OpportunityStage);
+            }
+        }
 
         [JsonIgnore]
         public static double[] OpportunityStagePercentages = { 0d, 10d, 50d, 75d };

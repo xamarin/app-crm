@@ -27,7 +27,7 @@ namespace MobileCRM.WindowsPhone.Renderers
             //Will implement in v2.
             //await AuthInfo.Instance.GetUserInfo();
 
-            MessagingCenter.Send<ILogin>(this, "Authenticated");
+            MessagingCenter.Send<ILogin>(this, MessagingServiceConstants.AUTHENTICATED);
         }
 
     }

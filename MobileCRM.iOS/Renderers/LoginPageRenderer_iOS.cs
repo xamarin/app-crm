@@ -31,7 +31,7 @@ namespace MobileCRM.iOS.Renderers
                     //SYI: Will implement user info return in v2.
                     //await AuthInfo.Instance.GetUserInfo();
 
-                    MessagingCenter.Send<ILogin>(this, "Authenticated");
+                    MessagingCenter.Send<ILogin>(this, MessagingServiceConstants.AUTHENTICATED);
                 } //end if
             }
             catch (Exception ex)

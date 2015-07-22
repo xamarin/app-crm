@@ -5,6 +5,7 @@ using MobileCRM.CustomControls;
 using MobileCRM.Helpers;
 using MobileCRM.ViewModels.Home;
 using Xamarin;
+using MobileCRM.ViewModels.Sales;
 
 namespace MobileCRM.Pages.Home
 {
@@ -12,12 +13,12 @@ namespace MobileCRM.Pages.Home
     {
         BarGraphHelper barData;
 
-        DashboardViewModel ViewModel
+        SalesDashboardViewModel ViewModel
         {
-            get { return BindingContext as DashboardViewModel; }
+            get { return BindingContext as SalesDashboardViewModel; }
         }
 
-        public DashboardView(DashboardViewModel vm)
+        public DashboardView(SalesDashboardViewModel vm)
         {
             InitializeComponent();
 

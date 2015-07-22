@@ -9,10 +9,10 @@ using MobileCRM.Pages.Settings;
 using MobileCRM.Services;
 using MobileCRM.ViewModels.Accounts;
 using MobileCRM.ViewModels.Contacts;
-using MobileCRM.ViewModels.Home;
 using MobileCRM.ViewModels.Leads;
 using Xamarin.Forms;
 using MenuItem = MobileCRM.Models.MenuItem;
+using MobileCRM.ViewModels.Sales;
 
 namespace MobileCRM.Pages.Home
 {
@@ -36,7 +36,7 @@ namespace MobileCRM.Pages.Home
             NavigateTo(MenuType.Dashboard);
 
             //Authentication notifications
-            MessagingCenter.Subscribe<ILogin>(this, "Authenticated", (sender) =>
+            MessagingCenter.Subscribe<ILogin>(this, MessagingServiceConstants.AUTHENTICATED, (sender) =>
                 {
                     this.CloseAuth();
 
@@ -95,7 +95,7 @@ namespace MobileCRM.Pages.Home
                         if (dashboard != null)
                             return dashboard;
                   
-                        var vm = new DashboardViewModel() { Navigation = Navigation };
+                        var vm = new SalesDashboardViewModel(Navigation);
 
                         dashboard = new NavigationPage(new DashboardView(vm));
                         return dashboard;

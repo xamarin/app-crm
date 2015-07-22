@@ -6,7 +6,7 @@ using Android.Content.PM;
 
 namespace MobileCRMAndroid
 {
-    [Activity(Label = "VervetaCRM", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "MobileCRM", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : Xamarin.Forms.Platform.Android.AndroidActivity
     {
         protected override void OnCreate(Bundle bundle)

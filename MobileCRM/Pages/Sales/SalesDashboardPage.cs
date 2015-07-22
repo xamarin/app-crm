@@ -4,7 +4,7 @@ using MobileCRM.Localization;
 using MobileCRM.Models;
 using MobileCRM.Pages.Base;
 using MobileCRM.Services;
-using MobileCRM.ViewModels.Home;
+using MobileCRM.ViewModels.Sales;
 using MobileCRM.Views.Sales;
 using Xamarin;
 using Xamarin.Forms;
@@ -13,12 +13,12 @@ namespace MobileCRM.Pages.Sales
 {
     public class SalesDashboardPage : BaseContentPage
     {
-        DashboardViewModel ViewModel
+        SalesDashboardViewModel ViewModel
         {
-            get { return BindingContext as DashboardViewModel; }
+            get { return BindingContext as SalesDashboardViewModel; }
         }
 
-        public SalesDashboardPage(DashboardViewModel viewModel)
+        public SalesDashboardPage(SalesDashboardViewModel viewModel)
         {
             SetBinding(TitleProperty, new Binding() { Source = TextResources.Sales });
 
@@ -114,9 +114,9 @@ namespace MobileCRM.Pages.Sales
         /// Performs a modal push of a LeadDetailTabbedPage.
         /// </summary>
         /// <param name="model">A <see cref="XamarinCRM.LeadListItemViewModel"/>.</param>
-        async Task PushTabbedLeadPage(Account model = null)
+        async Task PushTabbedLeadPage(Account lead = null)
         {
-            await ViewModel.Navigation.PushModalAsync(new LeadDetailTabbedPage(model));
+            await ViewModel.Navigation.PushModalAsync(new LeadDetailTabbedPage(new LeadDetailViewModel(Navigation, lead)));
         }
     }
 }

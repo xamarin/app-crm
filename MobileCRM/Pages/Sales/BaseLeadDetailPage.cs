@@ -1,55 +1,60 @@
-﻿using MobileCRM.Localization;
-using MobileCRM.Models;
-using MobileCRM.Pages.Base;
+﻿using MobileCRM.Pages.Base;
 using MobileCRM.Views;
 using Xamarin.Forms;
+using MobileCRM.ViewModels.Sales;
+using System;
 
 namespace MobileCRM.Pages.Sales
 {
     public abstract class BaseLeadDetailPage : BaseContentPage
     {
-        protected Account Model { get; private set; }
+        protected LeadDetailViewModel ViewModel
+        {
+            get { return BindingContext as LeadDetailViewModel; }
+        }
 
         protected StackLayout StackLayout { get; private set; }
 
-        readonly string _DoneButtonText;
-
-        protected BaseLeadDetailPage(string title, string doneButtonText, Account model = null)
+        protected BaseLeadDetailPage(string doneButtonText, LeadDetailViewModel viewModel)
         {
-            Model = model;
+            if (viewModel == null)
+            {
+                const string paramName = "viewModel";
+                throw new ArgumentNullException(paramName, string.Format("{0} cannot be constructed with a null {1}", GetType().Name, paramName));
+            }
 
-            Title = title;
+            BindingContext = viewModel;
 
-            _DoneButtonText = doneButtonText;
+            Title = ViewModel.Title;
 
             StackLayout = new StackLayout();
 
-            TabbedPageHeaderView tabbedPageHeaderView = new TabbedPageHeaderView(Title, _DoneButtonText);
+            TabbedPageHeaderView tabbedPageHeaderView = new TabbedPageHeaderView(Title, doneButtonText);
 
             tabbedPageHeaderView.BackButtonImage.GestureRecognizers.Add(new TapGestureRecognizer()
-            {
-                Command = new Command(async () => await Navigation.PopModalAsync()),
-                NumberOfTapsRequired = 1
-            });
+                {
+                    Command = new Command(async () => await ViewModel.Navigation.PopModalAsync()),
+                    NumberOfTapsRequired = 1
+                });
 
             tabbedPageHeaderView.DoneActionLabel.GestureRecognizers.Add(
                 new TapGestureRecognizer()
                 {
                     Command = new Command(async () =>
-                    {
-                        var answer = await DisplayAlert(
-                            title: TextResources.Leads_SaveConfirmTitle,
-                            message: TextResources.Leads_SaveConfirmDescription,
-                            accept: TextResources.Save,
-                            cancel: TextResources.Cancel);
-
-                        if (answer)
                         {
-                            // TODO: execute save action
+                            var answer = await DisplayAlert(
+                                         title: TextResources.Leads_SaveConfirmTitle,
+                                         message: TextResources.Leads_SaveConfirmDescription,
+                                         accept: TextResources.Save,
+                                         cancel: TextResources.Cancel);
 
-                            await Navigation.PopModalAsync();
-                        }
-                    }),
+                            if (answer)
+                            {
+                                ViewModel.SaveLeadCommand.Execute(null);
+
+                                await ViewModel.Navigation.PopModalAsync();
+                            }
+                        }),
                     NumberOfTapsRequired = 1
                 });
 

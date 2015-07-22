@@ -15,7 +15,7 @@ namespace MobileCRM.ViewModels.Contacts
 
         public Contact Contact { get; set; }
 
-        public ContactDetailsViewModel(Contact contact)
+        public ContactDetailsViewModel(Contact contact = null)
         {
             if (contact == null)
             {

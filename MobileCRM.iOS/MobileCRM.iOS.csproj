@@ -11,7 +11,6 @@
     <NuGetPackageImportStamp>261c51be</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <AssemblyName>MobileCRMiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -72,8 +71,6 @@
     </MtouchExtraArgs>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
     <BuildIpa>True</BuildIpa>
-    <IpaMetadata>
-    </IpaMetadata>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -193,10 +190,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\Icon%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
     <BundleResource Include="Resources\Icon-76%402x.png" />
-    <BundleResource Include="Resources\Icon.png" />
     <BundleResource Include="Resources\map.png" />
     <BundleResource Include="Resources\map%402x.png" />
     <BundleResource Include="Resources\slideout.png" />
@@ -210,6 +205,9 @@
     <BundleResource Include="Resources\account.png" />
     <BundleResource Include="Resources\settings.png" />
     <BundleResource Include="Resources\settings%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\back%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -311,24 +309,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\productcatalog.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon-120.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon-144.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon-152.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon-57.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon-72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon-114.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\icon-76.png" />

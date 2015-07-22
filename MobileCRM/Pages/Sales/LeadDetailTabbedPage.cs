@@ -1,21 +1,18 @@
-﻿using MobileCRM.Localization;
-using MobileCRM.Models;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+using MobileCRM.ViewModels.Sales;
 
 namespace MobileCRM.Pages.Sales
 {
     public class LeadDetailTabbedPage : TabbedPage
     {
-        public LeadDetailTabbedPage(Account model = null)
+        public LeadDetailTabbedPage(LeadDetailViewModel viewModel)
         {
-            string headerTitle = (model != null) ? TextResources.Leads_EditLead : TextResources.Leads_NewLead;
-
-            Children.Add(new LeadDetailPage(headerTitle, model)
+            Children.Add(new LeadDetailPage(viewModel)
             {
                 Title = TextResources.Details
             });
 
-            Children.Add(new LeadContactDetailPage(headerTitle, model)
+            Children.Add(new LeadContactDetailPage(viewModel)
             {
                 Title = TextResources.Contact
             });

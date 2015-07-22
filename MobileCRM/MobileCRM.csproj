@@ -121,7 +121,6 @@
     <Compile Include="ViewModels\Catalog\CatalogViewModel.cs" />
     <Compile Include="ViewModels\Contacts\ContactDetailsViewModel.cs" />
     <Compile Include="ViewModels\Contacts\ContactsViewModel.cs" />
-    <Compile Include="ViewModels\Home\DashboardViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="ViewModels\Home\LoginViewModel.cs" />
     <Compile Include="ViewModels\Leads\LeadsViewModel.cs" />
@@ -168,6 +167,10 @@
     <Compile Include="Cells\ProductListItemCell.cs" />
     <Compile Include="Cells\CategoryListItemCell.cs" />
     <Compile Include="Sizes.cs" />
+    <Compile Include="ViewModels\Sales\SalesDashboardViewModel.cs" />
+    <Compile Include="ViewModels\Sales\LeadDetailViewModel.cs" />
+    <Compile Include="Cells\PickerCell.cs" />
+    <Compile Include="MessagingServiceConstants.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

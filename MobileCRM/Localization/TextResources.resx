@@ -44,6 +44,60 @@
 	<data name="Leads_SaveConfirmDescription" xml:space="preserve">
     	<value>Would you like to save changes to this lead?</value>
 	</data>
+	<data name="Leads_LeadDetail_OpportunityHeading" xml:space="preserve">
+    	<value>Opportunity</value>
+	</data>
+	<data name="Leads_LeadDetail_Name" xml:space="preserve">
+    	<value>Name</value>
+	</data>
+	<data name="Leads_LeadDetail_NamePlaceholder" xml:space="preserve">
+    	<value>Name</value>
+	</data>
+	<data name="Leads_LeadDetail_Industry" xml:space="preserve">
+    	<value>Industry</value>
+	</data>
+	<data name="Leads_LeadDetail_OpportunitySize" xml:space="preserve">
+    	<value>Size</value>
+	</data>
+	<data name="Leads_LeadDetail_OpportunitySizePlaceholder" xml:space="preserve">
+    	<value>Enter Dollor Amount</value>
+	</data>
+	<data name="Leads_LeadDetail_OpportunityStage" xml:space="preserve">
+    	<value>Stage</value>
+	</data>
+	<data name="Leads_LeadDetail_SaveButtonText" xml:space="preserve">
+    	<value>Done</value>
+	</data>
+	<data name="Leads_LeadContactDetail_Role" xml:space="preserve">
+    	<value>Role</value>
+	</data>
+	<data name="Leads_LeadContactDetail_FirstName" xml:space="preserve">
+    	<value>First Name</value>
+	</data>
+	<data name="Leads_LeadContactDetail_LastName" xml:space="preserve">
+    	<value>Last Name</value>
+	</data>
+	<data name="Leads_LeadContactDetail_Phone" xml:space="preserve">
+    	<value>Phone</value>
+	</data>
+	<data name="Leads_LeadContactDetail_Email" xml:space="preserve">
+    	<value>Email</value>
+	</data>
+	<data name="Leads_LeadContactDetail_Address" xml:space="preserve">
+    	<value>Address</value>
+	</data>
+	<data name="Leads_LeadContactDetail_PostalCode" xml:space="preserve">
+    	<value>Postal Code</value>
+	</data>
+	<data name="Leads_LeadContactDetail_City" xml:space="preserve">
+    	<value>City</value>
+	</data>
+	<data name="Leads_LeadContactDetail_State" xml:space="preserve">
+    	<value>State</value>
+	</data>
+	<data name="Leads_LeadContactDetail_Country" xml:space="preserve">
+    	<value>Country</value>
+	</data>
 
 
 	<data name="Sales" xml:space="preserve">

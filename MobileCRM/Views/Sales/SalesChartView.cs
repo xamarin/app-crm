@@ -1,17 +1,17 @@
-﻿using MobileCRM.ViewModels.Home;
-using Syncfusion.SfChart.XForms;
+﻿using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
+using MobileCRM.ViewModels.Sales;
 
 namespace MobileCRM.Views.Sales
 {
     public class SalesChartView : ContentView
     {
-        DashboardViewModel ViewModel
+        SalesDashboardViewModel ViewModel
         {
-            get { return BindingContext as DashboardViewModel; }
+            get { return BindingContext as SalesDashboardViewModel; }
         }
 
-        public SalesChartView(DashboardViewModel dashboardViewModel)
+        public SalesChartView(SalesDashboardViewModel dashboardViewModel)
         {
             BindingContext = dashboardViewModel;
 

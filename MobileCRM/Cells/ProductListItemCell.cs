@@ -11,10 +11,17 @@ namespace MobileCRM.Cells
             {
                 Aspect = Aspect.AspectFit
             };
-            productThumbnailImage.SetBinding(
-                Image.SourceProperty,
-                new Binding("ImageUrl")
-            );
+            productThumbnailImage.SetBinding(Image.SourceProperty, new Binding("ImageUrl"));
+            #endregion
+
+            #region image loading indicator
+            ActivityIndicator imageLoadingIndicator = new ActivityIndicator()
+            {
+                BindingContext = productThumbnailImage
+            };
+            imageLoadingIndicator.SetBinding(ActivityIndicator.IsEnabledProperty, "IsLoading");
+            imageLoadingIndicator.SetBinding(ActivityIndicator.IsVisibleProperty, "IsLoading");
+            imageLoadingIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading");
             #endregion
 
             #region categoryNameLabel
@@ -30,9 +37,7 @@ namespace MobileCRM.Cells
             };
 
             // The simple form of the Binding constructor.
-            categoryNameLabel.SetBinding(
-                Label.TextProperty, 
-                new Binding("Name"));
+            categoryNameLabel.SetBinding(Label.TextProperty, new Binding("Name"));
             #endregion
 
             #region categoryDescriptionLabel
@@ -45,9 +50,7 @@ namespace MobileCRM.Cells
             };
 
             // The simple form of the Binding constructor.
-            categoryDescriptionLabel.SetBinding(
-                Label.TextProperty, 
-                new Binding("Description"));
+            categoryDescriptionLabel.SetBinding(Label.TextProperty, new Binding("Description"));
             #endregion
 
             // A ContentView, which will serve as the "top-level" of the cell's view hierarchy. 
@@ -68,7 +71,12 @@ namespace MobileCRM.Cells
                 widthConstraint: Constraint.RelativeToParent(parent => parent.Height),
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height));
 
-            // add the companyNameLabel to the relativeLayout
+            relativeLayout.Children.Add(view: imageLoadingIndicator,
+                xConstraint: Constraint.RelativeToParent(parent => 0),
+                yConstraint: Constraint.RelativeToParent(parent => 0),
+                widthConstraint: Constraint.RelativeToParent(parent => parent.Height),
+                heightConstraint: Constraint.RelativeToParent(parent => parent.Height));
+
             relativeLayout.Children.Add(
                 view: categoryNameLabel, 
                 xConstraint: Constraint.RelativeToView(productThumbnailImage, (parent, siblingView) => siblingView.X + siblingView.Width + padding.HorizontalThickness / 2),
@@ -76,7 +84,6 @@ namespace MobileCRM.Cells
                 widthConstraint: Constraint.RelativeToView(productThumbnailImage, (parent, siblingView) => parent.Width - siblingView.Width - padding.HorizontalThickness / 2),
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 2));
 
-            // add the percentCopleteLabel to the relativeLayout
             relativeLayout.Children.Add(
                 view: categoryDescriptionLabel,
                 xConstraint: Constraint.RelativeToView(productThumbnailImage, (parent, siblingView) => siblingView.X + siblingView.Width + padding.HorizontalThickness / 2),
