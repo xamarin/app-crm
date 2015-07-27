@@ -10,6 +10,12 @@
     <AssemblyName>MobileCRM</AssemblyName>
     <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+<<<<<<< Updated upstream
+=======
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <ReleaseVersion>3.0</ReleaseVersion>
+>>>>>>> Stashed changes
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -121,6 +127,56 @@
     <Compile Include="ViewModels\Orders\OrderDetailsViewModel.cs" />
     <Compile Include="ViewModels\Orders\OrdersViewModel.cs" />
     <Compile Include="ViewModels\Settings\UserViewModel.cs" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Localization\TextResources.Designer.cs">
+      <DependentUpon>TextResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Palette.cs" />
+    <Compile Include="Localization\TranslateExtension.cs" />
+    <Compile Include="Localization\ILocalization.cs" />
+    <Compile Include="Converters\ToUpperConverter.cs" />
+    <Compile Include="Views\Sales\LeadListHeaderView.cs" />
+    <Compile Include="Views\Sales\LeadListView.cs" />
+    <Compile Include="Views\Sales\SalesChartHeaderView_new.xaml.cs">
+      <DependentUpon>SalesChartHeaderView_new.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SalesChartHeaderView.cs" />
+    <Compile Include="Pages\Sales\SalesDashboardPage_new_new.xaml.cs">
+      <DependentUpon>SalesDashboardPage_new.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Base\BaseContentPage.cs" />
+    <Compile Include="Pages\Sales\SalesDashboardPage.cs" />
+    <Compile Include="Views\Sales\SalesChartView.cs" />
+    <Compile Include="Views\TabbedPageHeaderView.cs" />
+    <Compile Include="Pages\Home\RootPage_old.cs" />
+    <Compile Include="Pages\RootPage.cs" />
+    <Compile Include="Pages\Products\CategoryListPage.cs" />
+    <Compile Include="Pages\Products\ProductDetailPage.cs" />
+    <Compile Include="Pages\Products\ProductListPage.cs" />
+    <Compile Include="Pages\Products\ProductNavigationPage.cs" />
+    <Compile Include="ViewModels\Products\CategoriesViewModel.cs" />
+    <Compile Include="ViewModels\Products\ProductsViewModel.cs" />
+    <Compile Include="Clients\ICatalogClient.cs" />
+    <Compile Include="Models\CatalogCategory.cs" />
+    <Compile Include="Models\CatalogProduct.cs" />
+    <Compile Include="Clients\CatalogClient.cs" />
+    <Compile Include="Clients\ResponseFetcher.cs" />
+    <Compile Include="Views\Products\CategoryListView.cs" />
+    <Compile Include="Views\Products\ProductDetailDescriptionView.cs" />
+    <Compile Include="Views\Products\ProductDetailRibbon.cs" />
+    <Compile Include="Views\Products\ProductListView.cs" />
+    <Compile Include="Cells\ProductListItemCell.cs" />
+    <Compile Include="Cells\CategoryListItemCell.cs" />
+    <Compile Include="Sizes.cs" />
+    <Compile Include="ViewModels\Sales\SalesDashboardViewModel.cs" />
+    <Compile Include="ViewModels\Sales\LeadDetailViewModel.cs" />
+    <Compile Include="Cells\PickerCell.cs" />
+    <Compile Include="MessagingServiceConstants.cs" />
+    <Compile Include="Converters\CurrencyConverter.cs" />
+    <Compile Include="Authenticator.cs" />
+    <Compile Include="Extensions\ExceptionExtensions.cs" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -180,6 +236,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
     <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\packages\Xamarin.Forms.1.4.2.6359\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
@@ -189,6 +246,8 @@
     <Reference Include="Xamarin.Forms.Platform">
       <HintPath>..\packages\Xamarin.Forms.1.4.2.6359\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
+=======
+>>>>>>> Stashed changes
     <Reference Include="System.Net.Http">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
     </Reference>
@@ -216,11 +275,34 @@
     <Reference Include="Xamarin.Insights">
       <HintPath>..\packages\Xamarin.Insights.1.10.4.112\lib\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.dll</HintPath>
     </Reference>
+<<<<<<< Updated upstream
+=======
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.5.207081303-alpha\lib\portable-net45+win+wpa81+wp80\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\lib\SyncFusion\pcl\Syncfusion.SfChart.XForms.dll</HintPath>
+    </Reference>
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
+=======
+    <Folder Include="Pages\Customers\" />
+    <Folder Include="Pages\Products\" />
+    <Folder Include="Views\Customers\" />
+    <Folder Include="Views\Products\" />
+    <Folder Include="ViewModels\Sales\" />
+    <Folder Include="ViewModels\Customers\" />
+    <Folder Include="ViewModels\Products\" />
+    <Folder Include="Clients\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+>>>>>>> Stashed changes
     <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">
       <Project>{A2A445B4-E291-4224-8B31-5FD82ADEC085}</Project>
       <Name>MobileCRM.CustomControls</Name>

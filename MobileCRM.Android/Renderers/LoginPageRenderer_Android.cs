@@ -18,8 +18,12 @@ namespace MobileCRMAndroid.Renderers
 
             Insights.Track("Login Page");
 
+<<<<<<< Updated upstream:MobileCRM.Android/Renderers/LoginPageRenderer_Android.cs
             MobileServiceClient client = AuthInfo.Instance.GetMobileServiceClient();
             client.Logout();
+=======
+//            await Authenticator.Authenticate(new PlatformParameters((Activity)this.Context));
+>>>>>>> Stashed changes:MobileCRM.Android/Renderers/LoginPageRenderer.cs
 
             AuthInfo.Instance.User = await client.LoginAsync(this.Context, AuthInfo.AUTH_PROVIDER);
 
