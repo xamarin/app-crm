@@ -25,7 +25,6 @@
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <ReleaseVersion>3.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -138,11 +137,6 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\MenuCellRenderer.cs" />
-<<<<<<< Updated upstream
-=======
-    <Compile Include="Localization\Localize.cs" />
-    <Compile Include="Renderers\BaseContentPageRenderer.cs" />
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

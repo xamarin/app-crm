@@ -579,9 +579,6 @@ Global
 		{E795A2CB-7D1D-40A4-9E42-AEDC55A324FB}.Release|x86.ActiveCfg = Release|Any CPU
 		{E795A2CB-7D1D-40A4-9E42-AEDC55A324FB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		version = 3.0
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
