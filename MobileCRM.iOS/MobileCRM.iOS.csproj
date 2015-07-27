@@ -13,6 +13,7 @@
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
+    <ReleaseVersion>3.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +37,7 @@
     <IpaPackageName>
     </IpaPackageName>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -121,15 +123,6 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Syncfusion.SfChart.iOS">
-      <HintPath>..\lib\SyncFusion\ios-unified\Syncfusion.SfChart.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfChart.XForms">
-      <HintPath>..\lib\SyncFusion\ios-unified\Syncfusion.SfChart.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfChart.XForms.iOS">
-      <HintPath>..\lib\SyncFusion\ios-unified\Syncfusion.SfChart.XForms.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
@@ -198,6 +191,96 @@
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.Platform">
       <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.5.207081303-alpha\lib\Xamarin.iOS10\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Linq.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.Linq.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfAutoComplete.XForms">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfAutoComplete.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfAutoComplete.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfAutoComplete.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfAutoComplete.XForms.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfAutocomplete.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBarcode.XForms">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfBarcode.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBarcode.XForms.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfBarcode.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBarcode.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfBarcode.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.XForms">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfBusyIndicator.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.XForms.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfBusyIndicator.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfBusyIndicator.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfChart.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfChart.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfChart.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.XForms">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfDataGrid.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.XForms.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfDataGrid.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfDataGrid.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.XForms">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfGauge.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.XForms.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfGauge.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfGauge.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfMaps.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfMaps.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNavigationDrawer.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfNavigationDrawer.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.XForms">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfNumericTextBox.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.XForms.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfNumericTextBox.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfNumericTextBox.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRangeSlider.XForms">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfRangeSlider.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRangeSlider.XForms.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfRangeSlider.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRangeSlider.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfRangeSlider.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfTreeMap.XForms">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfTreeMap.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfTreeMap.XForms.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfTreeMap.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfTreeMap.iOS">
+      <HintPath>..\Components\SyncfusionEssentialStudio-13.2.0.29-trial\lib\ios-unified\Syncfusion.SfTreeMap.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -219,6 +302,9 @@
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\back%402x.png" />
+    <BundleResource Include="Resources\CustomersTab%403x.png" />
+    <BundleResource Include="Resources\ProductsTab%403x.png" />
+    <BundleResource Include="Resources\SalesTab%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -235,7 +321,7 @@
     <Compile Include="Renderers\ListTextCellRenderer.cs" />
     <Compile Include="Renderers\PieChartRenderer.cs" />
     <Compile Include="Localization\Localize.cs" />
-    <Compile Include="Renderers\LoginPageRenderer.cs" />
+    <Compile Include="Renderers\BaseContentPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\xamarin-icon-simplified.png" />

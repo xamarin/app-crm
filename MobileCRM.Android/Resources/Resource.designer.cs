@@ -1488,6 +1488,9 @@ namespace MobileCRMAndroid
 			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsLogoImageType = global::MobileCRMAndroid.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsLogoImageType;
 			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsLogoTextColor = global::MobileCRMAndroid.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsLogoTextColor;
 			global::GooglePlayServices.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsTextAppearance = global::MobileCRMAndroid.Resource.Styleable.WalletFragmentStyle_maskedWalletDetailsTextAppearance;
+			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.Id.agentWebView = global::MobileCRMAndroid.Resource.Id.agentWebView;
+			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.Layout.WebAuthenticationBroker = global::MobileCRMAndroid.Resource.Layout.WebAuthenticationBroker;
+			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.String.ApplicationName = global::MobileCRMAndroid.Resource.String.ApplicationName;
 		}
 		
 		public partial class Animation
@@ -3347,6 +3350,9 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f090022
 			public const int adjust_width = 2131296290;
 			
+			// aapt resource value: 0x7f090083
+			public const int agentWebView = 2131296387;
+			
 			// aapt resource value: 0x7f090047
 			public const int alertTitle = 2131296327;
 			
@@ -3853,6 +3859,9 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f030028
 			public const int support_simple_spinner_dropdown_item = 2130903080;
 			
+			// aapt resource value: 0x7f030029
+			public const int WebAuthenticationBroker = 2130903081;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -3882,11 +3891,11 @@ namespace MobileCRMAndroid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f07004a
-			public const int ApplicationName = 2131165258;
+			// aapt resource value: 0x7f070048
+			public const int ApplicationName = 2131165256;
 			
-			// aapt resource value: 0x7f070049
-			public const int Hello = 2131165257;
+			// aapt resource value: 0x7f07004a
+			public const int Hello = 2131165258;
 			
 			// aapt resource value: 0x7f070036
 			public const int abc_action_bar_home_description = 2131165238;
@@ -4068,8 +4077,8 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f07004b
 			public const int hello = 2131165259;
 			
-			// aapt resource value: 0x7f070048
-			public const int library_name = 2131165256;
+			// aapt resource value: 0x7f070049
+			public const int library_name = 2131165257;
 			
 			// aapt resource value: 0x7f07002c
 			public const int mr_media_route_button_content_description = 2131165228;

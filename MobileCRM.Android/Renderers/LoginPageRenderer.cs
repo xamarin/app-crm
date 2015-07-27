@@ -21,7 +21,7 @@ namespace MobileCRMAndroid.Renderers
 
             Insights.Track("Login Page");
 
-            await Authenticator.Authenticate(new PlatformParameters((Activity)this.Context));
+//            await Authenticator.Authenticate(new PlatformParameters((Activity)this.Context));
 
 
 

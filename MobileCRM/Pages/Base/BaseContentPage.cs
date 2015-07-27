@@ -2,11 +2,14 @@
 using MobileCRM.Pages.Home;
 using MobileCRM.Services;
 using Xamarin.Forms;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace MobileCRM.Pages.Base
 {
     public abstract class BaseContentPage : ContentPage
     {
+        public IPlatformParameters PlatformParameters { get; set; }
+
         /// <summary>
         /// Called immediately before showing the page.
         /// If the current user is not authenticated, the Content.IsVisible property is set to false, and the LoginPage is modally presented.
@@ -14,49 +17,21 @@ namespace MobileCRM.Pages.Base
         /// </summary>
         protected async override void OnAppearing()
         {
-            await OnAppearingActions();
-        }
-
-        async Task OnAppearingActions()
-        {
             base.OnAppearing();
 
-            if (AuthInfo.Instance.User == null)
+            if (!App.IsAuthenticated)
             {
                 // Since the user is not authenticated, they should not be presented with any content for this page, 
                 // not even for a second while the modal is animating. The content should be blank until authenticted.
                 Content.IsVisible = false;
 
-                LoginPage loginPage = new LoginPage();
+                await App.Authenticate(PlatformParameters);
 
-                // This conditional for Android is necessary because OnAppearing is only
-                // called when an Android Acvitiy is first shown, unlike iOS in which OnAppearing()
-                // is called each time the view appears on screen, as the name suggests.
-                // If Android, we manually re-call OnAppearing when the LoginPage modal is dismissed.
-                if (Device.OS == TargetPlatform.Android)
-                {
-                    loginPage.Disappearing += async delegate
-                        {
-                            await OnAppearingActions();
-                        };
-                }
-
-                await Navigation.PushModalAsync(loginPage);
+                Content.IsVisible = true;
             }
             else
             {
                 Content.IsVisible = true;
-            }
-        }
-
-        protected ActivityIndicator ActivityIndicator
-        {
-            get
-            {
-                return new ActivityIndicator
-                {
-                    IsRunning = true
-                };
             }
         }
     }

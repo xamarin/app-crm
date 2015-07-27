@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <ReleaseVersion>3.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -173,6 +174,7 @@
     <Compile Include="MessagingServiceConstants.cs" />
     <Compile Include="Converters\CurrencyConverter.cs" />
     <Compile Include="Authenticator.cs" />
+    <Compile Include="Extensions\ExceptionExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -242,9 +244,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Syncfusion.SfChart.XForms">
-      <HintPath>..\lib\SyncFusion\pcl\Syncfusion.SfChart.XForms.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
     </Reference>
@@ -284,6 +283,9 @@
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.5.207081303-alpha\lib\portable-net45+win+wpa81+wp80\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\lib\SyncFusion\pcl\Syncfusion.SfChart.XForms.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -297,6 +299,7 @@
     <Folder Include="ViewModels\Customers\" />
     <Folder Include="ViewModels\Products\" />
     <Folder Include="Clients\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">

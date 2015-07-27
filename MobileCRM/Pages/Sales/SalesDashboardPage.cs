@@ -3,7 +3,6 @@ using MobileCRM.Cells;
 using MobileCRM.Localization;
 using MobileCRM.Models;
 using MobileCRM.Pages.Base;
-using MobileCRM.Services;
 using MobileCRM.ViewModels.Sales;
 using MobileCRM.Views.Sales;
 using Xamarin;
@@ -30,7 +29,9 @@ namespace MobileCRM.Pages.Sales
             #endregion
 
             #region the sales graph
-            SalesChartView chartView = new SalesChartView(viewModel);
+            SalesChartView chartView = new SalesChartView(ViewModel);
+            ViewModel.SalesChartDataPoints.CollectionChanged += (sender, e) => chartView.SetSalesChartData(ViewModel.SalesChartDataPoints);
+
             #endregion
 
             #region leads list header
@@ -100,7 +101,7 @@ namespace MobileCRM.Pages.Sales
         {
             base.OnAppearing();
 
-            if (AuthInfo.Instance.User != null)
+            if (App.IsAuthenticated)
             {
                 await ViewModel.ExecuteLoadSeedDataCommand();
 

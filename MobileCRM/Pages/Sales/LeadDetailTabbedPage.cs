@@ -9,14 +9,16 @@ namespace MobileCRM.Pages.Sales
         public LeadDetailTabbedPage(LeadDetailViewModel viewModel)
         {
             Children.Add(new LeadDetailPage(viewModel)
-            {
-                Title = TextResources.Details
-            });
+                {
+                    Title = TextResources.Details,
+//                    Icon = new FileImageSource() { File = "" }
+                });
 
             Children.Add(new LeadContactDetailPage(viewModel)
-            {
-                Title = TextResources.Contact
-            });
+                {
+                    Title = TextResources.Contact,
+//                    Icon = new FileImageSource() { File = "" }
+                });
         }
     }
 }

@@ -22,7 +22,7 @@ namespace MobileCRM.iOS.Renderers
 
             Insights.Track("Login Page");
 
-            await Authenticator.Authenticate(new PlatformParameters(this.ViewController));
+            await Authenticator.Authenticate(new PlatformParameters(this));
 
             MessagingCenter.Send<ILogin>(this, MessagingServiceConstants.AUTHENTICATED);
 

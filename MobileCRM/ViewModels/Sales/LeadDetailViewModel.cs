@@ -102,11 +102,6 @@ namespace MobileCRM.ViewModels.Sales
 
             IsBusy = false;
         }
-
-        public async Task GoBack()
-        {
-            await Navigation.PopAsync();
-        }
     }
 }
 

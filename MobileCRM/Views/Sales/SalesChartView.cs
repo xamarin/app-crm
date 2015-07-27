@@ -1,6 +1,8 @@
 ﻿using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 using MobileCRM.ViewModels.Sales;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MobileCRM.Views.Sales
 {
@@ -11,19 +13,20 @@ namespace MobileCRM.Views.Sales
             get { return BindingContext as SalesDashboardViewModel; }
         }
 
-        public SalesChartView(SalesDashboardViewModel dashboardViewModel)
+        readonly ColumnSeries _ColumnSeries;
+
+        public void SetSalesChartData(IEnumerable<ChartDataPoint> salesChartDataPoints)
         {
-            BindingContext = dashboardViewModel;
+            _ColumnSeries.ItemsSource = salesChartDataPoints;
+        }
 
-            double height = Device.OnPlatform<double>(200, 180, 190);
-
-            Padding = Device.OnPlatform(
-                new Thickness(0, 0, 20, 0),
-                new Thickness(20, 0, 20, 0),
-                new Thickness(10)
-            );
+        public SalesChartView(SalesDashboardViewModel viewModel)
+        {
+            BindingContext = viewModel;
 
             BackgroundColor = Palette._008;
+
+            double height = Device.OnPlatform(200, 190, 180);
 
             ActivityIndicator chartActivityIndicator = new ActivityIndicator()
             {
@@ -33,7 +36,7 @@ namespace MobileCRM.Views.Sales
             chartActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
             chartActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
 
-            ColumnSeries columnSeries = new ColumnSeries()
+            _ColumnSeries = new ColumnSeries()
             {
                 BindingContext = ViewModel,
                 YAxis = new NumericalAxis()
@@ -48,7 +51,18 @@ namespace MobileCRM.Views.Sales
                 },
                 Color = Palette._004
             };
-            columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, new Binding("SalesChartDataPoints"));
+            _ColumnSeries.ItemsSource = new List<ChartDataPoint>()
+            {
+                new ChartDataPoint("Jan", 100),
+                new ChartDataPoint("Feb", 200),
+                new ChartDataPoint("Mar", 300),
+                new ChartDataPoint("Apr", 400),
+                new ChartDataPoint("Jun", 500),
+                new ChartDataPoint("Jul", 600),
+            };
+
+            // Not currently working because a binding bug in the SyncFusion ColumnSeries.ItemsSourceProperty setter
+            // columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, new Binding("SalesChartDataPoints"));
 
             SfChart chart = new SfChart()
             {
@@ -67,11 +81,20 @@ namespace MobileCRM.Views.Sales
                     LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._009 }
                 },
 
-                Series = new ChartSeriesCollection() { columnSeries }
+////                Series = new ChartSeriesCollection() { _ColumnSeries }
             };
+            chart.Series.Add(_ColumnSeries);
             chart.SetBinding(IsEnabledProperty, "IsModelLoaded");
             chart.SetBinding(ActivityIndicator.IsRunningProperty, "IsModelLoaded");
             chart.SetBinding(IsVisibleProperty, "IsModelLoaded");
+
+            //Initializing Primary Axis
+            CategoryAxis primaryAxis = new CategoryAxis();
+            chart.PrimaryAxis = primaryAxis;
+
+            //Initializing Secondary Axis
+            NumericalAxis secondaryAxis = new NumericalAxis();
+            chart.SecondaryAxis = secondaryAxis;
 
             StackLayout stackLayout = new StackLayout()
             { 

@@ -20,9 +20,9 @@ namespace MobileCRM.ViewModels.Sales
         Command loadSeedDataCommand;
         Command loadLeadsCommand;
 
-        ObservableCollection<Order> orders;
-        ObservableCollection<Account> leads;
-        ObservableCollection<ChartDataPoint> salesChartDataPoints;
+        ObservableCollection<Order> _Orders;
+        ObservableCollection<Account> _Leads;
+        ObservableCollection<ChartDataPoint> _SalesChartDataPoints;
 
         string salesAverage;
 
@@ -39,6 +39,7 @@ namespace MobileCRM.ViewModels.Sales
 
             Leads = new ObservableCollection<Account>();
             Orders = new ObservableCollection<Order>();
+            SalesChartDataPoints = new ObservableCollection<ChartDataPoint>();
 
             MessagingCenter.Subscribe<Account>(this, MessagingServiceConstants.SAVE_ACCOUNT, (account) =>
                 {
@@ -101,14 +102,25 @@ namespace MobileCRM.ViewModels.Sales
 
             Leads = 
                 new ObservableCollection<Account>(
-                    await dataManager.GetAccountsAsync(true));
+                await dataManager.GetAccountsAsync(true));
 
             chartHelper = new BarGraphHelper(Orders, false);
 
-            SalesChartDataPoints = new ObservableCollection<ChartDataPoint>(
-                chartHelper.SalesData
+            SalesChartDataPoints.Clear();
+
+            var salesChartDataPoints = chartHelper.SalesData
                 .OrderBy(x => x.DateStart)
-                .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)));
+                .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount));
+
+            foreach (var scdp in salesChartDataPoints)
+            {
+                SalesChartDataPoints.Add(scdp);
+            }
+
+//            SalesChartDataPoints = new ObservableCollection<ChartDataPoint>(
+//                chartHelper.SalesData
+//                .OrderBy(x => x.DateStart)
+//                .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)));
 
             SalesAverage = String.Format("{0:C}", SalesChartDataPoints.Average(x => x.YValue));
 
@@ -130,7 +142,7 @@ namespace MobileCRM.ViewModels.Sales
 
             Leads = 
                 new ObservableCollection<Account>(
-                    await dataManager.GetAccountsAsync(true));
+                await dataManager.GetAccountsAsync(true));
 
             IsBusy = false; 
             IsModelLoaded = true;
@@ -139,30 +151,30 @@ namespace MobileCRM.ViewModels.Sales
 
         public ObservableCollection<Order> Orders
         {
-            get { return orders; }
+            get { return _Orders; }
             set
             {
-                orders = value;
+                _Orders = value;
                 OnPropertyChanged("Orders");
             }
         }
 
         public ObservableCollection<Account> Leads
         {
-            get { return leads; }
+            get { return _Leads; }
             set
             {
-                leads = value;
+                _Leads = value;
                 OnPropertyChanged("Leads");
             }
         }
 
         public ObservableCollection<ChartDataPoint> SalesChartDataPoints
         {
-            get { return salesChartDataPoints; }
+            get { return _SalesChartDataPoints; }
             set
             {
-                salesChartDataPoints = value;
+                _SalesChartDataPoints = value;
                 OnPropertyChanged("SalesChartDataPoints");
             }
         }
