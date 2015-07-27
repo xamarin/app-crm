@@ -3296,8 +3296,8 @@ namespace MobileCRMAndroid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f090076
-			public const int action0 = 2131296374;
+			// aapt resource value: 0x7f090084
+			public const int action0 = 2131296388;
 			
 			// aapt resource value: 0x7f090057
 			public const int action_bar = 2131296343;
@@ -3323,8 +3323,8 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f090058
 			public const int action_context_bar = 2131296344;
 			
-			// aapt resource value: 0x7f09007a
-			public const int action_divider = 2131296378;
+			// aapt resource value: 0x7f090088
+			public const int action_divider = 2131296392;
 			
 			// aapt resource value: 0x7f090003
 			public const int action_menu_divider = 2131296259;
@@ -3350,8 +3350,8 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f090022
 			public const int adjust_width = 2131296290;
 			
-			// aapt resource value: 0x7f090083
-			public const int agentWebView = 2131296387;
+			// aapt resource value: 0x7f090091
+			public const int agentWebView = 2131296401;
 			
 			// aapt resource value: 0x7f090047
 			public const int alertTitle = 2131296327;
@@ -3359,8 +3359,11 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f09002e
 			public const int always = 2131296302;
 			
+			// aapt resource value: 0x7f09007b
+			public const int art = 2131296379;
+			
 			// aapt resource value: 0x7f09006d
-			public const int art = 2131296365;
+			public const int axisLayout = 2131296365;
 			
 			// aapt resource value: 0x7f09002b
 			public const int beginning = 2131296299;
@@ -3371,8 +3374,8 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f09004d
 			public const int buttonPanel = 2131296333;
 			
-			// aapt resource value: 0x7f090073
-			public const int buttons = 2131296371;
+			// aapt resource value: 0x7f090081
+			public const int buttons = 2131296385;
 			
 			// aapt resource value: 0x7f090010
 			public const int buyButton = 2131296272;
@@ -3383,17 +3386,23 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f090016
 			public const int buy_with_google = 2131296278;
 			
-			// aapt resource value: 0x7f090077
-			public const int cancel_action = 2131296375;
+			// aapt resource value: 0x7f090085
+			public const int cancel_action = 2131296389;
 			
 			// aapt resource value: 0x7f090000
 			public const int cast_notification_id = 2131296256;
 			
+			// aapt resource value: 0x7f090068
+			public const int chartAreaLayout = 2131296360;
+			
+			// aapt resource value: 0x7f090067
+			public const int chartTitle = 2131296359;
+			
 			// aapt resource value: 0x7f09004f
 			public const int checkbox = 2131296335;
 			
-			// aapt resource value: 0x7f09007d
-			public const int chronometer = 2131296381;
+			// aapt resource value: 0x7f09008b
+			public const int chronometer = 2131296395;
 			
 			// aapt resource value: 0x7f090018
 			public const int classic = 2131296280;
@@ -3410,14 +3419,17 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f09004b
 			public const int customPanel = 2131296331;
 			
+			// aapt resource value: 0x7f09006c
+			public const int dataMarkerLayout = 2131296364;
+			
 			// aapt resource value: 0x7f090055
 			public const int decor_content_parent = 2131296341;
 			
 			// aapt resource value: 0x7f090040
 			public const int default_activity_button = 2131296320;
 			
-			// aapt resource value: 0x7f09006c
-			public const int default_control_frame = 2131296364;
+			// aapt resource value: 0x7f09007a
+			public const int default_control_frame = 2131296378;
 			
 			// aapt resource value: 0x7f090033
 			public const int dialog = 2131296307;
@@ -3425,8 +3437,8 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f090025
 			public const int disableHome = 2131296293;
 			
-			// aapt resource value: 0x7f090074
-			public const int disconnect = 2131296372;
+			// aapt resource value: 0x7f090082
+			public const int disconnect = 2131296386;
 			
 			// aapt resource value: 0x7f090017
 			public const int donate_with_google = 2131296279;
@@ -3440,8 +3452,8 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f09002c
 			public const int end = 2131296300;
 			
-			// aapt resource value: 0x7f090082
-			public const int end_padder = 2131296386;
+			// aapt resource value: 0x7f090090
+			public const int end_padder = 2131296400;
 			
 			// aapt resource value: 0x7f09003e
 			public const int expand_activities_button = 2131296318;
@@ -3451,6 +3463,9 @@ namespace MobileCRMAndroid
 			
 			// aapt resource value: 0x7f090019
 			public const int grayscale = 2131296281;
+			
+			// aapt resource value: 0x7f090069
+			public const int gridLineLayout = 2131296361;
 			
 			// aapt resource value: 0x7f09000a
 			public const int holo_dark = 2131296266;
@@ -3470,20 +3485,38 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f090042
 			public const int icon = 2131296322;
 			
+			// aapt resource value: 0x7f090072
+			public const int iconView = 2131296370;
+			
 			// aapt resource value: 0x7f090030
 			public const int ifRoom = 2131296304;
 			
 			// aapt resource value: 0x7f09003f
 			public const int image = 2131296319;
 			
-			// aapt resource value: 0x7f090081
-			public const int info = 2131296385;
+			// aapt resource value: 0x7f09008f
+			public const int info = 2131296399;
 			
-			// aapt resource value: 0x7f09007b
-			public const int line1 = 2131296379;
+			// aapt resource value: 0x7f090073
+			public const int label = 2131296371;
 			
-			// aapt resource value: 0x7f09007f
-			public const int line3 = 2131296383;
+			// aapt resource value: 0x7f09006f
+			public const int legendHeader = 2131296367;
+			
+			// aapt resource value: 0x7f090071
+			public const int legendItemsLayout = 2131296369;
+			
+			// aapt resource value: 0x7f090070
+			public const int legendScrollView = 2131296368;
+			
+			// aapt resource value: 0x7f09006e
+			public const int legendViewGroup = 2131296366;
+			
+			// aapt resource value: 0x7f090089
+			public const int line1 = 2131296393;
+			
+			// aapt resource value: 0x7f09008d
+			public const int line3 = 2131296397;
 			
 			// aapt resource value: 0x7f090023
 			public const int listMode = 2131296291;
@@ -3494,20 +3527,20 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f090012
 			public const int match_parent = 2131296274;
 			
+			// aapt resource value: 0x7f090087
+			public const int media_actions = 2131296391;
+			
 			// aapt resource value: 0x7f090079
-			public const int media_actions = 2131296377;
+			public const int media_route_control_frame = 2131296377;
 			
-			// aapt resource value: 0x7f09006b
-			public const int media_route_control_frame = 2131296363;
+			// aapt resource value: 0x7f090075
+			public const int media_route_list = 2131296373;
 			
-			// aapt resource value: 0x7f090067
-			public const int media_route_list = 2131296359;
+			// aapt resource value: 0x7f09007f
+			public const int media_route_volume_layout = 2131296383;
 			
-			// aapt resource value: 0x7f090071
-			public const int media_route_volume_layout = 2131296369;
-			
-			// aapt resource value: 0x7f090072
-			public const int media_route_volume_slider = 2131296370;
+			// aapt resource value: 0x7f090080
+			public const int media_route_volume_slider = 2131296384;
 			
 			// aapt resource value: 0x7f09002d
 			public const int middle = 2131296301;
@@ -3518,8 +3551,8 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f090035
 			public const int multiply = 2131296309;
 			
-			// aapt resource value: 0x7f090066
-			public const int myButton = 2131296358;
+			// aapt resource value: 0x7f090074
+			public const int myButton = 2131296372;
 			
 			// aapt resource value: 0x7f090031
 			public const int never = 2131296305;
@@ -3533,8 +3566,8 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f090044
 			public const int parentPanel = 2131296324;
 			
-			// aapt resource value: 0x7f09006e
-			public const int play_pause = 2131296366;
+			// aapt resource value: 0x7f09007c
+			public const int play_pause = 2131296380;
 			
 			// aapt resource value: 0x7f09000c
 			public const int production = 2131296268;
@@ -3548,8 +3581,11 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f090051
 			public const int radio = 2131296337;
 			
-			// aapt resource value: 0x7f090069
-			public const int route_name = 2131296361;
+			// aapt resource value: 0x7f090066
+			public const int rootLayout = 2131296358;
+			
+			// aapt resource value: 0x7f090077
+			public const int route_name = 2131296375;
 			
 			// aapt resource value: 0x7f09000d
 			public const int sandbox = 2131296269;
@@ -3599,8 +3635,11 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f090011
 			public const int selectionDetails = 2131296273;
 			
-			// aapt resource value: 0x7f09006a
-			public const int settings = 2131296362;
+			// aapt resource value: 0x7f09006b
+			public const int seriesLayout = 2131296363;
+			
+			// aapt resource value: 0x7f090078
+			public const int settings = 2131296376;
 			
 			// aapt resource value: 0x7f090050
 			public const int shortcut = 2131296336;
@@ -3629,20 +3668,23 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f090039
 			public const int src_over = 2131296313;
 			
-			// aapt resource value: 0x7f090078
-			public const int status_bar_latest_event_content = 2131296376;
+			// aapt resource value: 0x7f090086
+			public const int status_bar_latest_event_content = 2131296390;
 			
-			// aapt resource value: 0x7f090075
-			public const int stop = 2131296373;
+			// aapt resource value: 0x7f090083
+			public const int stop = 2131296387;
 			
 			// aapt resource value: 0x7f09000e
 			public const int strict_sandbox = 2131296270;
 			
+			// aapt resource value: 0x7f09006a
+			public const int stripLinesLayout = 2131296362;
+			
 			// aapt resource value: 0x7f090062
 			public const int submit_area = 2131296354;
 			
-			// aapt resource value: 0x7f090070
-			public const int subtitle = 2131296368;
+			// aapt resource value: 0x7f09007e
+			public const int subtitle = 2131296382;
 			
 			// aapt resource value: 0x7f090024
 			public const int tabMode = 2131296292;
@@ -3653,26 +3695,26 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f09000f
 			public const int test = 2131296271;
 			
-			// aapt resource value: 0x7f090080
-			public const int text = 2131296384;
+			// aapt resource value: 0x7f09008e
+			public const int text = 2131296398;
 			
-			// aapt resource value: 0x7f09007e
-			public const int text2 = 2131296382;
+			// aapt resource value: 0x7f09008c
+			public const int text2 = 2131296396;
 			
 			// aapt resource value: 0x7f09004a
 			public const int textSpacerNoButtons = 2131296330;
 			
-			// aapt resource value: 0x7f09006f
-			public const int text_wrapper = 2131296367;
+			// aapt resource value: 0x7f09007d
+			public const int text_wrapper = 2131296381;
 			
-			// aapt resource value: 0x7f09007c
-			public const int time = 2131296380;
+			// aapt resource value: 0x7f09008a
+			public const int time = 2131296394;
 			
 			// aapt resource value: 0x7f090043
 			public const int title = 2131296323;
 			
-			// aapt resource value: 0x7f090068
-			public const int title_bar = 2131296360;
+			// aapt resource value: 0x7f090076
+			public const int title_bar = 2131296374;
 			
 			// aapt resource value: 0x7f090046
 			public const int title_template = 2131296326;
@@ -3812,55 +3854,64 @@ namespace MobileCRMAndroid
 			public const int abc_simple_dropdown_hint = 2130903064;
 			
 			// aapt resource value: 0x7f030019
-			public const int Main = 2130903065;
+			public const int chart_layout = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int mr_media_route_chooser_dialog = 2130903066;
+			public const int chart_legend = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int mr_media_route_controller_material_dialog_b = 2130903067;
+			public const int chart_legend_item = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int mr_media_route_list_item = 2130903068;
+			public const int Main = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int notification_media_action = 2130903069;
+			public const int mr_media_route_chooser_dialog = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int notification_media_cancel_action = 2130903070;
+			public const int mr_media_route_controller_material_dialog_b = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int notification_template_big_media = 2130903071;
+			public const int mr_media_route_list_item = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int notification_template_big_media_narrow = 2130903072;
+			public const int notification_media_action = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int notification_template_lines = 2130903073;
+			public const int notification_media_cancel_action = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int notification_template_media = 2130903074;
+			public const int notification_template_big_media = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int notification_template_part_chronometer = 2130903075;
+			public const int notification_template_big_media_narrow = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int notification_template_part_time = 2130903076;
+			public const int notification_template_lines = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int select_dialog_item_material = 2130903077;
+			public const int notification_template_media = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int select_dialog_multichoice_material = 2130903078;
+			public const int notification_template_part_chronometer = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int select_dialog_singlechoice_material = 2130903079;
+			public const int notification_template_part_time = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int support_simple_spinner_dropdown_item = 2130903080;
+			public const int select_dialog_item_material = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int WebAuthenticationBroker = 2130903081;
+			public const int select_dialog_multichoice_material = 2130903081;
+			
+			// aapt resource value: 0x7f03002a
+			public const int select_dialog_singlechoice_material = 2130903082;
+			
+			// aapt resource value: 0x7f03002b
+			public const int support_simple_spinner_dropdown_item = 2130903083;
+			
+			// aapt resource value: 0x7f03002c
+			public const int WebAuthenticationBroker = 2130903084;
 			
 			static Layout()
 			{
@@ -3891,11 +3942,11 @@ namespace MobileCRMAndroid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f070048
-			public const int ApplicationName = 2131165256;
+			// aapt resource value: 0x7f070049
+			public const int ApplicationName = 2131165257;
 			
-			// aapt resource value: 0x7f07004a
-			public const int Hello = 2131165258;
+			// aapt resource value: 0x7f07004b
+			public const int Hello = 2131165259;
 			
 			// aapt resource value: 0x7f070036
 			public const int abc_action_bar_home_description = 2131165238;
@@ -3951,8 +4002,8 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f070006
 			public const int accept = 2131165190;
 			
-			// aapt resource value: 0x7f07004c
-			public const int app_name = 2131165260;
+			// aapt resource value: 0x7f070048
+			public const int app_name = 2131165256;
 			
 			// aapt resource value: 0x7f07000b
 			public const int auth_google_play_services_client_facebook_display_name = 2131165195;
@@ -4074,11 +4125,11 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f070007
 			public const int decline = 2131165191;
 			
-			// aapt resource value: 0x7f07004b
-			public const int hello = 2131165259;
+			// aapt resource value: 0x7f07004c
+			public const int hello = 2131165260;
 			
-			// aapt resource value: 0x7f070049
-			public const int library_name = 2131165257;
+			// aapt resource value: 0x7f07004a
+			public const int library_name = 2131165258;
 			
 			// aapt resource value: 0x7f07002c
 			public const int mr_media_route_button_content_description = 2131165228;
@@ -4146,6 +4197,9 @@ namespace MobileCRMAndroid
 			
 			// aapt resource value: 0x7f08007f
 			public const int Animation_AppCompat_DropDownUp = 2131230847;
+			
+			// aapt resource value: 0x7f08012d
+			public const int AppTheme = 2131231021;
 			
 			// aapt resource value: 0x7f080080
 			public const int Base_AlertDialog_AppCompat = 2131230848;
@@ -4543,14 +4597,14 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f080079
 			public const int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2131230841;
 			
-			// aapt resource value: 0x7f08012d
-			public const int MyTheme = 2131231021;
+			// aapt resource value: 0x7f08012e
+			public const int MyTheme = 2131231022;
+			
+			// aapt resource value: 0x7f080130
+			public const int MyTheme_ActionBar_TitleTextStyle = 2131231024;
 			
 			// aapt resource value: 0x7f08012f
-			public const int MyTheme_ActionBar_TitleTextStyle = 2131231023;
-			
-			// aapt resource value: 0x7f08012e
-			public const int MyTheme_ActionBarStyle = 2131231022;
+			public const int MyTheme_ActionBarStyle = 2131231023;
 			
 			// aapt resource value: 0x7f080019
 			public const int Platform_AppCompat = 2131230745;

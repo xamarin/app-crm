@@ -30,7 +30,6 @@ namespace MobileCRM.Pages.Sales
 
             #region the sales graph
             SalesChartView chartView = new SalesChartView(ViewModel);
-            ViewModel.SalesChartDataPoints.CollectionChanged += (sender, e) => chartView.SetSalesChartData(ViewModel.SalesChartDataPoints);
 
             #endregion
 
