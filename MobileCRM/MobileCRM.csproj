@@ -153,7 +153,6 @@
     <Compile Include="Pages\Products\CategoryListPage.cs" />
     <Compile Include="Pages\Products\ProductDetailPage.cs" />
     <Compile Include="Pages\Products\ProductListPage.cs" />
-    <Compile Include="Pages\Products\ProductNavigationPage.cs" />
     <Compile Include="ViewModels\Products\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\Products\ProductsViewModel.cs" />
     <Compile Include="Clients\ICatalogClient.cs" />

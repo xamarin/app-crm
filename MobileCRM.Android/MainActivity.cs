@@ -27,6 +27,8 @@ namespace MobileCRMAndroid
 
             Insights.Initialize("e548c92073ff9ed3a0bc529d2edf896009d81c9c", this);
 
+            Forms.SetTitleBarVisibility(AndroidTitleBarVisibility.Never);
+
             LoadApplication(new App());
         }
 
