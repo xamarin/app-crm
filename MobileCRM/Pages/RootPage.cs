@@ -9,8 +9,6 @@ namespace MobileCRM.Pages
 {
     public class RootPage : TabbedPage
     {
-        public IPlatformParameters PlatformParameters { get; set; }
-
         public RootPage()
         {
             // the Sales tab page
