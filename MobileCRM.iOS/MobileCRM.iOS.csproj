@@ -305,6 +305,8 @@
     <BundleResource Include="Resources\CustomersTab%403x.png" />
     <BundleResource Include="Resources\ProductsTab%403x.png" />
     <BundleResource Include="Resources\SalesTab%403x.png" />
+    <BundleResource Include="Resources\LeadContactDetailTab%403x.png" />
+    <BundleResource Include="Resources\LeadDetailTab%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

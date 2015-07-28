@@ -11,13 +11,13 @@ namespace MobileCRM.Pages.Sales
             Children.Add(new LeadDetailPage(viewModel)
                 {
                     Title = TextResources.Details,
-//                    Icon = new FileImageSource() { File = "" }
+                    Icon = new FileImageSource() { File = "LeadDetailTab" }
                 });
 
             Children.Add(new LeadContactDetailPage(viewModel)
                 {
                     Title = TextResources.Contact,
-//                    Icon = new FileImageSource() { File = "" }
+                    Icon = new FileImageSource() { File = "LeadContactDetailTab" }
                 });
         }
     }

@@ -20,6 +20,8 @@ namespace MobileCRM.Views.Sales
                 YAlign = TextAlignment.Center
             };
 
+            Device.OnPlatform(iOS: () => headerTitleLabel.TextColor = Color.Black);
+
             Label weeklyAverageTitleLabel = new Label()
             {
                 Text = TextResources.SalesChartHeaderWeeklyAverageTitle.ToUpperInvariant(),
@@ -39,10 +41,13 @@ namespace MobileCRM.Views.Sales
                     iOS: Device.GetNamedSize(NamedSize.Large, typeof(Label)),
                     Android: Device.GetNamedSize(NamedSize.Large, typeof(Label)),
                     WinPhone: Device.GetNamedSize(NamedSize.Large, typeof(Label))) * 1.1,
-                FontAttributes = FontAttributes.Bold,
                 XAlign = TextAlignment.End,
                 YAlign = TextAlignment.End
             };
+
+            Device.OnPlatform(
+                iOS: () => WeeklyAverageValueLabel.TextColor = Color.Black,
+                Android: () => WeeklyAverageValueLabel.FontAttributes = FontAttributes.Bold);
 
             relativeLayout.Children.Add(
                 view: headerTitleLabel,
@@ -69,6 +74,8 @@ namespace MobileCRM.Views.Sales
             );
 
             BackgroundColor = Palette._008;
+
+            Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._008);
 
             HeightRequest = 40;
 

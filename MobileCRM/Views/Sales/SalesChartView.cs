@@ -15,7 +15,7 @@ namespace MobileCRM.Views.Sales
         {
             BindingContext = viewModel;
 
-            BackgroundColor = Palette._008;
+            Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._008);
 
             double height = Device.OnPlatform(200, 190, 180);
 
@@ -44,13 +44,11 @@ namespace MobileCRM.Views.Sales
             };
 
             // Not currently working because a binding bug in the SyncFusion ColumnSeries.ItemsSourceProperty setter
-             columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, new Binding("SalesChartDataPoints"));
+            columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, new Binding("SalesChartDataPoints"));
 
             SfChart chart = new SfChart()
             {
                 BindingContext = ViewModel,
-
-                BackgroundColor = Palette._008,
 
                 HeightRequest = height,
 
@@ -63,6 +61,14 @@ namespace MobileCRM.Views.Sales
                     LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._009 }
                 }
             };
+            Device.OnPlatform(
+                iOS: () =>
+                {
+                    chart.BackgroundColor = Color.White;
+                    Padding = new Thickness(0, 0, 20, 0);
+                }, 
+                Android: () => chart.BackgroundColor = Palette._008);
+
             chart.Series.Add(columnSeries);
             chart.SetBinding(IsEnabledProperty, "IsModelLoaded");
             chart.SetBinding(ActivityIndicator.IsRunningProperty, "IsModelLoaded");
