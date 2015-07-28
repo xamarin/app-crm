@@ -11,16 +11,18 @@ namespace MobileCRM.Pages
     {
         public IPlatformParameters PlatformParameters { get; set; }
 
-        public RootPage ()
+        public RootPage()
         {
             // the Sales tab page
-            this.Children.Add (new SalesDashboardPage(new SalesDashboardViewModel(Navigation)) { Title = "Sales", Icon = new FileImageSource() { File = "SalesTab" } });
+            this.Children.Add(new SalesDashboardPage(new SalesDashboardViewModel(Navigation)) { Title = "Sales", Icon = new FileImageSource() { File = "SalesTab" } });
 
             // the Customers tab page
-            this.Children.Add (new ContentPage () { Title = "Customers", Icon = new FileImageSource() { File = "CustomersTab" } });
+            this.Children.Add(new ContentPage() { Title = "Customers", Icon = new FileImageSource() { File = "CustomersTab" } });
 
             // the Products tab page
-            this.Children.Add (new NavigationPage(new CategoryListPage()) { Title = "Products", Icon = new FileImageSource() { File = "ProductsTab" } });
+            CategoryListPage categoryListPage = new CategoryListPage();
+            Device.OnPlatform(Android: () => NavigationPage.SetHasNavigationBar(categoryListPage, false)); // turn off navigation bar in Android
+            this.Children.Add(new NavigationPage(categoryListPage) { Title = "Products", Icon = new FileImageSource() { File = "ProductsTab" } });
         }
     }
 }

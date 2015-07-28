@@ -17,6 +17,8 @@ namespace MobileCRM.Pages.Products
 
         public ProductListPage(string categoryId, string title)
         {
+            
+
             _CategoryId = categoryId;
 
             Title = title;
