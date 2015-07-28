@@ -53,7 +53,7 @@ namespace MobileCRM.Pages.Products
             Content = stackLayout;
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
 

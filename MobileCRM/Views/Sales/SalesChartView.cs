@@ -15,9 +15,9 @@ namespace MobileCRM.Views.Sales
         {
             BindingContext = viewModel;
 
-            Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._008);
+            Device.OnPlatform(iOS: () => BackgroundColor = Color.Transparent, Android: () => BackgroundColor = Palette._008);
 
-            double height = Device.OnPlatform(200, 190, 180);
+            double height = Device.OnPlatform(190, 190, 180);
 
             ActivityIndicator chartActivityIndicator = new ActivityIndicator()
             {
@@ -64,8 +64,8 @@ namespace MobileCRM.Views.Sales
             Device.OnPlatform(
                 iOS: () =>
                 {
-                    chart.BackgroundColor = Color.White;
-                    Padding = new Thickness(0, 0, 20, 0);
+                    chart.BackgroundColor = Color.Transparent;
+                    Padding = new Thickness(0, 20, 30, 0);
                 }, 
                 Android: () => chart.BackgroundColor = Palette._008);
 

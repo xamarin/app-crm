@@ -62,6 +62,17 @@ namespace MobileCRM.Pages.Products
 
             Content = stackLayout;
         }
+
+        protected override  void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (ViewModel.IsInitialized)
+                return;
+            ViewModel.LoadCategoriesCommand.Execute(_CategoryId);
+            ViewModel.IsInitialized = true;
+
+        }
     }
 }
 

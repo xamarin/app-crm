@@ -91,7 +91,7 @@ namespace MobileCRM.Pages.Sales
             #endregion
 
             // assign the built-up stack layout to the Content property of this page
-            Content = stackLayout;
+            Content = new ScrollView() { Content = stackLayout };
 
             Content.IsVisible = false;
         }
