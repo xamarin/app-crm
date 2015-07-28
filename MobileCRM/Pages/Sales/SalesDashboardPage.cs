@@ -60,8 +60,6 @@ namespace MobileCRM.Pages.Sales
                 ItemTemplate = new DataTemplate(typeof(LeadListItemCell))
             };
             leadListView.SetBinding(LeadListView.ItemsSourceProperty, "Leads");
-            leadListView.SetBinding(LeadListView.RefreshCommandProperty, "LoadLeadsCommand");
-            leadListView.SetBinding(LeadListView.IsRefreshingProperty, "IsBusy", BindingMode.OneWay);
             leadListView.SetBinding(IsEnabledProperty, "IsModelLoaded");
             leadListView.SetBinding(IsVisibleProperty, "IsModelLoaded");
 
