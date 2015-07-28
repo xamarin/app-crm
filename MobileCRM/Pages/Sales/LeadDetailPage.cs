@@ -89,5 +89,11 @@ namespace MobileCRM.Pages.Sales
             // add the table view to the already existing stack layout in the base class
             StackLayout.Children.Add(tableView);
         }
+
+        #region implemented abstract members of BaseContentPage
+
+        protected override void ExecuteOnlyIfAuthenticated() { }
+
+        #endregion
     }
 }

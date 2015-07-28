@@ -96,18 +96,13 @@ namespace MobileCRM.Pages.Sales
             Content.IsVisible = false;
         }
 
-        protected async override void OnAppearing()
+        protected override async void ExecuteOnlyIfAuthenticated()
         {
-            base.OnAppearing();
+            await ViewModel.ExecuteLoadSeedDataCommand();
 
-            if (App.IsAuthenticated)
-            {
-                await ViewModel.ExecuteLoadSeedDataCommand();
+            ViewModel.IsInitialized = true;
 
-                ViewModel.IsInitialized = true;
-
-                Insights.Track("Dashboard Page");
-            }
+            Insights.Track("Dashboard Page");
         }
 
         /// <summary>

@@ -9,8 +9,7 @@ namespace MobileCRM.Pages.Sales
     {
         // NOTE: the ViewModel is contained in the base class
 
-        public LeadContactDetailPage(LeadDetailViewModel viewModel)
-            : base(TextResources.Leads_LeadDetail_SaveButtonText.ToUpper(), viewModel)
+        public LeadContactDetailPage(LeadDetailViewModel viewModel) : base(TextResources.Leads_LeadDetail_SaveButtonText.ToUpper(), viewModel)
         {
             #region roleEntry
             EntryCell roleEntryCell = new EntryCell()
@@ -138,5 +137,11 @@ namespace MobileCRM.Pages.Sales
             // add the table view to the already existing stack layout in the base class
             StackLayout.Children.Add(tableView);
         }
+
+        #region implemented abstract members of BaseContentPage
+
+        protected override async void ExecuteOnlyIfAuthenticated() { }
+
+        #endregion
     }
 }

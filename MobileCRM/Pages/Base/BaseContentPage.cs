@@ -28,11 +28,20 @@ namespace MobileCRM.Pages.Base
                 await App.Authenticate(PlatformParameters);
 
                 Content.IsVisible = true;
+
+                ExecuteOnlyIfAuthenticated();
             }
             else
             {
                 Content.IsVisible = true;
+
+                ExecuteOnlyIfAuthenticated();
             }
         }
+
+        /// <summary>
+        /// Place any code in the overidden method that should execute only if the app is currently authenticated, like fetching data to update the view, etc.
+        /// </summary>
+        protected abstract void ExecuteOnlyIfAuthenticated();
     }
 }
