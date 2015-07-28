@@ -1,13 +1,12 @@
 ﻿using MobileCRM.Localization;
 using MobileCRM.Models;
-using MobileCRM.Pages.Base;
 using MobileCRM.ViewModels.Products;
 using MobileCRM.Views.Products;
 using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Products
 {
-    public class CategoryListPage : BaseContentPage
+    public class CategoryListPage : BaseProductPage
     {
         readonly string _CategoryId;
 

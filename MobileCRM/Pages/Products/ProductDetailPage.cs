@@ -1,11 +1,10 @@
 ﻿using MobileCRM.Models;
-using MobileCRM.Pages.Base;
 using MobileCRM.Views.Products;
 using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Products
 {
-    public class ProductDetailPage : BaseContentPage
+    public class ProductDetailPage : BaseProductPage
     {
         readonly CatalogProduct _CatalogProduct;
 

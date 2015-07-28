@@ -20,9 +20,7 @@ namespace MobileCRM.Pages
             this.Children.Add(new ContentPage() { Title = "Customers", Icon = new FileImageSource() { File = "CustomersTab" } });
 
             // the Products tab page
-            CategoryListPage categoryListPage = new CategoryListPage();
-            Device.OnPlatform(Android: () => NavigationPage.SetHasNavigationBar(categoryListPage, false)); // turn off navigation bar in Android
-            this.Children.Add(new NavigationPage(categoryListPage) { Title = "Products", Icon = new FileImageSource() { File = "ProductsTab" } });
+            this.Children.Add(new NavigationPage(new CategoryListPage()) { Title = "Products", Icon = new FileImageSource() { File = "ProductsTab" } });
         }
     }
 }
