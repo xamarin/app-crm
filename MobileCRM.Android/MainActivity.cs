@@ -8,6 +8,7 @@ using Android.Content;
 using Xamarin.Forms.Platform.Android;
 using MobileCRM;
 using Syncfusion.SfChart.XForms.Droid;
+using Android.Graphics.Drawables;
 
 namespace MobileCRMAndroid
 {
@@ -28,6 +29,11 @@ namespace MobileCRMAndroid
             Insights.Initialize("e548c92073ff9ed3a0bc529d2edf896009d81c9c", this);
 
             LoadApplication(new App());
+
+            if ((int)Build.VERSION.SdkInt >= 21) 
+            { 
+                ActionBar.SetIcon ( new ColorDrawable (Resources.GetColor (Android.Resource.Color.Transparent))); 
+            }
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)

@@ -12,7 +12,7 @@ namespace MobileCRM.Pages
         public RootPage()
         {
             // the Sales tab page
-            this.Children.Add(new SalesDashboardPage(new SalesDashboardViewModel(Navigation)) { Title = "Sales", Icon = new FileImageSource() { File = "SalesTab" } });
+            this.Children.Add(new NavigationPage(new SalesDashboardPage(new SalesDashboardViewModel(Navigation))) { Title = "Sales", Icon = new FileImageSource() { File = "SalesTab" } });
 
             // the Customers tab page
             this.Children.Add(new ContentPage() { Title = "Customers", Icon = new FileImageSource() { File = "CustomersTab" } });

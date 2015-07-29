@@ -34,7 +34,7 @@ namespace MobileCRM.Pages.Sales
 
             tabbedPageHeaderView.BackButtonImage.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
-                    Command = new Command(async () => await ViewModel.Navigation.PopModalAsync()),
+                    Command = new Command(async () => await ViewModel.Navigation.PopAsync()),
                     NumberOfTapsRequired = 1
                 });
 
@@ -53,7 +53,7 @@ namespace MobileCRM.Pages.Sales
                             {
                                 ViewModel.SaveLeadCommand.Execute(null);
 
-                                await ViewModel.Navigation.PopModalAsync();
+                                await ViewModel.Navigation.PopAsync();
                             }
                         }),
                     NumberOfTapsRequired = 1

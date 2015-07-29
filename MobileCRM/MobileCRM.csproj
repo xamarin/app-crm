@@ -137,13 +137,7 @@
     <Compile Include="Converters\ToUpperConverter.cs" />
     <Compile Include="Views\Sales\LeadListHeaderView.cs" />
     <Compile Include="Views\Sales\LeadListView.cs" />
-    <Compile Include="Views\Sales\SalesChartHeaderView_new.xaml.cs">
-      <DependentUpon>SalesChartHeaderView_new.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Sales\SalesChartHeaderView.cs" />
-    <Compile Include="Pages\Sales\SalesDashboardPage_new_new.xaml.cs">
-      <DependentUpon>SalesDashboardPage_new.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Base\BaseContentPage.cs" />
     <Compile Include="Pages\Sales\SalesDashboardPage.cs" />
     <Compile Include="Views\Sales\SalesChartView.cs" />
@@ -235,12 +229,6 @@
     <EmbeddedResource Include="Localization\TextResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Sales\SalesChartHeaderView_new.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Sales\SalesDashboardPage_new.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
