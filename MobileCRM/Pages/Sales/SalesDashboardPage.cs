@@ -96,7 +96,7 @@ namespace MobileCRM.Pages.Sales
             Content.IsVisible = false;
         }
 
-        protected override async void ExecuteOnlyIfAuthenticated()
+        protected override async Task ExecuteOnlyIfAuthenticated()
         {
             await ViewModel.ExecuteLoadSeedDataCommand();
 
@@ -105,13 +105,9 @@ namespace MobileCRM.Pages.Sales
             Insights.Track("Dashboard Page");
         }
 
-        /// <summary>
-        /// Performs a modal push of a LeadDetailTabbedPage.
-        /// </summary>
-        /// <param name="model">A <see cref="XamarinCRM.LeadListItemViewModel"/>.</param>
         async Task PushTabbedLeadPage(Account lead = null)
         {
-            await ViewModel.Navigation.PushModalAsync(new LeadDetailTabbedPage(new LeadDetailViewModel(ViewModel.Navigation, lead)));
+            await ViewModel.Navigation.PushModalAsync(new LeadDetailTabbedPage(new LeadDetailViewModel(Navigation, lead)));
         }
     }
 }

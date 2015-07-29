@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using MobileCRM.Views.Base;
-using MobileCRM.Localization;
 
 namespace MobileCRM.Views
 {
@@ -69,55 +68,49 @@ namespace MobileCRM.Views
             #endregion
 
             #region title label
-            if (!string.IsNullOrWhiteSpace(headerTitle))
+            var titleLabel = new Label()
             {
-                var titleLabel = new Label()
-                {
-                    Text = headerTitle,
-                    TextColor = Color.Black,
-                    FontSize = Device.OnPlatform(
-                        iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
-                        Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                        WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
-                    YAlign = TextAlignment.Center,
-                    XAlign = TextAlignment.Start,
-                    FontAttributes = FontAttributes.Bold,
-                    LineBreakMode = LineBreakMode.TailTruncation
-                };
+                Text = headerTitle,
+                TextColor = Color.Black,
+                FontSize = Device.OnPlatform(
+                    iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
+                    Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                    WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
+                YAlign = TextAlignment.Center,
+                XAlign = TextAlignment.Start,
+                FontAttributes = FontAttributes.Bold,
+                LineBreakMode = LineBreakMode.TailTruncation
+            };
 
-                relativeLayout.Children.Add(
-                    view: titleLabel,
-                    xConstraint: Constraint.RelativeToParent(parent => parent.Width * .25),
-                    yConstraint: Constraint.RelativeToParent(parent => 0),
-                    widthConstraint: Constraint.RelativeToParent(parent => parent.Width * .50),
-                    heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
-                );
-            }
+            relativeLayout.Children.Add(
+                view: titleLabel,
+                xConstraint: Constraint.RelativeToParent(parent => parent.Width * .25),
+                yConstraint: Constraint.RelativeToParent(parent => 0),
+                widthConstraint: Constraint.RelativeToParent(parent => parent.Width * .50),
+                heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
+            );
             #endregion
 
             #region done action title
-            if (!string.IsNullOrWhiteSpace(doneActionTitle))
+            DoneActionLabel = new Label()
             {
-                DoneActionLabel = new Label()
-                {
-                    Text = doneActionTitle,
-                    TextColor = Palette._013,
-                    FontSize = Device.OnPlatform(
-                        iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
-                        Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                        WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
-                    YAlign = TextAlignment.Center,
-                    XAlign = TextAlignment.End
-                };
+                Text = doneActionTitle,
+                TextColor = Palette._013,
+                FontSize = Device.OnPlatform(
+                    iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
+                    Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                    WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
+                YAlign = TextAlignment.Center,
+                XAlign = TextAlignment.End
+            };
 
-                relativeLayout.Children.Add(
-                    view: DoneActionLabel,
-                    xConstraint: Constraint.RelativeToParent(parent => parent.Width - (parent.Width * .25)),
-                    yConstraint: Constraint.RelativeToParent(parent => 0),
-                    widthConstraint: Constraint.RelativeToParent(parent => (parent.Width * .25)),
-                    heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
-                );
-            }
+            relativeLayout.Children.Add(
+                view: DoneActionLabel,
+                xConstraint: Constraint.RelativeToParent(parent => parent.Width - (parent.Width * .25)),
+                yConstraint: Constraint.RelativeToParent(parent => 0),
+                widthConstraint: Constraint.RelativeToParent(parent => (parent.Width * .25)),
+                heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
+            );
             #endregion
 
             #region compase the view hierarchy

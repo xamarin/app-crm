@@ -12,10 +12,10 @@ namespace MobileCRM.Views
 
             #region back button
             BackButtonImage = new Image()
-                {
-                    Source = "back_android",
-                    Aspect = Aspect.AspectFit
-                };
+            {
+                Source = "back_android",
+                Aspect = Aspect.AspectFit
+            };
 
             // Padding for the back button image. 
             // The value doesn't actually get applied to any particular Padding property. It just us helps with the math of relatively positioning the back button image.
@@ -32,68 +32,62 @@ namespace MobileCRM.Views
 
             #region outerContentView
             ContentView outerContentView = new ContentView()
-                {
-                    BackgroundColor = Palette._002
-                };
+            {
+                BackgroundColor = Palette._002
+            };
             #endregion
 
             #region setup innerContentView
             ContentView innerContentView = new ContentView()
-                {
-                    Padding = new Thickness(10, 0), // give the content some padding on the left and right
-                    BackgroundColor = Palette._001,
-                    HeightRequest = 44, // set the height of the content view
-                };
+            {
+                Padding = new Thickness(10, 0), // give the content some padding on the left and right
+                BackgroundColor = Palette._001,
+                HeightRequest = 44, // set the height of the content view
+            };
             #endregion
 
             #region title label
-            if (!string.IsNullOrWhiteSpace(headerTitle))
+            BackButtonLabel = new Label()
             {
-                BackButtonLabel = new Label()
-                    {
-                        Text = headerTitle,
-                        TextColor = Color.White,
-                        FontSize = Device.OnPlatform(
-                            iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
-                            Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                            WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
-                        YAlign = TextAlignment.Center,
-                        XAlign = TextAlignment.Start
-                    };
+                Text = headerTitle,
+                TextColor = Color.White,
+                FontSize = Device.OnPlatform(
+                    iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
+                    Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                    WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
+                YAlign = TextAlignment.Center,
+                XAlign = TextAlignment.Start
+            };
 
-                relativeLayout.Children.Add(
-                    view: BackButtonLabel,
-                    xConstraint: Constraint.RelativeToView(BackButtonImage, (parent, view) => view.Y + view.Width / 2),
-                    yConstraint: Constraint.RelativeToParent(parent => 0),
-                    widthConstraint: Constraint.RelativeToParent(parent => parent.Width * .60),
-                    heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
-                );
-            }
+            relativeLayout.Children.Add(
+                view: BackButtonLabel,
+                xConstraint: Constraint.RelativeToView(BackButtonImage, (parent, view) => view.Y + view.Width / 2),
+                yConstraint: Constraint.RelativeToParent(parent => 0),
+                widthConstraint: Constraint.RelativeToParent(parent => parent.Width * .60),
+                heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
+            );
             #endregion
 
             #region done action title
-            if (!string.IsNullOrWhiteSpace(doneActionTitle))
+            DoneActionLabel = new Label()
             {
-                DoneActionLabel = new Label()
-                    {
-                        Text = doneActionTitle,
-                        TextColor = Color.White,
-                        FontSize = Device.OnPlatform(
-                            iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
-                            Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                            WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
-                        YAlign = TextAlignment.Center,
-                        XAlign = TextAlignment.End
-                    };
+                Text = doneActionTitle,
+                TextColor = Color.White,
+                FontSize = Device.OnPlatform(
+                    iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
+                    Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                    WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
+                YAlign = TextAlignment.Center,
+                XAlign = TextAlignment.End
+            };
 
-                relativeLayout.Children.Add(
-                    view: DoneActionLabel,
-                    xConstraint: Constraint.RelativeToParent(parent => parent.Width - (parent.Width * .25)),
-                    yConstraint: Constraint.RelativeToParent(parent => 0),
-                    widthConstraint: Constraint.RelativeToParent(parent => (parent.Width * .25)),
-                    heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
-                );
-            }
+            relativeLayout.Children.Add(
+                view: DoneActionLabel,
+                xConstraint: Constraint.RelativeToParent(parent => parent.Width - (parent.Width * .25)),
+                yConstraint: Constraint.RelativeToParent(parent => 0),
+                widthConstraint: Constraint.RelativeToParent(parent => (parent.Width * .25)),
+                heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
+            );
             #endregion
 
             #region compase the view hierarchy

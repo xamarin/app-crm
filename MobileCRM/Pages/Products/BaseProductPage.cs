@@ -1,6 +1,7 @@
 ﻿using System;
 using MobileCRM.Pages.Base;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace MobileCRM
 {
@@ -19,7 +20,7 @@ namespace MobileCRM
         /// fetching data to update the view, etc.
         /// Empty here in BaseProductPage, because we currently don't require authentication in order to call the Products Web API.
         /// </summary>
-        protected override void ExecuteOnlyIfAuthenticated() { }
+        protected override async Task ExecuteOnlyIfAuthenticated() { }
 
         #endregion
     }

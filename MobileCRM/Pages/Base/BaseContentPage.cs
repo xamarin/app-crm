@@ -1,6 +1,4 @@
 ﻿using System.Threading.Tasks;
-using MobileCRM.Pages.Home;
-using MobileCRM.Services;
 using Xamarin.Forms;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
@@ -29,19 +27,19 @@ namespace MobileCRM.Pages.Base
 
                 Content.IsVisible = true;
 
-                ExecuteOnlyIfAuthenticated();
+                await ExecuteOnlyIfAuthenticated();
             }
             else
             {
                 Content.IsVisible = true;
 
-                ExecuteOnlyIfAuthenticated();
+                await ExecuteOnlyIfAuthenticated();
             }
         }
 
         /// <summary>
         /// Place any code in the overidden method that should execute only if the app is currently authenticated, like fetching data to update the view, etc.
         /// </summary>
-        protected abstract void ExecuteOnlyIfAuthenticated();
+        protected abstract Task ExecuteOnlyIfAuthenticated();
     }
 }

@@ -3,8 +3,8 @@ using MobileCRM.Views;
 using Xamarin.Forms;
 using MobileCRM.ViewModels.Sales;
 using System;
-using MobileCRM.Localization;
 using MobileCRM.Views.Base;
+using System.Threading.Tasks;
 
 namespace MobileCRM.Pages.Sales
 {
@@ -14,6 +14,8 @@ namespace MobileCRM.Pages.Sales
         {
             get { return BindingContext as LeadDetailViewModel; }
         }
+
+        BaseTabbedPageHeaderView _TabbedPageHeaderView;
 
         protected StackLayout StackLayout { get; private set; }
 
@@ -31,13 +33,11 @@ namespace MobileCRM.Pages.Sales
 
             StackLayout = new StackLayout();
 
-            BaseTabbedPageHeaderView tabbedPageHeaderView = null;
-
             Device.OnPlatform(
-                iOS: () => tabbedPageHeaderView = new IosTabbedPageHeaderView(Title, doneButtonText),
-                Android: () => tabbedPageHeaderView = new AndroidTabbedPageHeaderView(Title, doneButtonText));
+                iOS: () => _TabbedPageHeaderView = new IosTabbedPageHeaderView(Title, doneButtonText),
+                Android: () => _TabbedPageHeaderView = new AndroidTabbedPageHeaderView(Title, doneButtonText));
 
-            tabbedPageHeaderView.BackButtonImage.GestureRecognizers.Add(new TapGestureRecognizer()
+            _TabbedPageHeaderView.BackButtonImage.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
                     Command = new Command(async () => await ViewModel.Navigation.PopModalAsync()),
                     NumberOfTapsRequired = 1
@@ -45,13 +45,13 @@ namespace MobileCRM.Pages.Sales
 
 
             Device.OnPlatform(iOS: () => 
-                tabbedPageHeaderView.BackButtonLabel.GestureRecognizers.Add(new TapGestureRecognizer()
+                _TabbedPageHeaderView.BackButtonLabel.GestureRecognizers.Add(new TapGestureRecognizer()
                     {
                         Command = new Command(async () => await ViewModel.Navigation.PopModalAsync()),
                         NumberOfTapsRequired = 1
                     }));
 
-            tabbedPageHeaderView.DoneActionLabel.GestureRecognizers.Add(
+            _TabbedPageHeaderView.DoneActionLabel.GestureRecognizers.Add(
                 new TapGestureRecognizer()
                 {
                     Command = new Command(async () =>
@@ -72,9 +72,14 @@ namespace MobileCRM.Pages.Sales
                     NumberOfTapsRequired = 1
                 });
 
-            StackLayout.Children.Add(tabbedPageHeaderView);
+            StackLayout.Children.Add(_TabbedPageHeaderView);
 
             Content = StackLayout;
+        }
+
+        protected override async Task ExecuteOnlyIfAuthenticated() 
+        {
+            System.Diagnostics.Debug.WriteLine("BaseLeadDetailPage.ExecuteOnlyIfAuthenticated()");
         }
     }
 }

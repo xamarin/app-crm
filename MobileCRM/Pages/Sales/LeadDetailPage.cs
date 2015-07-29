@@ -1,8 +1,6 @@
 ﻿using MobileCRM.Models;
 using Xamarin.Forms;
 using MobileCRM.ViewModels.Sales;
-using System.ComponentModel;
-using MobileCRM.Localization;
 
 namespace MobileCRM.Pages.Sales
 {
@@ -10,8 +8,7 @@ namespace MobileCRM.Pages.Sales
     {
         // NOTE: the ViewModel is contained in the base class
 
-        public LeadDetailPage(LeadDetailViewModel viewModel)
-            : base(TextResources.Leads_LeadDetail_SaveButtonText.ToUpper(), viewModel)
+        public LeadDetailPage(LeadDetailViewModel viewModel) : base(TextResources.Leads_LeadDetail_SaveButtonText.ToUpper(), viewModel)
         {
             #region name entry
             EntryCell companyNameEntryCell = new EntryCell()
@@ -89,11 +86,5 @@ namespace MobileCRM.Pages.Sales
             // add the table view to the already existing stack layout in the base class
             StackLayout.Children.Add(tableView);
         }
-
-        #region implemented abstract members of BaseContentPage
-
-        protected override void ExecuteOnlyIfAuthenticated() { }
-
-        #endregion
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using MobileCRM.ViewModels.Sales;
-using MobileCRM.Localization;
 
 namespace MobileCRM.Pages.Sales
 {
@@ -8,8 +7,6 @@ namespace MobileCRM.Pages.Sales
     {
         public LeadDetailTabbedPage(LeadDetailViewModel viewModel)
         {
-            NavigationPage.SetHasNavigationBar(this, false);
-
             Children.Add(new LeadDetailPage(viewModel)
                 {
                     Title = TextResources.Details,
