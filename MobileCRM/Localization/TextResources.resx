@@ -26,6 +26,9 @@
 	<data name="Contact" xml:space="preserve">
     	<value>Contact</value>
 	</data>
+	<data name="Back" xml:space="preserve">
+    	<value>Back</value>
+	</data>
 
 
 

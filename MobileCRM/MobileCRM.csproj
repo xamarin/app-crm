@@ -141,7 +141,6 @@
     <Compile Include="Pages\Base\BaseContentPage.cs" />
     <Compile Include="Pages\Sales\SalesDashboardPage.cs" />
     <Compile Include="Views\Sales\SalesChartView.cs" />
-    <Compile Include="Views\TabbedPageHeaderView.cs" />
     <Compile Include="Pages\Home\RootPage_old.cs" />
     <Compile Include="Pages\RootPage.cs" />
     <Compile Include="Pages\Products\CategoryListPage.cs" />
@@ -170,6 +169,9 @@
     <Compile Include="Pages\Products\BaseProductPage.cs" />
     <Compile Include="Views\Products\ProductDetailRibbonView.cs" />
     <Compile Include="Views\Base\BaseNonPersistentSelectedItemListView.cs" />
+    <Compile Include="Views\IosTabbedPageHeaderView.cs" />
+    <Compile Include="Views\AndroidTabbedPageHeaderView.cs" />
+    <Compile Include="Views\Base\BaseCustomTabbedPageHeaderView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -230,6 +232,7 @@
     <EmbeddedResource Include="Localization\TextResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
+      <LogicalName>MobileCRM.TextResources.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

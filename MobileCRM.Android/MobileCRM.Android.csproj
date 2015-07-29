@@ -363,6 +363,7 @@
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values-v21\styles.xml" />
     <AndroidResource Include="Resources\drawable\icon_512.png" />
+    <AndroidResource Include="Resources\drawable\back_android.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamandroidsupportv7appcompat">

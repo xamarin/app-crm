@@ -36,7 +36,7 @@
     </IpaMetadata>
     <IpaPackageName>
     </IpaPackageName>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Joe Sauve (4W87998GG8)</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -216,7 +216,6 @@
     <BundleResource Include="Resources\settings%402x.png" />
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\back%402x.png" />
     <BundleResource Include="Resources\CustomersTab%403x.png" />
     <BundleResource Include="Resources\ProductsTab%403x.png" />
     <BundleResource Include="Resources\SalesTab%403x.png" />
@@ -245,6 +244,7 @@
     <BundleResource Include="Resources\icon_72.png" />
     <BundleResource Include="Resources\icon_76.png" />
     <BundleResource Include="Resources\icon_80.png" />
+    <BundleResource Include="Resources\back_ios%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

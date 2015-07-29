@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using MobileCRM.ViewModels.Sales;
 using System;
 using MobileCRM.Localization;
+using MobileCRM.Views.Base;
 
 namespace MobileCRM.Pages.Sales
 {
@@ -30,13 +31,25 @@ namespace MobileCRM.Pages.Sales
 
             StackLayout = new StackLayout();
 
-            TabbedPageHeaderView tabbedPageHeaderView = new TabbedPageHeaderView(Title, doneButtonText);
+            BaseTabbedPageHeaderView tabbedPageHeaderView = null;
+
+            Device.OnPlatform(
+                iOS: () => tabbedPageHeaderView = new IosTabbedPageHeaderView(Title, doneButtonText),
+                Android: () => tabbedPageHeaderView = new AndroidTabbedPageHeaderView(Title, doneButtonText));
 
             tabbedPageHeaderView.BackButtonImage.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
-                    Command = new Command(async () => await ViewModel.Navigation.PopAsync()),
+                    Command = new Command(async () => await ViewModel.Navigation.PopModalAsync()),
                     NumberOfTapsRequired = 1
                 });
+
+
+            Device.OnPlatform(iOS: () => 
+                tabbedPageHeaderView.BackButtonLabel.GestureRecognizers.Add(new TapGestureRecognizer()
+                    {
+                        Command = new Command(async () => await ViewModel.Navigation.PopModalAsync()),
+                        NumberOfTapsRequired = 1
+                    }));
 
             tabbedPageHeaderView.DoneActionLabel.GestureRecognizers.Add(
                 new TapGestureRecognizer()
@@ -44,16 +57,16 @@ namespace MobileCRM.Pages.Sales
                     Command = new Command(async () =>
                         {
                             var answer = await DisplayAlert(
-                                         title: TextResources.Leads_SaveConfirmTitle,
-                                         message: TextResources.Leads_SaveConfirmDescription,
-                                         accept: TextResources.Save,
-                                         cancel: TextResources.Cancel);
+                                             title: TextResources.Leads_SaveConfirmTitle,
+                                             message: TextResources.Leads_SaveConfirmDescription,
+                                             accept: TextResources.Save,
+                                             cancel: TextResources.Cancel);
 
                             if (answer)
                             {
                                 ViewModel.SaveLeadCommand.Execute(null);
 
-                                await ViewModel.Navigation.PopAsync();
+                                await ViewModel.Navigation.PopModalAsync();
                             }
                         }),
                     NumberOfTapsRequired = 1

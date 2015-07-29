@@ -111,7 +111,7 @@ namespace MobileCRM.Pages.Sales
         /// <param name="model">A <see cref="XamarinCRM.LeadListItemViewModel"/>.</param>
         async Task PushTabbedLeadPage(Account lead = null)
         {
-            await Navigation.PushAsync(new LeadDetailTabbedPage(new LeadDetailViewModel(Navigation, lead)));
+            await ViewModel.Navigation.PushModalAsync(new LeadDetailTabbedPage(new LeadDetailViewModel(ViewModel.Navigation, lead)));
         }
     }
 }

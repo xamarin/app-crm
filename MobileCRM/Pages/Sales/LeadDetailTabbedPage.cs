@@ -8,6 +8,8 @@ namespace MobileCRM.Pages.Sales
     {
         public LeadDetailTabbedPage(LeadDetailViewModel viewModel)
         {
+            NavigationPage.SetHasNavigationBar(this, false);
+
             Children.Add(new LeadDetailPage(viewModel)
                 {
                     Title = TextResources.Details,
