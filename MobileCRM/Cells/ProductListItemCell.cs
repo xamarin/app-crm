@@ -62,7 +62,10 @@ namespace MobileCRM.Cells
             contentView.Padding = padding;
 
             // A container for the "top-level" of the cell's view hierarchy.
-            RelativeLayout relativeLayout = new RelativeLayout();
+            RelativeLayout relativeLayout = new RelativeLayout()
+            {
+                BackgroundColor = Color.Transparent
+            };
 
             relativeLayout.Children.Add(
                 view: productThumbnailImage,

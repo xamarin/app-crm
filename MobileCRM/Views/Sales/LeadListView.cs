@@ -1,8 +1,9 @@
 ﻿using Xamarin.Forms;
+using MobileCRM.Views.Base;
 
 namespace MobileCRM.Views.Sales
 {
-    public class LeadListView : ListView
+    public class LeadListView : BaseNonPersistentSelectedItemListView
     {
         public LeadListView()
         {

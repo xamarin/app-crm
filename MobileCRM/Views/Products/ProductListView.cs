@@ -1,9 +1,10 @@
 ﻿using MobileCRM.Cells;
 using Xamarin.Forms;
+using MobileCRM.Views.Base;
 
 namespace MobileCRM.Views.Products
 {
-    public class ProductListView : ListView
+    public class ProductListView : BaseNonPersistentSelectedItemListView
     {
         public ProductListView()
         {

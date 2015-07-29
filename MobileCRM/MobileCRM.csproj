@@ -156,7 +156,6 @@
     <Compile Include="Clients\ResponseFetcher.cs" />
     <Compile Include="Views\Products\CategoryListView.cs" />
     <Compile Include="Views\Products\ProductDetailDescriptionView.cs" />
-    <Compile Include="Views\Products\ProductDetailRibbon.cs" />
     <Compile Include="Views\Products\ProductListView.cs" />
     <Compile Include="Cells\ProductListItemCell.cs" />
     <Compile Include="Cells\CategoryListItemCell.cs" />
@@ -169,6 +168,8 @@
     <Compile Include="Authenticator.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Pages\Products\BaseProductPage.cs" />
+    <Compile Include="Views\Products\ProductDetailRibbonView.cs" />
+    <Compile Include="Views\Base\BaseNonPersistentSelectedItemListView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -288,6 +289,7 @@
     <Folder Include="ViewModels\Products\" />
     <Folder Include="Clients\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">

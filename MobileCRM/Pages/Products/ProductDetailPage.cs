@@ -23,7 +23,7 @@ namespace MobileCRM.Pages.Products
             #endregion
 
             #region ribbonView
-            ProductDetailRibbon detailRibbon = new ProductDetailRibbon(_CatalogProduct);
+            ProductDetailRibbonView detailRibbon = new ProductDetailRibbonView(_CatalogProduct);
             #endregion
 
             #region descriptionView
