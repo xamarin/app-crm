@@ -71,10 +71,9 @@
     <MtouchArch>ARMv7</MtouchArch>
     <AssemblyName>MobileCRMiOS</AssemblyName>
     <MtouchSdkVersion>8.1</MtouchSdkVersion>
-    <MtouchExtraArgs>
-    </MtouchExtraArgs>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
     <BuildIpa>True</BuildIpa>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -223,6 +222,17 @@
     <BundleResource Include="Resources\SalesTab%403x.png" />
     <BundleResource Include="Resources\LeadContactDetailTab%403x.png" />
     <BundleResource Include="Resources\LeadDetailTab%403x.png" />
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Icon-72.png" />
+    <BundleResource Include="Resources\Icon-72%402x.png" />
+    <BundleResource Include="Resources\Icon-76.png" />
+    <BundleResource Include="Resources\Icon-Small.png" />
+    <BundleResource Include="Resources\Icon-Small%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-50.png" />
+    <BundleResource Include="Resources\Icon-Small-50%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-40.png" />
+    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
