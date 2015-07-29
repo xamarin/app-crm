@@ -222,7 +222,6 @@
     <BundleResource Include="Resources\SalesTab%403x.png" />
     <BundleResource Include="Resources\LeadContactDetailTab%403x.png" />
     <BundleResource Include="Resources\LeadDetailTab%403x.png" />
-    <BundleResource Include="Resources\Icon.png" />
     <BundleResource Include="Resources\Icon%402x.png" />
     <BundleResource Include="Resources\Icon-72.png" />
     <BundleResource Include="Resources\Icon-72%402x.png" />
@@ -233,6 +232,19 @@
     <BundleResource Include="Resources\Icon-Small-50%402x.png" />
     <BundleResource Include="Resources\Icon-Small-40.png" />
     <BundleResource Include="Resources\Icon-Small-40%402x.png" />
+    <BundleResource Include="Resources\icon_100.png" />
+    <BundleResource Include="Resources\icon_114.png" />
+    <BundleResource Include="Resources\icon_120.png" />
+    <BundleResource Include="Resources\icon_144.png" />
+    <BundleResource Include="Resources\icon_152.png" />
+    <BundleResource Include="Resources\icon_29.png" />
+    <BundleResource Include="Resources\icon_40.png" />
+    <BundleResource Include="Resources\icon_50.png" />
+    <BundleResource Include="Resources\icon_57.png" />
+    <BundleResource Include="Resources\icon_58.png" />
+    <BundleResource Include="Resources\icon_72.png" />
+    <BundleResource Include="Resources\icon_76.png" />
+    <BundleResource Include="Resources\icon_80.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

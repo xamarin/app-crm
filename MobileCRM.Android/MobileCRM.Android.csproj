@@ -359,10 +359,10 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\tab_unselected_focused_mobilecrmtheme.9.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\tab_unselected_mobilecrmtheme.9.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\tab_unselected_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable\icon.png" />
     <AndroidResource Include="Resources\values\styles_mobilecrmtheme.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values-v21\styles.xml" />
+    <AndroidResource Include="Resources\drawable\icon_512.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamandroidsupportv7appcompat">
