@@ -1,23 +1,22 @@
-﻿using System;
+﻿using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
-using MobileCRM.Pages.Base;
-using MobileCRM.iOS;
+using MobileCRM.Pages.Sales;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using MobileCRM.iOS;
 
-[assembly: ExportRenderer(typeof(BaseContentPage), typeof(BaseContentPageRenderer))]
+[assembly: ExportRenderer(typeof(SalesDashboardPage), typeof(SalesDashboardPageRenderer))]
 
 namespace MobileCRM.iOS
 {
-    public class BaseContentPageRenderer : PageRenderer
+    public class SalesDashboardPageRenderer : PageRenderer
     {
-        BaseContentPage _Page;
+        SalesDashboardPage _Page;
 
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
         {
             base.OnElementChanged(e);
 
-            _Page = e.NewElement as BaseContentPage;
+            _Page = e.NewElement as SalesDashboardPage;
         }
 
         public override void ViewDidLoad()

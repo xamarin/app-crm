@@ -261,7 +261,7 @@
     <Compile Include="Renderers\ListTextCellRenderer.cs" />
     <Compile Include="Renderers\PieChartRenderer.cs" />
     <Compile Include="Localization\Localize.cs" />
-    <Compile Include="Renderers\BaseContentPageRenderer.cs" />
+    <Compile Include="Renderers\SalesDashboardPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\xamarin-icon-simplified.png" />

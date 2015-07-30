@@ -3227,7 +3227,7 @@ namespace MobileCRMAndroid
 			public const int ic_setting_light = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int icon_512 = 2130837633;
+			public const int icon_192 = 2130837633;
 			
 			// aapt resource value: 0x7f020082
 			public const int list_focused_mobilecrmtheme = 2130837634;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MobileCRM.Pages.Sales
 {
-    public abstract class BaseLeadDetailPage : BaseContentPage
+    public abstract class BaseLeadDetailPage : ContentPage
     {
         protected LeadDetailViewModel ViewModel
         {
@@ -39,7 +39,7 @@ namespace MobileCRM.Pages.Sales
 
             _TabbedPageHeaderView.BackButtonImage.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
-                    Command = new Command(async () => await ViewModel.Navigation.PopModalAsync()),
+                    Command = new Command(async () => await ViewModel.PopModalAsync()),
                     NumberOfTapsRequired = 1
                 });
 
@@ -47,7 +47,7 @@ namespace MobileCRM.Pages.Sales
             Device.OnPlatform(iOS: () => 
                 _TabbedPageHeaderView.BackButtonLabel.GestureRecognizers.Add(new TapGestureRecognizer()
                     {
-                        Command = new Command(async () => await ViewModel.Navigation.PopModalAsync()),
+                        Command = new Command(async () => await ViewModel.PopModalAsync()),
                         NumberOfTapsRequired = 1
                     }));
 
@@ -66,7 +66,7 @@ namespace MobileCRM.Pages.Sales
                             {
                                 ViewModel.SaveLeadCommand.Execute(null);
 
-                                await ViewModel.Navigation.PopModalAsync();
+                                await ViewModel.PopModalAsync();
                             }
                         }),
                     NumberOfTapsRequired = 1
@@ -77,9 +77,9 @@ namespace MobileCRM.Pages.Sales
             Content = StackLayout;
         }
 
-        protected override async Task ExecuteOnlyIfAuthenticated() 
-        {
-            System.Diagnostics.Debug.WriteLine("BaseLeadDetailPage.ExecuteOnlyIfAuthenticated()");
-        }
+//        protected override async Task ExecuteOnlyIfAuthenticated() 
+//        {
+//            System.Diagnostics.Debug.WriteLine("BaseLeadDetailPage.ExecuteOnlyIfAuthenticated()");
+//        }
     }
 }

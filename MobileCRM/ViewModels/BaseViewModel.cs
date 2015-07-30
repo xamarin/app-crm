@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace MobileCRM.ViewModels
 {
@@ -10,6 +11,30 @@ namespace MobileCRM.ViewModels
         public INavigation Navigation { get; set; }
 
         public bool IsInitialized { get; set; }
+
+        public async Task PushModalAsync(Page page)
+        {
+            if (Navigation != null)
+                await Navigation.PushModalAsync(page);
+        }
+
+        public async Task PopModalAsync()
+        {
+            if (Navigation != null)
+                await Navigation.PopModalAsync();
+        }
+
+        public async Task PushAsync(Page page)
+        {
+            if (Navigation != null)
+                await Navigation.PushAsync(page);
+        }
+
+        public async Task PopAsync()
+        {
+            if (Navigation != null)
+                await Navigation.PopAsync();
+        }
 
         bool canLoadMore;
         /// <summary>
@@ -45,7 +70,7 @@ namespace MobileCRM.ViewModels
             get { return isModelLoaded; }
             set { SetProperty(ref isModelLoaded, value, IsModelLoadedPropertyName); }
         }
-    
+
         string title = string.Empty;
         /// <summary>
         /// Gets or sets the "Title" property

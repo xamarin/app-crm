@@ -1,17 +1,18 @@
 ﻿using System.Threading.Tasks;
 using MobileCRM.Cells;
-using MobileCRM.Localization;
 using MobileCRM.Models;
-using MobileCRM.Pages.Base;
 using MobileCRM.ViewModels.Sales;
 using MobileCRM.Views.Sales;
 using Xamarin;
 using Xamarin.Forms;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace MobileCRM.Pages.Sales
 {
-    public class SalesDashboardPage : BaseContentPage
+    public class SalesDashboardPage : ContentPage
     {
+        public IPlatformParameters PlatformParameters { get; set; }
+
         SalesDashboardViewModel ViewModel
         {
             get { return BindingContext as SalesDashboardViewModel; }
@@ -94,10 +95,18 @@ namespace MobileCRM.Pages.Sales
             Content = new ScrollView() { Content = stackLayout };
 
             Content.IsVisible = false;
-        }
+        } 
 
-        protected override async Task ExecuteOnlyIfAuthenticated()
+        protected override async void OnAppearing()
         {
+            base.OnAppearing();
+
+            Content.IsVisible = false;
+
+            await App.Authenticate(PlatformParameters);
+
+            Content.IsVisible = true;
+
             await ViewModel.ExecuteLoadSeedDataCommand();
 
             ViewModel.IsInitialized = true;
@@ -105,9 +114,18 @@ namespace MobileCRM.Pages.Sales
             Insights.Track("Dashboard Page");
         }
 
+//        protected override async Task ExecuteOnlyIfAuthenticated()
+//        {
+//            await ViewModel.ExecuteLoadSeedDataCommand();
+//
+//            ViewModel.IsInitialized = true;
+//
+//            Insights.Track("Dashboard Page");
+//        }
+
         async Task PushTabbedLeadPage(Account lead = null)
         {
-            await ViewModel.Navigation.PushModalAsync(new LeadDetailTabbedPage(new LeadDetailViewModel(Navigation, lead)));
+            await ViewModel.PushModalAsync(new LeadDetailTabbedPage(new LeadDetailViewModel(Navigation, lead)));
         }
     }
 }
