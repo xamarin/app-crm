@@ -211,6 +211,7 @@
     <Compile Include="Renderers\MenuCellRenderer.cs" />
     <Compile Include="Localization\Localize.cs" />
     <Compile Include="Renderers\SalesDashboardPageRenderer.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -242,135 +243,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Localization\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\layout\" />
     <Folder Include="Resources\values\" />
-    <Folder Include="Resources\drawable-hdpi\" />
-    <Folder Include="Resources\drawable\" />
-    <Folder Include="Resources\drawable-mdpi\" />
-    <Folder Include="Resources\drawable-xhdpi\" />
-    <Folder Include="Resources\drawable-xxhdpi\" />
-    <Folder Include="Resources\values-v21\" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ab_background_textured_mobilecrmtheme.xml" />
-    <AndroidResource Include="Resources\drawable\btn_cab_done_mobilecrmtheme.xml" />
-    <AndroidResource Include="Resources\drawable\progress_horizontal_mobilecrmtheme.xml" />
-    <AndroidResource Include="Resources\drawable\selectable_background_mobilecrmtheme.xml" />
-    <AndroidResource Include="Resources\drawable\spinner_background_ab_mobilecrmtheme.xml" />
-    <AndroidResource Include="Resources\drawable\tab_indicator_ab_mobilecrmtheme.xml" />
-    <AndroidResource Include="Resources\drawable-hdpi\ab_bottom_solid_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ab_solid_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ab_stacked_solid_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ab_texture_tile_mobilecrmtheme.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ab_transparent_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\btn_cab_done_default_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\btn_cab_done_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\btn_cab_done_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\cab_background_bottom_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\cab_background_top_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\list_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\list_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\menu_dropdown_panel_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\progress_bg_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\progress_primary_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\progress_secondary_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\spinner_ab_default_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\spinner_ab_disabled_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\spinner_ab_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\spinner_ab_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\tab_selected_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\tab_selected_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\tab_selected_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\tab_unselected_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\tab_unselected_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\tab_unselected_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ab_bottom_solid_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ab_solid_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ab_stacked_solid_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ab_texture_tile_mobilecrmtheme.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ab_transparent_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\btn_cab_done_default_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\btn_cab_done_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\btn_cab_done_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\cab_background_bottom_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\cab_background_top_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\list_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\list_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\menu_dropdown_panel_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\progress_bg_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\progress_primary_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\progress_secondary_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\spinner_ab_default_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\spinner_ab_disabled_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\spinner_ab_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\spinner_ab_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\tab_selected_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\tab_selected_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\tab_selected_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\tab_unselected_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\tab_unselected_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\tab_unselected_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ab_bottom_solid_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ab_solid_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ab_stacked_solid_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ab_texture_tile_mobilecrmtheme.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ab_transparent_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\btn_cab_done_default_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\btn_cab_done_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\btn_cab_done_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\cab_background_bottom_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\cab_background_top_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\list_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\list_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\menu_dropdown_panel_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\progress_bg_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\progress_primary_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\progress_secondary_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\spinner_ab_default_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\spinner_ab_disabled_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\spinner_ab_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\spinner_ab_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\tab_selected_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\tab_selected_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\tab_selected_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\tab_unselected_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\tab_unselected_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\tab_unselected_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ab_bottom_solid_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ab_solid_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ab_stacked_solid_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ab_texture_tile_mobilecrmtheme.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\ab_transparent_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\btn_cab_done_default_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\btn_cab_done_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\btn_cab_done_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\cab_background_bottom_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\cab_background_top_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\list_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\list_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\menu_dropdown_panel_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\progress_bg_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\progress_primary_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\progress_secondary_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\spinner_ab_default_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\spinner_ab_disabled_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\spinner_ab_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\spinner_ab_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\tab_selected_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\tab_selected_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\tab_selected_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\tab_unselected_focused_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\tab_unselected_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\tab_unselected_pressed_mobilecrmtheme.9.png" />
-    <AndroidResource Include="Resources\values\styles_mobilecrmtheme.xml" />
-    <AndroidResource Include="Resources\values\colors.xml" />
-    <AndroidResource Include="Resources\values-v21\styles.xml" />
-    <AndroidResource Include="Resources\drawable\back_android.png" />
-    <AndroidResource Include="Resources\drawable\icon_192.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="xamandroidsupportv7appcompat">
-      <Version>22.2.0.0</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
+    <AndroidResource Include="Resources\drawable\icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
   </ItemGroup>
 </Project>
