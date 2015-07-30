@@ -244,12 +244,6 @@
   <ItemGroup>
     <Folder Include="Localization\" />
     <Folder Include="Resources\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\" />
     <Folder Include="Resources\layout\" />
     <Folder Include="Resources\values\" />
   </ItemGroup>

@@ -14,7 +14,7 @@ namespace MobileCRM.iOS
             new SfChartRenderer();
 
             #if DEBUG
-            //Xamarin.Calabash.Start();
+            Xamarin.Calabash.Start();
             #endif
 
             // Azure Mobile Services initilization
