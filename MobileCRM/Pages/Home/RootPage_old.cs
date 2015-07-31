@@ -7,12 +7,12 @@ using MobileCRM.Pages.Contacts;
 using MobileCRM.Pages.Leads;
 using MobileCRM.Pages.Settings;
 using MobileCRM.Services;
-using MobileCRM.ViewModels.Accounts;
 using MobileCRM.ViewModels.Contacts;
 using MobileCRM.ViewModels.Leads;
 using Xamarin.Forms;
 using MenuItem = MobileCRM.Models.MenuItem;
 using MobileCRM.ViewModels.Sales;
+using MobileCRM.ViewModels.Customers;
 
 namespace MobileCRM.Pages.Home
 {
@@ -105,7 +105,7 @@ namespace MobileCRM.Pages.Home
                         if (accounts != null)
                             return accounts;
 
-                        var vm = new AccountsViewModel() { Navigation = Navigation };
+                        var vm = new CustomersViewModel() { Navigation = Navigation };
                         accounts = new NavigationPage(new AccountsView(vm));
 
                         return accounts; 

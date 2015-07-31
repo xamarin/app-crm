@@ -1,14 +1,14 @@
 ﻿using System;
 using Xamarin.Forms;
 using MobileCRM.Layouts;
-using MobileCRM.ViewModels.Accounts;
 using MobileCRM.Pages.Base;
 using MobileCRM.Views.Base;
 using MobileCRM.Views;
+using MobileCRM.ViewModels.Customers;
 
 namespace MobileCRM.Pages.Customers
 {
-    public class BaseCustomerDetailPage : ModelEnforcedContentPage<AccountDetailsViewModel>
+    public class BaseCustomerDetailPage : ModelEnforcedContentPage<CustomerDetailViewModel>
     {
         BaseTabbedPageHeaderView _TabbedPageHeaderView;
 

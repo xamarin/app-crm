@@ -4,19 +4,19 @@ using System.Linq;
 using MobileCRM.CustomControls;
 using MobileCRM.Helpers;
 using MobileCRM.Interfaces;
-using MobileCRM.ViewModels.Accounts;
 using MobileCRM.ViewModels.Orders;
 using Xamarin;
 using Xamarin.Forms;
+using MobileCRM.ViewModels.Customers;
 
 namespace MobileCRM.Pages.Accounts
 {
     public partial class AccountDetailsView
     {
-        AccountDetailsViewModel viewModelAcct;
+        CustomerDetailViewModel viewModelAcct;
         OrdersViewModel viewModelOrders;
 
-        public AccountDetailsView(AccountDetailsViewModel vmAcct, OrdersViewModel vmOrders)
+        public AccountDetailsView(CustomerDetailViewModel vmAcct, OrdersViewModel vmOrders)
         {
             InitializeComponent();
             vmOrders.Account = vmAcct.Account;

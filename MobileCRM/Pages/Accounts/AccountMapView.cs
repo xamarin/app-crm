@@ -1,23 +1,23 @@
 ﻿using System.Threading.Tasks;
 using MobileCRM.Pages.Base;
-using MobileCRM.ViewModels.Accounts;
 using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using MobileCRM.Layouts;
+using MobileCRM.ViewModels.Customers;
 
 namespace MobileCRM.Pages.Accounts
 {
     public class AccountMapView : BaseView
     {
-        public AccountDetailsViewModel ViewModel
+        public CustomerDetailViewModel ViewModel
         {
-            get { return BindingContext as AccountDetailsViewModel; }
+            get { return BindingContext as CustomerDetailViewModel; }
         }
 
         Map map;
 
-        public AccountMapView(AccountDetailsViewModel vm)
+        public AccountMapView(CustomerDetailViewModel vm)
         {
             this.Title = "Map";
             this.Icon = "map.png";

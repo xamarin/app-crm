@@ -2,8 +2,8 @@
 using MobileCRM.Pages.Sales;
 using Xamarin.Forms;
 using MobileCRM.ViewModels.Sales;
-using MobileCRM.ViewModels.Accounts;
 using MobileCRM.Pages.Customers;
+using MobileCRM.ViewModels.Customers;
 
 namespace MobileCRM.Pages
 {
@@ -24,7 +24,7 @@ namespace MobileCRM.Pages
             this.Children.Add(
                 new CustomersPage()
                 { 
-                    BindingContext = new AccountsViewModel() { Navigation = Navigation }, 
+                    BindingContext = new CustomersViewModel() { Navigation = Navigation }, 
                     Title = TextResources.MainTabs_Customers, 
                     Icon = new FileImageSource() { File = "CustomersTab" } 
                 }

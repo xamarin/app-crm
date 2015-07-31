@@ -1,10 +1,5 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using MobileCRM.Layouts;
-using MobileCRM.Models;
-using MobileCRM.ViewModels.Accounts;
-using MobileCRM.Pages.Base;
-using System.Collections.Generic;
 
 namespace MobileCRM.Pages.Customers
 {

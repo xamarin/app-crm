@@ -1,14 +1,14 @@
 ﻿using System;
 using MobileCRM.Interfaces;
-using MobileCRM.ViewModels.Accounts;
 using Xamarin;
 using Xamarin.Forms;
+using MobileCRM.ViewModels.Customers;
 
 namespace MobileCRM.Pages.Accounts
 {
     public partial class AccountContactView
     {
-        public AccountContactView(AccountDetailsViewModel vm)
+        public AccountContactView(CustomerDetailViewModel vm)
         {
             InitializeComponent();
 

@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using MobileCRM.ViewModels.Accounts;
+﻿using Xamarin.Forms;
 using Xamarin;
 using MobileCRM.Cells;
 using MobileCRM.Customers;
@@ -8,10 +6,11 @@ using MobileCRM.Layouts;
 using MobileCRM.Models;
 using System.Threading.Tasks;
 using MobileCRM.Pages.Base;
+using MobileCRM.ViewModels.Customers;
 
 namespace MobileCRM.Pages.Customers
 {
-    public class CustomersPage : ModelEnforcedContentPage<AccountsViewModel>
+    public class CustomersPage : ModelEnforcedContentPage<CustomersViewModel>
     {
         public CustomersPage()
         {
@@ -70,7 +69,7 @@ namespace MobileCRM.Pages.Customers
 
         async Task PushTabbedPage(Account account = null)
         {
-            AccountDetailsViewModel viewModel = new AccountDetailsViewModel(account) { Navigation = ViewModel.Navigation }; 
+            CustomerDetailViewModel viewModel = new CustomerDetailViewModel(account) { Navigation = ViewModel.Navigation }; 
 
             TabbedPage tabbedPage = new TabbedPage();
             tabbedPage.Children.Add(new CustomerDetailPage()

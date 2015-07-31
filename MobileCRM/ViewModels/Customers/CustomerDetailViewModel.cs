@@ -5,16 +5,16 @@ using MobileCRM.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
-namespace MobileCRM.ViewModels.Accounts
+namespace MobileCRM.ViewModels.Customers
 {
-    public class AccountDetailsViewModel : BaseViewModel
+    public class CustomerDetailViewModel : BaseViewModel
     {
         IDataManager dataManager;
         Geocoder coder;
 
         public Account Account { get; set; }
 
-        public AccountDetailsViewModel(Account account)
+        public CustomerDetailViewModel(Account account)
         {
             if (account == null)
             {

@@ -1,15 +1,15 @@
 ﻿using MobileCRM.Models;
-using MobileCRM.ViewModels.Accounts;
 using Xamarin;
 using Xamarin.Forms;
+using MobileCRM.ViewModels.Customers;
 
 namespace MobileCRM.Pages.Accounts
 {
     public partial class AccountsView
     {
-        AccountsViewModel viewModel;
+        CustomersViewModel viewModel;
 
-        public AccountsView(AccountsViewModel viewModel)
+        public AccountsView(CustomersViewModel viewModel)
         {
             InitializeComponent();
 

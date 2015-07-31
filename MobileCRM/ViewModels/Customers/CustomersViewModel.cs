@@ -8,9 +8,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using MobileCRM.Extensions;
 
-namespace MobileCRM.ViewModels.Accounts
+namespace MobileCRM.ViewModels.Customers
 {
-    public class AccountsViewModel : BaseViewModel
+    public class CustomersViewModel : BaseViewModel
     {
         ObservableCollection<Account> _Accounts;
         public ObservableCollection<Account> Accounts
@@ -25,7 +25,7 @@ namespace MobileCRM.ViewModels.Accounts
 
         IDataManager dataManager;
 
-        public AccountsViewModel()
+        public CustomersViewModel()
         {
             this.Title = "Accounts";
             this.Icon = "list.png";

@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics;
 using MobileCRM.Models;
 using MobileCRM.Pages.Accounts;
-using MobileCRM.ViewModels.Accounts;
 using Xamarin.Forms;
+using MobileCRM.ViewModels.Customers;
 
 namespace MobileCRM.Pages.Leads
 {
     public class LeadDetailsTabView : TabbedPage
     {
-        AccountDetailsViewModel viewModel;
+        CustomerDetailViewModel viewModel;
 
         public LeadDetailsTabView(Account l)
         {
@@ -23,7 +23,7 @@ namespace MobileCRM.Pages.Leads
 
             Account lead = l == null ? new Account() { IsLead = true } : l;
             
-            viewModel = new AccountDetailsViewModel(lead) { Navigation = Navigation };
+            viewModel = new CustomerDetailViewModel(lead) { Navigation = Navigation };
 
             this.Children.Add(new LeadDetailsView(viewModel)
                 {

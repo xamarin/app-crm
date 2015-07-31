@@ -1,15 +1,15 @@
 ﻿using MobileCRM.Pages.Base;
-using MobileCRM.ViewModels.Accounts;
 using Xamarin.Forms;
 using MobileCRM.Layouts;
+using MobileCRM.ViewModels.Customers;
 
 namespace MobileCRM.Pages.Accounts
 {
     public class AccountNotesView : BaseView
     {
-        AccountDetailsViewModel viewModel;
+        CustomerDetailViewModel viewModel;
 
-        public AccountNotesView(AccountDetailsViewModel vm)
+        public AccountNotesView(CustomerDetailViewModel vm)
         {
             SetBinding(TitleProperty, new Binding("Title"));
             SetBinding(IconProperty, new Binding("Icon"));

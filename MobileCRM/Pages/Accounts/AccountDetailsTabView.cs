@@ -2,16 +2,16 @@
 using System.Diagnostics;
 using MobileCRM.Models;
 using MobileCRM.Pages.Orders;
-using MobileCRM.ViewModels.Accounts;
 using MobileCRM.ViewModels.Orders;
 using Xamarin;
 using Xamarin.Forms;
+using MobileCRM.ViewModels.Customers;
 
 namespace MobileCRM.Pages.Accounts
 {
     public class AccountDetailsTabView : TabbedPage
     {
-        AccountDetailsViewModel viewModelAcct;
+        CustomerDetailViewModel viewModelAcct;
         OrdersViewModel viewModelOrder;
         OrdersViewModel viewModelHistory;
 
@@ -33,7 +33,7 @@ namespace MobileCRM.Pages.Accounts
                     this.Title = "New Lead";
                 }
 
-                viewModelAcct = new AccountDetailsViewModel(account) { Navigation = Navigation };
+                viewModelAcct = new CustomerDetailViewModel(account) { Navigation = Navigation };
                 viewModelOrder = new OrdersViewModel(true, account.Id) { Navigation = Navigation };
                 viewModelHistory = new OrdersViewModel(false, account.Id) { Navigation = Navigation };
 
