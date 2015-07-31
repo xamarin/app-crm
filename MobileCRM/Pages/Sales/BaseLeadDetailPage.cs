@@ -9,7 +9,7 @@ using MobileCRM.Layouts;
 
 namespace MobileCRM.Pages.Sales
 {
-    public abstract class BaseLeadDetailPage : ModelBoundContentPage<LeadDetailViewModel>
+    public abstract class BaseLeadDetailPage : ModelEnforcedContentPage<LeadDetailViewModel>
     {
         BaseTabbedPageHeaderView _TabbedPageHeaderView;
 

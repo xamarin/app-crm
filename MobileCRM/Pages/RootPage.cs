@@ -1,10 +1,9 @@
-﻿using MobileCRM.Pages.Home;
-using MobileCRM.Pages.Products;
+﻿using MobileCRM.Pages.Products;
 using MobileCRM.Pages.Sales;
 using Xamarin.Forms;
 using MobileCRM.ViewModels.Sales;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using MobileCRM.ViewModels.Accounts;
+using MobileCRM.Pages.Customers;
 
 namespace MobileCRM.Pages
 {

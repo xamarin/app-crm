@@ -9,9 +9,9 @@ using MobileCRM.Models;
 using System.Threading.Tasks;
 using MobileCRM.Pages.Base;
 
-namespace MobileCRM
+namespace MobileCRM.Pages.Customers
 {
-    public class CustomersPage : ModelBoundContentPage<AccountsViewModel>
+    public class CustomersPage : ModelEnforcedContentPage<AccountsViewModel>
     {
         public CustomersPage()
         {

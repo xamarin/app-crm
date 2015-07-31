@@ -6,7 +6,7 @@ using MobileCRM.ViewModels.Accounts;
 using MobileCRM.Pages.Base;
 using System.Collections.Generic;
 
-namespace MobileCRM
+namespace MobileCRM.Pages.Customers
 {
     public class CustomerDetailPage : BaseCustomerDetailPage
     {

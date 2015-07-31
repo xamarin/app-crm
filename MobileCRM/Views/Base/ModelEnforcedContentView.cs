@@ -2,9 +2,9 @@
 using Xamarin.Forms;
 using MobileCRM.ViewModels;
 
-namespace MobileCRM
+namespace MobileCRM.Views.Base
 {
-    public abstract class ModelBoundContentView<TViewModel> : ContentView where TViewModel : BaseViewModel
+    public abstract class ModelEnforcedContentView<TViewModel> : ContentView where TViewModel : BaseViewModel
     {
         protected TViewModel ViewModel
         {
@@ -12,7 +12,7 @@ namespace MobileCRM
         }
 
         /// <summary>
-        /// Gets or sets the binding context.
+        /// Sets the binding context.
         /// </summary>
         /// <value>The binding context.</value>
         /// <remarks>Enforces the proper binding context type at compile time.</remarks>

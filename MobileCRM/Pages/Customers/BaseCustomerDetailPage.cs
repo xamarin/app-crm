@@ -6,9 +6,9 @@ using MobileCRM.Pages.Base;
 using MobileCRM.Views.Base;
 using MobileCRM.Views;
 
-namespace MobileCRM
+namespace MobileCRM.Pages.Customers
 {
-    public class BaseCustomerDetailPage : ModelBoundContentPage<AccountDetailsViewModel>
+    public class BaseCustomerDetailPage : ModelEnforcedContentPage<AccountDetailsViewModel>
     {
         BaseTabbedPageHeaderView _TabbedPageHeaderView;
 

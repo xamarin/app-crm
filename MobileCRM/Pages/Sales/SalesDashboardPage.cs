@@ -12,7 +12,7 @@ using Syncfusion.SfChart.XForms;
 
 namespace MobileCRM.Pages.Sales
 {
-    public class SalesDashboardPage : ModelBoundContentPage<SalesDashboardViewModel>
+    public class SalesDashboardPage : ModelEnforcedContentPage<SalesDashboardViewModel>
     {
         public IPlatformParameters PlatformParameters { get; set; }
 

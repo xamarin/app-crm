@@ -1,9 +1,10 @@
 ﻿using System;
 using MobileCRM.ViewModels;
+using MobileCRM.Views.Base;
 
-namespace MobileCRM
+namespace MobileCRM.Pages.Customers
 {
-    public class NewOrderPage : ModelBoundContentView<BaseViewModel>
+    public class NewOrderPage : ModelEnforcedContentView<BaseViewModel>
     {
         public NewOrderPage()
         {
