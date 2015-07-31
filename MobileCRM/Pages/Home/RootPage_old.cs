@@ -1,10 +1,8 @@
 ﻿using System;
 using MobileCRM.Helpers;
 using MobileCRM.Models;
-using MobileCRM.Pages.Accounts;
 using MobileCRM.Pages.Catalog;
 using MobileCRM.Pages.Contacts;
-using MobileCRM.Pages.Leads;
 using MobileCRM.Pages.Settings;
 using MobileCRM.Services;
 using MobileCRM.ViewModels.Contacts;

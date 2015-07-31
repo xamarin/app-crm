@@ -10,6 +10,7 @@ using ViewGroup = global::Android.Views.ViewGroup;
 using Context = global::Android.Content.Context;
 using ListView = global::Android.Widget.ListView;
 using MobileCRM;
+using MobileCRM.Statics;
 
 [assembly: ExportCell(typeof(MenuCell), typeof(MenuCellRenderer))]
 

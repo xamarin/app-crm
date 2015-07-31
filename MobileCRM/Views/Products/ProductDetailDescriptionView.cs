@@ -1,5 +1,6 @@
 ﻿using MobileCRM.Models;
 using Xamarin.Forms;
+using MobileCRM.Statics;
 
 namespace MobileCRM.Views.Products
 {

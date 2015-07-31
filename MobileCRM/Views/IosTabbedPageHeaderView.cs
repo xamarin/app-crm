@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using MobileCRM.Views.Base;
 using MobileCRM.Layouts;
+using MobileCRM.Statics;
 
 namespace MobileCRM.Views
 {

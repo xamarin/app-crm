@@ -7,6 +7,7 @@ using MobileCRM.Models;
 using System.Threading.Tasks;
 using MobileCRM.Pages.Base;
 using MobileCRM.ViewModels.Customers;
+using MobileCRM.Statics;
 
 namespace MobileCRM.Pages.Customers
 {

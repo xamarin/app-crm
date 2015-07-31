@@ -8,6 +8,7 @@ using MobileCRM.Models;
 using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 using MobileCRM.Extensions;
+using MobileCRM.Statics;
 
 namespace MobileCRM.ViewModels.Sales
 {

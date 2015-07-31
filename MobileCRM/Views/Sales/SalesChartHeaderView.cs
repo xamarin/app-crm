@@ -1,5 +1,6 @@
 ﻿using MobileCRM.Localization;
 using Xamarin.Forms;
+using MobileCRM.Statics;
 
 namespace MobileCRM.Views.Sales
 {

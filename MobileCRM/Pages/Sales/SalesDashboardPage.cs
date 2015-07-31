@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using MobileCRM.Layouts;
 using MobileCRM.Pages.Base;
 using Syncfusion.SfChart.XForms;
+using MobileCRM.Statics;
 
 namespace MobileCRM.Pages.Sales
 {

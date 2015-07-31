@@ -3,6 +3,7 @@ using MobileCRM.ViewModels.Products;
 using MobileCRM.Views.Products;
 using Xamarin.Forms;
 using MobileCRM.Layouts;
+using MobileCRM.Statics;
 
 namespace MobileCRM.Pages.Products
 {

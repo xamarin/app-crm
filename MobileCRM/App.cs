@@ -4,8 +4,7 @@ using Xamarin.Forms;
 using System;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Syncfusion.SfChart.XForms;
-using System.Collections.ObjectModel;
+using MobileCRM.Services;
 
 namespace MobileCRM
 {

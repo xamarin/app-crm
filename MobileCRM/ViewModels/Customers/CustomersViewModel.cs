@@ -7,6 +7,7 @@ using MobileCRM.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using MobileCRM.Extensions;
+using MobileCRM.Statics;
 
 namespace MobileCRM.ViewModels.Customers
 {

@@ -56,80 +56,16 @@
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\UserInfo.cs" />
-    <Compile Include="Pages\Accounts\AccountContactView.xaml.cs">
-      <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Accounts\AccountContactView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Accounts\AccountDetailsTabView.cs" />
-    <Compile Include="Pages\Accounts\AccountDetailsView.xaml.cs">
-      <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Accounts\AccountDetailsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Accounts\AccountMapView.cs" />
-    <Compile Include="Pages\Accounts\AccountNotesView.cs" />
-    <Compile Include="Pages\Accounts\AccountsMapView.cs" />
-    <Compile Include="Pages\Accounts\AccountsView.xaml.cs">
-      <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Accounts\AccountsView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Base\BaseView.cs" />
     <Compile Include="Pages\Base\TabView.cs" />
-    <Compile Include="Pages\Catalog\CatalogCarouselView.cs" />
-    <Compile Include="Pages\Catalog\CatalogView.xaml.cs">
-      <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Catalog\CatalogView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Contacts\ContactDetailsTabView.cs" />
-    <Compile Include="Pages\Contacts\ContactDetailsView.xaml.cs">
-      <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Contacts\ContactDetailsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Contacts\ContactMapView.cs" />
-    <Compile Include="Pages\Contacts\ContactsMapView.cs" />
-    <Compile Include="Pages\Contacts\ContactsView.xaml.cs">
-      <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Contacts\ContactsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Home\DashboardView.xaml.cs">
-      <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Home\DashboardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Home\LoginPage.cs" />
-    <Compile Include="Pages\Home\MenuPage.cs" />
-    <Compile Include="Pages\Home\SplashPage.xaml.cs">
-      <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Home\SplashPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Leads\LeadDetailsTabView.cs" />
-    <Compile Include="Pages\Leads\LeadDetailsView.cs" />
-    <Compile Include="Pages\Leads\LeadsView.xaml.cs">
-      <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Leads\LeadsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Orders\AccountHistoryView.xaml.cs">
-      <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Orders\AccountHistoryView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Orders\AccountOrderDetailsView.cs" />
-    <Compile Include="Pages\Orders\AccountOrdersView.xaml.cs">
-      <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Orders\AccountOrdersView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Orders\NewOrderView.cs" />
-    <Compile Include="Pages\Settings\DataSettingsView.xaml.cs">
-      <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Settings\DataSettingsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings\SettingsTabView.cs" />
-    <Compile Include="Pages\Settings\UserSettingsView.xaml.cs">
-      <DependentUpon>..\..\..\MobileCRM.Shared\Pages\Settings\UserSettingsView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Attributes\CurrencyAttribute.cs" />
     <Compile Include="Properties\Attributes\DisplayAttribute.cs" />
     <Compile Include="Services\AuthInfo.cs" />
     <Compile Include="Services\AzureService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\Catalog\CatalogViewModel.cs" />
-    <Compile Include="ViewModels\Contacts\ContactDetailsViewModel.cs" />
-    <Compile Include="ViewModels\Contacts\ContactsViewModel.cs" />
-    <Compile Include="ViewModels\Home\HomeViewModel.cs" />
-    <Compile Include="ViewModels\Home\LoginViewModel.cs" />
-    <Compile Include="ViewModels\Leads\LeadsViewModel.cs" />
-    <Compile Include="ViewModels\Orders\OrderDetailsViewModel.cs" />
-    <Compile Include="ViewModels\Orders\OrdersViewModel.cs" />
-    <Compile Include="ViewModels\Settings\UserViewModel.cs" />
     <Compile Include="Localization\TextResources.Designer.cs">
       <DependentUpon>TextResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Palette.cs" />
     <Compile Include="Localization\TranslateExtension.cs" />
     <Compile Include="Localization\ILocalization.cs" />
     <Compile Include="Converters\ToUpperConverter.cs" />
@@ -137,7 +73,6 @@
     <Compile Include="Views\Sales\LeadListView.cs" />
     <Compile Include="Views\Sales\SalesChartHeaderView.cs" />
     <Compile Include="Pages\Sales\SalesDashboardPage.cs" />
-    <Compile Include="Pages\Home\RootPage_old.cs" />
     <Compile Include="Pages\RootPage.cs" />
     <Compile Include="Pages\Products\CategoryListPage.cs" />
     <Compile Include="Pages\Products\ProductDetailPage.cs" />
@@ -154,13 +89,10 @@
     <Compile Include="Views\Products\ProductListView.cs" />
     <Compile Include="Cells\ProductListItemCell.cs" />
     <Compile Include="Cells\CategoryListItemCell.cs" />
-    <Compile Include="Sizes.cs" />
     <Compile Include="ViewModels\Sales\SalesDashboardViewModel.cs" />
     <Compile Include="ViewModels\Sales\LeadDetailViewModel.cs" />
     <Compile Include="Cells\PickerCell.cs" />
-    <Compile Include="MessagingServiceConstants.cs" />
     <Compile Include="Converters\CurrencyConverter.cs" />
-    <Compile Include="Authenticator.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Pages\Products\BaseProductPage.cs" />
     <Compile Include="Views\Products\ProductDetailRibbonView.cs" />
@@ -173,7 +105,6 @@
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Views\Customers\CustomerListView.cs" />
-    <Compile Include="Layouts\UnpaddedStackLayout.cs" />
     <Compile Include="Pages\Customers\CustomerDetailPage.cs" />
     <Compile Include="Pages\Customers\CustomerOrdersPage.cs" />
     <Compile Include="Pages\Customers\CustomerSalesPage.cs" />
@@ -183,63 +114,16 @@
     <Compile Include="Views\Base\ModelEnforcedContentView.cs" />
     <Compile Include="ViewModels\Customers\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModels\Customers\CustomersViewModel.cs" />
+    <Compile Include="Layouts\UnspacedStackLayout.cs" />
+    <Compile Include="Services\Authenticator.cs" />
+    <Compile Include="Statics\MessagingServiceConstants.cs" />
+    <Compile Include="Statics\Palette.cs" />
+    <Compile Include="Statics\Sizes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Accounts\AccountContactView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Accounts\AccountDetailsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Accounts\AccountsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Catalog\CatalogView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Contacts\ContactDetailsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Contacts\ContactsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Home\DashboardView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Home\SplashPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Leads\LeadsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Orders\AccountHistoryView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Orders\AccountOrdersView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Settings\DataSettingsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Settings\UserSettingsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Localization\TextResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
@@ -305,7 +189,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Layouts\" />
-    <Folder Include="ViewModels\Accounts\" />
+    <Folder Include="Statics\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">

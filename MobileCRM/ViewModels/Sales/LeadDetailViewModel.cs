@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using MobileCRM.Helpers;
 using MobileCRM.Localization;
+using MobileCRM.Statics;
 
 namespace MobileCRM.ViewModels.Sales
 {

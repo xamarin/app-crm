@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MobileCRM
+namespace MobileCRM.Statics
 {
     public static class MessagingServiceConstants
     {

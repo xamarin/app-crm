@@ -1,5 +1,5 @@
 ﻿
-namespace MobileCRM
+namespace MobileCRM.Statics
 {
     public static class Sizes
     {

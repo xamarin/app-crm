@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace MobileCRM
+namespace MobileCRM.Statics
 {
     public static class Palette
     {
