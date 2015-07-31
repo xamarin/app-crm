@@ -19,8 +19,8 @@ namespace MobileCRM
             StackLayout = new UnspacedStackLayout();
 
             Device.OnPlatform(
-                iOS: () => _TabbedPageHeaderView = new IosTabbedPageHeaderView(Title, TextResources.Leads_LeadDetail_SaveButtonText.ToUpper())
-//                , Android: () => _TabbedPageHeaderView = new AndroidTabbedPageHeaderView(Title, TextResources.Leads_LeadDetail_SaveButtonText.ToUpper())
+                iOS: () => _TabbedPageHeaderView = new IosTabbedPageHeaderView(TextResources.MainTabs_Customers)
+                , Android: () => _TabbedPageHeaderView = new AndroidTabbedPageHeaderView(TextResources.MainTabs_Customers)
             );
 
             if (_TabbedPageHeaderView != null)
@@ -39,27 +39,30 @@ namespace MobileCRM
                             NumberOfTapsRequired = 1
                         }));
 
-                _TabbedPageHeaderView.DoneActionLabel.GestureRecognizers.Add(
-                    new TapGestureRecognizer()
-                    {
-                        Command = new Command(async () =>
-                            {
-                                var answer = 
-                                    await DisplayAlert(
-                                        title: TextResources.Leads_SaveConfirmTitle,
-                                        message: TextResources.Leads_SaveConfirmDescription,
-                                        accept: TextResources.Save,
-                                        cancel: TextResources.Cancel);
-
-                                if (answer)
+                if (_TabbedPageHeaderView.DoneActionLabel != null)
+                {
+                    _TabbedPageHeaderView.DoneActionLabel.GestureRecognizers.Add(
+                        new TapGestureRecognizer()
+                        {
+                            Command = new Command(async () =>
                                 {
-                                    ViewModel.SaveAccountCommand.Execute(null);
+                                    var answer = 
+                                        await DisplayAlert(
+                                            title: TextResources.Leads_SaveConfirmTitle,
+                                            message: TextResources.Leads_SaveConfirmDescription,
+                                            accept: TextResources.Save,
+                                            cancel: TextResources.Cancel);
 
-                                    await ViewModel.PopModalAsync();
-                                }
-                            }),
-                        NumberOfTapsRequired = 1
-                    });
+                                    if (answer)
+                                    {
+                                        ViewModel.SaveAccountCommand.Execute(null);
+
+                                        await ViewModel.PopModalAsync();
+                                    }
+                                }),
+                            NumberOfTapsRequired = 1
+                        });
+                }
 
                 StackLayout.Children.Add(_TabbedPageHeaderView);
             }

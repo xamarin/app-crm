@@ -45,27 +45,30 @@ namespace MobileCRM.Pages.Sales
                         NumberOfTapsRequired = 1
                     }));
 
-            _TabbedPageHeaderView.DoneActionLabel.GestureRecognizers.Add(
-                new TapGestureRecognizer()
-                {
-                    Command = new Command(async () =>
-                        {
-                            var answer = 
-                                await DisplayAlert(
-                                    title: TextResources.Leads_SaveConfirmTitle,
-                                    message: TextResources.Leads_SaveConfirmDescription,
-                                    accept: TextResources.Save,
-                                    cancel: TextResources.Cancel);
-
-                            if (answer)
+            if (_TabbedPageHeaderView.DoneActionLabel != null)
+            {
+                _TabbedPageHeaderView.DoneActionLabel.GestureRecognizers.Add(
+                    new TapGestureRecognizer()
+                    {
+                        Command = new Command(async () =>
                             {
-                                ViewModel.SaveLeadCommand.Execute(null);
+                                var answer = 
+                                    await DisplayAlert(
+                                        title: TextResources.Leads_SaveConfirmTitle,
+                                        message: TextResources.Leads_SaveConfirmDescription,
+                                        accept: TextResources.Save,
+                                        cancel: TextResources.Cancel);
 
-                                await ViewModel.PopModalAsync();
-                            }
-                        }),
-                    NumberOfTapsRequired = 1
-                });
+                                if (answer)
+                                {
+                                    ViewModel.SaveLeadCommand.Execute(null);
+
+                                    await ViewModel.PopModalAsync();
+                                }
+                            }),
+                        NumberOfTapsRequired = 1
+                    });
+            }
 
             StackLayout.Children.Add(_TabbedPageHeaderView);
 

@@ -40,8 +40,8 @@ namespace MobileCRM
 
             customerListView.ItemTapped += async (sender, e) =>
             {
-//                Account account = (Account)e.Item;  // commented out temporarily
-//                await PushTabbedPage(account);
+                Account account = (Account)e.Item;  // commented out temporarily
+                await PushTabbedPage(account);
             };
             #endregion
 

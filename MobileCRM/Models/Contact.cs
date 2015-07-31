@@ -98,9 +98,21 @@ namespace MobileCRM.Models
         }
 
         [JsonIgnore]
-        public string CitySt
+        public string CityState
         {
             get { return City + ", " + State; }
+        }
+
+        [JsonIgnore]
+        public string CityStatePostal
+        {
+            get { return CityState + " " + PostalCode; }
+        }
+
+        [JsonIgnore]
+        public string StatePostal
+        {
+            get { return State + " " + PostalCode; }
         }
 
         public override string ToString()

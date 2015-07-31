@@ -12,6 +12,13 @@ namespace MobileCRM
         {
             BackgroundColor = Color.Blue;
 
+            #region new order label
+            #endregion
+
+            #region order list view
+            #endregion
+
+
             Content = StackLayout;
         }
     }

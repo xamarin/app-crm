@@ -16,7 +16,7 @@ namespace MobileCRM.Pages
             this.Children.Add(
                 new NavigationPage(new SalesDashboardPage() { BindingContext = new SalesDashboardViewModel() { Navigation = Navigation } })
                 { 
-                    Title = "Sales", 
+                    Title = TextResources.MainTabs_Sales, 
                     Icon = new FileImageSource() { File = "SalesTab" }
                 }
             );
@@ -26,7 +26,7 @@ namespace MobileCRM.Pages
                 new CustomersPage()
                 { 
                     BindingContext = new AccountsViewModel() { Navigation = Navigation }, 
-                    Title = "Customers", 
+                    Title = TextResources.MainTabs_Customers, 
                     Icon = new FileImageSource() { File = "CustomersTab" } 
                 }
             );
@@ -35,7 +35,7 @@ namespace MobileCRM.Pages
             this.Children.Add(
                 new NavigationPage(new CategoryListPage())
                 { 
-                    Title = "Products", 
+                    Title = TextResources.MainTabs_Products, 
                     Icon = new FileImageSource() { File = "ProductsTab" } 
                 }
             );

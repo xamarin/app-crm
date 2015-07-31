@@ -131,6 +131,12 @@ namespace MobileCRM {
             }
         }
         
+        internal static string MainTabs_Sales {
+            get {
+                return ResourceManager.GetString("MainTabs_Sales", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadContactDetail_FirstName {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_FirstName", resourceCulture);
@@ -170,6 +176,12 @@ namespace MobileCRM {
         internal static string Leads_LeadDetail_OpportunitySize {
             get {
                 return ResourceManager.GetString("Leads_LeadDetail_OpportunitySize", resourceCulture);
+            }
+        }
+        
+        internal static string MainTabs_Customers {
+            get {
+                return ResourceManager.GetString("MainTabs_Customers", resourceCulture);
             }
         }
         
@@ -227,9 +239,27 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        internal static string Customers_Detail_Address {
+            get {
+                return ResourceManager.GetString("Customers_Detail_Address", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadDetail_CompanyName {
             get {
                 return ResourceManager.GetString("Leads_LeadDetail_CompanyName", resourceCulture);
+            }
+        }
+        
+        internal static string MainTabs_Products {
+            get {
+                return ResourceManager.GetString("MainTabs_Products", resourceCulture);
             }
         }
         

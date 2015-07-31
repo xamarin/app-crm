@@ -5,7 +5,7 @@ namespace MobileCRM.Views
 {
     public class AndroidTabbedPageHeaderView : BaseTabbedPageHeaderView
     {
-        public AndroidTabbedPageHeaderView(string headerTitle, string doneActionTitle)
+        public AndroidTabbedPageHeaderView(string headerTitle, string doneActionTitle = null)
         {
             // a relative layout allows us to arrange visual elements in relationship to other visual elements, like parent views and sibling views.
             RelativeLayout relativeLayout = new RelativeLayout();
@@ -69,25 +69,28 @@ namespace MobileCRM.Views
             #endregion
 
             #region done action title
-            DoneActionLabel = new Label()
+            if (!string.IsNullOrWhiteSpace(doneActionTitle))
             {
-                Text = doneActionTitle,
-                TextColor = Color.White,
-                FontSize = Device.OnPlatform(
-                    iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
-                    Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                    WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
-                YAlign = TextAlignment.Center,
-                XAlign = TextAlignment.End
-            };
+                DoneActionLabel = new Label()
+                {
+                    Text = doneActionTitle,
+                    TextColor = Color.White,
+                    FontSize = Device.OnPlatform(
+                        iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
+                        Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                        WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
+                    YAlign = TextAlignment.Center,
+                    XAlign = TextAlignment.End
+                };
 
-            relativeLayout.Children.Add(
-                view: DoneActionLabel,
-                xConstraint: Constraint.RelativeToParent(parent => parent.Width - (parent.Width * .25)),
-                yConstraint: Constraint.RelativeToParent(parent => 0),
-                widthConstraint: Constraint.RelativeToParent(parent => (parent.Width * .25)),
-                heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
-            );
+                relativeLayout.Children.Add(
+                    view: DoneActionLabel,
+                    xConstraint: Constraint.RelativeToParent(parent => parent.Width - (parent.Width * .25)),
+                    yConstraint: Constraint.RelativeToParent(parent => 0),
+                    widthConstraint: Constraint.RelativeToParent(parent => (parent.Width * .25)),
+                    heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
+                );
+            }
             #endregion
 
             #region compase the view hierarchy

@@ -1,11 +1,12 @@
 ﻿using Xamarin.Forms;
 using MobileCRM.Views.Base;
+using MobileCRM.Layouts;
 
 namespace MobileCRM.Views
 {
     public class IosTabbedPageHeaderView : BaseTabbedPageHeaderView
     {
-        public IosTabbedPageHeaderView(string headerTitle, string doneActionTitle)
+        public IosTabbedPageHeaderView(string headerTitle, string doneActionTitle = null)
         {
             // a relative layout allows us to arrange visual elements in relationship to other visual elements, like parent views and sibling views.
             RelativeLayout relativeLayout = new RelativeLayout();
@@ -122,7 +123,14 @@ namespace MobileCRM.Views
 
             outerContentView.Content = innerContentView;
 
-            Content = outerContentView;
+            StackLayout stackLayout = new UnspacedStackLayout();
+
+            StackLayout separator = new UnspacedStackLayout() { HeightRequest = 2, BackgroundColor = Palette._013 };
+
+            stackLayout.Children.Add(outerContentView);
+            stackLayout.Children.Add(separator);
+
+            Content = stackLayout;
             #endregion
         }
     }

@@ -12,6 +12,12 @@ namespace MobileCRM
         {
             BackgroundColor = Color.Green;
 
+            #region sales chart header
+            #endregion
+
+            #region sales chart
+            #endregion
+
             Content = StackLayout;
         }
     }
