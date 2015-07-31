@@ -119,6 +119,12 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Customers_Detail_Tab_Title {
+            get {
+                return ResourceManager.GetString("Customers_Detail_Tab_Title", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadContactDetail_Role {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_Role", resourceCulture);
@@ -134,6 +140,12 @@ namespace MobileCRM {
         internal static string Leads_LeadContactDetail_Phone {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_Phone", resourceCulture);
+            }
+        }
+        
+        internal static string Customers_Sales_Tab_Title {
+            get {
+                return ResourceManager.GetString("Customers_Sales_Tab_Title", resourceCulture);
             }
         }
         
@@ -224,6 +236,12 @@ namespace MobileCRM {
         internal static string SalesChartHeaderTitle {
             get {
                 return ResourceManager.GetString("SalesChartHeaderTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Customers_Orders_Tab_Title {
+            get {
+                return ResourceManager.GetString("Customers_Orders_Tab_Title", resourceCulture);
             }
         }
         

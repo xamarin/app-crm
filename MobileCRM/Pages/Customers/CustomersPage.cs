@@ -75,24 +75,24 @@ namespace MobileCRM
             TabbedPage tabbedPage = new TabbedPage();
             tabbedPage.Children.Add(new CustomerDetailPage()
                 {
-                    Title = TextResources.Details,
+                    Title = TextResources.Customers_Detail_Tab_Title,
                     BindingContext = viewModel,
-//                    Icon = new FileImageSource() { File = "" },
+                    Icon = new FileImageSource() { File = "CustomersTab" },
 
                 });
 
             tabbedPage.Children.Add(new CustomerOrdersPage()
                 {
-                    Title = TextResources.Contact,
+                    Title = TextResources.Customers_Orders_Tab_Title,
                     BindingContext = viewModel,
-//                    Icon = new FileImageSource() { File = "" }
+                    Icon = new FileImageSource() { File = "ProductsTab" }
                 });
 
             tabbedPage.Children.Add(new CustomerSalesPage()
                 {
-                    Title = TextResources.Contact,
+                    Title = TextResources.Customers_Sales_Tab_Title,
                     BindingContext = viewModel,
-//                    Icon = new FileImageSource() { File = "" }
+                    Icon = new FileImageSource() { File = "SalesTab" }
                 });
 
             await ViewModel.PushModalAsync(tabbedPage);
