@@ -4,6 +4,7 @@ using MobileCRM.Pages.Base;
 using MobileCRM.ViewModels.Accounts;
 using Xamarin;
 using Xamarin.Forms;
+using MobileCRM.Layouts;
 
 namespace MobileCRM.Pages.Leads
 {
@@ -64,7 +65,7 @@ namespace MobileCRM.Pages.Leads
             }
             pickerOpptStage.SetBinding(Picker.SelectedIndexProperty, "OpptStageIndex");
 
-            StackLayout stack = new StackLayout()
+            StackLayout stack = new UnspacedStackLayout()
             {
                 Padding = 10, 
 

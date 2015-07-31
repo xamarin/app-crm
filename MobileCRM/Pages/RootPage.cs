@@ -4,6 +4,7 @@ using MobileCRM.Pages.Sales;
 using Xamarin.Forms;
 using MobileCRM.ViewModels.Sales;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using MobileCRM.ViewModels.Accounts;
 
 namespace MobileCRM.Pages
 {
@@ -12,13 +13,32 @@ namespace MobileCRM.Pages
         public RootPage()
         {
             // the Sales tab page
-            this.Children.Add(new NavigationPage(new SalesDashboardPage(new SalesDashboardViewModel(this.Navigation))) { Title = "Sales", Icon = new FileImageSource() { File = "SalesTab" } });
+            this.Children.Add(
+                new NavigationPage(new SalesDashboardPage() { BindingContext = new SalesDashboardViewModel() { Navigation = Navigation } })
+                { 
+                    Title = "Sales", 
+                    Icon = new FileImageSource() { File = "SalesTab" }
+                }
+            );
 
             // the Customers tab page
-            this.Children.Add(new ContentPage() { Title = "Customers", Icon = new FileImageSource() { File = "CustomersTab" } });
+            this.Children.Add(
+                new CustomersPage()
+                { 
+                    BindingContext = new AccountsViewModel() { Navigation = Navigation }, 
+                    Title = "Customers", 
+                    Icon = new FileImageSource() { File = "CustomersTab" } 
+                }
+            );
 
             // the Products tab page
-            this.Children.Add(new NavigationPage(new CategoryListPage()) { Title = "Products", Icon = new FileImageSource() { File = "ProductsTab" } });
+            this.Children.Add(
+                new NavigationPage(new CategoryListPage())
+                { 
+                    Title = "Products", 
+                    Icon = new FileImageSource() { File = "ProductsTab" } 
+                }
+            );
         }
     }
 }

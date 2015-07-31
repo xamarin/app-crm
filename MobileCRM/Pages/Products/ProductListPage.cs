@@ -2,6 +2,7 @@
 using MobileCRM.ViewModels.Products;
 using MobileCRM.Views.Products;
 using Xamarin.Forms;
+using MobileCRM.Layouts;
 
 namespace MobileCRM.Pages.Products
 {
@@ -16,18 +17,18 @@ namespace MobileCRM.Pages.Products
 
         public ProductListPage(string categoryId, string title)
         {
-            
-
             _CategoryId = categoryId;
 
             Title = title;
 
-            StackLayout stackLayout = new StackLayout();
+            StackLayout stackLayout = new UnspacedStackLayout();
 
             BindingContext = new ProductsViewModel(_CategoryId);
 
             ProductListView productListView = new ProductListView();
-            productListView.ItemsSource = ViewModel.Products;
+            productListView.SetBinding(ProductListView.ItemsSourceProperty, "Products");
+            productListView.SetBinding(CategoryListView.IsEnabledProperty, "IsModelLoaded");
+            productListView.SetBinding(CategoryListView.IsVisibleProperty, "IsModelLoaded");
 
             productListView.ItemTapped += (sender, e) =>
                 {
@@ -38,7 +39,7 @@ namespace MobileCRM.Pages.Products
 
             ActivityIndicator activityIndicator = new ActivityIndicator()
                 {
-                    HeightRequest = 60
+                    HeightRequest = Sizes.LargeRowHeight
                 };
 
             activityIndicator.BindingContext = ViewModel;

@@ -57,6 +57,7 @@ namespace MobileCRM.ViewModels.Products
                 return;
 
             IsBusy = true;
+            IsModelLoaded = false;
 
             Categories.Clear();
             IEnumerable<CatalogCategory> categories = await _CatalogClient.GetCategoriesAsync(_CategoryId);
@@ -64,6 +65,7 @@ namespace MobileCRM.ViewModels.Products
                 Categories.Add(category);
 
             IsBusy = false;
+            IsModelLoaded = true;
         }
     }
 }

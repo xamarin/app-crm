@@ -9,6 +9,7 @@ using View = global::Android.Views.View;
 using ViewGroup = global::Android.Views.ViewGroup;
 using Context = global::Android.Content.Context;
 using ListView = global::Android.Widget.ListView;
+using MobileCRM;
 
 [assembly: ExportCell(typeof(MenuCell), typeof(MenuCellRenderer))]
 
@@ -35,8 +36,8 @@ namespace MobileCRMAndroid
             var image = (ImageView)cell.GetChildAt(0);
             image.SetScaleType(ImageView.ScaleType.FitCenter);
 
-            image.LayoutParameters.Width = 60;
-            image.LayoutParameters.Height = 60;
+            image.LayoutParameters.Width = (int)Sizes.LargeRowHeight;
+            image.LayoutParameters.Height = (int)Sizes.LargeRowHeight;
 
             var linear = (LinearLayout)cell.GetChildAt(1);
             linear.SetGravity(Android.Views.GravityFlags.CenterVertical);

@@ -33,7 +33,8 @@ namespace MobileCRM.Views
             #region outerContentView
             ContentView outerContentView = new ContentView()
             {
-                Padding = new Thickness(0, 20, 0, 0)
+                Padding = new Thickness(0, 20, 0, 0),
+                BackgroundColor = Color.White
             };
             #endregion
 
@@ -41,7 +42,7 @@ namespace MobileCRM.Views
             ContentView innerContentView = new ContentView()
             {
                 Padding = new Thickness(10, 0), // give the content some padding on the left and right
-                HeightRequest = 44, // set the height of the content view
+                HeightRequest = Sizes.MediumRowHeight // set the height of the content view
             };
             #endregion
 
@@ -49,7 +50,7 @@ namespace MobileCRM.Views
             BackButtonLabel = new Label()
             {
                 Text = TextResources.Back,
-                TextColor = Palette._013,
+                TextColor = Palette._014,
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
                     Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
@@ -92,25 +93,28 @@ namespace MobileCRM.Views
             #endregion
 
             #region done action title
-            DoneActionLabel = new Label()
+            if (!string.IsNullOrWhiteSpace(doneActionTitle))
             {
-                Text = doneActionTitle,
-                TextColor = Palette._013,
-                FontSize = Device.OnPlatform(
-                    iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
-                    Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                    WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
-                YAlign = TextAlignment.Center,
-                XAlign = TextAlignment.End
-            };
+                DoneActionLabel = new Label()
+                {
+                    Text = doneActionTitle,
+                    TextColor = Palette._014,
+                    FontSize = Device.OnPlatform(
+                        iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
+                        Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                        WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
+                    YAlign = TextAlignment.Center,
+                    XAlign = TextAlignment.End
+                };
 
-            relativeLayout.Children.Add(
-                view: DoneActionLabel,
-                xConstraint: Constraint.RelativeToParent(parent => parent.Width - (parent.Width * .25)),
-                yConstraint: Constraint.RelativeToParent(parent => 0),
-                widthConstraint: Constraint.RelativeToParent(parent => (parent.Width * .25)),
-                heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
-            );
+                relativeLayout.Children.Add(
+                    view: DoneActionLabel,
+                    xConstraint: Constraint.RelativeToParent(parent => parent.Width - (parent.Width * .25)),
+                    yConstraint: Constraint.RelativeToParent(parent => 0),
+                    widthConstraint: Constraint.RelativeToParent(parent => (parent.Width * .25)),
+                    heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
+                );
+            }
             #endregion
 
             #region compase the view hierarchy

@@ -95,7 +95,7 @@ namespace MobileCRM.Pages.Home
                         if (dashboard != null)
                             return dashboard;
                   
-                        var vm = new SalesDashboardViewModel(Navigation);
+                        var vm = new SalesDashboardViewModel() { Navigation = Navigation };
 
                         dashboard = new NavigationPage(new DashboardView(vm));
                         return dashboard;

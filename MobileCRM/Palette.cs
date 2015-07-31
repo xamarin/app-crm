@@ -19,9 +19,11 @@ namespace MobileCRM
         public static readonly Color _010 = Color.FromHex("6c6464");
         public static readonly Color _011 = Color.FromHex("a49f9f");
         public static readonly Color _012 = Color.FromHex("dddddd");
+        public static readonly Color _013 = Color.FromHex("ededed");
 
         // iOS specific
-        public static readonly Color _013 = Color.FromHex("007aff");
+        public static readonly Color _014 = Color.FromHex("007aff");
+
     }
 }
 

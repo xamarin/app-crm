@@ -4,6 +4,7 @@ using MobileCRM.ViewModels.Contacts;
 using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using MobileCRM.Layouts;
 
 namespace MobileCRM.Pages.Contacts
 {
@@ -37,7 +38,7 @@ namespace MobileCRM.Pages.Contacts
 
             this.MakeMap();
 
-            var stack = new StackLayout { Spacing = 0 };
+            var stack = new UnspacedStackLayout();
 
             map.VerticalOptions = LayoutOptions.FillAndExpand;
             map.HeightRequest = 100;

@@ -139,7 +139,6 @@
     <Compile Include="Views\Sales\LeadListView.cs" />
     <Compile Include="Views\Sales\SalesChartHeaderView.cs" />
     <Compile Include="Pages\Sales\SalesDashboardPage.cs" />
-    <Compile Include="Views\Sales\SalesChartView.cs" />
     <Compile Include="Pages\Home\RootPage_old.cs" />
     <Compile Include="Pages\RootPage.cs" />
     <Compile Include="Pages\Products\CategoryListPage.cs" />
@@ -170,7 +169,19 @@
     <Compile Include="Views\Base\BaseNonPersistentSelectedItemListView.cs" />
     <Compile Include="Views\IosTabbedPageHeaderView.cs" />
     <Compile Include="Views\AndroidTabbedPageHeaderView.cs" />
-    <Compile Include="Views\Base\BaseCustomTabbedPageHeaderView.cs" />
+    <Compile Include="Views\Base\BaseTabbedPageHeaderView.cs" />
+    <Compile Include="Pages\Customers\CustomersPage.cs" />
+    <Compile Include="Cells\CustomerListItemCell.cs" />
+    <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Views\Customers\CustomerListView.cs" />
+    <Compile Include="Layouts\UnpaddedStackLayout.cs" />
+    <Compile Include="Pages\Customers\CustomerDetailPage.cs" />
+    <Compile Include="Pages\Customers\CustomerOrdersPage.cs" />
+    <Compile Include="Pages\Customers\CustomerSalesPage.cs" />
+    <Compile Include="Pages\Customers\BaseCustomerDetailPage.cs" />
+    <Compile Include="Pages\Base\ModelBoundContentPage.cs" />
+    <Compile Include="Views\Base\ModelBoundContentView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -292,6 +303,7 @@
     <Folder Include="Clients\" />
     <Folder Include="Extensions\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Layouts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">

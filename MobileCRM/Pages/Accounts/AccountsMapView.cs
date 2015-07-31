@@ -3,6 +3,7 @@ using MobileCRM.ViewModels.Accounts;
 using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using MobileCRM.Layouts;
 
 namespace MobileCRM.Pages.Accounts
 {
@@ -34,7 +35,7 @@ namespace MobileCRM.Pages.Accounts
             };
 
             MakeMap();
-            var stack = new StackLayout { Spacing = 0 };
+            var stack = new UnspacedStackLayout { Spacing = 0 };
 
             map.VerticalOptions = LayoutOptions.FillAndExpand;
             map.HeightRequest = 100;

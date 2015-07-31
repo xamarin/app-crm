@@ -6,15 +6,21 @@ using MobileCRM.Interfaces;
 using MobileCRM.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using MobileCRM.Extensions;
 
 namespace MobileCRM.ViewModels.Accounts
 {
     public class AccountsViewModel : BaseViewModel
     {
+        ObservableCollection<Account> _Accounts;
         public ObservableCollection<Account> Accounts
         {
-            get;
-            set;
+            get { return _Accounts; }
+            set
+            {
+                _Accounts = value;
+                OnPropertyChanged("Accounts");
+            }
         }
 
         IDataManager dataManager;
@@ -54,13 +60,15 @@ namespace MobileCRM.ViewModels.Accounts
                 return;
 
             IsBusy = true;
+            IsModelLoaded = false;
+            LoadAccountsCommand.ChangeCanExecute(); 
 
-            Accounts.Clear();
             var accounts = await dataManager.GetAccountsAsync(false);
-            foreach (var account in accounts)
-                Accounts.Add(account);
+            Accounts = accounts.ToObservableCollection();
 
             IsBusy = false;
+            IsModelLoaded = true;
+            LoadAccountsCommand.ChangeCanExecute(); 
         }
 
         public static readonly Position NullPosition = new Position(0, 0);

@@ -8,7 +8,7 @@ namespace MobileCRM.Pages.Sales
     {
         // NOTE: the ViewModel is contained in the base class
 
-        public LeadDetailPage(LeadDetailViewModel viewModel) : base(TextResources.Leads_LeadDetail_SaveButtonText.ToUpper(), viewModel)
+        public LeadDetailPage(LeadDetailViewModel viewModel) : base(viewModel)
         {
             #region name entry
             EntryCell companyNameEntryCell = new EntryCell()

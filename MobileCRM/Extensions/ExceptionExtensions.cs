@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MobileCRM
+namespace MobileCRM.Extensions
 {
     public static class ExceptionExtensions
     {

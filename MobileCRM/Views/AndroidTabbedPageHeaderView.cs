@@ -42,7 +42,7 @@ namespace MobileCRM.Views
             {
                 Padding = new Thickness(10, 0), // give the content some padding on the left and right
                 BackgroundColor = Palette._001,
-                HeightRequest = 44, // set the height of the content view
+                HeightRequest = Sizes.MediumRowHeight // set the height of the content view
             };
             #endregion
 

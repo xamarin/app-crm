@@ -10,7 +10,7 @@ namespace MobileCRM.Views.Products
         {
             ItemTemplate = new DataTemplate(typeof(CategoryListItemCell));
             HasUnevenRows = false;
-            RowHeight = 60;
+            RowHeight = (int)Sizes.LargeRowHeight;
             SeparatorVisibility = SeparatorVisibility.Default;
             SeparatorColor = Palette._012;
         }

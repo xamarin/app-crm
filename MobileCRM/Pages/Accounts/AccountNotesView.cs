@@ -1,6 +1,7 @@
 ﻿using MobileCRM.Pages.Base;
 using MobileCRM.ViewModels.Accounts;
 using Xamarin.Forms;
+using MobileCRM.Layouts;
 
 namespace MobileCRM.Pages.Accounts
 {
@@ -30,7 +31,7 @@ namespace MobileCRM.Pages.Accounts
                 }
             };
 
-            StackLayout stack = new StackLayout()
+            StackLayout stack = new UnspacedStackLayout()
             {
                 Padding = 10,
                 VerticalOptions = LayoutOptions.FillAndExpand,

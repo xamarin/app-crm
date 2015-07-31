@@ -1,6 +1,7 @@
 ﻿using MobileCRM.Models;
 using MobileCRM.Views.Products;
 using Xamarin.Forms;
+using MobileCRM.Layouts;
 
 namespace MobileCRM.Pages.Products
 {
@@ -30,7 +31,7 @@ namespace MobileCRM.Pages.Products
             ProductDetailDescriptionView descriptionView = new ProductDetailDescriptionView(_CatalogProduct);
             #endregion
 
-            StackLayout stackLayout = new StackLayout() { Spacing = 0 };
+            StackLayout stackLayout = new UnspacedStackLayout();
 
             stackLayout.Children.Add(image);
             stackLayout.Children.Add(detailRibbon);

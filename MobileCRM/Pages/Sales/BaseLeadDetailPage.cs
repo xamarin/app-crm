@@ -5,21 +5,17 @@ using MobileCRM.ViewModels.Sales;
 using System;
 using MobileCRM.Views.Base;
 using System.Threading.Tasks;
+using MobileCRM.Layouts;
 
 namespace MobileCRM.Pages.Sales
 {
-    public abstract class BaseLeadDetailPage : ContentPage
+    public abstract class BaseLeadDetailPage : ModelBoundContentPage<LeadDetailViewModel>
     {
-        protected LeadDetailViewModel ViewModel
-        {
-            get { return BindingContext as LeadDetailViewModel; }
-        }
-
         BaseTabbedPageHeaderView _TabbedPageHeaderView;
 
         protected StackLayout StackLayout { get; private set; }
 
-        protected BaseLeadDetailPage(string doneButtonText, LeadDetailViewModel viewModel)
+        protected BaseLeadDetailPage(LeadDetailViewModel viewModel)
         {
             if (viewModel == null)
             {
@@ -29,13 +25,11 @@ namespace MobileCRM.Pages.Sales
 
             BindingContext = viewModel;
 
-            Title = ViewModel.Title;
-
-            StackLayout = new StackLayout();
+            StackLayout = new UnspacedStackLayout();
 
             Device.OnPlatform(
-                iOS: () => _TabbedPageHeaderView = new IosTabbedPageHeaderView(Title, doneButtonText),
-                Android: () => _TabbedPageHeaderView = new AndroidTabbedPageHeaderView(Title, doneButtonText));
+                iOS: () => _TabbedPageHeaderView = new IosTabbedPageHeaderView(Title, TextResources.Leads_LeadDetail_SaveButtonText.ToUpper()),
+                Android: () => _TabbedPageHeaderView = new AndroidTabbedPageHeaderView(Title, TextResources.Leads_LeadDetail_SaveButtonText.ToUpper()));
 
             _TabbedPageHeaderView.BackButtonImage.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
@@ -56,11 +50,12 @@ namespace MobileCRM.Pages.Sales
                 {
                     Command = new Command(async () =>
                         {
-                            var answer = await DisplayAlert(
-                                             title: TextResources.Leads_SaveConfirmTitle,
-                                             message: TextResources.Leads_SaveConfirmDescription,
-                                             accept: TextResources.Save,
-                                             cancel: TextResources.Cancel);
+                            var answer = 
+                                await DisplayAlert(
+                                    title: TextResources.Leads_SaveConfirmTitle,
+                                    message: TextResources.Leads_SaveConfirmDescription,
+                                    accept: TextResources.Save,
+                                    cancel: TextResources.Cancel);
 
                             if (answer)
                             {
@@ -76,10 +71,5 @@ namespace MobileCRM.Pages.Sales
 
             Content = StackLayout;
         }
-
-//        protected override async Task ExecuteOnlyIfAuthenticated() 
-//        {
-//            System.Diagnostics.Debug.WriteLine("BaseLeadDetailPage.ExecuteOnlyIfAuthenticated()");
-//        }
     }
 }

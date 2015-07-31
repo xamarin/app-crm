@@ -24,7 +24,6 @@ namespace MobileCRM.Cells
                 LineBreakMode = LineBreakMode.TailTruncation
             };
 
-            // The simple form of the Binding constructor.
             CompanyNameLabel.SetBinding(
                 Label.TextProperty,
                 new Binding("Company"));
@@ -35,11 +34,10 @@ namespace MobileCRM.Cells
             {
                 TextColor = Color.Gray,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                YAlign = TextAlignment.End
+                YAlign = TextAlignment.End,
+                LineBreakMode = LineBreakMode.TailTruncation
             };
-
-            // This is an example of the expanded form of the Binding constructor. 
-            // Being used here to take advantage of the stringFormat parameter.
+                        
             PercentCompleteLabel.SetBinding(
                 Label.TextProperty,
                 new Binding(
@@ -54,10 +52,10 @@ namespace MobileCRM.Cells
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                     Android: Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                    WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label)))
+                    WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
+                LineBreakMode = LineBreakMode.TailTruncation
             };
-
-            // The simple form of the Binding constructor.
+                        
             LeadAmountLabel.SetBinding(
                 targetProperty: Label.TextProperty,
                 binding: new Binding(
@@ -84,10 +82,7 @@ namespace MobileCRM.Cells
             contentView.Padding = new Thickness(10, 0);
 
             // A container for the "top-level" of the cell's view hierarchy.
-            RelativeLayout relativeLayout = new RelativeLayout()
-            {
-                BackgroundColor = Color.Transparent
-            };
+            RelativeLayout relativeLayout = new RelativeLayout();
 
             // add the companyNameLabel to the relativeLayout
             relativeLayout.Children.Add(
