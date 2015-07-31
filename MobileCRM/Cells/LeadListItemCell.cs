@@ -18,7 +18,7 @@ namespace MobileCRM.Cells
             #region companyNameLabel
             CompanyNameLabel = new Label()
             {
-                TextColor = Color.Black,
+                TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White),
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)) * 1.2,
                 YAlign = TextAlignment.End,
                 LineBreakMode = LineBreakMode.TailTruncation

@@ -27,7 +27,7 @@ namespace MobileCRM.Cells
             #region categoryNameLabel
             Label categoryNameLabel = new Label()
             { 
-                TextColor = Color.Black,
+                TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White),
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Small, typeof(Label)), 
                     Android: Device.GetNamedSize(NamedSize.Small, typeof(Label)),
