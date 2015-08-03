@@ -2,31 +2,40 @@
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using MobileCRM.Extensions;
+using Xamarin.Forms;
 
 namespace MobileCRM.Services
 {
     public class Authenticator
     {
-        // ideally, these should all be loaded from a config file
-        const string clientId = "591ddccc-4dd3-46d8-af4e-7886eb674cb9";
-        const string tenantAuthority = "https://login.windows.net/xamcrm.onmicrosoft.com";
-        static readonly Uri returnUri = new Uri("https://xamarin.com");
-        const string resourceUri = "https://graph.windows.net";
+        readonly string _ClientId;
+        readonly string _TenantAuthority;
+        readonly Uri _ReturnUri;
+        readonly string _ResourceUri;
 
         static AuthenticationResult _AuthenticationResult;
 
         AuthenticationContext _AuthenticationContext;
 
+        readonly IConfigFetcher _ConfigFetcher;
+
         public Authenticator()
         {
-            _AuthenticationContext = new AuthenticationContext(tenantAuthority);
+            _ConfigFetcher = DependencyService.Get<IConfigFetcher>();
+
+            _ClientId = _ConfigFetcher.GetAsync("azureActiveDirectoryAuthenticationClientId", true).Result;
+            _TenantAuthority = _ConfigFetcher.GetAsync("azureActiveDirectoryAuthenticationTenantAuthorityUrl").Result;
+            _ReturnUri = new Uri( _ConfigFetcher.GetAsync("azureActiveDirectoryAuthenticationReturnUri").Result);
+            _ResourceUri = _ConfigFetcher.GetAsync("azureActiveDirectoryAuthenticationResourceUri").Result;
+
+            _AuthenticationContext = new AuthenticationContext(_TenantAuthority);
         }
 
         public async Task Authenticate(IPlatformParameters platformParameters)
         {
             try
             {
-                _AuthenticationResult = await _AuthenticationContext.AcquireTokenAsync(resourceUri, clientId, returnUri, platformParameters);
+                _AuthenticationResult = await _AuthenticationContext.AcquireTokenAsync(_ResourceUri, _ClientId, _ReturnUri, platformParameters);
             }
             catch (Exception ex)
             {

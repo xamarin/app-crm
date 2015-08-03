@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MobileCRM.Clients;
 using MobileCRM.Models;
 using Xamarin.Forms;
+using MobileCRM.Services;
 
 [assembly: Dependency(typeof(CatalogClient))]
 
@@ -11,9 +12,19 @@ namespace MobileCRM.Clients
 {
     public class CatalogClient : ICatalogClient
     {
-        const string API_SERVICE_URL = "http://xamarindemomobilecrmv2dev.azure-mobile.net/api/";
+        readonly string _ApiServiceUrl;
 
-        const string APP_KEY = "TPNinqLKNLyrHbMfDGKToPddqMPEvr95";
+        readonly string _ApiAppKey;
+
+        readonly IConfigFetcher _ConfigFetcher;
+
+        public CatalogClient()
+        {
+            _ConfigFetcher = DependencyService.Get<IConfigFetcher>();
+
+            _ApiServiceUrl = _ConfigFetcher.GetAsync("azureMobileServiceDotNetWebApiUrl").Result;
+            _ApiAppKey = _ConfigFetcher.GetAsync("azureMobileServiceDotNetWebApiAppKey", true).Result;
+        }
 
         #region IProductsClient implementation
 
@@ -21,7 +32,7 @@ namespace MobileCRM.Clients
         {
             string requestUri = String.Format("Categories/SubCategories?parentCategoryId={0}", parentCategoryId);
 
-            var responseFetcher = new ResponseFetcher<List<CatalogCategory>>(API_SERVICE_URL, APP_KEY);
+            var responseFetcher = new ResponseFetcher<List<CatalogCategory>>(_ApiServiceUrl, _ApiAppKey);
 
             return await responseFetcher.GetResponseAsync(requestUri);
         }
@@ -30,7 +41,7 @@ namespace MobileCRM.Clients
         {
             string requestUri = String.Format("Categories?id={0} ", categoryId);
 
-            var responseFetcher = new ResponseFetcher<CatalogCategory>(API_SERVICE_URL, APP_KEY);
+            var responseFetcher = new ResponseFetcher<CatalogCategory>(_ApiServiceUrl, _ApiAppKey);
 
             return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
         }
@@ -39,7 +50,7 @@ namespace MobileCRM.Clients
         {
             string requestUri = String.Format("Products/ByCategory?id={0} ", categoryId);
 
-            var responseFetcher = new ResponseFetcher<List<CatalogProduct>>(API_SERVICE_URL, APP_KEY);
+            var responseFetcher = new ResponseFetcher<List<CatalogProduct>>(_ApiServiceUrl, _ApiAppKey);
 
             return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
         }
@@ -48,7 +59,7 @@ namespace MobileCRM.Clients
         {
             string requestUri = String.Format("Products?id={0} ", productId);
 
-            var responseFetcher = new ResponseFetcher<CatalogProduct>(API_SERVICE_URL, APP_KEY);
+            var responseFetcher = new ResponseFetcher<CatalogProduct>(_ApiServiceUrl, _ApiAppKey);
 
             return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
         }
@@ -57,7 +68,7 @@ namespace MobileCRM.Clients
         {
             string requestUri = String.Format("Search?q={0} ", searchTerm);
 
-            var responseFetcher = new ResponseFetcher<List<CatalogProduct>>(API_SERVICE_URL, APP_KEY);
+            var responseFetcher = new ResponseFetcher<List<CatalogProduct>>(_ApiServiceUrl, _ApiAppKey);
 
             return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
         }

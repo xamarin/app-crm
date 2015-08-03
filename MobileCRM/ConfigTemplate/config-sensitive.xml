@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<config>
+ <!-- Enter the Application Key for your instance of the JS-based Azure Mobile Service -->
+  <azureMobileServiceJsAppKey></azureMobileServiceJsAppKey>
+  
+  <!-- Enter the Application Key for your instance of the .NET Web API -based Azure Mobile Service -->
+  <azureMobileServiceDotNetWebApiAppKey></azureMobileServiceDotNetWebApiAppKey>
+
+  <!---Azure Active Directory Authentication client id -->
+  <azureActiveDirectoryAuthenticationClientId></azureActiveDirectoryAuthenticationClientId>
+</config>

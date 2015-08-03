@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<config>
+  <!-- Enter the Application URL for your instance of the JS-based Azure Mobile Service -->
+  <azureMobileServiceJsUrl>https://xamarin3crmdemoprod.azure-mobile.net/</azureMobileServiceJsUrl>
+
+  <!-- Enter the Application URL for your instance of the .NET Web API -based Azure Mobile Service -->
+  <azureMobileServiceDotNetWebApiUrl>http://xamarindemomobilecrmv2dev.azure-mobile.net/api/</azureMobileServiceDotNetWebApiUrl>
+
+  <!---Azure Active Directory Authentication tenant authority URL -->
+  <azureActiveDirectoryAuthenticationTenantAuthorityUrl>https://login.windows.net/xamcrm.onmicrosoft.com</azureActiveDirectoryAuthenticationTenantAuthorityUrl>
+
+  <!---Azure Active Directory Authentication return URI -->
+  <azureActiveDirectoryAuthenticationReturnUri>https://xamarin.com</azureActiveDirectoryAuthenticationReturnUri>
+
+  <!---Azure Active Directory Authentication return URI -->
+  <azureActiveDirectoryAuthenticationResourceUri>https://graph.windows.net</azureActiveDirectoryAuthenticationResourceUri>
+</config>

@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
 using MobileCRM.Models;
 using Xamarin;
+using Xamarin.Forms;
 
 namespace MobileCRM.Services
 {
     public class AuthInfo
     {
-        public static string APPLICATION_URL = "https://xamarin3crmdemoprod.azure-mobile.net/";
-        public static string APPLICATION_KEY = "eeEXCKVPqNtEOIhypkxzgAMUUdEjhN69";
+        IConfigFetcher _ConfigFetcher;
 
         static AuthInfo instance;
 
@@ -23,11 +23,13 @@ namespace MobileCRM.Services
 
         AuthInfo()
         {
+            _ConfigFetcher = DependencyService.Get<IConfigFetcher>();
+
             user = null;
             userInfo = null;
             client = new MobileServiceClient(
-                APPLICATION_URL,
-                APPLICATION_KEY);
+                _ConfigFetcher.GetAsync("azureMobileServiceJsUrl").Result,
+                _ConfigFetcher.GetAsync("azureMobileServiceJsAppKey", true).Result);
         }
 
         public static AuthInfo Instance

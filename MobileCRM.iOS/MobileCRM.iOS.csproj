@@ -38,6 +38,7 @@
     </IpaPackageName>
     <CodesignKey>iPhone Developer: Joe Sauve (4W87998GG8)</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <CodesignProvision>76d01a21-065d-4df3-9619-5530292b5585</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -199,6 +200,7 @@
     <Reference Include="Calabash">
       <HintPath>..\packages\Xamarin.TestCloud.Agent.0.14.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -265,6 +267,7 @@
     <Compile Include="Renderers\PieChartRenderer.cs" />
     <Compile Include="Localization\Localize.cs" />
     <Compile Include="Renderers\SalesDashboardPageRenderer.cs" />
+    <Compile Include="Services\ConfigFetcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\xamarin-icon-simplified.png" />
@@ -362,14 +365,26 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <ItemGroup>
-    <ProjectReference Include="..\MobileCRM\MobileCRM.csproj">
-      <Project>{458941D2-77A4-4B2C-8520-B6EF75947B09}</Project>
-      <Name>MobileCRM</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">
       <Project>{A2A445B4-E291-4224-8B31-5FD82ADEC085}</Project>
       <Name>MobileCRM.CustomControls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MobileCRM\MobileCRM.csproj">
+      <Project>{458941D2-77A4-4B2C-8520-B6EF75947B09}</Project>
+      <Name>MobileCRM</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Config\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\MobileCRM\Config\config.xml">
+      <Link>Config\config.xml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\MobileCRM\Config\config-sensitive.xml">
+      <Link>Config\config-sensitive.xml</Link>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

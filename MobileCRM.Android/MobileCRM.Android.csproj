@@ -19,7 +19,6 @@
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <MandroidI18n />
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
-    <AndroidLinkMode>None</AndroidLinkMode>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
@@ -51,6 +50,7 @@
     <ConsolePause>false</ConsolePause>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
     <DebugType>full</DebugType>
+    <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Security" />
@@ -200,6 +200,7 @@
     <Reference Include="Xamarin.Insights">
       <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Localization\Localize.cs" />
     <Compile Include="Renderers\SalesDashboardPageRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Services\ConfigFetcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -232,13 +234,13 @@
   <Import Project="..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.3.6376\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Import Project="..\packages\Xamarin.Insights.1.10.5\build\MonoAndroid10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.5\build\MonoAndroid10\Xamarin.Insights.targets')" />
   <ItemGroup>
-    <ProjectReference Include="..\MobileCRM\MobileCRM.csproj">
-      <Project>{458941D2-77A4-4B2C-8520-B6EF75947B09}</Project>
-      <Name>MobileCRM</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">
       <Project>{A2A445B4-E291-4224-8B31-5FD82ADEC085}</Project>
       <Name>MobileCRM.CustomControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MobileCRM\MobileCRM.csproj">
+      <Project>{458941D2-77A4-4B2C-8520-B6EF75947B09}</Project>
+      <Name>MobileCRM</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +248,8 @@
     <Folder Include="Resources\" />
     <Folder Include="Resources\layout\" />
     <Folder Include="Resources\values\" />
+    <Folder Include="Services\" />
+    <Folder Include="Config\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -253,5 +257,13 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\back_android.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\MobileCRM\Config\config.xml">
+      <Link>Config\config.xml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\MobileCRM\Config\config-sensitive.xml">
+      <Link>Config\config-sensitive.xml</Link>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

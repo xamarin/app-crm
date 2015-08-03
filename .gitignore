@@ -171,4 +171,4 @@ UpgradeLog*.htm
 FakesAssemblies/
 
 # sensitive configs
-config-sensitive.xml
+*/Config/config-sensitive.xml
