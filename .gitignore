@@ -169,3 +169,6 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+# sensitive configs
+config-sensitive.xml
