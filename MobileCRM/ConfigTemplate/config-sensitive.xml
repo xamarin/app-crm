@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 
+<!-- In a production app/environment, this file should be excluded from being committed to a repo, i.e. add "*/Config/config-sensitive.xml" to your .gitignore file. -->
+<!-- The .csproj has a custom PreBuild MSBuild target that copies an empty templated config-sensitive.xml to the ~/Config/ folder before build. -->
+<!-- In a production evironment, you could merge your app keys into that templated config-sensitive.xml at build time (perhaps as part of a CI process), thus keeping your sensitive keys out of your repository. -->
+
 <config>
  <!-- Enter the Application Key for your instance of the JS-based Azure Mobile Service -->
   <azureMobileServiceJsAppKey></azureMobileServiceJsAppKey>
