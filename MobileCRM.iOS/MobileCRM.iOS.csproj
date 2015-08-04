@@ -36,9 +36,8 @@
     </IpaMetadata>
     <IpaPackageName>
     </IpaPackageName>
-    <CodesignKey>iPhone Developer: Joe Sauve (4W87998GG8)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <CodesignProvision>76d01a21-065d-4df3-9619-5530292b5585</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
