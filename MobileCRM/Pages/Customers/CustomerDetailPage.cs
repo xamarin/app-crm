@@ -1,10 +1,11 @@
 ﻿using Xamarin.Forms;
 using MobileCRM.Layouts;
 using MobileCRM.Statics;
+using MobileCRM.ViewModels.Customers;
 
 namespace MobileCRM.Pages.Customers
 {
-    public class CustomerDetailPage : BaseCustomerDetailPage
+    public class CustomerDetailPage : BaseCustomerDetailPage<CustomerDetailViewModel>
     {
         public CustomerDetailPage()
         {
@@ -146,7 +147,7 @@ namespace MobileCRM.Pages.Customers
 
         private StackLayout GetSeparator()
         {
-            return new UnspacedStackLayout() { HeightRequest = 1, BackgroundColor = Palette._013 };
+            return new UnspacedStackLayout() { HeightRequest = 1, BackgroundColor = Palette._014 };
         }
     }
 }

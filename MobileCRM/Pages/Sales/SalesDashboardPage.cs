@@ -32,7 +32,7 @@ namespace MobileCRM.Pages.Sales
             double chartHeight = Device.OnPlatform(190, 190, 180);
 
             StackLayout salesChartStackLayout = new UnspacedStackLayout() { HeightRequest = chartHeight };
-            Device.OnPlatform(iOS: () => salesChartStackLayout.BackgroundColor = Color.Transparent, Android: () => salesChartStackLayout.BackgroundColor = Palette._008);
+            Device.OnPlatform(iOS: () => salesChartStackLayout.BackgroundColor = Color.Transparent, Android: () => salesChartStackLayout.BackgroundColor = Palette._009);
 
             ActivityIndicator chartActivityIndicator = new ActivityIndicator()
             {
@@ -48,11 +48,11 @@ namespace MobileCRM.Pages.Sales
                 {
                     OpposedPosition = false,
                     ShowMajorGridLines = true,
-                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = Palette._009 },
+                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = Palette._010 },
                     ShowMinorGridLines = true,
                     MinorTicksPerInterval = 1,
-                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = Palette._010 },
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._009 }
+                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = Palette._011 },
+                    LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._010 }
                 },
                 Color = Palette._004
             };
@@ -70,7 +70,7 @@ namespace MobileCRM.Pages.Sales
                     LabelPlacement = LabelPlacement.BetweenTicks,
                     TickPosition = AxisElementPosition.Inside,
                     ShowMajorGridLines = false,
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._009 }
+                    LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._010 }
                 }
             };
             Device.OnPlatform(
@@ -79,7 +79,7 @@ namespace MobileCRM.Pages.Sales
                     chart.BackgroundColor = Color.Transparent;
                     salesChartStackLayout.Padding = new Thickness(0, 20, 30, 0);
                 }, 
-                Android: () => chart.BackgroundColor = Palette._008);
+                Android: () => chart.BackgroundColor = Palette._009);
 
             chart.Series.Add(columnSeries);
             chart.SetBinding(IsEnabledProperty, "IsModelLoaded");
@@ -110,10 +110,7 @@ namespace MobileCRM.Pages.Sales
             #endregion
 
             #region leadsListView
-            LeadListView leadListView = new LeadListView()
-            {
-                ItemTemplate = new DataTemplate(typeof(LeadListItemCell))
-            };
+            LeadListView leadListView = new LeadListView();
             leadListView.SetBinding(LeadListView.ItemsSourceProperty, "Leads");
             leadListView.SetBinding(IsEnabledProperty, "IsModelLoaded");
             leadListView.SetBinding(IsVisibleProperty, "IsModelLoaded");

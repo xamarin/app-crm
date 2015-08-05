@@ -8,7 +8,7 @@ namespace MobileCRM.Views.Products
     {
         public ProductDetailRibbonView(CatalogProduct catalogProduct)
         {
-            BackgroundColor = Palette._008;
+            BackgroundColor = Palette._009;
 
             HeightRequest = 20;
 

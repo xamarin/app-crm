@@ -11,7 +11,7 @@ namespace MobileCRM.Cells
 
         public CustomerListItemCell()
         {
-            #region companyNameLabel
+            #region company label
             CompanyNameLabel = new Label()
             {
                 TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White),
@@ -26,7 +26,7 @@ namespace MobileCRM.Cells
                 new Binding("Company"));
             #endregion
 
-            #region percentCompleteLabel
+            #region contact label
             ContactName = new Label()
             {
                 TextColor = Color.Gray,

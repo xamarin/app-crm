@@ -140,6 +140,9 @@
 	<data name="Customers_Detail_Address" xml:space="preserve">
 		<value>Address</value>
 	</data>
+	<data name="Customers_Orders_NewOrder" xml:space="preserve">
+		<value>New Order</value>
+	</data>
 
 
 	<data name="Products" xml:space="preserve">

@@ -257,6 +257,12 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Customers_Orders_NewOrder {
+            get {
+                return ResourceManager.GetString("Customers_Orders_NewOrder", resourceCulture);
+            }
+        }
+        
         internal static string MainTabs_Products {
             get {
                 return ResourceManager.GetString("MainTabs_Products", resourceCulture);

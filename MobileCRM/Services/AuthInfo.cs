@@ -11,13 +11,12 @@ namespace MobileCRM.Services
 {
     public class AuthInfo
     {
-        IConfigFetcher _ConfigFetcher;
+        readonly IConfigFetcher _ConfigFetcher;
+        readonly MobileServiceClient _Client;
+        MobileServiceUser _User;
+        UserInfo _UserInfo;
 
         static AuthInfo instance;
-
-        MobileServiceUser user;
-        MobileServiceClient client;
-        UserInfo userInfo;
 
         public const MobileServiceAuthenticationProvider AUTH_PROVIDER = MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory;
 
@@ -25,9 +24,9 @@ namespace MobileCRM.Services
         {
             _ConfigFetcher = DependencyService.Get<IConfigFetcher>();
 
-            user = null;
-            userInfo = null;
-            client = new MobileServiceClient(
+            _User = null;
+            _UserInfo = null;
+            _Client = new MobileServiceClient(
                 _ConfigFetcher.GetAsync("azureMobileServiceJsUrl").Result,
                 _ConfigFetcher.GetAsync("azureMobileServiceJsAppKey", true).Result);
         }
@@ -46,15 +45,15 @@ namespace MobileCRM.Services
 
         public MobileServiceUser User
         {
-            get { return user; }
+            get { return _User; }
             set
             {
-                user = value;
+                _User = value;
 
                 //Insights user tracking
                 if (value != null)
                 {
-                    Insights.Identify(user.UserId, "email", "sally@xamcrm.onmicrosoft.com");
+                    Insights.Identify(_User.UserId, "email", "sally@xamcrm.onmicrosoft.com");
                 } //end if
 
             }
@@ -62,20 +61,20 @@ namespace MobileCRM.Services
 
         public UserInfo UserInfo
         {
-            get { return userInfo; }
-            set { userInfo = value; }
+            get { return _UserInfo; }
+            set { _UserInfo = value; }
         }
 
         public MobileServiceClient GetMobileServiceClient()
         {
-            return client;
+            return _Client;
         }
 
         public async Task GetUserInfo()
         {
             try
             {
-                UserInfo = await client.InvokeApiAsync<UserInfo>("getidentities", HttpMethod.Get, null);
+                UserInfo = await _Client.InvokeApiAsync<UserInfo>("getidentities", HttpMethod.Get, null);
             }
             catch (Exception exc)
             {

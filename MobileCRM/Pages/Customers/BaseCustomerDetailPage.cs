@@ -1,14 +1,13 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using MobileCRM.Layouts;
 using MobileCRM.Pages.Base;
 using MobileCRM.Views.Base;
 using MobileCRM.Views;
-using MobileCRM.ViewModels.Customers;
+using MobileCRM.ViewModels;
 
 namespace MobileCRM.Pages.Customers
 {
-    public class BaseCustomerDetailPage : ModelEnforcedContentPage<CustomerDetailViewModel>
+    public abstract class BaseCustomerDetailPage<TViewModelType> : ModelEnforcedContentPage<TViewModelType> where TViewModelType : BaseViewModel
     {
         BaseTabbedPageHeaderView _TabbedPageHeaderView;
 
@@ -39,30 +38,30 @@ namespace MobileCRM.Pages.Customers
                             NumberOfTapsRequired = 1
                         }));
 
-                if (_TabbedPageHeaderView.DoneActionLabel != null)
-                {
-                    _TabbedPageHeaderView.DoneActionLabel.GestureRecognizers.Add(
-                        new TapGestureRecognizer()
-                        {
-                            Command = new Command(async () =>
-                                {
-                                    var answer = 
-                                        await DisplayAlert(
-                                            title: TextResources.Leads_SaveConfirmTitle,
-                                            message: TextResources.Leads_SaveConfirmDescription,
-                                            accept: TextResources.Save,
-                                            cancel: TextResources.Cancel);
-
-                                    if (answer)
-                                    {
-                                        ViewModel.SaveAccountCommand.Execute(null);
-
-                                        await ViewModel.PopModalAsync();
-                                    }
-                                }),
-                            NumberOfTapsRequired = 1
-                        });
-                }
+//                if (_TabbedPageHeaderView.DoneActionLabel != null)
+//                {
+//                    _TabbedPageHeaderView.DoneActionLabel.GestureRecognizers.Add(
+//                        new TapGestureRecognizer()
+//                        {
+//                            Command = new Command(async () =>
+//                                {
+//                                    var answer = 
+//                                        await DisplayAlert(
+//                                            title: TextResources.Leads_SaveConfirmTitle,
+//                                            message: TextResources.Leads_SaveConfirmDescription,
+//                                            accept: TextResources.Save,
+//                                            cancel: TextResources.Cancel);
+//
+//                                    if (answer)
+//                                    {
+//                                        ViewModel.SaveAccountCommand.Execute(null);
+//
+//                                        await ViewModel.PopModalAsync();
+//                                    }
+//                                }),
+//                            NumberOfTapsRequired = 1
+//                        });
+//                }
 
                 StackLayout.Children.Add(_TabbedPageHeaderView);
             }

@@ -28,12 +28,7 @@ namespace MobileCRM.Pages.Customers
             #endregion
 
             #region customer list
-            CustomerListView customerListView = new CustomerListView()
-            {
-                ItemTemplate = new DataTemplate(typeof(CustomerListItemCell)), 
-                SeparatorColor = Palette._013
-                
-            };
+            CustomerListView customerListView = new CustomerListView();
             customerListView.SetBinding(CustomerListView.ItemsSourceProperty, "Accounts");
             customerListView.SetBinding(IsEnabledProperty, "IsModelLoaded");
             customerListView.SetBinding(IsVisibleProperty, "IsModelLoaded");
@@ -70,13 +65,11 @@ namespace MobileCRM.Pages.Customers
 
         async Task PushTabbedPage(Account account = null)
         {
-            CustomerDetailViewModel viewModel = new CustomerDetailViewModel(account) { Navigation = ViewModel.Navigation }; 
-
             TabbedPage tabbedPage = new TabbedPage();
             tabbedPage.Children.Add(new CustomerDetailPage()
                 {
                     Title = TextResources.Customers_Detail_Tab_Title,
-                    BindingContext = viewModel,
+                    BindingContext = new CustomerDetailViewModel(account) { Navigation = ViewModel.Navigation },
                     Icon = new FileImageSource() { File = "CustomersTab" },
 
                 });
@@ -84,14 +77,14 @@ namespace MobileCRM.Pages.Customers
             tabbedPage.Children.Add(new CustomerOrdersPage()
                 {
                     Title = TextResources.Customers_Orders_Tab_Title,
-                    BindingContext = viewModel,
+                    BindingContext = new OrdersViewModel(account) { Navigation = ViewModel.Navigation },
                     Icon = new FileImageSource() { File = "ProductsTab" }
                 });
 
             tabbedPage.Children.Add(new CustomerSalesPage()
                 {
                     Title = TextResources.Customers_Sales_Tab_Title,
-                    BindingContext = viewModel,
+                    BindingContext = new CustomerSalesViewModel(),
                     Icon = new FileImageSource() { File = "SalesTab" }
                 });
 

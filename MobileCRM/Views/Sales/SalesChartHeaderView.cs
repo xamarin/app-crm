@@ -26,7 +26,7 @@ namespace MobileCRM.Views.Sales
             Label weeklyAverageTitleLabel = new Label()
             {
                 Text = TextResources.SalesChartHeaderWeeklyAverageTitle.ToUpperInvariant(),
-                TextColor = Palette._011,
+                TextColor = Palette._012,
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Micro, typeof(Label)) * .9,
                     Android: Device.GetNamedSize(NamedSize.Micro, typeof(Label)),
@@ -74,9 +74,9 @@ namespace MobileCRM.Views.Sales
                 heightConstraint: Constraint.RelativeToParent(parent => (parent.Height / 4) * 3)
             );
 
-            BackgroundColor = Palette._008;
+            BackgroundColor = Palette._009;
 
-            Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._008);
+            Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._009);
 
             HeightRequest = 40;
 

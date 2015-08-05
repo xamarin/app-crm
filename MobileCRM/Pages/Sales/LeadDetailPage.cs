@@ -1,6 +1,7 @@
 ﻿using MobileCRM.Models;
 using Xamarin.Forms;
 using MobileCRM.ViewModels.Sales;
+using MobileCRM.Converters;
 
 namespace MobileCRM.Pages.Sales
 {
@@ -44,7 +45,7 @@ namespace MobileCRM.Pages.Sales
                 BindingContext = ViewModel.Lead,
                 Keyboard = Keyboard.Numeric
             };
-            opportunitySizeEntryCell.SetBinding(EntryCell.TextProperty, "OpportunitySize", BindingMode.TwoWay, new CurrencyConverter());
+            opportunitySizeEntryCell.SetBinding(EntryCell.TextProperty, "OpportunitySize", BindingMode.TwoWay, new CurrencyDoubleConverter());
             #endregion
 
             #region opportunity stage picker

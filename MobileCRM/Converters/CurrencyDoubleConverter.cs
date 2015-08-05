@@ -2,9 +2,9 @@
 using Xamarin.Forms;
 using System.Globalization;
 
-namespace MobileCRM
+namespace MobileCRM.Converters
 {
-    public class CurrencyConverter : IValueConverter
+    public class CurrencyDoubleConverter : IValueConverter
     {
         #region IValueConverter implementation
 

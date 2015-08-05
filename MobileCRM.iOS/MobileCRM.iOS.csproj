@@ -205,19 +205,10 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
     <BundleResource Include="Resources\Icon-76%402x.png" />
-    <BundleResource Include="Resources\map.png" />
-    <BundleResource Include="Resources\map%402x.png" />
-    <BundleResource Include="Resources\slideout.png" />
-    <BundleResource Include="Resources\slideout%402x.png" />
     <BundleResource Include="Resources\zoom_in.png" />
     <BundleResource Include="Resources\zoom_out.png" />
     <BundleResource Include="Resources\Default-Portrait.png" />
     <BundleResource Include="Resources\Default-Portrait%402x.png" />
-    <BundleResource Include="Resources\contact.png" />
-    <BundleResource Include="Resources\lead.png" />
-    <BundleResource Include="Resources\account.png" />
-    <BundleResource Include="Resources\settings.png" />
-    <BundleResource Include="Resources\settings%402x.png" />
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\CustomersTab%403x.png" />
@@ -249,6 +240,8 @@
     <BundleResource Include="Resources\icon_76.png" />
     <BundleResource Include="Resources\icon_80.png" />
     <BundleResource Include="Resources\back_ios%403x.png" />
+    <BundleResource Include="Resources\add_ios_blue%403x.png" />
+    <BundleResource Include="Resources\add_ios_gray%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -268,9 +261,6 @@
     <Compile Include="Renderers\SalesDashboardPageRenderer.cs" />
     <Compile Include="Services\ConfigFetcher.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\xamarin-icon-simplified.png" />
-  </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
@@ -285,79 +275,10 @@
     <BundleResource Include="Resources\refresh%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\add%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\contact%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\dashboard%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\dashboard.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\account%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\lead%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\contactcard%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\contactcard.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\order%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\order.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\orderhistory%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\orderhistory.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\menubk.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\menubk%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\catalog_printer.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\catalog_scanner.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\catalog_combo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\catalog_ink.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\catalog_paper.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\productcatalog%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\productcatalog.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\icon-76.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\save.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\save%402x.png" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

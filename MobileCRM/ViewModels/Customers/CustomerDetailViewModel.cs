@@ -10,8 +10,8 @@ namespace MobileCRM.ViewModels.Customers
 {
     public class CustomerDetailViewModel : BaseViewModel
     {
-        IDataManager dataManager;
-        Geocoder coder;
+        IDataManager _DataManager;
+        Geocoder _GeoCoder;
 
         public Account Account { get; set; }
 
@@ -33,8 +33,8 @@ namespace MobileCRM.ViewModels.Customers
 
             this.Icon = "account.png";
 
-            dataManager = DependencyService.Get<IDataManager>();
-            coder = new Geocoder();
+            _DataManager = DependencyService.Get<IDataManager>();
+            _GeoCoder = new Geocoder();
 
             MessagingCenter.Subscribe<Account>(this, MessagingServiceConstants.ACCOUNT, (Account) =>
                 {
@@ -42,7 +42,7 @@ namespace MobileCRM.ViewModels.Customers
                 });
         }
 
-        int industryIndex = 0;
+        int _IndustryIndex = 0;
 
         public int IndustryIndex
         {
@@ -52,22 +52,22 @@ namespace MobileCRM.ViewModels.Customers
                 {
                     if (Account.Industry.Equals(Account.IndustryTypes[i]))
                     {
-                        industryIndex = i;
+                        _IndustryIndex = i;
                         break;
                     } //end if
                 }
 
-                return industryIndex;
+                return _IndustryIndex;
             }
             set
             { 
-                industryIndex = value;
-                Account.Industry = Account.IndustryTypes[industryIndex]; 
+                _IndustryIndex = value;
+                Account.Industry = Account.IndustryTypes[_IndustryIndex]; 
             }
         }
         //end IndustryIndex
 
-        int opptStageIndex = 0;
+        int _OpptStageIndex = 0;
 
         public int OpptStageIndex
         {
@@ -77,20 +77,20 @@ namespace MobileCRM.ViewModels.Customers
                 {
                     if (Account.OpportunityStage.Equals(Account.OpportunityStages[i]))
                     {
-                        opptStageIndex = i;
+                        _OpptStageIndex = i;
                         break;
                     }
                 }
-                return opptStageIndex;
+                return _OpptStageIndex;
             }
             set
             {
-                opptStageIndex = value;
-                Account.OpportunityStage = Account.OpportunityStages[opptStageIndex];
+                _OpptStageIndex = value;
+                Account.OpportunityStage = Account.OpportunityStages[_OpptStageIndex];
             }
         }
 
-        double dblParsed = 0;
+        double _DblParsed = 0;
 
         public string OpportunitySize
         {
@@ -98,9 +98,9 @@ namespace MobileCRM.ViewModels.Customers
             set
             {
              
-                if (double.TryParse(value, out dblParsed))
+                if (double.TryParse(value, out _DblParsed))
                 {
-                    Account.OpportunitySize = dblParsed;
+                    Account.OpportunitySize = _DblParsed;
                 }
             }
         }
@@ -110,7 +110,7 @@ namespace MobileCRM.ViewModels.Customers
             get { return Account.DisplayName + ", " + Account.JobTitle; }
         }
 
-        Command saveAccountCommand;
+        Command _SaveAccountCommand;
 
         /// <summary>
         /// Command to load contacts
@@ -119,8 +119,8 @@ namespace MobileCRM.ViewModels.Customers
         {
             get
             {
-                return saveAccountCommand ??
-                (saveAccountCommand = new Command(async () =>
+                return _SaveAccountCommand ??
+                (_SaveAccountCommand = new Command(async () =>
                   await ExecuteSaveAccountCommand()));
             }
         }
@@ -133,7 +133,7 @@ namespace MobileCRM.ViewModels.Customers
             IsBusy = true;
 
 
-            await dataManager.SaveAccountAsync(Account);
+            await _DataManager.SaveAccountAsync(Account);
 
             MessagingCenter.Send(Account, MessagingServiceConstants.SAVE_ACCOUNT);
 

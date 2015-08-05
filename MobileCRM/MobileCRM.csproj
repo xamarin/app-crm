@@ -56,8 +56,6 @@
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\UserInfo.cs" />
-    <Compile Include="Pages\Base\BaseView.cs" />
-    <Compile Include="Pages\Base\TabView.cs" />
     <Compile Include="Properties\Attributes\CurrencyAttribute.cs" />
     <Compile Include="Properties\Attributes\DisplayAttribute.cs" />
     <Compile Include="Services\AuthInfo.cs" />
@@ -92,7 +90,6 @@
     <Compile Include="ViewModels\Sales\SalesDashboardViewModel.cs" />
     <Compile Include="ViewModels\Sales\LeadDetailViewModel.cs" />
     <Compile Include="Cells\PickerCell.cs" />
-    <Compile Include="Converters\CurrencyConverter.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Pages\Products\BaseProductPage.cs" />
     <Compile Include="Views\Products\ProductDetailRibbonView.cs" />
@@ -120,6 +117,15 @@
     <Compile Include="Statics\Palette.cs" />
     <Compile Include="Statics\Sizes.cs" />
     <Compile Include="Services\IConfigFetcher.cs" />
+    <Compile Include="ViewModels\Customers\NewOrderViewModel.cs" />
+    <Compile Include="ViewModels\Customers\CustomerSalesViewModel.cs" />
+    <Compile Include="ViewModels\Customers\OrdersViewModel.cs" />
+    <Compile Include="Views\Customers\OrderListHeaderView.cs" />
+    <Compile Include="Cells\OrderListItemCell.cs" />
+    <Compile Include="Views\Customers\CustomerOrderListView.cs" />
+    <Compile Include="Converters\ShortDatePatternConverter.cs" />
+    <Compile Include="Converters\CurrencyDoubleConverter.cs" />
+    <Compile Include="Converters\CurrencyIntegerConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

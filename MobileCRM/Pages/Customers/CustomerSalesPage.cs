@@ -1,8 +1,9 @@
 ﻿using Xamarin.Forms;
+using MobileCRM.Pages.Base;
 
 namespace MobileCRM.Pages.Customers
 {
-    public class CustomerSalesPage : BaseCustomerDetailPage
+    public class CustomerSalesPage : ModelEnforcedContentPage<CustomerSalesViewModel>
     {
         public CustomerSalesPage()
         {

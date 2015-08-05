@@ -13,7 +13,7 @@ namespace MobileCRM.Views.Products
             HasUnevenRows = false;
             RowHeight = (int)Sizes.LargeRowHeight;
             SeparatorVisibility = SeparatorVisibility.Default;
-            SeparatorColor = Palette._012;
+            SeparatorColor = Palette._013;
         }
     }
 }

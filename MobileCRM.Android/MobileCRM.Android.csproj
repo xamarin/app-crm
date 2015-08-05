@@ -257,6 +257,8 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\back_android.png" />
+    <AndroidResource Include="Resources\drawable\add_android_blue.png" />
+    <AndroidResource Include="Resources\drawable\add_android_gray.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\MobileCRM\Config\config.xml">

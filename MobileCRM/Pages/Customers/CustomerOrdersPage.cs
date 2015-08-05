@@ -1,35 +1,62 @@
 ﻿using Xamarin.Forms;
+using MobileCRM.Statics;
+using MobileCRM.Layouts;
+using MobileCRM.Pages.Base;
+using MobileCRM.Customers;
+using Xamarin;
+using MobileCRM.Views.Customers;
 
 namespace MobileCRM.Pages.Customers
 {
-    public class CustomerOrdersPage : BaseCustomerDetailPage
+    public class CustomerOrdersPage : ModelEnforcedContentPage<OrdersViewModel>
     {
+        const double paddingAmount = 20;
+
         public CustomerOrdersPage()
         {
-            #region new order label
+            #region activity indicator
+            ActivityIndicator activityIndicator = new ActivityIndicator()
+            { 
+                HeightRequest = Sizes.LargeRowHeight
+            };
+            activityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
+            activityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+            activityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
+            #endregion
 
+            #region new order label
+            OrderListHeaderView headerView = new OrderListHeaderView();
+            headerView.SetBinding(ContentView.IsVisibleProperty, "IsModelLoaded");
+            headerView.SetBinding(ContentView.IsEnabledProperty, "IsModelLoaded");
             #endregion
 
             #region order list view
-
+            CustomerOrderListView customerOrderListView = new CustomerOrderListView();
+            customerOrderListView.SetBinding(CustomerOrderListView.ItemsSourceProperty, "Orders");
+            customerOrderListView.SetBinding(CustomerOrderListView.IsVisibleProperty, "IsModelLoaded");
+            customerOrderListView.SetBinding(CustomerOrderListView.IsEnabledProperty, "IsModelLoaded");
             #endregion
 
-//            Content = StackLayout;
+            StackLayout stackLayout = new UnspacedStackLayout();
 
-            RelativeLayout relativeLayout = new RelativeLayout();
+            stackLayout.Children.Add(activityIndicator);
 
-            Label label = new Label()
-            { 
-                    Text = "Coming Soon!",
-                    TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White),
-                    FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Large, typeof(Label)), Device.GetNamedSize(NamedSize.Large, typeof(Label)), Device.GetNamedSize(NamedSize.Large, typeof(Label))),
-                    XAlign = TextAlignment.Center,
-                    YAlign = TextAlignment.Center
-            };
-                
-            relativeLayout.Children.Add(label, widthConstraint: Constraint.RelativeToParent(parent => parent.Width), heightConstraint: Constraint.RelativeToParent(parent => parent.Height));
+            stackLayout.Children.Add(headerView);
 
-            Content = relativeLayout;
+            stackLayout.Children.Add(customerOrderListView);
+
+            Content = stackLayout;
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            await ViewModel.ExecuteLoadOrdersCommand();
+
+            ViewModel.IsInitialized = true;
+
+            Insights.Track("Customer Orders Page");
         }
     }
 }

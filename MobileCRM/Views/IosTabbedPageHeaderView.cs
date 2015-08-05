@@ -52,7 +52,7 @@ namespace MobileCRM.Views
             BackButtonLabel = new Label()
             {
                 Text = TextResources.Back,
-                TextColor = Palette._014,
+                TextColor = Palette._015,
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
                     Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
@@ -100,7 +100,7 @@ namespace MobileCRM.Views
                 DoneActionLabel = new Label()
                 {
                     Text = doneActionTitle,
-                    TextColor = Palette._014,
+                    TextColor = Palette._015,
                     FontSize = Device.OnPlatform(
                         iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
                         Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
@@ -126,7 +126,7 @@ namespace MobileCRM.Views
 
             StackLayout stackLayout = new UnspacedStackLayout();
 
-            StackLayout separator = new UnspacedStackLayout() { HeightRequest = 2, BackgroundColor = Palette._013 };
+            StackLayout separator = new UnspacedStackLayout() { HeightRequest = 2, BackgroundColor = Palette._014 };
 
             stackLayout.Children.Add(outerContentView);
             stackLayout.Children.Add(separator);

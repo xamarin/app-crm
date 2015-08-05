@@ -18,7 +18,7 @@ namespace MobileCRM.Views.Products
             Label descriptionLabel = new Label()
             { 
                 Text = catalogProduct.Description,
-                TextColor = Palette._007,
+                TextColor = Palette._008,
                 FontSize = Device.GetNamedSize(NamedSize.Default, typeof(Label))
             };
 
