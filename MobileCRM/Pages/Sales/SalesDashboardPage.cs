@@ -15,7 +15,11 @@ namespace MobileCRM.Pages.Sales
 {
     public class SalesDashboardPage : ModelEnforcedContentPage<SalesDashboardViewModel>
     {
-        public IPlatformParameters PlatformParameters { get; set; }
+        /// <summary>
+        /// A necessary flag for dealing with the async Auth UI. If we don't use this, then the Auth UI gets presented twice, even when the first login attempt is successful.
+        /// This is because this Page's OnAppearing() method gets called before the Auth UI returns its result.
+        /// </summary>
+        bool _DidPresentAuthUI;
 
         public SalesDashboardPage()
         {
@@ -39,8 +43,8 @@ namespace MobileCRM.Pages.Sales
                 HeightRequest = Sizes.MediumRowHeight
             };
             chartActivityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
-            chartActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
             chartActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
+            chartActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
 
             ColumnSeries columnSeries = new ColumnSeries()
             {
@@ -83,7 +87,6 @@ namespace MobileCRM.Pages.Sales
 
             chart.Series.Add(columnSeries);
             chart.SetBinding(IsEnabledProperty, "IsModelLoaded");
-            chart.SetBinding(ActivityIndicator.IsRunningProperty, "IsModelLoaded");
             chart.SetBinding(IsVisibleProperty, "IsModelLoaded");
 
             salesChartStackLayout.Children.Add(chartActivityIndicator);
@@ -95,7 +98,6 @@ namespace MobileCRM.Pages.Sales
             // It takes an action as a constructor parameter, which will be used by the add new lead button ("+").
             LeadListHeaderView leadListHeaderView = new LeadListHeaderView(async () => await PushTabbedPage());
             leadListHeaderView.SetBinding(IsEnabledProperty, "IsModelLoaded");
-            leadListHeaderView.SetBinding(ActivityIndicator.IsRunningProperty, "IsModelLoaded");
             leadListHeaderView.SetBinding(IsVisibleProperty, "IsModelLoaded");
             #endregion
 
@@ -105,8 +107,8 @@ namespace MobileCRM.Pages.Sales
                 HeightRequest = Sizes.MediumRowHeight
             };
             leadListActivityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
-            leadListActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
             leadListActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
+            leadListActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
             #endregion
 
             #region leadsListView
@@ -152,15 +154,22 @@ namespace MobileCRM.Pages.Sales
 
             Content.IsVisible = false;
 
-            await App.Authenticate(PlatformParameters);
+            if (!_DidPresentAuthUI)
+            {
+                _DidPresentAuthUI = true;
 
-            Content.IsVisible = true;
+                await Authenticate();
 
-            await ViewModel.ExecuteLoadSeedDataCommand();
+                _DidPresentAuthUI = false;
 
-            ViewModel.IsInitialized = true;
+                Content.IsVisible = true;
 
-            Insights.Track("Dashboard Page");
+                await ViewModel.ExecuteLoadSeedDataCommand();
+
+                ViewModel.IsInitialized = true;
+
+                Insights.Track("Dashboard Page");
+            }
         }
 
         async Task PushTabbedPage(Account lead = null)
@@ -181,6 +190,12 @@ namespace MobileCRM.Pages.Sales
                 });
 
             await ViewModel.PushModalAsync(tabbedPage);
+        }
+
+        async Task<bool> Authenticate()
+        {
+            var success = await App.Authenticate();
+            return !success ? await this.Authenticate() : success;
         }
     }
 }

@@ -23,8 +23,7 @@ namespace MobileCRM.Cells
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)) * 1.2,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.End,
-                LineBreakMode = LineBreakMode.TailTruncation,
-                //                BackgroundColor = Color.Red
+                LineBreakMode = LineBreakMode.TailTruncation
             };
             PrimaryLabel.SetBinding(
                 Label.TextProperty,
@@ -38,8 +37,7 @@ namespace MobileCRM.Cells
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Start,
-                LineBreakMode = LineBreakMode.TailTruncation,
-                //                BackgroundColor = Color.Blue
+                LineBreakMode = LineBreakMode.TailTruncation
             };
 
             SecondaryLabel.SetBinding(
@@ -64,16 +62,12 @@ namespace MobileCRM.Cells
                 converter: new CurrencyIntegerConverter());
             #endregion
 
-            // A ContentView, which will serve as the "top-level" of the cell's view hierarchy. 
-            // It also allows a Padding to be set; something that can't be done with a plain View.
             var contentView = new ContentView();
 
-            // set the padding of the contentView
             contentView.Padding = new Thickness(20, 0);
 
             BoxView bottomBorder = new BoxView() { BackgroundColor = Palette._013, HeightRequest = 1 };
 
-            // A container for the "top-level" of the cell's view hierarchy.
             RelativeLayout labelsRelativeLayout = new RelativeLayout();
 
             labelsRelativeLayout.Children.Add(
@@ -102,8 +96,6 @@ namespace MobileCRM.Cells
                 heightConstraint: Constraint.Constant(1)
             );
 
-            // Assign the relativeLayout to Content of contentView
-            // This lets us take advantage of ContentView's padding.
             contentView.Content = labelsRelativeLayout;
 
             StackLayout stackLayout = new UnspacedStackLayout();
@@ -112,7 +104,6 @@ namespace MobileCRM.Cells
 
             stackLayout.Children.Add(borderRelativeLayout);
 
-            // assign contentView to the View property
             View = contentView;
         }
     }

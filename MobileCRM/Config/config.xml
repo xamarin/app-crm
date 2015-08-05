@@ -11,7 +11,7 @@
   <azureActiveDirectoryAuthenticationTenantAuthorityUrl>https://login.windows.net/xamcrm.onmicrosoft.com</azureActiveDirectoryAuthenticationTenantAuthorityUrl>
 
   <!---Azure Active Directory Authentication return URI -->
-  <azureActiveDirectoryAuthenticationReturnUri>https://xamarin.com</azureActiveDirectoryAuthenticationReturnUri>
+  <azureActiveDirectoryAuthenticationReturnUri>http://localhost</azureActiveDirectoryAuthenticationReturnUri>
 
   <!---Azure Active Directory Authentication return URI -->
   <azureActiveDirectoryAuthenticationResourceUri>https://graph.windows.net</azureActiveDirectoryAuthenticationResourceUri>

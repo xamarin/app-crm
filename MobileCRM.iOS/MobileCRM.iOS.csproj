@@ -258,8 +258,8 @@
     <Compile Include="Renderers\ListTextCellRenderer.cs" />
     <Compile Include="Renderers\PieChartRenderer.cs" />
     <Compile Include="Localization\Localize.cs" />
-    <Compile Include="Renderers\SalesDashboardPageRenderer.cs" />
     <Compile Include="Services\ConfigFetcher.cs" />
+    <Compile Include="Services\Authenticator.cs" />
   </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

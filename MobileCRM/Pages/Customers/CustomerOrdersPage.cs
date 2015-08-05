@@ -10,18 +10,13 @@ namespace MobileCRM.Pages.Customers
 {
     public class CustomerOrdersPage : ModelEnforcedContentPage<OrdersViewModel>
     {
-        const double paddingAmount = 20;
-
         public CustomerOrdersPage()
         {
             #region activity indicator
-            ActivityIndicator activityIndicator = new ActivityIndicator()
-            { 
-                HeightRequest = Sizes.LargeRowHeight
-            };
+            ActivityIndicator activityIndicator = new ActivityIndicator() { HeightRequest = Sizes.LargeRowHeight };
             activityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
-            activityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
             activityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
+            activityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
             #endregion
 
             #region new order label

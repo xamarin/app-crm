@@ -112,7 +112,6 @@
     <Compile Include="ViewModels\Customers\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModels\Customers\CustomersViewModel.cs" />
     <Compile Include="Layouts\UnspacedStackLayout.cs" />
-    <Compile Include="Services\Authenticator.cs" />
     <Compile Include="Statics\MessagingServiceConstants.cs" />
     <Compile Include="Statics\Palette.cs" />
     <Compile Include="Statics\Sizes.cs" />
@@ -126,6 +125,8 @@
     <Compile Include="Converters\ShortDatePatternConverter.cs" />
     <Compile Include="Converters\CurrencyDoubleConverter.cs" />
     <Compile Include="Converters\CurrencyIntegerConverter.cs" />
+    <Compile Include="Services\IAuthenticator.cs" />
+    <Compile Include="Services\AuthenticationService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

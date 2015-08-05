@@ -5,28 +5,45 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using MobileCRM.Services;
+using MobileCRM.Extensions;
 
 namespace MobileCRM
 {
     public class App : Application
     {
-        static readonly Lazy<Authenticator> _LazyAuthenticator = new Lazy<Authenticator>(() => new Authenticator());
+        static readonly Lazy<AuthenticationService> _LazyAuthenticationService = new Lazy<AuthenticationService>(() => new AuthenticationService());
 
-        static Authenticator _Authenticator { get { return _LazyAuthenticator.Value; } }
+        static AuthenticationService _AuthenticationService { get { return _LazyAuthenticationService.Value; } }
 
-        public static Task Authenticate(IPlatformParameters platformParameters)
+        public static async Task<bool> Authenticate()
         {
-            return _Authenticator.Authenticate(platformParameters);
+            try
+            {
+                return await _AuthenticationService.Authenticate();
+            }
+            catch (Exception ex)
+            {
+                ex.WriteFormattedMessageToDebugConsole(typeof(App));
+                return false;
+            }
         }
 
-        public static Task Logout()
+        public static async Task<bool> Logout()
         {
-            return _Authenticator.Logout();
+            try
+            {
+                return await _AuthenticationService.Logout();
+            }
+            catch (Exception ex)
+            {
+                ex.WriteFormattedMessageToDebugConsole(typeof(App));
+                return false;
+            }
         }
 
         public static bool IsAuthenticated
         {
-            get { return _Authenticator.IsAuthenticated; }
+            get { return _AuthenticationService.IsAuthenticated; }
         }
 
         public App()

@@ -211,9 +211,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\MenuCellRenderer.cs" />
     <Compile Include="Localization\Localize.cs" />
-    <Compile Include="Renderers\SalesDashboardPageRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Services\ConfigFetcher.cs" />
+    <Compile Include="Services\Authenticator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
