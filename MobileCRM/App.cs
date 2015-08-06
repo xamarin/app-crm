@@ -1,16 +1,23 @@
-﻿using MobileCRM.Localization;
-using MobileCRM.Pages;
-using Xamarin.Forms;
-using System;
+﻿using System;
 using System.Threading.Tasks;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using MobileCRM.Services;
 using MobileCRM.Extensions;
+using MobileCRM.Localization;
+using MobileCRM.Pages;
+using MobileCRM.Services;
+using Xamarin.Forms;
 
 namespace MobileCRM
 {
     public class App : Application
     {
+        public App()
+        {
+            if (Device.OS != TargetPlatform.WinPhone)
+                TextResources.Culture = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+
+            MainPage = new RootPage();
+        }
+
         static readonly Lazy<AuthenticationService> _LazyAuthenticationService = new Lazy<AuthenticationService>(() => new AuthenticationService());
 
         static AuthenticationService _AuthenticationService { get { return _LazyAuthenticationService.Value; } }
@@ -44,14 +51,6 @@ namespace MobileCRM
         public static bool IsAuthenticated
         {
             get { return _AuthenticationService.IsAuthenticated; }
-        }
-
-        public App()
-        {
-            if (Device.OS != TargetPlatform.WinPhone)
-                TextResources.Culture = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
-        
-            MainPage = new RootPage();
         }
     }
 }

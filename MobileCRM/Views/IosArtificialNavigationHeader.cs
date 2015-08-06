@@ -1,23 +1,23 @@
-﻿using Xamarin.Forms;
-using MobileCRM.Views.Base;
-using MobileCRM.Layouts;
+﻿using System;
+using Xamarin.Forms;
 using MobileCRM.Statics;
+using MobileCRM.Layouts;
 
-namespace MobileCRM.Views
+namespace MobileCRM
 {
-    public class IosTabbedPageHeaderView : BaseTabbedPageHeaderView
+    public class IosArtificialNavigationHeader : BaseArtificialNavigationHeader
     {
-        public IosTabbedPageHeaderView(string headerTitle, string doneActionTitle = null)
+        public IosArtificialNavigationHeader(string headerTitle, string doneActionTitle = null)
         {
             // a relative layout allows us to arrange visual elements in relationship to other visual elements, like parent views and sibling views.
             RelativeLayout relativeLayout = new RelativeLayout();
 
             #region back button
             BackButtonImage = new Image()
-            {
-                Source = "back_ios",
-                Aspect = Aspect.AspectFit
-            };
+                {
+                    Source = "back_ios",
+                    Aspect = Aspect.AspectFit
+                };
 
             // Padding for the back button image. 
             // The value doesn't actually get applied to any particular Padding property. It just us helps with the math of relatively positioning the back button image.
@@ -34,32 +34,32 @@ namespace MobileCRM.Views
 
             #region outerContentView
             ContentView outerContentView = new ContentView()
-            {
-                Padding = new Thickness(0, 20, 0, 0),
-                BackgroundColor = Color.White
-            };
+                {
+                    Padding = new Thickness(0, 20, 0, 0),
+                    BackgroundColor = Color.White
+                };
             #endregion
 
             #region setup innerContentView
             ContentView innerContentView = new ContentView()
-            {
-                Padding = new Thickness(10, 0), // give the content some padding on the left and right
-                HeightRequest = Sizes.MediumRowHeight // set the height of the content view
-            };
+                {
+                    Padding = new Thickness(10, 0), // give the content some padding on the left and right
+                    HeightRequest = Sizes.MediumRowHeight // set the height of the content view
+                };
             #endregion
 
             #region back button label
             BackButtonLabel = new Label()
-            {
-                Text = TextResources.Back,
-                TextColor = Palette._015,
-                FontSize = Device.OnPlatform(
-                    iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
-                    Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                    WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
-                YAlign = TextAlignment.Center,
-                XAlign = TextAlignment.Start
-            };
+                {
+                    Text = TextResources.Back,
+                    TextColor = Palette._015,
+                    FontSize = Device.OnPlatform(
+                        iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
+                        Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                        WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
+                    YAlign = TextAlignment.Center,
+                    XAlign = TextAlignment.Start
+                };
 
             relativeLayout.Children.Add(
                 view: BackButtonLabel,
@@ -71,22 +71,22 @@ namespace MobileCRM.Views
             #endregion
 
             #region title label
-            var titleLabel = new Label()
-            {
-                Text = headerTitle,
-                TextColor = Color.Black,
-                FontSize = Device.OnPlatform(
-                    iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
-                    Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                    WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
-                YAlign = TextAlignment.Center,
-                XAlign = TextAlignment.Start,
-                FontAttributes = FontAttributes.Bold,
-                LineBreakMode = LineBreakMode.TailTruncation
-            };
+            TitleLabel = new Label()
+                {
+                    Text = headerTitle,
+                    TextColor = Color.Black,
+                    FontSize = Device.OnPlatform(
+                        iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
+                        Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                        WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
+                    YAlign = TextAlignment.Center,
+                    XAlign = TextAlignment.Start,
+                    FontAttributes = FontAttributes.Bold,
+                    LineBreakMode = LineBreakMode.TailTruncation
+                };
 
             relativeLayout.Children.Add(
-                view: titleLabel,
+                view: TitleLabel,
                 xConstraint: Constraint.RelativeToParent(parent => parent.Width * .25),
                 yConstraint: Constraint.RelativeToParent(parent => 0),
                 widthConstraint: Constraint.RelativeToParent(parent => parent.Width * .50),
@@ -98,16 +98,16 @@ namespace MobileCRM.Views
             if (!string.IsNullOrWhiteSpace(doneActionTitle))
             {
                 DoneActionLabel = new Label()
-                {
-                    Text = doneActionTitle,
-                    TextColor = Palette._015,
-                    FontSize = Device.OnPlatform(
-                        iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
-                        Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                        WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
-                    YAlign = TextAlignment.Center,
-                    XAlign = TextAlignment.End
-                };
+                    {
+                        Text = doneActionTitle,
+                        TextColor = Palette._015,
+                        FontSize = Device.OnPlatform(
+                            iOS: Device.GetNamedSize(NamedSize.Default, typeof(Label)),
+                            Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                            WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
+                        YAlign = TextAlignment.Center,
+                        XAlign = TextAlignment.End
+                    };
 
                 relativeLayout.Children.Add(
                     view: DoneActionLabel,
@@ -136,3 +136,4 @@ namespace MobileCRM.Views
         }
     }
 }
+

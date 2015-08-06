@@ -9,7 +9,6 @@ namespace MobileCRM.Pages.Customers
     {
         public CustomerDetailPage()
         {
-
             #region header
             var headerContainer = new UnspacedStackLayout();
 

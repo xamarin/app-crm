@@ -41,10 +41,7 @@
     <Compile Include="Pages\Sales\LeadDetailTabbedPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App.cs" />
-    <Compile Include="Helpers\BarGraphHelper.cs" />
-    <Compile Include="Helpers\Color.cs" />
     <Compile Include="Helpers\ConvertableConverter.cs" />
-    <Compile Include="Helpers\EditCellFactory.cs" />
     <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Interfaces\IDataManager.cs" />
     <Compile Include="Interfaces\IDialer.cs" />
@@ -94,9 +91,6 @@
     <Compile Include="Pages\Products\BaseProductPage.cs" />
     <Compile Include="Views\Products\ProductDetailRibbonView.cs" />
     <Compile Include="Views\Base\BaseNonPersistentSelectedItemListView.cs" />
-    <Compile Include="Views\IosTabbedPageHeaderView.cs" />
-    <Compile Include="Views\AndroidTabbedPageHeaderView.cs" />
-    <Compile Include="Views\Base\BaseTabbedPageHeaderView.cs" />
     <Compile Include="Pages\Customers\CustomersPage.cs" />
     <Compile Include="Cells\CustomerListItemCell.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
@@ -106,7 +100,6 @@
     <Compile Include="Pages\Customers\CustomerOrdersPage.cs" />
     <Compile Include="Pages\Customers\CustomerSalesPage.cs" />
     <Compile Include="Pages\Customers\BaseCustomerDetailPage.cs" />
-    <Compile Include="Pages\Customers\NewOrderPage.cs" />
     <Compile Include="Pages\Base\ModelEnforcedContentPage.cs" />
     <Compile Include="Views\Base\ModelEnforcedContentView.cs" />
     <Compile Include="ViewModels\Customers\CustomerDetailViewModel.cs" />
@@ -116,7 +109,6 @@
     <Compile Include="Statics\Palette.cs" />
     <Compile Include="Statics\Sizes.cs" />
     <Compile Include="Services\IConfigFetcher.cs" />
-    <Compile Include="ViewModels\Customers\NewOrderViewModel.cs" />
     <Compile Include="ViewModels\Customers\CustomerSalesViewModel.cs" />
     <Compile Include="ViewModels\Customers\OrdersViewModel.cs" />
     <Compile Include="Views\Customers\OrderListHeaderView.cs" />
@@ -127,6 +119,13 @@
     <Compile Include="Converters\CurrencyIntegerConverter.cs" />
     <Compile Include="Services\IAuthenticator.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Pages\Customers\EditOrderPage.cs" />
+    <Compile Include="ViewModels\Customers\OrderDetailViewModel.cs" />
+    <Compile Include="Pages\Customers\CustomerTabbedPage.cs" />
+    <Compile Include="Views\Base\BaseArtificialNavigationHeader.cs" />
+    <Compile Include="Views\AndroidArtificialNavigationHeader.cs" />
+    <Compile Include="Views\IosArtificialNavigationHeader.cs" />
+    <Compile Include="Helpers\ChartHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

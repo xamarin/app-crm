@@ -5,20 +5,20 @@ using MobileCRM.Models;
 
 namespace MobileCRM.Helpers
 {
-    public class BarGraphHelper
+    public class ChartHelper
     {
-        List<WeeklySalesData> listSales;
-        List<CategorySalesData> listCategory;
-        IEnumerable<Order> orders;
-        bool bolIsOpen;
+        List<WeeklySalesData> _SalesData;
+        List<CategorySalesData> _CategoryData;
+        IEnumerable<Order> _Orders;
+        bool _BolIsOpen;
 
-        public BarGraphHelper(IEnumerable<Order> Orders, bool IsOpen)
+        public ChartHelper(IEnumerable<Order> Orders, bool IsOpen)
         {
-            listSales = new List<WeeklySalesData>();
-            listCategory = new List<CategorySalesData>();
+            _SalesData = new List<WeeklySalesData>();
+            _CategoryData = new List<CategorySalesData>();
 
-            orders = Orders;
-            bolIsOpen = IsOpen;
+            _Orders = Orders;
+            _BolIsOpen = IsOpen;
 
             this.ProcessDates();
             this.ProcessCategories();
@@ -29,7 +29,7 @@ namespace MobileCRM.Helpers
         {
             get
             {
-                return listSales;
+                return _SalesData;
             }
         }
 
@@ -37,7 +37,7 @@ namespace MobileCRM.Helpers
         {
             get
             {
-                return listCategory;
+                return _CategoryData;
             }
         }
 
@@ -46,7 +46,7 @@ namespace MobileCRM.Helpers
             foreach (string s in Order.ItemTypes)
             {
                 double dblAmt = this.ProcessCategoryOrders(s);
-                listCategory.Add(new CategorySalesData() { Category = s, Amount = dblAmt });
+                _CategoryData.Add(new CategorySalesData() { Category = s, Amount = dblAmt });
             }
         }
 
@@ -54,7 +54,7 @@ namespace MobileCRM.Helpers
         {
             double dblTotal = 0;
 
-            var results = orders.Where(o => o.IsOpen == bolIsOpen && o.Item == category);
+            var results = _Orders.Where(o => o.IsOpen == _BolIsOpen && o.Item == category);
 
             foreach (var order in results)
             {
@@ -73,14 +73,14 @@ namespace MobileCRM.Helpers
             DateTime dateWkEnd = dateWkStart.AddDays(6);
 
             double dblAmt = this.ProcessWeekOrders(dateWkStart, dateWkEnd);
-            listSales.Add(new WeeklySalesData() { DateStart = dateWkStart, DateEnd = dateWkEnd, Amount = dblAmt });
+            _SalesData.Add(new WeeklySalesData() { DateStart = dateWkStart, DateEnd = dateWkEnd, Amount = dblAmt });
 
             for (int i = 1; i < 6; i++)
             {
                 dateWkStart = dateWkStart.AddDays(-7);
                 dateWkEnd = dateWkStart.AddDays(6);
                 dblAmt = this.ProcessWeekOrders(dateWkStart, dateWkEnd);
-                listSales.Add(new WeeklySalesData() { DateStart = dateWkStart, DateEnd = dateWkEnd, Amount = dblAmt });
+                _SalesData.Add(new WeeklySalesData() { DateStart = dateWkStart, DateEnd = dateWkEnd, Amount = dblAmt });
             } //end for
         }
         //end Processdates
@@ -89,7 +89,7 @@ namespace MobileCRM.Helpers
         {
             double dblTotal = 0;
 
-            var results = orders.Where(o => o.IsOpen == bolIsOpen && o.ClosedDate >= dateStart && o.ClosedDate <= dateEnd);
+            var results = _Orders.Where(o => o.IsOpen == _BolIsOpen && o.ClosedDate >= dateStart && o.ClosedDate <= dateEnd);
 
             foreach (var order in results)
             {
@@ -111,7 +111,7 @@ namespace MobileCRM.Helpers
             get { return category; }
             set { category = value; }
         }
-					
+
         double amount;
 
         public double Amount
@@ -171,6 +171,4 @@ namespace MobileCRM.Helpers
             }
         }
     }
-    //end class
 }
- //end ns

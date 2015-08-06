@@ -23,8 +23,8 @@ namespace MobileCRM.Pages.Customers
                 HeightRequest = Sizes.MediumRowHeight
             };
             customerListActivityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
-            customerListActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
             customerListActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
+            customerListActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
             #endregion
 
             #region customer list
@@ -49,7 +49,7 @@ namespace MobileCRM.Pages.Customers
             Content = stackLayout;
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
 
@@ -65,30 +65,7 @@ namespace MobileCRM.Pages.Customers
 
         async Task PushTabbedPage(Account account = null)
         {
-            TabbedPage tabbedPage = new TabbedPage();
-            tabbedPage.Children.Add(new CustomerDetailPage()
-                {
-                    Title = TextResources.Customers_Detail_Tab_Title,
-                    BindingContext = new CustomerDetailViewModel(account) { Navigation = ViewModel.Navigation },
-                    Icon = new FileImageSource() { File = "CustomersTab" },
-
-                });
-
-            tabbedPage.Children.Add(new CustomerOrdersPage()
-                {
-                    Title = TextResources.Customers_Orders_Tab_Title,
-                    BindingContext = new OrdersViewModel(account) { Navigation = ViewModel.Navigation },
-                    Icon = new FileImageSource() { File = "ProductsTab" }
-                });
-
-            tabbedPage.Children.Add(new CustomerSalesPage()
-                {
-                    Title = TextResources.Customers_Sales_Tab_Title,
-                    BindingContext = new CustomerSalesViewModel(),
-                    Icon = new FileImageSource() { File = "SalesTab" }
-                });
-
-            await ViewModel.PushModalAsync(tabbedPage);
+            await ViewModel.PushModalAsync(new CustomerTabbedPage(ViewModel.Navigation, account));
         }
     }
 }

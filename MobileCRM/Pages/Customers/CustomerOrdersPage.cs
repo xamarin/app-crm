@@ -1,14 +1,13 @@
 ﻿using Xamarin.Forms;
 using MobileCRM.Statics;
 using MobileCRM.Layouts;
-using MobileCRM.Pages.Base;
 using MobileCRM.Customers;
 using Xamarin;
 using MobileCRM.Views.Customers;
 
 namespace MobileCRM.Pages.Customers
 {
-    public class CustomerOrdersPage : ModelEnforcedContentPage<OrdersViewModel>
+    public class CustomerOrdersPage : BaseCustomerDetailPage<OrdersViewModel>
     {
         public CustomerOrdersPage()
         {
@@ -21,6 +20,17 @@ namespace MobileCRM.Pages.Customers
 
             #region new order label
             OrderListHeaderView headerView = new OrderListHeaderView();
+            TapGestureRecognizer newOrderTapGestureRecognizer = new TapGestureRecognizer()
+            { 
+                Command = new Command(async () =>
+                    await ViewModel.PushModalAsync(new EditOrderPage()
+                        {
+                            BindingContext = new OrderDetailViewModel() { Navigation = ViewModel.Navigation }
+                        })), 
+                NumberOfTapsRequired = 1 
+            };
+            headerView.AddNewOrderImage.GestureRecognizers.Add(newOrderTapGestureRecognizer);
+            headerView.AddNewOrderTextLabel.GestureRecognizers.Add(newOrderTapGestureRecognizer);
             headerView.SetBinding(ContentView.IsVisibleProperty, "IsModelLoaded");
             headerView.SetBinding(ContentView.IsEnabledProperty, "IsModelLoaded");
             #endregion
@@ -40,7 +50,9 @@ namespace MobileCRM.Pages.Customers
 
             stackLayout.Children.Add(customerOrderListView);
 
-            Content = stackLayout;
+            StackLayout.Children.Add(stackLayout);
+
+            Content = StackLayout;
         }
 
         protected override async void OnAppearing()

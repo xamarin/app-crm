@@ -12,16 +12,13 @@ namespace MobileCRM.Customers
 {
     public class OrdersViewModel : BaseViewModel
     {
-        readonly Account _Account;
+        public Account Account { get; private set; }
 
         ObservableCollection<Order> _Orders;
 
         public ObservableCollection<Order> Orders
         {
-            get
-            {
-                return _Orders;
-            }
+            get { return _Orders; }
             set
             {
                 _Orders = value;
@@ -33,7 +30,7 @@ namespace MobileCRM.Customers
 
         public OrdersViewModel(Account account)
         {
-            _Account = account;
+            Account = account;
 
             _DataManager = DependencyService.Get<IDataManager>();
 
@@ -65,8 +62,8 @@ namespace MobileCRM.Customers
 
             Orders.Clear();
             var orders = new List<Order>();
-            orders.AddRange(await _DataManager.GetAccountOrdersAsync(_Account.Id));
-            orders.AddRange(await _DataManager.GetAccountOrderHistoryAsync(_Account.Id));
+            orders.AddRange(await _DataManager.GetAccountOrdersAsync(Account.Id));
+            orders.AddRange(await _DataManager.GetAccountOrderHistoryAsync(Account.Id));
 
             Orders.AddRange(orders.OrderByDescending(x => x.IsOpen).ThenByDescending(x => x.OrderDate).ThenByDescending(x => x.ClosedDate));
 

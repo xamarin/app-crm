@@ -1,13 +1,15 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace MobileCRM.Views.Base
+namespace MobileCRM
 {
-    public abstract class BaseTabbedPageHeaderView : ContentView
+    public abstract class BaseArtificialNavigationHeader : ContentView
     {
         public Image BackButtonImage { get; protected set; }
 
         public Label BackButtonLabel { get; protected set; }
+
+        public Label TitleLabel { get; protected set; }
 
         public Label DoneActionLabel { get; protected set; }
     }

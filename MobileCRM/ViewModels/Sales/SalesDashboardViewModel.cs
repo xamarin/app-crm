@@ -17,7 +17,7 @@ namespace MobileCRM.ViewModels.Sales
         bool bolDataSeeded;
 
         IDataManager dataManager;
-        BarGraphHelper chartHelper;
+        ChartHelper chartHelper;
 
         Command loadSeedDataCommand;
         Command loadLeadsCommand;
@@ -102,7 +102,7 @@ namespace MobileCRM.ViewModels.Sales
             var leads = await dataManager.GetAccountsAsync(true);
             Leads = leads.ToObservableCollection();
 
-            SalesChartDataPoints = (new BarGraphHelper(Orders, false))
+            SalesChartDataPoints = (new ChartHelper(Orders, false))
                 .SalesData
                 .OrderBy(x => x.DateStart)
                 .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)).ToObservableCollection();

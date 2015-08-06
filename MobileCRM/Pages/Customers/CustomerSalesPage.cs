@@ -3,7 +3,7 @@ using MobileCRM.Pages.Base;
 
 namespace MobileCRM.Pages.Customers
 {
-    public class CustomerSalesPage : ModelEnforcedContentPage<CustomerSalesViewModel>
+    public class CustomerSalesPage : BaseCustomerDetailPage<CustomerSalesViewModel>
     {
         public CustomerSalesPage()
         {

@@ -11,7 +11,7 @@ namespace MobileCRM.Helpers
     {
         public static readonly Position NullPosition = new Position(0, 0);
      
-        static Geocoder geoCoder = new Geocoder();
+        static Geocoder _GeoCoder = new Geocoder();
 
         public async static Task<Position> GeoCodeAddress(string addressString)
         {
@@ -19,7 +19,7 @@ namespace MobileCRM.Helpers
 
             try
             {
-                Task<IEnumerable<Position>> getPosTask = geoCoder.GetPositionsForAddressAsync(addressString);
+                Task<IEnumerable<Position>> getPosTask = _GeoCoder.GetPositionsForAddressAsync(addressString);
                 IEnumerable<Position> pos = await getPosTask;
                 p = pos == null ? p : pos.First();
 

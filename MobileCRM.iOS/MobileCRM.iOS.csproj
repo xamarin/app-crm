@@ -242,6 +242,9 @@
     <BundleResource Include="Resources\back_ios%403x.png" />
     <BundleResource Include="Resources\add_ios_blue%403x.png" />
     <BundleResource Include="Resources\add_ios_gray%403x.png" />
+    <BundleResource Include="Resources\splash.png" />
+    <BundleResource Include="Resources\splash%402x.png" />
+    <BundleResource Include="Resources\splash%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -254,8 +257,6 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\PhoneDialer.cs" />
     <Compile Include="Renderers\BarChartRenderer.cs" />
-    <Compile Include="Renderers\MenuCellRenderer.cs" />
-    <Compile Include="Renderers\ListTextCellRenderer.cs" />
     <Compile Include="Renderers\PieChartRenderer.cs" />
     <Compile Include="Localization\Localize.cs" />
     <Compile Include="Services\ConfigFetcher.cs" />

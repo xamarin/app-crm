@@ -3,9 +3,9 @@ using MobileCRM.ViewModels;
 
 namespace MobileCRM
 {
-    public class NewOrderViewModel : BaseViewModel
+    public class OrderDetailViewModel : BaseViewModel
     {
-        public NewOrderViewModel()
+        public OrderDetailViewModel()
         {
         }
     }

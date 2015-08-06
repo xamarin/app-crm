@@ -2,29 +2,32 @@
 using Xamarin.Forms;
 using MobileCRM.Statics;
 using MobileCRM.Layouts;
+using MobileCRM.Models;
 
 namespace MobileCRM
 {
     public class OrderListHeaderView : ContentView
     {
+        public Image AddNewOrderImage { get; private set; }
+
+        public Label AddNewOrderTextLabel { get; private set; }
+
         public OrderListHeaderView()
         {
             HeightRequest = Sizes.LargeRowHeight;
 
             RelativeLayout relativeLayout = new RelativeLayout();
 
-            Device.OnPlatform(iOS: () => Padding = new Thickness(0, 20, 0, 0));
-
-            Image addNewOrderImage = new Image()
+            AddNewOrderImage = new Image()
             {
                 Aspect = Aspect.AspectFit
             };
             Device.OnPlatform(
-                iOS: () => addNewOrderImage.Source = new FileImageSource(){ File = "add_ios_blue" }, 
-                Android: () => addNewOrderImage.Source = new FileImageSource() { File = "add_android_blue" }
+                iOS: () => AddNewOrderImage.Source = new FileImageSource(){ File = "add_ios_blue" }, 
+                Android: () => AddNewOrderImage.Source = new FileImageSource() { File = "add_android_blue" }
             );
 
-            Label addNewOrderTextLabel = new Label
+            AddNewOrderTextLabel = new Label
             {
                 Text = TextResources.Customers_Orders_NewOrder.ToUpper(),
                 TextColor = Palette._006,
@@ -37,16 +40,16 @@ namespace MobileCRM
             double imagePaddingPercent = .35;
 
             relativeLayout.Children.Add(
-                view: addNewOrderImage,
+                view: AddNewOrderImage,
                 yConstraint: Constraint.RelativeToParent(parent => parent.Height * imagePaddingPercent),
                 xConstraint: Constraint.RelativeToParent(parent => parent.Height * imagePaddingPercent),
                 widthConstraint: Constraint.RelativeToParent(parent => parent.Height - (parent.Height * imagePaddingPercent * 2)),
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height - (parent.Height * imagePaddingPercent * 2)));
 
             relativeLayout.Children.Add(
-                view: addNewOrderTextLabel,
-                xConstraint: Constraint.RelativeToView(addNewOrderImage, (parent, view) => view.X + view.Width + parent.Height * imagePaddingPercent),
-                widthConstraint: Constraint.RelativeToView(addNewOrderImage, (parent, view) => parent.Width - view.Width),
+                view: AddNewOrderTextLabel,
+                xConstraint: Constraint.RelativeToView(AddNewOrderImage, (parent, view) => view.X + view.Width + parent.Height * imagePaddingPercent),
+                widthConstraint: Constraint.RelativeToView(AddNewOrderImage, (parent, view) => parent.Width - view.Width),
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
             );
 

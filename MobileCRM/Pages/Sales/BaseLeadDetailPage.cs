@@ -11,7 +11,7 @@ namespace MobileCRM.Pages.Sales
 {
     public abstract class BaseLeadDetailPage : ModelEnforcedContentPage<LeadDetailViewModel>
     {
-        BaseTabbedPageHeaderView _TabbedPageHeaderView;
+        BaseArtificialNavigationHeader _TabbedPageHeaderView;
 
         protected StackLayout StackLayout { get; private set; }
 
@@ -28,8 +28,8 @@ namespace MobileCRM.Pages.Sales
             StackLayout = new UnspacedStackLayout();
 
             Device.OnPlatform(
-                iOS: () => _TabbedPageHeaderView = new IosTabbedPageHeaderView(Title, TextResources.Leads_LeadDetail_SaveButtonText.ToUpper()),
-                Android: () => _TabbedPageHeaderView = new AndroidTabbedPageHeaderView(Title, TextResources.Leads_LeadDetail_SaveButtonText.ToUpper()));
+                iOS: () => _TabbedPageHeaderView = new IosArtificialNavigationHeader(Title, TextResources.Leads_LeadDetail_SaveButtonText.ToUpper()),
+                Android: () => _TabbedPageHeaderView = new AndroidArtificialNavigationHeader(Title, TextResources.Leads_LeadDetail_SaveButtonText.ToUpper()));
 
             _TabbedPageHeaderView.BackButtonImage.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
