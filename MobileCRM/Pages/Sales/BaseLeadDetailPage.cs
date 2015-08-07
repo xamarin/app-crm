@@ -11,7 +11,7 @@ namespace MobileCRM.Pages.Sales
 {
     public abstract class BaseLeadDetailPage : ModelEnforcedContentPage<LeadDetailViewModel>
     {
-        BaseArtificialNavigationHeader _TabbedPageHeaderView;
+//        BaseArtificialNavigationHeader _TabbedPageHeaderView;
 
         protected StackLayout StackLayout { get; private set; }
 
@@ -25,54 +25,54 @@ namespace MobileCRM.Pages.Sales
 
             BindingContext = viewModel;
 
-            StackLayout = new UnspacedStackLayout();
+//            StackLayout = new UnspacedStackLayout();
 
-            Device.OnPlatform(
-                iOS: () => _TabbedPageHeaderView = new IosArtificialNavigationHeader(Title, TextResources.Leads_LeadDetail_SaveButtonText.ToUpper()),
-                Android: () => _TabbedPageHeaderView = new AndroidArtificialNavigationHeader(Title, TextResources.Leads_LeadDetail_SaveButtonText.ToUpper()));
+//            Device.OnPlatform(
+//                iOS: () => _TabbedPageHeaderView = new IosArtificialNavigationHeader(Title, TextResources.Leads_LeadDetail_SaveButtonText.ToUpper()),
+//                Android: () => _TabbedPageHeaderView = new AndroidArtificialNavigationHeader(Title, TextResources.Leads_LeadDetail_SaveButtonText.ToUpper()));
+//
+//            _TabbedPageHeaderView.BackButtonImage.GestureRecognizers.Add(new TapGestureRecognizer()
+//                {
+//                    Command = new Command(async () => await ViewModel.PopModalAsync()),
+//                    NumberOfTapsRequired = 1
+//                });
+//
+//
+//            Device.OnPlatform(iOS: () => 
+//                _TabbedPageHeaderView.BackButtonLabel.GestureRecognizers.Add(new TapGestureRecognizer()
+//                    {
+//                        Command = new Command(async () => await ViewModel.PopModalAsync()),
+//                        NumberOfTapsRequired = 1
+//                    }));
+//
+//            if (_TabbedPageHeaderView.DoneActionLabel != null)
+//            {
+//                _TabbedPageHeaderView.DoneActionLabel.GestureRecognizers.Add(
+//                    new TapGestureRecognizer()
+//                    {
+//                        Command = new Command(async () =>
+//                            {
+//                                var answer = 
+//                                    await DisplayAlert(
+//                                        title: TextResources.Leads_SaveConfirmTitle,
+//                                        message: TextResources.Leads_SaveConfirmDescription,
+//                                        accept: TextResources.Save,
+//                                        cancel: TextResources.Cancel);
+//
+//                                if (answer)
+//                                {
+//                                    ViewModel.SaveLeadCommand.Execute(null);
+//
+//                                    await ViewModel.PopModalAsync();
+//                                }
+//                            }),
+//                        NumberOfTapsRequired = 1
+//                    });
+//            }
+//
+//            StackLayout.Children.Add(_TabbedPageHeaderView);
 
-            _TabbedPageHeaderView.BackButtonImage.GestureRecognizers.Add(new TapGestureRecognizer()
-                {
-                    Command = new Command(async () => await ViewModel.PopModalAsync()),
-                    NumberOfTapsRequired = 1
-                });
-
-
-            Device.OnPlatform(iOS: () => 
-                _TabbedPageHeaderView.BackButtonLabel.GestureRecognizers.Add(new TapGestureRecognizer()
-                    {
-                        Command = new Command(async () => await ViewModel.PopModalAsync()),
-                        NumberOfTapsRequired = 1
-                    }));
-
-            if (_TabbedPageHeaderView.DoneActionLabel != null)
-            {
-                _TabbedPageHeaderView.DoneActionLabel.GestureRecognizers.Add(
-                    new TapGestureRecognizer()
-                    {
-                        Command = new Command(async () =>
-                            {
-                                var answer = 
-                                    await DisplayAlert(
-                                        title: TextResources.Leads_SaveConfirmTitle,
-                                        message: TextResources.Leads_SaveConfirmDescription,
-                                        accept: TextResources.Save,
-                                        cancel: TextResources.Cancel);
-
-                                if (answer)
-                                {
-                                    ViewModel.SaveLeadCommand.Execute(null);
-
-                                    await ViewModel.PopModalAsync();
-                                }
-                            }),
-                        NumberOfTapsRequired = 1
-                    });
-            }
-
-            StackLayout.Children.Add(_TabbedPageHeaderView);
-
-            Content = StackLayout;
+//            Content = StackLayout;
         }
     }
 }

@@ -7,10 +7,10 @@ namespace MobileCRM
 {
     public abstract class BaseProductPage : ContentPage
     {
-        protected BaseProductPage()
+        protected BaseProductPage(bool showNavigationBar = false)
         {
             // hide the navigstion bar on Android
-            Device.OnPlatform(Android: () => NavigationPage.SetHasNavigationBar(this, false));
+            Device.OnPlatform(Android: () => NavigationPage.SetHasNavigationBar(this, showNavigationBar));
         }
     }
 }

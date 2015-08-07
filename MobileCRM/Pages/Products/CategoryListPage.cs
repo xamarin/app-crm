@@ -17,7 +17,7 @@ namespace MobileCRM.Pages.Products
             get { return BindingContext as CategoriesViewModel; }
         }
 
-        public CategoryListPage(string categoryId = null, string title = null)
+        public CategoryListPage(string categoryId = null, string title = null, bool showNavigationBar = false) : base(showNavigationBar)
         {
             _CategoryId = categoryId;
 
@@ -42,11 +42,11 @@ namespace MobileCRM.Pages.Products
 
                     if (catalogCategory.HasSubCategories)
                     {
-                        Navigation.PushAsync(new CategoryListPage(catalogCategory.Id, catalogCategory.Name));
+                        Navigation.PushAsync(new CategoryListPage(catalogCategory.Id, catalogCategory.Name, showNavigationBar));
                     }
                     else
                     {
-                        Navigation.PushAsync(new ProductListPage(catalogCategory.Id, catalogCategory.Name));
+                        Navigation.PushAsync(new ProductListPage(catalogCategory.Id, catalogCategory.Name, showNavigationBar));
                     }
                 };
 

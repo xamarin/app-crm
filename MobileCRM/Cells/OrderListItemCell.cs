@@ -53,7 +53,6 @@ namespace MobileCRM.Cells
                     FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                     XAlign = TextAlignment.End,
                     YAlign = TextAlignment.Start,
-                    //                BackgroundColor = Color.Blue
                 };
 
             TernaryLabel.SetBinding(
@@ -68,7 +67,7 @@ namespace MobileCRM.Cells
 
             BoxView bottomBorder = new BoxView() { BackgroundColor = Palette._013, HeightRequest = 1 };
 
-            RelativeLayout labelsRelativeLayout = new RelativeLayout();
+            RelativeLayout labelsRelativeLayout = new RelativeLayout() { HeightRequest = Sizes.LargeRowHeight };
 
             labelsRelativeLayout.Children.Add(
                 view: PrimaryLabel,
@@ -88,23 +87,9 @@ namespace MobileCRM.Cells
                 widthConstraint: Constraint.RelativeToParent(parent => parent.Width / 2),
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 2));
 
-            RelativeLayout borderRelativeLayout = new RelativeLayout();
-
-            borderRelativeLayout.Children.Add(
-                view: bottomBorder,
-                widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
-                heightConstraint: Constraint.Constant(1)
-            );
-
             contentView.Content = labelsRelativeLayout;
 
-            StackLayout stackLayout = new UnspacedStackLayout();
-
-            stackLayout.Children.Add(contentView);
-
-            stackLayout.Children.Add(borderRelativeLayout);
-
-            View = contentView;
+            View = new ContentViewWithBottomBorder() { Content = contentView };
         }
     }
 }

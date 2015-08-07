@@ -35,10 +35,8 @@
   <ItemGroup>
     <Compile Include="Cells\LeadListItemCell.cs" />
     <Compile Include="Converters\WholePercentToDecimalPercent.cs" />
-    <Compile Include="Pages\Sales\BaseLeadDetailPage.cs" />
     <Compile Include="Pages\Sales\LeadContactDetailPage.cs" />
     <Compile Include="Pages\Sales\LeadDetailPage.cs" />
-    <Compile Include="Pages\Sales\LeadDetailTabbedPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Helpers\ConvertableConverter.cs" />
@@ -48,7 +46,6 @@
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\CatalogItem.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Order.cs" />
@@ -99,8 +96,6 @@
     <Compile Include="Pages\Customers\CustomerDetailPage.cs" />
     <Compile Include="Pages\Customers\CustomerOrdersPage.cs" />
     <Compile Include="Pages\Customers\CustomerSalesPage.cs" />
-    <Compile Include="Pages\Customers\BaseCustomerDetailPage.cs" />
-    <Compile Include="Pages\Base\ModelEnforcedContentPage.cs" />
     <Compile Include="Views\Base\ModelEnforcedContentView.cs" />
     <Compile Include="ViewModels\Customers\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModels\Customers\CustomersViewModel.cs" />
@@ -122,10 +117,10 @@
     <Compile Include="Pages\Customers\EditOrderPage.cs" />
     <Compile Include="ViewModels\Customers\OrderDetailViewModel.cs" />
     <Compile Include="Pages\Customers\CustomerTabbedPage.cs" />
-    <Compile Include="Views\Base\BaseArtificialNavigationHeader.cs" />
-    <Compile Include="Views\AndroidArtificialNavigationHeader.cs" />
-    <Compile Include="Views\IosArtificialNavigationHeader.cs" />
     <Compile Include="Helpers\ChartHelper.cs" />
+    <Compile Include="Helpers\PropertyUtil.cs" />
+    <Compile Include="Views\Base\ContentViewWithBottomBorder.cs" />
+    <Compile Include="Pages\Base\ModelTypedContentPage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -200,6 +195,7 @@
     <Folder Include="Layouts\" />
     <Folder Include="Statics\" />
     <Folder Include="Config\" />
+    <Folder Include="Pages\Custom\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">

@@ -1,15 +1,13 @@
 ﻿using Xamarin.Forms;
 using MobileCRM.Layouts;
 using MobileCRM.Pages.Base;
-using MobileCRM.Views.Base;
-using MobileCRM.Views;
 using MobileCRM.ViewModels;
 
 namespace MobileCRM.Pages.Customers
 {
     public abstract class BaseCustomerDetailPage<TViewModelType> : ModelEnforcedContentPage<TViewModelType> where TViewModelType : BaseViewModel
     {
-        public BaseArtificialNavigationHeader TabbedPageHeaderView { get; private set; }
+//        public BaseArtificialNavigationHeader TabbedPageHeaderView { get; private set; }
 
         protected StackLayout StackLayout { get; private set; }
 
@@ -38,7 +36,7 @@ namespace MobileCRM.Pages.Customers
                             NumberOfTapsRequired = 1
                         }));
 
-                StackLayout.Children.Add(TabbedPageHeaderView);
+//                StackLayout.Children.Add(TabbedPageHeaderView);
             }
         }
     }

@@ -11,6 +11,10 @@ namespace MobileCRM
     {
         public CustomerTabbedPage(INavigation navigation, Account account)
         {
+            // since we're modally presented this tabbed view (because Android natviely doesn't support nested tabs),
+            // this tool bar item provides a way to get back to the Customers list
+            ToolbarItems.Add(new ToolbarItem("Back to Customers", null, () => navigation.PopModalAsync()));
+
             Children.Add(new CustomerDetailPage()
                 {
                     Title = TextResources.Customers_Detail_Tab_Title,

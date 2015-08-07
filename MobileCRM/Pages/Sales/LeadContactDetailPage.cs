@@ -1,18 +1,18 @@
 ﻿using Xamarin.Forms;
 using MobileCRM.ViewModels.Sales;
+using MobileCRM.Pages.Base;
 
 namespace MobileCRM.Pages.Sales
 {
-    public class LeadContactDetailPage : BaseLeadDetailPage
+    public class LeadContactDetailPage : ModelTypedContentPage<LeadDetailViewModel>
     {
         // NOTE: the ViewModel is contained in the base class
 
-        public LeadContactDetailPage(LeadDetailViewModel viewModel) : base(viewModel)
+        public LeadContactDetailPage()
         {
             #region roleEntry
             EntryCell roleEntryCell = new EntryCell()
             {
-                BindingContext = ViewModel,
                 Label = TextResources.Leads_LeadContactDetail_Role
             };
             roleEntryCell.SetBinding(EntryCell.TextProperty, "Lead.JobTitle", BindingMode.TwoWay);
@@ -21,7 +21,6 @@ namespace MobileCRM.Pages.Sales
             #region firstNameEntry
             EntryCell firstNameEntryCell = new EntryCell()
             {
-                BindingContext = ViewModel,
                 Label = TextResources.Leads_LeadContactDetail_FirstName
             };
             firstNameEntryCell.SetBinding(EntryCell.TextProperty, "Lead.FirstName", BindingMode.TwoWay);
@@ -30,7 +29,6 @@ namespace MobileCRM.Pages.Sales
             #region lastNameEntry
             EntryCell lastNameEntryCell = new EntryCell()
             {
-                BindingContext = ViewModel,
                 Label = TextResources.Leads_LeadContactDetail_LastName
             };
             lastNameEntryCell.SetBinding(EntryCell.TextProperty, "Lead.LastName", BindingMode.TwoWay);
@@ -39,7 +37,6 @@ namespace MobileCRM.Pages.Sales
             #region phoneEntry
             EntryCell phoneEntryCell = new EntryCell()
             {
-                BindingContext = ViewModel,
                 Label = TextResources.Leads_LeadContactDetail_Phone,
                 Keyboard = Keyboard.Telephone
             };
@@ -49,7 +46,6 @@ namespace MobileCRM.Pages.Sales
             #region emailEntry
             EntryCell emailEntryCell = new EntryCell()
             {
-                BindingContext = ViewModel,
                 Label = TextResources.Leads_LeadContactDetail_Email,
                 Keyboard = Keyboard.Email
             };
@@ -59,7 +55,6 @@ namespace MobileCRM.Pages.Sales
             #region streetEntry
             EntryCell streetEntryCell = new EntryCell()
             {
-                BindingContext = ViewModel,
                 Label = TextResources.Leads_LeadContactDetail_Address
             };
             streetEntryCell.SetBinding(EntryCell.TextProperty, "Lead.Street", BindingMode.TwoWay);
@@ -68,7 +63,6 @@ namespace MobileCRM.Pages.Sales
             #region postalCodeEntry
             EntryCell postalCodeEntryCell = new EntryCell()
             {
-                BindingContext = ViewModel,
                 Label = TextResources.Leads_LeadContactDetail_PostalCode,
                 Keyboard = Keyboard.Numeric
             };
@@ -78,7 +72,6 @@ namespace MobileCRM.Pages.Sales
             #region cityEntry
             EntryCell cityEntryCell = new EntryCell()
             {
-                BindingContext = ViewModel,
                 Label = TextResources.Leads_LeadContactDetail_City
             };
             cityEntryCell.SetBinding(EntryCell.TextProperty, "Lead.City", BindingMode.TwoWay);
@@ -87,7 +80,6 @@ namespace MobileCRM.Pages.Sales
             #region stateEntry
             EntryCell stateEntryCell = new EntryCell()
             {
-                BindingContext = ViewModel,
                 Label = TextResources.Leads_LeadContactDetail_State
             };
             stateEntryCell.SetBinding(EntryCell.TextProperty, "Lead.State", BindingMode.TwoWay);
@@ -96,7 +88,6 @@ namespace MobileCRM.Pages.Sales
             #region countryEntry
             EntryCell countryEntryCell = new EntryCell()
             {
-                BindingContext = ViewModel,
                 Label = TextResources.Leads_LeadContactDetail_Country
             };
             countryEntryCell.SetBinding(EntryCell.TextProperty, "Lead.Country", BindingMode.TwoWay);
@@ -132,8 +123,7 @@ namespace MobileCRM.Pages.Sales
             };
             #endregion
 
-            // add the table view to the already existing stack layout in the base class
-            StackLayout.Children.Add(tableView);
+            Content = tableView;
         }
     }
 }

@@ -53,9 +53,21 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_BackButton {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_BackButton", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadDetail_OpportunitySizePlaceholder {
             get {
                 return ResourceManager.GetString("Leads_LeadDetail_OpportunitySizePlaceholder", resourceCulture);
+            }
+        }
+        
+        internal static string Customers_Orders_EditOrder_PriceEntryPlaceholder {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_PriceEntryPlaceholder", resourceCulture);
             }
         }
         
@@ -65,15 +77,27 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Leads_LeadContactDetail_PostalCode {
+            get {
+                return ResourceManager.GetString("Leads_LeadContactDetail_PostalCode", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadContactDetail_City {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_City", resourceCulture);
             }
         }
         
-        internal static string Products {
+        internal static string Customers_Orders_EditOrder_CompanyTitle {
             get {
-                return ResourceManager.GetString("Products", resourceCulture);
+                return ResourceManager.GetString("Customers_Orders_EditOrder_CompanyTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Customers_Orders_EditOrder_AddToOrder {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_AddToOrder", resourceCulture);
             }
         }
         
@@ -95,6 +119,12 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_PriceTitleLabel {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_PriceTitleLabel", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadDetail_SaveButtonText {
             get {
                 return ResourceManager.GetString("Leads_LeadDetail_SaveButtonText", resourceCulture);
@@ -107,9 +137,21 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_ProductTitleLabel {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_ProductTitleLabel", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadContactDetail_Address {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_Address", resourceCulture);
+            }
+        }
+        
+        internal static string Leads_ExitConfirmTitle {
+            get {
+                return ResourceManager.GetString("Leads_ExitConfirmTitle", resourceCulture);
             }
         }
         
@@ -137,15 +179,21 @@ namespace MobileCRM {
             }
         }
         
-        internal static string Leads_LeadContactDetail_FirstName {
+        internal static string MainTabs_Customers {
             get {
-                return ResourceManager.GetString("Leads_LeadContactDetail_FirstName", resourceCulture);
+                return ResourceManager.GetString("MainTabs_Customers", resourceCulture);
             }
         }
         
         internal static string Leads_LeadContactDetail_Phone {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_Phone", resourceCulture);
+            }
+        }
+        
+        internal static string Leads_ExitConfirmDescription {
+            get {
+                return ResourceManager.GetString("Leads_ExitConfirmDescription", resourceCulture);
             }
         }
         
@@ -158,6 +206,12 @@ namespace MobileCRM {
         internal static string SalesChartHeaderWeeklyAverageTitle {
             get {
                 return ResourceManager.GetString("SalesChartHeaderWeeklyAverageTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Customers_Orders_EditOrder_Save {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_Save", resourceCulture);
             }
         }
         
@@ -179,15 +233,21 @@ namespace MobileCRM {
             }
         }
         
-        internal static string MainTabs_Customers {
+        internal static string Leads_LeadContactDetail_FirstName {
             get {
-                return ResourceManager.GetString("MainTabs_Customers", resourceCulture);
+                return ResourceManager.GetString("Leads_LeadContactDetail_FirstName", resourceCulture);
             }
         }
         
-        internal static string Leads_LeadContactDetail_PostalCode {
+        internal static string Customers_Orders_EditOrder_DueDateTitleLabel {
             get {
-                return ResourceManager.GetString("Leads_LeadContactDetail_PostalCode", resourceCulture);
+                return ResourceManager.GetString("Customers_Orders_EditOrder_DueDateTitleLabel", resourceCulture);
+            }
+        }
+        
+        internal static string Exit_and_Discard {
+            get {
+                return ResourceManager.GetString("Exit_and_Discard", resourceCulture);
             }
         }
         
@@ -203,6 +263,12 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Products {
+            get {
+                return ResourceManager.GetString("Products", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadContactDetail_Email {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_Email", resourceCulture);
@@ -212,6 +278,12 @@ namespace MobileCRM {
         internal static string Details {
             get {
                 return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        internal static string Customers_Orders_EditOrder_ProductEntryPlaceholder {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_ProductEntryPlaceholder", resourceCulture);
             }
         }
         
@@ -269,6 +341,12 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_DueDateEntryPlaceholder {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_DueDateEntryPlaceholder", resourceCulture);
+            }
+        }
+        
         internal static string SalesChartHeaderTitle {
             get {
                 return ResourceManager.GetString("SalesChartHeaderTitle", resourceCulture);
@@ -287,9 +365,21 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_NewOrderTitle {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_NewOrderTitle", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadContactDetail_State {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_State", resourceCulture);
+            }
+        }
+        
+        internal static string Exit {
+            get {
+                return ResourceManager.GetString("Exit", resourceCulture);
             }
         }
     }

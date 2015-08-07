@@ -66,7 +66,7 @@ namespace MobileCRM
 
             relativeLayout.Children.Add(
                 view: BackButtonLabel,
-                xConstraint: Constraint.RelativeToView(BackButtonImage, (parent, view) => view.Y + view.Width / 2),
+                xConstraint: Constraint.RelativeToView(BackButtonImage, (parent, view) => view.Y + view.Width),
                 yConstraint: Constraint.RelativeToParent(parent => 0),
                 widthConstraint: Constraint.RelativeToParent(parent => parent.Width * .60),
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height)

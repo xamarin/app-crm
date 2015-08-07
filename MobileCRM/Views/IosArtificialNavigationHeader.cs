@@ -80,7 +80,7 @@ namespace MobileCRM
                         Android: Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                         WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))),
                     YAlign = TextAlignment.Center,
-                    XAlign = TextAlignment.Start,
+                    XAlign = TextAlignment.Center,
                     FontAttributes = FontAttributes.Bold,
                     LineBreakMode = LineBreakMode.TailTruncation
                 };
@@ -129,6 +129,7 @@ namespace MobileCRM
             StackLayout separator = new UnspacedStackLayout() { HeightRequest = 2, BackgroundColor = Palette._014 };
 
             stackLayout.Children.Add(outerContentView);
+
             stackLayout.Children.Add(separator);
 
             Content = stackLayout;

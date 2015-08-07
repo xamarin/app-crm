@@ -16,7 +16,7 @@ namespace MobileCRM.Pages.Products
             get { return BindingContext as ProductsViewModel; }
         }
 
-        public ProductListPage(string categoryId, string title)
+        public ProductListPage(string categoryId, string title, bool showNavigationBar = false) : base(showNavigationBar)
         {
             _CategoryId = categoryId;
 
@@ -35,7 +35,7 @@ namespace MobileCRM.Pages.Products
                 {
                     CatalogProduct catalogProduct = ((CatalogProduct)e.Item);
 
-                    Navigation.PushAsync(new ProductDetailPage(catalogProduct));
+                    Navigation.PushAsync(new ProductDetailPage(catalogProduct, showNavigationBar));
                 };
 
             ActivityIndicator activityIndicator = new ActivityIndicator()

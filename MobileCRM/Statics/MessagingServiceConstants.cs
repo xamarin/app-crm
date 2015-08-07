@@ -19,6 +19,8 @@ namespace MobileCRM.Statics
         public const string SPLASH_DOWN = "SPLASH_DOWN";
 
         public const string SAVE_LEAD = "SAVE_LEAD";
+
+        public const string ADD_PRODUCT_TO_ORDER = "ADD_PRODUCT_TO_ORDER";
     }
 }
 

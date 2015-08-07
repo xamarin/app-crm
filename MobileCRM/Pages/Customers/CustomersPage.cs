@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using Xamarin;
-using MobileCRM.Cells;
 using MobileCRM.Customers;
 using MobileCRM.Layouts;
 using MobileCRM.Models;
@@ -11,7 +10,7 @@ using MobileCRM.Statics;
 
 namespace MobileCRM.Pages.Customers
 {
-    public class CustomersPage : ModelEnforcedContentPage<CustomersViewModel>
+    public class CustomersPage : ModelTypedContentPage<CustomersViewModel>
     {
         public CustomersPage()
         {
@@ -65,7 +64,7 @@ namespace MobileCRM.Pages.Customers
 
         async Task PushTabbedPage(Account account = null)
         {
-            await ViewModel.PushModalAsync(new CustomerTabbedPage(ViewModel.Navigation, account));
+            await ViewModel.PushModalAsync(new NavigationPage(new CustomerTabbedPage(ViewModel.Navigation, account)));
         }
     }
 }

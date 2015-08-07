@@ -9,7 +9,8 @@ namespace MobileCRM.Pages.Products
     {
         readonly CatalogProduct _CatalogProduct;
 
-        public ProductDetailPage(CatalogProduct catalogProduct)
+        public ProductDetailPage(CatalogProduct catalogProduct, bool showNavigationBar = false)
+            : base(showNavigationBar)
         {
             _CatalogProduct = catalogProduct;
 
@@ -17,10 +18,10 @@ namespace MobileCRM.Pages.Products
 
             #region productImage
             Image image = new Image()
-                {
-                    Source = _CatalogProduct.ImageUrl,
-                    Aspect = Aspect.AspectFit
-                };
+            {
+                Source = _CatalogProduct.ImageUrl,
+                Aspect = Aspect.AspectFit
+            };
             #endregion
 
             #region ribbonView

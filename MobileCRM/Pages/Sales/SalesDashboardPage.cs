@@ -13,7 +13,7 @@ using MobileCRM.Statics;
 
 namespace MobileCRM.Pages.Sales
 {
-    public class SalesDashboardPage : ModelEnforcedContentPage<SalesDashboardViewModel>
+    public class SalesDashboardPage : ModelTypedContentPage<SalesDashboardViewModel>
     {
         /// <summary>
         /// A necessary flag for dealing with the async Auth UI. If we don't use this, then the Auth UI gets presented twice, even when the first login attempt is successful.
@@ -62,7 +62,7 @@ namespace MobileCRM.Pages.Sales
             };
 
             // Not currently working because a binding bug in the SyncFusion ColumnSeries.ItemsSourceProperty setter
-            columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, new Binding("SalesChartDataPoints"));
+            columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, "SalesChartDataPoints");
 
             SfChart chart = new SfChart()
             {
@@ -177,19 +177,60 @@ namespace MobileCRM.Pages.Sales
             LeadDetailViewModel viewModel = new LeadDetailViewModel(Navigation, lead); 
 
             TabbedPage tabbedPage = new TabbedPage();
-            tabbedPage.Children.Add(new LeadDetailPage(viewModel)
+
+            tabbedPage.ToolbarItems.Add(
+                new ToolbarItem(TextResources.Save, null, async () =>
+                    {
+                        var answer = 
+                            await DisplayAlert(
+                                title: TextResources.Leads_SaveConfirmTitle,
+                                message: TextResources.Leads_SaveConfirmDescription,
+                                accept: TextResources.Save,
+                                cancel: TextResources.Cancel);
+                
+                        if (answer)
+                        {
+                            viewModel.SaveLeadCommand.Execute(null);
+                
+                            await ViewModel.PopModalAsync();
+                        }
+                    }));
+            
+            tabbedPage.ToolbarItems.Add(
+                new ToolbarItem(TextResources.Exit, null, async () =>
+                    {
+                        {
+                            var answer = 
+                                await DisplayAlert(
+                                    title: TextResources.Leads_ExitConfirmTitle,
+                                    message: TextResources.Leads_ExitConfirmDescription,
+                                    accept: TextResources.Exit_and_Discard,
+                                    cancel: TextResources.Cancel);
+
+                            if (answer)
+                            {
+                                await ViewModel.PopModalAsync();
+                            }
+                        }
+                    }));
+            
+            tabbedPage.Children.Add(new LeadDetailPage()
                 {
+                    BindingContext = viewModel,
                     Title = TextResources.Details,
                     Icon = new FileImageSource() { File = "LeadDetailTab" }
                 });
 
-            tabbedPage.Children.Add(new LeadContactDetailPage(viewModel)
+            tabbedPage.Children.Add(new LeadContactDetailPage()
                 {
+                    BindingContext = viewModel,
                     Title = TextResources.Contact,
                     Icon = new FileImageSource() { File = "LeadContactDetailTab" }
                 });
 
-            await ViewModel.PushModalAsync(tabbedPage);
+            NavigationPage navPage = new NavigationPage(tabbedPage);
+
+            await ViewModel.PushModalAsync(navPage);
         }
 
         async Task<bool> Authenticate()

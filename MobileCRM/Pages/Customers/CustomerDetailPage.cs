@@ -2,10 +2,11 @@
 using MobileCRM.Layouts;
 using MobileCRM.Statics;
 using MobileCRM.ViewModels.Customers;
+using MobileCRM.Pages.Base;
 
 namespace MobileCRM.Pages.Customers
 {
-    public class CustomerDetailPage : BaseCustomerDetailPage<CustomerDetailViewModel>
+    public class CustomerDetailPage : ModelTypedContentPage<CustomerDetailViewModel>
     {
         public CustomerDetailPage()
         {
@@ -33,7 +34,6 @@ namespace MobileCRM.Pages.Customers
             headerLabelsStackLayout.Children.Add(companyLabel);
             headerLabelsStackLayout.Children.Add(industryLabel);
             headerContainer.Children.Add(headerLabelsStackLayout);
-            headerContainer.Children.Add(GetSeparator());
             #endregion
 
             #region contact
@@ -60,7 +60,6 @@ namespace MobileCRM.Pages.Customers
             contactLabelsStackLayout.Children.Add(contactTitleLabel);
             contactLabelsStackLayout.Children.Add(contactLabel);
             contactContainer.Children.Add(contactLabelsStackLayout);
-            contactContainer.Children.Add(GetSeparator());
             #endregion
 
             #region phone
@@ -87,7 +86,6 @@ namespace MobileCRM.Pages.Customers
             phoneLabelStackLayout.Children.Add(phoneTitleLabel);
             phoneLabelStackLayout.Children.Add(phoneLabel);
             phoneContainer.Children.Add(phoneLabelStackLayout);
-            phoneContainer.Children.Add(GetSeparator());
             #endregion
 
             #region address
@@ -136,12 +134,14 @@ namespace MobileCRM.Pages.Customers
 
             #endregion
 
-            StackLayout.Children.Add(headerContainer);
-            StackLayout.Children.Add(contactContainer);
-            StackLayout.Children.Add(phoneContainer);
-            StackLayout.Children.Add(addressContainer);
+            StackLayout stackLayout = new UnspacedStackLayout();
 
-            Content = new ScrollView() { Content = StackLayout };
+            stackLayout.Children.Add(new ContentViewWithBottomBorder(){ Content = headerContainer });
+            stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = contactContainer });
+            stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = phoneContainer });
+            stackLayout.Children.Add(addressContainer);
+
+            Content = new ScrollView() { Content = stackLayout };
         }
 
         private StackLayout GetSeparator()

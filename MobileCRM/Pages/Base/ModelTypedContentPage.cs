@@ -3,7 +3,7 @@ using MobileCRM.ViewModels;
 
 namespace MobileCRM.Pages.Base
 {
-    public abstract class ModelEnforcedContentPage<TViewModel> : ContentPage where TViewModel : BaseViewModel
+    public abstract class ModelTypedContentPage<TViewModel> : ContentPage where TViewModel : BaseViewModel
     {
         protected TViewModel ViewModel
         {
@@ -20,7 +20,7 @@ namespace MobileCRM.Pages.Base
             set { base.BindingContext = value; }
         }
 
-        protected ModelEnforcedContentPage()
+        protected ModelTypedContentPage()
         {
             this.SetBinding(Page.TitleProperty, "Title");
         }

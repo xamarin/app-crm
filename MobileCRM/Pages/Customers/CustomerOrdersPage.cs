@@ -4,10 +4,12 @@ using MobileCRM.Layouts;
 using MobileCRM.Customers;
 using Xamarin;
 using MobileCRM.Views.Customers;
+using MobileCRM.Models;
+using MobileCRM.Pages.Base;
 
 namespace MobileCRM.Pages.Customers
 {
-    public class CustomerOrdersPage : BaseCustomerDetailPage<OrdersViewModel>
+    public class CustomerOrdersPage : ModelTypedContentPage<OrdersViewModel>
     {
         public CustomerOrdersPage()
         {
@@ -23,9 +25,9 @@ namespace MobileCRM.Pages.Customers
             TapGestureRecognizer newOrderTapGestureRecognizer = new TapGestureRecognizer()
             { 
                 Command = new Command(async () =>
-                    await ViewModel.PushModalAsync(new EditOrderPage()
+                        await Navigation.PushAsync(new EditOrderPage()
                         {
-                            BindingContext = new OrderDetailViewModel() { Navigation = ViewModel.Navigation }
+                            BindingContext = new OrderDetailViewModel(ViewModel.Account) { Navigation = ViewModel.Navigation }
                         })), 
                 NumberOfTapsRequired = 1 
             };
@@ -40,6 +42,13 @@ namespace MobileCRM.Pages.Customers
             customerOrderListView.SetBinding(CustomerOrderListView.ItemsSourceProperty, "Orders");
             customerOrderListView.SetBinding(CustomerOrderListView.IsVisibleProperty, "IsModelLoaded");
             customerOrderListView.SetBinding(CustomerOrderListView.IsEnabledProperty, "IsModelLoaded");
+
+            customerOrderListView.ItemTapped += async (sender, e) =>
+            {
+                var order = (Order)e.Item;
+                await Navigation.PushAsync(new EditOrderPage() { BindingContext = new OrderDetailViewModel(ViewModel.Account, order) { Navigation = Navigation }, });
+            };
+
             #endregion
 
             StackLayout stackLayout = new UnspacedStackLayout();
@@ -50,9 +59,7 @@ namespace MobileCRM.Pages.Customers
 
             stackLayout.Children.Add(customerOrderListView);
 
-            StackLayout.Children.Add(stackLayout);
-
-            Content = StackLayout;
+            Content = stackLayout;
         }
 
         protected override async void OnAppearing()
