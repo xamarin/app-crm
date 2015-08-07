@@ -5,7 +5,6 @@ using MobileCRM.Layouts;
 using MobileCRM.Statics;
 using MobileCRM.Converters;
 using MobileCRM.Pages.Products;
-using MobileCRM.Models;
 
 namespace MobileCRM
 {
@@ -13,6 +12,10 @@ namespace MobileCRM
     {
         public EditOrderPage()
         {
+            // hide the back button, because we have ToolBarItems to control navigtion on this page
+            NavigationPage.SetHasBackButton(this, false);
+            NavigationPage.SetBackButtonTitle(this, string.Empty);
+
             StackLayout stackLayout = new UnspacedStackLayout();
 
             #region header
@@ -112,7 +115,7 @@ namespace MobileCRM
                     { 
                         Title = TextResources.MainTabs_Products
                     });
-                navPage.ToolbarItems.Add(new ToolbarItem("Cancel", null, () => Navigation.PopModalAsync()));
+                    navPage.ToolbarItems.Add(new ToolbarItem(TextResources.Cancel, null, () => Navigation.PopModalAsync()));
                 await ViewModel.PushModalAsync(navPage);
             };
 
@@ -136,6 +139,47 @@ namespace MobileCRM
             #endregion
 
             Content = stackLayout;
+
+            ToolbarItems.Add(
+                new ToolbarItem(TextResources.Save, null, async () =>
+                    {
+                        var answer = 
+                            await DisplayAlert(
+                                title: TextResources.Customers_Orders_EditOrder_SaveConfirmTitle,
+                                message: TextResources.Customers_Orders_EditOrder_SaveConfirmDescription,
+                                accept: TextResources.Save,
+                                cancel: TextResources.Cancel);
+
+                        if (answer)
+                        {
+                            ViewModel.SaveOrderCommand.Execute(null);
+
+                            await Navigation.PopAsync();
+                        }
+                    }));
+
+            ToolbarItems.Add(
+                new ToolbarItem(TextResources.Exit, null, async () =>
+                    {
+                        {
+                            var answer = 
+                                await DisplayAlert(
+                                    title: TextResources.Customers_Orders_EditOrder_ExitConfirmTitle,
+                                    message: TextResources.Customers_Orders_EditOrder_ExitConfirmDescription,
+                                    accept: TextResources.Exit_and_Discard,
+                                    cancel: TextResources.Cancel);
+
+                            if (answer)
+                            {
+                                await Navigation.PopAsync();
+                            }
+                        }
+                    }));
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
 
         }

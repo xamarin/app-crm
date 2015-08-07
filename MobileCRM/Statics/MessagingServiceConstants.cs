@@ -12,7 +12,7 @@ namespace MobileCRM.Statics
 
         public const string ACCOUNT = "ACCOUNT";
 
-        public const string ORDER_UPDATE = "ORDER_UPDATE";
+        public const string SAVE_ORDER = "ORDER_UPDATE";
 
         public const string ORDER_APPROVED = "ORDER_APPROVED";
 
@@ -20,7 +20,7 @@ namespace MobileCRM.Statics
 
         public const string SAVE_LEAD = "SAVE_LEAD";
 
-        public const string ADD_PRODUCT_TO_ORDER = "ADD_PRODUCT_TO_ORDER";
+        public const string UPDATE_ORDER_PRODUCT = "ADD_PRODUCT_TO_ORDER";
     }
 }
 

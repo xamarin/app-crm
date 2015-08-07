@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MobileCRM.Extensions;
 using System.Collections.Generic;
 using System.Linq;
+using MobileCRM.Statics;
 
 namespace MobileCRM.Customers
 {
@@ -35,6 +36,20 @@ namespace MobileCRM.Customers
             _DataManager = DependencyService.Get<IDataManager>();
 
             Orders = new ObservableCollection<Order>();
+
+            MessagingCenter.Subscribe<Order>(this, MessagingServiceConstants.SAVE_ORDER, order =>
+                {
+                    var index = Orders.IndexOf(order);
+                    if (index >= 0)
+                    {
+                        Orders[index] = order;
+                    }
+                    else
+                    {
+                        Orders.Add(order);
+                    }
+                    Orders = new ObservableCollection<Order>(SortOrders(Orders));
+                });
         }
 
         Command _LoadOrdersCommand;
@@ -47,7 +62,7 @@ namespace MobileCRM.Customers
             get
             {
                 return _LoadOrdersCommand ??
-                    (_LoadOrdersCommand = new Command(async () =>
+                (_LoadOrdersCommand = new Command(async () =>
                         await ExecuteLoadOrdersCommand()));
             }
         }
@@ -65,10 +80,15 @@ namespace MobileCRM.Customers
             orders.AddRange(await _DataManager.GetAccountOrdersAsync(Account.Id));
             orders.AddRange(await _DataManager.GetAccountOrderHistoryAsync(Account.Id));
 
-            Orders.AddRange(orders.OrderByDescending(x => x.IsOpen).ThenByDescending(x => x.OrderDate).ThenByDescending(x => x.ClosedDate));
+            Orders.AddRange(SortOrders(orders));
 
             IsBusy = false;
             IsModelLoaded = true;
+        }
+
+        IEnumerable<Order> SortOrders(IEnumerable<Order> orders)
+        {
+            return orders.OrderByDescending(x => x.IsOpen).ThenByDescending(x => x.OrderDate).ThenByDescending(x => x.ClosedDate);
         }
     }
 }

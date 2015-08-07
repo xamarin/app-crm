@@ -9,8 +9,8 @@ namespace MobileCRM.Pages.Products
     {
         readonly CatalogProduct _CatalogProduct;
 
-        public ProductDetailPage(CatalogProduct catalogProduct, bool showNavigationBar = false)
-            : base(showNavigationBar)
+        public ProductDetailPage(CatalogProduct catalogProduct, bool isPerformingProductSelection = false)
+            : base(isPerformingProductSelection)
         {
             _CatalogProduct = catalogProduct;
 
@@ -25,7 +25,7 @@ namespace MobileCRM.Pages.Products
             #endregion
 
             #region ribbonView
-            ProductDetailRibbonView detailRibbon = new ProductDetailRibbonView(_CatalogProduct);
+            ProductDetailRibbonView detailRibbon = new ProductDetailRibbonView(_CatalogProduct, isPerformingProductSelection);
             #endregion
 
             #region descriptionView

@@ -89,6 +89,12 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Products {
+            get {
+                return ResourceManager.GetString("Products", resourceCulture);
+            }
+        }
+        
         internal static string Customers_Orders_EditOrder_CompanyTitle {
             get {
                 return ResourceManager.GetString("Customers_Orders_EditOrder_CompanyTitle", resourceCulture);
@@ -104,6 +110,12 @@ namespace MobileCRM {
         internal static string Leads_LeadDetail_OpportunityStage {
             get {
                 return ResourceManager.GetString("Leads_LeadDetail_OpportunityStage", resourceCulture);
+            }
+        }
+        
+        internal static string Customers_Orders_EditOrder_SaveConfirmDescription {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_SaveConfirmDescription", resourceCulture);
             }
         }
         
@@ -233,6 +245,12 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_SaveConfirmTitle {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_SaveConfirmTitle", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadContactDetail_FirstName {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_FirstName", resourceCulture);
@@ -263,9 +281,9 @@ namespace MobileCRM {
             }
         }
         
-        internal static string Products {
+        internal static string Customers_Orders_EditOrder_ExitConfirmDescription {
             get {
-                return ResourceManager.GetString("Products", resourceCulture);
+                return ResourceManager.GetString("Customers_Orders_EditOrder_ExitConfirmDescription", resourceCulture);
             }
         }
         
@@ -308,6 +326,12 @@ namespace MobileCRM {
         internal static string Leads_LeadContactDetail_LastName {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_LastName", resourceCulture);
+            }
+        }
+        
+        internal static string Customers_Orders_EditOrder_ExitConfirmTitle {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_ExitConfirmTitle", resourceCulture);
             }
         }
         

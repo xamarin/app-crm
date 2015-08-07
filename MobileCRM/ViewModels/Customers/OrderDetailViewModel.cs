@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using MobileCRM.Models;
 using System.Threading.Tasks;
 using MobileCRM.Statics;
+using System.ComponentModel;
 
 namespace MobileCRM
 {
@@ -28,10 +29,11 @@ namespace MobileCRM
 
             _DataManager = DependencyService.Get<IDataManager>();
 
-            MessagingCenter.Subscribe<CatalogProduct>(this, MessagingServiceConstants.ADD_PRODUCT_TO_ORDER, catalogProduct =>
+            MessagingCenter.Subscribe<CatalogProduct>(this, MessagingServiceConstants.UPDATE_ORDER_PRODUCT, catalogProduct =>
                 {
                     Order.Item = catalogProduct.Name;
                     Order.Price = (int)catalogProduct.Price;
+                    OnPropertyChanged("Order");
                 }); 
         }
 
@@ -71,10 +73,11 @@ namespace MobileCRM
         }
 
         Order _Order;
+
         public Order Order
         {
             get { return _Order; }
-            set 
+            set
             {
                 _Order = value;
                 OnPropertyChanged("Order");
@@ -82,10 +85,11 @@ namespace MobileCRM
         }
 
         Account _Account;
+
         public Account Account
         {
             get { return _Account; }
-            set 
+            set
             {
                 _Account = value;
                 OnPropertyChanged("Account");
@@ -139,7 +143,7 @@ namespace MobileCRM
             IsBusy = true;
 
             await _DataManager.SaveOrderAsync(Order);
-            MessagingCenter.Send(Order, MessagingServiceConstants.ORDER_UPDATE);
+            MessagingCenter.Send(Order, MessagingServiceConstants.SAVE_ORDER);
             IsBusy = false;
 
             PopAsync();

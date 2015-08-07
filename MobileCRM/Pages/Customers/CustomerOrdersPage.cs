@@ -62,15 +62,13 @@ namespace MobileCRM.Pages.Customers
             Content = stackLayout;
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            await ViewModel.ExecuteLoadOrdersCommand();
-
-            ViewModel.IsInitialized = true;
-
             Insights.Track("Customer Orders Page");
+
+            ViewModel.LoadOrdersCommand.Execute(null);
         }
     }
 }
