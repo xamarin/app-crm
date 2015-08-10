@@ -19,11 +19,6 @@ namespace MobileCRM.Pages.Base
         {
             set { base.BindingContext = value; }
         }
-
-        protected ModelTypedContentPage()
-        {
-            this.SetBinding(Page.TitleProperty, "Title");
-        }
     }
 }
 
