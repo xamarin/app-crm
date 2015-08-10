@@ -95,7 +95,6 @@
     <Compile Include="Pages\Customers\CustomerDetailPage.cs" />
     <Compile Include="Pages\Customers\CustomerOrdersPage.cs" />
     <Compile Include="Pages\Customers\CustomerSalesPage.cs" />
-    <Compile Include="Views\Base\ModelEnforcedContentView.cs" />
     <Compile Include="ViewModels\Customers\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModels\Customers\CustomersViewModel.cs" />
     <Compile Include="Layouts\UnspacedStackLayout.cs" />
@@ -123,6 +122,7 @@
     <Compile Include="Pages\Splash\SplashPage.cs" />
     <Compile Include="ViewModels\Splash\SplashPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
+    <Compile Include="Views\Base\ModelTypedContentView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace MobileCRM.Views.Base
 {
-    public abstract class ModelEnforcedContentView<TViewModel> : ContentView where TViewModel : BaseViewModel
+    public abstract class ModelTypedContentView<TViewModel> : ContentView where TViewModel : BaseViewModel
     {
         protected TViewModel ViewModel
         {
