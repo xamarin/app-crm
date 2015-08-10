@@ -16,12 +16,21 @@ namespace MobileCRM.iOS
         public async Task<AuthenticationResult> Authenticate(string authority, string resource, string clientId, string returnUri)
         {
             var authContext = new AuthenticationContext(authority);
+
             if (authContext.TokenCache.ReadItems().Any())
                 authContext = new AuthenticationContext(authContext.TokenCache.ReadItems().First().Authority);
-            var controller = UIApplication.SharedApplication.KeyWindow.RootViewController;
-            var uri = new Uri(returnUri);
-            var platformParams = new PlatformParameters(controller);
-            var authResult = await authContext.AcquireTokenAsync(resource, clientId, uri, platformParams);
+            
+            var topController = UIApplication.SharedApplication.KeyWindow.RootViewController;
+
+            // ensures that the currently presented viewcontroller is acquired, even a modally presented one
+            while (topController.PresentedViewController != null) {
+                topController = topController.PresentedViewController;
+            }
+
+            var platformParams = new PlatformParameters(topController);
+
+            var authResult = await authContext.AcquireTokenAsync(resource, clientId, new Uri(returnUri), platformParams);
+
             return authResult;
         }
 

@@ -121,6 +121,8 @@
     <Compile Include="Helpers\PropertyUtil.cs" />
     <Compile Include="Views\Base\ContentViewWithBottomBorder.cs" />
     <Compile Include="Pages\Base\ModelTypedContentPage.cs" />
+    <Compile Include="Pages\Splash\SplashPage.cs" />
+    <Compile Include="ViewModels\Splash\SplashPageViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -196,6 +198,8 @@
     <Folder Include="Statics\" />
     <Folder Include="Config\" />
     <Folder Include="Pages\Custom\" />
+    <Folder Include="Pages\Splash\" />
+    <Folder Include="ViewModels\Splash\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">

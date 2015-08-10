@@ -19,7 +19,7 @@ namespace MobileCRM.Models
             //New orders default to open status. 
             IsOpen = true;
 
-            Item = ItemTypes[0];
+            Item = string.Empty;
             //ItemLevel = ItemLevels[0];
             //Discount = 0;
             Signature = string.Empty;
@@ -66,26 +66,26 @@ namespace MobileCRM.Models
 
         [JsonIgnore]
         public static string[] ItemTypes = { PAPER, INK, PRINTER, SCANNER, COMBO };
-
-        [JsonIgnore]
-        public static string[] ItemLevels = { "Individual", "Business", "Enterprise" };
-
-        [JsonIgnore]
-        public string Description
-        {
-            get
-            {
-                return "Price Quote: $" + Price + " | Due: " + DueDate.ToString("d"); 
-            }
-        }
-
-        [JsonIgnore]
-        public string HistoryDescription
-        {
-            get
-            {
-                return "Total: $" + Price + " | Closed: " + ClosedDate.ToString("d");
-            }
-        }
+//
+//        [JsonIgnore]
+//        public static string[] ItemLevels = { "Individual", "Business", "Enterprise" };
+//
+//        [JsonIgnore]
+//        public string Description
+//        {
+//            get
+//            {
+//                return "Price Quote: $" + Price + " | Due: " + DueDate.ToString("d"); 
+//            }
+//        }
+//
+//        [JsonIgnore]
+//        public string HistoryDescription
+//        {
+//            get
+//            {
+//                return "Total: $" + Price + " | Closed: " + ClosedDate.ToString("d");
+//            }
+//        }
     }
 }

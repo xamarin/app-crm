@@ -10,6 +10,11 @@ namespace MobileCRM.ViewModels
     {
         public INavigation Navigation { get; set; }
 
+        public BaseViewModel(INavigation navigation = null)
+        {
+            Navigation = navigation;
+        }
+
         public bool IsInitialized { get; set; }
 
         public async Task PushModalAsync(Page page)

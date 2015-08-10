@@ -101,29 +101,29 @@ namespace MobileCRM
             get { return Order.Discount + "%"; }
         }
 
-        int _IntItemIndex = 0;
-
-        public int ItemIndex
-        {
-            get
-            { 
-                for (int i = 0; i < Order.ItemTypes.Length; i++)
-                {
-                    if (Order.Item.Equals(Order.ItemTypes[i]))
-                    {
-                        _IntItemIndex = i;
-                        break;
-
-                    }
-                }
-                return _IntItemIndex;
-            }
-            set
-            {
-                _IntItemIndex = value;
-                Order.Item = Order.ItemTypes[_IntItemIndex];
-            }
-        }
+//        int _IntItemIndex = 0;
+//
+//        public int ItemIndex
+//        {
+//            get
+//            { 
+//                for (int i = 0; i < Order.ItemTypes.Length; i++)
+//                {
+//                    if (Order.Item.Equals(Order.ItemTypes[i]))
+//                    {
+//                        _IntItemIndex = i;
+//                        break;
+//
+//                    }
+//                }
+//                return _IntItemIndex;
+//            }
+//            set
+//            {
+//                _IntItemIndex = value;
+//                Order.Item = Order.ItemTypes[_IntItemIndex];
+//            }
+//        }
 
         Command _SaveOrderCommand;
 
@@ -146,7 +146,7 @@ namespace MobileCRM
             MessagingCenter.Send(Order, MessagingServiceConstants.SAVE_ORDER);
             IsBusy = false;
 
-            PopAsync();
+            await PopAsync();
         }
 
         Command _ApproveOrderCommand;

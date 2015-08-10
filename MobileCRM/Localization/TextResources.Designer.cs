@@ -71,15 +71,27 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Splash_UsernameTitleLabel {
+            get {
+                return ResourceManager.GetString("Splash_UsernameTitleLabel", resourceCulture);
+            }
+        }
+        
         internal static string Contact {
             get {
                 return ResourceManager.GetString("Contact", resourceCulture);
             }
         }
         
-        internal static string Leads_LeadContactDetail_PostalCode {
+        internal static string Customers_Orders_EditOrder_ExitConfirmTitle {
             get {
-                return ResourceManager.GetString("Leads_LeadContactDetail_PostalCode", resourceCulture);
+                return ResourceManager.GetString("Customers_Orders_EditOrder_ExitConfirmTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Splash_SignIn {
+            get {
+                return ResourceManager.GetString("Splash_SignIn", resourceCulture);
             }
         }
         
@@ -95,9 +107,9 @@ namespace MobileCRM {
             }
         }
         
-        internal static string Customers_Orders_EditOrder_CompanyTitle {
+        internal static string Leads_LeadContactDetail_PostalCode {
             get {
-                return ResourceManager.GetString("Customers_Orders_EditOrder_CompanyTitle", resourceCulture);
+                return ResourceManager.GetString("Leads_LeadContactDetail_PostalCode", resourceCulture);
             }
         }
         
@@ -113,9 +125,9 @@ namespace MobileCRM {
             }
         }
         
-        internal static string Customers_Orders_EditOrder_SaveConfirmDescription {
+        internal static string Splash_PasswordTitleLabel {
             get {
-                return ResourceManager.GetString("Customers_Orders_EditOrder_SaveConfirmDescription", resourceCulture);
+                return ResourceManager.GetString("Splash_PasswordTitleLabel", resourceCulture);
             }
         }
         
@@ -317,6 +329,12 @@ namespace MobileCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_CompanyTitle {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_CompanyTitle", resourceCulture);
+            }
+        }
+        
         internal static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
@@ -329,9 +347,9 @@ namespace MobileCRM {
             }
         }
         
-        internal static string Customers_Orders_EditOrder_ExitConfirmTitle {
+        internal static string Customers_Orders_EditOrder_SaveConfirmDescription {
             get {
-                return ResourceManager.GetString("Customers_Orders_EditOrder_ExitConfirmTitle", resourceCulture);
+                return ResourceManager.GetString("Customers_Orders_EditOrder_SaveConfirmDescription", resourceCulture);
             }
         }
         

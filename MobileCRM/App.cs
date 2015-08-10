@@ -5,6 +5,8 @@ using MobileCRM.Localization;
 using MobileCRM.Pages;
 using MobileCRM.Services;
 using Xamarin.Forms;
+using MobileCRM.Pages.Splash;
+using MobileCRM.ViewModels.Splash;
 
 namespace MobileCRM
 {

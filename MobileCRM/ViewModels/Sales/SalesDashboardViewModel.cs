@@ -30,7 +30,7 @@ namespace MobileCRM.ViewModels.Sales
 
         public bool NeedsRefresh { get; set; }
 
-        public SalesDashboardViewModel()
+        public SalesDashboardViewModel(INavigation navigation = null) : base(navigation)
         {
             this.Title = "Sales Dashboard";
             this.Icon = "dashboard.png";

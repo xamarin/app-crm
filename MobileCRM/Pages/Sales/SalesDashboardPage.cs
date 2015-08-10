@@ -10,6 +10,7 @@ using MobileCRM.Layouts;
 using MobileCRM.Pages.Base;
 using Syncfusion.SfChart.XForms;
 using MobileCRM.Statics;
+using MobileCRM.Pages.Splash;
 
 namespace MobileCRM.Pages.Sales
 {
@@ -19,7 +20,7 @@ namespace MobileCRM.Pages.Sales
         /// A necessary flag for dealing with the async Auth UI. If we don't use this, then the Auth UI gets presented twice, even when the first login attempt is successful.
         /// This is because this Page's OnAppearing() method gets called before the Auth UI returns its result.
         /// </summary>
-        bool _DidPresentAuthUI;
+        //        bool _DidPresentAuthUI;
 
         public SalesDashboardPage()
         {
@@ -146,6 +147,13 @@ namespace MobileCRM.Pages.Sales
             Content = new ScrollView() { Content = stackLayout };
 
             Content.IsVisible = false;
+
+            // Catch the login success message from the MessagingCenter.
+            // This is really only here for Android, which doesn't fire the OnAppearing() method in the same way that iOS does (every time the page appears on screen).
+            Device.OnPlatform(Android: () =>
+                {
+                    MessagingCenter.Subscribe<SplashPage>(this, MessagingServiceConstants.AUTHENTICATED, sender => OnAppearing());
+                });
         }
 
         protected override async void OnAppearing()
@@ -154,14 +162,8 @@ namespace MobileCRM.Pages.Sales
 
             Content.IsVisible = false;
 
-            if (!_DidPresentAuthUI)
+            if (App.IsAuthenticated)
             {
-                _DidPresentAuthUI = true;
-
-                await Authenticate();
-
-                _DidPresentAuthUI = false;
-
                 Content.IsVisible = true;
 
                 await ViewModel.ExecuteLoadSeedDataCommand();
@@ -231,12 +233,6 @@ namespace MobileCRM.Pages.Sales
             NavigationPage navPage = new NavigationPage(tabbedPage);
 
             await ViewModel.PushModalAsync(navPage);
-        }
-
-        async Task<bool> Authenticate()
-        {
-            var success = await App.Authenticate();
-            return !success ? await this.Authenticate() : success;
         }
     }
 }

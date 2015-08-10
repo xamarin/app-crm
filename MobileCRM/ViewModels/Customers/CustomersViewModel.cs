@@ -26,7 +26,7 @@ namespace MobileCRM.ViewModels.Customers
 
         IDataManager dataManager;
 
-        public CustomersViewModel()
+        public CustomersViewModel(INavigation navigation = null) : base(navigation)
         {
             this.Title = "Accounts";
             this.Icon = "list.png";

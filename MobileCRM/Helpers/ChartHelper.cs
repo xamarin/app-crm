@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using MobileCRM.Models;
+using MobileCRM.Clients;
+using Xamarin.Forms;
 
 namespace MobileCRM.Helpers
 {
@@ -12,8 +14,12 @@ namespace MobileCRM.Helpers
         IEnumerable<Order> _Orders;
         bool _BolIsOpen;
 
+        ICatalogClient _CatalogClient;
+
         public ChartHelper(IEnumerable<Order> Orders, bool IsOpen)
         {
+            _CatalogClient = DependencyService.Get<ICatalogClient>();
+
             _SalesData = new List<WeeklySalesData>();
             _CategoryData = new List<CategorySalesData>();
 

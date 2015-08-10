@@ -245,6 +245,7 @@
     <BundleResource Include="Resources\splash.png" />
     <BundleResource Include="Resources\splash%402x.png" />
     <BundleResource Include="Resources\splash%403x.png" />
+    <BundleResource Include="Resources\xamarin_logo_plus_name_inline.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

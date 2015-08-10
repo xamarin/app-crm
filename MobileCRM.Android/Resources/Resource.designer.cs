@@ -3223,14 +3223,20 @@ namespace MobileCRMAndroid
 			// aapt resource value: 0x7f020082
 			public const int mr_ic_settings_light = 2130837634;
 			
-			// aapt resource value: 0x7f020085
-			public const int notification_template_icon_bg = 2130837637;
+			// aapt resource value: 0x7f020087
+			public const int notification_template_icon_bg = 2130837639;
 			
 			// aapt resource value: 0x7f020083
 			public const int powered_by_google_dark = 2130837635;
 			
 			// aapt resource value: 0x7f020084
 			public const int powered_by_google_light = 2130837636;
+			
+			// aapt resource value: 0x7f020085
+			public const int splash = 2130837637;
+			
+			// aapt resource value: 0x7f020086
+			public const int xamarin_logo_plus_name_inline = 2130837638;
 			
 			static Drawable()
 			{
