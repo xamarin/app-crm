@@ -1,5 +1,5 @@
-﻿using Xamarin.Forms;
-using MobileCRM.ViewModels;
+﻿using MobileCRM.ViewModels.Base;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages.Base
 {

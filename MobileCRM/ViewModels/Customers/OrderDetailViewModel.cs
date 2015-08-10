@@ -1,11 +1,10 @@
 ﻿using System;
-using MobileCRM.ViewModels;
-using MobileCRM.Interfaces;
-using Xamarin.Forms;
-using MobileCRM.Models;
 using System.Threading.Tasks;
+using MobileCRM.Interfaces;
+using MobileCRM.Models;
 using MobileCRM.Statics;
-using System.ComponentModel;
+using MobileCRM.ViewModels.Base;
+using Xamarin.Forms;
 
 namespace MobileCRM
 {

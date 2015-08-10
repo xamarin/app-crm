@@ -1,11 +1,11 @@
-﻿using MobileCRM.Pages.Products;
+﻿using MobileCRM.Pages.Customers;
+using MobileCRM.Pages.Products;
 using MobileCRM.Pages.Sales;
-using Xamarin.Forms;
-using MobileCRM.ViewModels.Sales;
-using MobileCRM.Pages.Customers;
-using MobileCRM.ViewModels.Customers;
 using MobileCRM.Pages.Splash;
+using MobileCRM.ViewModels.Customers;
+using MobileCRM.ViewModels.Sales;
 using MobileCRM.ViewModels.Splash;
+using Xamarin.Forms;
 
 namespace MobileCRM.Pages
 {
@@ -46,6 +46,7 @@ namespace MobileCRM.Pages
         {
             base.OnAppearing();
 
+            // If the App.IsAuthenticated property is false, modally present the SplashPage.
             if (!App.IsAuthenticated)
             {
                 await Navigation.PushModalAsync(new SplashPage() { BindingContext = new SplashPageViewModel(Navigation) });

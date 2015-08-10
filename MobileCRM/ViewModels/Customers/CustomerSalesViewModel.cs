@@ -1,5 +1,4 @@
-﻿using System;
-using MobileCRM.ViewModels;
+﻿using MobileCRM.ViewModels.Base;
 
 namespace MobileCRM
 {

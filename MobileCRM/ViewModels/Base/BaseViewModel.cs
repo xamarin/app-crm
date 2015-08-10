@@ -4,7 +4,7 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 
-namespace MobileCRM.ViewModels
+namespace MobileCRM.ViewModels.Base
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {

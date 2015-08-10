@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using MobileCRM.Clients;
 using MobileCRM.Models;
+using MobileCRM.ViewModels.Base;
 using Xamarin.Forms;
 
 namespace MobileCRM.ViewModels.Products

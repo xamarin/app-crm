@@ -1,13 +1,12 @@
 ﻿using System;
-using MobileCRM.ViewModels;
-using MobileCRM.Interfaces;
-using Xamarin.Forms.Maps;
-using MobileCRM.Models;
-using Xamarin.Forms;
 using System.Threading.Tasks;
 using MobileCRM.Helpers;
-using MobileCRM.Localization;
+using MobileCRM.Interfaces;
+using MobileCRM.Models;
 using MobileCRM.Statics;
+using MobileCRM.ViewModels.Base;
+using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace MobileCRM.ViewModels.Sales
 {

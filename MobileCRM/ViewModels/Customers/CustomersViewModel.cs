@@ -2,12 +2,13 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using MobileCRM.Extensions;
 using MobileCRM.Interfaces;
 using MobileCRM.Models;
+using MobileCRM.Statics;
+using MobileCRM.ViewModels.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using MobileCRM.Extensions;
-using MobileCRM.Statics;
 
 namespace MobileCRM.ViewModels.Customers
 {

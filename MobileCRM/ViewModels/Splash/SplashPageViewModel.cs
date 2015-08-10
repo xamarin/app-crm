@@ -1,8 +1,7 @@
-﻿using System;
-using MobileCRM.ViewModels;
+﻿using System.Threading.Tasks;
 using MobileCRM.Services;
+using MobileCRM.ViewModels.Base;
 using Xamarin.Forms;
-using System.Threading.Tasks;
 
 namespace MobileCRM.ViewModels.Splash
 {

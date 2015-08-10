@@ -54,7 +54,6 @@
     <Compile Include="Properties\Attributes\DisplayAttribute.cs" />
     <Compile Include="Services\AuthInfo.cs" />
     <Compile Include="Services\AzureService.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Localization\TextResources.Designer.cs">
       <DependentUpon>TextResources.resx</DependentUpon>
     </Compile>
@@ -123,6 +122,7 @@
     <Compile Include="Pages\Base\ModelTypedContentPage.cs" />
     <Compile Include="Pages\Splash\SplashPage.cs" />
     <Compile Include="ViewModels\Splash\SplashPageViewModel.cs" />
+    <Compile Include="ViewModels\Base\BaseViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -200,6 +200,7 @@
     <Folder Include="Pages\Custom\" />
     <Folder Include="Pages\Splash\" />
     <Folder Include="ViewModels\Splash\" />
+    <Folder Include="ViewModels\Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileCRM.CustomControls\MobileCRM.CustomControls.csproj">
