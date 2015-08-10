@@ -13,7 +13,9 @@ namespace MobileCRM.Pages.Splash
         {
             #region background view
             Image backgroundImageView = new Image() { Source = new FileImageSource() { File = "splash" }, Aspect = Aspect.AspectFill };
-            double splashImageHeight = 568; // This is the height of the splash.png in points. Used for bottom-aligning the splash image.
+
+            // This is the height of the splash.png in points. Used for bottom-aligning the splash image, which makes it display consistently on different screen sizes / aspect ratios.
+            const double splashImageHeight = 568; 
             #endregion
 
             #region username title label
@@ -190,9 +192,14 @@ namespace MobileCRM.Pages.Splash
 
         async Task<bool> Authenticate()
         {
+            // The underlying call behind App.Authenticate() calls the ADAL library, which presents the login UI and awaits success.
             var success = await App.Authenticate();
+
+            // When the App.Authenticate() returns, the login UI is hidden, regardless of success (for example, if the user taps "Cancel" in iOS).
+            // This means the SplashPage will be visible again, so we need to make the sign in button clickable again by hiding the activity indicator (via the IsPresentingLoginUI property).
             ViewModel.IsPresentingLoginUI = false;
-            return !success ? await this.Authenticate() : success;
+
+            return success;
         }
 
         async void SignInButtonTapped()
@@ -210,9 +217,6 @@ namespace MobileCRM.Pages.Splash
                 // This is mostly just for Android. We need to trigger Android to call the SalesDashboardPage.OnAppearing() method,
                 // because unlike iOS, Android does not call the OnAppearing() method each time that the Page actually appears on screen.
                 MessagingCenter.Send(this, MessagingServiceConstants.AUTHENTICATED);
-
-                // Since we're all done logging in, turn off the activity indicator.
-                ViewModel.IsPresentingLoginUI = false;
             }
         }
     }
