@@ -1,16 +1,14 @@
 ﻿using System.Threading.Tasks;
-using XamarinCRM.Cells;
-using XamarinCRM.Models;
-using XamarinCRM.ViewModels.Sales;
-using XamarinCRM.Views.Sales;
+using Syncfusion.SfChart.XForms;
 using Xamarin;
 using Xamarin.Forms;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using XamarinCRM.Layouts;
+using XamarinCRM.Models;
 using XamarinCRM.Pages.Base;
-using Syncfusion.SfChart.XForms;
-using XamarinCRM.Statics;
 using XamarinCRM.Pages.Splash;
+using XamarinCRM.Statics;
+using XamarinCRM.ViewModels.Sales;
+using XamarinCRM.Views.Sales;
 
 namespace XamarinCRM.Pages.Sales
 {
@@ -159,6 +157,8 @@ namespace XamarinCRM.Pages.Sales
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+
+            // don't show any content until we're authenticated
 
             Content.IsVisible = false;
 
