@@ -39,8 +39,8 @@ namespace XamarinCRM.Clients
             if (MobileService.SyncContext.IsInitialized)
                 return;
 
-            var path = "syncstore.db";
-            var store = new MobileServiceSQLiteStore(path);
+            var store = new MobileServiceSQLiteStore("syncstore.db");
+
             store.DefineTable<Order>();
             store.DefineTable<Account>();
             store.DefineTable<Contact>();
@@ -64,30 +64,30 @@ namespace XamarinCRM.Clients
 
         public async Task SeedData()
         {
-            //Insights tracking
-            var handle = Insights.TrackTime("TimeToSyncDB");
-            handle.Start();
-
-            try
+            using (var handle = Insights.TrackTime("TimeToSyncDB"))
             {
-                await Init();
+                handle.Start();
 
-                await orderTable.PullAsync(null, orderTable.CreateQuery());
-                await accountTable.PullAsync(null, accountTable.CreateQuery());
-                await contactTable.PullAsync(null, contactTable.CreateQuery());
+                try
+                {
+                    await Init();
 
-            }
-            catch (Exception exc)
-            {
-                Insights.Report(exc, Insights.Severity.Error);
-                Debug.WriteLine("ERROR AzureService.SeedData(): " + exc.Message);
-            }
-            finally
-            {
-                //Insights
-                handle.Stop();
-            }
+                    await orderTable.PullAsync(null, orderTable.CreateQuery());
+                    await accountTable.PullAsync(null, accountTable.CreateQuery());
+                    await contactTable.PullAsync(null, contactTable.CreateQuery());
 
+                }
+                catch (Exception exc)
+                {
+                    Insights.Report(exc, Insights.Severity.Error);
+                    Debug.WriteLine("ERROR AzureService.SeedData(): " + exc.Message);
+                }
+                finally
+                {
+                    //Insights
+                    handle.Stop();
+                }
+            }
         }
 
         #region Orders
