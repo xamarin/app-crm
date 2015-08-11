@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XamarinCRMv2CatalogDataService</name>
+    </assembly>
+    <members>
+        <member name="M:XamarinCRMv2CatalogDataService.MobileServiceInitializer.Seed(XamarinCRMv2CatalogDataService.Models.MobileServiceContext)">
+            <summary>
+            Use this method to populate the data context with data.
+            </summary>
+            <param name="context">A <see cref="T:XamarinCRMv2CatalogDataService.Models.MobileServiceContext"/></param>
+        </member>
+        <member name="T:XamarinCRMv2CatalogDataService.Controllers.BaseController`1">
+            <summary>
+            A base controller, to assist in implemting XML documentation for the API, and 
+            to abstract away the common Initialize() method of the controllers.
+            </summary>
+            <typeparam name="T">The type of EntityData that the inheriting controller will be bound to.</typeparam>
+        </member>
+        <member name="T:XamarinCRMv2CatalogDataService.Controllers.CategoryController">
+            <summary>
+            Category API endpoints
+            </summary>
+        </member>
+        <member name="M:XamarinCRMv2CatalogDataService.Controllers.CategoryController.GetSubCategories(System.String)">
+            <summary>
+            Gets a collection of [sub]categories of a given parent category.
+            </summary>
+            <param name="parentCategoryId">The id of the parent category to get subcategories from. If parentCategoryId is null, the top-level categories will be returned.</param>
+            <returns>A collection of [sub]categories.</returns>
+            <remarks>If parentCategoryId is null, then returns subcategories of the root category. 
+            These subcategories of the root are considered to "top-level" categories. 
+            The root category only serves as the base of the hierarchy, and is not intended to be returned by this service.</remarks>
+        </member>
+        <member name="M:XamarinCRMv2CatalogDataService.Controllers.CategoryController.GetCategory(System.String)">
+            <summary>
+            Gets a specific category by id.
+            </summary>
+            <param name="id">The id of the category to retrieve.</param>
+            <returns>A category.</returns>
+        </member>
+        <member name="T:XamarinCRMv2CatalogDataService.Controllers.ProductController">
+            <summary>
+            Product API endpoints
+            </summary>
+        </member>
+        <member name="M:XamarinCRMv2CatalogDataService.Controllers.ProductController.GetProductsByCategory(System.String)">
+            <summary>
+            Gets a collection of products of a given category.
+            </summary>
+            <param name="id">The id of the category for which to retrieve products.</param>
+            <returns>A collection of products.</returns>
+        </member>
+        <member name="M:XamarinCRMv2CatalogDataService.Controllers.ProductController.GetProduct(System.String)">
+            <summary>
+            Gets a specific product by id.
+            </summary>
+            <param name="id">The id of the product to retrieve.</param>
+            <returns>A product.</returns>
+        </member>
+        <member name="T:XamarinCRMv2CatalogDataService.Controllers.SearchController">
+            <summary>
+            Search API endpoints
+            </summary>
+        </member>
+        <member name="M:XamarinCRMv2CatalogDataService.Controllers.SearchController.Search(System.String)">
+            <summary>
+            Returns a collection of products that match the given search term.
+            </summary>
+            <param name="q">The search term, which will be matched anywhere in the names, descriptions, and category names of all products in the catalog.</param>
+            <returns>A collection of products.</returns>
+        </member>
+        <member name="P:XamarinCRMv2CatalogDataService.DataObjects.Category.HasSubCategories">
+            <summary>
+            A helper property to determine whether or not this is a leaf-level category.
+            </summary>
+        </member>
+        <member name="P:XamarinCRMv2CatalogDataService.DataObjects.Product.Category">
+            <summary>
+            In many cases, it doesn't make sense to serialize a navigational property.
+            But in this case, it will be useful to have the category data with the 
+            product, in order to provide nicely grouped search results.
+            </summary>
+        </member>
+    </members>
+</doc>
