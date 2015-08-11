@@ -2,7 +2,7 @@
 
 <config>
   <!-- Enter the Application URL for your instance of the JS-based Azure Mobile Service -->
-  <customerDataServiceUrl>https://xamarin3crmdemoprod.azure-mobile.net/</customerDataServiceUrl>
+  <customerDataServiceUrl>https://xamarincrmv2-customerdataservice.azure-mobile.net/</customerDataServiceUrl>
 
   <!-- Enter the Application URL for your instance of the .NET Web API -based Azure Mobile Service -->
   <catalogDataServiceUrl>https://xamarincrmv2-catalogdataservice.azure-mobile.net/api/</catalogDataServiceUrl>
@@ -13,6 +13,6 @@
   <!---Azure Active Directory Authentication return URI -->
   <azureActiveDirectoryAuthenticationReturnUri>http://localhost</azureActiveDirectoryAuthenticationReturnUri>
 
-  <!---Azure Active Directory Authentication return URI -->
+  <!---The Azure AD-authenticated resource(s) that the app should access -->
   <azureActiveDirectoryAuthenticationResourceUri>https://graph.windows.net</azureActiveDirectoryAuthenticationResourceUri>
 </config>

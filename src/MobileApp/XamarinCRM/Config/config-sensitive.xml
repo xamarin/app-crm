@@ -6,7 +6,7 @@
 
 <config>
   <!-- Enter the Application Key for your instance of the JS-based Azure Mobile Service -->
-  <customerDataServiceAppKey>eeEXCKVPqNtEOIhypkxzgAMUUdEjhN69</customerDataServiceAppKey>
+  <customerDataServiceAppKey>XmjfszqcfwYARCpXphiyUMZndBtQbp42</customerDataServiceAppKey>
   
   <!-- Enter the Application Key for your instance of the .NET Web API -based Azure Mobile Service -->
   <catalogDataServiceAppKey>IibptMvpFmJRBisbVyiCheBukYjzsD75</catalogDataServiceAppKey>
