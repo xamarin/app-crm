@@ -14,12 +14,6 @@ namespace XamarinCRM.Pages.Sales
 {
     public class SalesDashboardPage : ModelTypedContentPage<SalesDashboardViewModel>
     {
-        /// <summary>
-        /// A necessary flag for dealing with the async Auth UI. If we don't use this, then the Auth UI gets presented twice, even when the first login attempt is successful.
-        /// This is because this Page's OnAppearing() method gets called before the Auth UI returns its result.
-        /// </summary>
-        //        bool _DidPresentAuthUI;
-
         public SalesDashboardPage()
         {
             NavigationPage.SetHasNavigationBar(this, false);

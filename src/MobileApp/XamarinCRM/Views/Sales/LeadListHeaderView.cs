@@ -1,5 +1,4 @@
 ﻿using System;
-using XamarinCRM.Localization;
 using Xamarin.Forms;
 using XamarinCRM.Statics;
 
@@ -28,7 +27,6 @@ namespace XamarinCRM.Views.Sales
             #endregion
 
             #region setup labels
-            // The "LEADS" label in the header
             Label headerTitleLabel = new Label()
             {
                 Text = TextResources.Leads_LeadListHeaderTitle.ToUpperInvariant(),
@@ -40,6 +38,7 @@ namespace XamarinCRM.Views.Sales
             };
 
             // The "+" button for adding new leads
+            // TODO: We really ought to replace this with an Image instead. There's a gray "add" button in each platform, ready to go. Will do as time permits.
             Label newLeadLabel = new Label()
             {
                 Text = "+",
