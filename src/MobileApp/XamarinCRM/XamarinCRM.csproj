@@ -41,7 +41,6 @@
     <Compile Include="App.cs" />
     <Compile Include="Helpers\ConvertableConverter.cs" />
     <Compile Include="Helpers\Utils.cs" />
-    <Compile Include="Interfaces\IDataManager.cs" />
     <Compile Include="Interfaces\IDialer.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Address.cs" />
@@ -53,7 +52,6 @@
     <Compile Include="Properties\Attributes\CurrencyAttribute.cs" />
     <Compile Include="Properties\Attributes\DisplayAttribute.cs" />
     <Compile Include="Services\AuthInfo.cs" />
-    <Compile Include="Services\AzureService.cs" />
     <Compile Include="Localization\TranslateExtension.cs" />
     <Compile Include="Localization\ILocalization.cs" />
     <Compile Include="Converters\ToUpperConverter.cs" />
@@ -67,10 +65,8 @@
     <Compile Include="Pages\Products\ProductListPage.cs" />
     <Compile Include="ViewModels\Products\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\Products\ProductsViewModel.cs" />
-    <Compile Include="Clients\ICatalogClient.cs" />
     <Compile Include="Models\CatalogCategory.cs" />
     <Compile Include="Models\CatalogProduct.cs" />
-    <Compile Include="Clients\CatalogClient.cs" />
     <Compile Include="Clients\ResponseFetcher.cs" />
     <Compile Include="Views\Products\CategoryListView.cs" />
     <Compile Include="Views\Products\ProductDetailDescriptionView.cs" />
@@ -123,6 +119,10 @@
     <Compile Include="Localization\TextResources.Designer.cs">
       <DependentUpon>TextResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Clients\ICatalogDataClient.cs" />
+    <Compile Include="Clients\CatalogDataClient.cs" />
+    <Compile Include="Clients\ICustomerDataClient.cs" />
+    <Compile Include="Clients\CustomerDataClient.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

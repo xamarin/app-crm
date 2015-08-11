@@ -1,17 +1,17 @@
 ﻿using System.Threading.Tasks;
 using XamarinCRM.Helpers;
-using XamarinCRM.Interfaces;
 using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using XamarinCRM.Clients;
 
 namespace XamarinCRM.ViewModels.Customers
 {
     public class CustomerDetailViewModel : BaseViewModel
     {
-        IDataManager _DataManager;
+        ICustomerDataClient _DataManager;
         Geocoder _GeoCoder;
 
         public Account Account { get; set; }
@@ -34,7 +34,7 @@ namespace XamarinCRM.ViewModels.Customers
 
             this.Icon = "account.png";
 
-            _DataManager = DependencyService.Get<IDataManager>();
+            _DataManager = DependencyService.Get<ICustomerDataClient>();
             _GeoCoder = new Geocoder();
 
             MessagingCenter.Subscribe<Account>(this, MessagingServiceConstants.ACCOUNT, (Account) =>

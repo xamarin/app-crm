@@ -8,6 +8,7 @@ using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
+using XamarinCRM.Clients;
 
 namespace XamarinCRM.ViewModels.Customers
 {
@@ -27,13 +28,13 @@ namespace XamarinCRM.ViewModels.Customers
             }
         }
 
-        readonly IDataManager _DataManager;
+        readonly ICustomerDataClient _DataManager;
 
         public OrdersViewModel(Account account)
         {
             Account = account;
 
-            _DataManager = DependencyService.Get<IDataManager>();
+            _DataManager = DependencyService.Get<ICustomerDataClient>();
 
             Orders = new ObservableCollection<Order>();
 

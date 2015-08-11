@@ -2,14 +2,14 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Syncfusion.SfChart.XForms;
+using Xamarin.Forms;
+using XamarinCRM.Clients;
 using XamarinCRM.Extensions;
 using XamarinCRM.Helpers;
-using XamarinCRM.Interfaces;
 using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
-using Syncfusion.SfChart.XForms;
-using Xamarin.Forms;
 
 namespace XamarinCRM.ViewModels.Sales
 {
@@ -17,7 +17,7 @@ namespace XamarinCRM.ViewModels.Sales
     {
         bool bolDataSeeded;
 
-        IDataManager dataManager;
+        ICustomerDataClient dataManager;
         ChartHelper chartHelper;
 
         Command loadSeedDataCommand;
@@ -36,7 +36,7 @@ namespace XamarinCRM.ViewModels.Sales
             this.Title = "Sales Dashboard";
             this.Icon = "dashboard.png";
 
-            dataManager = DependencyService.Get<IDataManager>();
+            dataManager = DependencyService.Get<ICustomerDataClient>();
 
             Leads = new ObservableCollection<Account>();
             Orders = new ObservableCollection<Order>();

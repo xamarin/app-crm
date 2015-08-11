@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;
-using XamarinCRM.Interfaces;
-using XamarinCRM.Models;
-using XamarinCRM.Services;
 using SQLitePCL;
 using Xamarin;
 using Xamarin.Forms;
+using XamarinCRM.Clients;
+using XamarinCRM.Models;
+using XamarinCRM.Services;
 
-[assembly: Dependency(typeof(AzureService))]
+[assembly: Dependency(typeof(CustomerDataClient))]
 
-namespace XamarinCRM.Services
+namespace XamarinCRM.Clients
 {
-    public class AzureService : IDataManager
+    public class CustomerDataClient : ICustomerDataClient
     {
         IMobileServiceSyncTable<Order> orderTable;
         IMobileServiceSyncTable<Contact> contactTable;
@@ -24,7 +24,7 @@ namespace XamarinCRM.Services
 
         public IMobileServiceClient MobileService { get; set; }
 
-        public AzureService()
+        public CustomerDataClient()
         {
             MobileService = AuthInfo.Instance.GetMobileServiceClient();
         }
@@ -419,12 +419,12 @@ namespace XamarinCRM.Services
 
         #endregion
 
-        static readonly AzureService instance = new AzureService();
+        static readonly CustomerDataClient instance = new CustomerDataClient();
 
         /// <summary>
         /// Gets the instance of the Azure Web Service
         /// </summary>
-        public static AzureService Instance
+        public static CustomerDataClient Instance
         {
             get
             {

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
-using XamarinCRM.Interfaces;
 using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
+using XamarinCRM.Clients;
 
 namespace XamarinCRM.ViewModels.Customers
 {
     public class OrderDetailViewModel : BaseViewModel
     {
-        readonly IDataManager _DataManager;
+        readonly ICustomerDataClient _DataManager;
 
         public OrderDetailViewModel(Account account, Order order = null)
         {
@@ -26,7 +26,7 @@ namespace XamarinCRM.ViewModels.Customers
 
             this.Title = "Order Details";
 
-            _DataManager = DependencyService.Get<IDataManager>();
+            _DataManager = DependencyService.Get<ICustomerDataClient>();
 
             MessagingCenter.Subscribe<CatalogProduct>(this, MessagingServiceConstants.UPDATE_ORDER_PRODUCT, catalogProduct =>
                 {

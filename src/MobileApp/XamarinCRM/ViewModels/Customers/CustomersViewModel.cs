@@ -9,6 +9,7 @@ using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using XamarinCRM.Clients;
 
 namespace XamarinCRM.ViewModels.Customers
 {
@@ -25,14 +26,14 @@ namespace XamarinCRM.ViewModels.Customers
             }
         }
 
-        IDataManager dataManager;
+        ICustomerDataClient dataManager;
 
         public CustomersViewModel(INavigation navigation = null) : base(navigation)
         {
             this.Title = "Accounts";
             this.Icon = "list.png";
 
-            dataManager = DependencyService.Get<IDataManager>();
+            dataManager = DependencyService.Get<ICustomerDataClient>();
             Accounts = new ObservableCollection<Account>();
 
             MessagingCenter.Subscribe<Account>(this, MessagingServiceConstants.ACCOUNT, (account) =>

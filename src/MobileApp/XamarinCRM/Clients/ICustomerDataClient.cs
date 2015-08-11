@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using XamarinCRM.Models;
 
-namespace XamarinCRM.Interfaces
+namespace XamarinCRM.Clients
 {
-    public interface IDataManager
+    public interface ICustomerDataClient
     {
         Task SeedData();
 

@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Threading.Tasks;
 using XamarinCRM.Helpers;
-using XamarinCRM.Interfaces;
 using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using XamarinCRM.Clients;
 
 namespace XamarinCRM.ViewModels.Sales
 {
     public class LeadDetailViewModel : BaseViewModel
     {
-        IDataManager _DataManager;
+        ICustomerDataClient _DataManager;
 
         Geocoder _Coder;
 
@@ -40,7 +40,7 @@ namespace XamarinCRM.ViewModels.Sales
 
             this.Icon = "contact.png";
 
-            _DataManager = DependencyService.Get<IDataManager>();
+            _DataManager = DependencyService.Get<ICustomerDataClient>();
 
             _Coder = new Geocoder();
         }

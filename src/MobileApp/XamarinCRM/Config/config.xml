@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <config>
-  <!-- Enter the Application URL for your instance of the JS-based Azure Mobile Service -->
+  <!-- Enter the Application URL for your instance of the JS-based Azure Mobile Service (for customer, account and order data) -->
   <customerDataServiceUrl>https://xamarincrmv2-customerdataservice.azure-mobile.net/</customerDataServiceUrl>
 
-  <!-- Enter the Application URL for your instance of the .NET Web API -based Azure Mobile Service -->
+  <!-- Enter the Application URL for your instance of the .NET Web API -based Azure Mobile Service (for catalog data) -->
   <catalogDataServiceUrl>https://xamarincrmv2-catalogdataservice.azure-mobile.net/api/</catalogDataServiceUrl>
 
   <!---Azure Active Directory Authentication tenant authority URL -->

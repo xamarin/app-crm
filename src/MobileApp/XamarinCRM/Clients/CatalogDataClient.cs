@@ -6,11 +6,11 @@ using XamarinCRM.Models;
 using Xamarin.Forms;
 using XamarinCRM.Services;
 
-[assembly: Dependency(typeof(CatalogClient))]
+[assembly: Dependency(typeof(CatalogDataClient))]
 
 namespace XamarinCRM.Clients
 {
-    public class CatalogClient : ICatalogClient
+    public class CatalogDataClient : ICatalogDataClient
     {
         readonly string _ApiServiceUrl;
 
@@ -18,7 +18,7 @@ namespace XamarinCRM.Clients
 
         readonly IConfigFetcher _ConfigFetcher;
 
-        public CatalogClient()
+        public CatalogDataClient()
         {
             _ConfigFetcher = DependencyService.Get<IConfigFetcher>();
 

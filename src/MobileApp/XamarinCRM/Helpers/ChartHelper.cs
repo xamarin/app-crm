@@ -14,11 +14,11 @@ namespace XamarinCRM.Helpers
         IEnumerable<Order> _Orders;
         bool _BolIsOpen;
 
-        ICatalogClient _CatalogClient;
+        ICatalogDataClient _CatalogClient;
 
         public ChartHelper(IEnumerable<Order> Orders, bool IsOpen)
         {
-            _CatalogClient = DependencyService.Get<ICatalogClient>();
+            _CatalogClient = DependencyService.Get<ICatalogDataClient>();
 
             _SalesData = new List<WeeklySalesData>();
             _CategoryData = new List<CategorySalesData>();

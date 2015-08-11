@@ -4,7 +4,7 @@ using XamarinCRM.Models;
 
 namespace XamarinCRM.Clients
 {
-    public interface ICatalogClient
+    public interface ICatalogDataClient
     {
         Task<List<CatalogCategory>> GetCategoriesAsync(string parentCategoryId = null);
 

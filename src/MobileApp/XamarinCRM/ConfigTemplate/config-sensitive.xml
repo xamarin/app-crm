@@ -5,10 +5,10 @@
 <!-- In a production evironment, you could merge your app keys into that templated config-sensitive.xml at build time (perhaps as part of a CI process), thus keeping your sensitive keys out of your repository. -->
 
 <config>
- <!-- Enter the Application Key for your instance of the JS-based Azure Mobile Service -->
+ <!-- Enter the Application Key for your instance of the JS-based Azure Mobile Service (for customer, account and order data) -->
   <customerDataServiceAppKey></customerDataServiceAppKey>
   
-  <!-- Enter the Application Key for your instance of the .NET Web API -based Azure Mobile Service -->
+  <!-- Enter the Application Key for your instance of the .NET Web API -based Azure Mobile Service (for catalog data) -->
   <catalogDataServiceAppKey></catalogDataServiceAppKey>
 
   <!---Azure Active Directory Authentication client id -->

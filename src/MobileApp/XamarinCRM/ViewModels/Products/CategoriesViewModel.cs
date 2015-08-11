@@ -12,7 +12,7 @@ namespace XamarinCRM.ViewModels.Products
     {
         readonly string _CategoryId;
 
-        readonly ICatalogClient _CatalogClient;
+        readonly ICatalogDataClient _CatalogClient;
 
         ObservableCollection<CatalogCategory> _Categories;
         public ObservableCollection<CatalogCategory> Categories
@@ -33,7 +33,7 @@ namespace XamarinCRM.ViewModels.Products
 
             _Categories = new ObservableCollection<CatalogCategory>();
 
-            _CatalogClient = DependencyService.Get<ICatalogClient>();
+            _CatalogClient = DependencyService.Get<ICatalogDataClient>();
 
         }
 
