@@ -142,10 +142,7 @@ namespace XamarinCRM.Pages.Sales
 
             // Catch the login success message from the MessagingCenter.
             // This is really only here for Android, which doesn't fire the OnAppearing() method in the same way that iOS does (every time the page appears on screen).
-            Device.OnPlatform(Android: () =>
-                {
-                    MessagingCenter.Subscribe<SplashPage>(this, MessagingServiceConstants.AUTHENTICATED, sender => OnAppearing());
-                });
+            Device.OnPlatform(Android: () => MessagingCenter.Subscribe<SplashPage>(this, MessagingServiceConstants.AUTHENTICATED, sender => OnAppearing()));
         }
 
         protected override async void OnAppearing()

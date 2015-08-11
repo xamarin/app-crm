@@ -100,7 +100,7 @@ namespace XamarinCRM.Clients
 
                 await Init();
 
-                //SYI: For public demo, only allow pull, not push.
+                //SYI: For public demo, only allow pull, not push. The service is configured to disallow pushes anyway.
                 //await MobileService.SyncContext.PushAsync();
 
                 await orderTable.PullAsync(null, orderTable.CreateQuery());
