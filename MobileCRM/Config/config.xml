@@ -2,10 +2,10 @@
 
 <config>
   <!-- Enter the Application URL for your instance of the JS-based Azure Mobile Service -->
-  <azureMobileServiceJsUrl>https://xamarin3crmdemoprod.azure-mobile.net/</azureMobileServiceJsUrl>
+  <customerDataServiceUrl>https://xamarin3crmdemoprod.azure-mobile.net/</customerDataServiceUrl>
 
   <!-- Enter the Application URL for your instance of the .NET Web API -based Azure Mobile Service -->
-  <azureMobileServiceDotNetWebApiUrl>http://xamarindemomobilecrmv2dev.azure-mobile.net/api/</azureMobileServiceDotNetWebApiUrl>
+  <catalogDataServiceUrl>https://xamarincrmv2-catalogdataservice.azure-mobile.net/api/</catalogDataServiceUrl>
 
   <!---Azure Active Directory Authentication tenant authority URL -->
   <azureActiveDirectoryAuthenticationTenantAuthorityUrl>https://login.windows.net/xamcrm.onmicrosoft.com</azureActiveDirectoryAuthenticationTenantAuthorityUrl>

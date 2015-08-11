@@ -6,10 +6,10 @@
 
 <config>
   <!-- Enter the Application Key for your instance of the JS-based Azure Mobile Service -->
-  <azureMobileServiceJsAppKey>eeEXCKVPqNtEOIhypkxzgAMUUdEjhN69</azureMobileServiceJsAppKey>
+  <customerDataServiceAppKey>eeEXCKVPqNtEOIhypkxzgAMUUdEjhN69</customerDataServiceAppKey>
   
   <!-- Enter the Application Key for your instance of the .NET Web API -based Azure Mobile Service -->
-  <azureMobileServiceDotNetWebApiAppKey>TPNinqLKNLyrHbMfDGKToPddqMPEvr95</azureMobileServiceDotNetWebApiAppKey>
+  <catalogDataServiceAppKey>IibptMvpFmJRBisbVyiCheBukYjzsD75</catalogDataServiceAppKey>
 
   <!---Azure Active Directory Authentication client id -->
   <azureActiveDirectoryAuthenticationClientId>591ddccc-4dd3-46d8-af4e-7886eb674cb9</azureActiveDirectoryAuthenticationClientId>

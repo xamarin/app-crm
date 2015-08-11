@@ -27,8 +27,8 @@ namespace MobileCRM.Services
             _User = null;
             _UserInfo = null;
             _Client = new MobileServiceClient(
-                _ConfigFetcher.GetAsync("azureMobileServiceJsUrl").Result,
-                _ConfigFetcher.GetAsync("azureMobileServiceJsAppKey", true).Result);
+                _ConfigFetcher.GetAsync("customerDataServiceUrl").Result,
+                _ConfigFetcher.GetAsync("customerDataServiceAppKey", true).Result);
         }
 
         public static AuthInfo Instance

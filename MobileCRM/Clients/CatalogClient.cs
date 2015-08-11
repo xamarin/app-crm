@@ -22,8 +22,8 @@ namespace MobileCRM.Clients
         {
             _ConfigFetcher = DependencyService.Get<IConfigFetcher>();
 
-            _ApiServiceUrl = _ConfigFetcher.GetAsync("azureMobileServiceDotNetWebApiUrl").Result;
-            _ApiAppKey = _ConfigFetcher.GetAsync("azureMobileServiceDotNetWebApiAppKey", true).Result;
+            _ApiServiceUrl = _ConfigFetcher.GetAsync("catalogDataServiceUrl").Result;
+            _ApiAppKey = _ConfigFetcher.GetAsync("catalogDataServiceAppKey", true).Result;
         }
 
         #region IProductsClient implementation
