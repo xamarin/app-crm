@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using XamarinCRM.ViewModels.Sales;
 using XamarinCRM.Pages.Base;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.Pages.Sales
 {
@@ -13,7 +14,7 @@ namespace XamarinCRM.Pages.Sales
             #region roleEntry
             EntryCell roleEntryCell = new EntryCell()
             {
-                Label = TextResources.Leads_LeadContactDetail_Role
+                Label = TextResources.Leads_LeadContactDetail_Role, LabelColor = Palette._009
             };
             roleEntryCell.SetBinding(EntryCell.TextProperty, "Lead.JobTitle", BindingMode.TwoWay);
             #endregion

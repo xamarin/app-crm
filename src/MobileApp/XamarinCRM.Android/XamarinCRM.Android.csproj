@@ -242,6 +242,7 @@
     <Folder Include="Resources\values\" />
     <Folder Include="Services\" />
     <Folder Include="Config\" />
+    <Folder Include="Resources\values-v21\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -254,6 +255,9 @@
     <AndroidResource Include="Resources\drawable\splash.png" />
     <AndroidResource Include="Resources\drawable\xamarin_logo_plus_name_inline.png" />
     <AndroidResource Include="Resources\drawable\bottom_up_gradient.png" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values-v21\styles.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\XamarinCRM\Config\config.xml">

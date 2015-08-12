@@ -13,10 +13,9 @@ namespace XamarinCRM.Pages.Customers
             // this tool bar item provides a way to get back to the Customers list
             ToolbarItems.Add(new ToolbarItem("Back to Customers", null, () => navigation.PopModalAsync()));
 
-            Children.Add(new CustomerDetailPage()
+            Children.Add(new CustomerDetailPage(new CustomerDetailViewModel(account) { Navigation = navigation })
                 {
                     Title = TextResources.Customers_Detail_Tab_Title,
-                    BindingContext = new CustomerDetailViewModel(account) { Navigation = navigation },
                     Icon = new FileImageSource() { File = "CustomersTab" },
                 });
 

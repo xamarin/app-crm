@@ -1,5 +1,5 @@
-﻿using XamarinCRM.ViewModels.Base;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+using XamarinCRM.ViewModels.Base;
 
 namespace XamarinCRM.Pages.Base
 {
@@ -17,7 +17,11 @@ namespace XamarinCRM.Pages.Base
         /// <remarks>Enforces the proper binding context type at compile time.</remarks>
         public new TViewModel BindingContext
         {
-            set { base.BindingContext = value; }
+            set 
+            { 
+                base.BindingContext = value; 
+                base.OnPropertyChanged("BindingContext");
+            }
         }
     }
 }

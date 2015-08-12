@@ -1,5 +1,6 @@
 ﻿using XamarinCRM.Converters;
 using Xamarin.Forms;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.Cells
 {
@@ -7,7 +8,7 @@ namespace XamarinCRM.Cells
     {
         public Label CompanyNameLabel { get; private set; }
 
-        public Label PercentCompleteLabel { get; private set; }
+        public Label OpportunityStageLabel { get; private set; }
 
         public Label LeadAmountLabel { get; private set; }
 
@@ -18,7 +19,7 @@ namespace XamarinCRM.Cells
             #region companyNameLabel
             CompanyNameLabel = new Label()
             {
-                TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White),
+                TextColor = Palette._008,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)) * 1.2,
                 YAlign = TextAlignment.End,
                 LineBreakMode = LineBreakMode.TailTruncation
@@ -29,16 +30,16 @@ namespace XamarinCRM.Cells
                 new Binding("Company"));
             #endregion
 
-            #region percentCompleteLabel
-            PercentCompleteLabel = new Label()
+            #region opportunityStageLabel
+            OpportunityStageLabel = new Label()
             {
-                TextColor = Color.Gray,
+                TextColor = Palette._009,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 YAlign = TextAlignment.End,
                 LineBreakMode = LineBreakMode.TailTruncation
             };
                         
-            PercentCompleteLabel.SetBinding(
+            OpportunityStageLabel.SetBinding(
                 Label.TextProperty,
                 new Binding(
                     path: "OpportunityStage"));
@@ -47,7 +48,7 @@ namespace XamarinCRM.Cells
             #region leadAmountLabel
             LeadAmountLabel = new Label()
             {
-                TextColor = Color.Gray,
+                TextColor = Palette._009,
                 XAlign = TextAlignment.End,
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Small, typeof(Label)),
@@ -94,7 +95,7 @@ namespace XamarinCRM.Cells
 
             // add the percentCopleteLabel to the relativeLayout
             relativeLayout.Children.Add(
-                view: PercentCompleteLabel,
+                view: OpportunityStageLabel,
                 xConstraint: Constraint.RelativeToParent(parent => 0),
                 yConstraint: Constraint.RelativeToParent(parent => parent.Height / 3),
                 widthConstraint: Constraint.RelativeToParent(parent => parent.Width / 2),

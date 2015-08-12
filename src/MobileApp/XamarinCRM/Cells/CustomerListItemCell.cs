@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.Cells
 {
@@ -14,7 +15,7 @@ namespace XamarinCRM.Cells
             #region company label
             CompanyNameLabel = new Label()
             {
-                TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White),
+                TextColor = Palette._008,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)) * 1.2,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.End,
@@ -29,7 +30,7 @@ namespace XamarinCRM.Cells
             #region contact label
             ContactName = new Label()
             {
-                TextColor = Color.Gray,
+                TextColor = Palette._009,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Start,

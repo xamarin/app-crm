@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.Cells
 {
@@ -9,7 +10,7 @@ namespace XamarinCRM.Cells
             #region caregoryNameLabel
             Label caregoryNameLabel = new Label()
             { 
-                    TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White),
+                TextColor = Palette._008,
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Small, typeof(Label)), 
                     Android: Device.GetNamedSize(NamedSize.Small, typeof(Label)),
@@ -27,7 +28,7 @@ namespace XamarinCRM.Cells
             #region categoryDescriptionLabel
             Label categoryDescriptionLabel = new Label()
             { 
-                TextColor = Color.Gray,
+                TextColor = Palette._009,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 YAlign = TextAlignment.End,
                 LineBreakMode = LineBreakMode.TailTruncation

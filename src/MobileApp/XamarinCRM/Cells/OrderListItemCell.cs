@@ -20,7 +20,7 @@ namespace XamarinCRM.Cells
             #region primary label
             PrimaryLabel = new Label()
             {
-                TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White),
+                TextColor = Palette._008,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)) * 1.2,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.End,
@@ -34,7 +34,7 @@ namespace XamarinCRM.Cells
             #region secondary label
             SecondaryLabel = new Label()
             {
-                TextColor = Color.Gray,
+                TextColor = Palette._009,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Start,
@@ -49,12 +49,12 @@ namespace XamarinCRM.Cells
 
             #region ternary label
             TernaryLabel = new Label()
-                {
-                    TextColor = Color.Gray,
-                    FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                    XAlign = TextAlignment.End,
-                    YAlign = TextAlignment.Start,
-                };
+            {
+                TextColor = Palette._009,
+                FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                XAlign = TextAlignment.End,
+                YAlign = TextAlignment.Start,
+            };
 
             TernaryLabel.SetBinding(
                 Label.TextProperty,

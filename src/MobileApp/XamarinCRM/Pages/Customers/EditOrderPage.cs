@@ -26,7 +26,7 @@ namespace XamarinCRM.Pages.Customers
             Label companyTitleLabel = new Label()
             {
                 Text = TextResources.Customers_Orders_EditOrder_CompanyTitle,
-                TextColor = Device.OnPlatform(Palette._009, Palette._009, Palette._009),
+                TextColor = Palette._009,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.End,
@@ -35,7 +35,7 @@ namespace XamarinCRM.Pages.Customers
             
             Label companyNameLabel = new Label()
             {
-                TextColor = Device.OnPlatform(Palette._008, Color.White, Color.White),
+                TextColor = Palette._008,
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Start,
@@ -83,27 +83,45 @@ namespace XamarinCRM.Pages.Customers
 
             Thickness fieldLabelThickness = new Thickness(0, 0, 5, 0);
 
-            double rowHeight = 30;
+            const double rowHeight = 30;
 
             ContentView productFieldLabelView = new ContentView()
             {
                 HeightRequest = rowHeight,
                 Padding = fieldLabelThickness,
-                Content = new Label() { Text = TextResources.Customers_Orders_EditOrder_ProductTitleLabel, XAlign = TextAlignment.End, YAlign = TextAlignment.Center }
+                Content = new Label()
+                {
+                    Text = (Device.OS == TargetPlatform.Android) ? TextResources.Customers_Orders_EditOrder_ProductTitleLabel.ToUpper() : TextResources.Customers_Orders_EditOrder_ProductTitleLabel, 
+                    XAlign = TextAlignment.End, 
+                    YAlign = TextAlignment.Center,
+                    TextColor = Device.OnPlatform(Palette._009, Palette._006, Palette._009),
+                }
             };
 
             ContentView priceFieldLabelView = new ContentView()
             {
                 HeightRequest = rowHeight,
                 Padding = fieldLabelThickness,
-                Content = new Label() { Text = TextResources.Customers_Orders_EditOrder_PriceTitleLabel, XAlign = TextAlignment.End, YAlign = TextAlignment.Center }
+                Content = new Label()
+                { 
+                    Text = (Device.OS == TargetPlatform.Android) ? TextResources.Customers_Orders_EditOrder_PriceTitleLabel.ToUpper() : TextResources.Customers_Orders_EditOrder_PriceTitleLabel, 
+                    XAlign = TextAlignment.End, 
+                    YAlign = TextAlignment.Center,
+                    TextColor = Device.OnPlatform(Palette._009, Palette._006, Palette._009)
+                }
             };
             
             ContentView dueDateFieldLabelView = new ContentView()
             {
                 HeightRequest = rowHeight,
                 Padding = fieldLabelThickness,
-                Content = new Label()  { Text = TextResources.Customers_Orders_EditOrder_DueDateTitleLabel, XAlign = TextAlignment.End, YAlign = TextAlignment.Center }
+                Content = new Label()
+                { 
+                    Text = (Device.OS == TargetPlatform.Android) ? TextResources.Customers_Orders_EditOrder_DueDateTitleLabel.ToUpper() : TextResources.Customers_Orders_EditOrder_DueDateTitleLabel, 
+                    XAlign = TextAlignment.End, 
+                    YAlign = TextAlignment.Center,
+                    TextColor = Device.OnPlatform(Palette._009, Palette._006, Palette._009)
+                }
             };
             
             Entry productEntry = new Entry() { Placeholder = TextResources.Customers_Orders_EditOrder_ProductEntryPlaceholder };
@@ -117,7 +135,7 @@ namespace XamarinCRM.Pages.Customers
                     { 
                         Title = TextResources.MainTabs_Products
                     });
-                    navPage.ToolbarItems.Add(new ToolbarItem(TextResources.Cancel, null, () => Navigation.PopModalAsync()));
+                navPage.ToolbarItems.Add(new ToolbarItem(TextResources.Cancel, null, () => Navigation.PopModalAsync()));
                 await ViewModel.PushModalAsync(navPage);
             };
 
