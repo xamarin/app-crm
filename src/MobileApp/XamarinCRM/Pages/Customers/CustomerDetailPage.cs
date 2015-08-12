@@ -142,7 +142,7 @@ namespace XamarinCRM.Pages.Customers
 
             StackLayout stackLayout = new UnspacedStackLayout();
 
-            stackLayout.Children.Add(new ContentViewWithBottomBorder(){ Content = headerAbsoluteLayout });
+            stackLayout.Children.Add(headerAbsoluteLayout );
             stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = contactLabelsStackLayout });
             stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = phoneLabelStackLayout });
             stackLayout.Children.Add(addressLabelStackLayout);
