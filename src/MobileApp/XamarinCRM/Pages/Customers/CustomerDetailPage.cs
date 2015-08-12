@@ -4,6 +4,8 @@ using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.Views.Base;
+using System;
+using XamarinCRM.Interfaces;
 
 namespace XamarinCRM.Pages.Customers
 {
@@ -20,7 +22,7 @@ namespace XamarinCRM.Pages.Customers
             companyImage.SetBinding(Image.SourceProperty, "Account.ImageUrl");
 
             Image gradientImage = new Image() { Aspect = Aspect.Fill, Source = new FileImageSource() { File = "bottom_up_gradient" }, HeightRequest = 75, BindingContext = companyImage };
-            gradientImage.SetBinding(Image.IsVisibleProperty, "IsLoading", converter: new InvertedBooleanConverter() );
+            gradientImage.SetBinding(Image.IsVisibleProperty, "IsLoading", converter: new InvertedBooleanConverter());
 
             ActivityIndicator imageLoadingIndicator = new ActivityIndicator() { BindingContext = companyImage };
             imageLoadingIndicator.SetBinding(ActivityIndicator.IsEnabledProperty, "IsLoading");
@@ -37,7 +39,7 @@ namespace XamarinCRM.Pages.Customers
 
             Label industryLabel = new Label()
             { 
-                TextColor = Palette._015,
+                TextColor = Palette._016,
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
@@ -58,7 +60,7 @@ namespace XamarinCRM.Pages.Customers
             Label contactTitleLabel = new Label()
             { 
                 Text = TextResources.Contact,
-                TextColor = Device.OnPlatform(Color.Gray, Color.Gray, Color.Gray),
+                TextColor = Device.OnPlatform(Palette._007, Color.Gray, Color.Gray),
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
@@ -81,7 +83,7 @@ namespace XamarinCRM.Pages.Customers
             Label phoneTitleLabel = new Label()
             { 
                 Text = TextResources.Phone,
-                TextColor = Device.OnPlatform(Color.Gray, Color.Gray, Color.Gray),
+                TextColor = Device.OnPlatform(Palette._007, Color.Gray, Color.Gray),
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
@@ -94,6 +96,8 @@ namespace XamarinCRM.Pages.Customers
             };
             phoneLabel.SetBinding(Label.TextProperty, "Account.Phone");
 
+            phoneLabel.GestureRecognizers.Add(new TapGestureRecognizer(){ Command = new Command(x => OnPhoneTapped(phoneLabel, null)) });
+
             phoneLabelStackLayout.Children.Add(phoneTitleLabel);
             phoneLabelStackLayout.Children.Add(phoneLabel);
             #endregion
@@ -104,7 +108,7 @@ namespace XamarinCRM.Pages.Customers
             Label addressTitleLabel = new Label()
             { 
                 Text = TextResources.Customers_Detail_Address,
-                TextColor = Device.OnPlatform(Color.Gray, Color.Gray, Color.Gray),
+                TextColor = Device.OnPlatform(Palette._007, Color.Gray, Color.Gray),
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
@@ -142,12 +146,44 @@ namespace XamarinCRM.Pages.Customers
 
             StackLayout stackLayout = new UnspacedStackLayout();
 
-            stackLayout.Children.Add(headerAbsoluteLayout );
+            stackLayout.Children.Add(headerAbsoluteLayout);
             stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = contactLabelsStackLayout });
             stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = phoneLabelStackLayout });
             stackLayout.Children.Add(addressLabelStackLayout);
 
             Content = new ScrollView() { Content = stackLayout };
+        }
+
+        async void OnPhoneTapped(object sender, EventArgs e)
+        {
+            if (sender == null)
+            {
+                return;
+            }
+
+            string phoneCell = ((Label)sender).Text;
+
+            if (String.IsNullOrWhiteSpace(phoneCell) == true)
+            {
+                return;
+            }            
+
+            if (await this.DisplayAlert(
+                    "Dial a Number",
+                    "Would you like to call " + phoneCell + "?",
+                    "Yes",
+                    "No"))
+            {
+
+                var dialer = DependencyService.Get<IDialer>();
+                phoneCell = phoneCell.Replace("-", "");
+                if (dialer == null)
+                {
+                    return;
+                }
+
+                dialer.Dial(phoneCell);
+            }
         }
     }
 }

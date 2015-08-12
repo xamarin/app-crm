@@ -22,7 +22,7 @@ namespace XamarinCRM.Pages.Splash
             Label usernameTitleLabel = new Label()
             {
                 Text = TextResources.Splash_UsernameTitleLabel,
-                TextColor = Palette._008,
+                TextColor = Palette._009,
                 FontSize = Device.OnPlatform(
                     Device.GetNamedSize(NamedSize.Micro, typeof(Label)), 
                     Device.GetNamedSize(NamedSize.Small, typeof(Label)), 
@@ -51,7 +51,7 @@ namespace XamarinCRM.Pages.Splash
             Label passwordTitleLabel = new Label()
             {
                 Text = TextResources.Splash_PasswordTitleLabel,
-                TextColor = Palette._008,
+                TextColor = Palette._009,
                 FontSize = Device.OnPlatform(
                     Device.GetNamedSize(NamedSize.Micro, typeof(Label)), 
                     Device.GetNamedSize(NamedSize.Small, typeof(Label)), 

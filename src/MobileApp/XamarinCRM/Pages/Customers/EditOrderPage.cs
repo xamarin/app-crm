@@ -26,7 +26,7 @@ namespace XamarinCRM.Pages.Customers
             Label companyTitleLabel = new Label()
             {
                 Text = TextResources.Customers_Orders_EditOrder_CompanyTitle,
-                TextColor = Device.OnPlatform(Palette._008, Palette._008, Palette._008),
+                TextColor = Device.OnPlatform(Palette._009, Palette._009, Palette._009),
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.End,
@@ -35,7 +35,7 @@ namespace XamarinCRM.Pages.Customers
             
             Label companyNameLabel = new Label()
             {
-                TextColor = Device.OnPlatform(Palette._007, Color.White, Color.White),
+                TextColor = Device.OnPlatform(Palette._008, Color.White, Color.White),
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Start,

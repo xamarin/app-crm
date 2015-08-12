@@ -29,7 +29,7 @@ namespace XamarinCRM.Pages.Sales
             double chartHeight = Device.OnPlatform(190, 190, 180);
 
             StackLayout salesChartStackLayout = new UnspacedStackLayout() { HeightRequest = chartHeight };
-            Device.OnPlatform(iOS: () => salesChartStackLayout.BackgroundColor = Color.Transparent, Android: () => salesChartStackLayout.BackgroundColor = Palette._009);
+            Device.OnPlatform(iOS: () => salesChartStackLayout.BackgroundColor = Color.Transparent, Android: () => salesChartStackLayout.BackgroundColor = Palette._010);
 
             ActivityIndicator chartActivityIndicator = new ActivityIndicator()
             {
@@ -45,11 +45,11 @@ namespace XamarinCRM.Pages.Sales
                 {
                     OpposedPosition = false,
                     ShowMajorGridLines = true,
-                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = Palette._010 },
+                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = Palette._011 },
                     ShowMinorGridLines = true,
                     MinorTicksPerInterval = 1,
-                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = Palette._011 },
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._010 }
+                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = Palette._012 },
+                    LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._011 }
                 },
                 Color = Palette._004
             };
@@ -67,7 +67,7 @@ namespace XamarinCRM.Pages.Sales
                     LabelPlacement = LabelPlacement.BetweenTicks,
                     TickPosition = AxisElementPosition.Inside,
                     ShowMajorGridLines = false,
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._010 }
+                    LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._011 }
                 }
             };
             Device.OnPlatform(
@@ -76,7 +76,7 @@ namespace XamarinCRM.Pages.Sales
                     chart.BackgroundColor = Color.Transparent;
                     salesChartStackLayout.Padding = new Thickness(0, 20, 30, 0);
                 }, 
-                Android: () => chart.BackgroundColor = Palette._009);
+                Android: () => chart.BackgroundColor = Palette._010);
 
             chart.Series.Add(columnSeries);
             chart.SetBinding(IsEnabledProperty, "IsModelLoaded");

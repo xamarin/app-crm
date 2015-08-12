@@ -35,7 +35,7 @@ namespace XamarinCRM.Views.Customers
                 YAlign = TextAlignment.Center,
             };
 
-            BoxView bottomBorder = new BoxView() { BackgroundColor = Palette._013, HeightRequest = 1 };
+            BoxView bottomBorder = new BoxView() { BackgroundColor = Palette._014, HeightRequest = 1 };
 
             double imagePaddingPercent = .35;
 

@@ -14,7 +14,7 @@ namespace XamarinCRM.Views.Customers
             RowHeight = (int)Sizes.LargeRowHeight; // set the row height for the list view items
             SeparatorVisibility = SeparatorVisibility.None;
             ItemTemplate = new DataTemplate(typeof(OrderListItemCell));
-            SeparatorColor = Palette._013;
+            SeparatorColor = Palette._014;
         }
     }
 }

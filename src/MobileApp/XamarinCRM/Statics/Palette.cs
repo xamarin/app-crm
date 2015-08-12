@@ -13,20 +13,21 @@ namespace XamarinCRM.Statics
 
         // blues
         public static readonly Color _006 = Color.FromHex("00b9e6");
+        public static readonly Color _007 = Color.FromHex("0079FF"); // iOS blue
 
         // grays
-        public static readonly Color _007 = Color.FromHex("4d4d4d"); 
-        public static readonly Color _008 = Color.FromHex("999999");
-        public static readonly Color _009 = Color.FromHex("5c5353");
-        public static readonly Color _010 = Color.FromHex("9d9797");
-        public static readonly Color _011 = Color.FromHex("6c6464");
-        public static readonly Color _012 = Color.FromHex("a49f9f");
-        public static readonly Color _013 = Color.FromHex("dddddd");
-        public static readonly Color _014 = Color.FromHex("ededed");
-        public static readonly Color _015 = Color.FromHex("d8d8d8");
+        public static readonly Color _008 = Color.FromHex("4d4d4d"); 
+        public static readonly Color _009 = Color.FromHex("999999");
+        public static readonly Color _010 = Color.FromHex("5c5353");
+        public static readonly Color _011 = Color.FromHex("9d9797");
+        public static readonly Color _012 = Color.FromHex("6c6464");
+        public static readonly Color _013 = Color.FromHex("a49f9f");
+        public static readonly Color _014 = Color.FromHex("dddddd");
+        public static readonly Color _015 = Color.FromHex("ededed");
+        public static readonly Color _016 = Color.FromHex("d8d8d8");
 
         // iOS specific
-        public static readonly Color _016 = Color.FromHex("007aff");
+        public static readonly Color _017 = Color.FromHex("007aff");
 
     }
 }

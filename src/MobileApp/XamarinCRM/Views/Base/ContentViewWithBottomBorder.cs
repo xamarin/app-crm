@@ -20,7 +20,7 @@ namespace XamarinCRM.Views.Base
                 RelativeLayout borderLayout = new RelativeLayout() { HeightRequest = 1 };
 
                 borderLayout.Children.Add(
-                    view: new BoxView() { BackgroundColor = Palette._014, HeightRequest = 1 },
+                    view: new BoxView() { BackgroundColor = Palette._015, HeightRequest = 1 },
                     widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
                     heightConstraint: Constraint.Constant(1));
                 

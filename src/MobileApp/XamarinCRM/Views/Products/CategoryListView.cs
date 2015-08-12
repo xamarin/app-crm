@@ -13,7 +13,7 @@ namespace XamarinCRM.Views.Products
             HasUnevenRows = false;
             RowHeight = (int)Sizes.LargeRowHeight;
             SeparatorVisibility = SeparatorVisibility.Default;
-            SeparatorColor = Palette._013;
+            SeparatorColor = Palette._014;
         }
     }
 }

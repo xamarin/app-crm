@@ -26,7 +26,7 @@ namespace XamarinCRM.Views.Sales
             Label weeklyAverageTitleLabel = new Label()
             {
                 Text = TextResources.SalesChartHeaderWeeklyAverageTitle.ToUpperInvariant(),
-                TextColor = Palette._012,
+                TextColor = Palette._013,
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Micro, typeof(Label)) * .9,
                     Android: Device.GetNamedSize(NamedSize.Micro, typeof(Label)),
@@ -74,9 +74,9 @@ namespace XamarinCRM.Views.Sales
                 heightConstraint: Constraint.RelativeToParent(parent => (parent.Height / 4) * 3)
             );
 
-            BackgroundColor = Palette._009;
+            BackgroundColor = Palette._010;
 
-            Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._009);
+            Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._010);
 
             HeightRequest = 40;
 

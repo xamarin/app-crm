@@ -10,7 +10,7 @@ namespace XamarinCRM.Views.Products
         {
             RelativeLayout relativeLayout = new RelativeLayout();
 
-            BackgroundColor = Palette._009;
+            BackgroundColor = Palette._010;
 
             HeightRequest = 20;
 

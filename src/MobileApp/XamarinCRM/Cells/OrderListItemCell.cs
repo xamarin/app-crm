@@ -66,7 +66,7 @@ namespace XamarinCRM.Cells
 
             contentView.Padding = new Thickness(20, 0);
 
-            BoxView bottomBorder = new BoxView() { BackgroundColor = Palette._013, HeightRequest = 1 };
+            BoxView bottomBorder = new BoxView() { BackgroundColor = Palette._014, HeightRequest = 1 };
 
             RelativeLayout labelsRelativeLayout = new RelativeLayout() { HeightRequest = Sizes.LargeRowHeight };
 
