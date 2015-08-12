@@ -253,6 +253,7 @@
     <AndroidResource Include="Resources\drawable\add_android_gray.png" />
     <AndroidResource Include="Resources\drawable\splash.png" />
     <AndroidResource Include="Resources\drawable\xamarin_logo_plus_name_inline.png" />
+    <AndroidResource Include="Resources\drawable\bottom_up_gradient.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\XamarinCRM\Config\config.xml">

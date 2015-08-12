@@ -23,9 +23,10 @@ namespace XamarinCRM.Statics
         public static readonly Color _012 = Color.FromHex("a49f9f");
         public static readonly Color _013 = Color.FromHex("dddddd");
         public static readonly Color _014 = Color.FromHex("ededed");
+        public static readonly Color _015 = Color.FromHex("d8d8d8");
 
         // iOS specific
-        public static readonly Color _015 = Color.FromHex("007aff");
+        public static readonly Color _016 = Color.FromHex("007aff");
 
     }
 }

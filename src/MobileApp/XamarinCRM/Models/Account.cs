@@ -29,6 +29,8 @@ namespace XamarinCRM.Models
         [JsonProperty(PropertyName = "oppt_stage")]
         public string OpportunityStage { get; set; }
 
+        [JsonProperty(PropertyName = "imageUrl")]
+        public string ImageUrl { get; set; }
 
         [JsonIgnore]
         public double OpportunityStagePercent

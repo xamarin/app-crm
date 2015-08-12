@@ -18,9 +18,9 @@ namespace XamarinCRM.Clients
 {
     public class CustomerDataClient : ICustomerDataClient
     {
-        IMobileServiceSyncTable<Order> orderTable;
-        IMobileServiceSyncTable<Contact> contactTable;
-        IMobileServiceSyncTable<Account> accountTable;
+        IMobileServiceSyncTable<Order> _OrderTable;
+        IMobileServiceSyncTable<Contact> _ContactTable;
+        IMobileServiceSyncTable<Account> _AccountTable;
 
         public IMobileServiceClient MobileService { get; set; }
 
@@ -55,39 +55,39 @@ namespace XamarinCRM.Clients
                 Insights.Report(ex, Insights.Severity.Error);
             }
 
-            orderTable = MobileService.GetSyncTable<Order>();
+            _OrderTable = MobileService.GetSyncTable<Order>();
 
-            accountTable = MobileService.GetSyncTable<Account>();
+            _AccountTable = MobileService.GetSyncTable<Account>();
 
-            contactTable = MobileService.GetSyncTable<Contact>();
+            _ContactTable = MobileService.GetSyncTable<Contact>();
         }
 
         public async Task SeedData()
         {
-            using (var handle = Insights.TrackTime("TimeToSyncDB"))
+            //Insights tracking
+            var handle = Insights.TrackTime("TimeToSyncDB");
+            handle.Start();
+
+            try
             {
-                handle.Start();
+                await Init();
 
-                try
-                {
-                    await Init();
+                await _OrderTable.PullAsync(null, _OrderTable.CreateQuery());
+                await _AccountTable.PullAsync(null, _AccountTable.CreateQuery());
+                await _ContactTable.PullAsync(null, _ContactTable.CreateQuery());
 
-                    await orderTable.PullAsync(null, orderTable.CreateQuery());
-                    await accountTable.PullAsync(null, accountTable.CreateQuery());
-                    await contactTable.PullAsync(null, contactTable.CreateQuery());
-
-                }
-                catch (Exception exc)
-                {
-                    Insights.Report(exc, Insights.Severity.Error);
-                    Debug.WriteLine("ERROR AzureService.SeedData(): " + exc.Message);
-                }
-                finally
-                {
-                    //Insights
-                    handle.Stop();
-                }
             }
+            catch (Exception exc)
+            {
+                Insights.Report(exc, Insights.Severity.Error);
+                Debug.WriteLine("ERROR AzureService.SeedData(): " + exc.Message);
+            }
+            finally
+            {
+                //Insights
+                handle.Stop();
+            }
+
         }
 
         #region Orders
@@ -103,7 +103,7 @@ namespace XamarinCRM.Clients
                 //SYI: For public demo, only allow pull, not push. The service is configured to disallow pushes anyway.
                 //await MobileService.SyncContext.PushAsync();
 
-                await orderTable.PullAsync(null, orderTable.CreateQuery());
+                await _OrderTable.PullAsync(null, _OrderTable.CreateQuery());
             }
             catch (MobileServiceInvalidOperationException e)
             {
@@ -123,9 +123,9 @@ namespace XamarinCRM.Clients
             using (var handle = Insights.TrackTime("TimeToSaveOrder"))
             {
                 if (item.Id == null)
-                    await orderTable.InsertAsync(item);
+                    await _OrderTable.InsertAsync(item);
                 else
-                    await orderTable.UpdateAsync(item);
+                    await _OrderTable.UpdateAsync(item);
             }
         }
 
@@ -135,7 +135,7 @@ namespace XamarinCRM.Clients
             {
                 using (var handle = Insights.TrackTime("TimeToDeleteOrder"))
                 {
-                    await orderTable.DeleteAsync(item);
+                    await _OrderTable.DeleteAsync(item);
                 }
             }
             catch (MobileServiceInvalidOperationException ex)
@@ -160,7 +160,7 @@ namespace XamarinCRM.Clients
             {
                 await Init();
 
-                await accountTable.PullAsync(null, accountTable.CreateQuery());
+                await _AccountTable.PullAsync(null, _AccountTable.CreateQuery());
             }
             catch (MobileServiceInvalidOperationException e)
             {
@@ -181,9 +181,9 @@ namespace XamarinCRM.Clients
                 using (var handle = Insights.TrackTime("TimeToSaveAccount"))
                 {
                     if (item.Id == null)
-                        await accountTable.InsertAsync(item);
+                        await _AccountTable.InsertAsync(item);
                     else
-                        await accountTable.UpdateAsync(item);
+                        await _AccountTable.UpdateAsync(item);
                 }
 
             }
@@ -203,7 +203,7 @@ namespace XamarinCRM.Clients
         {
             try
             {
-                await accountTable.DeleteAsync(item);
+                await _AccountTable.DeleteAsync(item);
             }
             catch (MobileServiceInvalidOperationException ex)
             {
@@ -223,7 +223,7 @@ namespace XamarinCRM.Clients
             {
                 using (var handle = Insights.TrackTime("TimeToGetAccountList"))
                 {
-                    return await accountTable.Where(a => a.IsLead == leads).OrderBy(b => b.Company).ToEnumerableAsync();
+                    return await _AccountTable.Where(a => a.IsLead == leads).OrderBy(b => b.Company).ToEnumerableAsync();
                 }
             }
             catch (MobileServiceInvalidOperationException ex)
@@ -245,7 +245,7 @@ namespace XamarinCRM.Clients
             {
                 using (var handle = Insights.TrackTime("TimeToGetAccountOrders"))
                 {
-                    return await orderTable.Where(j => j.AccountId == accountId &&
+                    return await _OrderTable.Where(j => j.AccountId == accountId &&
                         j.IsOpen == true).OrderBy(j => j.DueDate).ToEnumerableAsync();
                 }
             }
@@ -268,7 +268,7 @@ namespace XamarinCRM.Clients
             {
                 using (var handle = Insights.TrackTime("TimeToGetAccountHistory"))
                 {
-                    return await orderTable.Where(j => j.AccountId == accountId &&
+                    return await _OrderTable.Where(j => j.AccountId == accountId &&
                         j.IsOpen == false).OrderByDescending(j => j.ClosedDate).ToEnumerableAsync();
                 }
             }
@@ -291,7 +291,7 @@ namespace XamarinCRM.Clients
             {
                 using (var handle = Insights.TrackTime("TimeToGetAllAccountOrders"))
                 {
-                    return await orderTable.Where(j => j.IsOpen == false).ToEnumerableAsync();
+                    return await _OrderTable.Where(j => j.IsOpen == false).ToEnumerableAsync();
                 }
             }
             catch (MobileServiceInvalidOperationException ex)
@@ -321,7 +321,7 @@ namespace XamarinCRM.Clients
                 //await MobileService.SyncContext.PushAsync();
 
                 //await contactTable.PullAsync();
-                await contactTable.PullAsync(null, contactTable.CreateQuery());
+                await _ContactTable.PullAsync(null, _ContactTable.CreateQuery());
             }
             catch (MobileServiceInvalidOperationException e)
             {
@@ -340,9 +340,9 @@ namespace XamarinCRM.Clients
                 using (var handle = Insights.TrackTime("TimeToSaveContact"))
                 {
                     if (item.Id == null)
-                        await contactTable.InsertAsync(item);
+                        await _ContactTable.InsertAsync(item);
                     else
-                        await contactTable.UpdateAsync(item);
+                        await _ContactTable.UpdateAsync(item);
                 }
 
                 //await SyncContacts();
@@ -357,7 +357,7 @@ namespace XamarinCRM.Clients
         {
             try
             {
-                await contactTable.DeleteAsync(item);
+                await _ContactTable.DeleteAsync(item);
                 //await SyncContacts();
             }
             catch (MobileServiceInvalidOperationException ex)
@@ -377,7 +377,7 @@ namespace XamarinCRM.Clients
                 using (var handle = Insights.TrackTime("TimeToGetContacts"))
                 {
                     //SYI - Sort contacts by last name
-                    IMobileServiceTableQuery<Contact> query = contactTable.OrderBy(c => c.LastName);
+                    IMobileServiceTableQuery<Contact> query = _ContactTable.OrderBy(c => c.LastName);
                     return await query.ToListAsync();
                 }
             }
@@ -403,7 +403,7 @@ namespace XamarinCRM.Clients
                 using (var handle = Insights.TrackTime("TimeToGetContact"))
                 {
                     await SyncContacts();
-                    return await contactTable.LookupAsync(contactId);
+                    return await _ContactTable.LookupAsync(contactId);
                 }
             }
             catch (MobileServiceInvalidOperationException ex)

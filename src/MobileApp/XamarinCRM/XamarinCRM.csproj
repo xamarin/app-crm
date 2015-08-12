@@ -123,6 +123,7 @@
     <Compile Include="Clients\CatalogDataClient.cs" />
     <Compile Include="Clients\ICustomerDataClient.cs" />
     <Compile Include="Clients\CustomerDataClient.cs" />
+    <Compile Include="Converters\InvertedBooleanConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

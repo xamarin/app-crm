@@ -12,21 +12,32 @@ namespace XamarinCRM.Pages.Customers
         public CustomerDetailPage()
         {
             #region header
-            var headerContainer = new UnspacedStackLayout();
+            AbsoluteLayout headerAbsoluteLayout = new AbsoluteLayout() { HeightRequest = 150 };
 
-            var headerLabelsStackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
+            StackLayout headerLabelsStackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
 
-            var companyLabel = new Label()
+            Image companyImage = new Image() { Aspect = Aspect.AspectFill };
+            companyImage.SetBinding(Image.SourceProperty, "Account.ImageUrl");
+
+            Image gradientImage = new Image() { Aspect = Aspect.Fill, Source = new FileImageSource() { File = "bottom_up_gradient" }, HeightRequest = 75, BindingContext = companyImage };
+            gradientImage.SetBinding(Image.IsVisibleProperty, "IsLoading", converter: new InvertedBooleanConverter() );
+
+            ActivityIndicator imageLoadingIndicator = new ActivityIndicator() { BindingContext = companyImage };
+            imageLoadingIndicator.SetBinding(ActivityIndicator.IsEnabledProperty, "IsLoading");
+            imageLoadingIndicator.SetBinding(ActivityIndicator.IsVisibleProperty, "IsLoading");
+            imageLoadingIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading");
+
+            Label companyLabel = new Label()
             { 
-                TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White), 
+                TextColor = Color.White, 
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Large, typeof(Label)), Device.GetNamedSize(NamedSize.Large, typeof(Label)), Device.GetNamedSize(NamedSize.Large, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             companyLabel.SetBinding(Label.TextProperty, "Account.Company");
 
-            var industryLabel = new Label()
+            Label industryLabel = new Label()
             { 
-                TextColor = Device.OnPlatform(Color.Gray, Color.Gray, Color.Gray),
+                TextColor = Palette._015,
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
@@ -34,15 +45,17 @@ namespace XamarinCRM.Pages.Customers
 
             headerLabelsStackLayout.Children.Add(companyLabel);
             headerLabelsStackLayout.Children.Add(industryLabel);
-            headerContainer.Children.Add(headerLabelsStackLayout);
+
+            headerAbsoluteLayout.Children.Add(companyImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+            headerAbsoluteLayout.Children.Add(imageLoadingIndicator, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.WidthProportional | AbsoluteLayoutFlags.PositionProportional);
+            headerAbsoluteLayout.Children.Add(gradientImage, new Rectangle(0, 1, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.WidthProportional | AbsoluteLayoutFlags.PositionProportional);
+            headerAbsoluteLayout.Children.Add(headerLabelsStackLayout, new Rectangle(0, 1, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.WidthProportional | AbsoluteLayoutFlags.PositionProportional);
             #endregion
 
             #region contact
-            var contactContainer = new UnspacedStackLayout();
+            StackLayout contactLabelsStackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
 
-            var contactLabelsStackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
-
-            var contactTitleLabel = new Label()
+            Label contactTitleLabel = new Label()
             { 
                 Text = TextResources.Contact,
                 TextColor = Device.OnPlatform(Color.Gray, Color.Gray, Color.Gray),
@@ -50,104 +63,91 @@ namespace XamarinCRM.Pages.Customers
                 LineBreakMode = LineBreakMode.TailTruncation
             };
 
-            var contactLabel = new Label()
+            Label contactLabel = new Label()
             { 
                 TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White), 
-                    FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
+                FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             contactLabel.SetBinding(Label.TextProperty, "Account.DisplayContact");
 
             contactLabelsStackLayout.Children.Add(contactTitleLabel);
             contactLabelsStackLayout.Children.Add(contactLabel);
-            contactContainer.Children.Add(contactLabelsStackLayout);
             #endregion
 
             #region phone
-            var phoneContainer = new UnspacedStackLayout();
+            StackLayout phoneLabelStackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
 
-            var phoneLabelStackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
+            Label phoneTitleLabel = new Label()
+            { 
+                Text = TextResources.Phone,
+                TextColor = Device.OnPlatform(Color.Gray, Color.Gray, Color.Gray),
+                FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
+                LineBreakMode = LineBreakMode.TailTruncation
+            };
 
-            var phoneTitleLabel = new Label()
-                { 
-                    Text = TextResources.Phone,
-                    TextColor = Device.OnPlatform(Color.Gray, Color.Gray, Color.Gray),
-                    FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
-                    LineBreakMode = LineBreakMode.TailTruncation
-                };
-
-            var phoneLabel = new Label()
-                { 
-                    TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White), 
-                    FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
-                    LineBreakMode = LineBreakMode.TailTruncation
-                };
+            Label phoneLabel = new Label()
+            { 
+                TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White), 
+                FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
+                LineBreakMode = LineBreakMode.TailTruncation
+            };
             phoneLabel.SetBinding(Label.TextProperty, "Account.Phone");
 
             phoneLabelStackLayout.Children.Add(phoneTitleLabel);
             phoneLabelStackLayout.Children.Add(phoneLabel);
-            phoneContainer.Children.Add(phoneLabelStackLayout);
             #endregion
 
             #region address
+            StackLayout addressLabelStackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
 
-            var addressContainer = new UnspacedStackLayout();
+            Label addressTitleLabel = new Label()
+            { 
+                Text = TextResources.Customers_Detail_Address,
+                TextColor = Device.OnPlatform(Color.Gray, Color.Gray, Color.Gray),
+                FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
+                LineBreakMode = LineBreakMode.TailTruncation
+            };
 
-            var addressLabelStackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
-
-            var addressTitleLabel = new Label()
-                { 
-                    Text = TextResources.Customers_Detail_Address,
-                    TextColor = Device.OnPlatform(Color.Gray, Color.Gray, Color.Gray),
-                    FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
-                    LineBreakMode = LineBreakMode.TailTruncation
-                };
-
-            var addressStreetLabel = new Label()
-                { 
-                    TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White), 
-                    FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
-                    LineBreakMode = LineBreakMode.TailTruncation
-                };
+            Label addressStreetLabel = new Label()
+            { 
+                TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White), 
+                FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
+                LineBreakMode = LineBreakMode.TailTruncation
+            };
             addressStreetLabel.SetBinding(Label.TextProperty, "Account.Street");
 
-            var addressCityLabel = new Label()
-                { 
-                    TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White), 
-                    FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
-                    LineBreakMode = LineBreakMode.TailTruncation
-                };
+            Label addressCityLabel = new Label()
+            { 
+                TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White), 
+                FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
+                LineBreakMode = LineBreakMode.TailTruncation
+            };
             addressCityLabel.SetBinding(Label.TextProperty, "Account.City");
 
-            var addressStatePostalLabel = new Label()
-                { 
-                    TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White), 
-                    FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
-                    LineBreakMode = LineBreakMode.TailTruncation
-                };
+            Label addressStatePostalLabel = new Label()
+            { 
+                TextColor = Device.OnPlatform(Color.Black, Color.White, Color.White), 
+                FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
+                LineBreakMode = LineBreakMode.TailTruncation
+            };
             addressStatePostalLabel.SetBinding(Label.TextProperty, "Account.StatePostal");
 
             addressLabelStackLayout.Children.Add(addressTitleLabel);
             addressLabelStackLayout.Children.Add(addressStreetLabel);
             addressLabelStackLayout.Children.Add(addressCityLabel);
             addressLabelStackLayout.Children.Add(addressStatePostalLabel);
-            addressContainer.Children.Add(addressLabelStackLayout);
 
             #endregion
 
             StackLayout stackLayout = new UnspacedStackLayout();
 
-            stackLayout.Children.Add(new ContentViewWithBottomBorder(){ Content = headerContainer });
-            stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = contactContainer });
-            stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = phoneContainer });
-            stackLayout.Children.Add(addressContainer);
+            stackLayout.Children.Add(new ContentViewWithBottomBorder(){ Content = headerAbsoluteLayout });
+            stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = contactLabelsStackLayout });
+            stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = phoneLabelStackLayout });
+            stackLayout.Children.Add(addressLabelStackLayout);
 
             Content = new ScrollView() { Content = stackLayout };
-        }
-
-        private StackLayout GetSeparator()
-        {
-            return new UnspacedStackLayout() { HeightRequest = 1, BackgroundColor = Palette._014 };
         }
     }
 }
