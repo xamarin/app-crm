@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.xamarin.mobilecrm</string>
+	<string>com.xamarin.xamarincrm</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -40,6 +40,7 @@
 		<string>Icon-Small-50@2x</string>
 		<string>Icon-Small-40</string>
 		<string>Icon-Small-40@2x</string>
+		<string>icon_57</string>
 	</array>
 	<key>NSMainNibFile</key>
 	<string></string>
@@ -55,7 +56,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>MobileCRM</string>
+	<string>Xamarin CRM</string>
 	<key>CFBundleShortVersionString</key>
 	<string>2.0</string>
 </dict>
