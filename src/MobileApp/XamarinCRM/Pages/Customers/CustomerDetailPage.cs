@@ -157,32 +157,27 @@ namespace XamarinCRM.Pages.Customers
         async void OnPhoneTapped(object sender, EventArgs e)
         {
             if (sender == null)
-            {
                 return;
-            }
 
-            string phoneCell = ((Label)sender).Text;
+            string phoneNumber = ((Label)sender).Text;
 
-            if (String.IsNullOrWhiteSpace(phoneCell) == true)
+            if (String.IsNullOrWhiteSpace(phoneNumber))
+                return;        
+
+            if (await DisplayAlert(
+                    title: "Dial a Number",
+                    message: "Would you like to call " + phoneNumber + "?",
+                    accept: "Yes",
+                    cancel: "No"))
             {
-                return;
-            }            
-
-            if (await this.DisplayAlert(
-                    "Dial a Number",
-                    "Would you like to call " + phoneCell + "?",
-                    "Yes",
-                    "No"))
-            {
-
                 var dialer = DependencyService.Get<IDialer>();
-                phoneCell = phoneCell.Replace("-", "");
-                if (dialer == null)
-                {
-                    return;
-                }
 
-                dialer.Dial(phoneCell);
+                phoneNumber = phoneNumber.Replace("-", "");
+
+                if (dialer == null)
+                    return;
+
+                dialer.Dial(phoneNumber);
             }
         }
     }
