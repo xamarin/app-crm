@@ -1,8 +1,9 @@
-﻿using Microsoft.WindowsAzure.MobileServices;
-using Foundation;
-using UIKit;
-using Xamarin.Forms.Platform.iOS;
+﻿using Foundation;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
+using UIKit;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
+using Xamarin;
 
 namespace XamarinCRM.iOS
 {
@@ -18,13 +19,16 @@ namespace XamarinCRM.iOS
             #endif
 
             // Azure Mobile Services initilization
-            CurrentPlatform.Init();
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 
             // SQLite initilization
             SQLitePCL.CurrentPlatform.Init();
 
             // Xamarin.Forms initilization
-            global::Xamarin.Forms.Forms.Init();
+            Forms.Init();
+
+            // Xamarin.Forms.Maps initilization
+            FormsMaps.Init();
 
             // Bootstrap the PCL app
             LoadApplication(new App());

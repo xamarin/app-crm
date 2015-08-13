@@ -42,6 +42,9 @@
 	<data name="Cancel" xml:space="preserve">
     	<value>Cancel</value>
 	</data>
+	<data name="Close" xml:space="preserve">
+    	<value>Close</value>
+	</data>
 	<data name="Exit" xml:space="preserve">
     	<value>Exit</value>
 	</data>
@@ -60,7 +63,12 @@
 	<data name="Phone" xml:space="preserve">
     	<value>Phone</value>
 	</data>
-
+	<data name="Get_Directions" xml:space="preserve">
+    	<value>Get Directions</value>
+	</data>
+	<data name="Leave_Application" xml:space="preserve">
+    	<value>Leave Application?</value>
+	</data>
 
 
 	<data name="Leads_LeadListHeaderTitle" xml:space="preserve">
@@ -210,6 +218,15 @@
 	</data>
 	<data name="Customers_Orders_EditOrder_ExitConfirmDescription" xml:space="preserve">
 		<value>Would you like to exit and discard changes to this order?</value>
+	</data>
+	<data name="Customers_Orders_CustomerTabbedPage_BackToCustomers" xml:space="preserve">
+		<value>Back to Customers</value>
+	</data>
+	<data name="Customers_Detail_MappingDirections_LeaveApplication" xml:space="preserve">
+		<value>Would you like to leave the Xamarin CRM app and get directions?</value>
+	</data>
+	<data name="Customers_Detail_MappingDirections_LeaveApplication_Yes" xml:space="preserve">
+		<value>Yes, Leave</value>
 	</data>
 
 

@@ -18,6 +18,8 @@ namespace XamarinCRMAndroid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            // Azure Mobile Services initilization
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 
             Forms.Init(this, bundle);

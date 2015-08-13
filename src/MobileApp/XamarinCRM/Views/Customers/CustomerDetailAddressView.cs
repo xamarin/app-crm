@@ -1,5 +1,7 @@
 ﻿using Xamarin.Forms;
+using XamarinCRM.Interfaces;
 using XamarinCRM.Layouts;
+using XamarinCRM.Pages.Customers;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Base;
@@ -8,8 +10,12 @@ namespace XamarinCRM
 {
     public class CustomerDetailAddressView : ModelTypedContentView<CustomerDetailViewModel>
     {
+        readonly INativeDirectionsPresenter _NativeMap;
+
         public CustomerDetailAddressView()
         {
+            _NativeMap = DependencyService.Get<INativeDirectionsPresenter>();
+
             StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
 
             Label addressTitleLabel = new Label()
@@ -50,7 +56,15 @@ namespace XamarinCRM
                 Aspect = Aspect.AspectFit, 
                 HeightRequest = 25 
             }; 
-            mapMarkerImage.GestureRecognizers.Add(new TapGestureRecognizer() { Command = new Command(() => { /* TODO: pop the map in a modal! */ }) });
+            mapMarkerImage.GestureRecognizers.Add(
+                new TapGestureRecognizer()
+                { 
+                    Command = new Command(async () =>
+                        {
+                            NavigationPage navPage = new NavigationPage(new CustomerMapPage(ViewModel));
+                            ViewModel.PushModalAsync(navPage);
+                        }) 
+                });
 
             stackLayout.Children.Add(addressTitleLabel);
             stackLayout.Children.Add(addressStreetLabel);
@@ -65,8 +79,6 @@ namespace XamarinCRM
 
             Content = absoluteLayout;
         }
-
-
     }
 }
 
