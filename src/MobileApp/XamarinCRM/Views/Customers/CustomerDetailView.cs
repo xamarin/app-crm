@@ -22,8 +22,9 @@ namespace XamarinCRM.Views.Customers
 
             ActivityIndicator imageLoadingIndicator = new ActivityIndicator() { BindingContext = companyImage };
             imageLoadingIndicator.SetBinding(ActivityIndicator.IsEnabledProperty, "IsLoading");
-            imageLoadingIndicator.SetBinding(ActivityIndicator.IsVisibleProperty, "IsLoading");
-            imageLoadingIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading");
+            imageLoadingIndicator.SetBinding(ActivityIndicator.IsVisibleProperty, "IsLoading"); // here, since we're bound to the companyImage already, we can just reference the IsLoading property
+            imageLoadingIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading"); // here, since we're bound to the companyImage already, we can just reference the IsLoading property
+
 
             Label companyLabel = new Label()
             { 
@@ -32,6 +33,8 @@ namespace XamarinCRM.Views.Customers
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             companyLabel.SetBinding(Label.TextProperty, "Account.Company");
+            companyLabel.SetBinding(VisualElement.IsEnabledProperty, new Binding("IsLoading", source: companyImage, converter: new InvertedBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
+            companyLabel.SetBinding(VisualElement.IsVisibleProperty, new Binding("IsLoading", source: companyImage, converter: new InvertedBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
 
             Label industryLabel = new Label()
             { 
@@ -40,6 +43,8 @@ namespace XamarinCRM.Views.Customers
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             industryLabel.SetBinding(Label.TextProperty, "Account.Industry");
+            industryLabel.SetBinding(VisualElement.IsEnabledProperty, new Binding("IsLoading", source: companyImage, converter: new InvertedBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
+            industryLabel.SetBinding(VisualElement.IsVisibleProperty, new Binding("IsLoading", source: companyImage, converter: new InvertedBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
 
             stackLayout.Children.Add(companyLabel);
             stackLayout.Children.Add(industryLabel);
