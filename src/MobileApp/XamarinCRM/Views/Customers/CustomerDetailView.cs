@@ -10,9 +10,9 @@ namespace XamarinCRM.Views.Customers
     {
         public CustomerDetailHeaderView()
         {
-            AbsoluteLayout headerAbsoluteLayout = new AbsoluteLayout() { HeightRequest = 150 };
+            AbsoluteLayout absoluteLayout = new AbsoluteLayout() { HeightRequest = 150 };
 
-            StackLayout headerLabelsStackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
+            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
 
             Image companyImage = new Image() { Aspect = Aspect.AspectFill };
             companyImage.SetBinding(Image.SourceProperty, "Account.ImageUrl");
@@ -41,15 +41,15 @@ namespace XamarinCRM.Views.Customers
             };
             industryLabel.SetBinding(Label.TextProperty, "Account.Industry");
 
-            headerLabelsStackLayout.Children.Add(companyLabel);
-            headerLabelsStackLayout.Children.Add(industryLabel);
+            stackLayout.Children.Add(companyLabel);
+            stackLayout.Children.Add(industryLabel);
 
-            headerAbsoluteLayout.Children.Add(companyImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
-            headerAbsoluteLayout.Children.Add(imageLoadingIndicator, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.WidthProportional | AbsoluteLayoutFlags.PositionProportional);
-            headerAbsoluteLayout.Children.Add(gradientImage, new Rectangle(0, 1, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.WidthProportional | AbsoluteLayoutFlags.PositionProportional);
-            headerAbsoluteLayout.Children.Add(headerLabelsStackLayout, new Rectangle(0, 1, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.WidthProportional | AbsoluteLayoutFlags.PositionProportional);
+            absoluteLayout.Children.Add(companyImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+            absoluteLayout.Children.Add(imageLoadingIndicator, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.WidthProportional | AbsoluteLayoutFlags.PositionProportional);
+            absoluteLayout.Children.Add(gradientImage, new Rectangle(0, 1, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.WidthProportional | AbsoluteLayoutFlags.PositionProportional);
+            absoluteLayout.Children.Add(stackLayout, new Rectangle(0, 1, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.WidthProportional | AbsoluteLayoutFlags.PositionProportional);
 
-            Content = headerAbsoluteLayout;
+            Content = absoluteLayout;
         }
     }
 }

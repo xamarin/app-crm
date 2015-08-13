@@ -10,19 +10,19 @@ namespace XamarinCRM
     {
         public CustomerDetailAddressView()
         {
-            StackLayout addressLabelStackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
+            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
 
             Label addressTitleLabel = new Label()
             { 
                 Text = TextResources.Customers_Detail_Address,
-                TextColor = Device.OnPlatform(Palette._007, Palette._008, Palette._008),
+                TextColor = Device.OnPlatform(Palette._007, Palette._009, Palette._008),
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
 
             Label addressStreetLabel = new Label()
             { 
-                TextColor = Palette._009, 
+                TextColor = Palette._008, 
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
@@ -30,7 +30,7 @@ namespace XamarinCRM
 
             Label addressCityLabel = new Label()
             { 
-                TextColor = Palette._009, 
+                TextColor = Palette._008, 
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
@@ -38,19 +38,35 @@ namespace XamarinCRM
 
             Label addressStatePostalLabel = new Label()
             { 
-                TextColor = Palette._009, 
+                TextColor = Palette._008, 
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             addressStatePostalLabel.SetBinding(Label.TextProperty, "Account.StatePostal");
 
-            addressLabelStackLayout.Children.Add(addressTitleLabel);
-            addressLabelStackLayout.Children.Add(addressStreetLabel);
-            addressLabelStackLayout.Children.Add(addressCityLabel);
-            addressLabelStackLayout.Children.Add(addressStatePostalLabel);
+            Image mapMarkerImage = new Image()
+            { 
+                Source = new FileImageSource { File = Device.OnPlatform("map_marker_ios", "map_marker_android", null) }, 
+                Aspect = Aspect.AspectFit, 
+                HeightRequest = 25 
+            }; 
+            mapMarkerImage.GestureRecognizers.Add(new TapGestureRecognizer() { Command = new Command(() => { /* TODO: pop the map in a modal! */ }) });
 
-            Content = addressLabelStackLayout;
+            stackLayout.Children.Add(addressTitleLabel);
+            stackLayout.Children.Add(addressStreetLabel);
+            stackLayout.Children.Add(addressCityLabel);
+            stackLayout.Children.Add(addressStatePostalLabel);
+
+            AbsoluteLayout absoluteLayout = new AbsoluteLayout();
+
+            absoluteLayout.Children.Add(stackLayout, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.WidthProportional);
+
+            absoluteLayout.Children.Add(mapMarkerImage, new Rectangle(.9, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
+
+            Content = absoluteLayout;
         }
+
+
     }
 }
 

@@ -3203,52 +3203,58 @@ namespace XamarinCRMAndroid
 			public const int icon = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int mr_ic_audio_vol = 2130837625;
+			public const int map_marker_android = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int mr_ic_media_route_connecting_mono_dark = 2130837626;
+			public const int mr_ic_audio_vol = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int mr_ic_media_route_connecting_mono_light = 2130837627;
+			public const int mr_ic_media_route_connecting_mono_dark = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int mr_ic_media_route_mono_dark = 2130837628;
+			public const int mr_ic_media_route_connecting_mono_light = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int mr_ic_media_route_mono_light = 2130837629;
+			public const int mr_ic_media_route_mono_dark = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int mr_ic_pause_dark = 2130837630;
+			public const int mr_ic_media_route_mono_light = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int mr_ic_pause_light = 2130837631;
+			public const int mr_ic_pause_dark = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int mr_ic_play_dark = 2130837632;
+			public const int mr_ic_pause_light = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int mr_ic_play_light = 2130837633;
+			public const int mr_ic_play_dark = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int mr_ic_settings_dark = 2130837634;
+			public const int mr_ic_play_light = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int mr_ic_settings_light = 2130837635;
-			
-			// aapt resource value: 0x7f020088
-			public const int notification_template_icon_bg = 2130837640;
+			public const int mr_ic_settings_dark = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int powered_by_google_dark = 2130837636;
+			public const int mr_ic_settings_light = 2130837636;
+			
+			// aapt resource value: 0x7f02008a
+			public const int notification_template_icon_bg = 2130837642;
 			
 			// aapt resource value: 0x7f020085
-			public const int powered_by_google_light = 2130837637;
+			public const int phone_android = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int splash = 2130837638;
+			public const int powered_by_google_dark = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int xamarin_logo_plus_name_inline = 2130837639;
+			public const int powered_by_google_light = 2130837639;
+			
+			// aapt resource value: 0x7f020088
+			public const int splash = 2130837640;
+			
+			// aapt resource value: 0x7f020089
+			public const int xamarin_logo_plus_name_inline = 2130837641;
 			
 			static Drawable()
 			{

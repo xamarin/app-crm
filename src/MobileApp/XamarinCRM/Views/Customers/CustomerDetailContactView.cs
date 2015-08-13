@@ -10,28 +10,28 @@ namespace XamarinCRM.Views.Customers
     {
         public CustomerDetailContactView()
         {
-            StackLayout contactLabelsStackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
+            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
 
             Label contactTitleLabel = new Label()
             { 
                 Text = TextResources.Contact,
-                TextColor = Device.OnPlatform(Palette._007, Palette._008, Palette._008),
+                TextColor = Device.OnPlatform(Palette._007, Palette._009, Palette._008),
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
 
             Label contactLabel = new Label()
             { 
-                TextColor = Palette._009, 
+                TextColor = Palette._008, 
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             contactLabel.SetBinding(Label.TextProperty, "Account.DisplayContact");
 
-            contactLabelsStackLayout.Children.Add(contactTitleLabel);
-            contactLabelsStackLayout.Children.Add(contactLabel);
+            stackLayout.Children.Add(contactTitleLabel);
+            stackLayout.Children.Add(contactLabel);
 
-            Content = new ContentViewWithBottomBorder() { Content = contactLabelsStackLayout };
+            Content = new ContentViewWithBottomBorder() { Content = stackLayout };
         }
     }
 }

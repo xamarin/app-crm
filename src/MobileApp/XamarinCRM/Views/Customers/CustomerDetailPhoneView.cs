@@ -16,31 +16,42 @@ namespace XamarinCRM
         {
             _Page = page;
 
-            StackLayout phoneLabelStackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
+            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
 
             Label phoneTitleLabel = new Label()
             { 
                 Text = TextResources.Phone,
-                TextColor = Device.OnPlatform(Palette._007, Palette._008, Palette._008),
+                TextColor = Device.OnPlatform(Palette._007, Palette._009, Palette._008),
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
 
             Label phoneLabel = new Label()
             { 
-                TextColor = Palette._009, 
+                TextColor = Palette._008, 
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             phoneLabel.SetBinding(Label.TextProperty, "Account.Phone");
-            phoneLabel.GestureRecognizers.Add(new TapGestureRecognizer() { Command = new Command(() => OnPhoneTapped(phoneLabel, null)) });
 
-            Image phoneImage = new Image() { Source = new FileImageSource { File = Device.OnPlatform("phone_ios", "phone_android", null) }, Aspect = Aspect.AspectFit }; 
+            Image phoneImage = new Image()
+            { 
+                Source = new FileImageSource { File = Device.OnPlatform("phone_ios", "phone_android", null) }, 
+                Aspect = Aspect.AspectFit, 
+                HeightRequest = 25 
+            }; 
+            phoneImage.GestureRecognizers.Add(new TapGestureRecognizer() { Command = new Command(() => OnPhoneTapped(phoneLabel, null)) });
 
-            phoneLabelStackLayout.Children.Add(phoneTitleLabel);
-            phoneLabelStackLayout.Children.Add(phoneLabel);
+            stackLayout.Children.Add(phoneTitleLabel);
+            stackLayout.Children.Add(phoneLabel);
 
-            Content = new ContentViewWithBottomBorder() { Content = phoneLabelStackLayout };
+            AbsoluteLayout absoluteLayout = new AbsoluteLayout();
+
+            absoluteLayout.Children.Add(stackLayout, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.WidthProportional);
+
+            absoluteLayout.Children.Add(phoneImage, new Rectangle(.9, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
+
+            Content = new ContentViewWithBottomBorder() { Content = absoluteLayout };
         }
 
         async void OnPhoneTapped(object sender, EventArgs e)
@@ -54,10 +65,10 @@ namespace XamarinCRM
                 return;        
 
             if (await _Page.DisplayAlert(
-                title: "Dial a Number",
-                message: "Would you like to call " + phoneNumber + "?",
-                accept: "Yes",
-                cancel: "No"))
+                    title: "Dial a Number",
+                    message: "Would you like to call " + phoneNumber + "?",
+                    accept: "Yes",
+                    cancel: "No"))
             {
                 var dialer = DependencyService.Get<IDialer>();
 

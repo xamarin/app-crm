@@ -248,6 +248,9 @@
     <BundleResource Include="Resources\xamarin_logo_plus_name_inline.png" />
     <BundleResource Include="Resources\bottom_up_gradient%402x.png" />
     <BundleResource Include="Resources\bottom_up_gradient%403x.png" />
+    <BundleResource Include="Resources\bottom_up_gradient.png" />
+    <BundleResource Include="Resources\phone_ios%403x.png" />
+    <BundleResource Include="Resources\map_marker_ios%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
