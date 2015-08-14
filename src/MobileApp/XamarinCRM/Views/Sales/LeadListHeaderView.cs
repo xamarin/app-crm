@@ -12,21 +12,7 @@ namespace XamarinCRM.Views.Sales
         {
             _NewLeadClickedAction = newLeadClickedAction;
 
-            #region outerContentView
-            ContentView outerContentView = new ContentView();
-            #endregion
-
-            #region setup innerContentView
-            ContentView innerContentView = new ContentView()
-            {
-                Padding = new Thickness(10, 0, 0, 0), // give the content some padding on the left and right
-                HeightRequest = 44, // set the height of the content view
-            };
-
-            Device.OnPlatform(Android: () => innerContentView.Padding = new Thickness(10, 0));
-            #endregion
-
-            #region setup labels
+            #region title label
             Label headerTitleLabel = new Label()
             {
                 Text = TextResources.Leads_LeadListHeaderTitle.ToUpperInvariant(),
@@ -36,54 +22,47 @@ namespace XamarinCRM.Views.Sales
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Center
             };
-
-            // The "+" button for adding new leads
-            // TODO: We really ought to replace this with an Image instead. There's a gray "add" button in each platform, ready to go. Will do as time permits.
-            Label newLeadLabel = new Label()
-            {
-                Text = "+",
-                TextColor = Color.Gray,
-                BackgroundColor = Color.Transparent,
-                FontSize = Device.OnPlatform(
-                    iOS: Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-                    Android: Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-                    WinPhone: Device.GetNamedSize(NamedSize.Large, typeof(Label))) * 1.5,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center
-            };
-
-            newLeadLabel.GestureRecognizers.Add(new TapGestureRecognizer()
-            {
-                Command = new Command(() => _NewLeadClickedAction.Invoke()),
-                NumberOfTapsRequired = 1
-            });
-
-            Device.OnPlatform(iOS: () => newLeadLabel.FontAttributes = FontAttributes.None);
             #endregion
 
-            #region add elements to relative layout
-            RelativeLayout relativeLayout = new RelativeLayout();
+            #region new lead image "button"
+            Image newLeadImage = new Image()
+            {
+                Source = new FileImageSource() { File = Device.OnPlatform("add_ios_gray", "add_android_gray", null) },
+                Aspect = Aspect.AspectFit, 
+                HorizontalOptions = LayoutOptions.EndAndExpand
+            };
+            newLeadImage.GestureRecognizers.Add(new TapGestureRecognizer()
+                {
+                    Command = new Command(() => _NewLeadClickedAction.Invoke()),
+                    NumberOfTapsRequired = 1
+                });
+            #endregion
 
-            relativeLayout.Children.Add(
-                view: headerTitleLabel,
-                widthConstraint: Constraint.RelativeToParent(parent => parent.Width * .75),
-                heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
-            );
+            #region absolutLayout
+            AbsoluteLayout absolutLayout = new AbsoluteLayout();
 
-            relativeLayout.Children.Add(
-                view: newLeadLabel,
-                xConstraint: Constraint.RelativeToParent(parent => parent.Width - parent.Height),
-                widthConstraint: Constraint.RelativeToParent(parent => parent.Height),
-                heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
-            );
+            absolutLayout.Children.Add(
+                headerTitleLabel, 
+                new Rectangle(0, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), 
+                AbsoluteLayoutFlags.PositionProportional);
+
+            absolutLayout.Children.Add(
+                newLeadImage, 
+                new Rectangle(1, .5, AbsoluteLayout.AutoSize, .5), 
+                AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.HeightProportional);
+            #endregion
+
+            #region setup contentView
+            ContentView contentView = new ContentView()
+            {
+                Padding = new Thickness(10, 0), // give the content some padding on the left and right
+                HeightRequest = Sizes.MediumRowHeight, // set the height of the content view
+            };
             #endregion
 
             #region compose the view hierarchy
-            innerContentView.Content = relativeLayout;
-
-            outerContentView.Content = innerContentView;
-
-            Content = outerContentView;
+            contentView.Content = absolutLayout;
+            Content = contentView;
             #endregion
         }
     }

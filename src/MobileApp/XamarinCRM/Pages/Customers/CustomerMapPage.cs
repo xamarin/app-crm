@@ -2,9 +2,9 @@
 using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using XamarinCRM.Interfaces;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.ViewModels.Customers;
-using XamarinCRM.Interfaces;
 
 namespace XamarinCRM.Pages.Customers
 {
