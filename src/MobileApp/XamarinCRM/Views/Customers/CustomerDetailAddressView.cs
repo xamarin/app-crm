@@ -1,5 +1,4 @@
 ﻿using Xamarin.Forms;
-using XamarinCRM.Interfaces;
 using XamarinCRM.Layouts;
 using XamarinCRM.Pages.Customers;
 using XamarinCRM.Statics;
@@ -10,14 +9,8 @@ namespace XamarinCRM
 {
     public class CustomerDetailAddressView : ModelTypedContentView<CustomerDetailViewModel>
     {
-        readonly INativeDirectionsPresenter _NativeMap;
-
         public CustomerDetailAddressView()
         {
-            _NativeMap = DependencyService.Get<INativeDirectionsPresenter>();
-
-            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
-
             Label addressTitleLabel = new Label()
             { 
                 Text = TextResources.Customers_Detail_Address,
@@ -62,9 +55,11 @@ namespace XamarinCRM
                     Command = new Command(async () =>
                         {
                             NavigationPage navPage = new NavigationPage(new CustomerMapPage(ViewModel));
-                            ViewModel.PushModalAsync(navPage);
+                            await ViewModel.PushModalAsync(navPage);
                         }) 
                 });
+
+            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
 
             stackLayout.Children.Add(addressTitleLabel);
             stackLayout.Children.Add(addressStreetLabel);
