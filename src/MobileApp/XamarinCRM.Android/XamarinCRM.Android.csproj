@@ -261,6 +261,7 @@
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\drawable\phone_android.png" />
     <AndroidResource Include="Resources\drawable\map_marker_android.png" />
+    <AndroidResource Include="Resources\values\api-keys.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\XamarinCRM\Config\config.xml">

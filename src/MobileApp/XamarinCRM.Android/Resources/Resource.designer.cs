@@ -3912,6 +3912,9 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f060049
 			public const int ApplicationName = 2131099721;
 			
+			// aapt resource value: 0x7f06004c
+			public const int GoogleMapsKey = 2131099724;
+			
 			// aapt resource value: 0x7f06004b
 			public const int Hello = 2131099723;
 			
