@@ -16,12 +16,12 @@ namespace XamarinCRM
     {
         ICustomerDataClient _CustomerDataClient;
 
-        Command loadSeedDataCommand;
+        Command _LoadSeedDataCommand;
 
         ObservableCollection<Order> _Orders;
         ObservableCollection<ChartDataPoint> _SalesChartDataPoints;
 
-        string salesAverage;
+        string _SalesAverage;
 
         public bool NeedsRefresh { get; set; }
 
@@ -40,7 +40,7 @@ namespace XamarinCRM
         {
             get
             {
-                return loadSeedDataCommand ?? (loadSeedDataCommand = new Command(async () => await ExecuteLoadSeedDataCommand()));
+                return _LoadSeedDataCommand ?? (_LoadSeedDataCommand = new Command(async () => await ExecuteLoadSeedDataCommand()));
             }
         }
 
@@ -94,11 +94,11 @@ namespace XamarinCRM
         {
             get
             {
-                return salesAverage;
+                return _SalesAverage;
             }
             set
             {
-                salesAverage = value;
+                _SalesAverage = value;
                 OnPropertyChanged("SalesAverage");
             }
         }

@@ -15,9 +15,9 @@ namespace XamarinCRM
     {
         ICustomerDataClient _CustomerDataClient;
 
-        Command loadSeedDataCommand;
+        Command _LoadSeedDataCommand;
 
-        Command loadLeadsCommand;
+        Command _LoadLeadsCommand;
 
         ObservableCollection<Account> _Leads;
 
@@ -58,7 +58,7 @@ namespace XamarinCRM
         {
             get
             {
-                return loadSeedDataCommand ?? (loadSeedDataCommand = new Command(async () => await ExecuteLoadSeedDataCommand()));
+                return _LoadSeedDataCommand ?? (_LoadSeedDataCommand = new Command(async () => await ExecuteLoadSeedDataCommand()));
             }
         }
 
@@ -70,7 +70,7 @@ namespace XamarinCRM
         { 
             get
             { 
-                return loadLeadsCommand ?? (loadLeadsCommand = new Command(ExecuteLoadLeadsCommand, () => !IsBusy)); 
+                return _LoadLeadsCommand ?? (_LoadLeadsCommand = new Command(ExecuteLoadLeadsCommand, () => !IsBusy)); 
             } 
         }
 

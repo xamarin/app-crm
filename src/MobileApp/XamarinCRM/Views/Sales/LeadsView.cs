@@ -51,6 +51,10 @@ namespace XamarinCRM
             Content = stackLayout;
         }
 
+        /// <summary>
+        /// We encapsulate ViewModel.PushLeadDetailsTabbedPageCommand.Execute(account) because ViewModel is null during construction of this class.
+        /// </summary>
+        /// <param name="account">An Account. Null by default. If null, pushes a fresh lead details tabbed page. If not null, loads the account in the pushed lead details tabbed page.</param>
         void ExecutePushLeadDetailsTabbedPageCommand(object account = null)
         {
             ViewModel.PushLeadDetailsTabbedPageCommand.Execute(account);
