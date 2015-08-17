@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-	<style name="MyTheme" parent="@android:style/Theme.Material.Light">
+	<style name="XamarinCRMTheme" parent="@android:style/Theme.Material.Light">
 		<item name="android:colorPrimary">@color/primary</item>
 		<item name="android:colorPrimaryDark">@color/primaryDark</item>
 		<item name="android:colorAccent">@color/accent</item>
+		<item name="android:navigationBarColor">@color/primaryDark</item>
 		<item name="android:windowContentTransitions">true</item>
 		<item name="android:windowAllowEnterTransitionOverlap">true</item>
 		<item name="android:windowAllowReturnTransitionOverlap">true</item>
 		<item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
 		<item name="android:windowSharedElementExitTransition">@android:transition/move</item>
-		<item name="android:actionBarStyle">@style/MyTheme.ActionBarStyle</item>
+		<item name="android:actionBarStyle">@style/XamarinCRMTheme.ActionBarStyle</item>
 	</style>
 </resources>

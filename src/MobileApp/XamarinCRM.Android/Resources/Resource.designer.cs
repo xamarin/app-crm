@@ -4564,18 +4564,6 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f080074
 			public const int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2131230836;
 			
-			// aapt resource value: 0x7f08012f
-			public const int MyTheme = 2131231023;
-			
-			// aapt resource value: 0x7f080131
-			public const int MyTheme_ActionBar_TitleTextStyle = 2131231025;
-			
-			// aapt resource value: 0x7f080130
-			public const int MyTheme_ActionBarStyle = 2131231024;
-			
-			// aapt resource value: 0x7f08012e
-			public const int MyTheme_Base = 2131231022;
-			
 			// aapt resource value: 0x7f080014
 			public const int Platform_AppCompat = 2131230740;
 			
@@ -5070,6 +5058,18 @@ namespace XamarinCRMAndroid
 			
 			// aapt resource value: 0x7f080003
 			public const int Widget_MediaRouter_MediaRouteButton = 2131230723;
+			
+			// aapt resource value: 0x7f08012f
+			public const int XamarinCRMTheme = 2131231023;
+			
+			// aapt resource value: 0x7f080131
+			public const int XamarinCRMTheme_ActionBar_TitleTextStyle = 2131231025;
+			
+			// aapt resource value: 0x7f080130
+			public const int XamarinCRMTheme_ActionBarStyle = 2131231024;
+			
+			// aapt resource value: 0x7f08012e
+			public const int XamarinCRMTheme_Base = 2131231022;
 			
 			static Style()
 			{
