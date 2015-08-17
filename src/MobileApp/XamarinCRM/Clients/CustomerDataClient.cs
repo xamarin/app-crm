@@ -19,7 +19,7 @@ namespace XamarinCRM.Clients
     public class CustomerDataClient : ICustomerDataClient
     {
         IMobileServiceSyncTable<Order> _OrderTable;
-        IMobileServiceSyncTable<Contact> _ContactTable;
+//        IMobileServiceSyncTable<Contact> _ContactTable;
         IMobileServiceSyncTable<Account> _AccountTable;
 
         public IMobileServiceClient MobileService { get; set; }
@@ -43,7 +43,7 @@ namespace XamarinCRM.Clients
 
             store.DefineTable<Order>();
             store.DefineTable<Account>();
-            store.DefineTable<Contact>();
+//            store.DefineTable<Contact>();
 
             try
             {
@@ -59,7 +59,7 @@ namespace XamarinCRM.Clients
 
             _AccountTable = MobileService.GetSyncTable<Account>();
 
-            _ContactTable = MobileService.GetSyncTable<Contact>();
+//            _ContactTable = MobileService.GetSyncTable<Contact>();
         }
 
         public async Task SeedData()
@@ -74,7 +74,7 @@ namespace XamarinCRM.Clients
 
                 await _OrderTable.PullAsync(null, _OrderTable.CreateQuery());
                 await _AccountTable.PullAsync(null, _AccountTable.CreateQuery());
-                await _ContactTable.PullAsync(null, _ContactTable.CreateQuery());
+//                await _ContactTable.PullAsync(null, _ContactTable.CreateQuery());
 
             }
             catch (Exception exc)
@@ -305,116 +305,6 @@ namespace XamarinCRM.Clients
                 Debug.WriteLine(@"ERROR {0}", ex2.Message);
             }
             return new List<Order>();
-        }
-
-        #endregion
-
-        #region Contacts
-
-        public async Task SyncContacts()
-        {
-            try
-            {
-                await Init();
-
-                //SYI: Only pull in public demo
-                //await MobileService.SyncContext.PushAsync();
-
-                //await contactTable.PullAsync();
-                await _ContactTable.PullAsync(null, _ContactTable.CreateQuery());
-            }
-            catch (MobileServiceInvalidOperationException e)
-            {
-                Debug.WriteLine(@"Sync Failed: {0}", e.Message);
-            }
-            catch (Exception ex2)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex2.Message);
-            }
-        }
-
-        public async Task SaveContactAsync(Contact item)
-        {
-            try
-            {
-                using (var handle = Insights.TrackTime("TimeToSaveContact"))
-                {
-                    if (item.Id == null)
-                        await _ContactTable.InsertAsync(item);
-                    else
-                        await _ContactTable.UpdateAsync(item);
-                }
-
-                //await SyncContacts();
-            }
-            catch (MobileServiceInvalidOperationException e)
-            {
-                Debug.WriteLine(@"Sync Failed: {0}", e.Message);
-            }
-        }
-
-        public async Task DeleteContactAsync(Contact item)
-        {
-            try
-            {
-                await _ContactTable.DeleteAsync(item);
-                //await SyncContacts();
-            }
-            catch (MobileServiceInvalidOperationException ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
-            catch (Exception ex2)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex2.Message);
-            }
-        }
-
-        public async Task<IEnumerable<Contact>> GetContactsAsync()
-        {
-            try
-            {
-                using (var handle = Insights.TrackTime("TimeToGetContacts"))
-                {
-                    //SYI - Sort contacts by last name
-                    IMobileServiceTableQuery<Contact> query = _ContactTable.OrderBy(c => c.LastName);
-                    return await query.ToListAsync();
-                }
-            }
-            catch (MobileServiceInvalidOperationException ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
-            catch (SQLiteException sqex)
-            {
-                Debug.WriteLine(@"ERROR {0}", sqex.Message);
-            }
-            catch (Exception ex2)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex2.Message);
-            }
-            return new List<Contact>();
-        }
-
-        public async Task<Contact> GetContactAsync(string contactId)
-        {
-            try
-            {
-                using (var handle = Insights.TrackTime("TimeToGetContact"))
-                {
-                    await SyncContacts();
-                    return await _ContactTable.LookupAsync(contactId);
-                }
-            }
-            catch (MobileServiceInvalidOperationException ex)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
-            }
-            catch (Exception ex2)
-            {
-                Debug.WriteLine(@"ERROR {0}", ex2.Message);
-            }
-            return null;
         }
 
         #endregion

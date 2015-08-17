@@ -43,12 +43,8 @@
     <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Interfaces\IDialer.cs" />
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\Attributes\CurrencyAttribute.cs" />
     <Compile Include="Properties\Attributes\DisplayAttribute.cs" />
     <Compile Include="Services\AuthInfo.cs" />

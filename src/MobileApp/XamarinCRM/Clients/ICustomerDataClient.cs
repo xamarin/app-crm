@@ -10,8 +10,6 @@ namespace XamarinCRM.Clients
 
         bool DoesLocalDBExist();
 
-        Task SyncContacts();
-
         Task SyncAccounts();
 
         Task SyncOrders();
@@ -27,18 +25,11 @@ namespace XamarinCRM.Clients
         Task<IEnumerable<Account>> GetAccountsAsync(bool leads);
 
         //Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId, bool open);
+
         Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId);
 
         Task<IEnumerable<Order>> GetAccountOrderHistoryAsync(string accountId);
 
         Task<IEnumerable<Order>> GetAllAccountOrdersAsync();
-
-        Task SaveContactAsync(Contact item);
-
-        Task DeleteContactAsync(Contact item);
-
-        Task<IEnumerable<Contact>> GetContactsAsync();
-
-        Task<Contact> GetContactAsync(string contactId);
     }
 }
