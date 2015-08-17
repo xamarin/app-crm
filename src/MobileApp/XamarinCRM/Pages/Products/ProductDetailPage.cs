@@ -32,15 +32,13 @@ namespace XamarinCRM.Pages.Products
             ProductDetailDescriptionView descriptionView = new ProductDetailDescriptionView(_CatalogProduct);
             #endregion
 
+            #region compose view hierarchy
             StackLayout stackLayout = new UnspacedStackLayout();
-
             stackLayout.Children.Add(image);
             stackLayout.Children.Add(detailRibbon);
             stackLayout.Children.Add(descriptionView);
-
-            ScrollView scrollView = new ScrollView();
-
-            scrollView.Content = stackLayout;
+            ScrollView scrollView = new ScrollView() { Content = stackLayout };
+            #endregion
 
             Content = scrollView;
         }

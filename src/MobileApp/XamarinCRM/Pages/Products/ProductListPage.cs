@@ -17,7 +17,8 @@ namespace XamarinCRM.Pages.Products
             get { return BindingContext as ProductsViewModel; }
         }
 
-        public ProductListPage(string categoryId, string title, bool isPerformingProductSelection = false) : base(isPerformingProductSelection)
+        public ProductListPage(string categoryId, string title, bool isPerformingProductSelection = false)
+            : base(isPerformingProductSelection)
         {
             _CategoryId = categoryId;
 
@@ -27,31 +28,51 @@ namespace XamarinCRM.Pages.Products
 
             BindingContext = new ProductsViewModel(_CategoryId);
 
+            #region product list
             ProductListView productListView = new ProductListView();
             productListView.SetBinding(ProductListView.ItemsSourceProperty, "Products");
             productListView.SetBinding(CategoryListView.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             productListView.SetBinding(CategoryListView.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
 
             productListView.ItemTapped += (sender, e) =>
-                {
-                    CatalogProduct catalogProduct = ((CatalogProduct)e.Item);
+            {
+                CatalogProduct catalogProduct = ((CatalogProduct)e.Item);
 
-                    Navigation.PushAsync(new ProductDetailPage(catalogProduct, isPerformingProductSelection));
-                };
+                Navigation.PushAsync(new ProductDetailPage(catalogProduct, isPerformingProductSelection));
+            };
+            #endregion
 
+            #region activity indicator
             ActivityIndicator activityIndicator = new ActivityIndicator()
-                {
-                    HeightRequest = Sizes.LargeRowHeight
-                };
+            {
+                HeightRequest = Sizes.LargeRowHeight
+            };
 
             activityIndicator.BindingContext = ViewModel;
             activityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
             activityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
             activityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+            #endregion
 
+            #region loading label
+            Label loadingLabel = new Label()
+            {
+                Text = TextResources.Products_ProductList_LoadingLabel,
+                FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                HeightRequest = Sizes.SmallRowHeight,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.Center,
+                TextColor = Palette._009
+            };
+            loadingLabel.SetBinding(IsEnabledProperty, "IsBusy");
+            loadingLabel.SetBinding(IsVisibleProperty, "IsBusy");
+            #endregion
+
+            #region compase view hierarchy
+            stackLayout.Children.Add(loadingLabel);
             stackLayout.Children.Add(activityIndicator);
-
             stackLayout.Children.Add(productListView);
+            #endregion
 
             Content = stackLayout;
         }

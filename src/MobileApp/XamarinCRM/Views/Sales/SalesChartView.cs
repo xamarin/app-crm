@@ -19,12 +19,7 @@ namespace XamarinCRM
             chartHeaderView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
             #endregion
 
-            #region the sales graph
-            double chartHeight = Device.OnPlatform(190, 190, 180);
-
-            StackLayout stackLayout = new UnspacedStackLayout() { HeightRequest = chartHeight + Sizes.MediumRowHeight };
-            Device.OnPlatform(iOS: () => stackLayout.BackgroundColor = Color.Transparent, Android: () => stackLayout.BackgroundColor = Palette._010);
-
+            #region activity indiciator
             ActivityIndicator chartActivityIndicator = new ActivityIndicator()
             {
                 HeightRequest = Sizes.MediumRowHeight
@@ -32,6 +27,29 @@ namespace XamarinCRM
             chartActivityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
             chartActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
             chartActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+            #endregion
+
+            #region loading label
+            Label loadingLabel = new Label()
+            {
+                Text = TextResources.SalesDashboard_SalesChart_LoadingLabel,
+                FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                HeightRequest = Sizes.SmallRowHeight,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.Center,
+                TextColor = Palette._009
+            };
+            loadingLabel.SetBinding(IsEnabledProperty, "IsBusy");
+            loadingLabel.SetBinding(IsVisibleProperty, "IsBusy");
+            #endregion
+
+            #region the sales graph
+            double chartHeight = Device.OnPlatform(190, 190, 180);
+
+            StackLayout stackLayout = new UnspacedStackLayout() { HeightRequest = chartHeight + Sizes.MediumRowHeight };
+            Device.OnPlatform(iOS: () => stackLayout.BackgroundColor = Color.Transparent, Android: () => stackLayout.BackgroundColor = Palette._010);
+
+
 
             ColumnSeries columnSeries = new ColumnSeries()
             {
@@ -78,6 +96,7 @@ namespace XamarinCRM
             Device.OnPlatform(iOS: () => chartWrapper.Padding = new Thickness(0, 0, 30, 0));
 
             stackLayout.Children.Add(chartHeaderView);
+            stackLayout.Children.Add(loadingLabel);
             stackLayout.Children.Add(chartActivityIndicator);
             stackLayout.Children.Add(chartWrapper);
             #endregion

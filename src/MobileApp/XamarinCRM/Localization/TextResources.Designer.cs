@@ -53,6 +53,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string SalesDashboard_SalesChart_Header_WeeklyAverageTitle {
+            get {
+                return ResourceManager.GetString("SalesDashboard_SalesChart_Header_WeeklyAverageTitle", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadContactDetail_Phone {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_Phone", resourceCulture);
@@ -104,12 +110,6 @@ namespace XamarinCRM {
         internal static string Contact {
             get {
                 return ResourceManager.GetString("Contact", resourceCulture);
-            }
-        }
-        
-        internal static string SalesChartHeaderTitle {
-            get {
-                return ResourceManager.GetString("SalesChartHeaderTitle", resourceCulture);
             }
         }
         
@@ -179,6 +179,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Products_CategoryList_LoadingLabel {
+            get {
+                return ResourceManager.GetString("Products_CategoryList_LoadingLabel", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadDetail_OpportunitySizePlaceholder {
             get {
                 return ResourceManager.GetString("Leads_LeadDetail_OpportunitySizePlaceholder", resourceCulture);
@@ -215,6 +221,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string SalesDashboard_Leads_LoadingLabel {
+            get {
+                return ResourceManager.GetString("SalesDashboard_Leads_LoadingLabel", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadDetail_CompanyNamePlaceholder {
             get {
                 return ResourceManager.GetString("Leads_LeadDetail_CompanyNamePlaceholder", resourceCulture);
@@ -224,6 +236,12 @@ namespace XamarinCRM {
         internal static string Products {
             get {
                 return ResourceManager.GetString("Products", resourceCulture);
+            }
+        }
+        
+        internal static string Products_ProductList_LoadingLabel {
+            get {
+                return ResourceManager.GetString("Products_ProductList_LoadingLabel", resourceCulture);
             }
         }
         
@@ -323,6 +341,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string SalesDashboard_SalesChart_Header_Title {
+            get {
+                return ResourceManager.GetString("SalesDashboard_SalesChart_Header_Title", resourceCulture);
+            }
+        }
+        
         internal static string Customers_Detail_MappingDirections_LeaveApplication {
             get {
                 return ResourceManager.GetString("Customers_Detail_MappingDirections_LeaveApplication", resourceCulture);
@@ -356,6 +380,12 @@ namespace XamarinCRM {
         internal static string Customers_Orders_Tab_Title {
             get {
                 return ResourceManager.GetString("Customers_Orders_Tab_Title", resourceCulture);
+            }
+        }
+        
+        internal static string SalesDashboard_SalesChart_LoadingLabel {
+            get {
+                return ResourceManager.GetString("SalesDashboard_SalesChart_LoadingLabel", resourceCulture);
             }
         }
         
@@ -422,12 +452,6 @@ namespace XamarinCRM {
         internal static string Leads_ExitConfirmTitle {
             get {
                 return ResourceManager.GetString("Leads_ExitConfirmTitle", resourceCulture);
-            }
-        }
-        
-        internal static string SalesChartHeaderWeeklyAverageTitle {
-            get {
-                return ResourceManager.GetString("SalesChartHeaderWeeklyAverageTitle", resourceCulture);
             }
         }
         

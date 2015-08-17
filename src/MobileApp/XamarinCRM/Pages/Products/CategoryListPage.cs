@@ -1,7 +1,6 @@
 ﻿using Xamarin.Forms;
 using XamarinCRM.Converters;
 using XamarinCRM.Layouts;
-using XamarinCRM.Localization;
 using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Products;
@@ -28,10 +27,9 @@ namespace XamarinCRM.Pages.Products
             if (title != null)
                 Title = title;
 
-            StackLayout stackLayout = new UnspacedStackLayout();
-
             BindingContext = new CategoriesViewModel(_CategoryId);
 
+            #region category list
             CategoryListView categoryListView = new CategoryListView();
             categoryListView.SetBinding(CategoryListView.ItemsSourceProperty, "Categories");
             categoryListView.SetBinding(CategoryListView.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
@@ -50,7 +48,9 @@ namespace XamarinCRM.Pages.Products
                         Navigation.PushAsync(new ProductListPage(catalogCategory.Id, catalogCategory.Name, isPerformingProductSelection));
                     }
                 };
+            #endregion
 
+            #region activity indicator
             ActivityIndicator activityIndicator = new ActivityIndicator()
                 {
                     HeightRequest = Sizes.LargeRowHeight
@@ -60,10 +60,28 @@ namespace XamarinCRM.Pages.Products
             activityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
             activityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
             activityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+            #endregion
 
+            #region loading label
+            Label loadingLabel = new Label()
+                {
+                    Text = TextResources.Products_CategoryList_LoadingLabel,
+                    FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                    HeightRequest = Sizes.SmallRowHeight,
+                    XAlign = TextAlignment.Center,
+                    YAlign = TextAlignment.Center,
+                    TextColor = Palette._009
+                };
+            loadingLabel.SetBinding(IsEnabledProperty, "IsBusy");
+            loadingLabel.SetBinding(IsVisibleProperty, "IsBusy");
+            #endregion
+
+            #region compose view hierarchy
+            StackLayout stackLayout = new UnspacedStackLayout();
+            stackLayout.Children.Add(loadingLabel);
             stackLayout.Children.Add(activityIndicator);
-
             stackLayout.Children.Add(categoryListView);
+            #endregion
 
             Content = stackLayout;
         }

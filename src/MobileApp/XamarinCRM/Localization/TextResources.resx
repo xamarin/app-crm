@@ -151,11 +151,17 @@
 	<data name="Sales" xml:space="preserve">
     	<value>Sales</value>
 	</data>
-	<data name="SalesChartHeaderTitle" xml:space="preserve">
+	<data name="SalesDashboard_SalesChart_Header_Title" xml:space="preserve">
 		<value>6-Week Sales</value>
 	</data>
-	<data name="SalesChartHeaderWeeklyAverageTitle" xml:space="preserve">
+	<data name="SalesDashboard_SalesChart_Header_WeeklyAverageTitle" xml:space="preserve">
 		<value>Weekly Average</value>
+	</data>
+	<data name="SalesDashboard_SalesChart_LoadingLabel" xml:space="preserve">
+		<value>Loading sales chart data...</value>
+	</data>
+	<data name="SalesDashboard_Leads_LoadingLabel" xml:space="preserve">
+		<value>Loading leads data...</value>
 	</data>
 
 
@@ -232,6 +238,12 @@
 
 	<data name="Products" xml:space="preserve">
     	<value>Products</value>
+	</data>
+	<data name="Products_CategoryList_LoadingLabel" xml:space="preserve">
+    	<value>Loading product categories...</value>
+	</data>
+	<data name="Products_ProductList_LoadingLabel" xml:space="preserve">
+    	<value>Loading products...</value>
 	</data>
 
 </root>

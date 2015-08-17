@@ -22,12 +22,26 @@ namespace XamarinCRM
 
             #region leads list activity inidicator
             ActivityIndicator leadListActivityIndicator = new ActivityIndicator()
-                { 
-                    HeightRequest = Sizes.MediumRowHeight
-                };
+            { 
+                HeightRequest = Sizes.MediumRowHeight
+            };
             leadListActivityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
             leadListActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
             leadListActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+            #endregion
+
+            #region loading label
+            Label loadingLabel = new Label()
+            {
+                Text = TextResources.SalesDashboard_Leads_LoadingLabel,
+                FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                HeightRequest = Sizes.SmallRowHeight,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.Center,
+                TextColor = Palette._009
+            };
+            loadingLabel.SetBinding(IsEnabledProperty, "IsBusy");
+            loadingLabel.SetBinding(IsVisibleProperty, "IsBusy");
             #endregion
 
             #region leadsListView
@@ -37,15 +51,16 @@ namespace XamarinCRM
             leadListView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
 
             leadListView.ItemTapped += (sender, e) =>
-                {
-                    Account leadListItem = (Account)e.Item;
-                    ExecutePushLeadDetailsTabbedPageCommand(leadListItem);
-                };
+            {
+                Account leadListItem = (Account)e.Item;
+                ExecutePushLeadDetailsTabbedPageCommand(leadListItem);
+            };
             #endregion
 
             StackLayout stackLayout = new UnspacedStackLayout();
 
             stackLayout.Children.Add(leadListHeaderView);
+            stackLayout.Children.Add(loadingLabel);
             stackLayout.Children.Add(leadListActivityIndicator);
             stackLayout.Children.Add(leadListView);
 

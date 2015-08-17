@@ -14,7 +14,7 @@ namespace XamarinCRM.Views.Sales
 
             Label headerTitleLabel = new Label()
             { 
-                Text = TextResources.SalesChartHeaderTitle,
+                Text = TextResources.SalesDashboard_SalesChart_Header_Title,
                 TextColor = Device.OnPlatform(Palette._008, Color.White, Color.White),
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 XAlign = TextAlignment.Start,
@@ -23,7 +23,7 @@ namespace XamarinCRM.Views.Sales
 
             Label weeklyAverageTitleLabel = new Label()
             {
-                Text = TextResources.SalesChartHeaderWeeklyAverageTitle.ToUpperInvariant(),
+                Text = TextResources.SalesDashboard_SalesChart_Header_WeeklyAverageTitle.ToUpperInvariant(),
                 TextColor = Palette._009,
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Micro, typeof(Label)) * .9,
