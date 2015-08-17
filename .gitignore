@@ -171,4 +171,4 @@ UpgradeLog*.htm
 FakesAssemblies/
 
 # Android API keys
-*api-keys.xml
+*/*/*/*/values/api-keys.xml
