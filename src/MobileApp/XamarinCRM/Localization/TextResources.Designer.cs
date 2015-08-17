@@ -47,6 +47,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Customers_Detail_CallDialog_Title {
+            get {
+                return ResourceManager.GetString("Customers_Detail_CallDialog_Title", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadDetail_CompanyName {
             get {
                 return ResourceManager.GetString("Leads_LeadDetail_CompanyName", resourceCulture);
@@ -179,6 +185,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Products {
+            get {
+                return ResourceManager.GetString("Products", resourceCulture);
+            }
+        }
+        
         internal static string Products_CategoryList_LoadingLabel {
             get {
                 return ResourceManager.GetString("Products_CategoryList_LoadingLabel", resourceCulture);
@@ -233,9 +245,9 @@ namespace XamarinCRM {
             }
         }
         
-        internal static string Products {
+        internal static string Customers_Detail_CallDialog_Message {
             get {
-                return ResourceManager.GetString("Products", resourceCulture);
+                return ResourceManager.GetString("Customers_Detail_CallDialog_Message", resourceCulture);
             }
         }
         
@@ -443,6 +455,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Customers_Detail_CallDialog_Cancel {
+            get {
+                return ResourceManager.GetString("Customers_Detail_CallDialog_Cancel", resourceCulture);
+            }
+        }
+        
         internal static string Customers_Orders_EditOrder_CompanyTitle {
             get {
                 return ResourceManager.GetString("Customers_Orders_EditOrder_CompanyTitle", resourceCulture);
@@ -476,6 +494,12 @@ namespace XamarinCRM {
         internal static string Back {
             get {
                 return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        internal static string Customers_Detail_CallDialog_Accept {
+            get {
+                return ResourceManager.GetString("Customers_Detail_CallDialog_Accept", resourceCulture);
             }
         }
         

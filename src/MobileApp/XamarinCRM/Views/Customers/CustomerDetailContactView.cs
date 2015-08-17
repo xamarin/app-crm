@@ -10,8 +10,7 @@ namespace XamarinCRM.Views.Customers
     {
         public CustomerDetailContactView()
         {
-            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
-
+            #region labels
             Label contactTitleLabel = new Label()
             { 
                 Text = TextResources.Contact,
@@ -27,9 +26,13 @@ namespace XamarinCRM.Views.Customers
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             contactLabel.SetBinding(Label.TextProperty, "Account.DisplayContact");
+            #endregion
 
+            #region compose view hierarchy
+            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
             stackLayout.Children.Add(contactTitleLabel);
             stackLayout.Children.Add(contactLabel);
+            #endregion
 
             Content = new ContentViewWithBottomBorder() { Content = stackLayout };
         }

@@ -13,8 +13,7 @@ namespace XamarinCRM.Views.Customers
         {
             HeightRequest = Sizes.LargeRowHeight;
 
-            RelativeLayout relativeLayout = new RelativeLayout();
-
+            #region add new order image
             AddNewOrderImage = new Image()
             {
                 Aspect = Aspect.AspectFit
@@ -23,7 +22,9 @@ namespace XamarinCRM.Views.Customers
                 iOS: () => AddNewOrderImage.Source = new FileImageSource(){ File = "add_ios_blue" }, 
                 Android: () => AddNewOrderImage.Source = new FileImageSource() { File = "add_android_blue" }
             );
+            #endregion
 
+            #region add new order label
             AddNewOrderTextLabel = new Label
             {
                 Text = TextResources.Customers_Orders_NewOrder.ToUpper(),
@@ -31,10 +32,14 @@ namespace XamarinCRM.Views.Customers
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Center,
             };
+            #endregion
 
+            #region compose view hierarchy
             BoxView bottomBorder = new BoxView() { BackgroundColor = Palette._014, HeightRequest = 1 };
 
             double imagePaddingPercent = .35;
+
+            RelativeLayout relativeLayout = new RelativeLayout();
 
             relativeLayout.Children.Add(
                 view: AddNewOrderImage,
@@ -56,6 +61,7 @@ namespace XamarinCRM.Views.Customers
                 widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
                 heightConstraint: Constraint.Constant(1)
             );
+            #endregion
 
             Content = relativeLayout;
         }

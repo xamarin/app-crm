@@ -16,8 +16,7 @@ namespace XamarinCRM
         {
             _Page = page;
 
-            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
-
+            #region labels
             Label phoneTitleLabel = new Label()
             { 
                 Text = TextResources.Phone,
@@ -33,7 +32,9 @@ namespace XamarinCRM
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             phoneLabel.SetBinding(Label.TextProperty, "Account.Phone");
+            #endregion
 
+            #region phone image
             Image phoneImage = new Image()
             { 
                 Source = new FileImageSource { File = Device.OnPlatform("phone_ios", "phone_android", null) }, 
@@ -51,19 +52,20 @@ namespace XamarinCRM
             phoneImageTouchView.Children.Add(phoneImage, new Rectangle(.5, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
 
             phoneImageTouchView.GestureRecognizers.Add(
-                new TapGestureRecognizer() 
+                new TapGestureRecognizer()
                 { 
                     Command = new Command(() => OnPhoneTapped(phoneLabel, null)) 
                 });
+            #endregion
 
+            #region compose view hierarchy
+            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
             stackLayout.Children.Add(phoneTitleLabel);
             stackLayout.Children.Add(phoneLabel);
-
             AbsoluteLayout absoluteLayout = new AbsoluteLayout();
-
             absoluteLayout.Children.Add(stackLayout, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.WidthProportional);
-
             absoluteLayout.Children.Add(phoneImageTouchView, new Rectangle(.95, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
+            #endregion
 
             Content = new ContentViewWithBottomBorder() { Content = absoluteLayout };
         }
@@ -79,10 +81,10 @@ namespace XamarinCRM
                 return;        
 
             if (await _Page.DisplayAlert(
-                    title: "Dial a Number",
-                    message: "Would you like to call " + phoneNumber + "?",
-                    accept: "Yes",
-                    cancel: "No"))
+                    title: TextResources.Customers_Detail_CallDialog_Title,
+                    message: TextResources.Customers_Detail_CallDialog_Message + phoneNumber + "?",
+                    accept: TextResources.Customers_Detail_CallDialog_Accept,
+                    cancel: TextResources.Customers_Detail_CallDialog_Cancel))
             {
                 var dialer = DependencyService.Get<IDialer>();
 

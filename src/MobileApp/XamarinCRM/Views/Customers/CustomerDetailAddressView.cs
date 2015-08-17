@@ -11,6 +11,7 @@ namespace XamarinCRM
     {
         public CustomerDetailAddressView()
         {
+            #region labels
             Label addressTitleLabel = new Label()
             { 
                 Text = TextResources.Customers_Detail_Address,
@@ -42,7 +43,9 @@ namespace XamarinCRM
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             addressStatePostalLabel.SetBinding(Label.TextProperty, "Account.StatePostal");
+            #endregion
 
+            #region map marker image
             Image mapMarkerImage = new Image()
             { 
                 Source = new FileImageSource { File = Device.OnPlatform("map_marker_ios", "map_marker_android", null) }, 
@@ -68,19 +71,18 @@ namespace XamarinCRM
                 });
 
             mapMarkerImageTouchView.Children.Add(mapMarkerImage, new Rectangle(.5, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
+            #endregion
 
+            #region compose view hierarchy
             StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
-
             stackLayout.Children.Add(addressTitleLabel);
             stackLayout.Children.Add(addressStreetLabel);
             stackLayout.Children.Add(addressCityLabel);
             stackLayout.Children.Add(addressStatePostalLabel);
-
             AbsoluteLayout absoluteLayout = new AbsoluteLayout();
-
             absoluteLayout.Children.Add(stackLayout, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.WidthProportional);
-
             absoluteLayout.Children.Add(mapMarkerImageTouchView, new Rectangle(.95, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
+            #endregion
 
             Content = absoluteLayout;
         }

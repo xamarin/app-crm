@@ -11,22 +11,24 @@ namespace XamarinCRM.Views.Customers
     {
         public CustomerDetailHeaderView()
         {
-            AbsoluteLayout absoluteLayout = new AbsoluteLayout() { HeightRequest = 150 };
-
-            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
-
+            #region company image
             Image companyImage = new Image() { Aspect = Aspect.AspectFill };
             companyImage.SetBinding(Image.SourceProperty, "Account.ImageUrl");
+            #endregion
 
+            #region gradient image
             Image gradientImage = new Image() { Aspect = Aspect.Fill, Source = new FileImageSource() { File = "bottom_up_gradient" }, HeightRequest = 75, BindingContext = companyImage };
             gradientImage.SetBinding(Image.IsVisibleProperty, "IsLoading", converter: new InverseBooleanConverter());
+            #endregion
 
+            #region activity indicator
             ActivityIndicator imageLoadingIndicator = new ActivityIndicator() { BindingContext = companyImage };
             imageLoadingIndicator.SetBinding(ActivityIndicator.IsEnabledProperty, "IsLoading");
             imageLoadingIndicator.SetBinding(ActivityIndicator.IsVisibleProperty, "IsLoading"); // here, since we're bound to the companyImage already, we can just reference the IsLoading property
             imageLoadingIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading"); // here, since we're bound to the companyImage already, we can just reference the IsLoading property
+            #endregion
 
-
+            #region company label
             Label companyLabel = new Label()
             { 
                 TextColor = Color.White, 
@@ -36,7 +38,9 @@ namespace XamarinCRM.Views.Customers
             companyLabel.SetBinding(Label.TextProperty, "Account.Company");
             companyLabel.SetBinding(VisualElement.IsEnabledProperty, new Binding("IsLoading", source: companyImage, converter: new InverseBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
             companyLabel.SetBinding(VisualElement.IsVisibleProperty, new Binding("IsLoading", source: companyImage, converter: new InverseBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
+            #endregion
 
+            #region industry label
             Label industryLabel = new Label()
             { 
                 TextColor = Palette._016,
@@ -46,14 +50,18 @@ namespace XamarinCRM.Views.Customers
             industryLabel.SetBinding(Label.TextProperty, "Account.Industry");
             industryLabel.SetBinding(VisualElement.IsEnabledProperty, new Binding("IsLoading", source: companyImage, converter: new InverseBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
             industryLabel.SetBinding(VisualElement.IsVisibleProperty, new Binding("IsLoading", source: companyImage, converter: new InverseBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
+            #endregion
 
+            #region compose view hierarchy
+            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
             stackLayout.Children.Add(companyLabel);
             stackLayout.Children.Add(industryLabel);
-
+            AbsoluteLayout absoluteLayout = new AbsoluteLayout() { HeightRequest = 150 };
             absoluteLayout.Children.Add(companyImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
             absoluteLayout.Children.Add(imageLoadingIndicator, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.WidthProportional | AbsoluteLayoutFlags.PositionProportional);
             absoluteLayout.Children.Add(gradientImage, new Rectangle(0, 1, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.WidthProportional | AbsoluteLayoutFlags.PositionProportional);
             absoluteLayout.Children.Add(stackLayout, new Rectangle(0, 1, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.WidthProportional | AbsoluteLayoutFlags.PositionProportional);
+            #endregion
 
             Content = absoluteLayout;
         }
