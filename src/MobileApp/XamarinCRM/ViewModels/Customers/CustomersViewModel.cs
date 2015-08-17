@@ -63,14 +63,12 @@ namespace XamarinCRM.ViewModels.Customers
                 return;
 
             IsBusy = true;
-            IsModelLoaded = false;
             LoadAccountsCommand.ChangeCanExecute(); 
 
             var accounts = await dataManager.GetAccountsAsync(false);
             Accounts = accounts.ToObservableCollection();
 
             IsBusy = false;
-            IsModelLoaded = true;
             LoadAccountsCommand.ChangeCanExecute(); 
         }
 

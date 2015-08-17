@@ -74,7 +74,6 @@ namespace XamarinCRM.ViewModels.Customers
                 return;
 
             IsBusy = true;
-            IsModelLoaded = false;
 
             Orders.Clear();
             var orders = new List<Order>();
@@ -84,7 +83,6 @@ namespace XamarinCRM.ViewModels.Customers
             Orders.AddRange(SortOrders(orders));
 
             IsBusy = false;
-            IsModelLoaded = true;
         }
 
         IEnumerable<Order> SortOrders(IEnumerable<Order> orders)

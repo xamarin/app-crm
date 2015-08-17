@@ -18,7 +18,7 @@ namespace XamarinCRM.Views.Customers
             companyImage.SetBinding(Image.SourceProperty, "Account.ImageUrl");
 
             Image gradientImage = new Image() { Aspect = Aspect.Fill, Source = new FileImageSource() { File = "bottom_up_gradient" }, HeightRequest = 75, BindingContext = companyImage };
-            gradientImage.SetBinding(Image.IsVisibleProperty, "IsLoading", converter: new InvertedBooleanConverter());
+            gradientImage.SetBinding(Image.IsVisibleProperty, "IsLoading", converter: new InverseBooleanConverter());
 
             ActivityIndicator imageLoadingIndicator = new ActivityIndicator() { BindingContext = companyImage };
             imageLoadingIndicator.SetBinding(ActivityIndicator.IsEnabledProperty, "IsLoading");
@@ -33,8 +33,8 @@ namespace XamarinCRM.Views.Customers
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             companyLabel.SetBinding(Label.TextProperty, "Account.Company");
-            companyLabel.SetBinding(VisualElement.IsEnabledProperty, new Binding("IsLoading", source: companyImage, converter: new InvertedBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
-            companyLabel.SetBinding(VisualElement.IsVisibleProperty, new Binding("IsLoading", source: companyImage, converter: new InvertedBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
+            companyLabel.SetBinding(VisualElement.IsEnabledProperty, new Binding("IsLoading", source: companyImage, converter: new InverseBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
+            companyLabel.SetBinding(VisualElement.IsVisibleProperty, new Binding("IsLoading", source: companyImage, converter: new InverseBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
 
             Label industryLabel = new Label()
             { 
@@ -43,8 +43,8 @@ namespace XamarinCRM.Views.Customers
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             industryLabel.SetBinding(Label.TextProperty, "Account.Industry");
-            industryLabel.SetBinding(VisualElement.IsEnabledProperty, new Binding("IsLoading", source: companyImage, converter: new InvertedBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
-            industryLabel.SetBinding(VisualElement.IsVisibleProperty, new Binding("IsLoading", source: companyImage, converter: new InvertedBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
+            industryLabel.SetBinding(VisualElement.IsEnabledProperty, new Binding("IsLoading", source: companyImage, converter: new InverseBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
+            industryLabel.SetBinding(VisualElement.IsVisibleProperty, new Binding("IsLoading", source: companyImage, converter: new InverseBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
 
             stackLayout.Children.Add(companyLabel);
             stackLayout.Children.Add(industryLabel);

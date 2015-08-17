@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
+using Xamarin.Forms;
+using Xamarin.Forms.Maps;
+using XamarinCRM.Clients;
 using XamarinCRM.Helpers;
 using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
-using Xamarin.Forms;
-using Xamarin.Forms.Maps;
-using XamarinCRM.Clients;
 
 namespace XamarinCRM.ViewModels.Customers
 {
@@ -55,7 +55,7 @@ namespace XamarinCRM.ViewModels.Customers
                     {
                         _IndustryIndex = i;
                         break;
-                    } //end if
+                    }
                 }
 
                 return _IndustryIndex;
@@ -66,7 +66,6 @@ namespace XamarinCRM.ViewModels.Customers
                 Account.Industry = Account.IndustryTypes[_IndustryIndex]; 
             }
         }
-        //end IndustryIndex
 
         int _OpptStageIndex = 0;
 

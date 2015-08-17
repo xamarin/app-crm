@@ -1,138 +1,50 @@
-﻿using System.Threading.Tasks;
-using Syncfusion.SfChart.XForms;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin;
 using Xamarin.Forms;
 using XamarinCRM.Layouts;
 using XamarinCRM.Models;
-using XamarinCRM.Pages.Base;
 using XamarinCRM.Pages.Splash;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Sales;
-using XamarinCRM.Views.Sales;
 
 namespace XamarinCRM.Pages.Sales
 {
-    public class SalesDashboardPage : ModelTypedContentPage<SalesDashboardViewModel>
+    public class SalesDashboardPage : ContentPage
     {
+        // It's not typical to hold on to ViewModel references inside of a ContentPage (or any other derivative of BindableObject),
+        // but we're doing so here because a couple of child views are reliant on these ViewModels, as well as the OnAppearing()
+        // method in this Page needing access to some of the public methods on those ViewModels, e.g. ExecuteLoadSeedDataCommand().
+        SalesDashboardChartViewModel _SalesDashboardChartViewModel { get; set; }
+
+        SalesDashboardLeadsViewModel _SalesDashboardLeadsViewModel { get; set; }
+
         public SalesDashboardPage()
         {
+            // If this page is being presented by a NavigationPage, we don't want to show the navigation bar (top) in this particular app design.
             NavigationPage.SetHasNavigationBar(this, false);
 
-            SetBinding(TitleProperty, new Binding() { Source = TextResources.Sales });
+            this.SetBinding(ContentPage.TitleProperty, new Binding() { Source = TextResources.Sales });
 
-            #region sales graph header
-            SalesChartHeaderView chartHeaderView = new SalesChartHeaderView();
-            chartHeaderView.WeeklyAverageValueLabel.SetBinding(Label.TextProperty, "SalesAverage");
+            #region sales chart view
+            _SalesDashboardChartViewModel = new SalesDashboardChartViewModel();
+            SalesChartView salesChartView = new SalesChartView() { BindingContext = _SalesDashboardChartViewModel };
             #endregion
 
-            #region the sales graph
-            double chartHeight = Device.OnPlatform(190, 190, 180);
-
-            StackLayout salesChartStackLayout = new UnspacedStackLayout() { HeightRequest = chartHeight };
-            Device.OnPlatform(iOS: () => salesChartStackLayout.BackgroundColor = Color.Transparent, Android: () => salesChartStackLayout.BackgroundColor = Palette._010);
-
-            ActivityIndicator chartActivityIndicator = new ActivityIndicator()
-            {
-                HeightRequest = Sizes.MediumRowHeight
-            };
-            chartActivityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
-            chartActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
-            chartActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
-
-            ColumnSeries columnSeries = new ColumnSeries()
-            {
-                YAxis = new NumericalAxis()
-                {
-                    OpposedPosition = false,
-                    ShowMajorGridLines = true,
-                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = Palette._011 },
-                    ShowMinorGridLines = true,
-                    MinorTicksPerInterval = 1,
-                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = Palette._012 },
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._011 }
-                },
-                Color = Palette._004
-            };
-
-            // Not currently working because a binding bug in the SyncFusion ColumnSeries.ItemsSourceProperty setter
-            columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, "SalesChartDataPoints");
-
-            SfChart chart = new SfChart()
-            {
-                HeightRequest = chartHeight,
-
-                PrimaryAxis = new CategoryAxis()
-                {
-                    EdgeLabelsDrawingMode = EdgeLabelsDrawingMode.Center,
-                    LabelPlacement = LabelPlacement.BetweenTicks,
-                    TickPosition = AxisElementPosition.Inside,
-                    ShowMajorGridLines = false,
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._011 }
-                }
-            };
-            Device.OnPlatform(
-                iOS: () =>
-                {
-                    chart.BackgroundColor = Color.Transparent;
-                    salesChartStackLayout.Padding = new Thickness(0, 20, 30, 0);
-                }, 
-                Android: () => chart.BackgroundColor = Palette._010);
-
-            chart.Series.Add(columnSeries);
-            chart.SetBinding(IsEnabledProperty, "IsModelLoaded");
-            chart.SetBinding(IsVisibleProperty, "IsModelLoaded");
-
-            salesChartStackLayout.Children.Add(chartActivityIndicator);
-            salesChartStackLayout.Children.Add(chart);
+            #region leads view
+            _SalesDashboardLeadsViewModel = new SalesDashboardLeadsViewModel(new Command(new Action<object>(o => PushTabbedLeadPage((Account)o))));
+            LeadsView leadsView = new LeadsView() { BindingContext = _SalesDashboardLeadsViewModel };
             #endregion
 
-            #region leads list header
-            // LeadListHeaderView is an example of a custom view composed with Xamarin.Forms.
-            // It takes an action as a constructor parameter, which will be used by the add new lead button ("+").
-            LeadListHeaderView leadListHeaderView = new LeadListHeaderView(async () => await PushTabbedPage());
-            leadListHeaderView.SetBinding(IsEnabledProperty, "IsModelLoaded");
-            leadListHeaderView.SetBinding(IsVisibleProperty, "IsModelLoaded");
-            #endregion
-
-            #region leads list activity inidicator
-            ActivityIndicator leadListActivityIndicator = new ActivityIndicator()
-            { 
-                HeightRequest = Sizes.MediumRowHeight
-            };
-            leadListActivityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
-            leadListActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
-            leadListActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
-            #endregion
-
-            #region leadsListView
-            LeadListView leadListView = new LeadListView();
-            leadListView.SetBinding(LeadListView.ItemsSourceProperty, "Leads");
-            leadListView.SetBinding(IsEnabledProperty, "IsModelLoaded");
-            leadListView.SetBinding(IsVisibleProperty, "IsModelLoaded");
-
-            leadListView.ItemTapped += async (sender, e) =>
-            {
-                Account leadListItem = (Account)e.Item;
-                await PushTabbedPage(leadListItem);
-            };
-            #endregion
-
-            #region setup stack layout and add children
-            // Instantiate a StackLayout that several view elements will be added to.
+            #region compose view hierarchy
             StackLayout stackLayout = new UnspacedStackLayout();
 
             // conditionally set the top padding to 20px to account for the iOS status bar
-            Device.OnPlatform(iOS: () => stackLayout.Padding = new Thickness(0, 20, 0, 0));
+            // Device.OnPlatform(iOS: () => stackLayout.Padding = new Thickness(0, 20, 0, 0));
 
-            stackLayout.Children.Add(chartHeaderView);
-
-            stackLayout.Children.Add(salesChartStackLayout);
-
-            stackLayout.Children.Add(leadListHeaderView);
-
-            stackLayout.Children.Add(leadListActivityIndicator);
-
-            stackLayout.Children.Add(leadListView);
+            stackLayout.Children.Add(salesChartView);
+            stackLayout.Children.Add(leadsView);
             #endregion
 
             // assign the built-up stack layout to the Content property of this page
@@ -157,15 +69,40 @@ namespace XamarinCRM.Pages.Sales
             {
                 Content.IsVisible = true;
 
-                await ViewModel.ExecuteLoadSeedDataCommand();
+                List<Task> tasksToRun = new List<Task>()
+                { 
+                    Task.Factory.StartNew(async () =>
+                        {
+                            if (!_SalesDashboardChartViewModel.IsInitialized)
+                            {
+                                await _SalesDashboardChartViewModel.ExecuteLoadSeedDataCommand();
+                                _SalesDashboardChartViewModel.IsInitialized = true;
+                            }
+                        }),
+                    Task.Factory.StartNew(async () =>
+                        {
+                            if (!_SalesDashboardLeadsViewModel.IsInitialized)
+                            {
+                                await _SalesDashboardLeadsViewModel.ExecuteLoadSeedDataCommand();
+                                _SalesDashboardLeadsViewModel.IsInitialized = true;
+                            }
+                        })
+                };
 
-                ViewModel.IsInitialized = true;
+                // Awaiting these parallel task allows the leadsView and salesChartView to load independently.
+                // Task.WhenAll() is your friend in cases like these, where you want to load from two different data models on a single page.
+                await Task.WhenAll(tasksToRun.ToArray());
 
                 Insights.Track("Dashboard Page");
             }
         }
 
-        async Task PushTabbedPage(Account lead = null)
+        Action<object> PushTabbedLeadPageAction
+        {
+            get { return new Action<object>(o => PushTabbedLeadPage((Account)o)); }
+        }
+
+        async Task PushTabbedLeadPage(Account lead = null)
         {
             LeadDetailViewModel viewModel = new LeadDetailViewModel(Navigation, lead); 
 
@@ -180,15 +117,15 @@ namespace XamarinCRM.Pages.Sales
                                 message: TextResources.Leads_SaveConfirmDescription,
                                 accept: TextResources.Save,
                                 cancel: TextResources.Cancel);
-                
+
                         if (answer)
                         {
                             viewModel.SaveLeadCommand.Execute(null);
-                
-                            await ViewModel.PopModalAsync();
+
+                            await Navigation.PopModalAsync();
                         }
                     }));
-            
+
             tabbedPage.ToolbarItems.Add(
                 new ToolbarItem(TextResources.Exit, null, async () =>
                     {
@@ -202,11 +139,11 @@ namespace XamarinCRM.Pages.Sales
 
                             if (answer)
                             {
-                                await ViewModel.PopModalAsync();
+                                await Navigation.PopModalAsync();
                             }
                         }
                     }));
-            
+
             tabbedPage.Children.Add(new LeadDetailPage()
                 {
                     BindingContext = viewModel,
@@ -223,7 +160,7 @@ namespace XamarinCRM.Pages.Sales
 
             NavigationPage navPage = new NavigationPage(tabbedPage);
 
-            await ViewModel.PushModalAsync(navPage);
+            await Navigation.PushModalAsync(navPage);
         }
     }
 }

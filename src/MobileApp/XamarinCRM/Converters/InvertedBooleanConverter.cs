@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace XamarinCRM
 {
-    public class InvertedBooleanConverter : IValueConverter
+    public class InverseBooleanConverter : IValueConverter
     {
         #region IValueConverter implementation
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

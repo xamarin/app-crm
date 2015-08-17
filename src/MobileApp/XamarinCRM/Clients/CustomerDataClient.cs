@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;
-using SQLitePCL;
 using Xamarin;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
@@ -19,7 +18,6 @@ namespace XamarinCRM.Clients
     public class CustomerDataClient : ICustomerDataClient
     {
         IMobileServiceSyncTable<Order> _OrderTable;
-//        IMobileServiceSyncTable<Contact> _ContactTable;
         IMobileServiceSyncTable<Account> _AccountTable;
 
         public IMobileServiceClient MobileService { get; set; }
@@ -43,7 +41,6 @@ namespace XamarinCRM.Clients
 
             store.DefineTable<Order>();
             store.DefineTable<Account>();
-//            store.DefineTable<Contact>();
 
             try
             {
@@ -58,24 +55,22 @@ namespace XamarinCRM.Clients
             _OrderTable = MobileService.GetSyncTable<Order>();
 
             _AccountTable = MobileService.GetSyncTable<Account>();
-
-//            _ContactTable = MobileService.GetSyncTable<Contact>();
         }
 
         public async Task SeedData()
         {
-            //Insights tracking
-            var handle = Insights.TrackTime("TimeToSyncDB");
-            handle.Start();
+            ITrackHandle handle = null;
 
             try
             {
+                //Insights tracking
+                handle = Insights.TrackTime("TimeToSyncDB");
+                handle.Start();
+
                 await Init();
 
                 await _OrderTable.PullAsync(null, _OrderTable.CreateQuery());
                 await _AccountTable.PullAsync(null, _AccountTable.CreateQuery());
-//                await _ContactTable.PullAsync(null, _ContactTable.CreateQuery());
-
             }
             catch (Exception exc)
             {
@@ -85,9 +80,10 @@ namespace XamarinCRM.Clients
             finally
             {
                 //Insights
-                handle.Stop();
-            }
+                if (handle != null)
+                    handle.Stop();
 
+            }
         }
 
         #region Orders
@@ -309,7 +305,7 @@ namespace XamarinCRM.Clients
 
         #endregion
 
-        static readonly CustomerDataClient instance = new CustomerDataClient();
+        static readonly CustomerDataClient _Instance = new CustomerDataClient();
 
         /// <summary>
         /// Gets the instance of the Azure Web Service
@@ -318,7 +314,7 @@ namespace XamarinCRM.Clients
         {
             get
             {
-                return instance;
+                return _Instance;
             }
         }
     }

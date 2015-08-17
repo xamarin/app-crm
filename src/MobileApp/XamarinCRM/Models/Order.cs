@@ -5,14 +5,7 @@ namespace XamarinCRM.Models
 {
     public class Order : BaseModel
     {
-        public static string COMBO = "Combo";
-        public static string PAPER = "Paper";
-        public static string INK = "Ink";
-        public static string PRINTER = "Printer";
-        public static string SCANNER = "Scanner";
-
-        public Order()
-            : base()
+        public Order() : base()
         {
             AccountId = string.Empty;
 
@@ -63,29 +56,5 @@ namespace XamarinCRM.Models
         {
             get { return Price.ToString(); }
         }
-
-        [JsonIgnore]
-        public static string[] ItemTypes = { PAPER, INK, PRINTER, SCANNER, COMBO };
-//
-//        [JsonIgnore]
-//        public static string[] ItemLevels = { "Individual", "Business", "Enterprise" };
-//
-//        [JsonIgnore]
-//        public string Description
-//        {
-//            get
-//            {
-//                return "Price Quote: $" + Price + " | Due: " + DueDate.ToString("d"); 
-//            }
-//        }
-//
-//        [JsonIgnore]
-//        public string HistoryDescription
-//        {
-//            get
-//            {
-//                return "Total: $" + Price + " | Closed: " + ClosedDate.ToString("d");
-//            }
-//        }
     }
 }

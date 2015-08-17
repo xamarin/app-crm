@@ -10,7 +10,7 @@ namespace XamarinCRM.ViewModels.Base
     {
         public INavigation Navigation { get; set; }
 
-        public BaseViewModel(INavigation navigation = null)
+        protected BaseViewModel(INavigation navigation = null)
         {
             Navigation = navigation;
         }
@@ -65,15 +65,6 @@ namespace XamarinCRM.ViewModels.Base
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value, IsBusyPropertyName); }
-        }
-
-        bool isModelLoaded;
-        public const string IsModelLoadedPropertyName = "IsModelLoaded";
-
-        public bool IsModelLoaded
-        {
-            get { return isModelLoaded; }
-            set { SetProperty(ref isModelLoaded, value, IsModelLoadedPropertyName); }
         }
 
         string title = string.Empty;

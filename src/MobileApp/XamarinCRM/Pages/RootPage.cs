@@ -1,11 +1,10 @@
-﻿using XamarinCRM.Pages.Customers;
+﻿using Xamarin.Forms;
+using XamarinCRM.Pages.Customers;
 using XamarinCRM.Pages.Products;
 using XamarinCRM.Pages.Sales;
 using XamarinCRM.Pages.Splash;
 using XamarinCRM.ViewModels.Customers;
-using XamarinCRM.ViewModels.Sales;
 using XamarinCRM.ViewModels.Splash;
-using Xamarin.Forms;
 
 namespace XamarinCRM.Pages
 {
@@ -15,7 +14,7 @@ namespace XamarinCRM.Pages
         {
             // the Sales tab page
             this.Children.Add(
-                new NavigationPage(new SalesDashboardPage() { BindingContext = new SalesDashboardViewModel(Navigation) })
+                new NavigationPage(new SalesDashboardPage())
                 { 
                     Title = TextResources.MainTabs_Sales, 
                     Icon = new FileImageSource() { File = "SalesTab" }

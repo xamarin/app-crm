@@ -1,10 +1,10 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using XamarinCRM.Statics;
+using System;
 
 namespace XamarinCRM.Views.Sales
 {
-    public class LeadListHeaderView : ContentView
+    public class LeadListHeaderView : ContentView 
     {
         public Action _NewLeadClickedAction;
 

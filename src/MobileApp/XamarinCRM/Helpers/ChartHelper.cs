@@ -4,6 +4,7 @@ using System.Linq;
 using XamarinCRM.Models;
 using XamarinCRM.Clients;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace XamarinCRM.Helpers
 {
@@ -11,7 +12,7 @@ namespace XamarinCRM.Helpers
     {
         List<WeeklySalesData> _SalesData;
         List<CategorySalesData> _CategoryData;
-        IEnumerable<Order> _Orders;
+        readonly IEnumerable<Order> _Orders;
         bool _BolIsOpen;
 
         ICatalogDataClient _CatalogClient;
@@ -25,31 +26,30 @@ namespace XamarinCRM.Helpers
 
             _Orders = Orders;
             _BolIsOpen = IsOpen;
-
-            this.ProcessDates();
-            this.ProcessCategories();
         }
-        //end ctor
+
+        public async Task ProcessData()
+        {
+            this.ProcessDates();
+
+            await this.ProcessCategories();
+        }
 
         public List<WeeklySalesData> SalesData
         {
-            get
-            {
-                return _SalesData;
-            }
+            get { return _SalesData; }
         }
 
         public List<CategorySalesData> CategoryData
         {
-            get
-            {
-                return _CategoryData;
-            }
+            get { return _CategoryData; }
         }
 
-        void ProcessCategories()
+        async Task ProcessCategories()
         {
-            foreach (string s in Order.ItemTypes)
+            var categories = await _CatalogClient.GetCategoriesAsync();
+
+            foreach (string s in categories.Select(x => x.Name))
             {
                 double dblAmt = this.ProcessCategoryOrders(s);
                 _CategoryData.Add(new CategorySalesData() { Category = s, Amount = dblAmt });
@@ -87,9 +87,8 @@ namespace XamarinCRM.Helpers
                 dateWkEnd = dateWkStart.AddDays(6);
                 dblAmt = this.ProcessWeekOrders(dateWkStart, dateWkEnd);
                 _SalesData.Add(new WeeklySalesData() { DateStart = dateWkStart, DateEnd = dateWkEnd, Amount = dblAmt });
-            } //end for
+            }
         }
-        //end Processdates
 
         double ProcessWeekOrders(DateTime dateStart, DateTime dateEnd)
         {
@@ -104,77 +103,38 @@ namespace XamarinCRM.Helpers
 
             return dblTotal;
         }
-        //end ProcessWeekOrders
     }
-    //end class
 
     public class CategorySalesData
     {
-        string category;
+        public string Category { get; set; }
 
-        public string Category
-        {
-            get { return category; }
-            set { category = value; }
-        }
-
-        double amount;
-
-        public double Amount
-        {
-            get { return amount; }
-            set { amount = value; }
-        }
+        public double Amount { get; set; }
     }
 
     public class WeeklySalesData
     {
         public WeeklySalesData()
         {
-            dateStart = DateTime.MinValue;
-            dateEnd = DateTime.MaxValue;
-            dblAmt = 0;
-        }
-        //end ctor
-
-        DateTime dateStart;
-
-        public DateTime DateStart
-        {
-            get { return dateStart; }
-            set { dateStart = value; }
+            DateStart = DateTime.MinValue;
+            DateEnd = DateTime.MaxValue;
+            Amount = 0;
         }
 
-        DateTime dateEnd;
+        public DateTime DateStart { get; set; }
 
-        public DateTime DateEnd
-        {
-            get { return dateEnd; }
-            set { dateEnd = value; }
-        }
+        public DateTime DateEnd { get; set; }
 
-        double dblAmt;
-
-        public double Amount
-        {
-            get { return dblAmt; }
-            set { dblAmt = value; }
-        }
+        public double Amount { get; set; }
 
         public string DateStartString
         {
-            get
-            {
-                return dateStart.ToString("M/dd");
-            }
+            get { return DateStart.ToString("M/dd"); }
         }
 
         public string DateEndString
         {
-            get
-            {
-                return dateEnd.ToString("M/dd");
-            }
+            get { return DateEnd.ToString("M/dd"); }
         }
     }
 }

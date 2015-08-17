@@ -44,7 +44,6 @@ namespace XamarinCRM.ViewModels.Sales
 
             _Coder = new Geocoder();
         }
-        //end ctor
 
         Command saveLeadCommand;
 

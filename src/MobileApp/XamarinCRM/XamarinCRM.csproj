@@ -69,7 +69,6 @@
     <Compile Include="Views\Products\ProductListView.cs" />
     <Compile Include="Cells\ProductListItemCell.cs" />
     <Compile Include="Cells\CategoryListItemCell.cs" />
-    <Compile Include="ViewModels\Sales\SalesDashboardViewModel.cs" />
     <Compile Include="ViewModels\Sales\LeadDetailViewModel.cs" />
     <Compile Include="Cells\PickerCell.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
@@ -127,6 +126,10 @@
     <Compile Include="Pages\Customers\CustomerMapPage.cs" />
     <Compile Include="ViewModels\Customers\CustomerMapViewModel.cs" />
     <Compile Include="Interfaces\INativeDirectionsPresenter.cs" />
+    <Compile Include="Views\Sales\LeadsView.cs" />
+    <Compile Include="ViewModels\Sales\SalesDashboardChartViewModel.cs" />
+    <Compile Include="ViewModels\Sales\SalesDashboardLeadsViewModel.cs" />
+    <Compile Include="Views\Sales\SalesChartView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

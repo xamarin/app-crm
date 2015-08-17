@@ -58,7 +58,6 @@ namespace XamarinCRM.ViewModels.Products
                 return;
 
             IsBusy = true;
-            IsModelLoaded = false;
 
             Products.Clear();
             IEnumerable<CatalogProduct> products = await _CatalogClient.GetProductsAsync(_CategoryId);
@@ -66,7 +65,6 @@ namespace XamarinCRM.ViewModels.Products
                 Products.Add(product);
 
             IsBusy = false;
-            IsModelLoaded = true;
         }
     }
 }

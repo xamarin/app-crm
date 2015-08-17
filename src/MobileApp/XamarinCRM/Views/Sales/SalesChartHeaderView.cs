@@ -75,7 +75,7 @@ namespace XamarinCRM.Views.Sales
 
             Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._010);
 
-            HeightRequest = 40;
+            HeightRequest = Sizes.MediumRowHeight;
 
             Padding = new Thickness(20, 10, 20, 0);
 
