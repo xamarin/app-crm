@@ -1,11 +1,9 @@
 ﻿using Xamarin.Forms;
-using XamarinCRM.Views.Sales;
-using XamarinCRM.Statics;
-using XamarinCRM.Models;
 using XamarinCRM.Layouts;
+using XamarinCRM.Models;
+using XamarinCRM.Statics;
 using XamarinCRM.Views.Base;
-using System.Collections.Generic;
-using System;
+using XamarinCRM.Views.Sales;
 
 namespace XamarinCRM
 {
@@ -16,7 +14,7 @@ namespace XamarinCRM
             #region leads list header
             // LeadListHeaderView is an example of a custom view composed with Xamarin.Forms.
             // It takes an action as a constructor parameter, which will be used by the add new lead button ("+").
-            LeadListHeaderView leadListHeaderView = new LeadListHeaderView(() => ViewModel.PushLeadDetailsTabbedPageCommand.Execute(null));
+            LeadListHeaderView leadListHeaderView = new LeadListHeaderView(new Command(ExecutePushLeadDetailsTabbedPageCommand));
             leadListHeaderView.SetBinding(IsEnabledProperty, "IsModelLoaded");
             leadListHeaderView.SetBinding(IsVisibleProperty, "IsModelLoaded");
             #endregion
@@ -40,7 +38,7 @@ namespace XamarinCRM
             leadListView.ItemTapped += (sender, e) =>
                 {
                     Account leadListItem = (Account)e.Item;
-                    ViewModel.PushLeadDetailsTabbedPageCommand.Execute(leadListItem);
+                    ExecutePushLeadDetailsTabbedPageCommand(leadListItem);
                 };
             #endregion
 
@@ -51,6 +49,11 @@ namespace XamarinCRM
             stackLayout.Children.Add(leadListView);
 
             Content = stackLayout;
+        }
+
+        void ExecutePushLeadDetailsTabbedPageCommand(object account = null)
+        {
+            ViewModel.PushLeadDetailsTabbedPageCommand.Execute(account);
         }
     }
 }

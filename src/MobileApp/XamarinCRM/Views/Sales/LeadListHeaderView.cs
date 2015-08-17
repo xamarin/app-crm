@@ -6,11 +6,14 @@ namespace XamarinCRM.Views.Sales
 {
     public class LeadListHeaderView : ContentView 
     {
-        public Action _NewLeadClickedAction;
+        /// <summary>
+        /// The command that will be executed when the new lead button is tapped
+        /// </summary>
+        readonly Command _NewLeadTappedCommand;
 
-        public LeadListHeaderView(Action newLeadClickedAction)
+        public LeadListHeaderView(Command newLeadTappedCommand)
         {
-            _NewLeadClickedAction = newLeadClickedAction;
+            _NewLeadTappedCommand = newLeadTappedCommand;
 
             #region title label
             Label headerTitleLabel = new Label()
@@ -33,7 +36,7 @@ namespace XamarinCRM.Views.Sales
             };
             newLeadImage.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
-                    Command = new Command(() => _NewLeadClickedAction.Invoke()),
+                    Command = _NewLeadTappedCommand,
                     NumberOfTapsRequired = 1
                 });
             #endregion

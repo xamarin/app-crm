@@ -93,7 +93,6 @@ namespace XamarinCRM.Clients
         {
             try
             {
-
                 await Init();
 
                 //SYI: For public demo, only allow pull, not push.
@@ -312,10 +311,7 @@ namespace XamarinCRM.Clients
         /// </summary>
         public static CustomerDataClient Instance
         {
-            get
-            {
-                return _Instance;
-            }
+            get { return _Instance; }
         }
     }
 }

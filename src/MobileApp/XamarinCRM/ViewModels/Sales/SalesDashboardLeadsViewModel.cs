@@ -1,13 +1,13 @@
 ﻿using System;
-using XamarinCRM.ViewModels.Base;
-using XamarinCRM.Models;
 using System.Collections.ObjectModel;
-using XamarinCRM.Clients;
-using Xamarin.Forms;
-using XamarinCRM.Statics;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
+using XamarinCRM.Clients;
 using XamarinCRM.Extensions;
+using XamarinCRM.Models;
+using XamarinCRM.Statics;
+using XamarinCRM.ViewModels.Base;
 
 namespace XamarinCRM
 {
