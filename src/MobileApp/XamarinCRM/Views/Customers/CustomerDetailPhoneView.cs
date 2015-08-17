@@ -40,7 +40,21 @@ namespace XamarinCRM
                 Aspect = Aspect.AspectFit, 
                 HeightRequest = 25 
             }; 
-            phoneImage.GestureRecognizers.Add(new TapGestureRecognizer() { Command = new Command(() => OnPhoneTapped(phoneLabel, null)) });
+
+            // an expanded view to catch touches, because the image is a bit small
+            AbsoluteLayout phoneImageTouchView = new AbsoluteLayout()
+            { 
+                WidthRequest = Sizes.MediumRowHeight, 
+                HeightRequest = Sizes.MediumRowHeight
+            };
+
+            phoneImageTouchView.Children.Add(phoneImage, new Rectangle(.5, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
+
+            phoneImageTouchView.GestureRecognizers.Add(
+                new TapGestureRecognizer() 
+                { 
+                    Command = new Command(() => OnPhoneTapped(phoneLabel, null)) 
+                });
 
             stackLayout.Children.Add(phoneTitleLabel);
             stackLayout.Children.Add(phoneLabel);
@@ -49,7 +63,7 @@ namespace XamarinCRM
 
             absoluteLayout.Children.Add(stackLayout, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.WidthProportional);
 
-            absoluteLayout.Children.Add(phoneImage, new Rectangle(.9, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
+            absoluteLayout.Children.Add(phoneImageTouchView, new Rectangle(.95, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
 
             Content = new ContentViewWithBottomBorder() { Content = absoluteLayout };
         }

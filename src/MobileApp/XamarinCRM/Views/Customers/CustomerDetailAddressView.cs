@@ -47,9 +47,17 @@ namespace XamarinCRM
             { 
                 Source = new FileImageSource { File = Device.OnPlatform("map_marker_ios", "map_marker_android", null) }, 
                 Aspect = Aspect.AspectFit, 
-                HeightRequest = 25 
+                HeightRequest = 25
             }; 
-            mapMarkerImage.GestureRecognizers.Add(
+
+            // an expanded view to catch touches, because the image is a bit small
+            AbsoluteLayout mapMarkerImageTouchView = new AbsoluteLayout()
+            { 
+                WidthRequest = Sizes.MediumRowHeight, 
+                HeightRequest = Sizes.MediumRowHeight
+            };
+
+            mapMarkerImageTouchView.GestureRecognizers.Add(
                 new TapGestureRecognizer()
                 { 
                     Command = new Command(async () =>
@@ -58,6 +66,8 @@ namespace XamarinCRM
                             await ViewModel.PushModalAsync(navPage);
                         }) 
                 });
+
+            mapMarkerImageTouchView.Children.Add(mapMarkerImage, new Rectangle(.5, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
 
             StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
 
@@ -70,7 +80,7 @@ namespace XamarinCRM
 
             absoluteLayout.Children.Add(stackLayout, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.WidthProportional);
 
-            absoluteLayout.Children.Add(mapMarkerImage, new Rectangle(.9, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
+            absoluteLayout.Children.Add(mapMarkerImageTouchView, new Rectangle(.95, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
 
             Content = absoluteLayout;
         }
