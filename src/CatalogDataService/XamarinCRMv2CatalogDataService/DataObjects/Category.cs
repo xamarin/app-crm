@@ -17,6 +17,7 @@ namespace XamarinCRMv2CatalogDataService.DataObjects
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public string ParentCategoryId { get; set; }
+        public int Sequence { get; set;}
         /// <summary>
         /// A helper property to determine whether or not this is a leaf-level category.
         /// </summary>

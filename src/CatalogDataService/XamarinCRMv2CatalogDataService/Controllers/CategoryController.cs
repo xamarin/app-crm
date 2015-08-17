@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using XamarinCRMv2CatalogDataService.DataObjects;
@@ -26,20 +27,24 @@ namespace XamarinCRMv2CatalogDataService.Controllers
         [Route("SubCategories")]
         public async Task<IEnumerable> GetSubCategories(string parentCategoryId = null)
         {
+            // since parentCategory is null, we're assuming that the root category level is being requested
+
             if (String.IsNullOrWhiteSpace(parentCategoryId))
             {
                 var rootCategory = await
                     Query()
                     .SingleOrDefaultAsync(x => x.ParentCategoryId == null);
 
-                return rootCategory == null ? null : rootCategory.SubCategories;
+                return rootCategory == null ? null : rootCategory.SubCategories.OrderBy(x => x.Sequence);
             }
+
+            // since parentCategory is not null, we're assuming that a specific category level is being requested
 
             var category = await
                     Query()
                     .SingleOrDefaultAsync(x => x.Id == parentCategoryId);
 
-            return category == null ? null : category.SubCategories;
+            return category == null ? null : category.SubCategories.OrderBy(x => x.Sequence);
         }
 
         
