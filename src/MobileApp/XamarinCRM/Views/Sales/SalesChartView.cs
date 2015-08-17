@@ -4,6 +4,7 @@ using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using XamarinCRM.Views.Sales;
 using XamarinCRM.Views.Base;
+using XamarinCRM.Converters;
 
 namespace XamarinCRM
 {

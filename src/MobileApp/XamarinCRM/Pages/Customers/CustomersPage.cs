@@ -7,6 +7,7 @@ using XamarinCRM.Pages.Base;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Statics;
 using XamarinCRM.Views.Customers;
+using XamarinCRM.Converters;
 
 namespace XamarinCRM.Pages.Customers
 {
@@ -29,8 +30,8 @@ namespace XamarinCRM.Pages.Customers
             #region customer list
             CustomerListView customerListView = new CustomerListView();
             customerListView.SetBinding(CustomerListView.ItemsSourceProperty, "Accounts");
-            customerListView.SetBinding(IsEnabledProperty, "IsModelLoaded");
-            customerListView.SetBinding(IsVisibleProperty, "IsModelLoaded");
+            customerListView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
+            customerListView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
 
             customerListView.ItemTapped += async (sender, e) =>
             {

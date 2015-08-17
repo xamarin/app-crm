@@ -3,6 +3,7 @@ using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Base;
+using XamarinCRM.Converters;
 
 namespace XamarinCRM.Views.Customers
 {

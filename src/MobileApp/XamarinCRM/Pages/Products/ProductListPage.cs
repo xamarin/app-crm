@@ -4,6 +4,7 @@ using XamarinCRM.Views.Products;
 using Xamarin.Forms;
 using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
+using XamarinCRM.Converters;
 
 namespace XamarinCRM.Pages.Products
 {
@@ -28,8 +29,8 @@ namespace XamarinCRM.Pages.Products
 
             ProductListView productListView = new ProductListView();
             productListView.SetBinding(ProductListView.ItemsSourceProperty, "Products");
-            productListView.SetBinding(CategoryListView.IsEnabledProperty, "IsModelLoaded");
-            productListView.SetBinding(CategoryListView.IsVisibleProperty, "IsModelLoaded");
+            productListView.SetBinding(CategoryListView.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
+            productListView.SetBinding(CategoryListView.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
 
             productListView.ItemTapped += (sender, e) =>
                 {

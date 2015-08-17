@@ -1,10 +1,11 @@
-﻿using XamarinCRM.Localization;
+﻿using Xamarin.Forms;
+using XamarinCRM.Converters;
+using XamarinCRM.Layouts;
+using XamarinCRM.Localization;
 using XamarinCRM.Models;
+using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Products;
 using XamarinCRM.Views.Products;
-using Xamarin.Forms;
-using XamarinCRM.Layouts;
-using XamarinCRM.Statics;
 
 namespace XamarinCRM.Pages.Products
 {
@@ -33,8 +34,8 @@ namespace XamarinCRM.Pages.Products
 
             CategoryListView categoryListView = new CategoryListView();
             categoryListView.SetBinding(CategoryListView.ItemsSourceProperty, "Categories");
-            categoryListView.SetBinding(CategoryListView.IsEnabledProperty, "IsModelLoaded");
-            categoryListView.SetBinding(CategoryListView.IsVisibleProperty, "IsModelLoaded");
+            categoryListView.SetBinding(CategoryListView.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
+            categoryListView.SetBinding(CategoryListView.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
 
             categoryListView.ItemTapped += (sender, e) =>
                 {

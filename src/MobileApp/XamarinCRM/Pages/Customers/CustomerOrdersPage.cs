@@ -6,6 +6,7 @@ using XamarinCRM.Pages.Base;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Customers;
+using XamarinCRM.Converters;
 
 namespace XamarinCRM.Pages.Customers
 {
@@ -33,15 +34,15 @@ namespace XamarinCRM.Pages.Customers
             };
             headerView.AddNewOrderImage.GestureRecognizers.Add(newOrderTapGestureRecognizer);
             headerView.AddNewOrderTextLabel.GestureRecognizers.Add(newOrderTapGestureRecognizer);
-            headerView.SetBinding(ContentView.IsVisibleProperty, "IsModelLoaded");
-            headerView.SetBinding(ContentView.IsEnabledProperty, "IsModelLoaded");
+            headerView.SetBinding(ContentView.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
+            headerView.SetBinding(ContentView.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             #endregion
 
             #region order list view
             CustomerOrderListView customerOrderListView = new CustomerOrderListView();
             customerOrderListView.SetBinding(CustomerOrderListView.ItemsSourceProperty, "Orders");
-            customerOrderListView.SetBinding(CustomerOrderListView.IsVisibleProperty, "IsModelLoaded");
-            customerOrderListView.SetBinding(CustomerOrderListView.IsEnabledProperty, "IsModelLoaded");
+            customerOrderListView.SetBinding(CustomerOrderListView.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
+            customerOrderListView.SetBinding(CustomerOrderListView.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
 
             customerOrderListView.ItemTapped += async (sender, e) =>
             {

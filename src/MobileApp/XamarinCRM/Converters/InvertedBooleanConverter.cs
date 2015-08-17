@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using System.Globalization;
 
-namespace XamarinCRM
+namespace XamarinCRM.Converters
 {
     public class InverseBooleanConverter : IValueConverter
     {

@@ -4,6 +4,7 @@ using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.Views.Base;
 using XamarinCRM.Views.Sales;
+using XamarinCRM.Converters;
 
 namespace XamarinCRM
 {
@@ -15,8 +16,8 @@ namespace XamarinCRM
             // LeadListHeaderView is an example of a custom view composed with Xamarin.Forms.
             // It takes an action as a constructor parameter, which will be used by the add new lead button ("+").
             LeadListHeaderView leadListHeaderView = new LeadListHeaderView(new Command(ExecutePushLeadDetailsTabbedPageCommand));
-            leadListHeaderView.SetBinding(IsEnabledProperty, "IsModelLoaded");
-            leadListHeaderView.SetBinding(IsVisibleProperty, "IsModelLoaded");
+            leadListHeaderView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
+            leadListHeaderView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
             #endregion
 
             #region leads list activity inidicator
@@ -32,8 +33,8 @@ namespace XamarinCRM
             #region leadsListView
             LeadListView leadListView = new LeadListView();
             leadListView.SetBinding(LeadListView.ItemsSourceProperty, "Leads");
-            leadListView.SetBinding(IsEnabledProperty, "IsModelLoaded");
-            leadListView.SetBinding(IsVisibleProperty, "IsModelLoaded");
+            leadListView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
+            leadListView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
 
             leadListView.ItemTapped += (sender, e) =>
                 {
@@ -54,7 +55,7 @@ namespace XamarinCRM
         /// <summary>
         /// We encapsulate ViewModel.PushLeadDetailsTabbedPageCommand.Execute(account) because ViewModel is null during construction of this class.
         /// </summary>
-        /// <param name="account">An Account. Null by default. If null, pushes a fresh lead details tabbed page. If not null, loads the account in the pushed lead details tabbed page.</param>
+        /// <param name="account">An object of type <see cref="XamarinCRM.Models.Account"/>. Null by default. If null, pushes a fresh lead details tabbed page. If not null, loads the account in the pushed lead details tabbed page.</param>
         void ExecutePushLeadDetailsTabbedPageCommand(object account = null)
         {
             ViewModel.PushLeadDetailsTabbedPageCommand.Execute(account);
