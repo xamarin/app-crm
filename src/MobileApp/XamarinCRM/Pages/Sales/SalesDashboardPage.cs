@@ -13,8 +13,7 @@ namespace XamarinCRM.Pages.Sales
 {
     public class SalesDashboardPage : ContentPage
     {
-        // It's not typical to hold on to ViewModel references inside of a ContentPage (or any other derivative of BindableObject),
-        // but we're doing so here because a couple of child views are reliant on these ViewModels, as well as the OnAppearing()
+        // We're holding on to theese ViewModel properties because a couple of child views are reliant on these ViewModels, as well as the OnAppearing()
         // method in this Page needing access to some of the public methods on those ViewModels, e.g. ExecuteLoadSeedDataCommand().
         SalesDashboardChartViewModel _SalesDashboardChartViewModel { get; set; }
 

@@ -39,8 +39,6 @@
     <Compile Include="Pages\Sales\LeadDetailPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App.cs" />
-    <Compile Include="Helpers\ConvertableConverter.cs" />
-    <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Interfaces\IDialer.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -103,8 +101,6 @@
     <Compile Include="Pages\Customers\EditOrderPage.cs" />
     <Compile Include="ViewModels\Customers\OrderDetailViewModel.cs" />
     <Compile Include="Pages\Customers\CustomerTabbedPage.cs" />
-    <Compile Include="Helpers\ChartHelper.cs" />
-    <Compile Include="Helpers\PropertyUtil.cs" />
     <Compile Include="Views\Base\ContentViewWithBottomBorder.cs" />
     <Compile Include="Pages\Base\ModelTypedContentPage.cs" />
     <Compile Include="Pages\Splash\SplashPage.cs" />
@@ -130,6 +126,13 @@
     <Compile Include="ViewModels\Sales\SalesDashboardChartViewModel.cs" />
     <Compile Include="ViewModels\Sales\SalesDashboardLeadsViewModel.cs" />
     <Compile Include="Views\Sales\SalesChartView.cs" />
+    <Compile Include="Services\IChartDataService.cs" />
+    <Compile Include="Models\WeeklySalesData.cs" />
+    <Compile Include="Models\CategorySalesDataPoint.cs" />
+    <Compile Include="Services\ChartDataService.cs" />
+    <Compile Include="Converters\ConvertableConverter.cs" />
+    <Compile Include="Services\IGeoCodingService.cs" />
+    <Compile Include="Services\GeoCodingService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

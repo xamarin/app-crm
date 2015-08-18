@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Threading.Tasks;
-using XamarinCRM.Helpers;
 using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using XamarinCRM.Clients;
+using XamarinCRM.Services;
 
 namespace XamarinCRM.ViewModels.Sales
 {
     public class LeadDetailViewModel : BaseViewModel
     {
-        ICustomerDataClient _DataManager;
+        readonly ICustomerDataClient _DataManager;
 
-        Geocoder _Coder;
+        IGeoCodingService _GeoCodingService;
 
         public Account Lead { get; set; }
 
@@ -42,7 +42,7 @@ namespace XamarinCRM.ViewModels.Sales
 
             _DataManager = DependencyService.Get<ICustomerDataClient>();
 
-            _Coder = new Geocoder();
+            _GeoCodingService = DependencyService.Get<IGeoCodingService>();
         }
 
         Command saveLeadCommand;
@@ -62,7 +62,7 @@ namespace XamarinCRM.ViewModels.Sales
 
         public async Task<Pin> LoadPin()
         {
-            Position p = Utils.NullPosition;
+            Position p = _GeoCodingService.NullPosition;
             var address = Lead.AddressString;
 
             //Lookup Lat/Long all the time.
@@ -70,7 +70,7 @@ namespace XamarinCRM.ViewModels.Sales
             //if (Contact.Latitude == 0)
             if (true)
             {
-                p = await Utils.GeoCodeAddress(address);
+                p = await _GeoCodingService.GeoCodeAddress(address);
                 //p = p == null ? Utils.NullPosition : p;
 
                 Lead.Latitude = p.Latitude;

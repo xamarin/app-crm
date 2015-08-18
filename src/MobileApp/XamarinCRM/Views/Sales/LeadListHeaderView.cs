@@ -58,15 +58,17 @@ namespace XamarinCRM.Views.Sales
             #region setup contentView
             ContentView contentView = new ContentView()
             {
-                Padding = new Thickness(10, 0), // give the content some padding on the left and right
+                Padding = new Thickness(10, 10, 10, 0), // give the content some padding on the left and right
                 HeightRequest = Sizes.MediumRowHeight, // set the height of the content view
             };
+            Device.OnPlatform(iOS: () => contentView.Padding = new Thickness(10, 0, 10, 0));
             #endregion
 
             #region compose the view hierarchy
             contentView.Content = absolutLayout;
-            Content = contentView;
             #endregion
+
+            Content = contentView;
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Globalization;
 using XamarinCRM.Properties.Attributes;
 using Xamarin.Forms;
 
-namespace XamarinCRM.Helpers
+namespace XamarinCRM.Converters
 {
     public class ConvertableConverter : IValueConverter
     {

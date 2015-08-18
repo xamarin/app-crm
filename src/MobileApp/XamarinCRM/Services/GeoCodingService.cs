@@ -1,19 +1,33 @@
 ﻿using System;
+using XamarinCRM.Services;
+using Xamarin.Forms.Maps;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using Xamarin.Forms.Maps;
+using Xamarin.Forms;
 
-namespace XamarinCRM.Helpers
+[assembly: Dependency(typeof(GeoCodingService))]
+
+namespace XamarinCRM.Services
 {
-    public static class Utils
+    public class GeoCodingService : IGeoCodingService
     {
-        public static readonly Position NullPosition = new Position(0, 0);
-     
-        static Geocoder _GeoCoder = new Geocoder();
+        readonly Geocoder _GeoCoder;
 
-        public async static Task<Position> GeoCodeAddress(string addressString)
+        public GeoCodingService()
+        {
+            _GeoCoder = new Geocoder();
+        }
+
+        #region IGeoCodingService implementation
+
+        public Position NullPosition
+        {
+            get { return new Position(0, 0); }
+        }
+
+        public async Task<Position> GeoCodeAddress(string addressString)
         {
             Position p = NullPosition;
 
@@ -30,9 +44,12 @@ namespace XamarinCRM.Helpers
             }
             finally
             { 
-          
+
             }
             return p;
         }
+
+        #endregion
     }
 }
+

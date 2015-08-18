@@ -2,8 +2,8 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using XamarinCRM.Clients;
-using XamarinCRM.Helpers;
 using XamarinCRM.Models;
+using XamarinCRM.Services;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 
@@ -12,7 +12,7 @@ namespace XamarinCRM.ViewModels.Customers
     public class CustomerDetailViewModel : BaseViewModel
     {
         ICustomerDataClient _DataManager;
-        Geocoder _GeoCoder;
+        readonly IGeoCodingService _GeoCodingService;
 
         public Account Account { get; set; }
 
@@ -35,7 +35,7 @@ namespace XamarinCRM.ViewModels.Customers
             this.Icon = "account.png";
 
             _DataManager = DependencyService.Get<ICustomerDataClient>();
-            _GeoCoder = new Geocoder();
+            _GeoCodingService = DependencyService.Get<IGeoCodingService>();
 
             MessagingCenter.Subscribe<Account>(this, MessagingServiceConstants.ACCOUNT, (Account) =>
                 {
@@ -139,7 +139,7 @@ namespace XamarinCRM.ViewModels.Customers
 
             IsBusy = false;
 
-            Navigation.PopAsync();
+            await Navigation.PopAsync();
         }
 
         public async Task GoBack()
@@ -149,7 +149,7 @@ namespace XamarinCRM.ViewModels.Customers
 
         public async Task<Pin> LoadPin()
         {
-            Position p = Utils.NullPosition;
+            Position p = _GeoCodingService.NullPosition;
             var address = Account.AddressString;
 
             //Lookup Lat/Long all the time unless an account where the address is read-only
@@ -157,7 +157,7 @@ namespace XamarinCRM.ViewModels.Customers
             //if (Contact.Latitude == 0)
             if (Account.IsLead)
             {
-                p = await Utils.GeoCodeAddress(address);
+                p = await _GeoCodingService.GeoCodeAddress(address);
 
                 Account.Latitude = p.Latitude;
                 Account.Longitude = p.Longitude;

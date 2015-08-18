@@ -6,15 +6,17 @@ using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
 using XamarinCRM.Extensions;
-using XamarinCRM.Helpers;
 using XamarinCRM.Models;
 using XamarinCRM.ViewModels.Base;
+using XamarinCRM.Services;
 
 namespace XamarinCRM
 {
     public class SalesDashboardChartViewModel : BaseViewModel
     {
         ICustomerDataClient _CustomerDataClient;
+
+        IChartDataService _ChartDataService;
 
         Command _LoadSeedDataCommand;
 
@@ -30,7 +32,10 @@ namespace XamarinCRM
         {
             _CustomerDataClient = DependencyService.Get<ICustomerDataClient>();
 
+            _ChartDataService = DependencyService.Get<IChartDataService>();
+
             Orders = new ObservableCollection<Order>();
+
             SalesChartDataPoints = new ObservableCollection<ChartDataPoint>();
 
             IsInitialized = false;
@@ -53,15 +58,10 @@ namespace XamarinCRM
 
             await _CustomerDataClient.SeedData();
 
-            var orders = await _CustomerDataClient.GetAllAccountOrdersAsync();
-            Orders = orders.ToObservableCollection();
+            Orders = (await _CustomerDataClient.GetAllAccountOrdersAsync()).ToObservableCollection();
 
-            ChartHelper chartHelper = new ChartHelper(Orders, false);
-
-            await chartHelper.ProcessData();
-
-            SalesChartDataPoints = chartHelper
-                .SalesData
+            SalesChartDataPoints = 
+                (await _ChartDataService.GetWeeklySalesDataPoints(Orders))
                 .OrderBy(x => x.DateStart)
                 .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)).ToObservableCollection();
 
