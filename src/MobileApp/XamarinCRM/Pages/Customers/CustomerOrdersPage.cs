@@ -42,7 +42,7 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             #region header
-            StackLayout headerStackLayout = new UnspacedStackLayout();
+            StackLayout companyInfoStackLayout = new UnspacedStackLayout();
 
             Label companyTitleLabel = new Label()
                 {
@@ -79,10 +79,10 @@ namespace XamarinCRM.Pages.Customers
 
             ContentView headerLabelsView = new ContentView() { Padding = new Thickness(20, 0), Content = headerLabelsRelativeLayout };
 
-            headerStackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = headerLabelsView });
+            companyInfoStackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = headerLabelsView });
 
-            headerStackLayout.SetBinding(VisualElement.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
-            headerStackLayout.SetBinding(VisualElement.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
+            companyInfoStackLayout.SetBinding(VisualElement.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
+            companyInfoStackLayout.SetBinding(VisualElement.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
 
             #endregion
 
@@ -102,8 +102,8 @@ namespace XamarinCRM.Pages.Customers
 
             StackLayout stackLayout = new UnspacedStackLayout();
             stackLayout.Children.Add(activityIndicator);
+            stackLayout.Children.Add(companyInfoStackLayout);
             stackLayout.Children.Add(headerView);
-            stackLayout.Children.Add(headerStackLayout);
             stackLayout.Children.Add(customerOrderListView);
 
             Content = stackLayout;
