@@ -13,7 +13,7 @@ namespace XamarinCRM.Pages.Sales
 {
     public class SalesDashboardPage : ContentPage
     {
-        // We're holding on to theese ViewModel properties because a couple of child views are reliant on these ViewModels, as well as the OnAppearing()
+        // We're holding on to these ViewModel properties because a couple of child views are reliant on these ViewModels, as well as the OnAppearing()
         // method in this Page needing access to some of the public methods on those ViewModels, e.g. ExecuteLoadSeedDataCommand().
         SalesDashboardChartViewModel _SalesDashboardChartViewModel { get; set; }
 
@@ -28,7 +28,7 @@ namespace XamarinCRM.Pages.Sales
 
             #region sales chart view
             _SalesDashboardChartViewModel = new SalesDashboardChartViewModel();
-            SalesChartView salesChartView = new SalesChartView() { BindingContext = _SalesDashboardChartViewModel };
+            SalesDashboardChartView salesChartView = new SalesDashboardChartView() { BindingContext = _SalesDashboardChartViewModel };
             #endregion
 
             #region leads view
@@ -147,14 +147,14 @@ namespace XamarinCRM.Pages.Sales
                 {
                     BindingContext = viewModel,
                     Title = TextResources.Details,
-                    Icon = new FileImageSource() { File = "LeadDetailTab" }
+                    Icon = new FileImageSource() { File = "LeadDetailTab" } // only used on iOS
                 });
 
             tabbedPage.Children.Add(new LeadContactDetailPage()
                 {
                     BindingContext = viewModel,
                     Title = TextResources.Contact,
-                    Icon = new FileImageSource() { File = "LeadContactDetailTab" }
+                    Icon = new FileImageSource() { File = "LeadContactDetailTab" } // only used on iOS
                 });
 
             NavigationPage navPage = new NavigationPage(tabbedPage);

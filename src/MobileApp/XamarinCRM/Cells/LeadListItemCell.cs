@@ -19,7 +19,7 @@ namespace XamarinCRM.Cells
             #region companyNameLabel
             CompanyNameLabel = new Label()
             {
-                TextColor = Palette._008,
+                TextColor = Palette._006,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)) * 1.2,
                 YAlign = TextAlignment.End,
                 LineBreakMode = LineBreakMode.TailTruncation
@@ -33,7 +33,7 @@ namespace XamarinCRM.Cells
             #region opportunityStageLabel
             OpportunityStageLabel = new Label()
             {
-                TextColor = Palette._009,
+                TextColor = Palette._007,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 YAlign = TextAlignment.End,
                 LineBreakMode = LineBreakMode.TailTruncation
@@ -48,7 +48,7 @@ namespace XamarinCRM.Cells
             #region leadAmountLabel
             LeadAmountLabel = new Label()
             {
-                TextColor = Palette._009,
+                TextColor = Palette._007,
                 XAlign = TextAlignment.End,
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Small, typeof(Label)),

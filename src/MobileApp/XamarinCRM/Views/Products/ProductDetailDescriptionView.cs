@@ -11,14 +11,14 @@ namespace XamarinCRM.Views.Products
             Label nameLabel = new Label()
             { 
                 Text = catalogProduct.Name,
-                TextColor = Device.OnPlatform(Palette._008, Palette._015, Palette._015),
+                TextColor = Device.OnPlatform(Palette._006, Palette._013, Palette._013),
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
             };
             
             Label descriptionLabel = new Label()
             { 
                 Text = catalogProduct.Description,
-                TextColor = Palette._009,
+                TextColor = Palette._007,
                 FontSize = Device.GetNamedSize(NamedSize.Default, typeof(Label))
             };
 

@@ -18,15 +18,13 @@ namespace XamarinCRM.Pages.Customers
             NavigationPage.SetHasBackButton(this, false);
             NavigationPage.SetBackButtonTitle(this, string.Empty);
 
-            StackLayout stackLayout = new UnspacedStackLayout();
-
             #region header
             StackLayout headerStackLayout = new UnspacedStackLayout();
 
             Label companyTitleLabel = new Label()
             {
                 Text = TextResources.Customers_Orders_EditOrder_CompanyTitle,
-                TextColor = Palette._009,
+                TextColor = Palette._007,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.End,
@@ -35,7 +33,7 @@ namespace XamarinCRM.Pages.Customers
             
             Label companyNameLabel = new Label()
             {
-                TextColor = Palette._008,
+                TextColor = Palette._006,
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Start,
@@ -59,8 +57,6 @@ namespace XamarinCRM.Pages.Customers
             ContentView headerLabelsView = new ContentView() { Padding = new Thickness(20, 0), Content = headerLabelsRelativeLayout };
 
             headerStackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = headerLabelsView });
-
-            stackLayout.Children.Add(headerStackLayout);
             #endregion
 
             #region fields
@@ -94,7 +90,7 @@ namespace XamarinCRM.Pages.Customers
                     Text = (Device.OS == TargetPlatform.Android) ? TextResources.Customers_Orders_EditOrder_ProductTitleLabel.ToUpper() : TextResources.Customers_Orders_EditOrder_ProductTitleLabel, 
                     XAlign = TextAlignment.End, 
                     YAlign = TextAlignment.Center,
-                    TextColor = Device.OnPlatform(Palette._009, Palette._006, Palette._009),
+                    TextColor = Device.OnPlatform(Palette._007, Palette._004, Palette._007),
                 }
             };
 
@@ -107,7 +103,7 @@ namespace XamarinCRM.Pages.Customers
                     Text = (Device.OS == TargetPlatform.Android) ? TextResources.Customers_Orders_EditOrder_PriceTitleLabel.ToUpper() : TextResources.Customers_Orders_EditOrder_PriceTitleLabel, 
                     XAlign = TextAlignment.End, 
                     YAlign = TextAlignment.Center,
-                    TextColor = Device.OnPlatform(Palette._009, Palette._006, Palette._009)
+                    TextColor = Device.OnPlatform(Palette._007, Palette._004, Palette._007)
                 }
             };
             
@@ -120,7 +116,7 @@ namespace XamarinCRM.Pages.Customers
                     Text = (Device.OS == TargetPlatform.Android) ? TextResources.Customers_Orders_EditOrder_DueDateTitleLabel.ToUpper() : TextResources.Customers_Orders_EditOrder_DueDateTitleLabel, 
                     XAlign = TextAlignment.End, 
                     YAlign = TextAlignment.Center,
-                    TextColor = Device.OnPlatform(Palette._009, Palette._006, Palette._009)
+                    TextColor = Device.OnPlatform(Palette._007, Palette._004, Palette._007)
                 }
             };
             
@@ -152,11 +148,11 @@ namespace XamarinCRM.Pages.Customers
             section1Grid.Children.Add(priceEntry, 1, 1);
             section1Grid.Children.Add(dueDateEntry, 1, 2);
 
-            stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = section1Grid });
             #endregion
 
-            #region status
-            #endregion
+            StackLayout stackLayout = new UnspacedStackLayout();
+            stackLayout.Children.Add(headerStackLayout);
+            stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = section1Grid });
 
             Content = stackLayout;
 

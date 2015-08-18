@@ -2,35 +2,97 @@
 using XamarinCRM.Pages.Base;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Statics;
+using XamarinCRM.Layouts;
+using XamarinCRM.Views.Customers;
+using XamarinCRM.Models;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using Xamarin;
+using XamarinCRM.Views.Base;
 
 namespace XamarinCRM.Pages.Customers
 {
     public class CustomerSalesPage : ModelTypedContentPage<CustomerSalesViewModel>
     {
-        public CustomerSalesPage()
+        public CustomerSalesPage(CustomerSalesViewModel viewModel)
         {
-            #region sales chart header
+            Device.OnPlatform(
+                iOS: () => BackgroundColor = Color.Transparent, 
+                Android: () => BackgroundColor = Palette._009);
+
+            BindingContext = viewModel;
+
+            #region header
+            StackLayout headerStackLayout = new UnspacedStackLayout();
+
+            Label companyTitleLabel = new Label()
+                {
+                    Text = TextResources.Customers_Orders_EditOrder_CompanyTitle,
+                    TextColor = Palette._007,
+                    FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                    XAlign = TextAlignment.Start,
+                    YAlign = TextAlignment.End,
+                    LineBreakMode = LineBreakMode.TailTruncation
+                };
+
+            Label companyNameLabel = new Label()
+                {
+                    TextColor = Device.OnPlatform(Palette._006, Color.White, Color.White),
+                    FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                    XAlign = TextAlignment.Start,
+                    YAlign = TextAlignment.Start,
+                    LineBreakMode = LineBreakMode.TailTruncation
+                };
+            companyNameLabel.SetBinding(Label.TextProperty, "Account.Company");
+
+            RelativeLayout headerLabelsRelativeLayout = new RelativeLayout() { HeightRequest = Sizes.LargeRowHeight };
+
+            headerLabelsRelativeLayout.Children.Add(
+                view: companyTitleLabel,
+                widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
+                heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 2));
+
+            headerLabelsRelativeLayout.Children.Add(
+                view: companyNameLabel,
+                yConstraint: Constraint.RelativeToParent(parent => parent.Height / 2),
+                widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
+                heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 2));
+
+            ContentView headerLabelsView = new ContentView() { Padding = new Thickness(20, 0), Content = headerLabelsRelativeLayout };
+
+            headerStackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = headerLabelsView });
             #endregion
 
-            #region sales chart
+            #region weekly sales chart
+            CustomerWeeklySalesChartView customerWeeklySalesChartView = new CustomerWeeklySalesChartView() { BindingContext = ViewModel };
+
             #endregion
 
-//            Content = StackLayout;
+            #region category sales chart
+            CustomerCategorySalesChartView customerCategorySalesChartView = new CustomerCategorySalesChartView() { BindingContext = ViewModel };
+            #endregion
 
-            RelativeLayout relativeLayout = new RelativeLayout();
+            #region compose view hierarchy
+            StackLayout stackLayout = new UnspacedStackLayout();
+            stackLayout.Children.Add(headerStackLayout);
+            stackLayout.Children.Add(customerWeeklySalesChartView);
+            stackLayout.Children.Add(customerCategorySalesChartView);
+            #endregion
 
-            Label label = new Label()
-            { 
-                Text = "Coming Soon!",
-                TextColor = Palette._008,
-                FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Large, typeof(Label)), Device.GetNamedSize(NamedSize.Large, typeof(Label)), Device.GetNamedSize(NamedSize.Large, typeof(Label))),
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center
-            };
+            Content = stackLayout;
+        }
 
-            relativeLayout.Children.Add(label, widthConstraint: Constraint.RelativeToParent(parent => parent.Width), heightConstraint: Constraint.RelativeToParent(parent => parent.Height));
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
 
-            Content = relativeLayout;
+            if (!ViewModel.IsInitialized)
+            {
+                await ViewModel.ExecuteLoadSeedDataCommand(ViewModel.Account);
+                ViewModel.IsInitialized = true;
+            }
+
+            Insights.Track("Customer Sales Page");
         }
     }
 }

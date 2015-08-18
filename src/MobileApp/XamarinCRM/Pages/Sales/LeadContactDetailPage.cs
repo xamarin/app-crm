@@ -14,7 +14,7 @@ namespace XamarinCRM.Pages.Sales
             #region roleEntry
             EntryCell roleEntryCell = new EntryCell()
             {
-                Label = TextResources.Leads_LeadContactDetail_Role, LabelColor = Palette._009
+                Label = TextResources.Leads_LeadContactDetail_Role, LabelColor = Palette._007
             };
             roleEntryCell.SetBinding(EntryCell.TextProperty, "Lead.JobTitle", BindingMode.TwoWay);
             #endregion

@@ -15,14 +15,14 @@ namespace XamarinCRM
             Label addressTitleLabel = new Label()
             { 
                 Text = TextResources.Customers_Detail_Address,
-                TextColor = Device.OnPlatform(Palette._007, Palette._009, Palette._008),
+                TextColor = Device.OnPlatform(Palette._005, Palette._007, Palette._006),
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
 
             Label addressStreetLabel = new Label()
             { 
-                TextColor = Palette._008, 
+                TextColor = Palette._006, 
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
@@ -30,7 +30,7 @@ namespace XamarinCRM
 
             Label addressCityLabel = new Label()
             { 
-                TextColor = Palette._008, 
+                TextColor = Palette._006, 
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
@@ -38,7 +38,7 @@ namespace XamarinCRM
 
             Label addressStatePostalLabel = new Label()
             { 
-                TextColor = Palette._008, 
+                TextColor = Palette._006, 
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };

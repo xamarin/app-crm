@@ -1,5 +1,4 @@
-﻿using XamarinCRM.Localization;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using XamarinCRM.Statics;
 
 namespace XamarinCRM.Views.Sales
@@ -10,21 +9,19 @@ namespace XamarinCRM.Views.Sales
 
         public SalesChartHeaderView()
         {
-            RelativeLayout relativeLayout = new RelativeLayout();
-
             Label headerTitleLabel = new Label()
             { 
                 Text = TextResources.SalesDashboard_SalesChart_Header_Title,
-                TextColor = Device.OnPlatform(Palette._008, Color.White, Color.White),
+                TextColor = Device.OnPlatform(Palette._006, Color.White, Color.White),
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 XAlign = TextAlignment.Start,
-                YAlign = TextAlignment.Center
+                YAlign = TextAlignment.Start
             };
 
             Label weeklyAverageTitleLabel = new Label()
             {
                 Text = TextResources.SalesDashboard_SalesChart_Header_WeeklyAverageTitle.ToUpperInvariant(),
-                TextColor = Palette._009,
+                TextColor = Palette._007,
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Micro, typeof(Label)) * .9,
                     Android: Device.GetNamedSize(NamedSize.Micro, typeof(Label)),
@@ -35,7 +32,7 @@ namespace XamarinCRM.Views.Sales
 
             WeeklyAverageValueLabel = new Label()
             {
-                TextColor = Device.OnPlatform(Palette._008, Color.White, Color.White),
+                TextColor = Device.OnPlatform(Palette._006, Color.White, Color.White),
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Large, typeof(Label)),
                     Android: Device.GetNamedSize(NamedSize.Large, typeof(Label)),
@@ -46,6 +43,8 @@ namespace XamarinCRM.Views.Sales
 
             Device.OnPlatform(
                 Android: () => WeeklyAverageValueLabel.FontAttributes = FontAttributes.Bold);
+
+            RelativeLayout relativeLayout = new RelativeLayout();
 
             relativeLayout.Children.Add(
                 view: headerTitleLabel,
@@ -71,13 +70,13 @@ namespace XamarinCRM.Views.Sales
                 heightConstraint: Constraint.RelativeToParent(parent => (parent.Height / 4) * 3)
             );
 
-            BackgroundColor = Palette._010;
+            BackgroundColor = Palette._009;
 
-            Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._010);
+            Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._009);
 
             HeightRequest = Sizes.MediumRowHeight;
 
-            Padding = new Thickness(20, 10, 20, 0);
+            Padding = new Thickness(20, 20, 20, 0);
 
             Content = relativeLayout;
         }

@@ -17,77 +17,62 @@ namespace XamarinCRM.Statics
         /// <summary>
         /// Ternary color. Accent color on Android.
         /// </summary>
-        public static readonly Color _003 = Color.FromHex("27866b");
-
-        /// <summary>
-        /// The 004.
-        /// </summary>
-        public static readonly Color _004 = Color.FromHex("8de2d5");
-
-        /// <summary>
-        /// The 005.
-        /// </summary>
-        public static readonly Color _005 = Color.FromHex("4fc0d1");
+        public static readonly Color _003 = Color.FromHex("8de2d5");
 
         /// <summary>
         /// Android blue
         /// </summary>
-        public static readonly Color _006 = Color.FromHex("00b9e6");
+        public static readonly Color _004 = Color.FromHex("00b9e6");
 
         /// <summary>
         /// iOS blue
         /// </summary>
-        public static readonly Color _007 = Color.FromHex("0079FF");
+        public static readonly Color _005 = Color.FromHex("0079FF");
 
         /// <summary>
         /// Primary (dark) label color.
         /// </summary>
-        public static readonly Color _008 = Color.FromHex("4d4d4d"); 
+        public static readonly Color _006 = Color.FromHex("4d4d4d"); 
 
         /// <summary>
         /// Secondary (light) label color.
         /// </summary>
-        public static readonly Color _009 = Color.FromHex("999999");
+        public static readonly Color _007 = Color.FromHex("999999");
 
         /// <summary>
-        /// The 010.
+        /// Another light label color. For the industry label in the customer details page.
         /// </summary>
-        public static readonly Color _010 = Color.FromHex("5c5353");
+        public static readonly Color _008 = Color.FromHex("D8D8D8");
 
         /// <summary>
-        /// The 011.
+        /// A dark medium gray with an extemely slight red hue. Used for chart backgrounds on Android.
         /// </summary>
-        public static readonly Color _011 = Color.FromHex("9d9797");
+        public static readonly Color _009 = Color.FromHex("5c5353");
 
         /// <summary>
-        /// The 012.
+        /// A medium gray. Used mostly for chart axis lines and fonts.
         /// </summary>
-        public static readonly Color _012 = Color.FromHex("6c6464");
+        public static readonly Color _010 = Color.FromHex("9d9797");
 
         /// <summary>
-        /// The 013.
+        /// A medium gray. Used for chart major grid lines and labels for iOS.
         /// </summary>
-        public static readonly Color _013 = Color.FromHex("a49f9f");
+        public static readonly Color _011 = Color.FromHex("747474");
 
         /// <summary>
-        /// The 014.
+        /// A seperator color.
         /// </summary>
-        public static readonly Color _014 = Color.FromHex("dddddd");
+        public static readonly Color _012 = Color.FromHex("dddddd");
 
         /// <summary>
-        /// The 015.
+        /// A seperator color.
         /// </summary>
-        public static readonly Color _015 = Color.FromHex("ededed");
+        public static readonly Color _013 = Color.FromHex("ededed");
 
         /// <summary>
-        /// The 016.
+        /// An orange. The bar chart color on the Customer Sales Page.
         /// </summary>
-        public static readonly Color _016 = Color.FromHex("d8d8d8");
-
-        /// <summary>
-        /// The 017. iOS specific.
-        /// </summary>
-        public static readonly Color _017 = Color.FromHex("007aff");
+        public static readonly Color _014 = Color.FromHex("EFA328");
 
     }
 }

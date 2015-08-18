@@ -12,14 +12,6 @@ namespace XamarinCRM
     {
         public LeadsView()
         {
-            #region leads list header
-            // LeadListHeaderView is an example of a custom view composed with Xamarin.Forms.
-            // It takes an action as a constructor parameter, which will be used by the add new lead button ("+").
-            LeadListHeaderView leadListHeaderView = new LeadListHeaderView(new Command(ExecutePushLeadDetailsTabbedPageCommand));
-            leadListHeaderView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
-            leadListHeaderView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
-            #endregion
-
             #region leads list activity inidicator
             ActivityIndicator leadListActivityIndicator = new ActivityIndicator()
             { 
@@ -35,13 +27,21 @@ namespace XamarinCRM
             {
                 Text = TextResources.SalesDashboard_Leads_LoadingLabel,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                HeightRequest = Sizes.SmallRowHeight,
+                HeightRequest = Sizes.MediumRowHeight,
                 XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center,
-                TextColor = Palette._009
+                YAlign = TextAlignment.End,
+                TextColor = Palette._007
             };
             loadingLabel.SetBinding(IsEnabledProperty, "IsBusy");
             loadingLabel.SetBinding(IsVisibleProperty, "IsBusy");
+            #endregion
+
+            #region leads list header
+            // LeadListHeaderView is an example of a custom view composed with Xamarin.Forms.
+            // It takes an action as a constructor parameter, which will be used by the add new lead button ("+").
+            LeadListHeaderView leadListHeaderView = new LeadListHeaderView(new Command(ExecutePushLeadDetailsTabbedPageCommand));
+            leadListHeaderView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
+            leadListHeaderView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
             #endregion
 
             #region leadsListView

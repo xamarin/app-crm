@@ -14,14 +14,14 @@ namespace XamarinCRM.Views.Customers
             Label contactTitleLabel = new Label()
             { 
                 Text = TextResources.Contact,
-                TextColor = Device.OnPlatform(Palette._007, Palette._009, Palette._008),
+                TextColor = Device.OnPlatform(Palette._005, Palette._007, Palette._006),
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
 
             Label contactLabel = new Label()
             { 
-                TextColor = Palette._008, 
+                TextColor = Palette._006, 
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };

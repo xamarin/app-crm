@@ -28,14 +28,14 @@ namespace XamarinCRM.Views.Customers
             AddNewOrderTextLabel = new Label
             {
                 Text = TextResources.Customers_Orders_NewOrder.ToUpper(),
-                TextColor = Palette._006,
+                TextColor = Palette._004,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Center,
             };
             #endregion
 
             #region compose view hierarchy
-            BoxView bottomBorder = new BoxView() { BackgroundColor = Palette._014, HeightRequest = 1 };
+            BoxView bottomBorder = new BoxView() { BackgroundColor = Palette._013, HeightRequest = 1 };
 
             double imagePaddingPercent = .35;
 

@@ -8,18 +8,23 @@ using XamarinCRM.Converters;
 
 namespace XamarinCRM
 {
-    public class SalesChartView : ModelTypedContentView<SalesDashboardChartViewModel>
+    public class SalesDashboardChartView : ModelTypedContentView<SalesDashboardChartViewModel>
     {
-        public SalesChartView()
+        Color MajorAxisAndLableColor
+        {
+            get { return Device.OnPlatform(Palette._011, Palette._008, Color.White); }
+        }
+
+        public SalesDashboardChartView()
         {
             #region sales graph header
-            SalesChartHeaderView chartHeaderView = new SalesChartHeaderView() { HeightRequest = Sizes.MediumRowHeight };
-            chartHeaderView.WeeklyAverageValueLabel.SetBinding(Label.TextProperty, "SalesAverage");
+            SalesChartHeaderView chartHeaderView = new SalesChartHeaderView() { HeightRequest = Sizes.MediumRowHeight, Padding = new Thickness(20, 10, 20, 0) };
+            chartHeaderView.WeeklyAverageValueLabel.SetBinding(Label.TextProperty, "WeeklySalesAverage");
             chartHeaderView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             chartHeaderView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
             #endregion
 
-            #region activity indiciator
+            #region activity indicator
             ActivityIndicator chartActivityIndicator = new ActivityIndicator()
             {
                 HeightRequest = Sizes.MediumRowHeight
@@ -34,22 +39,22 @@ namespace XamarinCRM
             {
                 Text = TextResources.SalesDashboard_SalesChart_LoadingLabel,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                HeightRequest = Sizes.SmallRowHeight,
+                HeightRequest = Sizes.MediumRowHeight,
                 XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center,
-                TextColor = Palette._009
+                YAlign = TextAlignment.End,
+                TextColor = Palette._007
             };
             loadingLabel.SetBinding(IsEnabledProperty, "IsBusy");
             loadingLabel.SetBinding(IsVisibleProperty, "IsBusy");
             #endregion
 
             #region the sales graph
-            double chartHeight = Device.OnPlatform(190, 190, 180);
+            const double chartHeight = 190;
 
-            StackLayout stackLayout = new UnspacedStackLayout() { HeightRequest = chartHeight + Sizes.MediumRowHeight };
-            Device.OnPlatform(iOS: () => stackLayout.BackgroundColor = Color.Transparent, Android: () => stackLayout.BackgroundColor = Palette._010);
-
-
+            StackLayout stackLayout = new UnspacedStackLayout();
+            Device.OnPlatform(
+                iOS: () => stackLayout.BackgroundColor = Color.Transparent, 
+                Android: () => stackLayout.BackgroundColor = Palette._009);
 
             ColumnSeries columnSeries = new ColumnSeries()
             {
@@ -57,17 +62,16 @@ namespace XamarinCRM
                 {
                     OpposedPosition = false,
                     ShowMajorGridLines = true,
-                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = Palette._011 },
+                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
                     ShowMinorGridLines = true,
                     MinorTicksPerInterval = 1,
-                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = Palette._012 },
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._011 }
+                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
+                    LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLableColor }
                 },
-                Color = Palette._004
+                Color = Palette._003
             };
 
-            // Not currently working because a binding bug in the SyncFusion ColumnSeries.ItemsSourceProperty setter
-            columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, "SalesChartDataPoints");
+            columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");
 
             SfChart chart = new SfChart()
             {
@@ -79,12 +83,11 @@ namespace XamarinCRM
                     LabelPlacement = LabelPlacement.BetweenTicks,
                     TickPosition = AxisElementPosition.Inside,
                     ShowMajorGridLines = false,
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = Palette._011 }
-                }
+                    LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLableColor }
+                },
+                
+                BackgroundColor = Color.Transparent
             };
-            Device.OnPlatform(
-                iOS: () => chart.BackgroundColor = Color.Transparent, 
-                Android: () => chart.BackgroundColor = Palette._010);
 
             chart.Series.Add(columnSeries);
             chart.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());

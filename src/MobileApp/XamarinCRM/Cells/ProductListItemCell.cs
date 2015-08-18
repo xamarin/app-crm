@@ -28,7 +28,7 @@ namespace XamarinCRM.Cells
             #region categoryNameLabel
             Label categoryNameLabel = new Label()
             { 
-                TextColor = Palette._008,
+                TextColor = Palette._006,
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Small, typeof(Label)), 
                     Android: Device.GetNamedSize(NamedSize.Small, typeof(Label)),
@@ -44,7 +44,7 @@ namespace XamarinCRM.Cells
             #region categoryDescriptionLabel
             Label categoryDescriptionLabel = new Label()
             { 
-                TextColor = Palette._009,
+                TextColor = Palette._007,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 YAlign = TextAlignment.Center,
                 LineBreakMode = LineBreakMode.TailTruncation

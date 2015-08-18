@@ -15,7 +15,7 @@ namespace XamarinCRM.Cells
             #region company label
             CompanyNameLabel = new Label()
             {
-                TextColor = Palette._008,
+                TextColor = Palette._006,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)) * 1.2,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.End,
@@ -30,7 +30,7 @@ namespace XamarinCRM.Cells
             #region contact label
             ContactName = new Label()
             {
-                TextColor = Palette._009,
+                TextColor = Palette._007,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Start,

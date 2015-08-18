@@ -21,12 +21,7 @@ namespace XamarinCRMv2CatalogDataService
 
 #if DEBUG
             config.Formatters.JsonFormatter.SerializerSettings.Formatting = Formatting.Indented;
-#endif
 
-            // To display errors in the browser during development, uncomment the following
-            // line. Comment it out again when you deploy your service for production use.
-
-#if DEBUG
             config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
 #endif
 

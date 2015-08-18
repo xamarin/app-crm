@@ -7,8 +7,8 @@ using Xamarin.Forms;
 using XamarinCRM.Clients;
 using XamarinCRM.Extensions;
 using XamarinCRM.Models;
-using XamarinCRM.ViewModels.Base;
 using XamarinCRM.Services;
+using XamarinCRM.ViewModels.Base;
 
 namespace XamarinCRM
 {
@@ -21,9 +21,9 @@ namespace XamarinCRM
         Command _LoadSeedDataCommand;
 
         ObservableCollection<Order> _Orders;
-        ObservableCollection<ChartDataPoint> _SalesChartDataPoints;
+        ObservableCollection<ChartDataPoint> _WeeklySalesChartDataPoints;
 
-        string _SalesAverage;
+        string _WeeklySalesAverage;
 
         public bool NeedsRefresh { get; set; }
 
@@ -36,7 +36,7 @@ namespace XamarinCRM
 
             Orders = new ObservableCollection<Order>();
 
-            SalesChartDataPoints = new ObservableCollection<ChartDataPoint>();
+            WeeklySalesChartDataPoints = new ObservableCollection<ChartDataPoint>();
 
             IsInitialized = false;
         }
@@ -60,12 +60,12 @@ namespace XamarinCRM
 
             Orders = (await _CustomerDataClient.GetAllAccountOrdersAsync()).ToObservableCollection();
 
-            SalesChartDataPoints = 
+            WeeklySalesChartDataPoints = 
                 (await _ChartDataService.GetWeeklySalesDataPoints(Orders))
                 .OrderBy(x => x.DateStart)
                 .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)).ToObservableCollection();
 
-            SalesAverage = String.Format("{0:C}", SalesChartDataPoints.Average(x => x.YValue));
+            WeeklySalesAverage = String.Format("{0:C}", WeeklySalesChartDataPoints.Average(x => x.YValue));
 
             IsBusy = false;
         }
@@ -80,26 +80,23 @@ namespace XamarinCRM
             }
         }
 
-        public ObservableCollection<ChartDataPoint> SalesChartDataPoints
+        public ObservableCollection<ChartDataPoint> WeeklySalesChartDataPoints
         {
-            get { return _SalesChartDataPoints; }
+            get { return _WeeklySalesChartDataPoints; }
             set
             {
-                _SalesChartDataPoints = value;
-                OnPropertyChanged("SalesChartDataPoints");
+                _WeeklySalesChartDataPoints = value;
+                OnPropertyChanged("WeeklySalesChartDataPoints");
             }
         }
 
-        public string SalesAverage
+        public string WeeklySalesAverage
         {
-            get
-            {
-                return _SalesAverage;
-            }
+            get { return _WeeklySalesAverage; }
             set
             {
-                _SalesAverage = value;
-                OnPropertyChanged("SalesAverage");
+                _WeeklySalesAverage = value;
+                OnPropertyChanged("WeeklySalesAverage");
             }
         }
     }

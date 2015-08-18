@@ -7,13 +7,16 @@ using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Customers;
 using XamarinCRM.Converters;
+using XamarinCRM.Views.Base;
 
 namespace XamarinCRM.Pages.Customers
 {
     public class CustomerOrdersPage : ModelTypedContentPage<OrdersViewModel>
     {
-        public CustomerOrdersPage()
+        public CustomerOrdersPage(OrdersViewModel viewModel)
         {
+            BindingContext = viewModel;
+
             #region activity indicator
             ActivityIndicator activityIndicator = new ActivityIndicator() { HeightRequest = Sizes.LargeRowHeight };
             activityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
@@ -34,15 +37,60 @@ namespace XamarinCRM.Pages.Customers
             };
             headerView.AddNewOrderImage.GestureRecognizers.Add(newOrderTapGestureRecognizer);
             headerView.AddNewOrderTextLabel.GestureRecognizers.Add(newOrderTapGestureRecognizer);
-            headerView.SetBinding(ContentView.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
-            headerView.SetBinding(ContentView.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
+            headerView.SetBinding(VisualElement.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
+            headerView.SetBinding(VisualElement.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
+            #endregion
+
+            #region header
+            StackLayout headerStackLayout = new UnspacedStackLayout();
+
+            Label companyTitleLabel = new Label()
+                {
+                    Text = TextResources.Customers_Orders_EditOrder_CompanyTitle,
+                    TextColor = Palette._007,
+                    FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                    XAlign = TextAlignment.Start,
+                    YAlign = TextAlignment.End,
+                    LineBreakMode = LineBreakMode.TailTruncation
+                };
+
+            Label companyNameLabel = new Label()
+                {
+                    TextColor = Palette._006,
+                    FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                    XAlign = TextAlignment.Start,
+                    YAlign = TextAlignment.Start,
+                    LineBreakMode = LineBreakMode.TailTruncation
+                };
+            companyNameLabel.SetBinding(Label.TextProperty, "Account.Company");
+
+            RelativeLayout headerLabelsRelativeLayout = new RelativeLayout() { HeightRequest = Sizes.LargeRowHeight };
+
+            headerLabelsRelativeLayout.Children.Add(
+                view: companyTitleLabel,
+                widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
+                heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 2));
+
+            headerLabelsRelativeLayout.Children.Add(
+                view: companyNameLabel,
+                yConstraint: Constraint.RelativeToParent(parent => parent.Height / 2),
+                widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
+                heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 2));
+
+            ContentView headerLabelsView = new ContentView() { Padding = new Thickness(20, 0), Content = headerLabelsRelativeLayout };
+
+            headerStackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = headerLabelsView });
+
+            headerStackLayout.SetBinding(VisualElement.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
+            headerStackLayout.SetBinding(VisualElement.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
+
             #endregion
 
             #region order list view
             CustomerOrderListView customerOrderListView = new CustomerOrderListView();
-            customerOrderListView.SetBinding(CustomerOrderListView.ItemsSourceProperty, "Orders");
-            customerOrderListView.SetBinding(CustomerOrderListView.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
-            customerOrderListView.SetBinding(CustomerOrderListView.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
+            customerOrderListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "Orders");
+            customerOrderListView.SetBinding(VisualElement.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
+            customerOrderListView.SetBinding(VisualElement.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
 
             customerOrderListView.ItemTapped += async (sender, e) =>
             {
@@ -53,11 +101,9 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             StackLayout stackLayout = new UnspacedStackLayout();
-
             stackLayout.Children.Add(activityIndicator);
-
             stackLayout.Children.Add(headerView);
-
+            stackLayout.Children.Add(headerStackLayout);
             stackLayout.Children.Add(customerOrderListView);
 
             Content = stackLayout;

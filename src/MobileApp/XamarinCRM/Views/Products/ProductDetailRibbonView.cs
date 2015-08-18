@@ -10,7 +10,7 @@ namespace XamarinCRM.Views.Products
         {
             RelativeLayout relativeLayout = new RelativeLayout();
 
-            BackgroundColor = Palette._010;
+            BackgroundColor = Palette._009;
 
             HeightRequest = 20;
 
@@ -30,7 +30,7 @@ namespace XamarinCRM.Views.Products
                 Label addToOrderTextLabel = new Label()
                 {
                     Text = TextResources.Customers_Orders_EditOrder_AddToOrder.ToUpper(),
-                    TextColor = Palette._006,
+                    TextColor = Palette._004,
                     XAlign = TextAlignment.Start,
                     YAlign = TextAlignment.Center,
                 };

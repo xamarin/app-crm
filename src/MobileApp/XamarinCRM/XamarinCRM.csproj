@@ -88,7 +88,6 @@
     <Compile Include="Statics\Palette.cs" />
     <Compile Include="Statics\Sizes.cs" />
     <Compile Include="Services\IConfigFetcher.cs" />
-    <Compile Include="ViewModels\Customers\CustomerSalesViewModel.cs" />
     <Compile Include="ViewModels\Customers\OrdersViewModel.cs" />
     <Compile Include="Views\Customers\OrderListHeaderView.cs" />
     <Compile Include="Cells\OrderListItemCell.cs" />
@@ -115,7 +114,6 @@
     <Compile Include="Clients\ICustomerDataClient.cs" />
     <Compile Include="Clients\CustomerDataClient.cs" />
     <Compile Include="Converters\InvertedBooleanConverter.cs" />
-    <Compile Include="Views\Customers\CustomerDetailView.cs" />
     <Compile Include="Views\Customers\CustomerDetailContactView.cs" />
     <Compile Include="Views\Customers\CustomerDetailPhoneView.cs" />
     <Compile Include="Views\Customers\CustomerDetailAddressView.cs" />
@@ -125,7 +123,6 @@
     <Compile Include="Views\Sales\LeadsView.cs" />
     <Compile Include="ViewModels\Sales\SalesDashboardChartViewModel.cs" />
     <Compile Include="ViewModels\Sales\SalesDashboardLeadsViewModel.cs" />
-    <Compile Include="Views\Sales\SalesChartView.cs" />
     <Compile Include="Services\IChartDataService.cs" />
     <Compile Include="Models\WeeklySalesData.cs" />
     <Compile Include="Models\CategorySalesDataPoint.cs" />
@@ -133,6 +130,11 @@
     <Compile Include="Converters\ConvertableConverter.cs" />
     <Compile Include="Services\IGeoCodingService.cs" />
     <Compile Include="Services\GeoCodingService.cs" />
+    <Compile Include="Views\Customers\CustomerCategorySalesChartView.cs" />
+    <Compile Include="Views\Customers\CustomerWeeklySalesChartView.cs" />
+    <Compile Include="Views\Sales\SalesDashboardChartView.cs" />
+    <Compile Include="ViewModels\Customers\CustomerSalesViewModel.cs" />
+    <Compile Include="Views\Customers\CustomerDetailHeaderView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

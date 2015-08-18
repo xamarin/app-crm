@@ -59,10 +59,10 @@ namespace XamarinCRM.Pages.Products
             {
                 Text = TextResources.Products_ProductList_LoadingLabel,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                HeightRequest = Sizes.SmallRowHeight,
+                    HeightRequest = Sizes.MediumRowHeight,
                 XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.Center,
-                TextColor = Palette._009
+                YAlign = TextAlignment.End,
+                TextColor = Palette._007
             };
             loadingLabel.SetBinding(IsEnabledProperty, "IsBusy");
             loadingLabel.SetBinding(IsVisibleProperty, "IsBusy");

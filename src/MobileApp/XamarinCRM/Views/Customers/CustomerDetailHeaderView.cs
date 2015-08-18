@@ -43,7 +43,7 @@ namespace XamarinCRM.Views.Customers
             #region industry label
             Label industryLabel = new Label()
             { 
-                TextColor = Palette._016,
+                TextColor = Palette._008,
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };

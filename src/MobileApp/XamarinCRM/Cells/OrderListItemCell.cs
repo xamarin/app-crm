@@ -20,7 +20,7 @@ namespace XamarinCRM.Cells
             #region primary label
             PrimaryLabel = new Label()
             {
-                TextColor = Palette._008,
+                TextColor = Palette._006,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)) * 1.2,
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.End,
@@ -34,7 +34,7 @@ namespace XamarinCRM.Cells
             #region secondary label
             SecondaryLabel = new Label()
             {
-                TextColor = Palette._009,
+                TextColor = Palette._007,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Start,
@@ -50,7 +50,7 @@ namespace XamarinCRM.Cells
             #region ternary label
             TernaryLabel = new Label()
             {
-                TextColor = Palette._009,
+                TextColor = Palette._007,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                 XAlign = TextAlignment.End,
                 YAlign = TextAlignment.Start,
@@ -66,7 +66,7 @@ namespace XamarinCRM.Cells
 
             contentView.Padding = new Thickness(20, 0);
 
-            BoxView bottomBorder = new BoxView() { BackgroundColor = Palette._014, HeightRequest = 1 };
+            BoxView bottomBorder = new BoxView() { BackgroundColor = Palette._013, HeightRequest = 1 };
 
             RelativeLayout labelsRelativeLayout = new RelativeLayout() { HeightRequest = Sizes.LargeRowHeight };
 
