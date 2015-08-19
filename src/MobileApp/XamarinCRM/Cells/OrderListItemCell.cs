@@ -59,7 +59,7 @@ namespace XamarinCRM.Cells
             TernaryLabel.SetBinding(
                 Label.TextProperty,
                 "Price", 
-                converter: new CurrencyIntegerConverter());
+                converter: new CurrencyDoubleConverter());
             #endregion
 
             var contentView = new ContentView();

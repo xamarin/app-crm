@@ -136,7 +136,7 @@ namespace XamarinCRM.Pages.Customers
             };
 
             Entry priceEntry = new Entry() { Placeholder = TextResources.Customers_Orders_EditOrder_PriceEntryPlaceholder };
-            priceEntry.SetBinding(Entry.TextProperty, "Order.Price", BindingMode.TwoWay, new CurrencyIntegerConverter());
+            priceEntry.SetBinding(Entry.TextProperty, "Order.Price", BindingMode.TwoWay, new CurrencyDoubleConverter());
 
             DatePicker dueDateEntry = new DatePicker() { Date = DateTime.Now };
             dueDateEntry.SetBinding(DatePicker.DateProperty, "Order.DueDate", BindingMode.TwoWay);

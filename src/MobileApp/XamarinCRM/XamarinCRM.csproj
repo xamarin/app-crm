@@ -94,7 +94,6 @@
     <Compile Include="Views\Customers\CustomerOrderListView.cs" />
     <Compile Include="Converters\ShortDatePatternConverter.cs" />
     <Compile Include="Converters\CurrencyDoubleConverter.cs" />
-    <Compile Include="Converters\CurrencyIntegerConverter.cs" />
     <Compile Include="Services\IAuthenticator.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Pages\Customers\EditOrderPage.cs" />
