@@ -11,9 +11,14 @@ namespace XamarinCRM.Views.Customers
 {
     public class CustomerWeeklySalesChartView : ModelTypedContentView<CustomerSalesViewModel>
     {
-        Color MajorAxisAndLableColor
+        static Color MajorAxisAndLableColor
         {
             get { return Device.OnPlatform(Palette._011, Palette._008, Color.White); }
+        }
+
+        static double ChartHeight
+        {
+            get { return Device.OnPlatform(160, 150, 150); }
         }
 
         public CustomerWeeklySalesChartView()
@@ -50,7 +55,6 @@ namespace XamarinCRM.Views.Customers
             #endregion
 
             #region chart
-            double chartHeight = Device.OnPlatform(160, 150, 150);
 
             ColumnSeries columnSeries = new ColumnSeries()
             {
@@ -62,17 +66,21 @@ namespace XamarinCRM.Views.Customers
                     ShowMinorGridLines = true,
                     MinorTicksPerInterval = 1,
                     MinorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLableColor }
+                    LabelStyle = new ChartAxisLabelStyle()
+                    { 
+                        TextColor = MajorAxisAndLableColor,
+                        LabelFormat = "$0"
+                    }
                 },
-                    
                 Color = Palette._014
             };
+
 
             columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");
 
             SfChart chart = new SfChart()
             {
-                HeightRequest = chartHeight,
+                HeightRequest = ChartHeight,
 
                 PrimaryAxis = new CategoryAxis()
                 {
@@ -93,7 +101,6 @@ namespace XamarinCRM.Views.Customers
             // The chart has uncontrollable white space on it's left in iOS, so we're
             // wrapping it in a ContentView and adding some right padding to compensate.
             ContentView chartWrapper = new ContentView() { Content = chart, BackgroundColor = Color.Transparent };
-            Device.OnPlatform(iOS: () => chartWrapper.Padding = new Thickness(0, 0, 30, 0));
             #endregion
 
             #region compsose view hierarchy
@@ -102,6 +109,20 @@ namespace XamarinCRM.Views.Customers
             stackLayout.Children.Add(activityIndicator);
             stackLayout.Children.Add(chartHeaderView);
             stackLayout.Children.Add(chartWrapper);
+            #endregion
+
+            #region platform adjustments
+            Device.OnPlatform(
+                iOS: () =>
+                {
+                    chartWrapper.Padding = new Thickness(0, 0, 30, 0);
+                },
+                Android: () =>
+                {
+                    Font androidChartLabelFont = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
+                    columnSeries.YAxis.LabelStyle.Font = androidChartLabelFont;
+                    chart.PrimaryAxis.LabelStyle.Font = androidChartLabelFont;
+                });
             #endregion
 
             Content = stackLayout;

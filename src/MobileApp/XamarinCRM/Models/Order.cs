@@ -28,7 +28,7 @@ namespace XamarinCRM.Models
         public string AccountId { get; set; }
 
         [JsonProperty(PropertyName = "price")]
-        public int Price { get; set; }
+        public double Price { get; set; }
 
         [JsonProperty(PropertyName = "discount")]
         public int Discount { get; set; }

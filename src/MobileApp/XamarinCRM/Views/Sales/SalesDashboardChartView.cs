@@ -51,11 +51,6 @@ namespace XamarinCRM
             #region the sales graph
             const double chartHeight = 190;
 
-            StackLayout stackLayout = new UnspacedStackLayout();
-            Device.OnPlatform(
-                iOS: () => stackLayout.BackgroundColor = Color.Transparent, 
-                Android: () => stackLayout.BackgroundColor = Palette._009);
-
             ColumnSeries columnSeries = new ColumnSeries()
             {
                 YAxis = new NumericalAxis()
@@ -66,7 +61,11 @@ namespace XamarinCRM
                     ShowMinorGridLines = true,
                     MinorTicksPerInterval = 1,
                     MinorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLableColor }
+                    LabelStyle = new ChartAxisLabelStyle()
+                    { 
+                        TextColor = MajorAxisAndLableColor, 
+                        LabelFormat = "$0"
+                    }
                 },
                 Color = Palette._003
             };
@@ -96,15 +95,30 @@ namespace XamarinCRM
             // The chart has uncontrollable white space on it's left in iOS, so we're
             // wrapping it in a ContentView and adding some right padding to compensate.
             ContentView chartWrapper = new ContentView() { Content = chart };
-            Device.OnPlatform(iOS: () => chartWrapper.Padding = new Thickness(0, 0, 30, 0));
 
+            StackLayout stackLayout = new UnspacedStackLayout();
             stackLayout.Children.Add(chartHeaderView);
             stackLayout.Children.Add(loadingLabel);
             stackLayout.Children.Add(chartActivityIndicator);
             stackLayout.Children.Add(chartWrapper);
             #endregion
 
-            Device.OnPlatform(iOS: () => stackLayout.Padding = new Thickness(0, 20, 0, 0));
+            #region platform adjustments
+            Device.OnPlatform(
+                iOS: () =>
+                { 
+                    chartWrapper.Padding = new Thickness(0, 0, 30, 0);
+                    stackLayout.BackgroundColor = Color.Transparent;
+                    stackLayout.Padding = new Thickness(0, 20, 0, 0);
+                }, 
+                Android: () =>
+                { 
+                    stackLayout.BackgroundColor = Palette._009;
+                    Font androidChartLabelFont = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
+                    columnSeries.YAxis.LabelStyle.Font = androidChartLabelFont;
+                    chart.PrimaryAxis.LabelStyle.Font = androidChartLabelFont;
+                });
+            #endregion
 
             Content = stackLayout;
         }

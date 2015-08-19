@@ -246,6 +246,9 @@
 	<data name="Customers_Detail_CallDialog_Cancel" xml:space="preserve">
 		<value>No</value>
 	</data>
+	<data name="Customers_Detail_Sales_CategoryChart_Title" xml:space="preserve">
+		<value>Sales by Category in $</value>
+	</data>
 
 
 	<data name="Products" xml:space="preserve">

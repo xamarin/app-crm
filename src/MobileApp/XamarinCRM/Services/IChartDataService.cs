@@ -1,6 +1,7 @@
 ﻿using XamarinCRM.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Syncfusion.SfChart.XForms;
 
 namespace XamarinCRM.Services
 {
@@ -8,7 +9,7 @@ namespace XamarinCRM.Services
     {
         Task<List<WeeklySalesDataPoint>> GetWeeklySalesDataPoints(IEnumerable<Order> orders, int numberOfWeeks = 6, bool isOpen = false);
 
-        Task<List<CategorySalesDataPoint>> GetCategorySalesDataPoints(IEnumerable<Order> orders, bool isOpen = false);
+        Task<List<ChartDataPoint>> GetCategorySalesDataPoints(IEnumerable<Order> orders, Account account = null, int numberOfWeeks = 6, bool isOpen = false);
     }
 }
 

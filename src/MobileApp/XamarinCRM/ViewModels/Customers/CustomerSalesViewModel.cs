@@ -21,6 +21,7 @@ namespace XamarinCRM
         Command _LoadSeedDataCommand;
 
         Account _Account;
+
         public Account Account
         {
             get { return _Account; }
@@ -30,7 +31,8 @@ namespace XamarinCRM
 
         public bool NeedsRefresh { get; set; }
 
-        public CustomerSalesViewModel(Account account, INavigation navigation = null) : base(navigation)
+        public CustomerSalesViewModel(Account account, INavigation navigation = null)
+            : base(navigation)
         {
             _Account = account;
 
@@ -72,9 +74,9 @@ namespace XamarinCRM
                     .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)).ToObservableCollection();
 
             CategorySalesChartDataPoints = 
-                (await _ChartDataService.GetCategorySalesDataPoints(Orders))
-                    .OrderBy(x => x.Category)
-                    .Select(x => new ChartDataPoint(x.Category, x.Amount)).ToObservableCollection();
+                (await _ChartDataService.GetCategorySalesDataPoints(Orders, _Account))
+                    .OrderBy(x => x.XValue)
+                    .ToObservableCollection();
 
             WeeklySalesAverage = String.Format("{0:C}", WeeklySalesChartDataPoints.Average(x => x.YValue));
 
@@ -82,6 +84,7 @@ namespace XamarinCRM
         }
 
         ObservableCollection<Order> _Orders;
+
         public ObservableCollection<Order> Orders
         {
             get { return _Orders; }
@@ -93,6 +96,7 @@ namespace XamarinCRM
         }
 
         ObservableCollection<ChartDataPoint> _WeeklySalesChartDataPoints;
+
         public ObservableCollection<ChartDataPoint> WeeklySalesChartDataPoints
         {
             get { return _WeeklySalesChartDataPoints; }
@@ -104,9 +108,13 @@ namespace XamarinCRM
         }
 
         ObservableCollection<ChartDataPoint> _CategorySalesChartDataPoints;
+
         public ObservableCollection<ChartDataPoint> CategorySalesChartDataPoints
         {
-            get { return _CategorySalesChartDataPoints; }
+            get
+            { 
+                return _CategorySalesChartDataPoints; 
+            }
             set
             {
                 _CategorySalesChartDataPoints = value;

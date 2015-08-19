@@ -4,7 +4,7 @@ namespace XamarinCRM.Models
 {
     public class CategorySalesDataPoint
     {
-        public string Category { get; set; }
+        public string CategoryName { get; set; }
 
         public double Amount { get; set; }
     }

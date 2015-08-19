@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
 using XamarinCRM.Models;
 using XamarinCRM.Services;
+using Syncfusion.SfChart.XForms;
 
 [assembly: Dependency(typeof(ChartDataService))]
 
@@ -46,18 +46,19 @@ namespace XamarinCRM.Services
 
             return weeklySalesDataPoints;
         }
-
-        public async Task<List<CategorySalesDataPoint>> GetCategorySalesDataPoints(IEnumerable<Order> orders, bool isOpen = false)
+ public async Task<List<ChartDataPoint>> GetCategorySalesDataPoints(IEnumerable<Order> orders, Account account = null, int numberOfWeeks = 6, bool isOpen = false)
         {
             // get top-level categories
             var categories = await _CatalogClient.GetCategoriesAsync();
 
-            List<CategorySalesDataPoint> categorySalesDataPoints = new List<CategorySalesDataPoint>();
+            List<ChartDataPoint> categorySalesDataPoints = new List<ChartDataPoint>();
+
+            orders = (account == null) ? orders : orders.Where(x => x.AccountId == account.Id);
 
             foreach (var category in categories)
             {
-                double dblAmt = await GetOrderTotalForCategory(orders, category, isOpen);
-                categorySalesDataPoints.Add(new CategorySalesDataPoint() { Category = category.Name, Amount = dblAmt });
+                double amount = await GetOrderTotalForCategory(orders, category, numberOfWeeks, isOpen);
+                categorySalesDataPoints.Add(new ChartDataPoint(category.Name, amount));
             }
 
             return categorySalesDataPoints;
@@ -65,20 +66,24 @@ namespace XamarinCRM.Services
 
         #endregion
 
-        async Task<double> GetOrderTotalForCategory(IEnumerable<Order> orders, CatalogCategory category, bool isOpen = false)
+        async Task<double> GetOrderTotalForCategory(IEnumerable<Order> orders, CatalogCategory category, int numberOfWeeks = 6, bool isOpen = false)
         {
-            double dblTotal = 0;
+            double total = 0;
 
             var categoryProducts = await _CatalogClient.GetAllChildProductsAsync(category.Id);
 
-            var results = orders.Where(o => o.IsOpen == isOpen && categoryProducts.Any(x => x.Name.ToLower() == o.Item.ToLower()));
+            DateTime dateEnd = DateTime.Today;
+            DateTime dateStart = dateEnd.AddDays(-numberOfWeeks * 7);
+
+
+            var results = orders.Where(o => o.IsOpen == isOpen && o.ClosedDate >= dateStart && o.ClosedDate <= dateEnd && categoryProducts.Any(x => x.Name.ToLower() == o.Item.ToLower()));
 
             foreach (var order in results)
             {
-                dblTotal = dblTotal + order.Price;
+                total = total + order.Price;
             }
 
-            return dblTotal;
+            return total;
         }
 
         static double GetOrderTotalForPeriod(IEnumerable<Order> orders, DateTime dateStart, DateTime dateEnd, bool isOpen = false)

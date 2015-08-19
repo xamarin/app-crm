@@ -70,10 +70,19 @@ namespace XamarinCRM.Statics
         public static readonly Color _013 = Color.FromHex("ededed");
 
         /// <summary>
-        /// An orange. The bar chart color on the Customer Sales Page.
+        /// Orange 1.
         /// </summary>
         public static readonly Color _014 = Color.FromHex("EFA328");
 
+        /// <summary>
+        /// Orange 2.
+        /// </summary>
+        public static readonly Color _015 = Color.FromHex("DD852C");
+
+        /// <summary>
+        /// Orange 3.
+        /// </summary>
+        public static readonly Color _016 = Color.FromHex("c06f18");
     }
 }
 

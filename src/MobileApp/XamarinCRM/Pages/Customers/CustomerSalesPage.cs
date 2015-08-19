@@ -16,9 +16,7 @@ namespace XamarinCRM.Pages.Customers
     {
         public CustomerSalesPage(CustomerSalesViewModel viewModel)
         {
-            Device.OnPlatform(
-                iOS: () => BackgroundColor = Color.Transparent, 
-                Android: () => BackgroundColor = Palette._009);
+            BackgroundColor = Color.Transparent;
 
             BindingContext = viewModel;
 
@@ -26,23 +24,23 @@ namespace XamarinCRM.Pages.Customers
             StackLayout headerStackLayout = new UnspacedStackLayout();
 
             Label companyTitleLabel = new Label()
-                {
-                    Text = TextResources.Customers_Orders_EditOrder_CompanyTitle,
-                    TextColor = Palette._007,
-                    FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                    XAlign = TextAlignment.Start,
-                    YAlign = TextAlignment.End,
-                    LineBreakMode = LineBreakMode.TailTruncation
-                };
+            {
+                Text = TextResources.Customers_Orders_EditOrder_CompanyTitle,
+                TextColor = Palette._007,
+                FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                XAlign = TextAlignment.Start,
+                YAlign = TextAlignment.End,
+                LineBreakMode = LineBreakMode.TailTruncation
+            };
 
             Label companyNameLabel = new Label()
-                {
-                    TextColor = Device.OnPlatform(Palette._006, Color.White, Color.White),
-                    FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                    XAlign = TextAlignment.Start,
-                    YAlign = TextAlignment.Start,
-                    LineBreakMode = LineBreakMode.TailTruncation
-                };
+            {
+                TextColor = Device.OnPlatform(Palette._006, Color.White, Color.White),
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                XAlign = TextAlignment.Start,
+                YAlign = TextAlignment.Start,
+                LineBreakMode = LineBreakMode.TailTruncation
+            };
             companyNameLabel.SetBinding(Label.TextProperty, "Account.Company");
 
             RelativeLayout headerLabelsRelativeLayout = new RelativeLayout() { HeightRequest = Sizes.LargeRowHeight };
@@ -76,6 +74,15 @@ namespace XamarinCRM.Pages.Customers
             stackLayout.Children.Add(headerStackLayout);
             stackLayout.Children.Add(customerWeeklySalesChartView);
             stackLayout.Children.Add(customerCategorySalesChartView);
+            #endregion
+
+            #region platform adjustments
+            Device.OnPlatform(
+                Android: () =>
+                {
+                    BackgroundColor = Palette._009;
+                }
+            );
             #endregion
 
             Content = stackLayout;

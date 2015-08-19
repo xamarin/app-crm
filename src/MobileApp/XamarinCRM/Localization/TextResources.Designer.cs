@@ -161,6 +161,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Customers_Detail_Sales_CategoryChart_Title {
+            get {
+                return ResourceManager.GetString("Customers_Detail_Sales_CategoryChart_Title", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadContactDetail_FirstName {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_FirstName", resourceCulture);
