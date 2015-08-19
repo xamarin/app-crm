@@ -57,7 +57,7 @@ namespace XamarinCRM.Clients
             _AccountTable = MobileService.GetSyncTable<Account>();
         }
 
-        public async Task SeedData()
+        public async Task SeedDataAsync()
         {
             ITrackHandle handle = null;
 
@@ -89,7 +89,7 @@ namespace XamarinCRM.Clients
         #region Orders
 
       
-        public async Task SyncOrders()
+        public async Task SynchronizeOrdersAsync()
         {
             try
             {
@@ -149,7 +149,7 @@ namespace XamarinCRM.Clients
 
         #region Accounts
 
-        public async Task SyncAccounts()
+        public async Task SynchronizeAccountsAsync()
         {
             try
             {
@@ -218,7 +218,10 @@ namespace XamarinCRM.Clients
             {
                 using (var handle = Insights.TrackTime("TimeToGetAccountList"))
                 {
-                    return await _AccountTable.Where(a => a.IsLead == leads).OrderBy(b => b.Company).ToEnumerableAsync();
+                    return await _AccountTable
+                        .Where(account => account.IsLead == leads)
+                        .OrderBy(b => b.Company)
+                        .ToEnumerableAsync();
                 }
             }
             catch (MobileServiceInvalidOperationException ex)
@@ -234,14 +237,16 @@ namespace XamarinCRM.Clients
             return new List<Account>();
         }
 
-        public async Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId)
+        public async Task<IEnumerable<Order>> GetOpenOrdersForAccountAsync(string accountId)
         {
             try
             {
                 using (var handle = Insights.TrackTime("TimeToGetAccountOrders"))
                 {
-                    return await _OrderTable.Where(j => j.AccountId == accountId &&
-                        j.IsOpen == true).OrderBy(j => j.DueDate).ToEnumerableAsync();
+                    return await _OrderTable
+                        .Where(order => order.AccountId == accountId && order.IsOpen == true)
+                        .OrderBy(j => j.DueDate)
+                        .ToEnumerableAsync();
                 }
             }
             catch (MobileServiceInvalidOperationException ex)
@@ -257,14 +262,16 @@ namespace XamarinCRM.Clients
             return new List<Order>();
         }
 
-        public async Task<IEnumerable<Order>> GetAccountOrderHistoryAsync(string accountId)
+        public async Task<IEnumerable<Order>> GetClosedOrdersForAccountAsync(string accountId)
         {
             try
             {
                 using (var handle = Insights.TrackTime("TimeToGetAccountHistory"))
                 {
-                    return await _OrderTable.Where(j => j.AccountId == accountId &&
-                        j.IsOpen == false).OrderByDescending(j => j.ClosedDate).ToEnumerableAsync();
+                    return await _OrderTable
+                        .Where(order => order.AccountId == accountId && order.IsOpen == false)
+                        .OrderByDescending(order => order.ClosedDate)
+                        .ToEnumerableAsync();
                 }
             }
             catch (MobileServiceInvalidOperationException ex)
@@ -280,13 +287,15 @@ namespace XamarinCRM.Clients
             return new List<Order>();
         }
 
-        public async Task<IEnumerable<Order>> GetAllAccountOrdersAsync()
+        public async Task<IEnumerable<Order>> GetAllOrdersAsync()
         {
             try
             {
                 using (var handle = Insights.TrackTime("TimeToGetAllAccountOrders"))
                 {
-                    return await _OrderTable.Where(j => j.IsOpen == false).ToEnumerableAsync();
+                    return await _OrderTable
+                        .Where(order => order.IsOpen == false)
+                        .ToEnumerableAsync();
                 }
             }
             catch (MobileServiceInvalidOperationException ex)

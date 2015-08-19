@@ -67,7 +67,7 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             #region fields
-            Grid section1Grid = new Grid()
+            Grid orderDetailsGrid = new Grid()
             {
                 Padding = new Thickness(20),
                 RowSpacing = 15,
@@ -116,24 +116,26 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             #region compose view hierarchy
-            section1Grid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_ProductTitleLabel), 0, 0);
-            section1Grid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_PriceTitleLabel), 0, 1);
-            section1Grid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_OrderDateTitleLabel), 0, 2);
-            section1Grid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_DueDateTitleLabel), 0, 3);
-            section1Grid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_ClosedDateTitleLabel), 0, 4);
-            section1Grid.Children.Add(productEntry, 1, 0);
-            section1Grid.Children.Add(priceEntry, 1, 1);
-            section1Grid.Children.Add(orderDateEntry, 1, 2);
-            section1Grid.Children.Add(dueDateEntry, 1, 3);
-            section1Grid.Children.Add(closedDateEntry, 1, 4);
+            orderDetailsGrid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_ProductTitleLabel), 0, 0);
+            orderDetailsGrid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_PriceTitleLabel), 0, 1);
+            orderDetailsGrid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_OrderDateTitleLabel), 0, 2);
+            orderDetailsGrid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_DueDateTitleLabel), 0, 3);
+            var closedDateFieldLabelView = GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_ClosedDateTitleLabel);
+            closedDateFieldLabelView.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
+            closedDateFieldLabelView.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
+            orderDetailsGrid.Children.Add(closedDateFieldLabelView, 0, 4);
 
-            // disables the closed date row if the order is still open
-            section1Grid.RowDefinitions[4].SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
-            section1Grid.RowDefinitions[4].SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
+            orderDetailsGrid.Children.Add(productEntry, 1, 0);
+            orderDetailsGrid.Children.Add(priceEntry, 1, 1);
+            orderDetailsGrid.Children.Add(orderDateEntry, 1, 2);
+            orderDetailsGrid.Children.Add(dueDateEntry, 1, 3);
+            closedDateEntry.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
+            closedDateEntry.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
+            orderDetailsGrid.Children.Add(closedDateEntry, 1, 4);
 
             StackLayout stackLayout = new UnspacedStackLayout();
             stackLayout.Children.Add(headerStackLayout);
-            stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = section1Grid });
+            stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = orderDetailsGrid });
             #endregion
 
             Content = stackLayout;

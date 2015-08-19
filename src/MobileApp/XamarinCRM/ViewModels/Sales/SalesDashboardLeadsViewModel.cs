@@ -81,7 +81,7 @@ namespace XamarinCRM
 
             IsBusy = true;
 
-            await _CustomerDataClient.SeedData();
+            await _CustomerDataClient.SeedDataAsync();
 
             var leads = await _CustomerDataClient.GetAccountsAsync(true);
             Leads = leads.ToObservableCollection();

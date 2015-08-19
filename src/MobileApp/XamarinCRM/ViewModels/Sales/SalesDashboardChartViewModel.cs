@@ -56,9 +56,9 @@ namespace XamarinCRM
 
             IsBusy = true;
 
-            await _CustomerDataClient.SeedData();
+            await _CustomerDataClient.SeedDataAsync();
 
-            Orders = (await _CustomerDataClient.GetAllAccountOrdersAsync()).ToObservableCollection();
+            Orders = (await _CustomerDataClient.GetAllOrdersAsync()).ToObservableCollection();
 
             WeeklySalesChartDataPoints = 
                 (await _ChartDataService.GetWeeklySalesDataPointsAsync(Orders))

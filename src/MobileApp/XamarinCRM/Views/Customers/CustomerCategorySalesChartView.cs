@@ -43,13 +43,6 @@ namespace XamarinCRM.Views.Customers
             };
                         
             pieSeries.SetBinding(PieSeries.ItemsSourceProperty, "CategorySalesChartDataPoints");
-
-//            pieSeries.ItemsSource = new List<ChartDataPoint>()
-//            {
-//                new ChartDataPoint("Category 1", 100),
-//                new ChartDataPoint("Category 2", 200),
-//                new ChartDataPoint("Category 3", 300),
-//            };
             #endregion
 
             #region chart
@@ -58,8 +51,8 @@ namespace XamarinCRM.Views.Customers
                 HeightRequest = ChartHeight,
                 Legend = new ChartLegend()
                 { 
-                    Title = new ChartTitle() { Text = TextResources.Customers_Detail_Sales_CategoryChart_Title },
-                    DockPosition = LegendPlacement.Floating
+//                    Title = new ChartTitle() { Text = TextResources.Customers_Detail_Sales_CategoryChart_Title },
+                    DockPosition = LegendPlacement.Top
                 },
                 BackgroundColor = Color.Transparent
             };

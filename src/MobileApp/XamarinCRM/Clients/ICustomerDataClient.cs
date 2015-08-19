@@ -6,13 +6,13 @@ namespace XamarinCRM.Clients
 {
     public interface ICustomerDataClient
     {
-        Task SeedData();
+        Task SeedDataAsync();
 
         bool DoesLocalDBExist();
 
-        Task SyncAccounts();
+        Task SynchronizeAccountsAsync();
 
-        Task SyncOrders();
+        Task SynchronizeOrdersAsync();
 
         Task SaveOrderAsync(Order item);
 
@@ -22,14 +22,12 @@ namespace XamarinCRM.Clients
 
         Task DeleteAccountAsync(Account item);
 
-        Task<IEnumerable<Account>> GetAccountsAsync(bool leads);
+        Task<IEnumerable<Account>> GetAccountsAsync(bool leads = false);
 
-        //Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId, bool open);
+        Task<IEnumerable<Order>> GetOpenOrdersForAccountAsync(string accountId);
 
-        Task<IEnumerable<Order>> GetAccountOrdersAsync(string accountId);
+        Task<IEnumerable<Order>> GetClosedOrdersForAccountAsync(string accountId);
 
-        Task<IEnumerable<Order>> GetAccountOrderHistoryAsync(string accountId);
-
-        Task<IEnumerable<Order>> GetAllAccountOrdersAsync();
+        Task<IEnumerable<Order>> GetAllOrdersAsync();
     }
 }

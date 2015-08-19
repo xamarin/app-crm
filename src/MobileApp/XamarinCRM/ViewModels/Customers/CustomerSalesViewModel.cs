@@ -44,6 +44,8 @@ namespace XamarinCRM
 
             WeeklySalesChartDataPoints = new ObservableCollection<ChartDataPoint>();
 
+            CategorySalesChartDataPoints = new ObservableCollection<ChartDataPoint>();
+
             IsInitialized = false;
         }
 
@@ -62,10 +64,10 @@ namespace XamarinCRM
 
             IsBusy = true;
 
-            await _CustomerDataClient.SeedData();
+            await _CustomerDataClient.SeedDataAsync();
 
             Orders.Clear();
-            Orders.AddRange((await _CustomerDataClient.GetAllAccountOrdersAsync()).Where(x => x.AccountId == account.Id));
+            Orders.AddRange((await _CustomerDataClient.GetAllOrdersAsync()).Where(x => x.AccountId == account.Id));
 
             WeeklySalesChartDataPoints.Clear();
             WeeklySalesChartDataPoints.AddRange((await _ChartDataService.GetWeeklySalesDataPointsAsync(Orders)).OrderBy(x => x.DateStart).Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)));

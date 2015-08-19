@@ -17,7 +17,7 @@ namespace XamarinCRM.Models
             //Discount = 0;
             Signature = string.Empty;
             OrderDate = DateTime.Today;
-            ClosedDate = DateTime.Today;
+            ClosedDate = null;
             DueDate = DateTime.Today.AddDays(7);
         }
 
@@ -49,7 +49,7 @@ namespace XamarinCRM.Models
         public DateTime DueDate { get; set; }
 
         [JsonProperty(PropertyName = "closed_date")]
-        public DateTime ClosedDate { get; set; }
+        public DateTime? ClosedDate { get; set; }
 
         [JsonIgnore]
         public string Quote
