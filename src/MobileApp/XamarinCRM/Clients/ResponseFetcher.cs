@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using XamarinCRM.Extensions;
 
 namespace XamarinCRM.Clients
 {
@@ -26,7 +27,17 @@ namespace XamarinCRM.Clients
                 }
                 client.BaseAddress = new Uri(_BaseUri);
                 var response = await client.GetAsync(requestUri);
-                response.EnsureSuccessStatusCode();
+                try
+                {
+                    response.EnsureSuccessStatusCode();
+                }
+                catch (Exception ex)
+                {
+                    var newEx = new Exception((await response.Content.ReadAsStringAsync()), ex);
+                    newEx.WriteFormattedMessageToDebugConsole(this);
+                    throw newEx;
+                }
+
                 var content = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<T>(content);
             }

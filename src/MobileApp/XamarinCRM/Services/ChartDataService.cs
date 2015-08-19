@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using XamarinCRM.Models;
-using XamarinCRM.Clients;
-using Xamarin.Forms;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Linq;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+using XamarinCRM.Clients;
+using XamarinCRM.Models;
 using XamarinCRM.Services;
 
 [assembly: Dependency(typeof(ChartDataService))]
@@ -48,14 +49,15 @@ namespace XamarinCRM.Services
 
         public async Task<List<CategorySalesDataPoint>> GetCategorySalesDataPoints(IEnumerable<Order> orders, bool isOpen = false)
         {
+            // get top-level categories
             var categories = await _CatalogClient.GetCategoriesAsync();
 
             List<CategorySalesDataPoint> categorySalesDataPoints = new List<CategorySalesDataPoint>();
 
-            foreach (string category in categories.Select(x => x.Name))
+            foreach (var category in categories)
             {
-                double dblAmt = GetOrderTotalForCategory(orders, category, isOpen);
-                categorySalesDataPoints.Add(new CategorySalesDataPoint() { Category = category, Amount = dblAmt });
+                double dblAmt = await GetOrderTotalForCategory(orders, category, isOpen);
+                categorySalesDataPoints.Add(new CategorySalesDataPoint() { Category = category.Name, Amount = dblAmt });
             }
 
             return categorySalesDataPoints;
@@ -63,11 +65,13 @@ namespace XamarinCRM.Services
 
         #endregion
 
-        static double GetOrderTotalForCategory(IEnumerable<Order> orders, string category, bool isOpen = false)
+        async Task<double> GetOrderTotalForCategory(IEnumerable<Order> orders, CatalogCategory category, bool isOpen = false)
         {
             double dblTotal = 0;
 
-            var results = orders.Where(o => o.IsOpen == isOpen && o.Item == category);
+            var categoryProducts = await _CatalogClient.GetAllChildProductsAsync(category.Id);
+
+            var results = orders.Where(o => o.IsOpen == isOpen && categoryProducts.Any(x => x.Name.ToLower() == o.Item.ToLower()));
 
             foreach (var order in results)
             {

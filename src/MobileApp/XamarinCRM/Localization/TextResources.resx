@@ -158,7 +158,7 @@
 		<value>Weekly Average</value>
 	</data>
 	<data name="SalesDashboard_SalesChart_LoadingLabel" xml:space="preserve">
-		<value>Loading sales chart data...</value>
+		<value>Loading sales data...</value>
 	</data>
 	<data name="SalesDashboard_Leads_LoadingLabel" xml:space="preserve">
 		<value>Loading leads data...</value>

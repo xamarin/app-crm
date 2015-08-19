@@ -1,14 +1,14 @@
-﻿using Xamarin.Forms;
-using XamarinCRM.Pages.Base;
-using XamarinCRM.ViewModels.Customers;
-using XamarinCRM.Statics;
-using XamarinCRM.Layouts;
-using XamarinCRM.Views.Customers;
-using XamarinCRM.Models;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using Xamarin;
+using Xamarin.Forms;
+using XamarinCRM.Layouts;
+using XamarinCRM.Models;
+using XamarinCRM.Pages.Base;
+using XamarinCRM.Statics;
+using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Base;
+using XamarinCRM.Views.Customers;
 
 namespace XamarinCRM.Pages.Customers
 {
@@ -65,7 +65,6 @@ namespace XamarinCRM.Pages.Customers
 
             #region weekly sales chart
             CustomerWeeklySalesChartView customerWeeklySalesChartView = new CustomerWeeklySalesChartView() { BindingContext = ViewModel };
-
             #endregion
 
             #region category sales chart

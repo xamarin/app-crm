@@ -12,6 +12,8 @@ namespace XamarinCRM.Clients
 
         Task<List<CatalogProduct>> GetProductsAsync(string categoryId);
 
+        Task<List<CatalogProduct>> GetAllChildProductsAsync(string topLevelCategoryId);
+
         Task<CatalogProduct> GetProductAsync(string productId);
 
         Task<List<CatalogProduct>> SearchAsync(string searchTerm);

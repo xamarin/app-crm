@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 using XamarinCRM.Clients;
 using XamarinCRM.Models;
-using Xamarin.Forms;
 using XamarinCRM.Services;
 
 [assembly: Dependency(typeof(CatalogDataClient))]
@@ -49,6 +49,15 @@ namespace XamarinCRM.Clients
         public async Task<List<CatalogProduct>> GetProductsAsync(string categoryId)
         {
             string requestUri = String.Format("Products/ByCategory?id={0} ", categoryId);
+
+            var responseFetcher = new ResponseFetcher<List<CatalogProduct>>(_ApiServiceUrl, _ApiAppKey);
+
+            return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
+        }
+
+        public async Task<List<CatalogProduct>> GetAllChildProductsAsync(string topLevelCategoryId)
+        {
+            string requestUri = String.Format("Products/ByTopLevelCategory?id={0} ", topLevelCategoryId);
 
             var responseFetcher = new ResponseFetcher<List<CatalogProduct>>(_ApiServiceUrl, _ApiAppKey);
 
