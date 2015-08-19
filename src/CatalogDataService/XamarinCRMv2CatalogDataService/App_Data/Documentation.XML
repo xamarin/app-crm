@@ -58,6 +58,13 @@
             <param name="id">The id of the product to retrieve.</param>
             <returns>A product.</returns>
         </member>
+        <member name="M:XamarinCRMv2CatalogDataService.Controllers.ProductController.GetAllChildProductsOfTopLevelCategory(System.String)">
+            <summary>
+            Gets all descendant products of a given top level category.
+            </summary>
+            <param name="id">The id of the top level category for which to retrieve products.</param>
+            <returns>A collection of products.</returns>
+        </member>
         <member name="T:XamarinCRMv2CatalogDataService.Controllers.SearchController">
             <summary>
             Search API endpoints

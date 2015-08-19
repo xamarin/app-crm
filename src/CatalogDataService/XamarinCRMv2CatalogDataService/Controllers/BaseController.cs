@@ -14,11 +14,17 @@ namespace XamarinCRMv2CatalogDataService.Controllers
     /// <typeparam name="T">The type of EntityData that the inheriting controller will be bound to.</typeparam>
     public abstract class BaseController<T> : TableController<T> where T : EntityData
     {
+        private MobileServiceContext _MobileServiceContext;
+        public MobileServiceContext MobileServiceContext
+        {
+            get { return _MobileServiceContext; }
+        }
+
         protected override void Initialize(HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
-            MobileServiceContext context = new MobileServiceContext();
-            DomainManager = new EntityDomainManager<T>(context, Request, Services);
+            _MobileServiceContext = new MobileServiceContext();
+            DomainManager = new EntityDomainManager<T>(_MobileServiceContext, Request, Services);
             Configuration.SetDocumentationProvider(new XmlDocumentationProvider(Services));
         }
     }

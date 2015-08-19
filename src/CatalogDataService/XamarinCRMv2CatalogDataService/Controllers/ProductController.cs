@@ -1,8 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.OData.Extensions;
+using System.Web.Http.OData.Query;
+using Microsoft.Data.OData;
+using Microsoft.WindowsAzure.Mobile.Service;
 using XamarinCRMv2CatalogDataService.DataObjects;
 
 namespace XamarinCRMv2CatalogDataService.Controllers
@@ -42,6 +48,68 @@ namespace XamarinCRMv2CatalogDataService.Controllers
             return await
                 Query()
                 .SingleOrDefaultAsync(x => x.Id == id);
+        }
+
+        /// <summary>
+        /// Gets all descendant products of a given top level category.
+        /// </summary>
+        /// <param name="id">The id of the top level category for which to retrieve products.</param>
+        /// <returns>A collection of products.</returns>
+        [Route("ByTopLevelCategory")]
+        public async Task<IEnumerable<Product>> GetAllChildProductsOfTopLevelCategory(string id)
+        {
+            EntityDomainManager<Category> categoryDomainManager = new EntityDomainManager<Category>(MobileServiceContext, Request, Services);
+
+            var category = categoryDomainManager.Query().SingleOrDefault(x => x.Id == id);
+
+            if (category == null)
+            {
+                Request.CreateErrorResponse(
+                    HttpStatusCode.NotFound,
+                    new ODataError() { Message = string.Format("There is no category with id {0}", id)});
+            }
+
+            if (category.ParentCategory.Id != null)
+            {
+                Request.CreateErrorResponse(
+                    HttpStatusCode.NotFound,
+                    new ODataError() { Message = string.Format("Category Id {0} must be for a root level category", id) });
+            }
+
+
+            var leafLevelCategories = await GetLeafLevelCategories(id);
+
+            List<Product> products = new List<Product>();
+
+            foreach (var c in leafLevelCategories)
+            {
+                products.AddRange(await GetProductsByCategory(c.Id));
+            }
+
+            return products;
+        }
+
+        private async Task<IEnumerable<Category>> GetLeafLevelCategories(string id)
+        {
+            EntityDomainManager<Category> categoryDomainManager = new EntityDomainManager<Category>(MobileServiceContext, Request, Services);
+
+            List<Category> categories = new List<Category>();
+
+            Category category = categoryDomainManager.Query().Single(x => x.Id == id);
+
+            if (category.HasSubCategories)
+            {
+                foreach (var c in category.SubCategories)
+                {
+                    categories.AddRange(await GetLeafLevelCategories(c.Id));
+                }
+            }
+            else
+            {
+                categories.Add(category);
+            }
+
+            return categories;
         }
     }
 }
