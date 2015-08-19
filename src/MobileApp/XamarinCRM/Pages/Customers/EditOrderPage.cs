@@ -12,9 +12,16 @@ namespace XamarinCRM.Pages.Customers
 {
     public class EditOrderPage : ModelTypedContentPage<OrderDetailViewModel>
     {
+        Thickness fieldLabelThickness = new Thickness(0, 0, 5, 0);
+
+        const double rowHeight = 30;
+
         public EditOrderPage()
         {
-            // hide the back button, because we have ToolBarItems to control navigtion on this page
+            SetToolBarItems();
+
+            // Hide the back button, because we have ToolBarItems to control navigtion on this page.
+            // A back button would be confusing here in this modally presented tab page.
             NavigationPage.SetHasBackButton(this, false);
             NavigationPage.SetBackButtonTitle(this, string.Empty);
 
@@ -68,55 +75,14 @@ namespace XamarinCRM.Pages.Customers
                 {
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
-                    new RowDefinition { Height = GridLength.Auto }
+                    new RowDefinition { Height = GridLength.Auto },
+                    new RowDefinition { Height = GridLength.Auto },
+                    new RowDefinition { Height = GridLength.Auto },
                 },
                 ColumnDefinitions = new ColumnDefinitionCollection()
                 {
                     new ColumnDefinition { Width = GridLength.Auto },
                     new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
-                }
-            };
-
-            Thickness fieldLabelThickness = new Thickness(0, 0, 5, 0);
-
-            const double rowHeight = 30;
-
-            ContentView productFieldLabelView = new ContentView()
-            {
-                HeightRequest = rowHeight,
-                Padding = fieldLabelThickness,
-                Content = new Label()
-                {
-                    Text = (Device.OS == TargetPlatform.Android) ? TextResources.Customers_Orders_EditOrder_ProductTitleLabel.ToUpper() : TextResources.Customers_Orders_EditOrder_ProductTitleLabel, 
-                    XAlign = TextAlignment.End, 
-                    YAlign = TextAlignment.Center,
-                    TextColor = Device.OnPlatform(Palette._007, Palette._004, Palette._007),
-                }
-            };
-
-            ContentView priceFieldLabelView = new ContentView()
-            {
-                HeightRequest = rowHeight,
-                Padding = fieldLabelThickness,
-                Content = new Label()
-                { 
-                    Text = (Device.OS == TargetPlatform.Android) ? TextResources.Customers_Orders_EditOrder_PriceTitleLabel.ToUpper() : TextResources.Customers_Orders_EditOrder_PriceTitleLabel, 
-                    XAlign = TextAlignment.End, 
-                    YAlign = TextAlignment.Center,
-                    TextColor = Device.OnPlatform(Palette._007, Palette._004, Palette._007)
-                }
-            };
-            
-            ContentView dueDateFieldLabelView = new ContentView()
-            {
-                HeightRequest = rowHeight,
-                Padding = fieldLabelThickness,
-                Content = new Label()
-                { 
-                    Text = (Device.OS == TargetPlatform.Android) ? TextResources.Customers_Orders_EditOrder_DueDateTitleLabel.ToUpper() : TextResources.Customers_Orders_EditOrder_DueDateTitleLabel, 
-                    XAlign = TextAlignment.End, 
-                    YAlign = TextAlignment.Center,
-                    TextColor = Device.OnPlatform(Palette._007, Palette._004, Palette._007)
                 }
             };
             
@@ -138,24 +104,52 @@ namespace XamarinCRM.Pages.Customers
             Entry priceEntry = new Entry() { Placeholder = TextResources.Customers_Orders_EditOrder_PriceEntryPlaceholder };
             priceEntry.SetBinding(Entry.TextProperty, "Order.Price", BindingMode.TwoWay, new CurrencyDoubleConverter());
 
-            DatePicker dueDateEntry = new DatePicker() { Date = DateTime.Now };
-            dueDateEntry.SetBinding(DatePicker.DateProperty, "Order.DueDate", BindingMode.TwoWay);
+            DatePicker orderDateEntry = new DatePicker() { IsEnabled = false };
+            orderDateEntry.SetBinding(DatePicker.DateProperty, "Order.OrderDate");
 
-            section1Grid.Children.Add(productFieldLabelView, 0, 0);
-            section1Grid.Children.Add(priceFieldLabelView, 0, 1);
-            section1Grid.Children.Add(dueDateFieldLabelView, 0, 2);
+            DatePicker dueDateEntry = new DatePicker();
+            dueDateEntry.SetBinding(DatePicker.DateProperty, "Order.DueDate", BindingMode.TwoWay);
+            dueDateEntry.SetBinding(IsEnabledProperty, "Order.IsOpen");
+
+            DatePicker closedDateEntry = new DatePicker() { IsEnabled = false };
+            closedDateEntry.SetBinding(DatePicker.DateProperty, "Order.ClosedDate");
+            #endregion
+
+            #region compose view hierarchy
+            section1Grid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_ProductTitleLabel), 0, 0);
+            section1Grid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_PriceTitleLabel), 0, 1);
+            section1Grid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_OrderDateTitleLabel), 0, 2);
+            section1Grid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_DueDateTitleLabel), 0, 3);
+            section1Grid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_ClosedDateTitleLabel), 0, 4);
             section1Grid.Children.Add(productEntry, 1, 0);
             section1Grid.Children.Add(priceEntry, 1, 1);
-            section1Grid.Children.Add(dueDateEntry, 1, 2);
+            section1Grid.Children.Add(orderDateEntry, 1, 2);
+            section1Grid.Children.Add(dueDateEntry, 1, 3);
+            section1Grid.Children.Add(closedDateEntry, 1, 4);
 
-            #endregion
+            // disables the closed date row if the order is still open
+            section1Grid.RowDefinitions[4].SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
+            section1Grid.RowDefinitions[4].SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
 
             StackLayout stackLayout = new UnspacedStackLayout();
             stackLayout.Children.Add(headerStackLayout);
             stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = section1Grid });
+            #endregion
 
             Content = stackLayout;
 
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+
+        }
+
+        void SetToolBarItems()
+        {
             ToolbarItems.Add(
                 new ToolbarItem(TextResources.Save, null, async () =>
                     {
@@ -193,11 +187,20 @@ namespace XamarinCRM.Pages.Customers
                     }));
         }
 
-        protected override void OnAppearing()
+        ContentView GetFieldLabelContentView(string labelValue)
         {
-            base.OnAppearing();
-
-
+            return new ContentView()
+            {
+                HeightRequest = rowHeight,
+                Padding = fieldLabelThickness,
+                Content = new Label()
+                {
+                    Text = labelValue.CapitalizeForAndroid(), 
+                    XAlign = TextAlignment.End, 
+                    YAlign = TextAlignment.Center,
+                    TextColor = Device.OnPlatform(Palette._007, Palette._004, Palette._007),
+                }
+            };
         }
     }
 }

@@ -75,11 +75,11 @@ namespace XamarinCRM.ViewModels.Customers
 
             IsBusy = true;
 
-            Orders.Clear();
             var orders = new List<Order>();
             orders.AddRange(await _DataManager.GetAccountOrdersAsync(Account.Id));
             orders.AddRange(await _DataManager.GetAccountOrderHistoryAsync(Account.Id));
 
+            Orders.Clear();
             Orders.AddRange(SortOrders(orders));
 
             IsBusy = false;

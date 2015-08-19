@@ -1,5 +1,4 @@
-﻿using System;
-using Syncfusion.SfChart.XForms;
+﻿using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 using XamarinCRM.Converters;
 using XamarinCRM.Views.Base;
@@ -42,6 +41,7 @@ namespace XamarinCRM.Views.Customers
                     }
                 }
             };
+                        
             pieSeries.SetBinding(PieSeries.ItemsSourceProperty, "CategorySalesChartDataPoints");
 
 //            pieSeries.ItemsSource = new List<ChartDataPoint>()
@@ -63,6 +63,7 @@ namespace XamarinCRM.Views.Customers
                 },
                 BackgroundColor = Color.Transparent
             };
+            
             chart.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             chart.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
 

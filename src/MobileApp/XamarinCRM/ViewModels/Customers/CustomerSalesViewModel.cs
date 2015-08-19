@@ -64,19 +64,14 @@ namespace XamarinCRM
 
             await _CustomerDataClient.SeedData();
 
-            Orders = (await _CustomerDataClient.GetAllAccountOrdersAsync())
-                .Where(x => x.AccountId == account.Id)
-                .ToObservableCollection();
+            Orders.Clear();
+            Orders.AddRange((await _CustomerDataClient.GetAllAccountOrdersAsync()).Where(x => x.AccountId == account.Id));
 
-            WeeklySalesChartDataPoints = 
-                (await _ChartDataService.GetWeeklySalesDataPoints(Orders))
-                    .OrderBy(x => x.DateStart)
-                    .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)).ToObservableCollection();
+            WeeklySalesChartDataPoints.Clear();
+            WeeklySalesChartDataPoints.AddRange((await _ChartDataService.GetWeeklySalesDataPointsAsync(Orders)).OrderBy(x => x.DateStart).Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)));
 
-            CategorySalesChartDataPoints = 
-                (await _ChartDataService.GetCategorySalesDataPoints(Orders, _Account))
-                    .OrderBy(x => x.XValue)
-                    .ToObservableCollection();
+            CategorySalesChartDataPoints.Clear();
+            CategorySalesChartDataPoints.AddRange((await _ChartDataService.GetCategorySalesDataPointsAsync(Orders, _Account)).OrderBy(x => x.XValue));
 
             WeeklySalesAverage = String.Format("{0:C}", WeeklySalesChartDataPoints.Average(x => x.YValue));
 

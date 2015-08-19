@@ -134,6 +134,7 @@
     <Compile Include="Views\Sales\SalesDashboardChartView.cs" />
     <Compile Include="ViewModels\Customers\CustomerSalesViewModel.cs" />
     <Compile Include="Views\Customers\CustomerDetailHeaderView.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

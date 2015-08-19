@@ -95,9 +95,9 @@ namespace XamarinCRM {
             }
         }
         
-        internal static string Leads_LeadDetail_SaveButtonText {
+        internal static string Cancel {
             get {
-                return ResourceManager.GetString("Leads_LeadDetail_SaveButtonText", resourceCulture);
+                return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
@@ -251,6 +251,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_OrderDateTitleLabel {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_OrderDateTitleLabel", resourceCulture);
+            }
+        }
+        
         internal static string Customers_Detail_CallDialog_Message {
             get {
                 return ResourceManager.GetString("Customers_Detail_CallDialog_Message", resourceCulture);
@@ -347,9 +353,9 @@ namespace XamarinCRM {
             }
         }
         
-        internal static string Cancel {
+        internal static string Customers_Orders_EditOrder_ClosedDateTitleLabel {
             get {
-                return ResourceManager.GetString("Cancel", resourceCulture);
+                return ResourceManager.GetString("Customers_Orders_EditOrder_ClosedDateTitleLabel", resourceCulture);
             }
         }
         
@@ -488,6 +494,12 @@ namespace XamarinCRM {
         internal static string Leads_LeadContactDetail_State {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_State", resourceCulture);
+            }
+        }
+        
+        internal static string Leads_LeadDetail_SaveButtonText {
+            get {
+                return ResourceManager.GetString("Leads_LeadDetail_SaveButtonText", resourceCulture);
             }
         }
         

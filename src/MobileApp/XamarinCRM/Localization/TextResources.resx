@@ -198,8 +198,14 @@
 	<data name="Customers_Orders_EditOrder_PriceTitleLabel" xml:space="preserve">
 		<value>Price</value>
 	</data>
+	<data name="Customers_Orders_EditOrder_OrderDateTitleLabel" xml:space="preserve">
+		<value>Order Date</value>
+	</data>
 	<data name="Customers_Orders_EditOrder_DueDateTitleLabel" xml:space="preserve">
 		<value>Due Date</value>
+	</data>
+	<data name="Customers_Orders_EditOrder_ClosedDateTitleLabel" xml:space="preserve">
+		<value>Closed Date</value>
 	</data>
 	<data name="Customers_Orders_EditOrder_ProductEntryPlaceholder" xml:space="preserve">
 		<value>Select a product</value>

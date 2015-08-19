@@ -23,7 +23,7 @@ namespace XamarinCRM.Services
 
         #region IChartDataService implementation
 
-        public async Task<List<WeeklySalesDataPoint>> GetWeeklySalesDataPoints(IEnumerable<Order> orders, int numberOfWeeks = 6, bool isOpen = false)
+        public async Task<List<WeeklySalesDataPoint>> GetWeeklySalesDataPointsAsync(IEnumerable<Order> orders, int numberOfWeeks = 6, bool isOpen = false)
         {
             DateTime dateStart = DateTime.Today;
 
@@ -46,18 +46,19 @@ namespace XamarinCRM.Services
 
             return weeklySalesDataPoints;
         }
- public async Task<List<ChartDataPoint>> GetCategorySalesDataPoints(IEnumerable<Order> orders, Account account = null, int numberOfWeeks = 6, bool isOpen = false)
+
+        public async Task<List<ChartDataPoint>> GetCategorySalesDataPointsAsync(IEnumerable<Order> orders, Account account = null, int numberOfWeeks = 6, bool isOpen = false)
         {
             // get top-level categories
             var categories = await _CatalogClient.GetCategoriesAsync();
 
             List<ChartDataPoint> categorySalesDataPoints = new List<ChartDataPoint>();
 
-            orders = (account == null) ? orders : orders.Where(x => x.AccountId == account.Id);
+            orders = (account == null) ? orders : orders.Where(order => order.AccountId == account.Id);
 
             foreach (var category in categories)
             {
-                double amount = await GetOrderTotalForCategory(orders, category, numberOfWeeks, isOpen);
+                double amount = await GetOrderTotalForCategoryAsync(orders, category, numberOfWeeks, isOpen);
                 categorySalesDataPoints.Add(new ChartDataPoint(category.Name, amount));
             }
 
@@ -66,7 +67,7 @@ namespace XamarinCRM.Services
 
         #endregion
 
-        async Task<double> GetOrderTotalForCategory(IEnumerable<Order> orders, CatalogCategory category, int numberOfWeeks = 6, bool isOpen = false)
+        async Task<double> GetOrderTotalForCategoryAsync(IEnumerable<Order> orders, CatalogCategory category, int numberOfWeeks = 6, bool isOpen = false)
         {
             double total = 0;
 
@@ -75,8 +76,7 @@ namespace XamarinCRM.Services
             DateTime dateEnd = DateTime.Today;
             DateTime dateStart = dateEnd.AddDays(-numberOfWeeks * 7);
 
-
-            var results = orders.Where(o => o.IsOpen == isOpen && o.ClosedDate >= dateStart && o.ClosedDate <= dateEnd && categoryProducts.Any(x => x.Name.ToLower() == o.Item.ToLower()));
+            var results = orders.Where(order => order.IsOpen == isOpen && order.ClosedDate >= dateStart && order.ClosedDate <= dateEnd && categoryProducts.Any(product => product.Name.ToLower() == order.Item.ToLower()));
 
             foreach (var order in results)
             {
@@ -88,16 +88,16 @@ namespace XamarinCRM.Services
 
         static double GetOrderTotalForPeriod(IEnumerable<Order> orders, DateTime dateStart, DateTime dateEnd, bool isOpen = false)
         {
-            double dblTotal = 0;
+            double total = 0;
 
-            var results = orders.Where(o => o.IsOpen == isOpen && o.ClosedDate >= dateStart && o.ClosedDate <= dateEnd);
+            var results = orders.Where(order => order.IsOpen == isOpen && order.ClosedDate >= dateStart && order.ClosedDate <= dateEnd);
 
             foreach (var order in results)
             {
-                dblTotal = dblTotal + order.Price;
+                total = total + order.Price;
             }
 
-            return dblTotal;
+            return total;
         }
     }
 }

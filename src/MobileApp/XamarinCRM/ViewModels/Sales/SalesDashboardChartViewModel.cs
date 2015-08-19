@@ -61,7 +61,7 @@ namespace XamarinCRM
             Orders = (await _CustomerDataClient.GetAllAccountOrdersAsync()).ToObservableCollection();
 
             WeeklySalesChartDataPoints = 
-                (await _ChartDataService.GetWeeklySalesDataPoints(Orders))
+                (await _ChartDataService.GetWeeklySalesDataPointsAsync(Orders))
                 .OrderBy(x => x.DateStart)
                 .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)).ToObservableCollection();
 

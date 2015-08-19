@@ -5,11 +5,15 @@ using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
+using System.Globalization;
+using XamarinCRM.Localization;
 
 namespace XamarinCRM.ViewModels.Customers
 {
     public class OrderDetailViewModel : BaseViewModel
     {
+        ILocalize _Localize;
+
         readonly ICustomerDataClient _DataManager;
 
         public OrderDetailViewModel(Account account, Order order = null)
@@ -22,32 +26,32 @@ namespace XamarinCRM.ViewModels.Customers
                 Order = order;
             
             _Price = Order.Price.ToString();
-            _Discount = (double)Order.Discount;
 
             this.Title = "Order Details";
 
             _DataManager = DependencyService.Get<ICustomerDataClient>();
 
+            _Localize = DependencyService.Get<ILocalize>();
+
             MessagingCenter.Subscribe<CatalogProduct>(this, MessagingServiceConstants.UPDATE_ORDER_PRODUCT, catalogProduct =>
                 {
                     Order.Item = catalogProduct.Name;
-                    Order.Price = (int)catalogProduct.Price;
+                    Order.Price = catalogProduct.Price;
                     OnPropertyChanged("Order");
                 }); 
         }
 
         string _Price = string.Empty;
-
         public string Price
         {
             get { return _Price; }
             set
             {
-                var priceInt = 0;
-                if (int.TryParse(value, out priceInt))
+                double priceDbl = 0;
+                if (double.TryParse(value, NumberStyles.Currency, _Localize.GetCurrentCultureInfo(), out priceDbl))
                 {
                     _Price = value;
-                    Order.Price = priceInt;
+                    Order.Price = priceDbl;
                 }
                 else
                 {
@@ -55,19 +59,6 @@ namespace XamarinCRM.ViewModels.Customers
                     Order.Price = 0;
                     OnPropertyChanged("Price");
                 }
-            }
-        }
-
-        double _Discount = 0;
-
-        public double Discount
-        {
-            get { return _Discount; }
-            set
-            {
-                _Discount = value;
-                Order.Discount = (int)_Discount;
-                OnPropertyChanged("DiscountDisplay");
             }
         }
 
@@ -99,30 +90,6 @@ namespace XamarinCRM.ViewModels.Customers
         {
             get { return Order.Discount + "%"; }
         }
-
-//        int _IntItemIndex = 0;
-//
-//        public int ItemIndex
-//        {
-//            get
-//            { 
-//                for (int i = 0; i < Order.ItemTypes.Length; i++)
-//                {
-//                    if (Order.Item.Equals(Order.ItemTypes[i]))
-//                    {
-//                        _IntItemIndex = i;
-//                        break;
-//
-//                    }
-//                }
-//                return _IntItemIndex;
-//            }
-//            set
-//            {
-//                _IntItemIndex = value;
-//                Order.Item = Order.ItemTypes[_IntItemIndex];
-//            }
-//        }
 
         Command _SaveOrderCommand;
 
