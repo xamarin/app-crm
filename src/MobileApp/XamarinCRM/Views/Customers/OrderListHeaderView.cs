@@ -37,7 +37,7 @@ namespace XamarinCRM.Views.Customers
             #region compose view hierarchy
             BoxView bottomBorder = new BoxView() { BackgroundColor = Palette._013, HeightRequest = 1 };
 
-            double imagePaddingPercent = .35;
+            const double imagePaddingPercent = .35;
 
             RelativeLayout relativeLayout = new RelativeLayout();
 
