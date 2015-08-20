@@ -1,10 +1,10 @@
 ﻿using System;
-using XamarinCRM.Pages.Base;
 using Xamarin.Forms;
-using XamarinCRM.Layouts;
-using XamarinCRM.Statics;
 using XamarinCRM.Converters;
+using XamarinCRM.Layouts;
+using XamarinCRM.Pages.Base;
 using XamarinCRM.Pages.Products;
+using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Base;
 
@@ -12,14 +12,18 @@ namespace XamarinCRM.Pages.Customers
 {
     public class EditOrderPage : ModelTypedContentPage<OrderDetailViewModel>
     {
-        Thickness fieldLabelThickness = new Thickness(0, 0, 5, 0);
+        readonly Thickness _FieldLabelThickness = new Thickness(0, 0, 5, 0);
 
         const double rowHeight = 30;
 
+        Entry _ProductEntry;
+
+        bool _ProductEntry_Focused_Subscribed;
+
+        bool _ToolBarItems_HaveBeenSet;
+
         public EditOrderPage()
         {
-            SetToolBarItems();
-
             // Hide the back button, because we have ToolBarItems to control navigtion on this page.
             // A back button would be confusing here in this modally presented tab page.
             NavigationPage.SetHasBackButton(this, false);
@@ -86,23 +90,13 @@ namespace XamarinCRM.Pages.Customers
                 }
             };
             
-            Entry productEntry = new Entry() { Placeholder = TextResources.Customers_Orders_EditOrder_ProductEntryPlaceholder };
-            productEntry.SetBinding(Entry.TextProperty, "Order.Item", BindingMode.TwoWay);
-            productEntry.Focused += async (sender, e) =>
-            {
-                // prevents the keyboard on Android from appearing over the modally presented product category list
-                Device.OnPlatform(Android: productEntry.Unfocus);
-
-                NavigationPage navPage = new NavigationPage(new CategoryListPage(null, null, true)
-                    { 
-                        Title = TextResources.MainTabs_Products
-                    });
-                navPage.ToolbarItems.Add(new ToolbarItem(TextResources.Cancel, null, () => Navigation.PopModalAsync()));
-                await ViewModel.PushModalAsync(navPage);
-            };
+            _ProductEntry = new Entry() { Placeholder = TextResources.Customers_Orders_EditOrder_ProductEntryPlaceholder };
+            _ProductEntry.SetBinding(Entry.TextProperty, "Order.Item", BindingMode.TwoWay);
+            _ProductEntry.SetBinding(Entry.IsEnabledProperty, "Order.IsOpen");
 
             Entry priceEntry = new Entry() { Placeholder = TextResources.Customers_Orders_EditOrder_PriceEntryPlaceholder };
             priceEntry.SetBinding(Entry.TextProperty, "Order.Price", BindingMode.TwoWay, new CurrencyDoubleConverter());
+            priceEntry.SetBinding(IsEnabledProperty, "Order.IsOpen");
 
             DatePicker orderDateEntry = new DatePicker() { IsEnabled = false };
             orderDateEntry.SetBinding(DatePicker.DateProperty, "Order.OrderDate");
@@ -115,6 +109,59 @@ namespace XamarinCRM.Pages.Customers
             closedDateEntry.SetBinding(DatePicker.DateProperty, "Order.ClosedDate");
             #endregion
 
+            #region product image
+            Image orderItemImage = new Image() { Aspect = Aspect.AspectFit };
+            orderItemImage.SetBinding(Image.SourceProperty, "OrderItemImageUrl");
+            #endregion
+
+            #region loading label
+            Label loadingImageUrlLabel = new Label()
+            {
+                Text = TextResources.Customers_Orders_EditOrder_LoadingImageLabel,
+                FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                HeightRequest = Sizes.MediumRowHeight,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.End,
+                TextColor = Palette._007
+            };
+            loadingImageUrlLabel.SetBinding(IsEnabledProperty, "IsBusy");
+            loadingImageUrlLabel.SetBinding(IsVisibleProperty, "IsBusy");
+            #endregion
+
+            #region loading label
+            Label loadingImageLabel = new Label()
+                {
+                    Text = TextResources.Customers_Orders_EditOrder_LoadingImageLabel,
+                    FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                    HeightRequest = Sizes.MediumRowHeight,
+                    XAlign = TextAlignment.Center,
+                    YAlign = TextAlignment.End,
+                    TextColor = Palette._007
+                };
+            loadingImageLabel.SetBinding(IsEnabledProperty, new Binding("IsLoading", source: orderItemImage));
+            loadingImageLabel.SetBinding(IsVisibleProperty, new Binding("IsLoading", source: orderItemImage));
+            #endregion
+
+            #region image url fetching activity indicator
+            ActivityIndicator imageUrlFetchingActivityIndicator = new ActivityIndicator()
+            {
+                HeightRequest = Sizes.LargeRowHeight
+            };
+            imageUrlFetchingActivityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
+            imageUrlFetchingActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
+            imageUrlFetchingActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
+            #endregion
+
+            #region image fetching activity indicator
+            ActivityIndicator imageFetchingActivityIndicator = new ActivityIndicator()
+            {
+                HeightRequest = Sizes.LargeRowHeight
+            };
+            imageFetchingActivityIndicator.SetBinding(IsEnabledProperty, new Binding("IsLoading", source: orderItemImage));
+            imageFetchingActivityIndicator.SetBinding(IsVisibleProperty, new Binding("IsLoading", source: orderItemImage));
+            imageFetchingActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, new Binding("IsLoading", source: orderItemImage));
+            #endregion
+
             #region compose view hierarchy
             orderDetailsGrid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_ProductTitleLabel), 0, 0);
             orderDetailsGrid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_PriceTitleLabel), 0, 1);
@@ -125,7 +172,7 @@ namespace XamarinCRM.Pages.Customers
             closedDateFieldLabelView.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             orderDetailsGrid.Children.Add(closedDateFieldLabelView, 0, 4);
 
-            orderDetailsGrid.Children.Add(productEntry, 1, 0);
+            orderDetailsGrid.Children.Add(_ProductEntry, 1, 0);
             orderDetailsGrid.Children.Add(priceEntry, 1, 1);
             orderDetailsGrid.Children.Add(orderDateEntry, 1, 2);
             orderDetailsGrid.Children.Add(dueDateEntry, 1, 3);
@@ -136,42 +183,85 @@ namespace XamarinCRM.Pages.Customers
             StackLayout stackLayout = new UnspacedStackLayout();
             stackLayout.Children.Add(headerStackLayout);
             stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = orderDetailsGrid });
+            stackLayout.Children.Add(loadingImageUrlLabel);
+            stackLayout.Children.Add(imageUrlFetchingActivityIndicator);
+            stackLayout.Children.Add(loadingImageLabel);
+            stackLayout.Children.Add(imageFetchingActivityIndicator);
+            stackLayout.Children.Add(new ContentView() { Content = orderItemImage, Padding = new Thickness(20) });
             #endregion
 
-            Content = stackLayout;
-
-
+            Content = new ScrollView() { Content = stackLayout };
         }
 
-        protected override void OnAppearing()
+        async void ProductEntry_Focused(object sender, FocusEventArgs e)
+        {
+            // prevents the keyboard on Android from appearing over the modally presented product category list
+            Device.OnPlatform(Android: ((Entry)sender).Unfocus);
+
+            NavigationPage navPage = new NavigationPage(new CategoryListPage(null, null, true)
+                { 
+                    Title = TextResources.MainTabs_Products
+                });
+            
+            navPage.ToolbarItems.Add(new ToolbarItem(TextResources.Cancel, null, () => Navigation.PopModalAsync()));
+
+            await ViewModel.PushModalAsync(navPage);
+        }
+
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
+            if (!_ProductEntry_Focused_Subscribed)
+            {
+                _ProductEntry.Focused += ProductEntry_Focused;
+                _ProductEntry_Focused_Subscribed = true;
+            }
 
+            if (!_ToolBarItems_HaveBeenSet)
+            {
+                SetToolBarItems();
+                _ToolBarItems_HaveBeenSet = true;
+            }
+
+            await ViewModel.ExecuteLoadOrderItemImageUrlCommand();
         }
 
         void SetToolBarItems()
         {
-            ToolbarItems.Add(
-                new ToolbarItem(TextResources.Save, null, async () =>
+            if (ViewModel.Order.IsOpen)
+            {
+                ToolbarItems.Add(GetSaveToolBarItem());
+            }
+
+            ToolbarItems.Add(GetExitToolbarItem());
+        }
+
+        ToolbarItem GetSaveToolBarItem()
+        {
+            return new ToolbarItem(TextResources.Save, null, async () =>
+                {
+                    var answer = 
+                        await DisplayAlert(
+                            title: TextResources.Customers_Orders_EditOrder_SaveConfirmTitle,
+                            message: TextResources.Customers_Orders_EditOrder_SaveConfirmDescription,
+                            accept: TextResources.Save,
+                            cancel: TextResources.Cancel);
+
+                    if (answer)
                     {
-                        var answer = 
-                            await DisplayAlert(
-                                title: TextResources.Customers_Orders_EditOrder_SaveConfirmTitle,
-                                message: TextResources.Customers_Orders_EditOrder_SaveConfirmDescription,
-                                accept: TextResources.Save,
-                                cancel: TextResources.Cancel);
+                        ViewModel.SaveOrderCommand.Execute(null);
 
-                        if (answer)
-                        {
-                            ViewModel.SaveOrderCommand.Execute(null);
+                        await Navigation.PopAsync();
+                    }
+                });
+        }
 
-                            await Navigation.PopAsync();
-                        }
-                    }));
-
-            ToolbarItems.Add(
-                new ToolbarItem(TextResources.Exit, null, async () =>
+        ToolbarItem GetExitToolbarItem()
+        {
+            if (ViewModel.Order.IsOpen)
+            {
+                return new ToolbarItem(TextResources.Exit, null, async () =>
                     {
                         {
                             var answer = 
@@ -186,7 +276,13 @@ namespace XamarinCRM.Pages.Customers
                                 await Navigation.PopAsync();
                             }
                         }
-                    }));
+                    });
+            }
+            else
+            {
+                return new ToolbarItem(TextResources.Exit, null, async () => await Navigation.PopAsync());
+            }
+
         }
 
         ContentView GetFieldLabelContentView(string labelValue)
@@ -194,7 +290,7 @@ namespace XamarinCRM.Pages.Customers
             return new ContentView()
             {
                 HeightRequest = rowHeight,
-                Padding = fieldLabelThickness,
+                Padding = _FieldLabelThickness,
                 Content = new Label()
                 {
                     Text = labelValue.CapitalizeForAndroid(), 

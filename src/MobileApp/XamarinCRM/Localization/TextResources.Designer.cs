@@ -263,6 +263,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_LoadingImageLabel {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_LoadingImageLabel", resourceCulture);
+            }
+        }
+        
         internal static string Products_ProductList_LoadingLabel {
             get {
                 return ResourceManager.GetString("Products_ProductList_LoadingLabel", resourceCulture);

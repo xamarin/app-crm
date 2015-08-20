@@ -231,6 +231,9 @@
 	<data name="Customers_Orders_EditOrder_ExitConfirmDescription" xml:space="preserve">
 		<value>Would you like to exit and discard changes to this order?</value>
 	</data>
+	<data name="Customers_Orders_EditOrder_LoadingImageLabel" xml:space="preserve">
+		<value>Loading product image...</value>
+	</data>
 	<data name="Customers_Orders_CustomerTabbedPage_BackToCustomers" xml:space="preserve">
 		<value>Back to Customers</value>
 	</data>

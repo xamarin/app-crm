@@ -39,7 +39,7 @@ namespace XamarinCRM.Clients
 
         public async Task<CatalogCategory> GetCategoryAsync(string categoryId)
         {
-            string requestUri = String.Format("Categories?id={0} ", categoryId);
+            string requestUri = String.Format("Categories?id={0}", categoryId);
 
             var responseFetcher = new ResponseFetcher<CatalogCategory>(_ApiServiceUrl, _ApiAppKey);
 
@@ -48,7 +48,7 @@ namespace XamarinCRM.Clients
 
         public async Task<List<CatalogProduct>> GetProductsAsync(string categoryId)
         {
-            string requestUri = String.Format("Products/ByCategory?id={0} ", categoryId);
+            string requestUri = String.Format("Products/ByCategory?id={0}", categoryId);
 
             var responseFetcher = new ResponseFetcher<List<CatalogProduct>>(_ApiServiceUrl, _ApiAppKey);
 
@@ -57,16 +57,25 @@ namespace XamarinCRM.Clients
 
         public async Task<List<CatalogProduct>> GetAllChildProductsAsync(string topLevelCategoryId)
         {
-            string requestUri = String.Format("Products/ByTopLevelCategory?id={0} ", topLevelCategoryId);
+            string requestUri = String.Format("Products/ByTopLevelCategory?id={0}", topLevelCategoryId);
 
             var responseFetcher = new ResponseFetcher<List<CatalogProduct>>(_ApiServiceUrl, _ApiAppKey);
 
             return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
         }
 
-        public async Task<CatalogProduct> GetProductAsync(string productId)
+        public async Task<CatalogProduct> GetProductByIdAsync(string productId)
         {
-            string requestUri = String.Format("Products?id={0} ", productId);
+            string requestUri = String.Format("Products?id={0}", productId);
+
+            var responseFetcher = new ResponseFetcher<CatalogProduct>(_ApiServiceUrl, _ApiAppKey);
+
+            return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
+        }
+
+        public async Task<CatalogProduct> GetProductByNameAsync(string productName)
+        {
+            string requestUri = String.Format("Products/ByName?name={0}", productName);
 
             var responseFetcher = new ResponseFetcher<CatalogProduct>(_ApiServiceUrl, _ApiAppKey);
 
@@ -75,7 +84,7 @@ namespace XamarinCRM.Clients
 
         public async Task<List<CatalogProduct>> SearchAsync(string searchTerm)
         {
-            string requestUri = String.Format("Search?q={0} ", searchTerm);
+            string requestUri = String.Format("Search?q={0}", searchTerm);
 
             var responseFetcher = new ResponseFetcher<List<CatalogProduct>>(_ApiServiceUrl, _ApiAppKey);
 

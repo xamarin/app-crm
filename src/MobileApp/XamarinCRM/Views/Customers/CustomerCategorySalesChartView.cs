@@ -14,6 +14,11 @@ namespace XamarinCRM.Views.Customers
             get { return Device.OnPlatform(175, 175, 175); }
         }
 
+        static Color LegendLabelColor
+        {
+            get { return Device.OnPlatform(Palette._011, Palette._008, Color.White); }
+        }
+
         public CustomerCategorySalesChartView()
         {
             #region chart series
@@ -50,12 +55,12 @@ namespace XamarinCRM.Views.Customers
             {
                 HeightRequest = ChartHeight,
                 Legend = new ChartLegend()
-                { 
-//                    Title = new ChartTitle() { Text = TextResources.Customers_Detail_Sales_CategoryChart_Title },
+                {
                     DockPosition = LegendPlacement.Top
                 },
                 BackgroundColor = Color.Transparent
             };
+            chart.Legend.LabelStyle.TextColor = LegendLabelColor;
             
             chart.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             chart.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());

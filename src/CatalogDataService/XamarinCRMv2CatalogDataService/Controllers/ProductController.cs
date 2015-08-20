@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData.Extensions;
-using System.Web.Http.OData.Query;
 using Microsoft.Data.OData;
 using Microsoft.WindowsAzure.Mobile.Service;
 using XamarinCRMv2CatalogDataService.DataObjects;
@@ -31,7 +29,7 @@ namespace XamarinCRMv2CatalogDataService.Controllers
         {
             return await 
                 Query()
-                .Where(x => x.CategoryId == id)
+                .Where(x => x.CategoryId.Trim().ToLower() == id.Trim().ToLower())
                 .ToListAsync();
         }
 
@@ -47,7 +45,20 @@ namespace XamarinCRMv2CatalogDataService.Controllers
         {
             return await
                 Query()
-                .SingleOrDefaultAsync(x => x.Id == id);
+                .SingleOrDefaultAsync(x => x.Id.Trim().ToLower() == id.Trim().ToLower());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        [Route("ByName")]
+        public async Task<Product> GetProductByName(string name)
+        {
+            return await
+                Query()
+                    .SingleOrDefaultAsync(x => x.Name.Trim().ToLower() == name.Trim().ToLower());
         }
 
         /// <summary>
@@ -60,7 +71,7 @@ namespace XamarinCRMv2CatalogDataService.Controllers
         {
             EntityDomainManager<Category> categoryDomainManager = new EntityDomainManager<Category>(MobileServiceContext, Request, Services);
 
-            var category = categoryDomainManager.Query().SingleOrDefault(x => x.Id == id);
+            var category = categoryDomainManager.Query().SingleOrDefault(x => x.Id.Trim().ToLower() == id.Trim().ToLower());
 
             if (category == null)
             {
@@ -95,7 +106,7 @@ namespace XamarinCRMv2CatalogDataService.Controllers
 
             List<Category> categories = new List<Category>();
 
-            Category category = categoryDomainManager.Query().Single(x => x.Id == id);
+            Category category = categoryDomainManager.Query().Single(x => x.Id.Trim().ToLower() == id.Trim().ToLower());
 
             if (category.HasSubCategories)
             {

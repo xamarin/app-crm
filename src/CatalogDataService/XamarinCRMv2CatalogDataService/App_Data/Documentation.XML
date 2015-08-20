@@ -58,6 +58,13 @@
             <param name="id">The id of the product to retrieve.</param>
             <returns>A product.</returns>
         </member>
+        <member name="M:XamarinCRMv2CatalogDataService.Controllers.ProductController.GetProductByName(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
         <member name="M:XamarinCRMv2CatalogDataService.Controllers.ProductController.GetAllChildProductsOfTopLevelCategory(System.String)">
             <summary>
             Gets all descendant products of a given top level category.

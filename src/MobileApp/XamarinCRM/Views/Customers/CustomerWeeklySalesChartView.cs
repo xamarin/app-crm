@@ -11,7 +11,7 @@ namespace XamarinCRM.Views.Customers
 {
     public class CustomerWeeklySalesChartView : ModelTypedContentView<CustomerSalesViewModel>
     {
-        static Color MajorAxisAndLableColor
+        static Color MajorAxisAndLabelColor
         {
             get { return Device.OnPlatform(Palette._011, Palette._008, Color.White); }
         }
@@ -62,13 +62,13 @@ namespace XamarinCRM.Views.Customers
                 {
                     OpposedPosition = false,
                     ShowMajorGridLines = true,
-                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
+                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLabelColor },
                     ShowMinorGridLines = true,
                     MinorTicksPerInterval = 1,
-                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
+                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLabelColor },
                     LabelStyle = new ChartAxisLabelStyle()
                     { 
-                        TextColor = MajorAxisAndLableColor,
+                        TextColor = MajorAxisAndLabelColor,
                         LabelFormat = "$0"
                     }
                 },
@@ -88,7 +88,7 @@ namespace XamarinCRM.Views.Customers
                     LabelPlacement = LabelPlacement.BetweenTicks,
                     TickPosition = AxisElementPosition.Inside,
                     ShowMajorGridLines = false,
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLableColor }
+                    LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLabelColor }
                 },
 
                 BackgroundColor = Color.Transparent

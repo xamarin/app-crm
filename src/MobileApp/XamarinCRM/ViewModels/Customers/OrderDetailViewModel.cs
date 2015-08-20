@@ -16,6 +16,8 @@ namespace XamarinCRM.ViewModels.Customers
 
         readonly ICustomerDataClient _DataManager;
 
+        readonly ICatalogDataClient _CatalogDataClient;
+
         public OrderDetailViewModel(Account account, Order order = null)
         {
             Account = account;
@@ -30,6 +32,8 @@ namespace XamarinCRM.ViewModels.Customers
             this.Title = "Order Details";
 
             _DataManager = DependencyService.Get<ICustomerDataClient>();
+
+            _CatalogDataClient = DependencyService.Get<ICatalogDataClient>();
 
             _Localize = DependencyService.Get<ILocalize>();
 
@@ -83,6 +87,18 @@ namespace XamarinCRM.ViewModels.Customers
             {
                 _Account = value;
                 OnPropertyChanged("Account");
+            }
+        }
+
+        string _OrderItemImageUrl;
+
+        public string OrderItemImageUrl
+        {
+            get { return _OrderItemImageUrl; }
+            set
+            {
+                _OrderItemImageUrl = value;
+                OnPropertyChanged("OrderItemImageUrl");
             }
         }
 
@@ -145,6 +161,29 @@ namespace XamarinCRM.ViewModels.Customers
             IsBusy = false;
 
             await PopModalAsync();
+        }
+
+        Command _LoadOrderItemImageUrlCommand;
+        public Command LoadOrderItemImageUrlCommand
+        {
+            get 
+            { 
+                return _LoadOrderItemImageUrlCommand ??
+                    (_LoadOrderItemImageUrlCommand = new Command(async () =>
+                        await ExecuteApproveOrderCommand()));
+            }
+        }
+
+        public async Task ExecuteLoadOrderItemImageUrlCommand()
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            OrderItemImageUrl = (await _CatalogDataClient.GetProductByNameAsync(Order.Item)).ImageUrl;
+
+            IsBusy = false;
         }
     }
 }
