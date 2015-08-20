@@ -48,7 +48,7 @@ namespace XamarinCRM.Models
         public DateTime DueDate { get; set; }
 
         [JsonProperty(PropertyName = "closed_date")]
-        public DateTime? ClosedDate { get; set; }
+        public DateTime ClosedDate { get; set; }
 
         [JsonIgnore]
         public string Quote
