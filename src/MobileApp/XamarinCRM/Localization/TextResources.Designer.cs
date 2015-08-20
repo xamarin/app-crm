@@ -83,6 +83,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_DeliverConfirmAffirmative {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_DeliverConfirmAffirmative", resourceCulture);
+            }
+        }
+        
         internal static string Exit {
             get {
                 return ResourceManager.GetString("Exit", resourceCulture);
@@ -281,15 +287,21 @@ namespace XamarinCRM {
             }
         }
         
-        internal static string Products_ProductList_LoadingLabel {
+        internal static string Customers_Orders_EditOrder_DeliverConfirmDescription {
             get {
-                return ResourceManager.GetString("Products_ProductList_LoadingLabel", resourceCulture);
+                return ResourceManager.GetString("Customers_Orders_EditOrder_DeliverConfirmDescription", resourceCulture);
             }
         }
         
         internal static string Customers_Orders_EditOrder_SaveConfirmDescription {
             get {
                 return ResourceManager.GetString("Customers_Orders_EditOrder_SaveConfirmDescription", resourceCulture);
+            }
+        }
+        
+        internal static string Products_ProductList_LoadingLabel {
+            get {
+                return ResourceManager.GetString("Products_ProductList_LoadingLabel", resourceCulture);
             }
         }
         
@@ -452,6 +464,12 @@ namespace XamarinCRM {
         internal static string Leads_SaveConfirmDescription {
             get {
                 return ResourceManager.GetString("Leads_SaveConfirmDescription", resourceCulture);
+            }
+        }
+        
+        internal static string Customers_Orders_EditOrder_DeliverConfirmTitle {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_DeliverConfirmTitle", resourceCulture);
             }
         }
         

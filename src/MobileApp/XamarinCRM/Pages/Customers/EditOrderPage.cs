@@ -20,6 +20,8 @@ namespace XamarinCRM.Pages.Customers
 
         bool _ProductEntry_Focused_Subscribed;
 
+        Image _OrderItemImage;
+
         public EditOrderPage()
         {
             // Hide the back button, because we have ToolBarItems to control navigtion on this page.
@@ -72,9 +74,10 @@ namespace XamarinCRM.Pages.Customers
             Grid orderDetailsGrid = new Grid()
             {
                 Padding = new Thickness(20),
-                RowSpacing = 15,
+                RowSpacing = 5,
                 RowDefinitions = new RowDefinitionCollection()
                 {
+                    new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
@@ -108,8 +111,8 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             #region product image
-            Image orderItemImage = new Image() { Aspect = Aspect.AspectFit };
-            orderItemImage.SetBinding(Image.SourceProperty, "OrderItemImageUrl");
+            _OrderItemImage = new Image() { Aspect = Aspect.AspectFit };
+            _OrderItemImage.SetBinding(Image.SourceProperty, "OrderItemImageUrl");
             #endregion
 
             #region loading label
@@ -136,8 +139,8 @@ namespace XamarinCRM.Pages.Customers
                 YAlign = TextAlignment.End,
                 TextColor = Palette._007
             };
-            loadingImageLabel.SetBinding(IsEnabledProperty, new Binding("IsLoading", source: orderItemImage));
-            loadingImageLabel.SetBinding(IsVisibleProperty, new Binding("IsLoading", source: orderItemImage));
+            loadingImageLabel.SetBinding(IsEnabledProperty, new Binding("IsLoading", source: _OrderItemImage));
+            loadingImageLabel.SetBinding(IsVisibleProperty, new Binding("IsLoading", source: _OrderItemImage));
             #endregion
 
             #region image url fetching activity indicator
@@ -155,9 +158,16 @@ namespace XamarinCRM.Pages.Customers
             {
                 HeightRequest = Sizes.LargeRowHeight
             };
-            imageFetchingActivityIndicator.SetBinding(IsEnabledProperty, new Binding("IsLoading", source: orderItemImage));
-            imageFetchingActivityIndicator.SetBinding(IsVisibleProperty, new Binding("IsLoading", source: orderItemImage));
-            imageFetchingActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, new Binding("IsLoading", source: orderItemImage));
+            imageFetchingActivityIndicator.SetBinding(IsEnabledProperty, new Binding("IsLoading", source: _OrderItemImage));
+            imageFetchingActivityIndicator.SetBinding(IsVisibleProperty, new Binding("IsLoading", source: _OrderItemImage));
+            imageFetchingActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, new Binding("IsLoading", source: _OrderItemImage));
+            #endregion
+
+            #region deliver action button
+            Button deliverButton = new Button() { Text = "Deliver Order" };
+            deliverButton.Clicked += (sender, e) => DeliverAction.Invoke();
+            deliverButton.SetBinding(IsEnabledProperty, "Order.IsOpen");
+            deliverButton.SetBinding(IsVisibleProperty, "Order.IsOpen");
             #endregion
 
             #region compose view hierarchy
@@ -177,6 +187,9 @@ namespace XamarinCRM.Pages.Customers
             closedDateEntry.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             orderDetailsGrid.Children.Add(closedDateEntry, 1, 4);
 
+            orderDetailsGrid.Children.Add(deliverButton, 0, 5);
+            Grid.SetColumnSpan(deliverButton, 2);
+
             StackLayout stackLayout = new UnspacedStackLayout();
             stackLayout.Children.Add(headerStackLayout);
             stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = orderDetailsGrid });
@@ -184,7 +197,7 @@ namespace XamarinCRM.Pages.Customers
             stackLayout.Children.Add(imageUrlFetchingActivityIndicator);
             stackLayout.Children.Add(loadingImageLabel);
             stackLayout.Children.Add(imageFetchingActivityIndicator);
-            stackLayout.Children.Add(new ContentView() { Content = orderItemImage, Padding = new Thickness(20) });
+            stackLayout.Children.Add(new ContentView() { Content = _OrderItemImage, Padding = new Thickness(20) });
             #endregion
 
             Content = new ScrollView() { Content = stackLayout };
@@ -192,7 +205,10 @@ namespace XamarinCRM.Pages.Customers
 
         async void ProductEntry_Focused(object sender, FocusEventArgs e)
         {
-            // prevents the keyboard on Android from appearing over the modally presented product category list
+            // Prevents the keyboard on Android from appearing over the modally presented product category list.
+            // This is not normally something you need to worry about, but since we're presenting a new page
+            // when the entry field is clicked (and because the OS pops the keyboard by default for that), 
+            // we need to deal with it by manually unfocusing the entry field. No native platform code required! :)
             Device.OnPlatform(Android: ((Entry)sender).Unfocus);
 
             NavigationPage navPage = new NavigationPage(new CategoryListPage(null, null, true)
@@ -327,6 +343,31 @@ namespace XamarinCRM.Pages.Customers
 
                         if (answer)
                         {
+                            ViewModel.SaveOrderCommand.Execute(null);
+
+                            await Navigation.PopAsync();
+                        }
+                    });
+            }
+        }
+
+        Action DeliverAction
+        {
+            get
+            {
+                return new Action(async () =>
+                    {
+                        var answer = 
+                            await DisplayAlert(
+                                title: TextResources.Customers_Orders_EditOrder_DeliverConfirmTitle,
+                                message: TextResources.Customers_Orders_EditOrder_DeliverConfirmDescription,
+                                accept: TextResources.Customers_Orders_EditOrder_DeliverConfirmAffirmative,
+                                cancel: TextResources.Cancel);
+
+                        if (answer)
+                        {
+                            ViewModel.Order.IsOpen = false; // close the order
+                            ViewModel.Order.ClosedDate = DateTime.Today; // set the closed date
                             ViewModel.SaveOrderCommand.Execute(null);
 
                             await Navigation.PopAsync();

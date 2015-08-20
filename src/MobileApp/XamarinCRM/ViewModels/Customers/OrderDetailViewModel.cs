@@ -35,10 +35,12 @@ namespace XamarinCRM.ViewModels.Customers
 
             _Localize = DependencyService.Get<ILocalize>();
 
-            MessagingCenter.Subscribe<CatalogProduct>(this, MessagingServiceConstants.UPDATE_ORDER_PRODUCT, catalogProduct =>
+            MessagingCenter.Subscribe<CatalogProduct>(this, MessagingServiceConstants.UPDATE_ORDER_PRODUCT, async catalogProduct =>
                 {
                     Order.Item = catalogProduct.Name;
                     Order.Price = catalogProduct.Price;
+                    OrderItemImageUrl = null;
+                    await ExecuteLoadOrderItemImageUrlCommand();
                     OnPropertyChanged("Order");
                 }); 
         }
@@ -141,12 +143,13 @@ namespace XamarinCRM.ViewModels.Customers
         }
 
         Command _LoadOrderItemImageUrlCommand;
+
         public Command LoadOrderItemImageUrlCommand
         {
-            get 
+            get
             { 
                 return _LoadOrderItemImageUrlCommand ??
-                    (_LoadOrderItemImageUrlCommand = new Command(async () =>
+                (_LoadOrderItemImageUrlCommand = new Command(async () =>
                         await ExecuteApproveOrderCommand()));
             }
         }

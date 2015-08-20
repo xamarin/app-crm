@@ -240,6 +240,17 @@
 	<data name="Customers_Orders_EditOrder_OrderItemNotSelectedConfirmDescription" xml:space="preserve">
 		<value>Order cannot be saved until a product is selected. Please select a product.</value>
 	</data>
+
+	<data name="Customers_Orders_EditOrder_DeliverConfirmTitle" xml:space="preserve">
+		<value>Deliver?</value>
+	</data>
+	<data name="Customers_Orders_EditOrder_DeliverConfirmDescription" xml:space="preserve">
+		<value>Delivering will finalize this order and prevent future changes. This cannot be undone. Would you like to deliver this order?</value>
+	</data>
+	<data name="Customers_Orders_EditOrder_DeliverConfirmAffirmative" xml:space="preserve">
+		<value>Yes, Deliver</value>
+	</data>
+
 	<data name="Customers_Orders_EditOrder_LoadingImageLabel" xml:space="preserve">
 		<value>Loading product image...</value>
 	</data>

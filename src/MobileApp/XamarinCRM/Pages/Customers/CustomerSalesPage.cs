@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Xamarin;
+﻿using Xamarin;
 using Xamarin.Forms;
 using XamarinCRM.Layouts;
-using XamarinCRM.Models;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.Statics;
-using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Base;
 using XamarinCRM.Views.Customers;
 
@@ -85,7 +81,7 @@ namespace XamarinCRM.Pages.Customers
             );
             #endregion
 
-            Content = stackLayout;
+            Content = new ScrollView() { Content = stackLayout };
         }
 
         protected override async void OnAppearing()
