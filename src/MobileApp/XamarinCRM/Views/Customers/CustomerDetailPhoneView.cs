@@ -5,10 +5,11 @@ using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Base;
+using XamarinCRM.Views.Custom;
 
 namespace XamarinCRM
 {
-    public class CustomerDetailPhoneView : ModelTypedContentView<CustomerDetailViewModel>
+    public class CustomerDetailPhoneView : ModelBoundContentView<CustomerDetailViewModel>
     {
         readonly Page _Page;
 

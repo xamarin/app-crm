@@ -8,7 +8,7 @@ using XamarinCRM.Converters;
 
 namespace XamarinCRM
 {
-    public class SalesDashboardChartView : ModelTypedContentView<SalesDashboardChartViewModel>
+    public class SalesDashboardChartView : ModelBoundContentView<SalesDashboardChartViewModel>
     {
         Color MajorAxisAndLableColor
         {

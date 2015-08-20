@@ -4,7 +4,7 @@ using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using System.ComponentModel;
 
-namespace XamarinCRM.Views.Base
+namespace XamarinCRM.Views.Custom
 {
     public class ContentViewWithBottomBorder : ContentView, INotifyPropertyChanged
     {

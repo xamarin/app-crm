@@ -5,10 +5,11 @@ using XamarinCRM.Pages.Base;
 using XamarinCRM.Statics;
 using XamarinCRM.Views.Base;
 using XamarinCRM.Views.Customers;
+using XamarinCRM.Views.Custom;
 
 namespace XamarinCRM.Pages.Customers
 {
-    public class CustomerSalesPage : ModelTypedContentPage<CustomerSalesViewModel>
+    public class CustomerSalesPage : ModelBoundContentPage<CustomerSalesViewModel>
     {
         public CustomerSalesPage(CustomerSalesViewModel viewModel)
         {

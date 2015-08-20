@@ -7,7 +7,7 @@ using XamarinCRM.Cells;
 
 namespace XamarinCRM.Pages.Sales
 {
-    public class LeadDetailPage : ModelTypedContentPage<LeadDetailViewModel>
+    public class LeadDetailPage : ModelBoundContentPage<LeadDetailViewModel>
     {
         public LeadDetailPage()
         {

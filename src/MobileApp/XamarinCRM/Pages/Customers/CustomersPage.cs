@@ -11,7 +11,7 @@ using XamarinCRM.Converters;
 
 namespace XamarinCRM.Pages.Customers
 {
-    public class CustomersPage : ModelTypedContentPage<CustomersViewModel>
+    public class CustomersPage : ModelBoundContentPage<CustomersViewModel>
     {
         public CustomersPage()
         {

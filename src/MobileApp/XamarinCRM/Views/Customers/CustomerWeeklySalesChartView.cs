@@ -9,7 +9,7 @@ using XamarinCRM.Views.Sales;
 
 namespace XamarinCRM.Views.Customers
 {
-    public class CustomerWeeklySalesChartView : ModelTypedContentView<CustomerSalesViewModel>
+    public class CustomerWeeklySalesChartView : ModelBoundContentView<CustomerSalesViewModel>
     {
         static Color MajorAxisAndLabelColor
         {

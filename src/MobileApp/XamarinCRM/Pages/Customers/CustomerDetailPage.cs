@@ -6,7 +6,7 @@ using XamarinCRM.Pages.Base;
 
 namespace XamarinCRM.Pages.Customers
 {
-    public class CustomerDetailPage : ModelTypedContentPage<CustomerDetailViewModel>
+    public class CustomerDetailPage : ModelBoundContentPage<CustomerDetailViewModel>
     {
         public CustomerDetailPage(CustomerDetailViewModel viewModel)
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XamarinCRM.Pages.Splash
 {
-    public class SplashPage : ModelTypedContentPage<SplashPageViewModel>
+    public class SplashPage : ModelBoundContentPage<SplashPageViewModel>
     {
         public SplashPage()
         {

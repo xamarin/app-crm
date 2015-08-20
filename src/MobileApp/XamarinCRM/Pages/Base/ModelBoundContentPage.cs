@@ -6,7 +6,7 @@ namespace XamarinCRM.Pages.Base
     /// <summary>
     /// A generically typed ContentPage that enforces the type of its BindingContext according to TViewModel.
     /// </summary>
-    public abstract class ModelTypedContentPage<TViewModel> : ContentPage where TViewModel : BaseViewModel
+    public abstract class ModelBoundContentPage<TViewModel> : ContentPage where TViewModel : BaseViewModel
     {
         /// <summary>
         /// Gets the generically typed ViewModel from the underlying BindingContext.

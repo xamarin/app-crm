@@ -5,7 +5,7 @@ using XamarinCRM.Statics;
 
 namespace XamarinCRM.Pages.Sales
 {
-    public class LeadContactDetailPage : ModelTypedContentPage<LeadDetailViewModel>
+    public class LeadContactDetailPage : ModelBoundContentPage<LeadDetailViewModel>
     {
         // NOTE: the ViewModel is contained in the base class
 

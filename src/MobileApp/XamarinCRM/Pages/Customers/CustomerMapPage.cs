@@ -8,7 +8,7 @@ using XamarinCRM.ViewModels.Customers;
 
 namespace XamarinCRM.Pages.Customers
 {
-    public class CustomerMapPage : ModelTypedContentPage<CustomerDetailViewModel>
+    public class CustomerMapPage : ModelBoundContentPage<CustomerDetailViewModel>
     {
         Map _Map;
 

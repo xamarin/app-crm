@@ -7,10 +7,11 @@ using XamarinCRM.Pages.Products;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Base;
+using XamarinCRM.Views.Custom;
 
 namespace XamarinCRM.Pages.Customers
 {
-    public class EditOrderPage : ModelTypedContentPage<OrderDetailViewModel>
+    public class EditOrderPage : ModelBoundContentPage<OrderDetailViewModel>
     {
         readonly Thickness _FieldLabelThickness = new Thickness(0, 0, 5, 0);
 

@@ -7,7 +7,7 @@ using XamarinCRM.Converters;
 
 namespace XamarinCRM.Views.Customers
 {
-    public class CustomerDetailHeaderView : ModelTypedContentView<CustomerDetailViewModel>
+    public class CustomerDetailHeaderView : ModelBoundContentView<CustomerDetailViewModel>
     {
         public CustomerDetailHeaderView()
         {

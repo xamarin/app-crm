@@ -7,7 +7,7 @@ using XamarinCRM.Statics;
 
 namespace XamarinCRM.Views.Customers
 {
-    public class CustomerCategorySalesChartView : ModelTypedContentView<CustomerSalesViewModel>
+    public class CustomerCategorySalesChartView : ModelBoundContentView<CustomerSalesViewModel>
     {
         static double ChartHeight
         {

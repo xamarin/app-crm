@@ -8,10 +8,11 @@ using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Customers;
 using XamarinCRM.Converters;
 using XamarinCRM.Views.Base;
+using XamarinCRM.Views.Custom;
 
 namespace XamarinCRM.Pages.Customers
 {
-    public class CustomerOrdersPage : ModelTypedContentPage<OrdersViewModel>
+    public class CustomerOrdersPage : ModelBoundContentPage<OrdersViewModel>
     {
         public CustomerOrdersPage(OrdersViewModel viewModel)
         {

@@ -7,7 +7,7 @@ using XamarinCRM.Views.Base;
 
 namespace XamarinCRM
 {
-    public class CustomerDetailAddressView : ModelTypedContentView<CustomerDetailViewModel>
+    public class CustomerDetailAddressView : ModelBoundContentView<CustomerDetailViewModel>
     {
         public CustomerDetailAddressView()
         {

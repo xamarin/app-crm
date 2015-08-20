@@ -99,12 +99,9 @@
     <Compile Include="Pages\Customers\EditOrderPage.cs" />
     <Compile Include="ViewModels\Customers\OrderDetailViewModel.cs" />
     <Compile Include="Pages\Customers\CustomerTabbedPage.cs" />
-    <Compile Include="Views\Base\ContentViewWithBottomBorder.cs" />
-    <Compile Include="Pages\Base\ModelTypedContentPage.cs" />
     <Compile Include="Pages\Splash\SplashPage.cs" />
     <Compile Include="ViewModels\Splash\SplashPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
-    <Compile Include="Views\Base\ModelTypedContentView.cs" />
     <Compile Include="Localization\TextResources.Designer.cs">
       <DependentUpon>TextResources.resx</DependentUpon>
     </Compile>
@@ -135,6 +132,9 @@
     <Compile Include="ViewModels\Customers\CustomerSalesViewModel.cs" />
     <Compile Include="Views\Customers\CustomerDetailHeaderView.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Views\Custom\ContentViewWithBottomBorder.cs" />
+    <Compile Include="Views\Base\ModelBoundContentView.cs" />
+    <Compile Include="Pages\Base\ModelBoundContentPage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -212,6 +212,7 @@
     <Folder Include="Pages\Splash\" />
     <Folder Include="ViewModels\Splash\" />
     <Folder Include="ViewModels\Base\" />
+    <Folder Include="Views\Custom\" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Xamarin.Insights.1.10.5\build\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.5\build\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.targets')" />

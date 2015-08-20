@@ -8,7 +8,7 @@ using XamarinCRM.Converters;
 
 namespace XamarinCRM
 {
-    public class LeadsView : ModelTypedContentView<SalesDashboardLeadsViewModel>
+    public class LeadsView : ModelBoundContentView<SalesDashboardLeadsViewModel>
     {
         public LeadsView()
         {
