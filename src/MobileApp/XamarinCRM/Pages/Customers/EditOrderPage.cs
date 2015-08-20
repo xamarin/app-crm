@@ -20,8 +20,6 @@ namespace XamarinCRM.Pages.Customers
 
         bool _ProductEntry_Focused_Subscribed;
 
-        bool _ToolBarItems_HaveBeenSet;
-
         public EditOrderPage()
         {
             // Hide the back button, because we have ToolBarItems to control navigtion on this page.
@@ -130,14 +128,14 @@ namespace XamarinCRM.Pages.Customers
 
             #region loading label
             Label loadingImageLabel = new Label()
-                {
-                    Text = TextResources.Customers_Orders_EditOrder_LoadingImageLabel,
-                    FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                    HeightRequest = Sizes.MediumRowHeight,
-                    XAlign = TextAlignment.Center,
-                    YAlign = TextAlignment.End,
-                    TextColor = Palette._007
-                };
+            {
+                Text = TextResources.Customers_Orders_EditOrder_LoadingImageLabel,
+                FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                HeightRequest = Sizes.MediumRowHeight,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.End,
+                TextColor = Palette._007
+            };
             loadingImageLabel.SetBinding(IsEnabledProperty, new Binding("IsLoading", source: orderItemImage));
             loadingImageLabel.SetBinding(IsVisibleProperty, new Binding("IsLoading", source: orderItemImage));
             #endregion
@@ -177,7 +175,6 @@ namespace XamarinCRM.Pages.Customers
             orderDetailsGrid.Children.Add(orderDateEntry, 1, 2);
             orderDetailsGrid.Children.Add(dueDateEntry, 1, 3);
             closedDateEntry.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
-            closedDateEntry.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             orderDetailsGrid.Children.Add(closedDateEntry, 1, 4);
 
             StackLayout stackLayout = new UnspacedStackLayout();
@@ -212,23 +209,21 @@ namespace XamarinCRM.Pages.Customers
         {
             base.OnAppearing();
 
+            SetToolBarItems();
+
             if (!_ProductEntry_Focused_Subscribed)
             {
                 _ProductEntry.Focused += ProductEntry_Focused;
                 _ProductEntry_Focused_Subscribed = true;
-            }
-
-            if (!_ToolBarItems_HaveBeenSet)
-            {
-                SetToolBarItems();
-                _ToolBarItems_HaveBeenSet = true;
-            }
+            } 
 
             await ViewModel.ExecuteLoadOrderItemImageUrlCommand();
         }
 
         void SetToolBarItems()
         {
+            ToolbarItems.Clear();
+
             if (ViewModel.Order.IsOpen)
             {
                 ToolbarItems.Add(GetSaveToolBarItem());
@@ -239,50 +234,105 @@ namespace XamarinCRM.Pages.Customers
 
         ToolbarItem GetSaveToolBarItem()
         {
-            return new ToolbarItem(TextResources.Save, null, async () =>
-                {
-                    var answer = 
-                        await DisplayAlert(
-                            title: TextResources.Customers_Orders_EditOrder_SaveConfirmTitle,
-                            message: TextResources.Customers_Orders_EditOrder_SaveConfirmDescription,
-                            accept: TextResources.Save,
-                            cancel: TextResources.Cancel);
-
-                    if (answer)
-                    {
-                        ViewModel.SaveOrderCommand.Execute(null);
-
-                        await Navigation.PopAsync();
-                    }
-                });
+            ToolbarItem saveToolBarItem = new ToolbarItem();
+            saveToolBarItem.Text = TextResources.Save;
+            saveToolBarItem.Clicked += SaveToolBarItem_Clicked;
+            return saveToolBarItem;
         }
 
         ToolbarItem GetExitToolbarItem()
         {
-            if (ViewModel.Order.IsOpen)
-            {
-                return new ToolbarItem(TextResources.Exit, null, async () =>
-                    {
-                        {
-                            var answer = 
-                                await DisplayAlert(
-                                    title: TextResources.Customers_Orders_EditOrder_ExitConfirmTitle,
-                                    message: TextResources.Customers_Orders_EditOrder_ExitConfirmDescription,
-                                    accept: TextResources.Exit_and_Discard,
-                                    cancel: TextResources.Cancel);
+            ToolbarItem exitToolBarItem = new ToolbarItem();
+            exitToolBarItem.Text = TextResources.Exit;
+            exitToolBarItem.Clicked += ExitToolBarItem_Clicked;
+            return exitToolBarItem;
+        }
 
-                            if (answer)
-                            {
-                                await Navigation.PopAsync();
-                            }
-                        }
-                    });
+        void SaveToolBarItem_Clicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(_ProductEntry.Text))
+            {
+                OrderItemNotSelectedAction.Invoke();
             }
             else
             {
-                return new ToolbarItem(TextResources.Exit, null, async () => await Navigation.PopAsync());
+                SaveAction.Invoke();
             }
+        }
 
+        void ExitToolBarItem_Clicked(object sender, EventArgs e)
+        {
+            if (ViewModel.Order.IsOpen)
+            {
+                ExitAndDiscardAction.Invoke();
+            }
+            else
+            {
+                ExitAction.Invoke();
+            }
+        }
+
+        Action ExitAction
+        {
+            get { return new Action(async () => await Navigation.PopAsync()); }
+        }
+
+        Action ExitAndDiscardAction
+        {
+            get
+            {
+                return new Action(async () =>
+                    {
+                        var answer = 
+                            await DisplayAlert(
+                                title: TextResources.Customers_Orders_EditOrder_ExitConfirmTitle,
+                                message: TextResources.Customers_Orders_EditOrder_ExitConfirmDescription,
+                                accept: TextResources.Exit_and_Discard,
+                                cancel: TextResources.Cancel);
+
+                        if (answer)
+                        {
+                            await Navigation.PopAsync();
+                        }
+                    });
+            }
+        }
+
+        Action OrderItemNotSelectedAction
+        {
+            get
+            {
+                return new Action(async () =>
+                    {
+                        await DisplayAlert(
+                            title: TextResources.Customers_Orders_EditOrder_OrderItemNotSelectedConfirmTitle,
+                            message: TextResources.Customers_Orders_EditOrder_OrderItemNotSelectedConfirmDescription, 
+                            cancel: TextResources.Customers_Orders_EditOrder_OkayConfirmTitle);
+                    });
+            }
+        }
+
+        Action SaveAction
+        {
+            get
+            {
+                return new Action(async () =>
+                    {
+                        var answer = 
+                            await DisplayAlert(
+                                title: TextResources.Customers_Orders_EditOrder_SaveConfirmTitle,
+                                message: TextResources.Customers_Orders_EditOrder_SaveConfirmDescription,
+                                accept: TextResources.Save,
+                                cancel: TextResources.Cancel);
+
+                        if (answer)
+                        {
+                            ViewModel.SaveOrderCommand.Execute(null);
+
+                            await Navigation.PopAsync();
+                        }
+                    });
+            }
         }
 
         ContentView GetFieldLabelContentView(string labelValue)

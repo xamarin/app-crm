@@ -95,6 +95,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_OkayConfirmTitle {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_OkayConfirmTitle", resourceCulture);
+            }
+        }
+        
         internal static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
@@ -137,6 +143,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_OrderItemNotSelectedConfirmDescription {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_OrderItemNotSelectedConfirmDescription", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadDetail_OpportunityHeading {
             get {
                 return ResourceManager.GetString("Leads_LeadDetail_OpportunityHeading", resourceCulture);
@@ -158,12 +170,6 @@ namespace XamarinCRM {
         internal static string Leads_LeadContactDetail_Role {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_Role", resourceCulture);
-            }
-        }
-        
-        internal static string Customers_Detail_Sales_CategoryChart_Title {
-            get {
-                return ResourceManager.GetString("Customers_Detail_Sales_CategoryChart_Title", resourceCulture);
             }
         }
         
@@ -224,6 +230,12 @@ namespace XamarinCRM {
         internal static string Customers_Orders_EditOrder_ExitConfirmTitle {
             get {
                 return ResourceManager.GetString("Customers_Orders_EditOrder_ExitConfirmTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Customers_Orders_EditOrder_OrderItemNotSelectedConfirmTitle {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_OrderItemNotSelectedConfirmTitle", resourceCulture);
             }
         }
         

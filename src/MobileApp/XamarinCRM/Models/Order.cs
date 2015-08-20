@@ -13,12 +13,11 @@ namespace XamarinCRM.Models
             IsOpen = true;
 
             Item = string.Empty;
-            //ItemLevel = ItemLevels[0];
-            //Discount = 0;
             Signature = string.Empty;
             OrderDate = DateTime.Today;
-            ClosedDate = null;
+            ClosedDate = DateTime.MinValue; // Is never shown unless order is closed, in which case this should have a sane value. Using MinValue to indicate a default value state.
             DueDate = DateTime.Today.AddDays(7);
+            Price = 0;
         }
 
         [JsonProperty(PropertyName = "is_open")]

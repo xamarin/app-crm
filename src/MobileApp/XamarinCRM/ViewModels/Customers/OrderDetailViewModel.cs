@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading.Tasks;
+using Xamarin.Forms;
+using XamarinCRM.Clients;
+using XamarinCRM.Localization;
 using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
-using Xamarin.Forms;
-using XamarinCRM.Clients;
-using System.Globalization;
-using XamarinCRM.Localization;
 
 namespace XamarinCRM.ViewModels.Customers
 {
@@ -26,8 +26,6 @@ namespace XamarinCRM.ViewModels.Customers
                 Order = new Order();
             else
                 Order = order;
-            
-            _Price = Order.Price.ToString();
 
             this.Title = "Order Details";
 
@@ -43,27 +41,6 @@ namespace XamarinCRM.ViewModels.Customers
                     Order.Price = catalogProduct.Price;
                     OnPropertyChanged("Order");
                 }); 
-        }
-
-        string _Price = string.Empty;
-        public string Price
-        {
-            get { return _Price; }
-            set
-            {
-                double priceDbl = 0;
-                if (double.TryParse(value, NumberStyles.Currency, _Localize.GetCurrentCultureInfo(), out priceDbl))
-                {
-                    _Price = value;
-                    Order.Price = priceDbl;
-                }
-                else
-                {
-                    _Price = string.Empty;
-                    Order.Price = 0;
-                    OnPropertyChanged("Price");
-                }
-            }
         }
 
         Order _Order;
@@ -181,7 +158,10 @@ namespace XamarinCRM.ViewModels.Customers
 
             IsBusy = true;
 
-            OrderItemImageUrl = (await _CatalogDataClient.GetProductByNameAsync(Order.Item)).ImageUrl;
+            if (!string.IsNullOrWhiteSpace(Order.Item))
+            {
+                OrderItemImageUrl = (await _CatalogDataClient.GetProductByNameAsync(Order.Item)).ImageUrl;
+            }
 
             IsBusy = false;
         }
