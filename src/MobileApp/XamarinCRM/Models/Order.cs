@@ -11,9 +11,7 @@ namespace XamarinCRM.Models
 
             //New orders default to open status. 
             IsOpen = true;
-
             Item = string.Empty;
-            Signature = string.Empty;
             OrderDate = DateTime.Today;
             ClosedDate = DateTime.MinValue; // Is never shown unless order is closed, in which case this should have a sane value. Using MinValue to indicate a default value state.
             DueDate = DateTime.Today.AddDays(7);
@@ -29,17 +27,8 @@ namespace XamarinCRM.Models
         [JsonProperty(PropertyName = "price")]
         public double Price { get; set; }
 
-        [JsonProperty(PropertyName = "discount")]
-        public int Discount { get; set; }
-
         [JsonProperty(PropertyName = "item")]
         public string Item { get; set; }
-
-        [JsonProperty(PropertyName = "item_level")]
-        public string ItemLevel { get; set; }
-
-        [JsonProperty(PropertyName = "signature_points")]
-        public string Signature { get; set; }
 
         [JsonProperty(PropertyName = "order_date")]
         public DateTime OrderDate { get; set; }

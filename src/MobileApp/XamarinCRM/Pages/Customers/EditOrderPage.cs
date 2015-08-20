@@ -165,7 +165,7 @@ namespace XamarinCRM.Pages.Customers
 
             #region deliver action button
             Button deliverButton = new Button() { Text = "Deliver Order" };
-            deliverButton.Clicked += (sender, e) => DeliverAction.Invoke();
+            deliverButton.Clicked += DeliverButton_Clicked;
             deliverButton.SetBinding(IsEnabledProperty, "Order.IsOpen");
             deliverButton.SetBinding(IsVisibleProperty, "Order.IsOpen");
             #endregion
@@ -201,6 +201,18 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             Content = new ScrollView() { Content = stackLayout };
+        }
+
+        void DeliverButton_Clicked (object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(_ProductEntry.Text))
+            {
+                OrderItemNotSelectedAction.Invoke();
+            }
+            else
+            {
+                DeliverAction.Invoke();
+            }
         }
 
         async void ProductEntry_Focused(object sender, FocusEventArgs e)

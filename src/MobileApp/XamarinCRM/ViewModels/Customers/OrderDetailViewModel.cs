@@ -23,9 +23,13 @@ namespace XamarinCRM.ViewModels.Customers
             Account = account;
 
             if (order == null)
-                Order = new Order();
+            {
+                Order = new Order() { AccountId = Account.Id };
+            }
             else
+            {
                 Order = order;
+            }
 
             this.Title = "Order Details";
 
@@ -40,7 +44,7 @@ namespace XamarinCRM.ViewModels.Customers
                     Order.Item = catalogProduct.Name;
                     Order.Price = catalogProduct.Price;
                     OrderItemImageUrl = null;
-                    await ExecuteLoadOrderItemImageUrlCommand();
+                    await ExecuteLoadOrderItemImageUrlCommand(); // this is to account for Android not calling OnAppearing() when the product selection modal disappears.
                     OnPropertyChanged("Order");
                 }); 
         }
@@ -79,11 +83,6 @@ namespace XamarinCRM.ViewModels.Customers
                 _OrderItemImageUrl = value;
                 OnPropertyChanged("OrderItemImageUrl");
             }
-        }
-
-        public string DiscountDisplay
-        {
-            get { return Order.Discount + "%"; }
         }
 
         Command _SaveOrderCommand;

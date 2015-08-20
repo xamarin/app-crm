@@ -50,7 +50,7 @@ namespace XamarinCRM.Views.Customers
 
             relativeLayout.Children.Add(
                 view: AddNewOrderTextLabel,
-                xConstraint: Constraint.RelativeToView(AddNewOrderImage, (parent, view) => view.X + view.Width + parent.Height * imagePaddingPercent),
+                xConstraint: Constraint.RelativeToView(AddNewOrderImage, (parent, view) => view.X + (view.Width / 2) + parent.Height * imagePaddingPercent),
                 widthConstraint: Constraint.RelativeToView(AddNewOrderImage, (parent, view) => parent.Width - view.Width),
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height)
             );
