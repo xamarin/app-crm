@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using XamarinCRM.Extensions;
-using XamarinCRM.Serialization;
 
 namespace XamarinCRM.Clients
 {
