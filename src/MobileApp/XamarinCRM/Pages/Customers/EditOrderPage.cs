@@ -380,7 +380,7 @@ namespace XamarinCRM.Pages.Customers
                         if (answer)
                         {
                             ViewModel.Order.IsOpen = false; // close the order
-                            ViewModel.Order.ClosedDate = DateTime.Today; // set the closed date
+                            ViewModel.Order.ClosedDate = DateTime.UtcNow; // set the closed date
                             ViewModel.SaveOrderCommand.Execute(null);
 
                             await Navigation.PopAsync();

@@ -85,7 +85,7 @@ namespace XamarinCRM.ViewModels.Customers
             IsBusy = false;
         }
 
-        IEnumerable<Order> SortOrders(IEnumerable<Order> orders)
+        static IEnumerable<Order> SortOrders(IEnumerable<Order> orders)
         {
             return orders.OrderByDescending(x => x.IsOpen).ThenByDescending(x => x.OrderDate).ThenByDescending(x => x.ClosedDate);
         }

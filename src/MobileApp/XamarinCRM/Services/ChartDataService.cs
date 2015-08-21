@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
 using XamarinCRM.Models;
 using XamarinCRM.Services;
-using Syncfusion.SfChart.XForms;
 
 [assembly: Dependency(typeof(ChartDataService))]
 
@@ -25,7 +25,7 @@ namespace XamarinCRM.Services
 
         public async Task<List<WeeklySalesDataPoint>> GetWeeklySalesDataPointsAsync(IEnumerable<Order> orders, int numberOfWeeks = 6, bool isOpen = false)
         {
-            DateTime dateStart = DateTime.Today;
+            DateTime dateStart = DateTime.UtcNow;
 
             DateTime dateWkStart = dateStart.Subtract(new TimeSpan(dateStart.DayOfWeek.GetHashCode(), 0, 0, 0));
             DateTime dateWkEnd = dateWkStart.AddDays(6);
@@ -73,7 +73,7 @@ namespace XamarinCRM.Services
 
             var categoryProducts = await _CatalogClient.GetAllChildProductsAsync(category.Id);
 
-            DateTime dateEnd = DateTime.Today;
+            DateTime dateEnd = DateTime.UtcNow;
             DateTime dateStart = dateEnd.AddDays(-numberOfWeeks * 7);
 
             IEnumerable<Order> results;

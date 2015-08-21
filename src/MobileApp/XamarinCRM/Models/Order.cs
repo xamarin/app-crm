@@ -12,9 +12,9 @@ namespace XamarinCRM.Models
             //New orders default to open status. 
             IsOpen = true;
             Item = string.Empty;
-            OrderDate = DateTime.Today;
+            OrderDate = DateTime.UtcNow;
             ClosedDate = DateTime.MinValue; // Is never shown unless order is closed, in which case this should have a sane value. Using MinValue to indicate a default value state.
-            DueDate = DateTime.Today.AddDays(7);
+            DueDate = DateTime.UtcNow.AddDays(7);
             Price = 0;
         }
 
