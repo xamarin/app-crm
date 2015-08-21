@@ -11,7 +11,7 @@ namespace XamarinCRM.Views.Customers
     {
         static double ChartHeight
         {
-            get { return Device.OnPlatform(175, 175, 175); }
+            get { return Device.OnPlatform(175, 200, 175); }
         }
 
         static Color LegendLabelColor

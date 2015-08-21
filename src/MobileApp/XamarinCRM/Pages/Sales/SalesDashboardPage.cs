@@ -94,6 +94,8 @@ namespace XamarinCRM.Pages.Sales
 
                 Insights.Track("Dashboard Page");
             }
+
+            _SalesDashboardLeadsViewModel.ExecuteLoadLeadsCommand();
         }
 
         Action<object> PushTabbedLeadPageAction

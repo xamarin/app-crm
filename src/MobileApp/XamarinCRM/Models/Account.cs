@@ -11,6 +11,7 @@ namespace XamarinCRM.Models
             FirstName = LastName = Company = Street = Unit = City = PostalCode = State = Country = Phone = JobTitle = Email = string.Empty;
             Industry = IndustryTypes[0];
             OpportunityStage = OpportunityStages[0];
+            IsLead = true;
         }
 
         [JsonProperty(PropertyName = "firstname")]
