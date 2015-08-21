@@ -245,7 +245,7 @@ namespace XamarinCRM.Clients
                 {
                     return await _OrderTable
                         .Where(order => order.AccountId == accountId && order.IsOpen == true)
-                        .OrderBy(j => j.DueDate)
+                        .OrderBy(order => order.DueDate)
                         .ToEnumerableAsync();
                 }
             }

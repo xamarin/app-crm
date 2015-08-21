@@ -49,7 +49,7 @@ namespace XamarinCRM.Services
 
         public async Task<List<ChartDataPoint>> GetCategorySalesDataPointsAsync(IEnumerable<Order> orders, Account account = null, int numberOfWeeks = 6, bool isOpen = false)
         {
-            // get top-level categories
+            // get top-level categories by passing no parent categoryId
             var categories = await _CatalogClient.GetCategoriesAsync();
 
             List<ChartDataPoint> categorySalesDataPoints = new List<ChartDataPoint>();
@@ -76,11 +76,26 @@ namespace XamarinCRM.Services
             DateTime dateEnd = DateTime.Today;
             DateTime dateStart = dateEnd.AddDays(-numberOfWeeks * 7);
 
-            var results = orders.Where(order => order.IsOpen == isOpen && order.ClosedDate >= dateStart && order.ClosedDate <= dateEnd && categoryProducts.Any(product => product.Name.ToLower() == order.Item.ToLower()));
-
-            foreach (var order in results)
+            if (isOpen)
             {
-                total = total + order.Price;
+                orders = orders.Where(
+                    order => order.IsOpen == isOpen &&
+                    order.OrderDate >= dateStart &&
+                    order.OrderDate <= dateEnd &&
+                    categoryProducts.Any(product => product.Name.ToLower() == order.Item.ToLower()));
+            }
+            else
+            {
+                orders = orders.Where(
+                    order => order.IsOpen == isOpen &&
+                    order.ClosedDate >= dateStart &&
+                    order.ClosedDate <= dateEnd &&
+                    categoryProducts.Any(product => product.Name.ToLower() == order.Item.ToLower()));
+            }
+                
+            foreach (var order in orders)
+            {
+                total += order.Price;
             }
 
             return total;
@@ -90,11 +105,24 @@ namespace XamarinCRM.Services
         {
             double total = 0;
 
-            var results = orders.Where(order => order.IsOpen == isOpen && order.ClosedDate >= dateStart && order.ClosedDate <= dateEnd);
-
-            foreach (var order in results)
+            if (isOpen)
             {
-                total = total + order.Price;
+                orders = orders.Where(
+                    order => order.IsOpen == isOpen &&
+                    order.OrderDate >= dateStart &&
+                    order.OrderDate <= dateEnd);
+            }
+            else
+            {
+                orders = orders.Where(
+                    order => order.IsOpen == isOpen &&
+                    order.ClosedDate >= dateStart &&
+                    order.ClosedDate <= dateEnd);
+            }
+
+            foreach (var order in orders)
+            {
+                total += order.Price;
             }
 
             return total;

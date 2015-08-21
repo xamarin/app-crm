@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using XamarinCRM.Serialization;
 
 namespace XamarinCRM.Models
 {
@@ -36,8 +37,9 @@ namespace XamarinCRM.Models
         [JsonProperty(PropertyName = "due_date")]
         public DateTime DueDate { get; set; }
 
+//        [JsonConverter(typeof(NullToMinDateTimeJsonConverter))]
         [JsonProperty(PropertyName = "closed_date")]
-        public DateTime ClosedDate { get; set; }
+        public DateTime? ClosedDate { get; set; }
 
         [JsonIgnore]
         public string Quote

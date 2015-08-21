@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using XamarinCRM.Extensions;
+using XamarinCRM.Serialization;
 
 namespace XamarinCRM.Clients
 {
@@ -39,6 +40,7 @@ namespace XamarinCRM.Clients
                 }
 
                 var content = await response.Content.ReadAsStringAsync();
+
                 return JsonConvert.DeserializeObject<T>(content);
             }
         }

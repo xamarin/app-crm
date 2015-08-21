@@ -107,8 +107,8 @@ namespace XamarinCRM.Pages.Customers
             dueDateEntry.SetBinding(DatePicker.DateProperty, "Order.DueDate", BindingMode.TwoWay);
             dueDateEntry.SetBinding(IsEnabledProperty, "Order.IsOpen");
 
-            DatePicker closedDateEntry = new DatePicker() { IsEnabled = false };
-            closedDateEntry.SetBinding(DatePicker.DateProperty, "Order.ClosedDate");
+            NullableDatePicker closedDateEntry = new NullableDatePicker() { IsEnabled = false };
+            closedDateEntry.SetBinding(NullableDatePicker.NullableDateProperty, "Order.ClosedDate");
             #endregion
 
             #region product image
@@ -204,7 +204,7 @@ namespace XamarinCRM.Pages.Customers
             Content = new ScrollView() { Content = stackLayout };
         }
 
-        void DeliverButton_Clicked (object sender, EventArgs e)
+        void DeliverButton_Clicked(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(_ProductEntry.Text))
             {
