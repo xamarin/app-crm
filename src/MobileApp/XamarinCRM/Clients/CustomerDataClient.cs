@@ -241,7 +241,7 @@ namespace XamarinCRM.Clients
         {
             try
             {
-                using (var handle = Insights.TrackTime("TimeToGetAccountOrders"))
+                using (var handle = Insights.TrackTime("TimeToGetOrders"))
                 {
                     return await _OrderTable
                         .Where(order => order.AccountId == accountId && order.IsOpen == true)
@@ -291,10 +291,10 @@ namespace XamarinCRM.Clients
         {
             try
             {
-                using (var handle = Insights.TrackTime("TimeToGetAllAccountOrders"))
+                using (var handle = Insights.TrackTime("TimeToGetAllOrders"))
                 {
                     return await _OrderTable
-                        .Where(order => order.IsOpen == false)
+//                        .Where(order => order.IsOpen == false)
                         .ToEnumerableAsync();
                 }
             }

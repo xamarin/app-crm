@@ -30,18 +30,18 @@ namespace XamarinCRM.Services
             DateTime dateWkStart = dateStart.Subtract(new TimeSpan(dateStart.DayOfWeek.GetHashCode(), 0, 0, 0));
             DateTime dateWkEnd = dateWkStart.AddDays(6);
 
-            double dblAmt = GetOrderTotalForPeriod(orders, dateWkStart, dateWkEnd, isOpen);
+            double total = GetOrderTotalForPeriod(orders, dateWkStart, dateWkEnd, isOpen);
 
             List<WeeklySalesDataPoint> weeklySalesDataPoints = new List<WeeklySalesDataPoint>();
 
-            weeklySalesDataPoints.Add(new WeeklySalesDataPoint() { DateStart = dateWkStart, DateEnd = dateWkEnd, Amount = dblAmt });
+            weeklySalesDataPoints.Add(new WeeklySalesDataPoint() { DateStart = dateWkStart, DateEnd = dateWkEnd, Amount = total });
 
             for (int i = 1; i < numberOfWeeks; i++)
             {
                 dateWkStart = dateWkStart.AddDays(-7);
                 dateWkEnd = dateWkStart.AddDays(6);
-                dblAmt = GetOrderTotalForPeriod(orders, dateWkStart, dateWkEnd);
-                weeklySalesDataPoints.Add(new WeeklySalesDataPoint() { DateStart = dateWkStart, DateEnd = dateWkEnd, Amount = dblAmt });
+                total = GetOrderTotalForPeriod(orders, dateWkStart, dateWkEnd);
+                weeklySalesDataPoints.Add(new WeeklySalesDataPoint() { DateStart = dateWkStart, DateEnd = dateWkEnd, Amount = total });
             }
 
             return weeklySalesDataPoints;
@@ -76,9 +76,11 @@ namespace XamarinCRM.Services
             DateTime dateEnd = DateTime.Today;
             DateTime dateStart = dateEnd.AddDays(-numberOfWeeks * 7);
 
+            IEnumerable<Order> results;
+
             if (isOpen)
             {
-                orders = orders.Where(
+                results = orders.Where(
                     order => order.IsOpen == isOpen &&
                     order.OrderDate >= dateStart &&
                     order.OrderDate <= dateEnd &&
@@ -86,14 +88,14 @@ namespace XamarinCRM.Services
             }
             else
             {
-                orders = orders.Where(
+                results = orders.Where(
                     order => order.IsOpen == isOpen &&
                     order.ClosedDate >= dateStart &&
                     order.ClosedDate <= dateEnd &&
                     categoryProducts.Any(product => product.Name.ToLower() == order.Item.ToLower()));
             }
                 
-            foreach (var order in orders)
+            foreach (var order in results)
             {
                 total += order.Price;
             }
@@ -105,22 +107,24 @@ namespace XamarinCRM.Services
         {
             double total = 0;
 
+            IEnumerable<Order> results;
+
             if (isOpen)
             {
-                orders = orders.Where(
+                results = orders.Where(
                     order => order.IsOpen == isOpen &&
                     order.OrderDate >= dateStart &&
                     order.OrderDate <= dateEnd);
             }
             else
             {
-                orders = orders.Where(
+                results = orders.Where(
                     order => order.IsOpen == isOpen &&
                     order.ClosedDate >= dateStart &&
                     order.ClosedDate <= dateEnd);
             }
 
-            foreach (var order in orders)
+            foreach (var order in results)
             {
                 total += order.Price;
             }
