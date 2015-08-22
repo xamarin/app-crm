@@ -12,7 +12,7 @@ namespace XamarinCRM.Pages.Customers
 {
     public class CustomerOrderDetailPage : ModelBoundContentPage<OrderDetailViewModel>
     {
-        readonly Thickness _FieldLabelThickness = new Thickness(0, 0, 5, 0);
+        readonly Thickness _FieldLabelPadding = new Thickness(0, 0, 5, 0);
 
         const double RowHeight = 30;
 
@@ -71,7 +71,6 @@ namespace XamarinCRM.Pages.Customers
             Grid orderDetailsGrid = new Grid()
             {
                 Padding = new Thickness(20),
-//                RowSpacing = 5,
                 RowDefinitions = new RowDefinitionCollection()
                 {
                     new RowDefinition { Height = GridLength.Auto },
@@ -95,7 +94,7 @@ namespace XamarinCRM.Pages.Customers
             _ProductSelectionEntry.SetBinding(IsEnabledProperty, "Order.IsOpen");
             _ProductSelectionEntry.SetBinding(IsVisibleProperty, "Order.IsOpen");
 
-            Label productSelectionLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center };
+            Label productSelectionLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)) };
             productSelectionLabel.SetBinding(Label.TextProperty, "Order.Item");
             productSelectionLabel.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             productSelectionLabel.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
@@ -111,7 +110,7 @@ namespace XamarinCRM.Pages.Customers
             priceEntry.SetBinding(IsEnabledProperty, "Order.IsOpen");
             priceEntry.SetBinding(IsVisibleProperty, "Order.IsOpen");
 
-            Label priceLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center };
+            Label priceLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)) };
             priceLabel.SetBinding(Label.TextProperty, "Order.Price", converter: new CurrencyDoubleConverter());
             priceLabel.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             priceLabel.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
@@ -122,7 +121,7 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             #region order date
-            Label orderDateLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center };
+            Label orderDateLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)) };
             orderDateLabel.SetBinding(Label.TextProperty, "Order.OrderDate", converter: new ShortDatePatternConverter());
             #endregion
 
@@ -132,7 +131,7 @@ namespace XamarinCRM.Pages.Customers
             dueDateEntry.SetBinding(IsEnabledProperty, "Order.IsOpen");
             dueDateEntry.SetBinding(IsVisibleProperty, "Order.IsOpen");
 
-            Label dueDateLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center };
+            Label dueDateLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)) };
             dueDateLabel.SetBinding(Label.TextProperty, "Order.DueDate", converter: new ShortDatePatternConverter());
             dueDateLabel.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             dueDateLabel.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
@@ -143,7 +142,7 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             #region closed date
-            Label closedDateLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center };
+            Label closedDateLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)) };
             closedDateLabel.SetBinding(Label.TextProperty, "Order.ClosedDate", converter: new ShortDatePatternConverter());
             closedDateLabel.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             closedDateLabel.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
@@ -433,7 +432,7 @@ namespace XamarinCRM.Pages.Customers
             return new ContentView()
             {
                 HeightRequest = RowHeight,
-                Padding = _FieldLabelThickness,
+                Padding = _FieldLabelPadding,
                 Content = new Label()
                 {
                     Text = labelValue.CapitalizeForAndroid(), 
