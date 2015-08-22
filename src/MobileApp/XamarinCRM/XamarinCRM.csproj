@@ -96,7 +96,6 @@
     <Compile Include="Converters\CurrencyDoubleConverter.cs" />
     <Compile Include="Services\IAuthenticator.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
-    <Compile Include="Pages\Customers\EditOrderPage.cs" />
     <Compile Include="ViewModels\Customers\OrderDetailViewModel.cs" />
     <Compile Include="Pages\Customers\CustomerTabbedPage.cs" />
     <Compile Include="Pages\Splash\SplashPage.cs" />
@@ -137,6 +136,7 @@
     <Compile Include="Pages\Base\ModelBoundContentPage.cs" />
     <Compile Include="Enums\Environment.cs" />
     <Compile Include="Controls\NullableDatePicker.cs" />
+    <Compile Include="Pages\Customers\CustomerOrderDetailPage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

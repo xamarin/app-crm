@@ -30,7 +30,7 @@ namespace XamarinCRM.Pages.Customers
             TapGestureRecognizer newOrderTapGestureRecognizer = new TapGestureRecognizer()
             { 
                 Command = new Command(async () =>
-                        await Navigation.PushAsync(new EditOrderPage()
+                        await Navigation.PushAsync(new CustomerOrderDetailPage()
                         {
                             BindingContext = new OrderDetailViewModel(ViewModel.Account) { Navigation = ViewModel.Navigation }
                         })), 
@@ -96,7 +96,7 @@ namespace XamarinCRM.Pages.Customers
             customerOrderListView.ItemTapped += async (sender, e) =>
             {
                 var order = (Order)e.Item;
-                await Navigation.PushAsync(new EditOrderPage() { BindingContext = new OrderDetailViewModel(ViewModel.Account, order) { Navigation = Navigation }, });
+                await Navigation.PushAsync(new CustomerOrderDetailPage() { BindingContext = new OrderDetailViewModel(ViewModel.Account, order) { Navigation = Navigation }, });
             };
 
             #endregion

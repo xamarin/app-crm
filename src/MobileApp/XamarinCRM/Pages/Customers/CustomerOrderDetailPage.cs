@@ -6,24 +6,23 @@ using XamarinCRM.Pages.Base;
 using XamarinCRM.Pages.Products;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
-using XamarinCRM.Views.Base;
 using XamarinCRM.Views.Custom;
 
 namespace XamarinCRM.Pages.Customers
 {
-    public class EditOrderPage : ModelBoundContentPage<OrderDetailViewModel>
+    public class CustomerOrderDetailPage : ModelBoundContentPage<OrderDetailViewModel>
     {
         readonly Thickness _FieldLabelThickness = new Thickness(0, 0, 5, 0);
 
-        const double rowHeight = 30;
+        const double RowHeight = 30;
 
-        Entry _ProductEntry;
+        Entry _ProductSelectionEntry;
 
         bool _ProductEntry_Focused_Subscribed;
 
         Image _OrderItemImage;
 
-        public EditOrderPage()
+        public CustomerOrderDetailPage()
         {
             // Hide the back button, because we have ToolBarItems to control navigtion on this page.
             // A back button would be confusing here in this modally presented tab page.
@@ -31,8 +30,6 @@ namespace XamarinCRM.Pages.Customers
             NavigationPage.SetBackButtonTitle(this, string.Empty);
 
             #region header
-            StackLayout headerStackLayout = new UnspacedStackLayout();
-
             Label companyTitleLabel = new Label()
             {
                 Text = TextResources.Customers_Orders_EditOrder_CompanyTitle,
@@ -68,14 +65,13 @@ namespace XamarinCRM.Pages.Customers
 
             ContentView headerLabelsView = new ContentView() { Padding = new Thickness(20, 0), Content = headerLabelsRelativeLayout };
 
-            headerStackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = headerLabelsView });
             #endregion
 
-            #region fields
+            #region grid setup
             Grid orderDetailsGrid = new Grid()
             {
                 Padding = new Thickness(20),
-                RowSpacing = 5,
+//                RowSpacing = 5,
                 RowDefinitions = new RowDefinitionCollection()
                 {
                     new RowDefinition { Height = GridLength.Auto },
@@ -91,24 +87,66 @@ namespace XamarinCRM.Pages.Customers
                     new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
                 }
             };
-            
-            _ProductEntry = new Entry() { Placeholder = TextResources.Customers_Orders_EditOrder_ProductEntryPlaceholder };
-            _ProductEntry.SetBinding(Entry.TextProperty, "Order.Item", BindingMode.TwoWay);
-            _ProductEntry.SetBinding(Entry.IsEnabledProperty, "Order.IsOpen");
+            #endregion
 
+            #region product selection
+            _ProductSelectionEntry = new Entry() { Placeholder = TextResources.Customers_Orders_EditOrder_ProductEntryPlaceholder };
+            _ProductSelectionEntry.SetBinding(Entry.TextProperty, "Order.Item", BindingMode.TwoWay);
+            _ProductSelectionEntry.SetBinding(IsEnabledProperty, "Order.IsOpen");
+            _ProductSelectionEntry.SetBinding(IsVisibleProperty, "Order.IsOpen");
+
+            Label productSelectionLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center };
+            productSelectionLabel.SetBinding(Label.TextProperty, "Order.Item");
+            productSelectionLabel.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
+            productSelectionLabel.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
+
+            StackLayout productSelectionStack = new UnspacedStackLayout();
+            productSelectionStack.Children.Add(_ProductSelectionEntry);
+            productSelectionStack.Children.Add(productSelectionLabel);
+            #endregion
+
+            #region price
             Entry priceEntry = new Entry() { Placeholder = TextResources.Customers_Orders_EditOrder_PriceEntryPlaceholder };
             priceEntry.SetBinding(Entry.TextProperty, "Order.Price", BindingMode.TwoWay, new CurrencyDoubleConverter());
             priceEntry.SetBinding(IsEnabledProperty, "Order.IsOpen");
+            priceEntry.SetBinding(IsVisibleProperty, "Order.IsOpen");
 
-            DatePicker orderDateEntry = new DatePicker() { IsEnabled = false };
-            orderDateEntry.SetBinding(DatePicker.DateProperty, "Order.OrderDate");
+            Label priceLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center };
+            priceLabel.SetBinding(Label.TextProperty, "Order.Price", converter: new CurrencyDoubleConverter());
+            priceLabel.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
+            priceLabel.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
 
+            StackLayout priceStack = new UnspacedStackLayout();
+            priceStack.Children.Add(priceEntry);
+            priceStack.Children.Add(priceLabel);
+            #endregion
+
+            #region order date
+            Label orderDateLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center };
+            orderDateLabel.SetBinding(Label.TextProperty, "Order.OrderDate", converter: new ShortDatePatternConverter());
+            #endregion
+
+            #region due date
             DatePicker dueDateEntry = new DatePicker();
             dueDateEntry.SetBinding(DatePicker.DateProperty, "Order.DueDate", BindingMode.TwoWay);
             dueDateEntry.SetBinding(IsEnabledProperty, "Order.IsOpen");
+            dueDateEntry.SetBinding(IsVisibleProperty, "Order.IsOpen");
 
-            NullableDatePicker closedDateEntry = new NullableDatePicker() { IsEnabled = false };
-            closedDateEntry.SetBinding(NullableDatePicker.NullableDateProperty, "Order.ClosedDate");
+            Label dueDateLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center };
+            dueDateLabel.SetBinding(Label.TextProperty, "Order.DueDate", converter: new ShortDatePatternConverter());
+            dueDateLabel.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
+            dueDateLabel.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
+
+            StackLayout dueDateStack = new UnspacedStackLayout();
+            dueDateStack.Children.Add(dueDateEntry);
+            dueDateStack.Children.Add(dueDateLabel);
+            #endregion
+
+            #region closed date
+            Label closedDateLabel = new Label() { HeightRequest = RowHeight, YAlign = TextAlignment.Center };
+            closedDateLabel.SetBinding(Label.TextProperty, "Order.ClosedDate", converter: new ShortDatePatternConverter());
+            closedDateLabel.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
+            closedDateLabel.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             #endregion
 
             #region product image
@@ -171,7 +209,7 @@ namespace XamarinCRM.Pages.Customers
             deliverButton.SetBinding(IsVisibleProperty, "Order.IsOpen");
             #endregion
 
-            #region compose view hierarchy
+            #region compose grid contents
             orderDetailsGrid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_ProductTitleLabel), 0, 0);
             orderDetailsGrid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_PriceTitleLabel), 0, 1);
             orderDetailsGrid.Children.Add(GetFieldLabelContentView(TextResources.Customers_Orders_EditOrder_OrderDateTitleLabel), 0, 2);
@@ -181,18 +219,19 @@ namespace XamarinCRM.Pages.Customers
             closedDateFieldLabelView.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             orderDetailsGrid.Children.Add(closedDateFieldLabelView, 0, 4);
 
-            orderDetailsGrid.Children.Add(_ProductEntry, 1, 0);
-            orderDetailsGrid.Children.Add(priceEntry, 1, 1);
-            orderDetailsGrid.Children.Add(orderDateEntry, 1, 2);
-            orderDetailsGrid.Children.Add(dueDateEntry, 1, 3);
-            closedDateEntry.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
-            orderDetailsGrid.Children.Add(closedDateEntry, 1, 4);
+            orderDetailsGrid.Children.Add(productSelectionStack, 1, 0);
+            orderDetailsGrid.Children.Add(priceStack, 1, 1);
+            orderDetailsGrid.Children.Add(orderDateLabel, 1, 2);
+            orderDetailsGrid.Children.Add(dueDateStack, 1, 3);
+            orderDetailsGrid.Children.Add(closedDateLabel, 1, 4);
 
             orderDetailsGrid.Children.Add(deliverButton, 0, 5);
             Grid.SetColumnSpan(deliverButton, 2);
+            #endregion
 
+            #region compose view hierarchy
             StackLayout stackLayout = new UnspacedStackLayout();
-            stackLayout.Children.Add(headerStackLayout);
+            stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = headerLabelsView });
             stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = orderDetailsGrid });
             stackLayout.Children.Add(loadingImageUrlLabel);
             stackLayout.Children.Add(imageUrlFetchingActivityIndicator);
@@ -206,7 +245,7 @@ namespace XamarinCRM.Pages.Customers
 
         void DeliverButton_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(_ProductEntry.Text))
+            if (string.IsNullOrWhiteSpace(_ProductSelectionEntry.Text))
             {
                 OrderItemNotSelectedAction.Invoke();
             }
@@ -242,7 +281,7 @@ namespace XamarinCRM.Pages.Customers
 
             if (!_ProductEntry_Focused_Subscribed)
             {
-                _ProductEntry.Focused += ProductEntry_Focused;
+                _ProductSelectionEntry.Focused += ProductEntry_Focused;
                 _ProductEntry_Focused_Subscribed = true;
             } 
 
@@ -279,7 +318,7 @@ namespace XamarinCRM.Pages.Customers
 
         void SaveToolBarItem_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(_ProductEntry.Text))
+            if (string.IsNullOrWhiteSpace(_ProductSelectionEntry.Text))
             {
                 OrderItemNotSelectedAction.Invoke();
             }
@@ -393,7 +432,7 @@ namespace XamarinCRM.Pages.Customers
         {
             return new ContentView()
             {
-                HeightRequest = rowHeight,
+                HeightRequest = RowHeight,
                 Padding = _FieldLabelThickness,
                 Content = new Label()
                 {
