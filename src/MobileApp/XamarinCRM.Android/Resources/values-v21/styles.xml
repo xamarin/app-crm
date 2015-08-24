@@ -5,6 +5,7 @@
 		<item name="android:colorPrimary">@color/primary</item>
 		<item name="android:colorPrimaryDark">@color/primaryDark</item>
 		<item name="android:colorAccent">@color/accent</item>
+		<item name="android:windowBackground">@color/windowBackground</item>
 		<item name="android:navigationBarColor">@color/primaryDark</item>
 		<item name="android:windowContentTransitions">true</item>
 		<item name="android:windowAllowEnterTransitionOverlap">true</item>
