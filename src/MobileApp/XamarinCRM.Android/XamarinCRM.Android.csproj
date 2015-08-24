@@ -247,6 +247,7 @@
     <Folder Include="Services\" />
     <Folder Include="Config\" />
     <Folder Include="Resources\values-v21\" />
+    <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -256,7 +257,6 @@
     <AndroidResource Include="Resources\drawable\back_android.png" />
     <AndroidResource Include="Resources\drawable\add_android_blue.png" />
     <AndroidResource Include="Resources\drawable\add_android_gray.png" />
-    <AndroidResource Include="Resources\drawable\splash.png" />
     <AndroidResource Include="Resources\drawable\xamarin_logo_plus_name_inline.png" />
     <AndroidResource Include="Resources\drawable\bottom_up_gradient.png" />
     <AndroidResource Include="Resources\values\styles.xml" />
@@ -265,6 +265,11 @@
     <AndroidResource Include="Resources\drawable\phone_android.png" />
     <AndroidResource Include="Resources\drawable\map_marker_android.png" />
     <AndroidResource Include="Resources\values\api-keys.xml" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\splash.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\XamarinCRM\Config\config.xml">
