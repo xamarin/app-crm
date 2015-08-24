@@ -26,7 +26,7 @@ namespace XamarinCRMAndroid
 
             FormsMaps.Init(this, bundle);
 
-            new SfChartRenderer();
+            new SfChartRenderer(); // This is necessary for initializing SyncFusion charts.
 
             Insights.Initialize("e548c92073ff9ed3a0bc529d2edf896009d81c9c", this);
 
