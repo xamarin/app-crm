@@ -17,15 +17,15 @@ namespace XamarinCRM.ViewModels.Customers
 
         List<Order> _Orders;
 
-        ObservableCollection<Grouping<string, Order>> _GroupedOrders;
+        ObservableCollection<Grouping<string, Order>> _OrderGroups;
 
-        public ObservableCollection<Grouping<string, Order>> GroupedOrders
+        public ObservableCollection<Grouping<string, Order>> OrderGroups
         {
-            get { return _GroupedOrders; }
+            get { return _OrderGroups; }
             set
             {
-                _GroupedOrders = value;
-                OnPropertyChanged("GroupedOrders");
+                _OrderGroups = value;
+                OnPropertyChanged("OrderGroups");
             }
         }
 
@@ -39,7 +39,7 @@ namespace XamarinCRM.ViewModels.Customers
 
             _DataManager = DependencyService.Get<ICustomerDataClient>();
 
-            GroupedOrders = new ObservableCollection<Grouping<string, Order>>();
+            OrderGroups = new ObservableCollection<Grouping<string, Order>>();
 
             MessagingCenter.Subscribe<Order>(this, MessagingServiceConstants.SAVE_ORDER, order =>
                 {
@@ -93,8 +93,8 @@ namespace XamarinCRM.ViewModels.Customers
 
         void GroupOrders()
         {
-            GroupedOrders.Clear();
-            GroupedOrders.AddRange(_Orders, "Status"); // The AddRange() method here is a custom extension to ObservableCollection<Grouping<K,T>>. Check out its declaration; it's pretty neat.
+            OrderGroups.Clear();
+            OrderGroups.AddRange(_Orders, "Status"); // The AddRange() method here is a custom extension to ObservableCollection<Grouping<K,T>>. Check out its declaration; it's pretty neat.
         }
 
         static IEnumerable<Order> SortOrders(IEnumerable<Order> orders)

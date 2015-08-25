@@ -90,7 +90,7 @@ namespace XamarinCRM.Pages.Customers
             CustomerOrderListView customerOrderListView = new CustomerOrderListView() { IsGroupingEnabled = true };
             customerOrderListView.GroupDisplayBinding = new Binding("Key");
             customerOrderListView.GroupHeaderTemplate = new DataTemplate(typeof(CustomerOrderListViewGroupHeaderCell));
-            customerOrderListView.SetBinding(ListView.ItemsSourceProperty, "GroupedOrders");
+            customerOrderListView.SetBinding(ListView.ItemsSourceProperty, "OrderGroups");
             customerOrderListView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
             customerOrderListView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
 
