@@ -2,13 +2,12 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using XamarinCRM.Extensions;
-using XamarinCRM.Interfaces;
+using Xamarin.Forms;
+using XamarinCRM.Clients;
 using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
-using Xamarin.Forms;
-using XamarinCRM.Clients;
+using XamarinCRM.Extensions;
 
 namespace XamarinCRM.ViewModels.Customers
 {
@@ -16,15 +15,17 @@ namespace XamarinCRM.ViewModels.Customers
     {
         public Account Account { get; private set; }
 
-        ObservableCollection<Order> _Orders;
+        List<Order> _Orders;
 
-        public ObservableCollection<Order> Orders
+        ObservableCollection<Grouping<string, Order>> _GroupedOrders;
+
+        public ObservableCollection<Grouping<string, Order>> GroupedOrders
         {
-            get { return _Orders; }
+            get { return _GroupedOrders; }
             set
             {
-                _Orders = value;
-                OnPropertyChanged("Orders");
+                _GroupedOrders = value;
+                OnPropertyChanged("GroupedOrders");
             }
         }
 
@@ -34,22 +35,25 @@ namespace XamarinCRM.ViewModels.Customers
         {
             Account = account;
 
+            _Orders = new List<Order>();
+
             _DataManager = DependencyService.Get<ICustomerDataClient>();
 
-            Orders = new ObservableCollection<Order>();
+            GroupedOrders = new ObservableCollection<Grouping<string, Order>>();
 
             MessagingCenter.Subscribe<Order>(this, MessagingServiceConstants.SAVE_ORDER, order =>
                 {
-                    var index = Orders.IndexOf(order);
+                    var index = _Orders.IndexOf(order);
                     if (index >= 0)
                     {
-                        Orders[index] = order;
+                        _Orders[index] = order;
                     }
                     else
                     {
-                        Orders.Add(order);
+                        _Orders.Add(order);
                     }
-                    Orders = new ObservableCollection<Order>(SortOrders(Orders));
+
+                    GroupOrders();
                 });
         }
 
@@ -79,10 +83,18 @@ namespace XamarinCRM.ViewModels.Customers
             orders.AddRange(await _DataManager.GetOpenOrdersForAccountAsync(Account.Id));
             orders.AddRange(await _DataManager.GetClosedOrdersForAccountAsync(Account.Id));
 
-            Orders.Clear();
-            Orders.AddRange(SortOrders(orders));
+            _Orders.Clear();
+            _Orders.AddRange(orders);
+
+            GroupOrders();
 
             IsBusy = false;
+        }
+
+        void GroupOrders()
+        {
+            GroupedOrders.Clear();
+            GroupedOrders.AddRange(_Orders, "Status"); // The AddRange() method here is a custom extension to ObservableCollection<Grouping<K,T>>. Check out its declaration; it's pretty neat.
         }
 
         static IEnumerable<Order> SortOrders(IEnumerable<Order> orders)

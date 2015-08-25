@@ -1,8 +1,7 @@
-﻿using System;
-using Xamarin.Forms;
-using XamarinCRM.Views.Base;
-using XamarinCRM.Statics;
+﻿using Xamarin.Forms;
 using XamarinCRM.Cells;
+using XamarinCRM.Statics;
+using XamarinCRM.Views.Base;
 
 namespace XamarinCRM.Views.Customers
 {

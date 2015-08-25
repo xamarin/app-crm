@@ -221,6 +221,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Customers_OrderClosed {
+            get {
+                return ResourceManager.GetString("Customers_OrderClosed", resourceCulture);
+            }
+        }
+        
         internal static string Splash_UsernameTitleLabel {
             get {
                 return ResourceManager.GetString("Splash_UsernameTitleLabel", resourceCulture);
@@ -548,6 +554,12 @@ namespace XamarinCRM {
         internal static string Back {
             get {
                 return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        internal static string Customers_OrderOpen {
+            get {
+                return ResourceManager.GetString("Customers_OrderOpen", resourceCulture);
             }
         }
         
