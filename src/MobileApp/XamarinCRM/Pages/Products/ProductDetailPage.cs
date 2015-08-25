@@ -33,14 +33,19 @@ namespace XamarinCRM.Pages.Products
             #endregion
 
             #region compose view hierarchy
-            StackLayout stackLayout = new UnspacedStackLayout();
-            stackLayout.Children.Add(image);
-            stackLayout.Children.Add(detailRibbon);
-            stackLayout.Children.Add(descriptionView);
-            ScrollView scrollView = new ScrollView() { Content = stackLayout };
+            Content = new ScrollView()
+            {
+                Content = new UnspacedStackLayout()
+                {
+                    Children =
+                    {
+                        image, 
+                        detailRibbon,
+                        descriptionView
+                    }
+                }
+            };
             #endregion
-
-            Content = scrollView;
         }
     }
 }

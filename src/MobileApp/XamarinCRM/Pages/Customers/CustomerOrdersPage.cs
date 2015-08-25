@@ -102,13 +102,18 @@ namespace XamarinCRM.Pages.Customers
 
             #endregion
 
-            StackLayout stackLayout = new UnspacedStackLayout();
-            stackLayout.Children.Add(activityIndicator);
-            stackLayout.Children.Add(companyInfoStackLayout);
-            stackLayout.Children.Add(headerView);
-            stackLayout.Children.Add(customerOrderListView);
-
-            Content = stackLayout;
+            #region compose view hierarchy
+            Content = new UnspacedStackLayout()
+            { 
+                Children =
+                { 
+                    activityIndicator, 
+                    companyInfoStackLayout, 
+                    headerView, 
+                    customerOrderListView 
+                } 
+            };
+            #endregion
         }
 
         protected override void OnAppearing()

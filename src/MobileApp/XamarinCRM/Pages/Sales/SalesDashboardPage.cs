@@ -37,23 +37,25 @@ namespace XamarinCRM.Pages.Sales
             #endregion
 
             #region compose view hierarchy
-            StackLayout stackLayout = new UnspacedStackLayout();
-
-            // conditionally set the top padding to 20px to account for the iOS status bar
-            // Device.OnPlatform(iOS: () => stackLayout.Padding = new Thickness(0, 20, 0, 0));
-
-            stackLayout.Children.Add(salesChartView);
-            stackLayout.Children.Add(leadsView);
+            Content = new ScrollView() 
+                { 
+                    Content = new UnspacedStackLayout()
+                    {
+                        Children =
+                            {
+                                salesChartView,
+                                leadsView
+                            }
+                        },
+                    IsVisible = false // this is set to false until successful authentication
+                };
             #endregion
 
-            // assign the built-up stack layout to the Content property of this page
-            Content = new ScrollView() { Content = stackLayout };
-
-            Content.IsVisible = false;
-
+            #region wire up MessagingCenter
             // Catch the login success message from the MessagingCenter.
             // This is really only here for Android, which doesn't fire the OnAppearing() method in the same way that iOS does (every time the page appears on screen).
             Device.OnPlatform(Android: () => MessagingCenter.Subscribe<SplashPage>(this, MessagingServiceConstants.AUTHENTICATED, sender => OnAppearing()));
+            #endregion
         }
 
         protected override async void OnAppearing()

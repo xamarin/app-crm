@@ -57,14 +57,18 @@ namespace XamarinCRM
             };
             #endregion
 
-            StackLayout stackLayout = new UnspacedStackLayout();
-
-            stackLayout.Children.Add(leadListHeaderView);
-            stackLayout.Children.Add(loadingLabel);
-            stackLayout.Children.Add(leadListActivityIndicator);
-            stackLayout.Children.Add(leadListView);
-
-            Content = stackLayout;
+            #region compose view hierarchy
+            Content = new UnspacedStackLayout()
+            {
+                Children =
+                {
+                    leadListHeaderView,
+                    loadingLabel,
+                    leadListActivityIndicator,
+                    leadListView
+                }
+            };
+            #endregion
         }
 
         /// <summary>

@@ -27,8 +27,6 @@ namespace XamarinCRM.Pages.Customers
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-            this.MakeMap();
-
             ToolbarItems.Add(
                 new ToolbarItem(
                     TextResources.Get_Directions, 

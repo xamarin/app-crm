@@ -15,8 +15,6 @@ namespace XamarinCRM.Pages.Customers
     {
         public CustomersPage()
         {
-            StackLayout stackLayout = new UnspacedStackLayout();
-
             #region customer list activity inidicator
             ActivityIndicator customerListActivityIndicator = new ActivityIndicator()
             { 
@@ -40,13 +38,17 @@ namespace XamarinCRM.Pages.Customers
             };
             #endregion
 
-            stackLayout.Children.Add(customerListActivityIndicator);
-
-            stackLayout.Children.Add(customerListView);
-
-            Device.OnPlatform(iOS: () => stackLayout.Padding = new Thickness(0, 20, 0, 0));
-
-            Content = stackLayout;
+            #region compose view hierarchy
+            Content = new UnspacedStackLayout()
+            {
+                Children =
+                {
+                    customerListActivityIndicator,
+                    customerListView
+                },
+                Padding = Device.OnPlatform(Thicknesses.IosStatusBar, Thicknesses.Empty, Thicknesses.Empty)
+            };
+            #endregion
         }
 
         protected override void OnAppearing()

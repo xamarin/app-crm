@@ -99,9 +99,14 @@ namespace XamarinCRM.Pages.Customers
             productSelectionLabel.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             productSelectionLabel.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
 
-            StackLayout productSelectionStack = new UnspacedStackLayout();
-            productSelectionStack.Children.Add(_ProductSelectionEntry);
-            productSelectionStack.Children.Add(productSelectionLabel);
+            StackLayout productSelectionStack = new UnspacedStackLayout()
+            {
+                Children =
+                {
+                    _ProductSelectionEntry,
+                    productSelectionLabel
+                }
+            };
             #endregion
 
             #region price
@@ -115,9 +120,14 @@ namespace XamarinCRM.Pages.Customers
             priceLabel.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             priceLabel.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
 
-            StackLayout priceStack = new UnspacedStackLayout();
-            priceStack.Children.Add(priceEntry);
-            priceStack.Children.Add(priceLabel);
+            StackLayout priceStack = new UnspacedStackLayout()
+            {
+                Children =
+                {
+                    priceEntry,
+                    priceLabel
+                }
+            };
             #endregion
 
             #region order date
@@ -229,17 +239,23 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             #region compose view hierarchy
-            StackLayout stackLayout = new UnspacedStackLayout();
-            stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = headerLabelsView });
-            stackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = orderDetailsGrid });
-            stackLayout.Children.Add(loadingImageUrlLabel);
-            stackLayout.Children.Add(imageUrlFetchingActivityIndicator);
-            stackLayout.Children.Add(loadingImageLabel);
-            stackLayout.Children.Add(imageFetchingActivityIndicator);
-            stackLayout.Children.Add(new ContentView() { Content = _OrderItemImage, Padding = new Thickness(20) });
+            Content = new ScrollView()
+            { 
+                Content = new UnspacedStackLayout()
+                {
+                    Children =
+                    {
+                        new ContentViewWithBottomBorder() { Content = headerLabelsView },
+                        new ContentViewWithBottomBorder() { Content = orderDetailsGrid },
+                        loadingImageUrlLabel,
+                        imageUrlFetchingActivityIndicator,
+                        loadingImageLabel,
+                        imageFetchingActivityIndicator,
+                        new ContentView() { Content = _OrderItemImage, Padding = new Thickness(20) }
+                    }
+                }
+            };
             #endregion
-
-            Content = new ScrollView() { Content = stackLayout };
         }
 
         void DeliverButton_Clicked(object sender, EventArgs e)
