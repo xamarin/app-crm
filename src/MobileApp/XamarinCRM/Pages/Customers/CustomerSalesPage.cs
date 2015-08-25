@@ -18,8 +18,6 @@ namespace XamarinCRM.Pages.Customers
             BindingContext = viewModel;
 
             #region header
-            StackLayout headerStackLayout = new UnspacedStackLayout();
-
             Label companyTitleLabel = new Label()
             {
                 Text = TextResources.Customers_Orders_EditOrder_CompanyTitle,
@@ -54,8 +52,6 @@ namespace XamarinCRM.Pages.Customers
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 2));
 
             ContentView headerLabelsView = new ContentView() { Padding = new Thickness(20, 0), Content = headerLabelsRelativeLayout };
-
-            headerStackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = headerLabelsView });
             #endregion
 
             #region weekly sales chart
@@ -64,13 +60,6 @@ namespace XamarinCRM.Pages.Customers
 
             #region category sales chart
             CustomerCategorySalesChartView customerCategorySalesChartView = new CustomerCategorySalesChartView() { BindingContext = ViewModel };
-            #endregion
-
-            #region compose view hierarchy
-            StackLayout stackLayout = new UnspacedStackLayout();
-            stackLayout.Children.Add(headerStackLayout);
-            stackLayout.Children.Add(customerWeeklySalesChartView);
-            stackLayout.Children.Add(customerCategorySalesChartView);
             #endregion
 
             #region platform adjustments
@@ -82,7 +71,20 @@ namespace XamarinCRM.Pages.Customers
             );
             #endregion
 
-            Content = new ScrollView() { Content = stackLayout };
+            #region compose view hierarchy
+            Content = new ScrollView()
+            { 
+                Content = new UnspacedStackLayout()
+                {
+                    Children =
+                    {
+                        new ContentViewWithBottomBorder(){ Content = headerLabelsView },
+                        customerWeeklySalesChartView,
+                        customerCategorySalesChartView
+                    }
+                }
+            };
+            #endregion
         }
 
         protected override async void OnAppearing()

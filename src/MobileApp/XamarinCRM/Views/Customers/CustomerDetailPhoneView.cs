@@ -60,9 +60,15 @@ namespace XamarinCRM
             #endregion
 
             #region compose view hierarchy
-            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
-            stackLayout.Children.Add(phoneTitleLabel);
-            stackLayout.Children.Add(phoneLabel);
+            StackLayout stackLayout = new UnspacedStackLayout()
+            {
+                Children =
+                {
+                    phoneTitleLabel,
+                    phoneLabel
+                },
+                Padding = new Thickness(20) 
+            };
             AbsoluteLayout absoluteLayout = new AbsoluteLayout();
             absoluteLayout.Children.Add(stackLayout, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.WidthProportional);
             absoluteLayout.Children.Add(phoneImageTouchView, new Rectangle(.95, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);

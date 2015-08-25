@@ -74,11 +74,18 @@ namespace XamarinCRM
             #endregion
 
             #region compose view hierarchy
-            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
-            stackLayout.Children.Add(addressTitleLabel);
-            stackLayout.Children.Add(addressStreetLabel);
-            stackLayout.Children.Add(addressCityLabel);
-            stackLayout.Children.Add(addressStatePostalLabel);
+            StackLayout stackLayout = new UnspacedStackLayout()
+            { 
+                Children =
+                {
+                    addressTitleLabel,
+                    addressStreetLabel,
+                    addressCityLabel,
+                    addressStatePostalLabel
+
+                },
+                Padding = new Thickness(20) 
+            };
             AbsoluteLayout absoluteLayout = new AbsoluteLayout();
             absoluteLayout.Children.Add(stackLayout, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.WidthProportional);
             absoluteLayout.Children.Add(mapMarkerImageTouchView, new Rectangle(.95, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);

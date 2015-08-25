@@ -30,12 +30,19 @@ namespace XamarinCRM.Views.Customers
             #endregion
 
             #region compose view hierarchy
-            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
-            stackLayout.Children.Add(contactTitleLabel);
-            stackLayout.Children.Add(contactLabel);
+            Content = new ContentViewWithBottomBorder()
+            { 
+                Content = new UnspacedStackLayout()
+                { 
+                    Children =
+                    {
+                        contactTitleLabel,
+                        contactLabel
+                    },
+                    Padding = new Thickness(20) 
+                } 
+            };
             #endregion
-
-            Content = new ContentViewWithBottomBorder() { Content = stackLayout };
         }
     }
 }

@@ -24,8 +24,6 @@ namespace XamarinCRM.Pages.Products
 
             Title = title;
 
-            StackLayout stackLayout = new UnspacedStackLayout();
-
             BindingContext = new ProductsViewModel(_CategoryId);
 
             #region product list
@@ -59,7 +57,7 @@ namespace XamarinCRM.Pages.Products
             {
                 Text = TextResources.Products_ProductList_LoadingLabel,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                    HeightRequest = Sizes.MediumRowHeight,
+                HeightRequest = Sizes.MediumRowHeight,
                 XAlign = TextAlignment.Center,
                 YAlign = TextAlignment.End,
                 TextColor = Palette._007
@@ -69,12 +67,16 @@ namespace XamarinCRM.Pages.Products
             #endregion
 
             #region compase view hierarchy
-            stackLayout.Children.Add(loadingLabel);
-            stackLayout.Children.Add(activityIndicator);
-            stackLayout.Children.Add(productListView);
+            Content = new UnspacedStackLayout()
+            {
+                Children =
+                {
+                    loadingLabel,
+                    activityIndicator,
+                    productListView
+                }
+            };
             #endregion
-
-            Content = stackLayout;
         }
 
         protected override void OnAppearing()

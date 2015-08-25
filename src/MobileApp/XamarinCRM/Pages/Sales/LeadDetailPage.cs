@@ -56,12 +56,12 @@ namespace XamarinCRM.Pages.Sales
             opportunityStagePickerCell.Picker.SetBinding(Picker.SelectedIndexProperty, "Lead.OpportunityStageCurrentIndex", BindingMode.TwoWay);
             opportunityStagePickerCell.Picker.SelectedIndexChanged += (sender, e) =>
             {
-                    ViewModel.Lead.OpportunityStage = opportunityStagePickerCell.Picker.Items[opportunityStagePickerCell.Picker.SelectedIndex];
+                ViewModel.Lead.OpportunityStage = opportunityStagePickerCell.Picker.Items[opportunityStagePickerCell.Picker.SelectedIndex];
             };
             #endregion
 
             #region compose table view
-            TableView tableView = new TableView()
+            Content = new TableView()
             {
                 Intent = TableIntent.Settings,
                 Root = new TableRoot()
@@ -79,8 +79,6 @@ namespace XamarinCRM.Pages.Sales
                 }
             };
             #endregion
-
-            Content = tableView;
         }
     }
 }

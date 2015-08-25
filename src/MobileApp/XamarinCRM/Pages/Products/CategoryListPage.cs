@@ -17,7 +17,8 @@ namespace XamarinCRM.Pages.Products
             get { return BindingContext as CategoriesViewModel; }
         }
 
-        public CategoryListPage(string categoryId = null, string title = null, bool isPerformingProductSelection = false) : base(isPerformingProductSelection)
+        public CategoryListPage(string categoryId = null, string title = null, bool isPerformingProductSelection = false)
+            : base(isPerformingProductSelection)
         {
             _CategoryId = categoryId;
 
@@ -36,25 +37,25 @@ namespace XamarinCRM.Pages.Products
             categoryListView.SetBinding(CategoryListView.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
 
             categoryListView.ItemTapped += (sender, e) =>
-                {
-                    CatalogCategory catalogCategory = ((CatalogCategory)e.Item);
+            {
+                CatalogCategory catalogCategory = ((CatalogCategory)e.Item);
 
-                    if (catalogCategory.HasSubCategories)
-                    {
-                        Navigation.PushAsync(new CategoryListPage(catalogCategory.Id, catalogCategory.Name, isPerformingProductSelection));
-                    }
-                    else
-                    {
-                        Navigation.PushAsync(new ProductListPage(catalogCategory.Id, catalogCategory.Name, isPerformingProductSelection));
-                    }
-                };
+                if (catalogCategory.HasSubCategories)
+                {
+                    Navigation.PushAsync(new CategoryListPage(catalogCategory.Id, catalogCategory.Name, isPerformingProductSelection));
+                }
+                else
+                {
+                    Navigation.PushAsync(new ProductListPage(catalogCategory.Id, catalogCategory.Name, isPerformingProductSelection));
+                }
+            };
             #endregion
 
             #region activity indicator
             ActivityIndicator activityIndicator = new ActivityIndicator()
-                {
-                    HeightRequest = Sizes.LargeRowHeight
-                };
+            {
+                HeightRequest = Sizes.LargeRowHeight
+            };
 
             activityIndicator.BindingContext = ViewModel;
             activityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
@@ -64,26 +65,29 @@ namespace XamarinCRM.Pages.Products
 
             #region loading label
             Label loadingLabel = new Label()
-                {
-                    Text = TextResources.Products_CategoryList_LoadingLabel,
-                    FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                    HeightRequest = Sizes.MediumRowHeight,
-                    XAlign = TextAlignment.Center,
-                    YAlign = TextAlignment.End,
-                    TextColor = Palette._007
-                };
+            {
+                Text = TextResources.Products_CategoryList_LoadingLabel,
+                FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                HeightRequest = Sizes.MediumRowHeight,
+                XAlign = TextAlignment.Center,
+                YAlign = TextAlignment.End,
+                TextColor = Palette._007
+            };
             loadingLabel.SetBinding(IsEnabledProperty, "IsBusy");
             loadingLabel.SetBinding(IsVisibleProperty, "IsBusy");
             #endregion
 
             #region compose view hierarchy
-            StackLayout stackLayout = new UnspacedStackLayout();
-            stackLayout.Children.Add(loadingLabel);
-            stackLayout.Children.Add(activityIndicator);
-            stackLayout.Children.Add(categoryListView);
+            Content = new UnspacedStackLayout()
+            {
+                Children =
+                {
+                    loadingLabel,
+                    activityIndicator,
+                    categoryListView
+                }
+            };
             #endregion
-
-            Content = stackLayout;
         }
 
         protected override  void OnAppearing()

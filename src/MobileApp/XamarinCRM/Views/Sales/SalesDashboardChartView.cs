@@ -96,11 +96,16 @@ namespace XamarinCRM
             // wrapping it in a ContentView and adding some right padding to compensate.
             ContentView chartWrapper = new ContentView() { Content = chart };
 
-            StackLayout stackLayout = new UnspacedStackLayout();
-            stackLayout.Children.Add(chartHeaderView);
-            stackLayout.Children.Add(loadingLabel);
-            stackLayout.Children.Add(chartActivityIndicator);
-            stackLayout.Children.Add(chartWrapper);
+            StackLayout stackLayout = new UnspacedStackLayout()
+            {
+                Children =
+                {
+                    chartHeaderView,
+                    loadingLabel,
+                    chartActivityIndicator,
+                    chartWrapper
+                }
+            };
             #endregion
 
             #region platform adjustments

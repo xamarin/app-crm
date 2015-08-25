@@ -12,19 +12,16 @@ namespace XamarinCRM.Pages.Customers
         {
             BindingContext = viewModel;
 
-            StackLayout stackLayout = new UnspacedStackLayout();
-
-            // add header view
-            stackLayout.Children.Add(new CustomerDetailHeaderView() { BindingContext = ViewModel });
-
-            // add contact view
-            stackLayout.Children.Add(new CustomerDetailContactView() { BindingContext = ViewModel });
-
-            // add phone number view
-            stackLayout.Children.Add(new CustomerDetailPhoneView(this) { BindingContext = ViewModel });
-
-            // add address view
-            stackLayout.Children.Add(new CustomerDetailAddressView() { BindingContext = ViewModel });
+            StackLayout stackLayout = new UnspacedStackLayout()
+            {
+                Children =
+                {
+                    new CustomerDetailHeaderView() { BindingContext = ViewModel },
+                    new CustomerDetailContactView() { BindingContext = ViewModel },
+                    new CustomerDetailPhoneView(this) { BindingContext = ViewModel },
+                    new CustomerDetailAddressView() { BindingContext = ViewModel }
+                }
+            };
 
             Content = new ScrollView() { Content = stackLayout };
         }

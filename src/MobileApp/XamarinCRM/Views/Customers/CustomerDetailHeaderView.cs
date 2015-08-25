@@ -53,9 +53,15 @@ namespace XamarinCRM.Views.Customers
             #endregion
 
             #region compose view hierarchy
-            StackLayout stackLayout = new UnspacedStackLayout() { Padding = new Thickness(20) };
-            stackLayout.Children.Add(companyLabel);
-            stackLayout.Children.Add(industryLabel);
+            StackLayout stackLayout = new UnspacedStackLayout()
+            {
+                Children =
+                {
+                    companyLabel,
+                    industryLabel
+                },
+                Padding = new Thickness(20) 
+            };
             AbsoluteLayout absoluteLayout = new AbsoluteLayout() { HeightRequest = 150 };
             absoluteLayout.Children.Add(companyImage, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
             absoluteLayout.Children.Add(imageLoadingIndicator, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.WidthProportional | AbsoluteLayoutFlags.PositionProportional);

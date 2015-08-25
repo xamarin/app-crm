@@ -94,8 +94,8 @@ namespace XamarinCRM.Pages.Sales
             countryEntryCell.SetBinding(EntryCell.TextProperty, "Lead.Country", BindingMode.TwoWay);
             #endregion
 
-            #region compose table view
-            TableView tableView = new TableView()
+            #region compose view hierarchy
+            Content = new TableView()
             {
                 Intent = TableIntent.Settings,
                 Root = new TableRoot()
@@ -123,8 +123,6 @@ namespace XamarinCRM.Pages.Sales
                 }
             };
             #endregion
-
-            Content = tableView;
         }
     }
 }
