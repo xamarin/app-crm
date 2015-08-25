@@ -35,7 +35,7 @@ namespace XamarinCRM.Pages.Customers
 
             customerListView.ItemTapped += async (sender, e) =>
             {
-                Account account = (Account)e.Item;  // commented out temporarily
+                Account account = (Account)e.Item;
                 await PushTabbedPage(account);
             };
             #endregion

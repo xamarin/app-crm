@@ -27,17 +27,14 @@ namespace XamarinCRM.Extensions
         /// <typeparam name="T">The type of items in the items collection of the Grouping.</typeparam>
         public static void AddRange<K,T>(this ObservableCollection<Grouping<K,T>> collection, IEnumerable<T> items, string propertyName)
         {
-            if (typeof(T).GetRuntimeProperties().All(x => x.Name != propertyName))
+            if (typeof(T).GetRuntimeProperties().All(propertyInfo => propertyInfo.Name != propertyName))
             {
                 throw new ArgumentException(String.Format("Type '{0}' does not have a property named '{1}'", typeof(T).Name, propertyName));
             }
 
-            var groups = items.GroupBy(x => x.GetType().GetRuntimeProperties().Single(y => y.Name == propertyName).GetValue(x, null));
+            var groupings = items.GroupBy(t => t.GetType().GetRuntimeProperties().Single(propertyInfo => propertyInfo.Name == propertyName).GetValue(t, null));
 
-            foreach (var group in groups)
-            {
-                collection.Add(new Grouping<K,T>((K)group.Key, group)); 
-            }
+            collection.AddRange(groupings.Select(grouping => new Grouping<K,T>((K)grouping.Key, grouping)));
         }
     }
 }
