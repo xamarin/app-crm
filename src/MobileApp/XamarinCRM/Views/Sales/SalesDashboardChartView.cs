@@ -10,7 +10,7 @@ namespace XamarinCRM
 {
     public class SalesDashboardChartView : ModelBoundContentView<SalesDashboardChartViewModel>
     {
-        Color MajorAxisAndLableColor
+        static Color MajorAxisAndLableColor
         {
             get { return Device.OnPlatform(Palette._011, Palette._008, Color.White); }
         }
