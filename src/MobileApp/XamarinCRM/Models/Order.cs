@@ -13,7 +13,7 @@ namespace XamarinCRM.Models
             IsOpen = true;
             Item = string.Empty;
             OrderDate = DateTime.UtcNow;
-            ClosedDate = DateTime.MinValue; // Is never shown unless order is closed, in which case this should have a sane value. Using MinValue to indicate a default value state.
+            ClosedDate = null; // Is never shown unless order is closed, in which case this should have a sane value.
             DueDate = DateTime.UtcNow.AddDays(7);
             Price = 0;
         }
@@ -40,17 +40,9 @@ namespace XamarinCRM.Models
         public DateTime? ClosedDate { get; set; }
 
         [JsonIgnore]
-        public string Quote
-        {
-            get { return Price.ToString(); }
-        }
-
         public string Status
         {
-            get 
-            {
-                return (IsOpen) ? TextResources.Customers_OrderOpen : TextResources.Customers_OrderClosed;
-            }
+            get { return (IsOpen) ? TextResources.Customers_OrderOpen : TextResources.Customers_OrderClosed; }
 
         }
     }

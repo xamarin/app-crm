@@ -1,7 +1,6 @@
-﻿using System;
-using Xamarin.Forms;
-using XamarinCRM.Statics;
+﻿using Xamarin.Forms;
 using XamarinCRM.Converters;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM
 {
