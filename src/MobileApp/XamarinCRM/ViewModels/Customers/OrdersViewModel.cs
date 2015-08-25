@@ -84,7 +84,7 @@ namespace XamarinCRM.ViewModels.Customers
             orders.AddRange(await _DataManager.GetClosedOrdersForAccountAsync(Account.Id));
 
             _Orders.Clear();
-            _Orders.AddRange(orders);
+            _Orders.AddRange(SortOrders(orders));
 
             GroupOrders();
 
