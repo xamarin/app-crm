@@ -240,7 +240,6 @@
 	<data name="Customers_Orders_EditOrder_OrderItemNotSelectedConfirmDescription" xml:space="preserve">
 		<value>Order cannot be saved until a product is selected. Please select a product.</value>
 	</data>
-
 	<data name="Customers_Orders_EditOrder_DeliverConfirmTitle" xml:space="preserve">
 		<value>Deliver?</value>
 	</data>
@@ -250,7 +249,6 @@
 	<data name="Customers_Orders_EditOrder_DeliverConfirmAffirmative" xml:space="preserve">
 		<value>Yes, Deliver</value>
 	</data>
-
 	<data name="Customers_Orders_EditOrder_LoadingImageLabel" xml:space="preserve">
 		<value>Loading product image...</value>
 	</data>
@@ -274,6 +272,12 @@
 	</data>
 	<data name="Customers_Detail_CallDialog_Cancel" xml:space="preserve">
 		<value>No</value>
+	</data>
+	<data name="Customers_OrderOpen" xml:space="preserve">
+		<value>Open Orders</value>
+	</data>
+	<data name="Customers_OrderClosed" xml:space="preserve">
+		<value>Delivered Orders</value>
 	</data>
 
 

@@ -36,7 +36,6 @@ namespace XamarinCRM.Models
         [JsonProperty(PropertyName = "due_date")]
         public DateTime DueDate { get; set; }
 
-//        [JsonConverter(typeof(NullToMinDateTimeJsonConverter))]
         [JsonProperty(PropertyName = "closed_date")]
         public DateTime? ClosedDate { get; set; }
 
@@ -44,6 +43,15 @@ namespace XamarinCRM.Models
         public string Quote
         {
             get { return Price.ToString(); }
+        }
+
+        public string Status
+        {
+            get 
+            {
+                return (IsOpen) ? TextResources.Customers_OrderOpen : TextResources.Customers_OrderClosed;
+            }
+
         }
     }
 }
