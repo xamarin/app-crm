@@ -278,4 +278,8 @@
       <Link>Config\config-sensitive.xml</Link>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="Resources\iTunesArtwork.png" />
+    <ITunesArtwork Include="Resources\iTunesArtwork%402x.png" />
+  </ItemGroup>
 </Project>
