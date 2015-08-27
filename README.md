@@ -1,4 +1,7 @@
 # Xamarin CRM
+
+![](https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_screenshots.png)
+
 This is a very basic readme for now.
 
 The app consists of three parts:
