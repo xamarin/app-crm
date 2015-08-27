@@ -32,7 +32,7 @@ namespace XamarinCRM.Pages.Sales
             #endregion
 
             #region leads view
-            _SalesDashboardLeadsViewModel = new SalesDashboardLeadsViewModel(new Command(new Action<object>(o => PushTabbedLeadPage((Account)o))));
+            _SalesDashboardLeadsViewModel = new SalesDashboardLeadsViewModel(new Command(PushTabbedLeadPageAction));
             LeadsView leadsView = new LeadsView() { BindingContext = _SalesDashboardLeadsViewModel };
             #endregion
 
