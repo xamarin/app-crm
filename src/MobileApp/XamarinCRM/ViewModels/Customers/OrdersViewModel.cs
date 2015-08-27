@@ -17,9 +17,9 @@ namespace XamarinCRM.ViewModels.Customers
 
         List<Order> _Orders;
 
-        ObservableCollection<Grouping<string, Order>> _OrderGroups;
+        ObservableCollection<Grouping<Order, string>> _OrderGroups;
 
-        public ObservableCollection<Grouping<string, Order>> OrderGroups
+        public ObservableCollection<Grouping<Order, string>> OrderGroups
         {
             get { return _OrderGroups; }
             set
@@ -39,7 +39,7 @@ namespace XamarinCRM.ViewModels.Customers
 
             _DataManager = DependencyService.Get<ICustomerDataClient>();
 
-            OrderGroups = new ObservableCollection<Grouping<string, Order>>();
+            OrderGroups = new ObservableCollection<Grouping<Order, string>>();
 
             MessagingCenter.Subscribe<Order>(this, MessagingServiceConstants.SAVE_ORDER, order =>
                 {

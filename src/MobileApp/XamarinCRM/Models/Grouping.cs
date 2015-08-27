@@ -3,11 +3,11 @@ using System.Collections.ObjectModel;
 
 namespace XamarinCRM.Models
 {
-    public class Grouping<K, T> : ObservableCollection<T>
+    public class Grouping<T,K> : ObservableCollection<T>
     {
         public K Key { get; private set; }
 
-        public Grouping(K key, IEnumerable<T> items)
+        public Grouping(IEnumerable<T> items, K key)
         {
             Key = key;
             Items.AddRange(items);

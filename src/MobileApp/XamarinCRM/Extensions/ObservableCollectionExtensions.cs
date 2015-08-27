@@ -18,14 +18,14 @@ namespace XamarinCRM.Extensions
         }
 
         /// <summary>
-        /// Adds a range of IEnumerable<T> to an ObservableCollection<Grouping<K,T>, grouped by a propertyName of type K.
+        /// Adds a range of IEnumerable<T> to an ObservableCollection<Grouping<T,K>, grouped by a propertyName of type K.
         /// </summary>
-        /// <param name="collection">An ObservableCollection<Grouping<K,T>>.</param>
+        /// <param name="collection">An ObservableCollection<Grouping<T,K>>.</param>
         /// <param name="items">IEnumerable<T></param>
         /// <param name="propertyName">The property name to group by. MUST be a valid property name on type T and MUST be of type K. Throws an argument exception if not.</param>
         /// <typeparam name="K">The type of the Grouping key.</typeparam>
         /// <typeparam name="T">The type of items in the items collection of the Grouping.</typeparam>
-        public static void AddRange<K,T>(this ObservableCollection<Grouping<K,T>> collection, IEnumerable<T> items, string propertyName)
+        public static void AddRange<T,K>(this ObservableCollection<Grouping<T,K>> collection, IEnumerable<T> items, string propertyName)
         {
             if (typeof(T).GetRuntimeProperties().All(propertyInfo => propertyInfo.Name != propertyName))
             {
@@ -34,7 +34,7 @@ namespace XamarinCRM.Extensions
 
             var groupings = items.GroupBy(t => t.GetType().GetRuntimeProperties().Single(propertyInfo => propertyInfo.Name == propertyName).GetValue(t, null));
 
-            collection.AddRange(groupings.Select(grouping => new Grouping<K,T>((K)grouping.Key, grouping)));
+            collection.AddRange(groupings.Select(grouping => new Grouping<T,K>(grouping, (K)grouping.Key)));
         }
     }
 }
