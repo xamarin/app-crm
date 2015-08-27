@@ -17,16 +17,11 @@ namespace XamarinCRM
             };
             title.SetBinding(Label.TextProperty, "Key");
 
-            var stackLayout = new StackLayout
-            {
-                BackgroundColor = Palette._003,
-                Padding = new Thickness(5, 0, 0, 0),
-                Orientation = StackOrientation.Horizontal,
-                Children = { title }
-            };
-            stackLayout.SetBinding(StackLayout.BackgroundColorProperty, "Key", converter: new OrderListHeaderViewBackgroudColorConverter());
+            var contentView = new ContentView() { Content = title, HeightRequest = Sizes.MediumRowHeight, Padding = new Thickness(10, 0) };
 
-            View = stackLayout;
+            contentView.SetBinding(StackLayout.BackgroundColorProperty, "Key", converter: new OrderListHeaderViewBackgroudColorConverter());
+
+            View = contentView;
         }
     }
 }

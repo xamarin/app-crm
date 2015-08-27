@@ -24,26 +24,7 @@ namespace XamarinCRM.Pages.Customers
             activityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
             #endregion
 
-            #region new order label
-            OrderListHeaderView headerView = new OrderListHeaderView();
-            TapGestureRecognizer newOrderTapGestureRecognizer = new TapGestureRecognizer()
-            { 
-                Command = new Command(async () =>
-                        await Navigation.PushAsync(new CustomerOrderDetailPage()
-                        {
-                            BindingContext = new OrderDetailViewModel(ViewModel.Account) { Navigation = ViewModel.Navigation }
-                        })), 
-                NumberOfTapsRequired = 1 
-            };
-            headerView.AddNewOrderImage.GestureRecognizers.Add(newOrderTapGestureRecognizer);
-            headerView.AddNewOrderTextLabel.GestureRecognizers.Add(newOrderTapGestureRecognizer);
-            headerView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
-            headerView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
-            #endregion
-
             #region header
-            StackLayout companyInfoStackLayout = new UnspacedStackLayout();
-
             Label companyTitleLabel = new Label()
             {
                 Text = TextResources.Customers_Orders_EditOrder_CompanyTitle,
@@ -64,26 +45,46 @@ namespace XamarinCRM.Pages.Customers
             };
             companyNameLabel.SetBinding(Label.TextProperty, "Account.Company");
 
-            RelativeLayout headerLabelsRelativeLayout = new RelativeLayout() { HeightRequest = Sizes.LargeRowHeight };
+            Image addNewOrderImage = new Image() { Aspect = Aspect.AspectFit };
+            Device.OnPlatform(
+                iOS: () => addNewOrderImage.Source = new FileImageSource(){ File = "add_ios_blue" }, 
+                Android: () => addNewOrderImage.Source = new FileImageSource() { File = "add_android_blue" }
+            );
+            addNewOrderImage.GestureRecognizers.Add(new TapGestureRecognizer()
+                { 
+                    Command = new Command(async () =>
+                                        await Navigation.PushAsync(new CustomerOrderDetailPage()
+                            {
+                                BindingContext = new OrderDetailViewModel(ViewModel.Account) { Navigation = ViewModel.Navigation }
+                            })), 
+                    NumberOfTapsRequired = 1 
+                });
 
-            headerLabelsRelativeLayout.Children.Add(
-                view: companyTitleLabel,
-                widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
-                heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 2));
+            AbsoluteLayout headerAbsoluteLayout = new AbsoluteLayout() { HeightRequest = Sizes.LargeRowHeight };
 
-            headerLabelsRelativeLayout.Children.Add(
-                view: companyNameLabel,
-                yConstraint: Constraint.RelativeToParent(parent => parent.Height / 2),
-                widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
-                heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 2));
+            headerAbsoluteLayout.Children.Add(
+                view: new UnspacedStackLayout()
+                { 
+                    Children =
+                    {
+                        companyTitleLabel,
+                        companyNameLabel
+                    } 
+                }, 
+                bounds: new Rectangle(0, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), 
+                flags: AbsoluteLayoutFlags.PositionProportional
+            );
 
-            ContentView headerLabelsView = new ContentView() { Padding = new Thickness(20, 0), Content = headerLabelsRelativeLayout };
+            headerAbsoluteLayout.Children.Add(
+                view: addNewOrderImage,
+                bounds: new Rectangle(1, .5, AbsoluteLayout.AutoSize, Device.OnPlatform(.5, .4, .5)),
+                flags: AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.HeightProportional
+            );
 
-            companyInfoStackLayout.Children.Add(new ContentViewWithBottomBorder() { Content = headerLabelsView });
+            ContentView headerLabelsView = new ContentView() { Content = headerAbsoluteLayout, Padding = new Thickness(20, 0) };
 
-            companyInfoStackLayout.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
-            companyInfoStackLayout.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
-
+            headerLabelsView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
+            headerLabelsView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             #endregion
 
             #region order list view
@@ -99,7 +100,6 @@ namespace XamarinCRM.Pages.Customers
                 var order = (Order)e.Item;
                 await Navigation.PushAsync(new CustomerOrderDetailPage() { BindingContext = new OrderDetailViewModel(ViewModel.Account, order) { Navigation = Navigation }, });
             };
-
             #endregion
 
             #region compose view hierarchy
@@ -108,10 +108,9 @@ namespace XamarinCRM.Pages.Customers
                 Children =
                 { 
                     activityIndicator, 
-                    companyInfoStackLayout, 
-                    headerView, 
+                    new ContentViewWithBottomBorder() { Content = headerLabelsView },
                     customerOrderListView 
-                } 
+                }
             };
             #endregion
         }

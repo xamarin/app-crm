@@ -9,7 +9,7 @@ namespace XamarinCRM.Views.Customers
     {
         public CustomerOrderListView()
         {
-            HasUnevenRows = false; // Circumvents calculating heights for each cell individually. The rows of this list view will have a static height.
+            HasUnevenRows = true; // Circumvents calculating heights for each cell individually. The rows of this list view will have a static height.
             RowHeight = (int)Sizes.LargeRowHeight; // set the row height for the list view items
             SeparatorVisibility = SeparatorVisibility.None;
             ItemTemplate = new DataTemplate(typeof(OrderListItemCell));
