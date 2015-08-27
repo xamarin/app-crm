@@ -22,9 +22,9 @@ namespace XamarinCRM.Extensions
         /// </summary>
         /// <param name="collection">An ObservableCollection<Grouping<T,K>>.</param>
         /// <param name="items">IEnumerable<T></param>
-        /// <param name="propertyName">The property name to group by. MUST be a valid property name on type T and MUST be of type K. Throws an argument exception if not.</param>
+        /// <param name="propertyName">The property name on to group by. MUST be a valid property name (case-sensitive) on type T and MUST be of type K. Throws an ArgumentException if not.</param>
+        /// /// <typeparam name="T">The type of items in the items collection of the Grouping.</typeparam>
         /// <typeparam name="K">The type of the Grouping key.</typeparam>
-        /// <typeparam name="T">The type of items in the items collection of the Grouping.</typeparam>
         public static void AddRange<T,K>(this ObservableCollection<Grouping<T,K>> collection, IEnumerable<T> items, string propertyName)
         {
             if (typeof(T).GetRuntimeProperties().All(propertyInfo => propertyInfo.Name != propertyName))
