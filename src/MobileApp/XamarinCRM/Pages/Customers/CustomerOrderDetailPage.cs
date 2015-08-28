@@ -110,7 +110,7 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             #region price
-            Entry priceEntry = new Entry() { Placeholder = TextResources.Customers_Orders_EditOrder_PriceEntryPlaceholder };
+            Entry priceEntry = new Entry() { Placeholder = TextResources.Customers_Orders_EditOrder_PriceEntryPlaceholder, Keyboard = Keyboard.Numeric };
             priceEntry.SetBinding(Entry.TextProperty, "Order.Price", BindingMode.TwoWay, new CurrencyDoubleConverter());
             priceEntry.SetBinding(IsEnabledProperty, "Order.IsOpen");
             priceEntry.SetBinding(IsVisibleProperty, "Order.IsOpen");
