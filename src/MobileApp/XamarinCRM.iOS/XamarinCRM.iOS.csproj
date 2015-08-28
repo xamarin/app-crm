@@ -13,6 +13,7 @@
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
     <ReleaseVersion>2.0</ReleaseVersion>
+    <AssemblyName>XamarinCRMiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,7 +31,6 @@
     </MtouchI18n>
     <MtouchArch>i386</MtouchArch>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
-    <AssemblyName>MobileCRMiOS</AssemblyName>
     <IpaMetadata>
     </IpaMetadata>
     <IpaPackageName>
@@ -48,7 +48,6 @@
     <MtouchLink>None</MtouchLink>
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <AssemblyName>MobileCRM</AssemblyName>
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -68,7 +67,6 @@
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>ARMv7</MtouchArch>
-    <AssemblyName>XamarinCRMiOS</AssemblyName>
     <MtouchSdkVersion>8.1</MtouchSdkVersion>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
     <BuildIpa>True</BuildIpa>
@@ -84,7 +82,6 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <AssemblyName>XamarinCRMiOS</AssemblyName>
     <BuildIpa>True</BuildIpa>
     <IpaMetadata>
     </IpaMetadata>
@@ -103,7 +100,6 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <BuildIpa>true</BuildIpa>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <AssemblyName>XamarinCRMiOS</AssemblyName>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
@@ -117,7 +113,6 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>Automatic:AppStore</CodesignProvision>
     <CodesignKey>iPhone Distribution</CodesignKey>
-    <AssemblyName>XamarinCRMiOS</AssemblyName>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
   </PropertyGroup>
   <ItemGroup>
