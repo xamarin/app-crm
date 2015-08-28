@@ -9,7 +9,7 @@ namespace XamarinCRM.iOS
         static void Main(string[] args)
         {
             // Initialize insights
-            Insights.Initialize("e548c92073ff9ed3a0bc529d2edf896009d81c9c");
+            Insights.Initialize("2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26");
 
             // if you want to use a different Application Delegate class from "AppDelegate"
             // you can specify it here.
