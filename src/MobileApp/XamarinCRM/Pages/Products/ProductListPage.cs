@@ -5,26 +5,18 @@ using Xamarin.Forms;
 using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using XamarinCRM.Converters;
+using XamarinCRM.Pages.Base;
 
 namespace XamarinCRM.Pages.Products
 {
-    public class ProductListPage : BaseProductPage
+    public class ProductListPage : ModelBoundContentPage<ProductsViewModel>
     {
-        readonly string _CategoryId;
-
-        public ProductsViewModel ViewModel
+        public ProductListPage(string title, bool isPerformingProductSelection = false)
         {
-            get { return BindingContext as ProductsViewModel; }
-        }
-
-        public ProductListPage(string categoryId, string title, bool isPerformingProductSelection = false)
-            : base(isPerformingProductSelection)
-        {
-            _CategoryId = categoryId;
+            // hide the navigstion bar on Android
+            Device.OnPlatform(Android: () => NavigationPage.SetHasNavigationBar(this, isPerformingProductSelection));
 
             Title = title;
-
-            BindingContext = new ProductsViewModel(_CategoryId);
 
             #region product list
             ProductListView productListView = new ProductListView();
@@ -32,12 +24,12 @@ namespace XamarinCRM.Pages.Products
             productListView.SetBinding(CategoryListView.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             productListView.SetBinding(CategoryListView.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
 
-            productListView.ItemTapped += (sender, e) =>
-            {
-                CatalogProduct catalogProduct = ((CatalogProduct)e.Item);
-
-                Navigation.PushAsync(new ProductDetailPage(catalogProduct, isPerformingProductSelection));
-            };
+            productListView.ItemTapped += async (sender, e) =>
+            await App.ExecuteIfConnected(async () =>
+                {
+                    CatalogProduct catalogProduct = ((CatalogProduct)e.Item);
+                        await Navigation.PushAsync(new ProductDetailPage(catalogProduct, isPerformingProductSelection));
+                });
             #endregion
 
             #region activity indicator
@@ -45,8 +37,6 @@ namespace XamarinCRM.Pages.Products
             {
                 HeightRequest = Sizes.LargeRowHeight
             };
-
-            activityIndicator.BindingContext = ViewModel;
             activityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
             activityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
             activityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
@@ -85,7 +75,7 @@ namespace XamarinCRM.Pages.Products
 
             if (ViewModel.IsInitialized)
                 return;
-            ViewModel.LoadProductsCommand.Execute(_CategoryId);
+            ViewModel.LoadProductsCommand.Execute(ViewModel.CategoryId);
             ViewModel.IsInitialized = true;
         }
     }

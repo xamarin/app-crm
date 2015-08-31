@@ -63,11 +63,7 @@ namespace XamarinCRM
             mapMarkerImageTouchView.GestureRecognizers.Add(
                 new TapGestureRecognizer()
                 { 
-                    Command = new Command(async () =>
-                        {
-                            NavigationPage navPage = new NavigationPage(new CustomerMapPage(ViewModel));
-                            await ViewModel.PushModalAsync(navPage);
-                        }) 
+                    Command = new Command(MapMarkerIconTapped) 
                 });
 
             mapMarkerImageTouchView.Children.Add(mapMarkerImage, new Rectangle(.5, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
@@ -92,6 +88,12 @@ namespace XamarinCRM
             #endregion
 
             Content = absoluteLayout;
+        }
+
+        async void MapMarkerIconTapped()
+        {
+            NavigationPage navPage = new NavigationPage(new CustomerMapPage(ViewModel));
+            await ViewModel.PushModalAsync(navPage);
         }
     }
 }

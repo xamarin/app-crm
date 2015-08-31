@@ -52,11 +52,7 @@ namespace XamarinCRM.Pages.Customers
             );
             addNewOrderImage.GestureRecognizers.Add(new TapGestureRecognizer()
                 { 
-                    Command = new Command(async () =>
-                                        await Navigation.PushAsync(new CustomerOrderDetailPage()
-                            {
-                                BindingContext = new OrderDetailViewModel(ViewModel.Account) { Navigation = ViewModel.Navigation }
-                            })), 
+                    Command = new Command(AddNewOrderTapped),
                     NumberOfTapsRequired = 1 
                 });
 
@@ -96,10 +92,17 @@ namespace XamarinCRM.Pages.Customers
             customerOrderListView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
 
             customerOrderListView.ItemTapped += async (sender, e) =>
-            {
-                var order = (Order)e.Item;
-                await Navigation.PushAsync(new CustomerOrderDetailPage() { BindingContext = new OrderDetailViewModel(ViewModel.Account, order) { Navigation = Navigation }, });
-            };
+            await App.ExecuteIfConnected(async () =>
+                {
+                    var order = (Order)e.Item;
+                    await Navigation.PushAsync(new CustomerOrderDetailPage()
+                        {
+                            BindingContext = new OrderDetailViewModel(ViewModel.Account, order)
+                            {
+                                Navigation = Navigation
+                            },
+                        });
+                });
             #endregion
 
             #region compose view hierarchy
@@ -122,6 +125,18 @@ namespace XamarinCRM.Pages.Customers
             Insights.Track("Customer Orders Page");
 
             ViewModel.LoadOrdersCommand.Execute(null);
+        }
+
+        async void AddNewOrderTapped()
+        {
+            await Navigation.PushAsync(
+                new CustomerOrderDetailPage()
+                {
+                    BindingContext = new OrderDetailViewModel(ViewModel.Account)
+                    { 
+                        Navigation = ViewModel.Navigation 
+                    }
+                });
         }
     }
 }

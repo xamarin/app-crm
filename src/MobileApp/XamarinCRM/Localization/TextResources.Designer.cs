@@ -407,6 +407,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string NetworkConnection_Alert_Confirm {
+            get {
+                return ResourceManager.GetString("NetworkConnection_Alert_Confirm", resourceCulture);
+            }
+        }
+        
         internal static string Customers_Detail_MappingDirections_LeaveApplication {
             get {
                 return ResourceManager.GetString("Customers_Detail_MappingDirections_LeaveApplication", resourceCulture);
@@ -527,6 +533,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string NetworkConnection_Alert_Message {
+            get {
+                return ResourceManager.GetString("NetworkConnection_Alert_Message", resourceCulture);
+            }
+        }
+        
         internal static string Splash_PasswordTitleLabel {
             get {
                 return ResourceManager.GetString("Splash_PasswordTitleLabel", resourceCulture);
@@ -560,6 +572,12 @@ namespace XamarinCRM {
         internal static string Customers_OrderOpen {
             get {
                 return ResourceManager.GetString("Customers_OrderOpen", resourceCulture);
+            }
+        }
+        
+        internal static string NetworkConnection_Alert_Title {
+            get {
+                return ResourceManager.GetString("NetworkConnection_Alert_Title", resourceCulture);
             }
         }
         

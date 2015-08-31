@@ -1,13 +1,17 @@
-﻿using XamarinCRM.Models;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using XamarinCRM.Statics;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.Views.Products
 {
     public class ProductDetailRibbonView : ContentView
     {
+        readonly CatalogProduct _CatalogProduct;
+
         public ProductDetailRibbonView(CatalogProduct catalogProduct, bool isPerformingProductSelection = false)
         {
+            _CatalogProduct = catalogProduct;
+
             RelativeLayout relativeLayout = new RelativeLayout();
 
             BackgroundColor = Palette._009;
@@ -38,11 +42,7 @@ namespace XamarinCRM.Views.Products
                 TapGestureRecognizer addToOrderTapGestureRecognizer = new TapGestureRecognizer()
                 { 
                     NumberOfTapsRequired = 1,
-                    Command = new Command(async () =>
-                        {
-                            MessagingCenter.Send(catalogProduct, MessagingServiceConstants.UPDATE_ORDER_PRODUCT);
-                            await Navigation.PopModalAsync();
-                        })
+                    Command = new Command(AddToOrderTapped)
                 };
 
                 addToOrderImage.GestureRecognizers.Add(addToOrderTapGestureRecognizer);
@@ -66,7 +66,7 @@ namespace XamarinCRM.Views.Products
 
             Label priceValueLabel = new Label()
             {
-                Text = string.Format("{0:C}", catalogProduct.Price),
+                Text = string.Format("{0:C}", _CatalogProduct.Price),
                 TextColor = Color.White,
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 FontAttributes = FontAttributes.Bold,
@@ -82,6 +82,16 @@ namespace XamarinCRM.Views.Products
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height));
 
             Content = relativeLayout;
+        }
+
+        async void AddToOrderTapped()
+        {
+            await App.ExecuteIfConnected(async () =>
+                {
+                    MessagingCenter.Send(_CatalogProduct, MessagingServiceConstants.UPDATE_ORDER_PRODUCT);
+                    await Navigation.PopModalAsync();
+                });
+            
         }
     }
 }

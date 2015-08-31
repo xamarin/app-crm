@@ -4,13 +4,18 @@ using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Splash;
 using XamarinCRM.Pages.Base;
 using System.Threading.Tasks;
+using XamarinCRM.Services;
 
 namespace XamarinCRM.Pages.Splash
 {
     public class SplashPage : ModelBoundContentPage<SplashPageViewModel>
     {
+        IAuthenticationService _AuthenticationService;
+
         public SplashPage()
         {
+            _AuthenticationService = DependencyService.Get<IAuthenticationService>();
+
             #region background view
             Image backgroundImageView = new Image() { Source = new FileImageSource() { File = "splash" }, Aspect = Aspect.AspectFill };
 
@@ -193,7 +198,7 @@ namespace XamarinCRM.Pages.Splash
         async Task<bool> Authenticate()
         {
             // The underlying call behind App.Authenticate() calls the ADAL library, which presents the login UI and awaits success.
-            var success = await App.Authenticate();
+            var success = await _AuthenticationService.Authenticate();
 
             // When the App.Authenticate() returns, the login UI is hidden, regardless of success (for example, if the user taps "Cancel" in iOS).
             // This means the SplashPage will be visible again, so we need to make the sign in button clickable again by hiding the activity indicator (via the IsPresentingLoginUI property).

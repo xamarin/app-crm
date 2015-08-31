@@ -10,9 +10,18 @@ namespace XamarinCRM.ViewModels.Products
 {
     public class ProductsViewModel : BaseViewModel
     {
-        readonly string _CategoryId;
-
         readonly ICatalogDataClient _CatalogClient;
+
+        string _CategoryId;
+        public string CategoryId
+        {
+            get { return _CategoryId; }
+            set 
+            {
+                _CategoryId = value;
+                OnPropertyChanged("CategoryId");
+            }
+        }
 
         ObservableCollection<CatalogProduct> _Products;
         public ObservableCollection<CatalogProduct> Products
@@ -21,7 +30,7 @@ namespace XamarinCRM.ViewModels.Products
             set
             {
                 _Products = value;
-                OnPropertyChanged("Categories");
+                OnPropertyChanged("Products");
             }
         }
 

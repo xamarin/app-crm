@@ -7,6 +7,7 @@ using XamarinCRM.Pages.Products;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Custom;
+using XamarinCRM.ViewModels.Products;
 
 namespace XamarinCRM.Pages.Customers
 {
@@ -278,8 +279,9 @@ namespace XamarinCRM.Pages.Customers
             // we need to deal with it by manually unfocusing the entry field. No native platform code required! :)
             Device.OnPlatform(Android: ((Entry)sender).Unfocus);
 
-            NavigationPage navPage = new NavigationPage(new CategoryListPage(null, null, true)
+            NavigationPage navPage = new NavigationPage(new CategoryListPage(null, true)
                 { 
+                    BindingContext = new CategoriesViewModel(),
                     Title = TextResources.MainTabs_Products
                 });
             

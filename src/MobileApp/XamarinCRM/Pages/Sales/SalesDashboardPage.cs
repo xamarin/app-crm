@@ -8,11 +8,14 @@ using XamarinCRM.Models;
 using XamarinCRM.Pages.Splash;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Sales;
+using XamarinCRM.Services;
 
 namespace XamarinCRM.Pages.Sales
 {
     public class SalesDashboardPage : ContentPage
     {
+        IAuthenticationService _AuthenticationService;
+
         // We're holding on to these ViewModel properties because a couple of child views are reliant on these ViewModels, as well as the OnAppearing()
         // method in this Page needing access to some of the public methods on those ViewModels, e.g. ExecuteLoadSeedDataCommand().
         SalesDashboardChartViewModel _SalesDashboardChartViewModel { get; set; }
@@ -21,6 +24,8 @@ namespace XamarinCRM.Pages.Sales
 
         public SalesDashboardPage()
         {
+            _AuthenticationService = DependencyService.Get<IAuthenticationService>();
+
             // If this page is being presented by a NavigationPage, we don't want to show the navigation bar (top) in this particular app design.
             NavigationPage.SetHasNavigationBar(this, false);
 
@@ -66,7 +71,7 @@ namespace XamarinCRM.Pages.Sales
 
             Content.IsVisible = false;
 
-            if (App.IsAuthenticated)
+            if (_AuthenticationService.IsAuthenticated)
             {
                 Content.IsVisible = true;
 

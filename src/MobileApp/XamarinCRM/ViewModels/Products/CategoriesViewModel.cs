@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using XamarinCRM.Clients;
 using XamarinCRM.Models;
 using XamarinCRM.ViewModels.Base;
@@ -10,28 +9,39 @@ namespace XamarinCRM.ViewModels.Products
 {
     public class CategoriesViewModel : BaseViewModel
     {
-        readonly string _CategoryId;
-
         readonly ICatalogDataClient _CatalogClient;
 
-        ObservableCollection<CatalogCategory> _Categories;
-        public ObservableCollection<CatalogCategory> Categories
+        CatalogCategory _Category;
+
+        public CatalogCategory Category
         {
-            get { return _Categories; }
+            get { return _Category; }
+            set
+            {  
+                _Category = value;
+                OnPropertyChanged("Category");
+            }
+        }
+
+        ObservableCollection<CatalogCategory> _SubCategories;
+
+        public ObservableCollection<CatalogCategory> SubCategories
+        {
+            get { return _SubCategories; }
             set
             {
-                _Categories = value;
-                OnPropertyChanged("Categories");
+                _SubCategories = value;
+                OnPropertyChanged("SubCategories");
             }
         }
 
         public bool NeedsRefresh { get; set; }
 
-        public CategoriesViewModel(string categoryId = null)
+        public CategoriesViewModel(CatalogCategory category = null)
         {
-            _CategoryId = categoryId;
+            Category = category;
 
-            _Categories = new ObservableCollection<CatalogCategory>();
+            SubCategories = new ObservableCollection<CatalogCategory>();
 
             _CatalogClient = DependencyService.Get<ICatalogDataClient>();
 
@@ -47,24 +57,23 @@ namespace XamarinCRM.ViewModels.Products
             get
             {
                 return _LoadCategoriesCommand ??
-                    (_LoadCategoriesCommand = new Command(async () =>
-                        await ExecuteLoadCategoriesCommand()));
+                (_LoadCategoriesCommand = new Command(
+                    ExecuteLoadCategoriesCommand));
             }
         }
 
-        async Task ExecuteLoadCategoriesCommand()
+        async void ExecuteLoadCategoriesCommand()
         {
             if (IsBusy)
                 return;
 
             IsBusy = true;
+            LoadCategoriesCommand.ChangeCanExecute();
 
-            Categories.Clear();
-            IEnumerable<CatalogCategory> categories = await _CatalogClient.GetCategoriesAsync(_CategoryId);
-            foreach (var category in categories)
-                Categories.Add(category);
+            SubCategories = new ObservableCollection<CatalogCategory>((await _CatalogClient.GetCategoriesAsync((_Category != null) ? _Category.Id : null)));
 
             IsBusy = false;
+            LoadCategoriesCommand.ChangeCanExecute();
         }
     }
 }

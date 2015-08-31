@@ -2,10 +2,13 @@
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Xamarin.Forms;
+using XamarinCRM.Services;
+
+[assembly: Dependency(typeof(AuthenticationService))]
 
 namespace XamarinCRM.Services
 {
-    public class AuthenticationService
+    public class AuthenticationService : IAuthenticationService
     {
         readonly string _ClientId;
         readonly string _TenantAuthority;

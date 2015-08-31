@@ -32,10 +32,11 @@ namespace XamarinCRM.Pages.Customers
             customerListView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
 
             customerListView.ItemTapped += async (sender, e) =>
-            {
-                Account account = (Account)e.Item;
-                await PushTabbedPage(account);
-            };
+            await App.ExecuteIfConnected(async () =>
+                {
+                    Account account = (Account)e.Item;
+                    await PushTabbedPage(account);
+                });
             #endregion
 
             #region compose view hierarchy
