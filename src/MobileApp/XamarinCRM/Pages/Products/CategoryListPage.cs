@@ -12,9 +12,6 @@ namespace XamarinCRM.Pages.Products
     {
         public CategoryListPage(string title = null, bool isPerformingProductSelection = false)
         {
-            // hide the navigstion bar on Android
-            Device.OnPlatform(Android: () => NavigationPage.SetHasNavigationBar(this, isPerformingProductSelection));
-
             if (title == null)
             {
                 Title = "Products";

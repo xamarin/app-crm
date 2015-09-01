@@ -4,7 +4,6 @@ using XamarinCRM.Views.Products;
 using Xamarin.Forms;
 using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
-using XamarinCRM.Converters;
 using XamarinCRM.Pages.Base;
 
 namespace XamarinCRM.Pages.Products
@@ -13,9 +12,6 @@ namespace XamarinCRM.Pages.Products
     {
         public ProductListPage(string title, bool isPerformingProductSelection = false)
         {
-            // hide the navigstion bar on Android
-            Device.OnPlatform(Android: () => NavigationPage.SetHasNavigationBar(this, isPerformingProductSelection));
-
             Title = title;
 
             #region product list

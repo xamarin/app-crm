@@ -209,20 +209,23 @@ namespace XamarinCRM.Pages.Splash
 
         async void SignInButtonTapped()
         {
-            // trigger the activity indicator through the IsPresentingLoginUI property on the ViewModel
-            ViewModel.IsPresentingLoginUI = true;
+            await App.ExecuteIfConnected(async () =>
+                {
+                    // trigger the activity indicator through the IsPresentingLoginUI property on the ViewModel
+                    ViewModel.IsPresentingLoginUI = true;
 
-            if (await Authenticate())
-            {
-                // Pop off the modally presented SplashPage.
-                // Note that we're not popping the ADAL auth UI here; that's done automatcially by the ADAL library when the Authenticate() method returns.
-                await ViewModel.PopModalAsync();
+                    if (await Authenticate())
+                    {
+                        // Pop off the modally presented SplashPage.
+                        // Note that we're not popping the ADAL auth UI here; that's done automatcially by the ADAL library when the Authenticate() method returns.
+                        await ViewModel.PopModalAsync();
 
-                // Broadcast a message that we have sucessdully authenticated.
-                // This is mostly just for Android. We need to trigger Android to call the SalesDashboardPage.OnAppearing() method,
-                // because unlike iOS, Android does not call the OnAppearing() method each time that the Page actually appears on screen.
-                MessagingCenter.Send(this, MessagingServiceConstants.AUTHENTICATED);
-            }
+                        // Broadcast a message that we have sucessdully authenticated.
+                        // This is mostly just for Android. We need to trigger Android to call the SalesDashboardPage.OnAppearing() method,
+                        // because unlike iOS, Android does not call the OnAppearing() method each time that the Page actually appears on screen.
+                        MessagingCenter.Send(this, MessagingServiceConstants.AUTHENTICATED);
+                    }
+                });
         }
     }
 }
