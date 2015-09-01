@@ -27,7 +27,7 @@ namespace XamarinCRM.Views.Products
                     Aspect = Aspect.AspectFit
                 };
                 Device.OnPlatform(
-                    iOS: () => addToOrderImage.Source = new FileImageSource(){ File = "add_ios_blue" }, 
+                    iOS: () => addToOrderImage.Source = new FileImageSource(){ File = "add_ios_blue" },     
                     Android: () => addToOrderImage.Source = new FileImageSource() { File = "add_android_blue" }
                 );
 

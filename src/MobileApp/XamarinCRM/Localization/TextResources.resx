@@ -119,7 +119,7 @@
     	<value>Size</value>
 	</data>
 	<data name="Leads_LeadDetail_OpportunitySizePlaceholder" xml:space="preserve">
-    	<value>Enter Dollor Amount</value>
+    	<value>Enter Dollar Amount</value>
 	</data>
 	<data name="Leads_LeadDetail_OpportunityStage" xml:space="preserve">
     	<value>Stage</value>

@@ -56,24 +56,22 @@ namespace XamarinCRM.ViewModels.Products
             get
             {
                 return _LoadProductsCommand ??
-                    (_LoadProductsCommand = new Command(async () =>
-                        await ExecuteLoadProductsCommand()));
+                    (_LoadProductsCommand = new Command(ExecuteLoadProductsCommand));
             }
         }
 
-        async Task ExecuteLoadProductsCommand()
+        async void ExecuteLoadProductsCommand()
         {
             if (IsBusy)
                 return;
 
             IsBusy = true;
+            LoadProductsCommand.ChangeCanExecute();
 
-            Products.Clear();
-            IEnumerable<CatalogProduct> products = await _CatalogClient.GetProductsAsync(_CategoryId);
-            foreach (var product in products)
-                Products.Add(product);
+            Products = new ObservableCollection<CatalogProduct>((await _CatalogClient.GetProductsAsync(_CategoryId)));
 
             IsBusy = false;
+            LoadProductsCommand.ChangeCanExecute();
         }
     }
 }
