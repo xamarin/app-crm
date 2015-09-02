@@ -48,7 +48,9 @@ https://github.com/xamarin/demo-xamarincrm-internal/wiki/Setup-Xamarin-CRM-app
 <img src="https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_bindable_list.png" alt="Easy list data-binding" width="50%">
 
 ##Azure Mobile Service for product catalog data (.NET backend)
-######Coming soonish!
+####Setup Instructions
+https://github.com/xamarin/demo-xamarincrm-internal/wiki/Setup-Xamarin-CRM-Azure-Mobile-Service-for-product-catalog-data
 
 ## Azure Mobile Service for customer data (javascript backend)
-######Coming soonish!
+####Setup Instructions
+https://github.com/xamarin/demo-xamarincrm-internal/wiki/Setup-Xamarin-CRM-Azure-Mobile-Service-for-customer-and-order-data
