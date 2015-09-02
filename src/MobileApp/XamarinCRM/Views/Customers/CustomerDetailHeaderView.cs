@@ -36,8 +36,7 @@ namespace XamarinCRM.Views.Customers
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             companyLabel.SetBinding(Label.TextProperty, "Account.Company");
-            companyLabel.SetBinding(VisualElement.IsEnabledProperty, new Binding("IsLoading", source: companyImage, converter: new InverseBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
-            companyLabel.SetBinding(VisualElement.IsVisibleProperty, new Binding("IsLoading", source: companyImage, converter: new InverseBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
+            companyLabel.SetBinding(Label.TextColorProperty, new Binding("IsLoading", source: companyImage, converter: new CompanyLabelBooleanToColorConverter()));
             #endregion
 
             #region industry label
@@ -48,8 +47,7 @@ namespace XamarinCRM.Views.Customers
                 LineBreakMode = LineBreakMode.TailTruncation
             };
             industryLabel.SetBinding(Label.TextProperty, "Account.Industry");
-            industryLabel.SetBinding(VisualElement.IsEnabledProperty, new Binding("IsLoading", source: companyImage, converter: new InverseBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
-            industryLabel.SetBinding(VisualElement.IsVisibleProperty, new Binding("IsLoading", source: companyImage, converter: new InverseBooleanConverter())); // here, since we're alresdy bound to a different context, we can reference the IsLoading property of companyImage through the expanded form of the Binding constructor, specifying a soure
+            industryLabel.SetBinding(Label.TextColorProperty, new Binding("IsLoading", source: companyImage, converter: new IndustryLabelBooleanToColorConverter()));
             #endregion
 
             #region compose view hierarchy
