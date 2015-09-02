@@ -16,6 +16,10 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 **The Azure Mobile Services (2 & 3) do not need to be deployed by you.** There is already an instance of each of those services up and running in Azure, and the Xamarin app is configured by default to consume those service instances. We've included the code for those services so that you may run your own service instances on Azure if you'd like.
 
 ##Xamarin.Forms app (Xamarin CRM)
+
+####Setup Instructions
+https://github.com/xamarin/demo-xamarincrm-internal/wiki/Setup-Xamarin-CRM-app
+
 ####Featured technologies
 * Xamarin.Forms (http://xamarin.com/forms)
 * Xamarin.Forms.Maps (https://developer.xamarin.com/guides/cross-platform/xamarin-forms/user-interface/map)
