@@ -44,7 +44,7 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 <img src="https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_bindable_list.png" alt="Easy list data-binding" width="50%">
 
 ##Azure Mobile Service for product catalog data (.NET backend)
-Under construction
+######Coming soonish!
 
 ## Azure Mobile Service for customer data (javascript backend)
-Under construction
+######Coming soonish!
