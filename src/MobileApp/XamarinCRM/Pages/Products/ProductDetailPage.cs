@@ -5,16 +5,15 @@ using XamarinCRM.Layouts;
 
 namespace XamarinCRM.Pages.Products
 {
-    public class ProductDetailPage : BaseProductPage
+    public class ProductDetailPage : ContentPage
     {
         readonly CatalogProduct _CatalogProduct;
 
         public ProductDetailPage(CatalogProduct catalogProduct, bool isPerformingProductSelection = false)
-            : base(isPerformingProductSelection)
         {
             _CatalogProduct = catalogProduct;
 
-            Title = catalogProduct.Name;
+            Title = _CatalogProduct.Name;
 
             #region productImage
             Image image = new Image()

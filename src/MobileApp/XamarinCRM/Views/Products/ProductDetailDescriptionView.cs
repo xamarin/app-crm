@@ -1,6 +1,7 @@
 ﻿using XamarinCRM.Models;
 using Xamarin.Forms;
 using XamarinCRM.Statics;
+using XamarinCRM.Views.Base;
 
 namespace XamarinCRM.Views.Products
 {
@@ -11,7 +12,7 @@ namespace XamarinCRM.Views.Products
             Label nameLabel = new Label()
             { 
                 Text = catalogProduct.Name,
-                TextColor = Device.OnPlatform(Palette._006, Palette._013, Palette._013),
+                TextColor = Device.OnPlatform(Palette._006, Palette._006, Palette._013),
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
             };
             

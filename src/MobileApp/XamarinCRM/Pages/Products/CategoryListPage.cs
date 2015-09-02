@@ -1,80 +1,59 @@
 ﻿using Xamarin.Forms;
-using XamarinCRM.Converters;
 using XamarinCRM.Layouts;
 using XamarinCRM.Models;
-using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Products;
 using XamarinCRM.Views.Products;
+using XamarinCRM.Pages.Base;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.Pages.Products
 {
-    public class CategoryListPage : BaseProductPage
+    public class CategoryListPage : ModelBoundContentPage<CategoriesViewModel>
     {
-        readonly string _CategoryId;
-
-        public CategoriesViewModel ViewModel
+        public CategoryListPage(string title = null, bool isPerformingProductSelection = false)
         {
-            get { return BindingContext as CategoriesViewModel; }
-        }
+            if (title == null)
+            {
+                Title = "Products";
+            }
 
-        public CategoryListPage(string categoryId = null, string title = null, bool isPerformingProductSelection = false)
-            : base(isPerformingProductSelection)
-        {
-            _CategoryId = categoryId;
-
-            if (_CategoryId == null)
-                Title = TextResources.Products;
-
-            if (title != null)
-                Title = title;
-
-            BindingContext = new CategoriesViewModel(_CategoryId);
+            SetBinding(CategoryListPage.TitleProperty, new Binding("Category", converter: new CategoryTitleConverter(Title)));
 
             #region category list
             CategoryListView categoryListView = new CategoryListView();
-            categoryListView.SetBinding(CategoryListView.ItemsSourceProperty, "Categories");
-            categoryListView.SetBinding(CategoryListView.IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
-            categoryListView.SetBinding(CategoryListView.IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
+            categoryListView.SetBinding(CategoryListView.ItemsSourceProperty, "SubCategories");
+            categoryListView.IsPullToRefreshEnabled = true;
+            categoryListView.SetBinding(CategoryListView.RefreshCommandProperty, "LoadCategoriesCommand");
+            categoryListView.SetBinding(CategoryListView.IsRefreshingProperty, "IsBusy", mode: BindingMode.OneWay);
 
-            categoryListView.ItemTapped += (sender, e) =>
-            {
-                CatalogCategory catalogCategory = ((CatalogCategory)e.Item);
-
-                if (catalogCategory.HasSubCategories)
+            categoryListView.ItemTapped += async (sender, e) =>
+            await App.ExecuteIfConnected(async () =>
                 {
-                    Navigation.PushAsync(new CategoryListPage(catalogCategory.Id, catalogCategory.Name, isPerformingProductSelection));
-                }
-                else
-                {
-                    Navigation.PushAsync(new ProductListPage(catalogCategory.Id, catalogCategory.Name, isPerformingProductSelection));
-                }
-            };
-            #endregion
-
-            #region activity indicator
-            ActivityIndicator activityIndicator = new ActivityIndicator()
-            {
-                HeightRequest = Sizes.LargeRowHeight
-            };
-
-            activityIndicator.BindingContext = ViewModel;
-            activityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
-            activityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
-            activityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
-            #endregion
-
-            #region loading label
-            Label loadingLabel = new Label()
-            {
-                Text = TextResources.Products_CategoryList_LoadingLabel,
-                FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                HeightRequest = Sizes.MediumRowHeight,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.End,
-                TextColor = Palette._007
-            };
-            loadingLabel.SetBinding(IsEnabledProperty, "IsBusy");
-            loadingLabel.SetBinding(IsVisibleProperty, "IsBusy");
+                    CatalogCategory catalogCategory = ((CatalogCategory)e.Item);
+                    if (catalogCategory.HasSubCategories)
+                    {
+                        await Navigation.PushAsync(new CategoryListPage(catalogCategory.Name, isPerformingProductSelection) { BindingContext = new CategoriesViewModel(catalogCategory) });
+                    }
+                    else
+                    {
+                        await Navigation.PushAsync(new ProductListPage(catalogCategory.Name, isPerformingProductSelection) { BindingContext = new ProductsViewModel(catalogCategory.Id) });
+                    }
+                });
+            
+            categoryListView.SetBinding(CategoryListView.HeaderProperty, ".");
+            categoryListView.HeaderTemplate = new DataTemplate(() => {
+                Label loadingLabel = new Label()
+                    {
+                        Text = TextResources.Products_CategoryList_LoadingLabel,
+                        FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                        XAlign = TextAlignment.Center,
+                        YAlign = TextAlignment.End,
+                        TextColor = Palette._007
+                    };
+                loadingLabel.SetBinding(Label.IsEnabledProperty, "IsBusy", mode: BindingMode.OneWay);
+                loadingLabel.SetBinding(Label.IsVisibleProperty, "IsBusy", mode: BindingMode.OneWay);
+                return loadingLabel;
+            });
             #endregion
 
             #region compose view hierarchy
@@ -82,23 +61,22 @@ namespace XamarinCRM.Pages.Products
             {
                 Children =
                 {
-                    loadingLabel,
-                    activityIndicator,
                     categoryListView
                 }
             };
             #endregion
         }
 
-        protected override  void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
 
             if (ViewModel.IsInitialized)
                 return;
-            ViewModel.LoadCategoriesCommand.Execute(_CategoryId);
-            ViewModel.IsInitialized = true;
+            
+            ViewModel.LoadCategoriesCommand.Execute(ViewModel.Category);
 
+            ViewModel.IsInitialized = true;
         }
     }
 }

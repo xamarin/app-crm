@@ -1,56 +1,75 @@
 ﻿using System;
 using System.Threading.Tasks;
-using XamarinCRM.Extensions;
 using XamarinCRM.Localization;
 using XamarinCRM.Pages;
 using XamarinCRM.Services;
 using Xamarin.Forms;
+using Connectivity.Plugin;
 
 namespace XamarinCRM
 {
     public class App : Application
     {
+        static Page _RootPage;
+
         public App()
         {
-            if (Device.OS != TargetPlatform.WinPhone)
-                TextResources.Culture = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+            SetCulture();
 
-            MainPage = new RootPage();
+            _RootPage = new RootPage();
+
+            MainPage = _RootPage;
         }
 
         static readonly Lazy<AuthenticationService> _LazyAuthenticationService = new Lazy<AuthenticationService>(() => new AuthenticationService());
 
         static AuthenticationService _AuthenticationService { get { return _LazyAuthenticationService.Value; } }
 
-        public static async Task<bool> Authenticate()
+        static void SetCulture()
         {
-            try
+            if (Device.OS != TargetPlatform.WinPhone)
+                TextResources.Culture = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+        }
+
+        public static async void ExecuteIfConnected(Action actionToExecuteIfConnected)
+        {
+            if (IsConnected)
             {
-                return await _AuthenticationService.Authenticate();
+                await Task.Factory.StartNew(actionToExecuteIfConnected);
             }
-            catch (Exception ex)
+            else
             {
-                ex.WriteFormattedMessageToDebugConsole(typeof(App));
-                return false;
+                await ShowNetworkConnectionAlert();
             }
         }
 
-        public static async Task<bool> Logout()
+        public static async Task ExecuteIfConnected(Func<Task> actionToExecuteIfConnected)
         {
-            try
+            if (IsConnected)
             {
-                return await _AuthenticationService.Logout();
+                await actionToExecuteIfConnected();
             }
-            catch (Exception ex)
+            else
             {
-                ex.WriteFormattedMessageToDebugConsole(typeof(App));
-                return false;
+                await ShowNetworkConnectionAlert();
             }
         }
 
-        public static bool IsAuthenticated
+        static async Task ShowNetworkConnectionAlert()
         {
-            get { return _AuthenticationService.IsAuthenticated; }
+            await _RootPage.DisplayAlert(
+                TextResources.NetworkConnection_Alert_Title, 
+                TextResources.NetworkConnection_Alert_Message, 
+                TextResources.NetworkConnection_Alert_Confirm);
+        }
+
+        public static bool IsConnected
+        {
+            get 
+            { 
+                var isConnected = CrossConnectivity.Current.IsConnected;
+                return isConnected;
+            }
         }
     }
 }
