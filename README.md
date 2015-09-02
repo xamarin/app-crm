@@ -11,7 +11,7 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
   2. A javascript-backed Azure Mobile Service (Azure REST API) for customer and order data.
   3. A .NET Web API-backed Entity Framework based Azure Mobile Service for catalog data.
 
-**The Azure Mobile Services (2 & 3) do not need to be deployed by you.** There is already an instance of each of those services up and running in Azure, and the Xamarin app is configured by default to consume those service instances. We've included the code for those services so that you may run your own service instances on Azure if you'd like.
+**The Azure Mobile Services (2 & 3) do not need to be deployed by you.** There is already an instance of each of those services up and running in Azure, and the mobile app is configured by default to consume those service instances. We've included the code for those services so that you may run your own service instances on Azure if you'd like.
 
 ##Xamarin.Forms app (Xamarin CRM)
 
