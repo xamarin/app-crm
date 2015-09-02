@@ -8,7 +8,7 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 #####&nbsp;&nbsp;&nbsp;&nbsp;iOS
 #####&nbsp;&nbsp;&nbsp;&nbsp;Android
 
-####The app consists of three parts:
+####The source code consists of three parts:
   1. A Xamarin.Forms mobile app for iOS and Android.
   2. A javascript-backed Azure Mobile Service (Azure REST API) for customer and order data.
   3. A .NET Web API-backed Entity Framework based Azure Mobile Service for catalog data.
