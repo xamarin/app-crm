@@ -59,4 +59,4 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 **Password:** IibptMvpFmJRBisbVyiCheBukYjzsD75
 
 ## Azure Mobile Service for customer data (javascript backend)
-####[Setup Instructions (coming)](https://github.com/xamarin/demo-xamarincrm-internal/wiki/Setup-Xamarin-CRM-Azure-Mobile-Service-for-customer-and-order-data)
+####[Setup Instructions (coming soon)](https://github.com/xamarin/demo-xamarincrm-internal/wiki/Setup-Xamarin-CRM-Azure-Mobile-Service-for-customer-and-order-data)
