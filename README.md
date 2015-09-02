@@ -2,7 +2,7 @@
 
 Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforce of a fictitious company that sells 3D printer hardware and supplies. The app empowers salespeople track their sales performance, manage leads, view their contacts, manage orders, and browse the product catalog.
 
-![](https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_screenshots.png)
+<img src="https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_screenshots.png" alt="App screenshot collage" width="100%">
 
 ####Supported platforms:
 #####&nbsp;&nbsp;&nbsp;&nbsp;iOS
@@ -16,7 +16,7 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 **The Azure Mobile Services (2 & 3) do not need to be deployed by you.** There is already an instance of each of those services up and running in Azure, and the Xamarin app is configured by default to consume those service instances. We've included the code for those services so that you may run your own service instances on Azure if you'd like.
 
 ##Xamarin.Forms app (Xamarin CRM)
-####Featured technologies:
+####Featured technologies
 * Xamarin.Forms (http://xamarin.com/forms)
 * Xamarin.Forms.Maps (https://developer.xamarin.com/guides/cross-platform/xamarin-forms/user-interface/map)
 * .NET Portable HttpClient (https://www.nuget.org/packages/Microsoft.Net.Http)
@@ -24,8 +24,11 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 * Azure Mobile Services libraries (https://azure.microsoft.com/en-us/documentation/services/mobile-services)
 * Syncfusion Essential Studio charts (http://www.syncfusion.com/products/xamarin)
 
-####Highlights:
-
+####Highlights
+######Over 95% shared code between platforms:
+<img src="https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_shared_code.png?raw=true" alt="Over 95% shared code" width="75%">
+######Natively rendered controls:
+<img src="https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_native_controls.png?raw=true" alt="Natively rendered controls" width="75%">
 
 ##Azure Mobile Service for product catalog data (.NET backend)
 Under construction
