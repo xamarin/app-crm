@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using XamarinCRM.Clients;
 using XamarinCRM.Models;
 using XamarinCRM.ViewModels.Base;
