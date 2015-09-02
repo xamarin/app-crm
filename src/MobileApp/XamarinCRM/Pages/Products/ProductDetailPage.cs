@@ -13,9 +13,6 @@ namespace XamarinCRM.Pages.Products
         {
             _CatalogProduct = catalogProduct;
 
-            // hide the navigstion bar on Android
-            Device.OnPlatform(Android: () => NavigationPage.SetHasNavigationBar(this, isPerformingProductSelection));
-
             Title = _CatalogProduct.Name;
 
             #region productImage
