@@ -25,7 +25,7 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 * [Xamarin.Forms.Maps](https://developer.xamarin.com/guides/cross-platform/xamarin-forms/user-interface/map)
 * [.NET Portable HttpClient] (https://www.nuget.org/packages/Microsoft.Net.Http)
 * [Active Directory Authentication Library (ADAL)](https://blog.xamarin.com/put-adal-xamarin.forms)
-* [Azure Mobile Services libraries](https://azure.microsoft.com/en-us/documentation/services/mobile-services)
+* [Azure Mobile Service libraries](https://azure.microsoft.com/en-us/documentation/services/mobile-services)
 * [Syncfusion Essential Studio charts](http://www.syncfusion.com/products/xamarin)
 
 ####Highlights
