@@ -34,7 +34,7 @@ namespace XamarinCRM.Clients
 
             var responseFetcher = new ResponseFetcher<List<CatalogCategory>>(_ApiServiceUrl, _ApiAppKey);
 
-            return await responseFetcher.GetResponseAsync(requestUri);
+            return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
         }
 
         public async Task<CatalogCategory> GetCategoryAsync(string categoryId)

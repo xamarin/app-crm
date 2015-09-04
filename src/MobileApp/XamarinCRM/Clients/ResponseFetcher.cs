@@ -26,21 +26,19 @@ namespace XamarinCRM.Clients
                     client.DefaultRequestHeaders.Add("X-ZUMO-APPLICATION", _AppKey); // X-ZUMO-APPLICATION is the HTTP header that Azure Mobile Services accepts for the AppKey
                 }
                 client.BaseAddress = new Uri(_BaseUri);
-                var response = await client.GetAsync(requestUri);
+                var response = await client.GetAsync(requestUri).ConfigureAwait(false);
                 try
                 {
                     response.EnsureSuccessStatusCode();
                 }
                 catch (Exception ex)
                 {
-                    var newEx = new Exception((await response.Content.ReadAsStringAsync()), ex);
+                    var newEx = new Exception(await response.Content.ReadAsStringAsync().ConfigureAwait(false), ex);
                     newEx.WriteFormattedMessageToDebugConsole(this);
                     throw newEx;
                 }
 
-                var content = await response.Content.ReadAsStringAsync();
-
-                return JsonConvert.DeserializeObject<T>(content);
+                return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
             }
         }
     }
