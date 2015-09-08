@@ -12,7 +12,7 @@ namespace XamarinCRM.Pages
 {
     public class RootPage : TabbedPage
     {
-        IAuthenticationService _AuthenticationService;
+        readonly IAuthenticationService _AuthenticationService;
 
         public RootPage()
         {

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6FDED745-BC57-4153-A591-8366001ACB63}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>XamarinCRM.UITest</RootNamespace>
+    <AssemblyName>XamarinCRM.UITest</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ReleaseVersion>2.0</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Xamarin.UITest">
+      <HintPath>..\packages\Xamarin.UITest.1.0.0\lib\Xamarin.UITest.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UITestHelper">
+      <HintPath>..\packages\UITestHelper.0.6.2-pre\lib\net45\UITestHelper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppInitializer.cs" />
+    <Compile Include="Tests\AbstractSetup.cs" />
+    <Compile Include="Tests\ProductsTest.cs" />
+    <Compile Include="Tests\SalesPageTests.cs" />
+    <Compile Include="Tests\FilamentsTest.cs" />
+    <Compile Include="Tests\CustomersTest.cs" />
+    <Compile Include="Tests\BasicTests.cs" />
+    <Compile Include="Pages\SalesHomePage.cs" />
+    <Compile Include="Pages\PartsPage.cs" />
+    <Compile Include="Pages\ThreeDFilamentPage.cs" />
+    <Compile Include="Pages\BuildPlatesPage.cs" />
+    <Compile Include="Pages\CustomerContactPage.cs" />
+    <Compile Include="Pages\CustomerOrdersPage.cs" />
+    <Compile Include="Pages\CustomersPage.cs" />
+    <Compile Include="Pages\LeadContactPage.cs" />
+    <Compile Include="Pages\ThreeDPrinterKitsPage.cs" />
+    <Compile Include="Pages\ABS3DPrinterKitsPage.cs" />
+    <Compile Include="Pages\ABSFilamentPage.cs" />
+    <Compile Include="Pages\CoolingFansPage.cs" />
+    <Compile Include="Pages\CustomerSalesPage.cs" />
+    <Compile Include="Pages\ExtrudersPage.cs" />
+    <Compile Include="Pages\LeadDetailsPage.cs" />
+    <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\PLA3DPrinterKitsPage.cs" />
+    <Compile Include="Pages\PLAFilamentPage.cs" />
+    <Compile Include="Pages\ProductDetailsPage.cs" />
+    <Compile Include="Pages\ProductsPage.cs" />
+    <Compile Include="Pages\SplashScreenPage.cs" />
+    <Compile Include="Pages\StepperMotorsPage.cs" />
+    <Compile Include="Pages\GlobalPage.cs" />
+    <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\CustomerOrderDetailsPage.cs" />
+    <Compile Include="Tests\OrdersTest.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\" />
+    <Folder Include="Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="accounts.csv" />
+  </ItemGroup>
+</Project>
