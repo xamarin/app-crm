@@ -54,7 +54,7 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 ######URL: https://xamarincrmv2-catalogdataservice.azure-mobile.net/help
 
 ######Credentials (for the catalog data service, NOT the app login):
-**Username:** [blank] (literally an empty field)
+**Username:** `[empty]` (literally an empty field)
 
 **Password:** IibptMvpFmJRBisbVyiCheBukYjzsD75
 
