@@ -65,11 +65,7 @@ namespace XamarinCRM
 
         public static bool IsConnected
         {
-            get 
-            { 
-                var isConnected = CrossConnectivity.Current.IsConnected;
-                return isConnected;
-            }
+            get { return CrossConnectivity.Current.IsConnected; }
         }
     }
 }
