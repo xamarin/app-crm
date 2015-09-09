@@ -13,10 +13,8 @@ namespace XamarinCRM.Pages.Customers
 {
     public class CustomerOrdersPage : ModelBoundContentPage<OrdersViewModel>
     {
-        public CustomerOrdersPage(OrdersViewModel viewModel)
+        public CustomerOrdersPage()
         {
-            BindingContext = viewModel;
-
             #region activity indicator
             ActivityIndicator activityIndicator = new ActivityIndicator() { HeightRequest = Sizes.LargeRowHeight };
             activityIndicator.SetBinding(IsEnabledProperty, "IsBusy");

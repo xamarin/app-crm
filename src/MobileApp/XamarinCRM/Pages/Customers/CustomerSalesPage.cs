@@ -11,12 +11,9 @@ namespace XamarinCRM.Pages.Customers
 {
     public class CustomerSalesPage : ModelBoundContentPage<CustomerSalesViewModel>
     {
-        public CustomerSalesPage(CustomerSalesViewModel viewModel)
+        public CustomerSalesPage()
         {
             BackgroundColor = Color.Transparent;
-
-            BindingContext = viewModel;
-
             #region header
             Label companyTitleLabel = new Label()
             {
@@ -55,11 +52,11 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             #region weekly sales chart
-            CustomerWeeklySalesChartView customerWeeklySalesChartView = new CustomerWeeklySalesChartView() { BindingContext = ViewModel };
+            CustomerWeeklySalesChartView customerWeeklySalesChartView = new CustomerWeeklySalesChartView();
             #endregion
 
             #region category sales chart
-            CustomerCategorySalesChartView customerCategorySalesChartView = new CustomerCategorySalesChartView() { BindingContext = ViewModel };
+            CustomerCategorySalesChartView customerCategorySalesChartView = new CustomerCategorySalesChartView();
             #endregion
 
             #region platform adjustments
