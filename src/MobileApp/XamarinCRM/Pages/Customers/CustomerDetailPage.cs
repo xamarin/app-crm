@@ -8,18 +8,17 @@ namespace XamarinCRM.Pages.Customers
 {
     public class CustomerDetailPage : ModelBoundContentPage<CustomerDetailViewModel>
     {
-        public CustomerDetailPage(CustomerDetailViewModel viewModel)
+        public CustomerDetailPage()
         {
-            BindingContext = viewModel;
 
             StackLayout stackLayout = new UnspacedStackLayout()
             {
                 Children =
                 {
-                    new CustomerDetailHeaderView() { BindingContext = ViewModel },
-                    new CustomerDetailContactView() { BindingContext = ViewModel },
-                    new CustomerDetailPhoneView(this) { BindingContext = ViewModel },
-                    new CustomerDetailAddressView() { BindingContext = ViewModel }
+                    new CustomerDetailHeaderView(),
+                    new CustomerDetailContactView(),
+                    new CustomerDetailPhoneView(this),
+                    new CustomerDetailAddressView()
                 }
             };
 
