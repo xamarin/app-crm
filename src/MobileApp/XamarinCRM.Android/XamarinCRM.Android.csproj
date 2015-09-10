@@ -12,8 +12,6 @@
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AssemblyName>MobileCRMAndroid</AssemblyName>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>e1216ed0</NuGetPackageImportStamp>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
@@ -21,10 +19,10 @@
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <ReleaseVersion>2.0</ReleaseVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +38,9 @@
     </MonoDroidExtraArgs>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
     <BundleAssemblies>true</BundleAssemblies>
+    <AssemblyName>MobileCRMAndroid</AssemblyName>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -51,6 +52,15 @@
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
     <DebugType>full</DebugType>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <AssemblyName>MobileCRMAndroid</AssemblyName>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'InHouse|iPhone' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\InHouse</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <AssemblyName>XamarinCRM.Android</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Security" />
