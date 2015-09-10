@@ -11,17 +11,12 @@
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
-		<integer>2</integer>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
@@ -41,6 +36,11 @@
 		<string>Icon-Small-40</string>
 		<string>Icon-Small-40@2x</string>
 		<string>icon_57</string>
+		<string>icon_114</string>
+		<string>icon_120</string>
+		<string>icon_29</string>
+		<string>icon_58</string>
+		<string>icon_80</string>
 	</array>
 	<key>NSMainNibFile</key>
 	<string></string>
