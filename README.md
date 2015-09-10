@@ -3,7 +3,7 @@
 
 Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforce of a fictitious company that sells 3D printer hardware and supplies. The app empowers salespeople to track their sales performance, manage leads, view their contacts, manage orders, and browse the product catalog.
 
-<img src="https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_screenshots.png" alt="App screenshot collage" width="100%">
+<img src="https://github.com/xamarin/demo-xamarincrm/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_screenshots.png" alt="App screenshot collage" width="100%">
 
 ####Supported platforms: iOS and Android
 
@@ -16,9 +16,9 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 
 ##Xamarin.Forms app (Xamarin CRM)
 
-####[Setup Instructions](https://github.com/xamarin/demo-xamarincrm-internal/wiki/Setup-Xamarin-CRM-app)
+####[Setup Instructions](https://github.com/xamarin/demo-xamarincrm/wiki/Setup-Xamarin-CRM-app)
 
-####[Install the app NOW without building from source code (coming soon)](https://github.com/xamarin/demo-xamarincrm-internal/wiki/Install-the-app-NOW-without-building-from-source-code)
+####[Install the app NOW without building from source code (coming soon)](https://github.com/xamarin/demo-xamarincrm/wiki/Install-the-app-NOW-without-building-from-source-code)
 
 ####Featured technologies
 * [Xamarin.Forms](http://xamarin.com/forms)
@@ -30,25 +30,25 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 
 ####Highlights
 ######Over 95% shared code between platforms:
-<img src="https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_shared_code.png" alt="Over 95% shared code" width="75%">
+<img src="https://github.com/xamarin/demo-xamarincrm/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_shared_code.png" alt="Over 95% shared code" width="75%">
 
 ######Natively rendered controls:
-<img src="https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_native_controls.png" alt="Natively rendered controls" width="50%">
+<img src="https://github.com/xamarin/demo-xamarincrm/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_native_controls.png" alt="Natively rendered controls" width="50%">
 
 ######OAuth authentication using Microsoft's ADAL (Active Directory Authentication Library):
-<img src="https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_authentication.png" alt="ADAL OAuth authentication" width="50%">
+<img src="https://github.com/xamarin/demo-xamarincrm/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_authentication.png" alt="ADAL OAuth authentication" width="50%">
 
 ######Beautiful charts with Syncfusion Essential Studio:
-<img src="https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_graphs.png" alt="Syncfusion charts" width="100%">
+<img src="https://github.com/xamarin/demo-xamarincrm/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_graphs.png" alt="Syncfusion charts" width="100%">
 
 ######Native mapping on each platform:
-<img src="https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_native_maps.png" alt="Native mapping" width="50%">
+<img src="https://github.com/xamarin/demo-xamarincrm/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_native_maps.png" alt="Native mapping" width="50%">
 
 ######Easy list views with data-binding:
-<img src="https://github.com/xamarin/demo-xamarincrm-internal/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_bindable_list.png" alt="Easy list data-binding" width="50%">
+<img src="https://github.com/xamarin/demo-xamarincrm/blob/master/src/MobileApp/markdown-graphics/XamarinCRM_bindable_list.png" alt="Easy list data-binding" width="50%">
 
 ##Azure Mobile Service for product catalog data (.NET backend)
-####[Setup Instructions (coming soon)](https://github.com/xamarin/demo-xamarincrm-internal/wiki/Setup-Xamarin-CRM-Azure-Mobile-Service-for-product-catalog-data)
+####[Setup Instructions (coming soon)](https://github.com/xamarin/demo-xamarincrm/wiki/Setup-Xamarin-CRM-Azure-Mobile-Service-for-product-catalog-data)
 
 ####Service API documentation:
 ######URL: https://xamarincrmv2-catalogdataservice.azure-mobile.net/help
@@ -59,4 +59,4 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 **Password:** `IibptMvpFmJRBisbVyiCheBukYjzsD75`
 
 ## Azure Mobile Service for customer data (javascript backend)
-####[Setup Instructions (coming soon)](https://github.com/xamarin/demo-xamarincrm-internal/wiki/Setup-Xamarin-CRM-Azure-Mobile-Service-for-customer-and-order-data)
+####[Setup Instructions (coming soon)](https://github.com/xamarin/demo-xamarincrm/wiki/Setup-Xamarin-CRM-Azure-Mobile-Service-for-customer-and-order-data)
