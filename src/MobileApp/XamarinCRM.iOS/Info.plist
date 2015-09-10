@@ -59,5 +59,7 @@
 	<string>Xamarin CRM</string>
 	<key>CFBundleShortVersionString</key>
 	<string>2.0</string>
+	<key>CFBundleVersion</key>
+	<string>00001</string>
 </dict>
 </plist>
