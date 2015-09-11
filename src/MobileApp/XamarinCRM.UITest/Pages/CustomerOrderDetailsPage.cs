@@ -36,12 +36,13 @@ namespace XamarinCRM.UITest
             return this;
         }
 
-        public CustomerOrderDetailsPage ChangePrice(int amount)
+        public CustomerOrderDetailsPage ChangePrice(double amount)
         {
             app.Tap(PriceField);
             app.ClearText();
-            app.EnterText("$" + amount.ToString());
-            app.PressEnter();
+//            app.EnterText("$" + amount.ToString());
+            app.EnterText(amount.ToString());
+            app.DismissKeyboard();
 
             return this;
         }

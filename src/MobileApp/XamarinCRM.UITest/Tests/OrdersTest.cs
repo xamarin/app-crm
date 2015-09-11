@@ -41,7 +41,7 @@ namespace XamarinCRM.UITest
                 .AddToOrder();
 
             new CustomerOrderDetailsPage(app, platform)
-                .ChangePrice(44)
+                .ChangePrice(44.05)
                 .SaveAndExit();
             //      .changeDate();
 
