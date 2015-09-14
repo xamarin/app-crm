@@ -58,7 +58,7 @@ namespace XamarinCRM.UITest
             var deviceIndex = Environment.GetEnvironmentVariable("XTC_DEVICE_INDEX");
             var accounts = new List<string[]>();
 
-            using (var accountsStream = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("MobileCRMTests.accounts.csv")))
+            using (var accountsStream = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("XamarinCRM.UITest.accounts.csv")))
             {
                 string line;
                 while ((line = accountsStream.ReadLine()) != null)
