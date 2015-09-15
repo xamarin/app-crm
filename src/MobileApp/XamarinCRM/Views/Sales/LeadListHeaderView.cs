@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using XamarinCRM.Statics;
-using System;
 
 namespace XamarinCRM.Views.Sales
 {

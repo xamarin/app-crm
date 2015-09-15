@@ -30,7 +30,8 @@ namespace XamarinCRM.Services
             DateTime dateWkStart = dateStart.Subtract(new TimeSpan(dateStart.DayOfWeek.GetHashCode(), 0, 0, 0));
             DateTime dateWkEnd = dateWkStart.AddDays(6);
 
-            double total = GetOrderTotalForPeriod(orders, dateWkStart, dateWkEnd, isOpen);
+            var enumerableOrders = orders as IList<Order> ?? orders.ToList();
+            double total = GetOrderTotalForPeriod(enumerableOrders, dateWkStart, dateWkEnd, isOpen);
 
             List<WeeklySalesDataPoint> weeklySalesDataPoints = new List<WeeklySalesDataPoint>();
 
@@ -40,7 +41,7 @@ namespace XamarinCRM.Services
             {
                 dateWkStart = dateWkStart.AddDays(-7);
                 dateWkEnd = dateWkStart.AddDays(6);
-                total = GetOrderTotalForPeriod(orders, dateWkStart, dateWkEnd);
+                total = GetOrderTotalForPeriod(enumerableOrders, dateWkStart, dateWkEnd);
                 weeklySalesDataPoints.Add(new WeeklySalesDataPoint() { DateStart = dateWkStart, DateEnd = dateWkEnd, Amount = total });
             }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using Xamarin.Forms;
-using XamarinCRM.Statics;
 
 namespace XamarinCRM
 {

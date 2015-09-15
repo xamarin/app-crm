@@ -1,5 +1,4 @@
 ﻿using Xamarin.Forms;
-using XamarinCRM.Pages.Customers;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Models;
 

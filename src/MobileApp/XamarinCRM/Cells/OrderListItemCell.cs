@@ -1,9 +1,6 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using XamarinCRM.Statics;
-using XamarinCRM.Layouts;
 using XamarinCRM.Converters;
-using XamarinCRM.Views.Base;
 using XamarinCRM.Views.Custom;
 
 namespace XamarinCRM.Cells

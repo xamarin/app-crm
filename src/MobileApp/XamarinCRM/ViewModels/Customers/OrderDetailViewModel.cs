@@ -1,6 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
 using XamarinCRM.Localization;
@@ -12,8 +10,6 @@ namespace XamarinCRM.ViewModels.Customers
 {
     public class OrderDetailViewModel : BaseViewModel
     {
-        ILocalize _Localize;
-
         readonly ICustomerDataClient _DataManager;
 
         readonly ICatalogDataClient _CatalogDataClient;
@@ -37,7 +33,7 @@ namespace XamarinCRM.ViewModels.Customers
 
             _CatalogDataClient = DependencyService.Get<ICatalogDataClient>();
 
-            _Localize = DependencyService.Get<ILocalize>();
+            DependencyService.Get<ILocalize>();
 
             MessagingCenter.Subscribe<CatalogProduct>(this, MessagingServiceConstants.UPDATE_ORDER_PRODUCT, async catalogProduct =>
                 {

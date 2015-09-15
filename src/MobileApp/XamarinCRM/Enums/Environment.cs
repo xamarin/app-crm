@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace XamarinCRM
+﻿namespace XamarinCRM
 {
     public enum Environment
     {

@@ -1,5 +1,4 @@
-﻿using System;
-using XamarinCRM.ViewModels.Base;
+﻿using XamarinCRM.ViewModels.Base;
 using XamarinCRM.Models;
 using Xamarin.Forms.Maps;
 

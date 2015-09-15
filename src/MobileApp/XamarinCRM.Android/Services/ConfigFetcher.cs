@@ -1,9 +1,8 @@
-﻿using System;
-using XamarinCRM.Services;
+﻿using XamarinCRM.Services;
 using System.IO;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using Xamarin.Forms;
-using System.Threading.Tasks;
 using XamarinCRMAndroid;
 
 [assembly:Dependency(typeof(ConfigFetcher))]
@@ -27,7 +26,7 @@ namespace XamarinCRMAndroid
             using (var reader = new StreamReader(stream))
             {
                 var doc = XDocument.Parse(await reader.ReadToEndAsync());
-                return doc.Element("config").Element(configElementName).Value;
+                return doc.Element("config").Element(configElementName)?.Value;
             }
         }
 

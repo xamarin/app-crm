@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using XamarinCRM.Extensions;
-using XamarinCRM.Interfaces;
 using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
@@ -87,7 +86,7 @@ namespace XamarinCRM.ViewModels.Customers
                         Type = PinType.Place,
                         Position = position,
                         Label = item.ToString(),
-                        Address = address.ToString()
+                        Address = address?.ToString()
                     };
                     return pin;
                 }).ToList();

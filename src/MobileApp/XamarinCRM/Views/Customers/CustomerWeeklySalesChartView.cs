@@ -1,5 +1,4 @@
-﻿using System;
-using Syncfusion.SfChart.XForms;
+﻿using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 using XamarinCRM.Converters;
 using XamarinCRM.Layouts;

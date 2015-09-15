@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using System.Linq;
+﻿using Xamarin.Forms;
 
 namespace XamarinCRM
 {
