@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace XamarinCRM.Statics
+﻿namespace XamarinCRM.Statics
 {
     public static class MessagingServiceConstants
     {

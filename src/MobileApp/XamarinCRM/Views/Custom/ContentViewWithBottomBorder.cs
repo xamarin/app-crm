@@ -1,5 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using System.ComponentModel;

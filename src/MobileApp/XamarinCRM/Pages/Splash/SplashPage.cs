@@ -1,5 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Splash;
 using XamarinCRM.Pages.Base;

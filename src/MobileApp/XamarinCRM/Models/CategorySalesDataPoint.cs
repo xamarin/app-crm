@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace XamarinCRM.Models
+﻿namespace XamarinCRM.Models
 {
     public class CategorySalesDataPoint
     {

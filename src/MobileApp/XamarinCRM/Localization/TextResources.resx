@@ -32,7 +32,10 @@
     	<value>Password</value>
 	</data>
 	<data name="Splash_SignIn" xml:space="preserve">
-    	<value>Sign In</value>
+    	<value>Sign In (Azure AD)</value>
+	</data>
+	<data name="Splash_SkipSignIn" xml:space="preserve">
+    	<value>Skip Sign In</value>
 	</data>
 
 

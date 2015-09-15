@@ -1,5 +1,4 @@
-﻿using System;
-using XamarinCRM.Services;
+﻿using XamarinCRM.Services;
 using System.IO;
 using System.Xml.Linq;
 using Xamarin.Forms;
@@ -27,7 +26,7 @@ namespace XamarinCRM.iOS
             using (var reader = new StreamReader(stream))
             {
                 var doc = XDocument.Parse(await reader.ReadToEndAsync());
-                return doc.Element("config").Element(configElementName).Value;
+                return doc.Element("config").Element(configElementName)?.Value;
             }
         }
 

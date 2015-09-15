@@ -284,10 +284,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="Config\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="..\XamarinCRM\Config\config.xml">
       <Link>Config\config.xml</Link>

@@ -2,19 +2,22 @@
 using XamarinCRM.Services;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.ViewModels.Splash
 {
     public class SplashPageViewModel : BaseViewModel
     {
-        IConfigFetcher _ConfigFetcher;
+        readonly IConfigFetcher _ConfigFetcher;
 
-        public SplashPageViewModel(INavigation navigation = null) : base(navigation)
+        public SplashPageViewModel(INavigation navigation = null)
+            : base(navigation)
         {
             _ConfigFetcher = DependencyService.Get<IConfigFetcher>();
         }
 
         bool _IsPresentingLoginUI;
+
         public bool IsPresentingLoginUI
         {
             get
@@ -29,6 +32,7 @@ namespace XamarinCRM.ViewModels.Splash
         }
 
         string _Username;
+
         public string Username
         {
             get { return _Username; }
@@ -40,6 +44,7 @@ namespace XamarinCRM.ViewModels.Splash
         }
 
         string _Password;
+
         public string Password
         {
             get { return _Password; }

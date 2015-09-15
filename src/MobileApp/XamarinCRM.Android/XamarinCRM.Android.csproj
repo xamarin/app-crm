@@ -61,6 +61,7 @@
     <OutputPath>bin\iPhone\InHouse</OutputPath>
     <WarningLevel>4</WarningLevel>
     <AssemblyName>XamarinCRM.Android</AssemblyName>
+    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Security" />
@@ -251,14 +252,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Localization\" />
-    <Folder Include="Resources\" />
     <Folder Include="Resources\layout\" />
-    <Folder Include="Resources\values\" />
-    <Folder Include="Services\" />
-    <Folder Include="Config\" />
-    <Folder Include="Resources\values-v21\" />
-    <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
