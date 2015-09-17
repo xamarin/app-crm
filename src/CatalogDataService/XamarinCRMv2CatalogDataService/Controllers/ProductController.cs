@@ -27,10 +27,12 @@ namespace XamarinCRMv2CatalogDataService.Controllers
         [Route("ByCategory")]
         public async Task<IEnumerable<Product>> GetProductsByCategory(string id)
         {
-            return await 
+            var products = await 
                 Query()
                 .Where(x => x.CategoryId.Trim().ToLower() == id.Trim().ToLower())
                 .ToListAsync();
+
+            return products;
         }
 
         // GET api/Products/48D68C86-6EA6-4C25-AA33-223FC9A27959
@@ -43,22 +45,26 @@ namespace XamarinCRMv2CatalogDataService.Controllers
         [Route("")]
         public async Task<Product> GetProduct(string id)
         {
-            return await
+            var product = await
                 Query()
                 .SingleOrDefaultAsync(x => x.Id.Trim().ToLower() == id.Trim().ToLower());
+
+            return product;
         }
 
         /// <summary>
-        /// 
+        /// Gets a product by its name, case insensitive.
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
         [Route("ByName")]
         public async Task<Product> GetProductByName(string name)
         {
-            return await
+            var product =  await
                 Query()
                     .SingleOrDefaultAsync(x => x.Name.Trim().ToLower() == name.Trim().ToLower());
+
+            return product;
         }
 
         /// <summary>
