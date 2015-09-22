@@ -20,19 +20,21 @@ BEGIN
 	UPDATE 
 		[XamarinCRMv2_CustomerDataService].[Order]
 	SET 
-		order_date = DATEADD(DAY, DATEDIFF(DAY, __updatedAt, GETDATE()), order_date)
-
-	UPDATE 
-		[XamarinCRMv2_CustomerDataService].[Order]
-	SET 
-		due_date = DATEADD(DAY, DATEDIFF(DAY, __updatedAt, GETDATE()), due_date)
-
-	UPDATE 
-		[XamarinCRMv2_CustomerDataService].[Order]
-	SET 
-		closed_date = DATEADD(DAY, DATEDIFF(DAY, __updatedAt, GETDATE()), closed_date)
-	WHERE 
-		closed_date IS NOT NULL
+		_createdAy = DATEADD(DAY, DATEDIFF(DAY, __updatedAt, GETUTCDATE()), _createdAt),
+		_updatedAt = DATEADD(DAY, DATEDIFF(DAY, __updatedAt, GETUTCDATE()), _updatedAt),
+		order_date = DATEADD(DAY, DATEDIFF(DAY, __updatedAt, GETUTCDATE()), order_date),
+		due_date = DATEADD(DAY, DATEDIFF(DAY, __updatedAt, GETUTCDATE()), due_date),
+		closed_date = 
+		(
+			CASE
+				WHEN 
+					closed_date IS NOT NULL
+				THEN
+					DATEADD(DAY, DATEDIFF(DAY, __updatedAt, GETUTCDATE()), closed_date)
+				ELSE
+					NULL
+			END
+		)
 
 	SELECT Count(*) AS UpdatedOrderCount FROM [XamarinCRMv2_CustomerDataService].[Order]
 

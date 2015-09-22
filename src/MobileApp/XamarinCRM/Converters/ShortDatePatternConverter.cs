@@ -10,7 +10,7 @@ namespace XamarinCRM.Converters
         {
             if (value == null) // handle nullable DateTime
                 return string.Empty;
-            return ((DateTime)value).ToString("d");
+            return ((DateTime)value).ToLocalTime().ToString("d");
         }
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

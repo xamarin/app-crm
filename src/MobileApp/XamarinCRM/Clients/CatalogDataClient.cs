@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
 using XamarinCRM.Models;
 using XamarinCRM.Services;
+using Microsoft.WindowsAzure.MobileServices;
 
 [assembly: Dependency(typeof(CatalogDataClient))]
 
@@ -18,6 +20,8 @@ namespace XamarinCRM.Clients
 
         readonly IConfigFetcher _ConfigFetcher;
 
+        readonly IMobileServiceClient _MobileServiceClient;
+
         public CatalogDataClient()
         {
             _ConfigFetcher = DependencyService.Get<IConfigFetcher>();
@@ -30,11 +34,15 @@ namespace XamarinCRM.Clients
 
         public async Task<List<CatalogCategory>> GetCategoriesAsync(string parentCategoryId = null)
         {
-            string requestUri = String.Format("Categories/SubCategories?parentCategoryId={0}", parentCategoryId);
+//            string requestUri = String.Format("Categories/SubCategories?parentCategoryId={0}", parentCategoryId);
+//
+//            var responseFetcher = new ResponseFetcher<List<CatalogCategory>>(_ApiServiceUrl, _ApiAppKey);
+//
+//            return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
 
-            var responseFetcher = new ResponseFetcher<List<CatalogCategory>>(_ApiServiceUrl, _ApiAppKey);
+            var items = await _MobileServiceClient.GetTable<CatalogCategory>().ReadAsync();
 
-            return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
+            return items.Where(category => category.Id == parentCategoryId).ToList();
         }
 
         public async Task<CatalogCategory> GetCategoryAsync(string categoryId)

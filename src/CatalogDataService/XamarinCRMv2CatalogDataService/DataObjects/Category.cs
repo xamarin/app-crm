@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.WindowsAzure.Mobile.Service;
 using Newtonsoft.Json;
 
-namespace XamarinCRMv2CatalogDataService.DataObjects
+namespace XamarinCRMv2DataService.DataObjects
 {
     public class Category : EntityData
     {

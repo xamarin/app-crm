@@ -3,9 +3,9 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using Microsoft.WindowsAzure.Mobile.Service;
 using Microsoft.WindowsAzure.Mobile.Service.Tables;
-using XamarinCRMv2CatalogDataService.DataObjects;
+using XamarinCRMv2DataService.DataObjects;
 
-namespace XamarinCRMv2CatalogDataService.Models
+namespace XamarinCRMv2DataService.Models
 {
 
     public class MobileServiceContext : DbContext
@@ -25,11 +25,17 @@ namespace XamarinCRMv2CatalogDataService.Models
 
         public MobileServiceContext() : base(connectionStringName) { }
 
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Account>().HasKey(a => a.Id);
+
+            modelBuilder.Entity<Order>().HasKey(o => o.Id);
+
             modelBuilder.Entity<Category>().HasKey(c => c.Id);
 
             modelBuilder.Entity<Product>().HasKey(p => p.Id);

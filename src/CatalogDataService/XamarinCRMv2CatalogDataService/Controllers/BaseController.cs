@@ -1,11 +1,10 @@
-﻿using System.Configuration;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Http.Controllers;
 using Microsoft.WindowsAzure.Mobile.Service;
 using Microsoft.WindowsAzure.Mobile.Service.Description;
-using XamarinCRMv2CatalogDataService.Models;
+using XamarinCRMv2DataService.Models;
 
-namespace XamarinCRMv2CatalogDataService.Controllers
+namespace XamarinCRMv2DataService.Controllers
 {
     /// <summary>
     /// A base controller, to assist in implemting XML documentation for the API, and 

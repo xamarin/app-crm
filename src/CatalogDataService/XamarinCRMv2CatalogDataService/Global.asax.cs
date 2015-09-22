@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace XamarinCRMv2CatalogDataService
+namespace XamarinCRMv2DataService
 {
     public class WebApiApplication : HttpApplication
     {

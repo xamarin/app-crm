@@ -6,6 +6,7 @@ namespace XamarinCRM.Models
         public CatalogCategory()
         {
             Name = Description = ImageUrl = ParentCategoryId = string.Empty;
+            Sequence = 0;
         }
 
         public string Id { get; set; } 
@@ -14,6 +15,7 @@ namespace XamarinCRM.Models
         public string ImageUrl { get; set; }
         public string ParentCategoryId { get; set; }
         public bool HasSubCategories { get; set;}
+        public int Sequence { get; set; }
     }
 }
 

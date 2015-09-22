@@ -34,8 +34,8 @@ BEGIN
 	   deleted BIT
 	);
 
-	DECLARE @createdAndUpdatedDate DATETIMEOFFSET(3);
-	SET @createdAndUpdatedDate = GETDATE();
+	--DECLARE @createdAndUpdatedDate DATETIMEOFFSET(3);
+	--SET @createdAndUpdatedDate = GETUTCDATE();
 
 	DECLARE @Iteration INT;
 	SET @Iteration = 1;
@@ -60,10 +60,14 @@ BEGIN
 		SELECT TOP 1 @item = Name, @price = Price FROM [XamarinCRMv2].[XamarinCRMv2_CatalogDataService].[Products] ORDER BY NEWID();
 
 		-- Select random date in the past within 6 weeks
-		SELECT @order_date = (SELECT DATEADD(DAY, -(ABS(CHECKSUM(NEWID()) % 40) + 1), GETDATE()));
+		SELECT @order_date = (SELECT DATEADD(DAY, -(ABS(CHECKSUM(NEWID()) % 40) + 1), GETUTCDATE()));
 
 		-- get due date 1 week after order date
 		SELECT @due_date = (SELECT DATEADD(DAY, 7, @order_date));
+		IF (@due_date > GETUTCDATE())
+			BEGIN
+				SELECT @due_date = GETUTCDATE();
+			END
 
 		-- if the order is not open, get a closed date that is random within 4 days in either direction of the due date
 		IF (@isOpen = 0)
@@ -80,6 +84,11 @@ BEGIN
 					BEGIN
 						SELECT @closed_date = (SELECT DATEADD(day, @random_closed_day_range, @due_date));
 					END
+
+				IF (@closed_date > GETUTCDATE())
+				BEGIN
+					SELECT @closed_date = GETUTCDATE();
+				END
 			END
 
 		-- insert order into temp table
@@ -87,8 +96,8 @@ BEGIN
 		VALUES 
 		(
 			NEWID(),
-			@createdAndUpdatedDate,
-			@createdAndUpdatedDate,
+			@order_date,
+			@order_date,
 			@isOpen,
 			@accountId,
 			@price,

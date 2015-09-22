@@ -87,7 +87,6 @@ namespace XamarinCRM.Clients
         }
 
         #region Orders
-
       
         public async Task SynchronizeOrdersAsync()
         {
@@ -312,15 +311,5 @@ namespace XamarinCRM.Clients
         }
 
         #endregion
-
-        static readonly CustomerDataClient _Instance = new CustomerDataClient();
-
-        /// <summary>
-        /// Gets the instance of the Azure Web Service
-        /// </summary>
-        public static CustomerDataClient Instance
-        {
-            get { return _Instance; }
-        }
     }
 }
