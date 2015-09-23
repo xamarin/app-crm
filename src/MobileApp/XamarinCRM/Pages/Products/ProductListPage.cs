@@ -24,7 +24,7 @@ namespace XamarinCRM.Pages.Products
             productListView.ItemTapped += async (sender, e) =>
             await App.ExecuteIfConnected(async () =>
                 {
-                    CatalogProduct catalogProduct = ((CatalogProduct)e.Item);
+                    Product catalogProduct = ((Product)e.Item);
                         await Navigation.PushAsync(new ProductDetailPage(catalogProduct, isPerformingProductSelection));
                 });
 

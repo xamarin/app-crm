@@ -7,9 +7,9 @@ namespace XamarinCRM.Pages.Products
 {
     public class ProductDetailPage : ContentPage
     {
-        readonly CatalogProduct _CatalogProduct;
+        readonly Product _CatalogProduct;
 
-        public ProductDetailPage(CatalogProduct catalogProduct, bool isPerformingProductSelection = false)
+        public ProductDetailPage(Product catalogProduct, bool isPerformingProductSelection = false)
         {
             _CatalogProduct = catalogProduct;
 

@@ -5,14 +5,14 @@ namespace XamarinCRM
 {
     public class ProductDetailViewModel : BaseViewModel
     {
-        public ProductDetailViewModel(CatalogProduct catalogProduct)
+        public ProductDetailViewModel(Product catalogProduct)
         {
             CatalogProduct = catalogProduct;
         }
 
-        CatalogProduct _CatalogProduct;
+        Product _CatalogProduct;
 
-        public CatalogProduct CatalogProduct
+        public Product CatalogProduct
         {
             get { return _CatalogProduct; }
             set

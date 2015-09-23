@@ -1,9 +1,9 @@
 ﻿
 namespace XamarinCRM.Models
 {
-    public class CatalogCategory
+    public class Category
     {
-        public CatalogCategory()
+        public Category()
         {
             Name = Description = ImageUrl = ParentCategoryId = string.Empty;
             Sequence = 0;

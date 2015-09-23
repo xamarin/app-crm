@@ -189,6 +189,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\MobileServiceInitializer.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -200,7 +201,6 @@
     <Compile Include="DataObjects\Order.cs" />
     <Compile Include="DataObjects\Product.cs" />
     <Compile Include="Models\MobileServiceContext.cs" />
-    <Compile Include="ScheduledJobs\SampleJob.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -210,11 +210,8 @@
     <Content Include="App_Data\Documentation.XML">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\SeedingSQL\002_Categories.sql" />
-    <Content Include="App_Data\SeedingSQL\003_Products.sql" />
-    <Content Include="App_Data\SeedingSQL\004_Orders.sql" />
-    <Content Include="App_Data\SeedingSQL\001_Accounts.sql" />
     <Content Include="Global.asax" />
+    <Content Include="SqlScripts\GenerateRandomOrders.sql" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -227,7 +224,6 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -235,9 +231,11 @@
     <Content Include="Performance\Microsoft.ServiceBus.MessagingPerformanceCounters.man" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\mobile-XamarinCRMv2DataService-dev.pubxml" />
     <None Include="Properties\PublishProfiles\XamarinCRMv2-CatalogDataService_Debug.pubxml" />
     <None Include="Properties\PublishProfiles\XamarinCRMv2-CatalogDataService_Release.pubxml" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

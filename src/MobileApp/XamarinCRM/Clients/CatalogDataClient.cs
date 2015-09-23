@@ -32,7 +32,7 @@ namespace XamarinCRM.Clients
 
         #region IProductsClient implementation
 
-        public async Task<List<CatalogCategory>> GetCategoriesAsync(string parentCategoryId = null)
+        public async Task<List<Category>> GetCategoriesAsync(string parentCategoryId = null)
         {
 //            string requestUri = String.Format("Categories/SubCategories?parentCategoryId={0}", parentCategoryId);
 //
@@ -40,61 +40,61 @@ namespace XamarinCRM.Clients
 //
 //            return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
 
-            var items = await _MobileServiceClient.GetTable<CatalogCategory>().ReadAsync();
+            var items = await _MobileServiceClient.GetTable<Category>().ReadAsync();
 
             return items.Where(category => category.Id == parentCategoryId).ToList();
         }
 
-        public async Task<CatalogCategory> GetCategoryAsync(string categoryId)
+        public async Task<Category> GetCategoryAsync(string categoryId)
         {
             string requestUri = String.Format("Categories?id={0}", categoryId);
 
-            var responseFetcher = new ResponseFetcher<CatalogCategory>(_ApiServiceUrl, _ApiAppKey);
+            var responseFetcher = new ResponseFetcher<Category>(_ApiServiceUrl, _ApiAppKey);
 
             return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
         }
 
-        public async Task<List<CatalogProduct>> GetProductsAsync(string categoryId)
+        public async Task<List<Product>> GetProductsAsync(string categoryId)
         {
             string requestUri = String.Format("Products/ByCategory?id={0}", categoryId);
 
-            var responseFetcher = new ResponseFetcher<List<CatalogProduct>>(_ApiServiceUrl, _ApiAppKey);
+            var responseFetcher = new ResponseFetcher<List<Product>>(_ApiServiceUrl, _ApiAppKey);
 
             return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
         }
 
-        public async Task<List<CatalogProduct>> GetAllChildProductsAsync(string topLevelCategoryId)
+        public async Task<List<Product>> GetAllChildProductsAsync(string topLevelCategoryId)
         {
             string requestUri = String.Format("Products/ByTopLevelCategory?id={0}", topLevelCategoryId);
 
-            var responseFetcher = new ResponseFetcher<List<CatalogProduct>>(_ApiServiceUrl, _ApiAppKey);
+            var responseFetcher = new ResponseFetcher<List<Product>>(_ApiServiceUrl, _ApiAppKey);
 
             return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
         }
 
-        public async Task<CatalogProduct> GetProductByIdAsync(string productId)
+        public async Task<Product> GetProductByIdAsync(string productId)
         {
             string requestUri = String.Format("Products?id={0}", productId);
 
-            var responseFetcher = new ResponseFetcher<CatalogProduct>(_ApiServiceUrl, _ApiAppKey);
+            var responseFetcher = new ResponseFetcher<Product>(_ApiServiceUrl, _ApiAppKey);
 
             return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
         }
 
-        public async Task<CatalogProduct> GetProductByNameAsync(string productName)
+        public async Task<Product> GetProductByNameAsync(string productName)
         {
             string requestUri = String.Format("Products/ByName?name={0}", productName);
 
-            var responseFetcher = new ResponseFetcher<CatalogProduct>(_ApiServiceUrl, _ApiAppKey);
+            var responseFetcher = new ResponseFetcher<Product>(_ApiServiceUrl, _ApiAppKey);
 
             return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
         }
 
-        public async Task<List<CatalogProduct>> SearchAsync(string searchTerm)
+        public async Task<List<Product>> SearchAsync(string searchTerm)
         {
             string requestUri = String.Format("Search?q={0}", searchTerm);
 
-            var responseFetcher = new ResponseFetcher<List<CatalogProduct>>(_ApiServiceUrl, _ApiAppKey);
+            var responseFetcher = new ResponseFetcher<List<Product>>(_ApiServiceUrl, _ApiAppKey);
 
             return await responseFetcher.GetResponseAsync(requestUri).ConfigureAwait(false);
         }

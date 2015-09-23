@@ -4,6 +4,9 @@ using XamarinCRMv2DataService.DataObjects;
 
 namespace XamarinCRMv2DataService.Controllers
 {
+    /// <summary>
+    /// Categories API.
+    /// </summary>
     public class CategoryController : BaseController<Category>
     {
         // GET tables/Category

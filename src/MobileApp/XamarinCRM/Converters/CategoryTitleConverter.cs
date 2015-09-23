@@ -16,12 +16,12 @@ namespace XamarinCRM
         #region IValueConverter implementation
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if ((CatalogCategory)value == null)
+            if ((Category)value == null)
             {
                 return _Title;
             }
                 
-            return ((CatalogCategory)value).Name;
+            return ((Category)value).Name;
         }
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

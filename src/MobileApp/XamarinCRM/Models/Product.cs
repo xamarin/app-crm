@@ -1,13 +1,12 @@
 ﻿
 namespace XamarinCRM.Models
 {
-    public class CatalogProduct
+    public class Product
     {
-        public CatalogProduct()
+        public Product()
         {
             Name = Description = ImageUrl = string.Empty;
             Price = 0;
-            CatalogCategory = new CatalogCategory();
         }
 
         public string Id { get; set; } 
@@ -15,7 +14,7 @@ namespace XamarinCRM.Models
         public string Description { get; set; }
         public double Price { get; set; }
         public string ImageUrl { get; set; }
-        public CatalogCategory CatalogCategory { get; set; }
+        public string CategoryId { get; set; }
     }
 }
 

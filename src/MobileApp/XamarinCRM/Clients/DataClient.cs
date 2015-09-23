@@ -10,10 +10,11 @@ using Xamarin;
 using XamarinCRM.Models;
 using Xamarin.Forms;
 using XamarinCRM;
+using XamarinCRM.Clients;
 
 [assembly: Dependency(typeof(DataClient))]
 
-namespace XamarinCRM
+namespace XamarinCRM.Clients
 {
     public class DataClient : IDataClient
     {
@@ -22,8 +23,8 @@ namespace XamarinCRM
         // sync tables
         IMobileServiceSyncTable<Order> _OrderTable;
         IMobileServiceSyncTable<Account> _AccountTable;
-        IMobileServiceSyncTable<CatalogCategory> _CatalogCategoryTable;
-        IMobileServiceSyncTable<CatalogProduct> _CatalogProductTable;
+        IMobileServiceSyncTable<Category> _CatalogCategoryTable;
+        IMobileServiceSyncTable<Product> _CatalogProductTable;
 
         public DataClient()
         {
@@ -39,8 +40,8 @@ namespace XamarinCRM
 
             store.DefineTable<Order>();
             store.DefineTable<Account>();
-            store.DefineTable<CatalogCategory>();
-            store.DefineTable<CatalogProduct>();
+            store.DefineTable<Category>();
+            store.DefineTable<Product>();
 
             try
             {
@@ -54,8 +55,8 @@ namespace XamarinCRM
 
             _OrderTable = _MobileServiceClient.GetSyncTable<Order>();
             _AccountTable = _MobileServiceClient.GetSyncTable<Account>();
-            _CatalogCategoryTable = _MobileServiceClient.GetSyncTable<CatalogCategory>();
-            _CatalogProductTable = _MobileServiceClient.GetSyncTable<CatalogProduct>();
+            _CatalogCategoryTable = _MobileServiceClient.GetSyncTable<Category>();
+            _CatalogProductTable = _MobileServiceClient.GetSyncTable<Product>();
         }
 
         #region data seeding and local DB status
@@ -269,9 +270,9 @@ namespace XamarinCRM
             );
         }
 
-        public async Task<IEnumerable<CatalogCategory>> GetCategoriesAsync(string parentCategoryId = null)
+        public async Task<IEnumerable<Category>> GetCategoriesAsync(string parentCategoryId = null)
         {
-            return await Execute<IEnumerable<CatalogCategory>>(
+            return await Execute<IEnumerable<Category>>(
                 "TimeToGetCategories",
                 async () =>
                 {
@@ -300,12 +301,12 @@ namespace XamarinCRM
                             .ToEnumerableAsync();
                     }
                 },
-                new List<CatalogCategory>());
+                new List<Category>());
         }
 
-        public async Task<IEnumerable<CatalogProduct>> GetProductsAsync(string categoryId)
+        public async Task<IEnumerable<Product>> GetProductsAsync(string categoryId)
         {
-            return await Execute<IEnumerable<CatalogProduct>>(
+            return await Execute<IEnumerable<Product>>(
                 "TimeToGetProducts", 
                 async () =>
                 {
@@ -313,12 +314,12 @@ namespace XamarinCRM
                         .Where(category => category.Id == categoryId)
                         .ToEnumerableAsync();
                 }, 
-                new List<CatalogProduct>());
+                new List<Product>());
         }
 
-        public async Task<IEnumerable<CatalogProduct>> GetAllChildProductsAsync(string topLevelCategoryId)
+        public async Task<IEnumerable<Product>> GetAllChildProductsAsync(string topLevelCategoryId)
         {
-            return await Execute<IEnumerable<CatalogProduct>>(
+            return await Execute<IEnumerable<Product>>(
                 "TimeToGetAllChildProducts", 
                 async () =>
                 {
@@ -354,7 +355,7 @@ namespace XamarinCRM
 
                     var leafLevelCategories = await GetLeafLevelCategories(topLevelCategoryId);
 
-                    List<CatalogProduct> products = new List<CatalogProduct>();
+                    List<Product> products = new List<Product>();
 
                     foreach (var c in leafLevelCategories)
                     {
@@ -363,13 +364,13 @@ namespace XamarinCRM
 
                     return products;
                 },
-                new List<CatalogProduct>()
+                new List<Product>()
             );
         }
 
-        public async Task<CatalogProduct> GetProductByNameAsync(string productName)
+        public async Task<Product> GetProductByNameAsync(string productName)
         {
-            return await Execute<CatalogProduct>(
+            return await Execute<Product>(
                 "TimeToGetProductByName", 
                 async () =>
                 {
@@ -383,22 +384,21 @@ namespace XamarinCRM
             );
         }
 
-        public async Task<IEnumerable<CatalogProduct>> SearchAsync(string searchTerm)
+        public async Task<IEnumerable<Product>> SearchAsync(string searchTerm)
         {
-            return await Execute<IEnumerable<CatalogProduct>>(
+            return await Execute<IEnumerable<Product>>(
                 "TimeToSearchProducts", 
                 async () =>
                 {
                     var products = await _CatalogProductTable
                         .Where(x =>
                             x.Name.ToLower().Contains(searchTerm.ToLower()) ||
-                                       x.Description.ToLower().Contains(searchTerm.ToLower()) ||
-                                       x.CatalogCategory.Name.ToLower().Contains(searchTerm.ToLower()))
+                            x.Description.ToLower().Contains(searchTerm.ToLower()))
                         .ToEnumerableAsync();
 
                     return products.Distinct();
                 },
-                new List<CatalogProduct>()
+                new List<Product>()
             );
         }
 
@@ -451,9 +451,9 @@ namespace XamarinCRM
             return defaultReturnObject;
         }
 
-        private async Task<IEnumerable<CatalogCategory>> GetLeafLevelCategories(string id)
+        private async Task<IEnumerable<Category>> GetLeafLevelCategories(string id)
         {
-            var resultCategories = new List<CatalogCategory>();
+            var resultCategories = new List<Category>();
 
             var categories = await _CatalogCategoryTable
                 .Where(c => c.Id == id)

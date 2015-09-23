@@ -8,7 +8,7 @@ namespace XamarinCRM.ViewModels.Products
 {
     public class ProductsViewModel : BaseViewModel
     {
-        readonly ICatalogDataClient _CatalogClient;
+        readonly IDataClient _DataClient;
 
         string _CategoryId;
         public string CategoryId
@@ -21,8 +21,8 @@ namespace XamarinCRM.ViewModels.Products
             }
         }
 
-        ObservableCollection<CatalogProduct> _Products;
-        public ObservableCollection<CatalogProduct> Products
+        ObservableCollection<Product> _Products;
+        public ObservableCollection<Product> Products
         {
             get { return _Products; }
             set
@@ -38,9 +38,9 @@ namespace XamarinCRM.ViewModels.Products
         {
             _CategoryId = categoryId;
 
-            _Products = new ObservableCollection<CatalogProduct>();
+            _Products = new ObservableCollection<Product>();
 
-            _CatalogClient = DependencyService.Get<ICatalogDataClient>();
+            _DataClient = DependencyService.Get<IDataClient>();
 
         }
 
@@ -66,7 +66,7 @@ namespace XamarinCRM.ViewModels.Products
             IsBusy = true;
             LoadProductsCommand.ChangeCanExecute();
 
-            Products = new ObservableCollection<CatalogProduct>((await _CatalogClient.GetProductsAsync(_CategoryId)));
+            Products = new ObservableCollection<Product>((await _DataClient.GetProductsAsync(_CategoryId)));
 
             IsBusy = false;
             LoadProductsCommand.ChangeCanExecute();

@@ -40,16 +40,6 @@ namespace XamarinCRMv2DataService.Models
 
             modelBuilder.Entity<Product>().HasKey(p => p.Id);
 
-            modelBuilder.Entity<Category>()
-                .HasOptional(c => c.ParentCategory)
-                .WithMany(c => c.SubCategories)
-                .HasForeignKey(c => c.ParentCategoryId);
-
-            modelBuilder.Entity<Product>()
-                .HasRequired<Category>(p => p.Category)
-                .WithMany(c => c.Products)
-                .HasForeignKey(p => p.CategoryId);
-
             string schema = ServiceSettingsDictionary.GetSchemaName();
             if (!string.IsNullOrEmpty(schema))
             {

@@ -4,6 +4,9 @@ using XamarinCRMv2DataService.DataObjects;
 
 namespace XamarinCRMv2DataService.Controllers
 {
+    /// <summary>
+    /// Accounts API.
+    /// </summary>
     public class AccountController : BaseController<Account>
     {
         // GET tables/Account

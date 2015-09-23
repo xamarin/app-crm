@@ -12,7 +12,7 @@ namespace XamarinCRM.ViewModels.Sales
 {
     public class LeadDetailViewModel : BaseViewModel
     {
-        readonly ICustomerDataClient _DataManager;
+        readonly IDataClient _DataClient;
 
         IGeoCodingService _GeoCodingService;
 
@@ -40,7 +40,7 @@ namespace XamarinCRM.ViewModels.Sales
 
             this.Icon = "contact.png";
 
-            _DataManager = DependencyService.Get<ICustomerDataClient>();
+            _DataClient = DependencyService.Get<IDataClient>();
 
             _GeoCodingService = DependencyService.Get<IGeoCodingService>();
         }
@@ -95,7 +95,7 @@ namespace XamarinCRM.ViewModels.Sales
 
             IsBusy = true;
 
-            await _DataManager.SaveAccountAsync(Lead);
+            await _DataClient.SaveAccountAsync(Lead);
 
             MessagingCenter.Send(Lead, MessagingServiceConstants.SAVE_LEAD);
 

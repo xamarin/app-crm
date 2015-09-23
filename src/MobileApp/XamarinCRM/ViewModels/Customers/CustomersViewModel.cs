@@ -25,14 +25,14 @@ namespace XamarinCRM.ViewModels.Customers
             }
         }
 
-        ICustomerDataClient dataManager;
+        IDataClient _DataClient;
 
         public CustomersViewModel(INavigation navigation = null) : base(navigation)
         {
             this.Title = "Accounts";
             this.Icon = "list.png";
 
-            dataManager = DependencyService.Get<ICustomerDataClient>();
+            _DataClient = DependencyService.Get<IDataClient>();
             Accounts = new ObservableCollection<Account>();
 
             MessagingCenter.Subscribe<Account>(this, MessagingServiceConstants.ACCOUNT, (account) =>
@@ -64,7 +64,7 @@ namespace XamarinCRM.ViewModels.Customers
             IsBusy = true;
             LoadAccountsCommand.ChangeCanExecute(); 
 
-            var accounts = await dataManager.GetAccountsAsync(false);
+            var accounts = await _DataClient.GetAccountsAsync(false);
             Accounts = accounts.ToObservableCollection();
 
             IsBusy = false;

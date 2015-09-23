@@ -6,7 +6,7 @@ namespace XamarinCRM.Views.Products
 {
     public class ProductDetailDescriptionView : ContentView
     {
-        public ProductDetailDescriptionView(CatalogProduct catalogProduct)
+        public ProductDetailDescriptionView(Product catalogProduct)
         {
             Label nameLabel = new Label()
             { 

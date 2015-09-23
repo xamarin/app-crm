@@ -29,7 +29,7 @@ namespace XamarinCRM.Pages.Products
             categoryListView.ItemTapped += async (sender, e) =>
             await App.ExecuteIfConnected(async () =>
                 {
-                    CatalogCategory catalogCategory = ((CatalogCategory)e.Item);
+                    Category catalogCategory = ((Category)e.Item);
                     if (catalogCategory.HasSubCategories)
                     {
                         await Navigation.PushAsync(new CategoryListPage(catalogCategory.Name, isPerformingProductSelection) { BindingContext = new CategoriesViewModel(catalogCategory) });

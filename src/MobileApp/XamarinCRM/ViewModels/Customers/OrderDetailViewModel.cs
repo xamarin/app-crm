@@ -1,18 +1,16 @@
 ﻿using System.Threading.Tasks;
 using Xamarin.Forms;
-using XamarinCRM.Clients;
 using XamarinCRM.Localization;
 using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
+using XamarinCRM.Clients;
 
 namespace XamarinCRM.ViewModels.Customers
 {
     public class OrderDetailViewModel : BaseViewModel
     {
-        readonly ICustomerDataClient _DataManager;
-
-        readonly ICatalogDataClient _CatalogDataClient;
+        readonly IDataClient _DataClient;
 
         public OrderDetailViewModel(Account account, Order order = null)
         {
@@ -28,14 +26,11 @@ namespace XamarinCRM.ViewModels.Customers
             }
 
             this.Title = "Order Details";
-
-            _DataManager = DependencyService.Get<ICustomerDataClient>();
-
-            _CatalogDataClient = DependencyService.Get<ICatalogDataClient>();
+            _DataClient = DependencyService.Get<IDataClient>();
 
             DependencyService.Get<ILocalize>();
 
-            MessagingCenter.Subscribe<CatalogProduct>(this, MessagingServiceConstants.UPDATE_ORDER_PRODUCT, async catalogProduct =>
+            MessagingCenter.Subscribe<Product>(this, MessagingServiceConstants.UPDATE_ORDER_PRODUCT, async catalogProduct =>
                 {
                     Order.Item = catalogProduct.Name;
                     Order.Price = catalogProduct.Price;
@@ -98,7 +93,7 @@ namespace XamarinCRM.ViewModels.Customers
 
             IsBusy = true;
 
-            await _DataManager.SaveOrderAsync(Order);
+            await _DataClient.SaveOrderAsync(Order);
             MessagingCenter.Send(Order, MessagingServiceConstants.SAVE_ORDER);
             IsBusy = false;
 
@@ -130,7 +125,7 @@ namespace XamarinCRM.ViewModels.Customers
 
             IsBusy = true;
 
-            await _DataManager.SaveOrderAsync(Order);
+            await _DataClient.SaveOrderAsync(Order);
             MessagingCenter.Send(Order, MessagingServiceConstants.ORDER_APPROVED);
             IsBusy = false;
 
@@ -158,7 +153,7 @@ namespace XamarinCRM.ViewModels.Customers
 
             if (!string.IsNullOrWhiteSpace(Order.Item))
             {
-                OrderItemImageUrl = (await _CatalogDataClient.GetProductByNameAsync(Order.Item)).ImageUrl;
+                OrderItemImageUrl = (await _DataClient.GetProductByNameAsync(Order.Item)).ImageUrl;
             }
 
             IsBusy = false;

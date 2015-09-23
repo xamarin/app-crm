@@ -1,18 +1,18 @@
 ﻿using System.Collections.ObjectModel;
-using XamarinCRM.Clients;
 using XamarinCRM.Models;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
+using XamarinCRM.Clients;
 
 namespace XamarinCRM.ViewModels.Products
 {
     public class CategoriesViewModel : BaseViewModel
     {
-        readonly ICatalogDataClient _CatalogClient;
+        readonly IDataClient _DataClient;
 
-        CatalogCategory _Category;
+        Category _Category;
 
-        public CatalogCategory Category
+        public Category Category
         {
             get { return _Category; }
             set
@@ -22,9 +22,9 @@ namespace XamarinCRM.ViewModels.Products
             }
         }
 
-        ObservableCollection<CatalogCategory> _SubCategories;
+        ObservableCollection<Category> _SubCategories;
 
-        public ObservableCollection<CatalogCategory> SubCategories
+        public ObservableCollection<Category> SubCategories
         {
             get { return _SubCategories; }
             set
@@ -36,13 +36,13 @@ namespace XamarinCRM.ViewModels.Products
 
         public bool NeedsRefresh { get; set; }
 
-        public CategoriesViewModel(CatalogCategory category = null)
+        public CategoriesViewModel(Category category = null)
         {
             Category = category;
 
-            SubCategories = new ObservableCollection<CatalogCategory>();
+            SubCategories = new ObservableCollection<Category>();
 
-            _CatalogClient = DependencyService.Get<ICatalogDataClient>();
+            _DataClient = DependencyService.Get<IDataClient>();
 
         }
 
@@ -55,9 +55,7 @@ namespace XamarinCRM.ViewModels.Products
         {
             get
             {
-                return _LoadCategoriesCommand ??
-                (_LoadCategoriesCommand = new Command(
-                    ExecuteLoadCategoriesCommand));
+                return _LoadCategoriesCommand ?? (_LoadCategoriesCommand = new Command(ExecuteLoadCategoriesCommand));
             }
         }
 
@@ -69,7 +67,7 @@ namespace XamarinCRM.ViewModels.Products
             IsBusy = true;
             LoadCategoriesCommand.ChangeCanExecute();
 
-            SubCategories = new ObservableCollection<CatalogCategory>((await _CatalogClient.GetCategoriesAsync((_Category != null) ? _Category.Id : null)));
+            SubCategories = new ObservableCollection<Category>((await _DataClient.GetCategoriesAsync((_Category != null) ? _Category.Id : null)));
 
             IsBusy = false;
             LoadCategoriesCommand.ChangeCanExecute();

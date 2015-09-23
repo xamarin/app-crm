@@ -15,7 +15,7 @@ using XamarinCRM.Services;
 
 namespace XamarinCRM.Clients
 {
-    public class CustomerDataClient : ICustomerDataClient
+    public class CustomerDataClient : IDataClient
     {
         IMobileServiceSyncTable<Order> _OrderTable;
         IMobileServiceSyncTable<Account> _AccountTable;

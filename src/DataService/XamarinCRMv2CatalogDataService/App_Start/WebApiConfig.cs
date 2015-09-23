@@ -1,10 +1,7 @@
 ﻿using System.Data.Entity;
-using System.IO;
-using System.Web.Hosting;
 using System.Web.Http;
 using Microsoft.WindowsAzure.Mobile.Service;
 using Newtonsoft.Json;
-using XamarinCRMv2DataService.Models;
 
 namespace XamarinCRMv2DataService
 {
@@ -25,23 +22,6 @@ namespace XamarinCRMv2DataService
 #endif
 
             Database.SetInitializer(new MobileServiceInitializer());
-        }
-    }
-
-    // Using ClearDatabaseSchemaAlways<T> here instead of DropCreateDatabaseAlways<T> is necessary 
-    // because the Azure Mobile Service account won't have permisions to drop the DB in a multi-schema database.
-    internal class MobileServiceInitializer : ClearDatabaseSchemaAlways<MobileServiceContext>
-    {
-        protected override void Seed(MobileServiceContext context)
-        {
-            var seedingSqlPath = HostingEnvironment.MapPath(@"~/App_Data/");
-
-            string folder = Path.Combine(seedingSqlPath, "SeedingSQL");
-
-            foreach (var filePath in Directory.EnumerateFiles(folder, "*.sql"))
-            {
-                context.Database.ExecuteSqlCommand(File.ReadAllText(filePath));
-            }
         }
     }
 }

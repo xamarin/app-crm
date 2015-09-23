@@ -11,7 +11,8 @@ namespace XamarinCRM.ViewModels.Customers
 {
     public class CustomerDetailViewModel : BaseViewModel
     {
-        ICustomerDataClient _DataManager;
+        IDataClient _DataClient;
+
         readonly IGeoCodingService _GeoCodingService;
 
         public Account Account { get; set; }
@@ -34,7 +35,7 @@ namespace XamarinCRM.ViewModels.Customers
 
             this.Icon = "account.png";
 
-            _DataManager = DependencyService.Get<ICustomerDataClient>();
+            _DataClient = DependencyService.Get<IDataClient>();
             _GeoCodingService = DependencyService.Get<IGeoCodingService>();
 
             MessagingCenter.Subscribe<Account>(this, MessagingServiceConstants.ACCOUNT, (Account) =>
@@ -133,7 +134,7 @@ namespace XamarinCRM.ViewModels.Customers
             IsBusy = true;
 
 
-            await _DataManager.SaveAccountAsync(Account);
+            await _DataClient.SaveAccountAsync(Account);
 
             MessagingCenter.Send(Account, MessagingServiceConstants.SAVE_ACCOUNT);
 

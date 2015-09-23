@@ -2,7 +2,7 @@
 using XamarinCRM.Models;
 using System.Collections.Generic;
 
-namespace XamarinCRM
+namespace XamarinCRM.Clients
 {
     public interface IDataClient
     {
@@ -34,15 +34,15 @@ namespace XamarinCRM
 
         Task<IEnumerable<Order>> GetAllOrdersAsync();
 
-        Task<IEnumerable<CatalogCategory>> GetCategoriesAsync(string parentCategoryId = null);
+        Task<IEnumerable<Category>> GetCategoriesAsync(string parentCategoryId = null);
 
-        Task<IEnumerable<CatalogProduct>> GetProductsAsync(string categoryId);
+        Task<IEnumerable<Product>> GetProductsAsync(string categoryId);
 
-        Task<IEnumerable<CatalogProduct>> GetAllChildProductsAsync(string topLevelCategoryId);
+        Task<IEnumerable<Product>> GetAllChildProductsAsync(string topLevelCategoryId);
 
-        Task<CatalogProduct> GetProductByNameAsync(string productName);
+        Task<Product> GetProductByNameAsync(string productName);
 
-        Task<IEnumerable<CatalogProduct>> SearchAsync(string searchTerm);
+        Task<IEnumerable<Product>> SearchAsync(string searchTerm);
     }
 }
 

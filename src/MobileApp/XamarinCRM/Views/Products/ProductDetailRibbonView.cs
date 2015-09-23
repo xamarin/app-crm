@@ -6,9 +6,9 @@ namespace XamarinCRM.Views.Products
 {
     public class ProductDetailRibbonView : ContentView
     {
-        readonly CatalogProduct _CatalogProduct;
+        readonly Product _CatalogProduct;
 
-        public ProductDetailRibbonView(CatalogProduct catalogProduct, bool isPerformingProductSelection = false)
+        public ProductDetailRibbonView(Product catalogProduct, bool isPerformingProductSelection = false)
         {
             _CatalogProduct = catalogProduct;
 

@@ -2,7 +2,7 @@
 using XamarinCRM.Services;
 using Microsoft.WindowsAzure.MobileServices;
 
-namespace XamarinCRM
+namespace XamarinCRM.Clients
 {
     public class MobileDataSync
     {
@@ -16,9 +16,10 @@ namespace XamarinCRM
         {
             _ConfigFetcher = DependencyService.Get<IConfigFetcher>();
 
-            _Client = new MobileServiceClient(
-                _ConfigFetcher.GetAsync("catalogDataServiceUrl").Result,
-                _ConfigFetcher.GetAsync("catalogDataServiceAppKey", true).Result);
+            var serviceUrl = _ConfigFetcher.GetAsync("dataServiceUrl").Result;
+            var serviceAppKey = _ConfigFetcher.GetAsync("dataServiceAppKey", true).Result;
+
+            _Client = new MobileServiceClient(serviceUrl, serviceAppKey);
         }
 
         public static MobileDataSync Instance

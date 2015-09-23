@@ -12,7 +12,7 @@ namespace XamarinCRM
 {
     public class SalesDashboardLeadsViewModel : BaseViewModel
     {
-        ICustomerDataClient _CustomerDataClient;
+        IDataClient _DataClient;
 
         Command _LoadSeedDataCommand;
 
@@ -34,7 +34,7 @@ namespace XamarinCRM
         {
             _PushTabbedLeadPageCommand = pushTabbedLeadPageCommand;
 
-            _CustomerDataClient = DependencyService.Get<ICustomerDataClient>();
+            _DataClient = DependencyService.Get<IDataClient>();
 
             Leads = new ObservableCollection<Account>();
 
@@ -82,9 +82,9 @@ namespace XamarinCRM
 
             IsBusy = true;
 
-            await _CustomerDataClient.SeedDataAsync();
+            await _DataClient.SeedLocalDataAsync();
 
-            var leads = await _CustomerDataClient.GetAccountsAsync(true);
+            var leads = await _DataClient.GetAccountsAsync(true);
             Leads = leads.ToObservableCollection();
 
             IsBusy = false;
@@ -102,7 +102,7 @@ namespace XamarinCRM
             LoadLeadsCommand.ChangeCanExecute(); 
 
             Leads.Clear();
-            Leads.AddRange(await _CustomerDataClient.GetAccountsAsync(true));
+            Leads.AddRange(await _DataClient.GetAccountsAsync(true));
 
             IsBusy = false;
             LoadLeadsCommand.ChangeCanExecute(); 

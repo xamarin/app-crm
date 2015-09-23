@@ -13,7 +13,7 @@ namespace XamarinCRM
 {
     public class CustomerSalesViewModel : BaseViewModel
     {
-        ICustomerDataClient _CustomerDataClient;
+        IDataClient _DataClient;
 
         IChartDataService _ChartDataService;
 
@@ -35,7 +35,7 @@ namespace XamarinCRM
         {
             _Account = account;
 
-            _CustomerDataClient = DependencyService.Get<ICustomerDataClient>();
+            _DataClient = DependencyService.Get<IDataClient>();
 
             _ChartDataService = DependencyService.Get<IChartDataService>();
 
@@ -63,10 +63,10 @@ namespace XamarinCRM
 
             IsBusy = true;
 
-            await _CustomerDataClient.SeedDataAsync();
+            await _DataClient.SeedLocalDataAsync();
 
             Orders.Clear();
-            Orders.AddRange((await _CustomerDataClient.GetAllOrdersAsync()).Where(x => x.AccountId == account.Id));
+            Orders.AddRange((await _DataClient.GetAllOrdersAsync()).Where(x => x.AccountId == account.Id));
 
             WeeklySalesChartDataPoints.Clear();
             WeeklySalesChartDataPoints.AddRange((await _ChartDataService.GetWeeklySalesDataPointsAsync(Orders)).OrderBy(x => x.DateStart).Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)));

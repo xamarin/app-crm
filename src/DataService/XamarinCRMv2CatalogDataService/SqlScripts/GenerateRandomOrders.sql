@@ -1,4 +1,4 @@
-USE [XamarinCRMv2];
+﻿USE [XamarinCRMv2];
 GO
 
 SET ANSI_NULLS ON;
@@ -7,17 +7,17 @@ GO
 SET QUOTED_IDENTIFIER ON;
 GO
 
-IF object_id('[XamarinCRMv2_CustomerDataService].[GenerateRandomOrders]') IS NOT NULL
-  DROP PROCEDURE [XamarinCRMv2_CustomerDataService].[GenerateRandomOrders];
+IF object_id('[XamarinCRMv2DataService_dev].[GenerateRandomOrders]') IS NOT NULL
+  DROP PROCEDURE [XamarinCRMv2DataService_dev].[GenerateRandomOrders];
 GO
 
-CREATE PROCEDURE [XamarinCRMv2_CustomerDataService].[GenerateRandomOrders] @numberOfOrdersToGenerate INT = 100
+CREATE PROCEDURE [XamarinCRMv2DataService_dev].[GenerateRandomOrders] @numberOfOrdersToGenerate INT = 100
 AS
 BEGIN
 
 	SET NOCOUNT ON;
 
-	TRUNCATE TABLE [XamarinCRMv2].[XamarinCRMv2_CustomerDataService].[Order];
+	TRUNCATE TABLE [XamarinCRMv2DataService_dev].[Orders];
 
 	DECLARE @TempOrders TABLE
 	(
@@ -54,10 +54,10 @@ BEGIN
 		SELECT @isOpen = CAST(CAST(CRYPT_GEN_RANDOM(1) AS int) % 2 AS BIT);
 
 		-- Select random account
-		SELECT TOP 1 @accountId = id FROM [XamarinCRMv2].[XamarinCRMv2_CustomerDataService].[Account] WHERE is_lead = 0 ORDER BY NEWID();
+		SELECT TOP 1 @accountId = id FROM [XamarinCRMv2DataService_dev].[Accounts] WHERE IsLead = 0 ORDER BY NEWID();
 
 		-- Select random product
-		SELECT TOP 1 @item = Name, @price = Price FROM [XamarinCRMv2].[XamarinCRMv2_CatalogDataService].[Products] ORDER BY NEWID();
+		SELECT TOP 1 @item = Name, @price = Price FROM [XamarinCRMv2DataService_dev].[Products] ORDER BY NEWID();
 
 		-- Select random date in the past within 6 weeks
 		SELECT @order_date = (SELECT DATEADD(DAY, -(ABS(CHECKSUM(NEWID()) % 40) + 1), GETUTCDATE()));
@@ -111,19 +111,19 @@ BEGIN
 	END
 
 	-- insert all temp table records into destination table
-	INSERT INTO [XamarinCRMv2].[XamarinCRMv2_CustomerDataService].[Order] 
+	INSERT INTO [XamarinCRMv2DataService_dev].[Orders] 
 	(
-		id,
-		__createdAt,
-		__updatedAt,
-		is_open,
-		account_id,
-		price,
-		item,
-		order_date,
-		due_date,
-		closed_date,
-		__deleted
+		Id,
+		CreatedAt,
+		UpdatedAt,
+		IsOpen,
+		AccountId,
+		Price,
+		Item,
+		OrderDate,
+		DueDate,
+		ClosedDate,
+		Deleted
 	)
 	SELECT 
 		id,

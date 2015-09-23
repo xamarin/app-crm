@@ -4,6 +4,9 @@ using XamarinCRMv2DataService.DataObjects;
 
 namespace XamarinCRMv2DataService.Controllers
 {
+    /// <summary>
+    /// Orders API.
+    /// </summary>
     public class OrderController : BaseController<Order>
     {
         // GET tables/Order

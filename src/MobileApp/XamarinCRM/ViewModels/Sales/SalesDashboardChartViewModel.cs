@@ -14,7 +14,7 @@ namespace XamarinCRM
 {
     public class SalesDashboardChartViewModel : BaseViewModel
     {
-        ICustomerDataClient _CustomerDataClient;
+        IDataClient _DataClient;
 
         IChartDataService _ChartDataService;
 
@@ -30,7 +30,7 @@ namespace XamarinCRM
         public SalesDashboardChartViewModel(INavigation navigation = null)
             : base(navigation)
         {
-            _CustomerDataClient = DependencyService.Get<ICustomerDataClient>();
+            _DataClient = DependencyService.Get<IDataClient>();
 
             _ChartDataService = DependencyService.Get<IChartDataService>();
 
@@ -56,9 +56,9 @@ namespace XamarinCRM
 
             IsBusy = true;
 
-            await _CustomerDataClient.SeedDataAsync();
+            await _DataClient.SeedLocalDataAsync();
 
-            Orders = (await _CustomerDataClient.GetAllOrdersAsync()).ToObservableCollection();
+            Orders = (await _DataClient.GetAllOrdersAsync()).ToObservableCollection();
 
             WeeklySalesChartDataPoints = 
                 (await _ChartDataService.GetWeeklySalesDataPointsAsync(Orders))

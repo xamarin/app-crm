@@ -29,7 +29,7 @@ namespace XamarinCRM.ViewModels.Customers
             }
         }
 
-        readonly ICustomerDataClient _DataManager;
+        readonly IDataClient _DataClient;
 
         public OrdersViewModel(Account account)
         {
@@ -37,7 +37,7 @@ namespace XamarinCRM.ViewModels.Customers
 
             _Orders = new List<Order>();
 
-            _DataManager = DependencyService.Get<ICustomerDataClient>();
+            _DataClient = DependencyService.Get<IDataClient>();
 
             OrderGroups = new ObservableCollection<Grouping<Order, string>>();
 
@@ -80,8 +80,8 @@ namespace XamarinCRM.ViewModels.Customers
             IsBusy = true;
 
             var orders = new List<Order>();
-            orders.AddRange(await _DataManager.GetOpenOrdersForAccountAsync(Account.Id));
-            orders.AddRange(await _DataManager.GetClosedOrdersForAccountAsync(Account.Id));
+            orders.AddRange(await _DataClient.GetOpenOrdersForAccountAsync(Account.Id));
+            orders.AddRange(await _DataClient.GetClosedOrdersForAccountAsync(Account.Id));
 
             _Orders.Clear();
             _Orders.AddRange(SortOrders(orders));

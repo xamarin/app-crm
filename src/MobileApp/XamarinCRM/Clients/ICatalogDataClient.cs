@@ -6,19 +6,19 @@ namespace XamarinCRM.Clients
 {
     public interface ICatalogDataClient
     {
-        Task<List<CatalogCategory>> GetCategoriesAsync(string parentCategoryId = null);
+        Task<List<Category>> GetCategoriesAsync(string parentCategoryId = null);
 
-        Task<CatalogCategory> GetCategoryAsync(string categoryId);
+        Task<Category> GetCategoryAsync(string categoryId);
 
-        Task<List<CatalogProduct>> GetProductsAsync(string categoryId);
+        Task<List<Product>> GetProductsAsync(string categoryId);
 
-        Task<List<CatalogProduct>> GetAllChildProductsAsync(string topLevelCategoryId);
+        Task<List<Product>> GetAllChildProductsAsync(string topLevelCategoryId);
 
-        Task<CatalogProduct> GetProductByIdAsync(string productId);
+        Task<Product> GetProductByIdAsync(string productId);
 
-        Task<CatalogProduct> GetProductByNameAsync(string productName);
+        Task<Product> GetProductByNameAsync(string productName);
 
-        Task<List<CatalogProduct>> SearchAsync(string searchTerm);
+        Task<List<Product>> SearchAsync(string searchTerm);
     }
 }
 

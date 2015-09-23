@@ -14,11 +14,11 @@ namespace XamarinCRM.Services
 {
     public class ChartDataService : IChartDataService
     {
-        ICatalogDataClient _CatalogClient;
+        IDataClient _DataClient;
 
         public ChartDataService()
         {
-            _CatalogClient = DependencyService.Get<ICatalogDataClient>();
+            _DataClient = DependencyService.Get<IDataClient>();
         }
 
         #region IChartDataService implementation
@@ -51,7 +51,7 @@ namespace XamarinCRM.Services
         public async Task<List<ChartDataPoint>> GetCategorySalesDataPointsAsync(IEnumerable<Order> orders, Account account = null, int numberOfWeeks = 6, bool isOpen = false)
         {
             // get top-level categories by passing no parent categoryId
-            var categories = await _CatalogClient.GetCategoriesAsync();
+            var categories = await _DataClient.GetCategoriesAsync();
 
             List<ChartDataPoint> categorySalesDataPoints = new List<ChartDataPoint>();
 
@@ -68,11 +68,11 @@ namespace XamarinCRM.Services
 
         #endregion
 
-        async Task<double> GetOrderTotalForCategoryAsync(IEnumerable<Order> orders, CatalogCategory category, int numberOfWeeks = 6, bool isOpen = false)
+        async Task<double> GetOrderTotalForCategoryAsync(IEnumerable<Order> orders, Category category, int numberOfWeeks = 6, bool isOpen = false)
         {
             double total = 0;
 
-            var categoryProducts = await _CatalogClient.GetAllChildProductsAsync(category.Id);
+            var categoryProducts = await _DataClient.GetAllChildProductsAsync(category.Id);
 
             DateTime dateEnd = DateTime.UtcNow;
             DateTime dateStart = dateEnd.AddDays(-numberOfWeeks * 7);
