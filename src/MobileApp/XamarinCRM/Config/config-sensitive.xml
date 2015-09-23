@@ -5,7 +5,7 @@
 <!-- In a production evironment, you could merge your app keys into that templated config-sensitive.xml at build time, thus keeping your sensitive keys out of your repository. -->
 
 <config>
-  <dataServiceAppKey>FjkyguZfwDLSCkDLmIruwwPXUcDykZ38</dataServiceAppKey>
+  <dataServiceAppKey>WbYXVENDQUSbAaaiHwGZkVfaRWqUIu19</dataServiceAppKey>
 
   <!---Azure Active Directory Authentication client id -->
   <azureActiveDirectoryAuthenticationClientId>591ddccc-4dd3-46d8-af4e-7886eb674cb9</azureActiveDirectoryAuthenticationClientId>

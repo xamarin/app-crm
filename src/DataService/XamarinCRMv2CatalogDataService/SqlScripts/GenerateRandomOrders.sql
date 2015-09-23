@@ -1,4 +1,6 @@
-﻿USE [XamarinCRMv2];
+﻿--exec [XamarinCRMv2DataService_dev].[GenerateRandomOrders]
+
+USE [XamarinCRMv2];
 GO
 
 SET ANSI_NULLS ON;
