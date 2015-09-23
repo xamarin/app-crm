@@ -9,7 +9,6 @@ using Microsoft.WindowsAzure.MobileServices.Sync;
 using Xamarin;
 using XamarinCRM.Models;
 using Xamarin.Forms;
-using XamarinCRM;
 using XamarinCRM.Clients;
 
 [assembly: Dependency(typeof(DataClient))]
@@ -64,7 +63,6 @@ namespace XamarinCRM.Clients
         public bool LocalDBExists
         {
             get { return _MobileServiceClient.SyncContext.IsInitialized; }
-
         }
 
         public async Task SeedLocalDataAsync()
@@ -75,9 +73,21 @@ namespace XamarinCRM.Clients
                 {
                     await Init();
                     await _OrderTable.PullAsync(null, _OrderTable.CreateQuery());
+                    #if DEBUG
+                    var orders = await _OrderTable.ReadAsync();
+                    #endif
                     await _AccountTable.PullAsync(null, _AccountTable.CreateQuery());
+                    #if DEBUG
+                    var accounts = await _AccountTable.ReadAsync();
+                    #endif
                     await _CatalogCategoryTable.PullAsync(null, _CatalogCategoryTable.CreateQuery());
+                    #if DEBUG
+                    var categories = await _CatalogCategoryTable.ReadAsync();
+                    #endif
                     await _CatalogProductTable.PullAsync(null, _CatalogProductTable.CreateQuery());
+                    #if DEBUG
+                    var products = await _CatalogProductTable.ReadAsync();
+                    #endif
                 }
             );
         }

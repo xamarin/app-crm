@@ -12,7 +12,7 @@ namespace XamarinCRM.Clients
 
         static MobileDataSync _Instance;
 
-        public MobileDataSync()
+        private MobileDataSync()
         {
             _ConfigFetcher = DependencyService.Get<IConfigFetcher>();
 
