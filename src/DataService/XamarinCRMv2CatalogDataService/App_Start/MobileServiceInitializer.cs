@@ -145,11 +145,14 @@ namespace XamarinCRMv2DataService
             // add the accounts to the context
             accounts.ForEach(a => context.Set<Account>().Add(a));
 
+            // These several lines are for ensuring that the dates generated for the orders make sense.
+            // The mobile app code generates chart data based on orders in the last 6 weeks.
+            // Originally, dates here were generated to be within a 6 week window in the past. But as time progresses, those static dates would become irrelevant.
+            // If we did not re-calculate the dates, then the mobile app would eventually show no data, because the dates will eventually be greater than 6 weeks in the past.
+            // In addition, a scheduled job will need to be run weekly to refresh the data, incrementing the order dats forward by on week. That is, if one wants the mobile app to always present data in it's UI.
             DateTime inceptionDate = DateTime.SpecifyKind(DateTime.Parse("9/24/15 8:25:04 AM"), DateTimeKind.Utc);
             DateTime now = DateTime.UtcNow;
-
             TimeSpan span = now - inceptionDate;
-
             int daysElapsedSinceInception = span.Days;
 
             var orders = new List<Order>()
