@@ -145,15 +145,17 @@ namespace XamarinCRMv2DataService
             // add the accounts to the context
             accounts.ForEach(a => context.Set<Account>().Add(a));
 
-            // These several lines are for ensuring that the dates for the inserted orders make sense.
-            // The mobile app code generates chart data based on orders in the last 6 weeks.
-            // Originally, dates here were generated to be within a 6 week window in the past. But as time progresses, those static dates will become irrelevant.
-            // If we do not re-calculate the dates, then the mobile app will eventually show no data, because the dates will eventually be greater than 6 weeks in the past.
-            // In addition, a scheduled job will need to be run weekly to refresh the data, incrementing the order dates forward by on week. That is, if one wants the mobile app to always present data in its UI.
+            /*
+            These several lines are for ensuring that the dates for the inserted orders make sense.
+            The mobile app code collates chart data based on orders in the last 6 weeks.
+            Originally, dates here were generated to be within a 6 week window in the past. But as time progresses, those static dates will become irrelevant.
+            If we do not re-calculate the dates, then the mobile app will eventually show no data, because the dates will eventually be greater than 6 weeks in the past.
+            In addition, a scheduled job will need to be run weekly to refresh the data, incrementing the order dates forward by on week. That is, if one wants the mobile app to always present data in its UI.
+             */
             DateTime inceptionDate = DateTime.SpecifyKind(DateTime.Parse("9/24/15 8:25:04 AM"), DateTimeKind.Utc); // The DateTime at which these orders were originally generated, in UTC.
-            DateTime now = DateTime.UtcNow;
-            TimeSpan span = now - inceptionDate;
-            int daysElapsedSinceInception = span.Days;
+            DateTime now = DateTime.UtcNow; // now in UTC
+            TimeSpan span = now - inceptionDate; // the difference between the two DateTimes
+            int daysElapsedSinceInception = span.Days; // The whole number of days between the two DateTimes
 
             var orders = new List<Order>()
             {
