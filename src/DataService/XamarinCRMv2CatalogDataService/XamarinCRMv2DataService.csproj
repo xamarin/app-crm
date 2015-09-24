@@ -234,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\mobile-XamarinCRMv2DataService-dev.pubxml" />
+    <None Include="Properties\PublishProfiles\mobile-XamarinCRMv2DataService.pubxml" />
     <None Include="Properties\PublishProfiles\XamarinCRMv2-CatalogDataService_Debug.pubxml" />
     <None Include="Properties\PublishProfiles\XamarinCRMv2-CatalogDataService_Release.pubxml" />
   </ItemGroup>

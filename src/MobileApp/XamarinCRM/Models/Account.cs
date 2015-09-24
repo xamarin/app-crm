@@ -86,7 +86,7 @@ namespace XamarinCRM.Models
         }
 
         [JsonIgnore]
-        public static string[] OpportunityStages = { "None Selected", "10% - Prospect", "50% - Value Proposition", "75% - Proposal" };
+        public static string[] OpportunityStages = { "10% - Prospect", "50% - Value Proposition", "75% - Proposal", "100% - Closed" };
 
         [JsonIgnore]
         public int OpportunityStageCurrentIndex
@@ -96,7 +96,7 @@ namespace XamarinCRM.Models
         }
 
         [JsonIgnore]
-        public static double[] OpportunityStagePercentages = { 0d, 10d, 50d, 75d };
+        public static double[] OpportunityStagePercentages = { 10d, 50d, 75d, 100d };
 
         public string DisplayContact
         {
