@@ -6,12 +6,11 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 
 ####Supported platforms: iOS and Android
 
-####The app architecture consists of three parts:
+####The app architecture consists of two parts:
   1. A Xamarin.Forms mobile app for iOS and Android.
-  2. A javascript-backed Azure Mobile Service ([Azure REST API](https://msdn.microsoft.com/en-us/library/azure/jj710104.aspx)) for customer and order data.
-  3. A .NET Web API-backed Entity Framework based Azure Mobile Service for product catalog data.
+  2. A .NET Web API-backed Entity Framework based Azure Mobile Service for data.
 
-**The Azure Mobile Services (2 & 3) do not need to be deployed by you.** There is already an instance of each of those services up and running in Azure, and the mobile app is configured by default to consume those service instances. We've included the code for those services so that you may run your own service instances on Azure if you'd like.
+**The Azure Mobile Service does not need to be deployed by you.** There is already an instance of the service up and running in Azure, and the mobile app is configured by default to consume that service instance. We've included the code for the service so that you may run your own service instance on Azure if you'd like.
 
 ##Xamarin.Forms app (Xamarin CRM)
 
@@ -46,16 +45,13 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 ######Easy list views with data-binding:
 <img src="../../wiki/images/XamarinCRM_bindable_list.png" alt="Easy list data-binding" width="50%">
 
-##Azure Mobile Service for product catalog data (.NET backend)
+##Azure Mobile Service for data (.NET backend)
 ####[Setup Instructions (coming soon)](https://github.com/xamarin/demo-xamarincrm/wiki/Setup-Xamarin-CRM-Azure-Mobile-Service-for-product-catalog-data)
 
 ####Service API documentation:
-######URL: https://xamarincrmv2-catalogdataservice.azure-mobile.net/help
+######URL: https://xamarincrmv2dataservice.azure-mobile.net/help
 
 ######Credentials (for the catalog data service, NOT the app login):
 **Username:** `[empty]` (literally an empty field)
 
-**Password:** `IibptMvpFmJRBisbVyiCheBukYjzsD75`
-
-## Azure Mobile Service for customer data (javascript backend)
-####[Setup Instructions (coming soon)](https://github.com/xamarin/demo-xamarincrm/wiki/Setup-Xamarin-CRM-Azure-Mobile-Service-for-customer-and-order-data)
+**Password:** `LHlKlRaUrMiFrElKVkaEZOTlunFAkF28`
