@@ -172,3 +172,6 @@ FakesAssemblies/
 
 # Android API keys
 */*/*/*/values/api-keys.xml
+
+# .vs folder
+.vs/
