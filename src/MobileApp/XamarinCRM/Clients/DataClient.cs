@@ -193,7 +193,7 @@ namespace XamarinCRM.Clients
                 async () =>
                 {
                     return await _OrderTable
-                        .Where(order => order.AccountId == accountId && order.IsOpen == true)
+                        .Where(order => order.AccountId.ToLower() == accountId.ToLower() && order.IsOpen == true)
                         .OrderBy(order => order.DueDate)
                         .ToEnumerableAsync();
                 },
@@ -208,7 +208,7 @@ namespace XamarinCRM.Clients
                 async () =>
                 {
                     return await _OrderTable
-                        .Where(order => order.AccountId == accountId && order.IsOpen == false)
+                        .Where(order => order.AccountId.ToLower() == accountId.ToLower() && order.IsOpen == false)
                         .OrderByDescending(order => order.ClosedDate)
                         .ToEnumerableAsync();
                 },
@@ -287,14 +287,14 @@ namespace XamarinCRM.Clients
                             throw new Exception("The catalog category hierarchy contains no root. This should never happen.");
                         }
                         return await _CategoryTable
-                            .Where(category => category.ParentCategoryId == rootCategory.Id)
+                            .Where(category => category.ParentCategoryId.ToLower() == rootCategory.Id.ToLower())
                             .OrderBy(category => category.Sequence)
                             .ToEnumerableAsync();
                     }
                     else
                     {
                         return await _CategoryTable
-                            .Where(category => category.ParentCategoryId == parentCategoryId)
+                            .Where(category => category.ParentCategoryId.ToLower() == parentCategoryId.ToLower())
                             .OrderBy(category => category.Sequence)
                             .ToEnumerableAsync();
                     }
@@ -309,7 +309,7 @@ namespace XamarinCRM.Clients
                 async () =>
                 {
                     return await _ProductTable
-                        .Where(category => category.Id == categoryId)
+                        .Where(product => product.CategoryId.ToLower() == categoryId.ToLower())
                         .ToEnumerableAsync();
                 }, 
                 new List<Product>());
@@ -336,7 +336,7 @@ namespace XamarinCRM.Clients
                     }
 
                     var categories = await _CategoryTable
-                        .Where(category => category.Id == topLevelCategoryId)
+                        .Where(category => category.Id.ToLower() == topLevelCategoryId.ToLower())
                         .ToEnumerableAsync();
 
                     var topLevelCategory = categories.SingleOrDefault();
@@ -373,7 +373,7 @@ namespace XamarinCRM.Clients
                 async () =>
                 {
                     var products = await _ProductTable
-                        .Where(p => p.Name == productName)
+                        .Where(p => p.Name.ToLower() == productName.ToLower())
                         .ToEnumerableAsync();
 
                     return products.SingleOrDefault();
