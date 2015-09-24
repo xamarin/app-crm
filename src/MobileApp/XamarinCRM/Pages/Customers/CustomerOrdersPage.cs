@@ -90,17 +90,16 @@ namespace XamarinCRM.Pages.Customers
             customerOrderListView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
 
             customerOrderListView.ItemTapped += async (sender, e) =>
-            await App.ExecuteIfConnected(async () =>
-                {
-                    var order = (Order)e.Item;
-                    await Navigation.PushAsync(new CustomerOrderDetailPage()
+            {
+                var order = (Order)e.Item;
+                await Navigation.PushAsync(new CustomerOrderDetailPage()
+                    {
+                        BindingContext = new OrderDetailViewModel(ViewModel.Account, order)
                         {
-                            BindingContext = new OrderDetailViewModel(ViewModel.Account, order)
-                            {
-                                Navigation = Navigation
-                            },
-                        });
-                });
+                            Navigation = Navigation
+                        },
+                    });
+            };
             #endregion
 
             #region compose view hierarchy

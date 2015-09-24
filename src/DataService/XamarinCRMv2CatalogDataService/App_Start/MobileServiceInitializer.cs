@@ -17,12 +17,12 @@ namespace XamarinCRMv2DataService
             // setup categories
 
             // root level category
-            var rootCategory = new Category { Name = "Root", Description = "Root-level category. No products should be direct children of this category.", ParentCategoryId = null, Id = "CC6A4BC6-EC92-494C-A8DE-3A297A7D5E80" };
+            var rootCategory = new Category { Name = "Root", HasSubCategories = true, Description = "Root-level category. No products should be direct children of this category.", ParentCategoryId = null, Id = "CC6A4BC6-EC92-494C-A8DE-3A297A7D5E80" };
 
             // root level categories
-            var category_printerKits = new Category { Name = "3D Printer Kits", Description = "Complete 3D printer kits", Sequence = 1, ParentCategoryId = rootCategory.Id, Id = "84DACE10-D79E-490F-9175-A650DD1FF337" };
-            var category_filament = new Category { Name = "3D Filament", Description = "The plastic filament for printing 3D objects", Sequence = 2, ParentCategoryId = rootCategory.Id, Id = "2FC20A32-EB39-42C6-B029-89C2CF754C03" };
-            var category_parts = new Category { Name = "Parts", Description = "Parts for your 3D printer", Sequence = 3, ParentCategoryId = rootCategory.Id, Id = "92DEC53B-FDD2-4A19-8ED7-3D50F1BD8506" };
+            var category_printerKits = new Category { Name = "3D Printer Kits", HasSubCategories = true, Description = "Complete 3D printer kits", Sequence = 1, ParentCategoryId = rootCategory.Id, Id = "84DACE10-D79E-490F-9175-A650DD1FF337" };
+            var category_filament = new Category { Name = "3D Filament", HasSubCategories = true, Description = "The plastic filament for printing 3D objects", Sequence = 2, ParentCategoryId = rootCategory.Id, Id = "2FC20A32-EB39-42C6-B029-89C2CF754C03" };
+            var category_parts = new Category { Name = "Parts", HasSubCategories = true, Description = "Parts for your 3D printer", Sequence = 3, ParentCategoryId = rootCategory.Id, Id = "92DEC53B-FDD2-4A19-8ED7-3D50F1BD8506" };
 
             // ptinter categories
             var category_printerKits_abs = new Category { Name = "ABS 3D Printer Kits", Description = "Printer kits that are pre-configured for ABS filament.", Sequence = 1, ParentCategoryId = category_printerKits.Id, Id = "4BB47750-BFDF-4F6E-91E7-78C68CBE3E97" };

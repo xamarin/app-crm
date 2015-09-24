@@ -86,11 +86,8 @@ namespace XamarinCRM.Views.Products
 
         async void AddToOrderTapped()
         {
-            await App.ExecuteIfConnected(async () =>
-                {
-                    MessagingCenter.Send(_CatalogProduct, MessagingServiceConstants.UPDATE_ORDER_PRODUCT);
-                    await Navigation.PopModalAsync();
-                });
+            MessagingCenter.Send(_CatalogProduct, MessagingServiceConstants.UPDATE_ORDER_PRODUCT);
+            await Navigation.PopModalAsync();
             
         }
     }

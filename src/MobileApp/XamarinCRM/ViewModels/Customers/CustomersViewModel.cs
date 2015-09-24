@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using XamarinCRM.Extensions;
-using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;

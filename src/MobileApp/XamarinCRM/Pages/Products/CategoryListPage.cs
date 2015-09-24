@@ -27,33 +27,17 @@ namespace XamarinCRM.Pages.Products
             categoryListView.SetBinding(CategoryListView.IsRefreshingProperty, "IsBusy", mode: BindingMode.OneWay);
 
             categoryListView.ItemTapped += async (sender, e) =>
-            await App.ExecuteIfConnected(async () =>
+            {
+                Category catalogCategory = ((Category)e.Item);
+                if (catalogCategory.HasSubCategories)
                 {
-                    Category catalogCategory = ((Category)e.Item);
-                    if (catalogCategory.HasSubCategories)
-                    {
-                        await Navigation.PushAsync(new CategoryListPage(catalogCategory.Name, isPerformingProductSelection) { BindingContext = new CategoriesViewModel(catalogCategory) });
-                    }
-                    else
-                    {
-                        await Navigation.PushAsync(new ProductListPage(catalogCategory.Name, isPerformingProductSelection) { BindingContext = new ProductsViewModel(catalogCategory.Id) });
-                    }
-                });
-            
-            categoryListView.SetBinding(CategoryListView.HeaderProperty, ".");
-            categoryListView.HeaderTemplate = new DataTemplate(() => {
-                Label loadingLabel = new Label()
-                    {
-                        Text = TextResources.Products_CategoryList_LoadingLabel,
-                        FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                        XAlign = TextAlignment.Center,
-                        YAlign = TextAlignment.End,
-                        TextColor = Palette._007
-                    };
-                loadingLabel.SetBinding(Label.IsEnabledProperty, "IsBusy", mode: BindingMode.OneWay);
-                loadingLabel.SetBinding(Label.IsVisibleProperty, "IsBusy", mode: BindingMode.OneWay);
-                return loadingLabel;
-            });
+                    await Navigation.PushAsync(new CategoryListPage(catalogCategory.Name, isPerformingProductSelection) { BindingContext = new CategoriesViewModel(catalogCategory) });
+                }
+                else
+                {
+                    await Navigation.PushAsync(new ProductListPage(catalogCategory.Name, isPerformingProductSelection) { BindingContext = new ProductsViewModel(catalogCategory.Id) });
+                }
+            };
             #endregion
 
             #region compose view hierarchy

@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
 using XamarinCRM.Extensions;
-using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using XamarinCRM.Models;
@@ -87,6 +86,7 @@ namespace XamarinCRM
 
             Leads = (await _DataClient.GetAccountsAsync(true)).ToObservableCollection();
 
+            IsInitialized = true;
             IsBusy = false;
         }
 

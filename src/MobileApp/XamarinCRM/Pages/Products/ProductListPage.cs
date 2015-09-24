@@ -22,26 +22,10 @@ namespace XamarinCRM.Pages.Products
             productListView.SetBinding(CategoryListView.IsRefreshingProperty, "IsBusy", mode: BindingMode.OneWay);
 
             productListView.ItemTapped += async (sender, e) =>
-            await App.ExecuteIfConnected(async () =>
-                {
-                    Product catalogProduct = ((Product)e.Item);
-                        await Navigation.PushAsync(new ProductDetailPage(catalogProduct, isPerformingProductSelection));
-                });
-
-            productListView.SetBinding(CategoryListView.HeaderProperty, ".");
-            productListView.HeaderTemplate = new DataTemplate(() => {
-                Label loadingLabel = new Label()
-                    {
-                        Text = TextResources.Products_ProductList_LoadingLabel,
-                        FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                        XAlign = TextAlignment.Center,
-                        YAlign = TextAlignment.End,
-                        TextColor = Palette._007
-                    };
-                loadingLabel.SetBinding(Label.IsEnabledProperty, "IsBusy", mode: BindingMode.OneWay);
-                loadingLabel.SetBinding(Label.IsVisibleProperty, "IsBusy", mode: BindingMode.OneWay);
-                return loadingLabel;
-            });
+            {
+                Product catalogProduct = ((Product)e.Item);
+                await Navigation.PushAsync(new ProductDetailPage(catalogProduct, isPerformingProductSelection));
+            };
             #endregion
 
             #region compase view hierarchy

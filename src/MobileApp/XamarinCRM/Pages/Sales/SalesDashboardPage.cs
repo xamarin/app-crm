@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Xamarin;
 using Xamarin.Forms;
 using XamarinCRM.Layouts;
-using XamarinCRM.Models;
 using XamarinCRM.Pages.Splash;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Sales;
@@ -102,8 +101,6 @@ namespace XamarinCRM.Pages.Sales
 
                 Insights.Track("Dashboard Page");
             }
-
-            _SalesDashboardLeadsViewModel.ExecuteLoadLeadsCommand();
         }
 
         Action<object> PushTabbedLeadPageAction

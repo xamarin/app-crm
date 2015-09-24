@@ -67,6 +67,7 @@ namespace XamarinCRM
 
             WeeklySalesAverage = String.Format("{0:C}", WeeklySalesChartDataPoints.Average(x => x.YValue));
 
+            IsInitialized = true;
             IsBusy = false;
         }
 
