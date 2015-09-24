@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.WindowsAzure.Mobile.Service;
 using Newtonsoft.Json;
 
 namespace XamarinCRM.Models
 {
-    public class Account : EntityData
+    public class Account : BaseModel
     {
         public Account()
         {

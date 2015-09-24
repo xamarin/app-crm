@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using XamarinCRM.Models;
 using System.Collections.Generic;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.Clients
 {

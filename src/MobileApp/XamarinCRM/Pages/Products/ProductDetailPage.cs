@@ -1,7 +1,7 @@
-﻿using XamarinCRM.Models;
-using XamarinCRM.Views.Products;
+﻿using XamarinCRM.Views.Products;
 using Xamarin.Forms;
 using XamarinCRM.Layouts;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.Pages.Products
 {

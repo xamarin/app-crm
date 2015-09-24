@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
-using XamarinCRM.Models;
 using XamarinCRM.Services;
 using XamarinCRM.AppModels;
+using XamarinCRM.Models;
 
 [assembly: Dependency(typeof(ChartDataService))]
 

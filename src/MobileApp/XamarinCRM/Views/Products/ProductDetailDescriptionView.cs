@@ -1,6 +1,6 @@
-﻿using XamarinCRM.Models;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using XamarinCRM.Statics;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.Views.Products
 {

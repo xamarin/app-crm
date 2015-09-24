@@ -1,9 +1,8 @@
 ﻿using System;
-using Microsoft.WindowsAzure.Mobile.Service;
 
 namespace XamarinCRM.Models
 {
-    public class Order : EntityData
+    public class Order : BaseModel
     {
         public Order()
         {

@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 using XamarinCRM.Localization;
-using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using XamarinCRM.Clients;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.ViewModels.Customers
 {

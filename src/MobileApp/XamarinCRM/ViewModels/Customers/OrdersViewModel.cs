@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
-using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using XamarinCRM.Extensions;
 using XamarinCRM.AppModels;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.ViewModels.Customers
 {

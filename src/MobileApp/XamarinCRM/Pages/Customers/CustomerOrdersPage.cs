@@ -2,12 +2,12 @@
 using Xamarin.Forms;
 using XamarinCRM.Converters;
 using XamarinCRM.Layouts;
-using XamarinCRM.Models;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Custom;
 using XamarinCRM.Views.Customers;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.Pages.Customers
 {

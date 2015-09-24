@@ -1,16 +1,13 @@
-﻿using Microsoft.WindowsAzure.Mobile.Service;
-
+﻿
 namespace XamarinCRM.Models
 {
-    public class Product : EntityData
+    public class Product : BaseModel
     {
         public Product()
         {
             Name = Description = ImageUrl = string.Empty;
             Price = 0;
         }
-
-        public string Id { get; set; }
 
         public string Name { get; set; }
 

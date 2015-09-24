@@ -3,7 +3,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using Microsoft.WindowsAzure.Mobile.Service;
 using Microsoft.WindowsAzure.Mobile.Service.Tables;
-using XamarinCRM.Models;
+using XamarinCRMv2DataService.DataObjects;
 
 namespace XamarinCRMv2DataService.Models
 {

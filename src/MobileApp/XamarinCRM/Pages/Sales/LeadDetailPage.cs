@@ -1,9 +1,9 @@
-﻿using XamarinCRM.Models;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using XamarinCRM.ViewModels.Sales;
 using XamarinCRM.Converters;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.Cells;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.Pages.Sales
 {

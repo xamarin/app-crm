@@ -1,8 +1,8 @@
-﻿using XamarinCRM.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Syncfusion.SfChart.XForms;
 using XamarinCRM.AppModels;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.Services
 {

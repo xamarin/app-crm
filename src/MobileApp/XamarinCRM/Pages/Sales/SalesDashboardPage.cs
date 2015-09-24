@@ -9,6 +9,7 @@ using XamarinCRM.Pages.Splash;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Sales;
 using XamarinCRM.Services;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.Pages.Sales
 {

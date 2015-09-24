@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Http;
-using XamarinCRM.Models;
+using XamarinCRMv2DataService.DataObjects;
 
 namespace XamarinCRMv2DataService.Controllers
 {

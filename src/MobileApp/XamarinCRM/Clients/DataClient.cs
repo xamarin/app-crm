@@ -7,9 +7,9 @@ using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;
 using Xamarin;
-using XamarinCRM.Models;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
+using XamarinCRM.Models;
 
 [assembly: Dependency(typeof(DataClient))]
 

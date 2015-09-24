@@ -6,6 +6,7 @@ using XamarinCRM.Models;
 using XamarinCRM.Services;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.ViewModels.Customers
 {

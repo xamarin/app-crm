@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using XamarinCRM.Clients;
-using XamarinCRM.Models;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.ViewModels.Products
 {

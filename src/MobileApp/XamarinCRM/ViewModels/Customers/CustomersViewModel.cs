@@ -9,6 +9,7 @@ using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using XamarinCRM.Clients;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.ViewModels.Customers
 {
