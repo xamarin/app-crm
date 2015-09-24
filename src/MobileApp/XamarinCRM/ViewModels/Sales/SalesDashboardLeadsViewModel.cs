@@ -84,8 +84,7 @@ namespace XamarinCRM
 
             await _DataClient.SeedLocalDataAsync();
 
-            var leads = await _DataClient.GetAccountsAsync(true);
-            Leads = leads.ToObservableCollection();
+            Leads = (await _DataClient.GetAccountsAsync(true)).ToObservableCollection();
 
             IsBusy = false;
         }

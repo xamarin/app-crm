@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using XamarinCRM.Clients;
 using XamarinCRM.Models;
 using XamarinCRM.Services;
+using XamarinCRM.AppModels;
 
 [assembly: Dependency(typeof(ChartDataService))]
 

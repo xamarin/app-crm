@@ -196,10 +196,6 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="DataObjects\Account.cs" />
-    <Compile Include="DataObjects\Category.cs" />
-    <Compile Include="DataObjects\Order.cs" />
-    <Compile Include="DataObjects\Product.cs" />
     <Compile Include="Models\MobileServiceContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -237,7 +233,12 @@
     <None Include="Properties\PublishProfiles\XamarinCRMv2-CatalogDataService_Debug.pubxml" />
     <None Include="Properties\PublishProfiles\XamarinCRMv2-CatalogDataService_Release.pubxml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Models\XamarinCRM.Models\XamarinCRM.Models.csproj">
+      <Project>{121a78a8-bc6a-4afa-bcfa-fe26f95bf5a0}</Project>
+      <Name>XamarinCRM.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

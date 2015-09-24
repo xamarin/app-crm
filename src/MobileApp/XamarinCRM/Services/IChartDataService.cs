@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Syncfusion.SfChart.XForms;
+using XamarinCRM.AppModels;
 
 namespace XamarinCRM.Services
 {

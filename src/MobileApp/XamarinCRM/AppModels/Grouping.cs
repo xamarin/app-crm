@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace XamarinCRM.Models
+namespace XamarinCRM.AppModels
 {
     public class Grouping<T,K> : ObservableCollection<T>
     {

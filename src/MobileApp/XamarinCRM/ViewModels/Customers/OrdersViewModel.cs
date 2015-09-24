@@ -8,6 +8,7 @@ using XamarinCRM.Models;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using XamarinCRM.Extensions;
+using XamarinCRM.AppModels;
 
 namespace XamarinCRM.ViewModels.Customers
 {

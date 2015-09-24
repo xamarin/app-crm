@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using XamarinCRM.Models;
 using System.Reflection;
 using System.Linq;
+using XamarinCRM.AppModels;
 
 namespace XamarinCRM.Extensions
 {

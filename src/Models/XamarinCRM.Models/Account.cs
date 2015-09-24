@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.WindowsAzure.Mobile.Service;
 using Newtonsoft.Json;
 
 namespace XamarinCRM.Models
 {
-    public class Account : BaseModel
+    public class Account : EntityData
     {
-        public Account() : base()
+        public Account()
         {
             FirstName = LastName = Company = Street = Unit = City = PostalCode = State = Country = Phone = JobTitle = Email = string.Empty;
             Industry = IndustryTypes[0];
@@ -14,66 +15,47 @@ namespace XamarinCRM.Models
             IsLead = true;
         }
 
-        [JsonProperty(PropertyName = "firstname")]
         public string FirstName { get; set; }
 
-        [JsonProperty(PropertyName = "lastname")]
         public string LastName { get; set; }
 
-        [JsonProperty(PropertyName = "company")]
         public string Company { get; set; }
 
-        [JsonProperty(PropertyName = "jobtitle")]
         public string JobTitle { get; set; }
 
-        [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
 
-        [JsonProperty(PropertyName = "phone")]
         public string Phone { get; set; }
 
-        [JsonProperty(PropertyName = "street")]
         public string Street { get; set; }
 
-        [JsonProperty(PropertyName = "unit")]
         public string Unit { get; set; }
 
-        [JsonProperty(PropertyName = "city")]
         public string City { get; set; }
 
-        [JsonProperty(PropertyName = "postal_code")]
         public string PostalCode { get; set; }
 
-        [JsonProperty(PropertyName = "state")]
         public string State { get; set; }
 
-        [JsonProperty(PropertyName = "country")]
         public string Country { get; set; }
 
-        [JsonProperty(PropertyName = "latitude")]
         public double Latitude { get; set; }
 
-        [JsonProperty(PropertyName = "longitude")]
         public double Longitude { get; set; }
 
-        [JsonProperty(PropertyName = "is_lead")]
         public bool IsLead { get; set; }
 
-        [JsonProperty(PropertyName = "industry")]
         public string Industry { get; set; }
 
-        [JsonProperty(PropertyName = "oppt_size")]
         public double OpportunitySize { get; set; }
 
-        [JsonProperty(PropertyName = "oppt_stage")]
         public string OpportunityStage { get; set; }
 
-        [JsonProperty(PropertyName = "imageUrl")]
         public string ImageUrl { get; set; }
 
         [JsonIgnore]
         public double OpportunityStagePercent
-        { 
+        {
             get
             {
                 if (OpportunityStages.Length != OpportunityStagePercentages.Length)

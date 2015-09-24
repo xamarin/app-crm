@@ -1,7 +1,8 @@
-﻿
+﻿using Microsoft.WindowsAzure.Mobile.Service;
+
 namespace XamarinCRM.Models
 {
-    public class Category
+    public class Category : EntityData
     {
         public Category()
         {
@@ -9,13 +10,18 @@ namespace XamarinCRM.Models
             Sequence = 0;
         }
 
-        public string Id { get; set; } 
+        public string Id { get; set; }
+
         public string Name { get; set; }
+
         public string Description { get; set; }
+
         public string ImageUrl { get; set; }
+
         public string ParentCategoryId { get; set; }
-        public bool HasSubCategories { get; set;}
+
+        public bool HasSubCategories { get; set; }
+
         public int Sequence { get; set; }
     }
 }
-

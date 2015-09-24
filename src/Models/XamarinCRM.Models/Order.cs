@@ -1,11 +1,11 @@
 ﻿using System;
-using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Mobile.Service;
 
 namespace XamarinCRM.Models
 {
-    public class Order : BaseModel
+    public class Order : EntityData
     {
-        public Order() : base()
+        public Order()
         {
             AccountId = string.Empty;
 
@@ -18,32 +18,18 @@ namespace XamarinCRM.Models
             Price = 0;
         }
 
-        [JsonProperty(PropertyName = "is_open")]
         public bool IsOpen { get; set; }
 
-        [JsonProperty(PropertyName = "account_id")]
         public string AccountId { get; set; }
 
-        [JsonProperty(PropertyName = "price")]
         public double Price { get; set; }
 
-        [JsonProperty(PropertyName = "item")]
         public string Item { get; set; }
 
-        [JsonProperty(PropertyName = "order_date")]
         public DateTime OrderDate { get; set; }
 
-        [JsonProperty(PropertyName = "due_date")]
         public DateTime DueDate { get; set; }
 
-        [JsonProperty(PropertyName = "closed_date")]
         public DateTime? ClosedDate { get; set; }
-
-        [JsonIgnore]
-        public string Status
-        {
-            get { return (IsOpen) ? TextResources.Customers_OrderOpen : TextResources.Customers_OrderClosed; }
-
-        }
     }
 }
