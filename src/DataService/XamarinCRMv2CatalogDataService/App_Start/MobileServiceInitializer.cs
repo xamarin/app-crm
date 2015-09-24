@@ -153,9 +153,7 @@ namespace XamarinCRMv2DataService
             In addition, a scheduled job will need to be run weekly to refresh the data, incrementing the order dates forward by on week. That is, if one wants the mobile app to always present data in its UI.
              */
             DateTime inceptionDate = DateTime.SpecifyKind(DateTime.Parse("9/24/15 8:25:04 AM"), DateTimeKind.Utc); // The DateTime at which these orders were originally generated, in UTC.
-            DateTime now = DateTime.UtcNow; // now in UTC
-            TimeSpan span = now - inceptionDate; // the difference between the two DateTimes
-            int daysElapsedSinceInception = span.Days; // The whole number of days between the two DateTimes
+            int daysElapsedSinceInception = (DateTime.UtcNow - inceptionDate).Days; // The whole number of days between now and the inceptionDate
 
             var orders = new List<Order>()
             {
