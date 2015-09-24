@@ -30,5 +30,11 @@ namespace XamarinCRM.Models
         public DateTime DueDate { get; set; }
 
         public DateTime? ClosedDate { get; set; }
+
+        public string Status
+        {
+            get { return (IsOpen) ? TextResources.Customers_OrderOpen : TextResources.Customers_OrderClosed; }
+
+        }
     }
 }

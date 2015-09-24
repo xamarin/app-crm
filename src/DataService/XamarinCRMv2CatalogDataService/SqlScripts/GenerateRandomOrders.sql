@@ -1,4 +1,4 @@
-﻿--exec [XamarinCRMv2DataService_dev].[GenerateRandomOrders]
+﻿exec [XamarinCRMv2DataService_dev].[GenerateRandomOrders]
 
 USE [XamarinCRMv2];
 GO
