@@ -5,8 +5,8 @@ namespace XamarinCRM.UITest
     public static class AppInitializer
     {
         const string apiKey = "YOUR_API_KEY";
-        const string apkPath = "../../../com.xamarin.xamarincrm-Signed.apk";
-        const string appFile = "../../../MobileCRMiOS.app";
+        const string apkPath = "../../../XamarinCRM.Android/bin/Debug/com.xamarin.xamarincrm-Signed.apk";
+        const string appFile = "../../../XamarinCRM.iOS/bin/iPhoneSimulator/Debug/XamarinCRMiOS.app";
         const string bundleId = "com.xamarin.xamarincrm";
 
 
@@ -24,8 +24,8 @@ namespace XamarinCRM.UITest
             return ConfigureApp
                     .iOS
                     //.ApiKey(apiKey)
-                    //.AppBundle(appFile)
-                    .InstalledApp(bundleId)
+                    .AppBundle(appFile)
+//                    .InstalledApp(bundleId)
                     .StartApp();
         }
     }

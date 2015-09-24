@@ -28,8 +28,7 @@ namespace XamarinCRM.UITest
 
             Thread.Sleep(TimeSpan.FromSeconds(5));
 
-//            int count = 0;
-            if (app.Query("SIGN IN").Any())
+            if (app.Query("SIGN IN (AZURE AD)").Any())
             {
                 new SplashScreenPage(app, platform)
                         .ExitSplashScreen();
@@ -58,7 +57,7 @@ namespace XamarinCRM.UITest
             var deviceIndex = Environment.GetEnvironmentVariable("XTC_DEVICE_INDEX");
             var accounts = new List<string[]>();
 
-            using (var accountsStream = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("MobileCRMTests.accounts.csv")))
+            using (var accountsStream = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("XamarinCRM.UITest.accounts.csv")))
             {
                 string line;
                 while ((line = accountsStream.ReadLine()) != null)
