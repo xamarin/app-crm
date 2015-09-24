@@ -20,5 +20,7 @@ namespace XamarinCRMv2DataService.Controllers
         {
             return Lookup(id);
         }
+
+        // Other methods go here if your service is to support CUD operations
     }
 }
