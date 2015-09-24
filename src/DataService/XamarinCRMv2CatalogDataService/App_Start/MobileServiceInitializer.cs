@@ -6,7 +6,7 @@ using XamarinCRMv2DataService.Models;
 
 namespace XamarinCRMv2DataService
 {
-    internal class MobileServiceInitializer : ClearDatabaseSchemaAlways <MobileServiceContext>
+    internal class MobileServiceInitializer : ClearDatabaseSchemaIfModelChanges <MobileServiceContext>
     {
         /// <summary>
         /// Use this method to populate the data context with data.
