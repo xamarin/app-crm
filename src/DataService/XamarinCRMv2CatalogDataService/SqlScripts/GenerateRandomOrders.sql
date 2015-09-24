@@ -1,4 +1,5 @@
-﻿exec [XamarinCRMv2DataService_dev].[GenerateRandomOrders]
+﻿-- Use this sproc if you'd like to generate random orders for your service intance's DB.
+-- You'll need to update the schema name to match your own.
 
 USE [XamarinCRMv2];
 GO
