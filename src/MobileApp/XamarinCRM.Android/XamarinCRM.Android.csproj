@@ -37,7 +37,6 @@
     <MonoDroidExtraArgs>
     </MonoDroidExtraArgs>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
-    <BundleAssemblies>true</BundleAssemblies>
     <AssemblyName>MobileCRMAndroid</AssemblyName>
     <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
