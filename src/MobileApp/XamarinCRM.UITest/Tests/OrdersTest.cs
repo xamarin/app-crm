@@ -82,7 +82,6 @@ namespace XamarinCRM.UITest
                 .SaveAndExit();
             //      .changeDate();
 
-            app.ScrollDownTo("PLA-DELIKT");
         }
 
         [Test]
@@ -105,7 +104,7 @@ namespace XamarinCRM.UITest
 
             app.Screenshot("Order removed from list");
         }
-
+            
         [Test]
         public void addNewOrderAndDeliver()
         {
