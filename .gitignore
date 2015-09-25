@@ -175,3 +175,6 @@ FakesAssemblies/
 
 # .vs folder
 .vs/
+
+#pubxml
+*.pubxml
