@@ -14,33 +14,13 @@ namespace XamarinCRM
 
         public App()
         {
-            SetCulture();
+            /* if we were targeting Windows Phone, we'd want to include the next line. */
+            // if (Device.OS != TargetPlatform.WinPhone) 
+            TextResources.Culture = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
 
             _RootPage = new RootPage();
 
             MainPage = _RootPage;
-        }
-
-        // a static lazily-loaded instance of IAuthenticationService
-        static IAuthenticationService _AuthenticationService { get { return _LazyAuthenticationService.Value; } }
-        static readonly Lazy<IAuthenticationService> _LazyAuthenticationService = new Lazy<IAuthenticationService>(() => DependencyService.Get<IAuthenticationService>());
-
-        static void SetCulture()
-        {
-            if (Device.OS != TargetPlatform.WinPhone)
-                TextResources.Culture = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
-        }
-
-        public static async void ExecuteIfConnected(Action actionToExecuteIfConnected)
-        {
-            if (IsConnected)
-            {
-                await Task.Factory.StartNew(actionToExecuteIfConnected);
-            }
-            else
-            {
-                await ShowNetworkConnectionAlert();
-            }
         }
 
         public static async Task ExecuteIfConnected(Func<Task> actionToExecuteIfConnected)
@@ -67,5 +47,7 @@ namespace XamarinCRM
         {
             get { return CrossConnectivity.Current.IsConnected; }
         }
+
+        public static int AnimationSpeed = 250;
     }
 }

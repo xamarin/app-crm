@@ -98,7 +98,6 @@
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="ViewModels\Customers\OrderDetailViewModel.cs" />
     <Compile Include="Pages\Customers\CustomerTabbedPage.cs" />
-    <Compile Include="ViewModels\Splash\SplashPageViewModel.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="Localization\TextResources.Designer.cs">
       <DependentUpon>TextResources.resx</DependentUpon>
@@ -139,7 +138,6 @@
     <Compile Include="Converters\LoadingLabelHeightConverter.cs" />
     <Compile Include="Converters\CompanyLabelBooleanToColorConverter.cs" />
     <Compile Include="Converters\IndustryLabelBooleanToColorConverter.cs" />
-    <Compile Include="Pages\Splash\SplashPage.cs" />
     <Compile Include="Clients\DataClient.cs" />
     <Compile Include="Clients\MobileDataSync.cs" />
     <Compile Include="Clients\IDataClient.cs" />
@@ -151,6 +149,10 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Pages\Splash\SplashPage.xaml.cs">
+      <DependentUpon>SplashPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Splash\SplashViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -161,6 +163,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
       <LogicalName>XamarinCRM.TextResources.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Splash\SplashPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

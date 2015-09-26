@@ -9,6 +9,12 @@ namespace XamarinCRM.Services
         Task<bool> Logout();
 
         bool IsAuthenticated { get; }
+
+        /// <summary>
+        /// Used only for demo, to quickly bypass actual authentication
+        /// </summary>
+        /// <returns>Task</returns>
+        void BypassAuthentication();
     }
 }
 

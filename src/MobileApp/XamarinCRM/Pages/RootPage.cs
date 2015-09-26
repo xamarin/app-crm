@@ -54,7 +54,7 @@ namespace XamarinCRM.Pages
             // If the App.IsAuthenticated property is false, modally present the SplashPage.
             if (!_AuthenticationService.IsAuthenticated)
             {
-                await Navigation.PushModalAsync(new SplashPage() { BindingContext = new SplashPageViewModel(Navigation) }, false); // setting false to create a smoother transition from loading screen to splash screen on iOS
+                await Navigation.PushModalAsync(new SplashPage() { BindingContext = new SplashViewModel(Navigation) }, false); // setting false to create a smoother transition from loading screen to splash screen on iOS
             }
         }
     }

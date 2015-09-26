@@ -6,11 +6,11 @@ using XamarinCRM.Statics;
 
 namespace XamarinCRM.ViewModels.Splash
 {
-    public class SplashPageViewModel : BaseViewModel
+    public class SplashViewModel : BaseViewModel
     {
         readonly IConfigFetcher _ConfigFetcher;
 
-        public SplashPageViewModel(INavigation navigation = null)
+        public SplashViewModel(INavigation navigation = null)
             : base(navigation)
         {
             _ConfigFetcher = DependencyService.Get<IConfigFetcher>();

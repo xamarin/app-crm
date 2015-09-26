@@ -249,6 +249,8 @@
     <BundleResource Include="Resources\bottom_up_gradient.png" />
     <BundleResource Include="Resources\phone_ios%403x.png" />
     <BundleResource Include="Resources\map_marker_ios%403x.png" />
+    <BundleResource Include="Resources\splashSlice.png" />
+    <BundleResource Include="Resources\info.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
