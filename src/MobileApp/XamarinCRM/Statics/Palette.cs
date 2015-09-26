@@ -88,6 +88,11 @@ namespace XamarinCRM.Statics
         /// The pastel red color used for the grouping header for closed orders.
         /// </summary>
         public static readonly Color _017 = Color.FromHex("e28d8d");
+
+        /// <summary>
+        /// A gray. Used for title on splash screen.
+        /// </summary>
+        public static readonly Color _018 = Color.FromHex("c5c5c5");
     }
 }
 

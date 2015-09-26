@@ -55,7 +55,23 @@ namespace XamarinCRM.Services
 
         public bool IsAuthenticated
         {
-            get { return _AuthenticationResult != null; }
+            get 
+            { 
+                if (_Bypassed)
+                    return true;
+                else
+                    return _AuthenticationResult != null;
+            }
+        }
+
+        bool _Bypassed;
+        /// <summary>
+        /// Used only for demo, to quickly bypass actual authentication
+        /// </summary>
+        /// <returns>Task</returns>
+        public void BypassAuthentication()
+        {
+            _Bypassed = true;
         }
     }
 }

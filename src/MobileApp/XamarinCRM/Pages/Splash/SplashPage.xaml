@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<page:SplashPageXaml 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="XamarinCRM.Pages.Splash.SplashPage"
+	xmlns:app="clr-namespace:XamarinCRM;"
+	xmlns:page="clr-namespace:XamarinCRM.Pages.Splash;"
+	xmlns:statics="clr-namespace:XamarinCRM.Statics;"
+	BackgroundColor="White">
+	<page:SplashPageXaml.Content>
+		<AbsoluteLayout>
+			<StackLayout
+				Spacing="0"
+				AbsoluteLayout.LayoutBounds="0, 1, 1, AutoSize"
+	         	AbsoluteLayout.LayoutFlags="YProportional,WidthProportional">
+	         	<Label 
+					x:Name="SplashTitle" 
+					Text="{x:Static app:TextResources.Splash_Title}" 
+					TextColor="{x:Static statics:Palette._018}" 
+					XAlign="Center" 
+					YAlign="Center" 
+					HeightRequest="44" 
+					FontSize="Large"/>
+				<Label 
+					x:Name="UsernameTitleLabel" 
+					Text="{x:Static app:TextResources.Splash_UsernameTitleLabel}" 
+					TextColor="{x:Static statics:Palette._007}" 
+					XAlign="Center" 
+					YAlign="End" 
+					HeightRequest="30" 
+					FontSize="Micro"/>
+				<Label 
+					x:Name="UsernameValueLabel" 
+					Text="{Binding Username}" 
+					TextColor="{x:Static statics:Palette._006}" 
+					XAlign="Center" 
+					YAlign="Start" 
+					HeightRequest="30" 
+					FontSize="Small"/>
+				<Label 
+					x:Name="PasswordTitleLabel" 
+					Text="{x:Static app:TextResources.Splash_PasswordTitleLabel}" 
+					TextColor="{x:Static statics:Palette._007}" 
+					XAlign="Center" 
+					YAlign="End" 
+					HeightRequest="30" 
+					FontSize="Micro"/>
+				<Label 
+					x:Name="PasswordValueLabel" 
+					Text="{Binding Password}" 
+					TextColor="{x:Static statics:Palette._006}" 
+					XAlign="Center" 
+					YAlign="Start" 
+					HeightRequest="30" 
+					FontSize="Small"/>
+         		<Image Source="splashSlice" Aspect="AspectFit" />
+				<ContentView 
+					BackgroundColor="{x:Static statics:Palette._001}"
+					Padding="20">
+					<StackLayout>
+						<ContentView Padding="0,0,0,20">
+							<Label 
+								x:Name="SignInButton" 
+								Scale="0" 
+								Text="{x:Static app:TextResources.Splash_SignIn}" 
+								TextColor="White" 
+								BackgroundColor="{x:Static statics:Palette._002}" 
+								XAlign="Center" 
+								YAlign="Center" 
+								HeightRequest="44" />
+						</ContentView>
+						<ContentView Padding="0,0,0,20">
+							<Label 
+								x:Name="SkipSignInButton" 
+								Scale="0" 
+								Text="{x:Static app:TextResources.Splash_SkipSignIn}" 
+								TextColor="White" 
+								BackgroundColor="{x:Static statics:Palette._002}" 
+								XAlign="Center" 
+								YAlign="Center" 
+								HeightRequest="44" />
+						</ContentView>
+						<AbsoluteLayout>
+							<Image 
+								x:Name="XamarinLogo" 
+								Scale="0" 
+								Source="xamarin_logo_plus_name_inline" 
+								HeightRequest="30" 
+								Aspect="AspectFit" 
+								AbsoluteLayout.LayoutBounds=".5, .5, AutoSize, AutoSize"
+	         					AbsoluteLayout.LayoutFlags="XProportional,YProportional"/>
+							<Image 
+								x:Name="InfoButton" 
+								Scale="0" 
+								Source="info" 
+								HeightRequest="20" 
+								WidthRequest="20" 
+								Aspect="AspectFit" 
+								AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
+	         					AbsoluteLayout.LayoutFlags="XProportional,YProportional"/>
+						</AbsoluteLayout>
+					</StackLayout>
+				</ContentView>
+			</StackLayout>
+		</AbsoluteLayout>
+	</page:SplashPageXaml.Content>
+</page:SplashPageXaml>

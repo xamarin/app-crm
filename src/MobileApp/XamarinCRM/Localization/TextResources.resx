@@ -26,16 +26,19 @@
 
 
 	<data name="Splash_UsernameTitleLabel" xml:space="preserve">
-    	<value>Username</value>
+    	<value>Username:</value>
 	</data>
 	<data name="Splash_PasswordTitleLabel" xml:space="preserve">
-    	<value>Password</value>
+    	<value>Password:</value>
 	</data>
 	<data name="Splash_SignIn" xml:space="preserve">
-    	<value>Sign In (Azure AD)</value>
+    	<value>SIGN IN</value>
 	</data>
 	<data name="Splash_SkipSignIn" xml:space="preserve">
-    	<value>Skip Sign In</value>
+    	<value>SKIP SIGN IN (demo)</value>
+	</data>
+	<data name="Splash_Title" xml:space="preserve">
+    	<value>Xamarin CRM</value>
 	</data>
 
 

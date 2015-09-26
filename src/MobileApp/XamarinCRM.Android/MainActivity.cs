@@ -28,7 +28,11 @@ namespace XamarinCRMAndroid
 
             new SfChartRenderer(); // This is necessary for initializing SyncFusion charts.
 
+            #if DEBUG
+            Insights.Initialize(Insights.DebugModeKey, this);
+            #else
             Insights.Initialize("2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26", this);
+            #endif
 
             LoadApplication(new App());
 

@@ -329,6 +329,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Splash_Title {
+            get {
+                return ResourceManager.GetString("Splash_Title", resourceCulture);
+            }
+        }
+        
         internal static string Leads_LeadContactDetail_PostalCode {
             get {
                 return ResourceManager.GetString("Leads_LeadContactDetail_PostalCode", resourceCulture);
