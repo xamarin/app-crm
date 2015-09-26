@@ -108,7 +108,7 @@ namespace XamarinCRM.Pages.Splash
 
         async void InfoButtonTapped()
         {
-
+            // navigation to the About page will go here when About Page is completed.
         }
     }
 
