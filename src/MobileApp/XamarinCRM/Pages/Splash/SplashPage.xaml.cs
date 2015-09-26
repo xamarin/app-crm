@@ -112,6 +112,9 @@ namespace XamarinCRM.Pages.Splash
         }
     }
 
+    /// <summary>
+    /// This class definition just gives us a way to reference ModelBoundContentPage<T> in the XAML of this Page.
+    /// </summary>
     public partial class SplashPageXaml : ModelBoundContentPage<SplashViewModel>
     {
     }
