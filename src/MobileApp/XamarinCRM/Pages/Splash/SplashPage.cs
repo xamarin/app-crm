@@ -118,7 +118,7 @@ namespace XamarinCRM.Pages.Splash
             const double logoHeight = 25;
             const double logoWidthPercent = .33;
 
-            RelativeLayout relativeLayout = new RelativeLayout();
+            RelativeLayout relativeLayout = new RelativeLayout() { BackgroundColor = Color.White };
 
             relativeLayout.Children.Add(
                 view: backgroundImageView,

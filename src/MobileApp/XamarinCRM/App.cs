@@ -21,9 +21,9 @@ namespace XamarinCRM
             MainPage = _RootPage;
         }
 
-        static readonly Lazy<AuthenticationService> _LazyAuthenticationService = new Lazy<AuthenticationService>(() => new AuthenticationService());
-
-        static AuthenticationService _AuthenticationService { get { return _LazyAuthenticationService.Value; } }
+        // a static lazily-loaded instance of IAuthenticationService
+        static IAuthenticationService _AuthenticationService { get { return _LazyAuthenticationService.Value; } }
+        static readonly Lazy<IAuthenticationService> _LazyAuthenticationService = new Lazy<IAuthenticationService>(() => DependencyService.Get<IAuthenticationService>());
 
         static void SetCulture()
         {

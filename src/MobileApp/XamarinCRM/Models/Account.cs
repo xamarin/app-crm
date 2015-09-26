@@ -106,7 +106,16 @@ namespace XamarinCRM.Models
         [JsonIgnore]
         public string AddressString
         {
-            get { return string.Format("{0}{1} {2} {3} {4}", Street, !string.IsNullOrWhiteSpace(Unit) ? Unit + ", " : string.Empty + ", ", !string.IsNullOrWhiteSpace(City) ? City + "," : string.Empty, State, PostalCode); }
+            get 
+            { 
+                return string.Format(
+                    "{0}{1} {2} {3} {4}", 
+                    Street, 
+                    !string.IsNullOrWhiteSpace(Unit) ? " " + Unit + "," : string.Empty + ",", 
+                    !string.IsNullOrWhiteSpace(City) ? City + "," : string.Empty, 
+                    State, 
+                    PostalCode);
+            }
         }
 
         [JsonIgnore]
