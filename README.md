@@ -2,6 +2,8 @@
 
 Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforce of a fictitious company that sells 3D printer hardware and supplies. The app empowers salespeople to track their sales performance, manage leads, view their contacts, manage orders, and browse the product catalog.
 
+Xamarin CRM is open sourced under [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+
 ![](Preview.png)
 
 ####Supported platforms: iOS and Android
