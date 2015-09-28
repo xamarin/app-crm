@@ -45,7 +45,6 @@
     <Compile Include="Pages\Sales\LeadContactDetailPage.cs" />
     <Compile Include="Pages\Sales\LeadDetailPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="App.cs" />
     <Compile Include="Interfaces\IDialer.cs" />
     <Compile Include="Properties\Attributes\CurrencyAttribute.cs" />
     <Compile Include="Properties\Attributes\DisplayAttribute.cs" />
@@ -55,8 +54,6 @@
     <Compile Include="Converters\ToUpperConverter.cs" />
     <Compile Include="Views\Sales\LeadListHeaderView.cs" />
     <Compile Include="Views\Sales\LeadListView.cs" />
-    <Compile Include="Views\Sales\SalesChartHeaderView.cs" />
-    <Compile Include="Pages\Sales\SalesDashboardPage.cs" />
     <Compile Include="Pages\RootPage.cs" />
     <Compile Include="Pages\Products\CategoryListPage.cs" />
     <Compile Include="Pages\Products\ProductDetailPage.cs" />
@@ -102,14 +99,12 @@
     <Compile Include="Localization\TextResources.Designer.cs">
       <DependentUpon>TextResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Converters\InvertedBooleanConverter.cs" />
     <Compile Include="Views\Customers\CustomerDetailContactView.cs" />
     <Compile Include="Views\Customers\CustomerDetailPhoneView.cs" />
     <Compile Include="Views\Customers\CustomerDetailAddressView.cs" />
     <Compile Include="Pages\Customers\CustomerMapPage.cs" />
     <Compile Include="ViewModels\Customers\CustomerMapViewModel.cs" />
     <Compile Include="Interfaces\INativeDirectionsPresenter.cs" />
-    <Compile Include="Views\Sales\LeadsView.cs" />
     <Compile Include="ViewModels\Sales\SalesDashboardChartViewModel.cs" />
     <Compile Include="ViewModels\Sales\SalesDashboardLeadsViewModel.cs" />
     <Compile Include="Services\IChartDataService.cs" />
@@ -119,7 +114,6 @@
     <Compile Include="Services\GeoCodingService.cs" />
     <Compile Include="Views\Customers\CustomerCategorySalesChartView.cs" />
     <Compile Include="Views\Customers\CustomerWeeklySalesChartView.cs" />
-    <Compile Include="Views\Sales\SalesDashboardChartView.cs" />
     <Compile Include="ViewModels\Customers\CustomerSalesViewModel.cs" />
     <Compile Include="Views\Customers\CustomerDetailHeaderView.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
@@ -153,6 +147,23 @@
       <DependentUpon>SplashPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Splash\SplashViewModel.cs" />
+    <Compile Include="Pages\Sales\OldSalesDashboardPage.cs" />
+    <Compile Include="Pages\Sales\SalesDashboardPage.xaml.cs">
+      <DependentUpon>SalesDashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\OldLeadsView.cs" />
+    <Compile Include="Views\Sales\LeadsView.xaml.cs">
+      <DependentUpon>LeadsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SalesDashboardChartView.xaml.cs">
+      <DependentUpon>SalesDashboardChartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SalesChartHeaderView.cs" />
+    <Compile Include="Views\Sales\OldSalesDashboardChartView.cs" />
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -165,6 +176,18 @@
       <LogicalName>XamarinCRM.TextResources.resources</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Splash\SplashPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Sales\SalesDashboardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\LeadsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SalesDashboardChartView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

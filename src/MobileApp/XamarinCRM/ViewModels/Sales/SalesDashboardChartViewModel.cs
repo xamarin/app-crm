@@ -10,10 +10,12 @@ using XamarinCRM.Services;
 using XamarinCRM.ViewModels.Base;
 using XamarinCRM.Models;
 
-namespace XamarinCRM
+namespace XamarinCRM.ViewModels.Sales
 {
     public class SalesDashboardChartViewModel : BaseViewModel
     {
+        public SalesDashboardChartViewModel() : base() { }
+
         IDataClient _DataClient;
 
         IChartDataService _ChartDataService;

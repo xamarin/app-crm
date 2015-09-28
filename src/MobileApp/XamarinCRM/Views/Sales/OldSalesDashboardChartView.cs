@@ -5,17 +5,18 @@ using XamarinCRM.Statics;
 using XamarinCRM.Views.Sales;
 using XamarinCRM.Views.Base;
 using XamarinCRM.Converters;
+using XamarinCRM.ViewModels.Sales;
 
 namespace XamarinCRM
 {
-    public class SalesDashboardChartView : ModelBoundContentView<SalesDashboardChartViewModel>
+    public class OldSalesDashboardChartView : ModelBoundContentView<SalesDashboardChartViewModel>
     {
-        static Color MajorAxisAndLableColor
+        static Color MajorAxisAndLabelColor
         {
             get { return Device.OnPlatform(Palette._011, Palette._008, Color.White); }
         }
 
-        public SalesDashboardChartView()
+        public OldSalesDashboardChartView()
         {
             #region sales graph header
             SalesChartHeaderView chartHeaderView = new SalesChartHeaderView() { HeightRequest = Sizes.MediumRowHeight, Padding = new Thickness(20, 10, 20, 0) };
@@ -57,13 +58,13 @@ namespace XamarinCRM
                 {
                     OpposedPosition = false,
                     ShowMajorGridLines = true,
-                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
+                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLabelColor },
                     ShowMinorGridLines = true,
                     MinorTicksPerInterval = 1,
-                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
+                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLabelColor },
                     LabelStyle = new ChartAxisLabelStyle()
                     { 
-                        TextColor = MajorAxisAndLableColor, 
+                        TextColor = MajorAxisAndLabelColor, 
                         LabelFormat = "$0"
                     }
                 },
@@ -82,7 +83,7 @@ namespace XamarinCRM
                     LabelPlacement = LabelPlacement.BetweenTicks,
                     TickPosition = AxisElementPosition.Inside,
                     ShowMajorGridLines = false,
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLableColor }
+                    LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLabelColor }
                 },
                 
                 BackgroundColor = Color.Transparent

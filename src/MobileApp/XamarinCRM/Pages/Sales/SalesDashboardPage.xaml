@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="XamarinCRM.Pages.Sales.SalesDashboardPage" 
+	xmlns:view="clr-namespace:XamarinCRM.Views.Sales" 
+	xmlns:viewModel="clr-namespace:XamarinCRM.ViewModels.Sales">
+	<ContentPage.Content>
+		<ScrollView>
+			<ScrollView.Content>
+				<StackLayout>
+					<view:SalesDashboardChartView x:Name="salesChartView">
+						<view:SalesDashboardChartView.BindingContext>
+							<viewModel:SalesDashboardChartViewModel />
+						</view:SalesDashboardChartView.BindingContext>
+					</view:SalesDashboardChartView>
+				</StackLayout>
+			</ScrollView.Content>
+		</ScrollView>
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Application
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="XamarinCRM.App">
+    <Application.Resources>
+        <ResourceDictionary>
+        	<!-- Sizes -->
+        	<x:Double x:Key="LargeRowHeight">60</x:Double>
+        	<x:Double x:Key="MediumRowHeight">44</x:Double>
+        	<x:Double x:Key="SmallRowHeight">30</x:Double>
+        	<!-- Colors -->
+        	<Color x:Key="Color001">#53ba9d</Color>
+        	<Color x:Key="Color002">#42947d</Color>
+        	<Color x:Key="Color003">#8de2d5</Color>
+        	<Color x:Key="Color004">#00b9e6</Color>
+        	<Color x:Key="Color005">#0079FF</Color>
+        	<Color x:Key="Color006">#4d4d4d</Color>
+        	<Color x:Key="Color007">#999999</Color>
+        	<Color x:Key="Color008">#D8D8D8</Color>
+        	<Color x:Key="Color009">#5c5353</Color>
+        	<Color x:Key="Color010">#9d9797</Color>
+        	<Color x:Key="Color011">#747474</Color>
+        	<Color x:Key="Color012">#dddddd</Color>
+        	<Color x:Key="Color013">#ededed</Color>
+        	<Color x:Key="Color014">#EFA328</Color>
+        	<Color x:Key="Color015">#DD852C</Color>
+        	<Color x:Key="Color016">#c06f18</Color>
+        	<Color x:Key="Color017">#e28d8d</Color>
+        	<Color x:Key="Color018">#c5c5c5</Color>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>	

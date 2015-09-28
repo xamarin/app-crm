@@ -8,9 +8,9 @@ using XamarinCRM.Models;
 
 namespace XamarinCRM
 {
-    public class LeadsView : ModelBoundContentView<SalesDashboardLeadsViewModel>
+    public class OldLeadsView : ModelBoundContentView<SalesDashboardLeadsViewModel>
     {
-        public LeadsView()
+        public OldLeadsView()
         {
             #region leads list activity inidicator
             ActivityIndicator leadListActivityIndicator = new ActivityIndicator()

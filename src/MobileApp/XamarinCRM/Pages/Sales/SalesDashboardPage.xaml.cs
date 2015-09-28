@@ -3,21 +3,16 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin;
 using Xamarin.Forms;
-using XamarinCRM.Layouts;
-using XamarinCRM.Pages.Splash;
-using XamarinCRM.Statics;
-using XamarinCRM.ViewModels.Sales;
-using XamarinCRM.Services;
 using XamarinCRM.Models;
+using XamarinCRM.Services;
+using XamarinCRM.ViewModels.Sales;
 
 namespace XamarinCRM.Pages.Sales
 {
-    public class SalesDashboardPage : ContentPage
+    public partial class SalesDashboardPage : ContentPage
     {
         IAuthenticationService _AuthenticationService;
 
-        // We're holding on to these ViewModel properties because a couple of child views are reliant on these ViewModels, as well as the OnAppearing()
-        // method in this Page needing access to some of the public methods on those ViewModels, e.g. ExecuteLoadSeedDataCommand().
         SalesDashboardChartViewModel _SalesDashboardChartViewModel { get; set; }
 
         SalesDashboardLeadsViewModel _SalesDashboardLeadsViewModel { get; set; }
@@ -26,41 +21,7 @@ namespace XamarinCRM.Pages.Sales
         {
             _AuthenticationService = DependencyService.Get<IAuthenticationService>();
 
-            // If this page is being presented by a NavigationPage, we don't want to show the navigation bar (top) in this particular app design.
-            NavigationPage.SetHasNavigationBar(this, false);
-
-            this.SetBinding(ContentPage.TitleProperty, new Binding() { Source = TextResources.Sales });
-
-            #region sales chart view
-            _SalesDashboardChartViewModel = new SalesDashboardChartViewModel();
-            SalesDashboardChartView salesChartView = new SalesDashboardChartView() { BindingContext = _SalesDashboardChartViewModel };
-            #endregion
-
-            #region leads view
-            _SalesDashboardLeadsViewModel = new SalesDashboardLeadsViewModel(new Command(PushTabbedLeadPageAction));
-            LeadsView leadsView = new LeadsView() { BindingContext = _SalesDashboardLeadsViewModel };
-            #endregion
-
-            #region compose view hierarchy
-            Content = new ScrollView() 
-                { 
-                    Content = new UnspacedStackLayout()
-                    {
-                        Children =
-                            {
-                                salesChartView,
-                                leadsView
-                            }
-                        },
-                    IsVisible = false // this is set to false until successful authentication
-                };
-            #endregion
-
-            #region wire up MessagingCenter
-            // Catch the login success message from the MessagingCenter.
-            // This is really only here for Android, which doesn't fire the OnAppearing() method in the same way that iOS does (every time the page appears on screen).
-            Device.OnPlatform(Android: () => MessagingCenter.Subscribe<SplashPage>(this, MessagingServiceConstants.AUTHENTICATED, sender => OnAppearing()));
-            #endregion
+            InitializeComponent();
         }
 
         protected override async void OnAppearing()
@@ -69,6 +30,8 @@ namespace XamarinCRM.Pages.Sales
 
             // don't show any content until we're authenticated
 
+            salesChartView.BindingContext = _SalesDashboardChartViewModel;
+
             Content.IsVisible = false;
 
             if (_AuthenticationService.IsAuthenticated)
@@ -76,24 +39,24 @@ namespace XamarinCRM.Pages.Sales
                 Content.IsVisible = true;
 
                 List<Task> tasksToRun = new List<Task>()
-                { 
-                    Task.Factory.StartNew(async () =>
-                        {
-                            if (!_SalesDashboardChartViewModel.IsInitialized)
+                    { 
+                        Task.Factory.StartNew(async () =>
                             {
-                                await _SalesDashboardChartViewModel.ExecuteLoadSeedDataCommand();
-                                _SalesDashboardChartViewModel.IsInitialized = true;
-                            }
-                        }),
-                    Task.Factory.StartNew(async () =>
-                        {
-                            if (!_SalesDashboardLeadsViewModel.IsInitialized)
+                                if (!_SalesDashboardChartViewModel.IsInitialized)
+                                {
+                                    await _SalesDashboardChartViewModel.ExecuteLoadSeedDataCommand();
+                                    _SalesDashboardChartViewModel.IsInitialized = true;
+                                }
+                            }),
+                        Task.Factory.StartNew(async () =>
                             {
-                                await _SalesDashboardLeadsViewModel.ExecuteLoadSeedDataCommand();
-                                _SalesDashboardLeadsViewModel.IsInitialized = true;
-                            }
-                        })
-                };
+                                if (!_SalesDashboardLeadsViewModel.IsInitialized)
+                                {
+                                    await _SalesDashboardLeadsViewModel.ExecuteLoadSeedDataCommand();
+                                    _SalesDashboardLeadsViewModel.IsInitialized = true;
+                                }
+                            })
+                    };
 
                 // Awaiting these parallel task allows the leadsView and salesChartView to load independently.
                 // Task.WhenAll() is your friend in cases like these, where you want to load from two different data models on a single page.
