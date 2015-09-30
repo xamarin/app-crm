@@ -90,8 +90,15 @@ namespace XamarinCRM.Clients
 
         public async Task SeedLocalDataAsync()
         {                
+            string dbSyncInsightsIdentifier = "TimeToIncrementallySyncDB";
+
+            if (!LocalDBExists)
+            {
+                dbSyncInsightsIdentifier = "TimeToInitiallySyncDB";
+            }
+
             await Execute(
-                "TimeToSyncDB",
+                dbSyncInsightsIdentifier,
                 async () =>
                 {
                     await SynchronizeAccountsAsync();
