@@ -12,13 +12,8 @@ using XamarinCRMv2DataService.Models;
 
 namespace XamarinCRMv2DataService
 {
-    /*
-    A simple scheduled job which can be invoked manually by submitting an HTTP
-    POST request to the path "/jobs/sample".
-    */
-
     /// <summary>
-    /// Reresh the dates on the orders.
+    /// Reresh the dates on the orders. Via the Azure dashboard for the service, add a new scheduled job called RefreshOrders. The scheduler will link to the RefreshOrdersJob class by convention ([Your]Job).
     /// </summary>
     public class RefreshOrdersJob : ScheduledJob
     {
