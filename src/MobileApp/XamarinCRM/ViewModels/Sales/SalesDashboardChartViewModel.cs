@@ -10,7 +10,7 @@ using XamarinCRM.Services;
 using XamarinCRM.ViewModels.Base;
 using XamarinCRM.Models;
 
-namespace XamarinCRM.ViewModels.Sales
+namespace XamarinCRM
 {
     public class SalesDashboardChartViewModel : BaseViewModel
     {
@@ -62,8 +62,8 @@ namespace XamarinCRM.ViewModels.Sales
 
             WeeklySalesChartDataPoints = 
                 (await _ChartDataService.GetWeeklySalesDataPointsAsync(Orders))
-                .OrderBy(x => x.DateStart)
-                .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)).ToObservableCollection();
+                    .OrderBy(x => x.DateStart)
+                    .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)).ToObservableCollection();
 
             WeeklySalesAverage = String.Format("{0:C}", WeeklySalesChartDataPoints.Average(x => x.YValue));
 
@@ -102,4 +102,3 @@ namespace XamarinCRM.ViewModels.Sales
         }
     }
 }
-

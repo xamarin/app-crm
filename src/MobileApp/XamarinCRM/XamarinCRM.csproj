@@ -83,7 +83,6 @@
     <Compile Include="Pages\Products\ProductListPage.cs" />
     <Compile Include="Pages\Sales\LeadContactDetailPage.cs" />
     <Compile Include="Pages\Sales\LeadDetailPage.cs" />
-    <Compile Include="Pages\Sales\OldSalesDashboardPage.cs" />
     <Compile Include="Pages\RootPage.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\AuthInfo.cs" />
@@ -130,30 +129,22 @@
     <Compile Include="Views\Products\ProductListView.cs" />
     <Compile Include="Views\Sales\LeadListHeaderView.cs" />
     <Compile Include="Views\Sales\LeadListView.cs" />
-    <Compile Include="Views\Sales\OldLeadsView.cs" />
-    <Compile Include="Views\Sales\OldSalesDashboardChartView.cs" />
     <Compile Include="Views\Sales\SalesChartHeaderView.cs" />
     <Compile Include="Properties\Attributes\CurrencyAttribute.cs" />
     <Compile Include="Properties\Attributes\DisplayAttribute.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Sales\LeadsView.xaml.cs">
-      <DependentUpon>LeadsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Sales\SalesDashboardChartView.xaml.cs">
-      <DependentUpon>SalesDashboardChartView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Splash\SplashPage.xaml.cs">
       <DependentUpon>SplashPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Sales\SalesDashboardPage.xaml.cs">
-      <DependentUpon>SalesDashboardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Localization\ILocalize.cs" />
     <Compile Include="Localization\TextResources.Designer.cs">
       <DependentUpon>TextResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Sales\SalesDashboardChartView.cs" />
+    <Compile Include="Pages\Sales\SalesDashboardPage.cs" />
+    <Compile Include="Views\Sales\LeadsView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -217,16 +208,7 @@
     <EmbeddedResource Include="App.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Sales\LeadsView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Sales\SalesDashboardChartView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\Splash\SplashPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Sales\SalesDashboardPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Config\config.xml" />
