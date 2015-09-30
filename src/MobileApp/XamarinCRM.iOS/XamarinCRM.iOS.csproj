@@ -67,7 +67,7 @@
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>ARMv7</MtouchArch>
-    <MtouchSdkVersion>8.1</MtouchSdkVersion>
+    <MtouchSdkVersion>9.0</MtouchSdkVersion>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
     <BuildIpa>True</BuildIpa>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
