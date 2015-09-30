@@ -94,15 +94,13 @@ namespace XamarinCRM.Clients
                 "TimeToSyncDB",
                 async () =>
                 {
-                    await Init();
+                    await SynchronizeAccountsAsync();
 
-                    await _OrderTable.PullAsync("syncOrders", _OrderTable.CreateQuery());
+                    await SynchronizeOrdersAsync();
 
-                    await _AccountTable.PullAsync("syncAccounts", _AccountTable.CreateQuery());
+                    await SynchronizeCategoriesAsync();
 
-                    await _CategoryTable.PullAsync("syncCategories", _CategoryTable.CreateQuery());
-
-                    await _ProductTable.PullAsync("syncProducts", _ProductTable.CreateQuery());
+                    await SynchronizeProductsAsync();
 
                     _IsSeeded = true;
                 }
@@ -120,13 +118,16 @@ namespace XamarinCRM.Clients
                 "TimeToSynchronizeOrders",
                 async () =>
                 {
-                    await Init();
+                    if (!LocalDBExists)
+                    {    
+                        await Init();
+                    }
 
                     // For public demo, only allow pull, not push.
                     // Disabled in the backend service code as well.
                     // await _MobileServiceClient.SyncContext.PushAsync();
 
-                    await _OrderTable.PullAsync(null, _OrderTable.CreateQuery());
+                    await _OrderTable.PullAsync("syncOrders", _OrderTable.CreateQuery());
                 }
             );
         }
@@ -165,13 +166,16 @@ namespace XamarinCRM.Clients
                 "TimeToSynchronizeAccounts",
                 async () =>
                 {
-                    await Init();
+                    if (!LocalDBExists)
+                    {    
+                        await Init();
+                    }
 
                     // For public demo, only allow pull, not push.
                     // Disabled in the backend service code as well.
                     // await _MobileServiceClient.SyncContext.PushAsync();
 
-                    await _AccountTable.PullAsync(null, _AccountTable.CreateQuery());
+                    await _AccountTable.PullAsync("syncAccounts", _AccountTable.CreateQuery());
                 }
             );
         }
@@ -258,14 +262,17 @@ namespace XamarinCRM.Clients
                 "TimeToSynchronizeCategories",
                 async () =>
                 {
-                    await Init();
+                    if (!LocalDBExists)
+                    {    
+                        await Init();
+                    }
 
                     // For public demo, only allow pull, not push.
                     // Disabled in the backend service code as well.
                     // await _MobileServiceClient.SyncContext.PushAsync();
 
                     await _CategoryTable
-                        .PullAsync(null, _CategoryTable.CreateQuery());
+                        .PullAsync("syncCategories", _CategoryTable.CreateQuery());
                 }
             );
         }
@@ -276,14 +283,17 @@ namespace XamarinCRM.Clients
                 "TimeToSynchronizeProducts",
                 async () =>
                 {
-                    await Init();
+                    if (!LocalDBExists)
+                    {    
+                        await Init();
+                    }
 
                     // For public demo, only allow pull, not push.
                     // Disabled in the backend service code as well.
                     // await _MobileServiceClient.SyncContext.PushAsync();
 
                     await _ProductTable
-                        .PullAsync(null, _ProductTable.CreateQuery());
+                        .PullAsync("syncProducts", _ProductTable.CreateQuery());
                 }
             );
         }
