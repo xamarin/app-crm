@@ -72,9 +72,6 @@ namespace XamarinCRM.ViewModels.Customers
 
         async Task ExecuteLoadAccountsCommand()
         {
-            if (IsBusy)
-                return;
-
             IsBusy = true;
             LoadAccountsCommand.ChangeCanExecute(); 
 

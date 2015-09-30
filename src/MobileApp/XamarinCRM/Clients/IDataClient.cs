@@ -24,6 +24,8 @@ namespace XamarinCRM.Clients
 
         bool LocalDBExists { get; }
 
+        bool IsSeeded { get; }
+
         Task SynchronizeAccountsAsync();
 
         Task SynchronizeOrdersAsync();

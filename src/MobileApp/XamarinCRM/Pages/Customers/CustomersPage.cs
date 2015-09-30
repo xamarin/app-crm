@@ -63,6 +63,12 @@ namespace XamarinCRM.Pages.Customers
                 Padding = Device.OnPlatform(Thicknesses.IosStatusBar, Thicknesses.Empty, Thicknesses.Empty)
             };
             #endregion
+
+            #region wire up MessagingCenter
+            // Catch the login success message from the MessagingCenter.
+            // This is really only here for Android, which doesn't fire the OnAppearing() method in the same way that iOS does (every time the page appears on screen).
+            Device.OnPlatform(Android: () => MessagingCenter.Subscribe<CustomersPage>(this, MessagingServiceConstants.AUTHENTICATED, sender => OnAppearing()));
+            #endregion
         }
 
         protected override void OnAppearing()

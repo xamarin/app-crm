@@ -85,8 +85,11 @@ namespace XamarinCRM.Clients
             get { return _MobileServiceClient.SyncContext.IsInitialized; }
         }
 
+        bool _IsSeeded;
+        public bool IsSeeded { get { return _IsSeeded; } }
+
         public async Task SeedLocalDataAsync()
-        {
+        {                
             await Execute(
                 "TimeToSyncDB",
                 async () =>
@@ -100,6 +103,8 @@ namespace XamarinCRM.Clients
                     await _CategoryTable.PullAsync("syncCategories", _CategoryTable.CreateQuery());
 
                     await _ProductTable.PullAsync("syncProducts", _ProductTable.CreateQuery());
+
+                    _IsSeeded = true;
                 }
             );
         }

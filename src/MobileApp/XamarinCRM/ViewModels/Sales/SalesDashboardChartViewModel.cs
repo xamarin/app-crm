@@ -70,7 +70,10 @@ namespace XamarinCRM
 
             IsBusy = true;
 
-            await _DataClient.SeedLocalDataAsync();
+            if (!_DataClient.IsSeeded)
+            {
+                await _DataClient.SeedLocalDataAsync();
+            }
 
             Orders = (await _DataClient.GetAllOrdersAsync()).ToObservableCollection();
 
