@@ -62,8 +62,8 @@ namespace XamarinCRM
 
             WeeklySalesChartDataPoints = 
                 (await _ChartDataService.GetWeeklySalesDataPointsAsync(Orders))
-                .OrderBy(x => x.DateStart)
-                .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)).ToObservableCollection();
+                    .OrderBy(x => x.DateStart)
+                    .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)).ToObservableCollection();
 
             WeeklySalesAverage = String.Format("{0:C}", WeeklySalesChartDataPoints.Average(x => x.YValue));
 
@@ -102,4 +102,3 @@ namespace XamarinCRM
         }
     }
 }
-

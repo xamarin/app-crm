@@ -26,9 +26,9 @@ namespace XamarinCRM
 
             #region activity indicator
             ActivityIndicator chartActivityIndicator = new ActivityIndicator()
-            {
-                HeightRequest = Sizes.MediumRowHeight
-            };
+                {
+                    HeightRequest = Sizes.MediumRowHeight
+                };
             chartActivityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
             chartActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
             chartActivityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsBusy");
@@ -36,14 +36,14 @@ namespace XamarinCRM
 
             #region loading label
             Label loadingLabel = new Label()
-            {
-                Text = TextResources.SalesDashboard_SalesChart_LoadingLabel,
-                FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                HeightRequest = Sizes.MediumRowHeight,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.End,
-                TextColor = Palette._007
-            };
+                {
+                    Text = TextResources.SalesDashboard_SalesChart_LoadingLabel,
+                    FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+                    HeightRequest = Sizes.MediumRowHeight,
+                    XAlign = TextAlignment.Center,
+                    YAlign = TextAlignment.End,
+                    TextColor = Palette._007
+                };
             loadingLabel.SetBinding(IsEnabledProperty, "IsBusy");
             loadingLabel.SetBinding(IsVisibleProperty, "IsBusy");
             #endregion
@@ -52,41 +52,41 @@ namespace XamarinCRM
             const double chartHeight = 190;
 
             ColumnSeries columnSeries = new ColumnSeries()
-            {
-                YAxis = new NumericalAxis()
                 {
-                    OpposedPosition = false,
-                    ShowMajorGridLines = true,
-                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
-                    ShowMinorGridLines = true,
-                    MinorTicksPerInterval = 1,
-                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
-                    LabelStyle = new ChartAxisLabelStyle()
-                    { 
-                        TextColor = MajorAxisAndLableColor, 
-                        LabelFormat = "$0"
-                    }
-                },
-                Color = Palette._003
-            };
+                    YAxis = new NumericalAxis()
+                        {
+                            OpposedPosition = false,
+                            ShowMajorGridLines = true,
+                            MajorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
+                            ShowMinorGridLines = true,
+                            MinorTicksPerInterval = 1,
+                            MinorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
+                            LabelStyle = new ChartAxisLabelStyle()
+                                { 
+                                    TextColor = MajorAxisAndLableColor, 
+                                    LabelFormat = "$0"
+                                }
+                        },
+                    Color = Palette._003
+                };
 
             columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");
 
             SfChart chart = new SfChart()
-            {
-                HeightRequest = chartHeight,
-
-                PrimaryAxis = new CategoryAxis()
                 {
-                    EdgeLabelsDrawingMode = EdgeLabelsDrawingMode.Center,
-                    LabelPlacement = LabelPlacement.BetweenTicks,
-                    TickPosition = AxisElementPosition.Inside,
-                    ShowMajorGridLines = false,
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLableColor }
-                },
-                
-                BackgroundColor = Color.Transparent
-            };
+                    HeightRequest = chartHeight,
+
+                    PrimaryAxis = new CategoryAxis()
+                        {
+                            EdgeLabelsDrawingMode = EdgeLabelsDrawingMode.Center,
+                            LabelPlacement = LabelPlacement.BetweenTicks,
+                            TickPosition = AxisElementPosition.Inside,
+                            ShowMajorGridLines = false,
+                            LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLableColor }
+                        },
+
+                    BackgroundColor = Color.Transparent
+                };
 
             chart.Series.Add(columnSeries);
             chart.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
@@ -97,15 +97,15 @@ namespace XamarinCRM
             ContentView chartWrapper = new ContentView() { Content = chart };
 
             StackLayout stackLayout = new UnspacedStackLayout()
-            {
-                Children =
                 {
-                    chartHeaderView,
-                    loadingLabel,
-                    chartActivityIndicator,
-                    chartWrapper
-                }
-            };
+                    Children =
+                        {
+                            chartHeaderView,
+                            loadingLabel,
+                            chartActivityIndicator,
+                            chartWrapper
+                        }
+                    };
             #endregion
 
             #region platform adjustments
@@ -129,4 +129,3 @@ namespace XamarinCRM
         }
     }
 }
-
