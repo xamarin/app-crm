@@ -1,31 +1,26 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<view:SalesDashboardChartViewXaml 
+<view:SalesDashboardChartViewXaml
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	x:Class="XamarinCRM.Views.Sales.SalesDashboardChartView" 
 	xmlns:app="clr-namespace:XamarinCRM" 
 	xmlns:view="clr-namespace:XamarinCRM.Views.Sales" 
-	xmlns:statics="clr-namespace:XamarinCRM.Statics" 
 	xmlns:converter="clr-namespace:XamarinCRM.Converters">
 	<view:SalesDashboardChartViewXaml.Resources>
 		<ResourceDictionary>
-			<OnPlatform 
-				x:Key="MajorAxisAndLabelColor" 
-				x:TypeArguments="Color" 
-				iOS="{StaticResource Color011}" 
-				Android="{StaticResource Color008}" 
-				WinPhone="White" />
 		    <converter:InverseBooleanConverter x:Key="InverseBooleanConverter" />
 		</ResourceDictionary>
 	</view:SalesDashboardChartViewXaml.Resources>
 	<view:SalesDashboardChartViewXaml.Content>
-		<StackLayout>
+		<StackLayout Spacing="0" x:Name="stackLayout">
+
 			<view:SalesChartHeaderView 
 				HeightRequest="{StaticResource MediumRowHeight}" 
 				IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}" 
 				IsVisible="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}">
-				<view:SalesChartHeaderView.WeeklyAverageValueLabel Text="{Binding WeeklySalesAverage}" />
+<!--				<view:SalesChartHeaderView.WeeklyAverageValueLabel Text="{Binding WeeklySalesAverage}" />-->
 			</view:SalesChartHeaderView>
+
 			<Label 
                 FontSize="Small" 
                 XAlign="Center" 
@@ -35,55 +30,14 @@
                 TextColor="{StaticResource Color007}" 
                 IsEnabled="{Binding IsBusy}" 
                 IsVisible="{Binding IsBusy}" />
+
 			<ActivityIndicator 
 				HeightRequest="{StaticResource MediumRowHeight}" 
 				IsEnabled="{Binding IsBusy}" 
 				IsVisible="{Binding IsBusy}" 
-				IsRunning="{Binding IsBusy}"/>
-<!--			<ContentView>
-				<ContentView.Content>
-					<chart:SfChart 
-						HeightRequest="190" 
-						BackgroundColor="Transparent"
-						IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
-						IsVisisble="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}">
-				    	<chart:SfChart.PrimaryAxis>
-							<chart:CategoryAxis 
-								EdgeLabelsDrawingMode = "Center" 
-			                    LabelPlacement = "BetweenTicks" 
-			                    TickPosition = "Inside" 
-			                    ShowMajorGridLines = "false">
-		                    	<chart:CategoryAxis.LabelStyle>
-		                    		<chart:ChartLabelStyle TextColor="{StaticResource MajorAxisAndLabelColor}" />
-		                    	</chart:CategoryAxis.LabelStyle>
-		                    </chart:CategoryAxis>
-				         </chart:SfChart.PrimaryAxis>
-				         <chart:SfChart.Series>
-				         	<chart:ColumnSeries>
-					         	<chart:ColumnSeries.YAxis>
-					         		<chart:NumericalAxis 
-					         			OpposedPosition = "false" 
-					                    ShowMajorGridLines = "true" 
-					                    ShowMinorGridLines = "true" 
-					                    MinorTicksPerInterval = "1">
-				                    	<chart:NumericalAxis.MajorGridLineStyle>
-				                    		<chart:ChartLineStyle StrokeColor="{StaticResource MajorAxisAndLabelColor}" />
-				                    	</chart:NumericalAxis.MajorGridLineStyle>
-				                    	<chart:MinorGridLineStyle.MajorGridLineStyle>
-				                    		<chart:ChartLineStyle StrokeColor="{StaticResource MajorAxisAndLabelColor}" />
-				                    	</chart:MinorGridLineStyle.MajorGridLineStyle>
-				                    	<chart:MinorGridLineStyle.LabelStyle>
-				                    		<chart:ChartAxisLabelStyle
-				                    			TextColor="{StaticResource MajorAxisAndLabelColor}" 
-				                    			LabelFormat = "$0" />
-				                    	</chart:MinorGridLineStyle.LabelStyle>
-					         		</chart:NumericalAxis>
-					         	</chart:ColumnSeries.YAxis>
-				         	</chart:ColumnSeries>
-				         </chart:SfChart.Series>
-					</chart:SfChart>
-				</ContentView.Content>
-			</ContentView>-->
+				IsRunning="{Binding IsBusy}" />
+
+			<ContentView x:Name="chartWrapper" />
 		</StackLayout>
 	</view:SalesDashboardChartViewXaml.Content>
-</view:SalesDashboardChartViewXaml >
+</view:SalesDashboardChartViewXaml>

@@ -6,6 +6,8 @@ using Xamarin.Forms;
 using XamarinCRM.Models;
 using XamarinCRM.Services;
 using XamarinCRM.ViewModels.Sales;
+using XamarinCRM.Pages.Splash;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.Pages.Sales
 {
@@ -19,9 +21,23 @@ namespace XamarinCRM.Pages.Sales
 
         public SalesDashboardPage()
         {
+            InitializeComponent();
+
             _AuthenticationService = DependencyService.Get<IAuthenticationService>();
 
-            InitializeComponent();
+            // If this page is being presented by a NavigationPage, we don't want to show the navigation bar (top) in this particular app design.
+            NavigationPage.SetHasNavigationBar(this, false);
+
+            _SalesDashboardChartViewModel = new SalesDashboardChartViewModel();
+            _SalesDashboardLeadsViewModel = new SalesDashboardLeadsViewModel(new Command(PushTabbedLeadPageAction));
+
+            salesChartView.BindingContext = _SalesDashboardChartViewModel;
+
+            #region wire up MessagingCenter
+            // Catch the login success message from the MessagingCenter.
+            // This is really only here for Android, which doesn't fire the OnAppearing() method in the same way that iOS does (every time the page appears on screen).
+            Device.OnPlatform(Android: () => MessagingCenter.Subscribe<SplashPage>(this, MessagingServiceConstants.AUTHENTICATED, sender => OnAppearing()));
+            #endregion
         }
 
         protected override async void OnAppearing()
@@ -29,8 +45,6 @@ namespace XamarinCRM.Pages.Sales
             base.OnAppearing();
 
             // don't show any content until we're authenticated
-
-            salesChartView.BindingContext = _SalesDashboardChartViewModel;
 
             Content.IsVisible = false;
 
@@ -48,18 +62,18 @@ namespace XamarinCRM.Pages.Sales
                                     _SalesDashboardChartViewModel.IsInitialized = true;
                                 }
                             }),
-                        Task.Factory.StartNew(async () =>
-                            {
-                                if (!_SalesDashboardLeadsViewModel.IsInitialized)
-                                {
-                                    await _SalesDashboardLeadsViewModel.ExecuteLoadSeedDataCommand();
-                                    _SalesDashboardLeadsViewModel.IsInitialized = true;
-                                }
-                            })
+//                        Task.Factory.StartNew(async () =>
+//                            {
+//                                if (!_SalesDashboardLeadsViewModel.IsInitialized)
+//                                {
+//                                    await _SalesDashboardLeadsViewModel.ExecuteLoadSeedDataCommand();
+//                                    _SalesDashboardLeadsViewModel.IsInitialized = true;
+//                                }
+//                            })
                     };
-
-                // Awaiting these parallel task allows the leadsView and salesChartView to load independently.
-                // Task.WhenAll() is your friend in cases like these, where you want to load from two different data models on a single page.
+//
+//                // Awaiting these parallel task allows the leadsView and salesChartView to load independently.
+//                // Task.WhenAll() is your friend in cases like these, where you want to load from two different data models on a single page.
                 await Task.WhenAll(tasksToRun.ToArray());
 
                 Insights.Track("Dashboard Page");

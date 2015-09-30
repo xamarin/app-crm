@@ -3,17 +3,14 @@
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	x:Class="XamarinCRM.Pages.Sales.SalesDashboardPage" 
+	xmlns:app="clr-namespace:XamarinCRM" 
 	xmlns:view="clr-namespace:XamarinCRM.Views.Sales" 
 	xmlns:viewModel="clr-namespace:XamarinCRM.ViewModels.Sales">
 	<ContentPage.Content>
 		<ScrollView>
 			<ScrollView.Content>
-				<StackLayout>
-					<view:SalesDashboardChartView x:Name="salesChartView">
-						<view:SalesDashboardChartView.BindingContext>
-							<viewModel:SalesDashboardChartViewModel />
-						</view:SalesDashboardChartView.BindingContext>
-					</view:SalesDashboardChartView>
+				<StackLayout Spacing="0">
+					<view:SalesDashboardChartView x:Name="salesChartView" />
 				</StackLayout>
 			</ScrollView.Content>
 		</ScrollView>

@@ -14,8 +14,6 @@ namespace XamarinCRM.ViewModels.Sales
 {
     public class SalesDashboardChartViewModel : BaseViewModel
     {
-        public SalesDashboardChartViewModel() : base() { }
-
         IDataClient _DataClient;
 
         IChartDataService _ChartDataService;

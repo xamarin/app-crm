@@ -64,8 +64,6 @@
     <Compile Include="Interfaces\IDialer.cs" />
     <Compile Include="Interfaces\INativeDirectionsPresenter.cs" />
     <Compile Include="Layouts\UnspacedStackLayout.cs" />
-    <Compile Include="Localization\ILocalization.cs" />
-    <Compile Include="Localization\TextResources.Designer.cs" />
     <Compile Include="Localization\TranslateExtension.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -152,6 +150,10 @@
     <Compile Include="Pages\Sales\SalesDashboardPage.xaml.cs">
       <DependentUpon>SalesDashboardPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Localization\ILocalize.cs" />
+    <Compile Include="Localization\TextResources.Designer.cs">
+      <DependentUpon>TextResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -160,7 +162,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="ConfigTemplate\config-sensitive.xml" />
-    <None Include="Localization\TextResources.resx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -230,6 +231,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Config\config.xml" />
     <EmbeddedResource Include="Config\config-sensitive.xml" />
+    <EmbeddedResource Include="Localization\TextResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
+      <LogicalName>XamarinCRM.TextResources.resources</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\Splash\" />
