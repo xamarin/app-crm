@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.xamarin.xamarincrm" android:installLocation="auto" android:versionCode="2" android:versionName="00001">
-	<uses-sdk android:minSdkVersion="17" android:targetSdkVersion="21" />
+	<uses-sdk android:minSdkVersion="17" android:targetSdkVersion="22" />
 	<application android:label="Xamarin CRM" android:icon="@drawable/icon" android:theme="@style/XamarinCRMTheme">
 		<!-- 
 			In ~/Resources/values/api-keys.xml, you need: 
