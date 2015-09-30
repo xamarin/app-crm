@@ -152,6 +152,7 @@ namespace XamarinCRM.ViewModels.Customers
         public async Task<Pin> LoadPin()
         {
             Position p = _GeoCodingService.NullPosition;
+
             var address = Account.AddressString;
 
             //Lookup Lat/Long all the time unless an account where the address is read-only

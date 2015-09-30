@@ -2,10 +2,10 @@
 using XamarinCRM.Services;
 using Xamarin.Forms.Maps;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Xamarin.Forms;
+using Xamarin;
 
 [assembly: Dependency(typeof(GeoCodingService))]
 
@@ -33,19 +33,15 @@ namespace XamarinCRM.Services
 
             try
             {
-                Task<IEnumerable<Position>> getPosTask = _GeoCoder.GetPositionsForAddressAsync(addressString);
-                IEnumerable<Position> pos = await getPosTask;
-                p = pos == null ? p : pos.First();
+                p = (await _GeoCoder.GetPositionsForAddressAsync(addressString)).FirstOrDefault();
 
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                Debug.WriteLine("ERROR: MobileCRM.Shared.Helpers.GeoCodeAddress(): " + exc.Message);
+                Debug.WriteLine("ERROR: MobileCRM.Shared.Helpers.GeoCodeAddress(): " + ex.Message);
+                Insights.Report(ex);
             }
-            finally
-            { 
 
-            }
             return p;
         }
 

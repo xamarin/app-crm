@@ -2,9 +2,10 @@
 using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using XamarinCRM.Interfaces;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.ViewModels.Customers;
+using ExternalMaps.Plugin;
+using ExternalMaps.Plugin.Abstractions;
 
 namespace XamarinCRM.Pages.Customers
 {
@@ -12,13 +13,9 @@ namespace XamarinCRM.Pages.Customers
     {
         Map _Map;
 
-        INativeDirectionsPresenter _NativeDirectionsPresenter;
-
         public CustomerMapPage(CustomerDetailViewModel viewModel)
         {
             this.BindingContext = viewModel;
-
-            _NativeDirectionsPresenter = DependencyService.Get<INativeDirectionsPresenter>();
 
             _Map = new Map()
             {
@@ -39,7 +36,11 @@ namespace XamarinCRM.Pages.Customers
                                 TextResources.Customers_Detail_MappingDirections_LeaveApplication_Yes, 
                                 TextResources.Cancel))
                         {
-                            _NativeDirectionsPresenter.PresentDirections(await ViewModel.LoadPin());
+
+                            var pin = await ViewModel.LoadPin();
+
+                            CrossExternalMaps.Current.NavigateTo(pin.Label, pin.Position.Latitude, pin.Position.Longitude, NavigationType.Driving);
+
                             await ViewModel.PopModalAsync();
                         }
                     }

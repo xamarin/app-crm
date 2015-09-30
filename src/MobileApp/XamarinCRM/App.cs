@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using XamarinCRM.Localization;
 using XamarinCRM.Pages;
-using XamarinCRM.Services;
 using Xamarin.Forms;
 using Connectivity.Plugin;
+using XamarinCRM.Localization;
 
 namespace XamarinCRM
 {

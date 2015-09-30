@@ -88,6 +88,17 @@
 	</data>
 
 
+	<data name="NoPosition_Alert_Title" xml:space="preserve">
+    	<value>Address Not Found</value>
+	</data>
+	<data name="NoPosition_Alert_Message" xml:space="preserve">
+    	<value>Could not find GPS coordinates for address</value>
+	</data>
+	<data name="NoPosition_Alert_Confirm" xml:space="preserve">
+    	<value>OK</value>
+	</data>
+
+
 	<data name="Leads_LeadListHeaderTitle" xml:space="preserve">
     	<value>Leads</value>
 	</data>

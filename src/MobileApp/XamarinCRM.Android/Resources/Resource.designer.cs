@@ -31,6 +31,8 @@ namespace XamarinCRMAndroid
 			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.String.ApplicationName = global::XamarinCRMAndroid.Resource.String.ApplicationName;
 			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::XamarinCRMAndroid.Resource.String.ApplicationName;
 			global::Xamarin.Forms.Platform.Resource.String.Hello = global::XamarinCRMAndroid.Resource.String.Hello;
+			global::Lotz.Xam.Messaging.Resource.String.ApplicationName = global::XamarinCRMAndroid.Resource.String.ApplicationName;
+			global::Lotz.Xam.Messaging.Resource.String.Hello = global::XamarinCRMAndroid.Resource.String.Hello;
 		}
 		
 		public partial class Animation
