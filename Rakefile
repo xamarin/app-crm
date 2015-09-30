@@ -83,11 +83,11 @@ def get_device_code device_set, platform
 	when "ios"
 		case device_set
 		when "Small"
-			return '9ff035ff'
+			return '2f802e3f'
 		when "Medium"
-			return '4230cd10'
+			return '588fda26'
 		when "Large"
-			return "58ec66cb"
+			return 'e1df384a'
 		end
 	end
 end
