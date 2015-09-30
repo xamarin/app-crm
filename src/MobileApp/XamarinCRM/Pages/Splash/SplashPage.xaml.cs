@@ -45,13 +45,23 @@ namespace XamarinCRM.Pages.Splash
         {
             base.OnAppearing();
 
+            // fetch the demo credentials
             await ViewModel.LoadDemoCredentials();
 
-            await Task.Delay(250);
+            // pause for a moment before animations
+            await Task.Delay(App.AnimationSpeed);
+
+            // Sequentially animate the login buttons. ScaleTo() makes them "grow" from a singularity to the full button size.
             await SignInButton.ScaleTo(1, (uint)App.AnimationSpeed, Easing.SinIn);
             await SkipSignInButton.ScaleTo(1, (uint)App.AnimationSpeed, Easing.SinIn);
-            await XamarinLogo.ScaleTo(1, (uint)App.AnimationSpeed, Easing.SinIn);
-            await InfoButton.ScaleTo(1, (uint)App.AnimationSpeed, Easing.SinIn);
+
+            // Using Task.WhenAll() allows these two animations to be run in parallel.
+            await Task.WhenAll(new []
+                { 
+                    // FadeTo() modifies the Opacity property of the given VisualElements over a given duration.
+                    XamarinLogo.FadeTo(1, (uint)App.AnimationSpeed, Easing.SinIn), 
+                    InfoButton.FadeTo(1, (uint)App.AnimationSpeed, Easing.SinIn) 
+                });
         }
 
         async Task<bool> Authenticate()

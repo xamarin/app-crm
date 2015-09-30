@@ -45,13 +45,13 @@ namespace XamarinCRM.Pages.Sales
             Content = new ScrollView() 
                 { 
                     Content = new UnspacedStackLayout()
-                    {
-                        Children =
-                            {
-                                salesChartView,
-                                leadsView
-                            }
-                        },
+                        {
+                            Children =
+                                {
+                                    salesChartView,
+                                    leadsView
+                                }
+                            },
                     IsVisible = false // this is set to false until successful authentication
                 };
             #endregion
@@ -76,24 +76,24 @@ namespace XamarinCRM.Pages.Sales
                 Content.IsVisible = true;
 
                 List<Task> tasksToRun = new List<Task>()
-                { 
-                    Task.Factory.StartNew(async () =>
-                        {
-                            if (!_SalesDashboardChartViewModel.IsInitialized)
+                    { 
+                        Task.Factory.StartNew(async () =>
                             {
-                                await _SalesDashboardChartViewModel.ExecuteLoadSeedDataCommand();
-                                _SalesDashboardChartViewModel.IsInitialized = true;
-                            }
-                        }),
-                    Task.Factory.StartNew(async () =>
-                        {
-                            if (!_SalesDashboardLeadsViewModel.IsInitialized)
+                                if (!_SalesDashboardChartViewModel.IsInitialized)
+                                {
+                                    await _SalesDashboardChartViewModel.ExecuteLoadSeedDataCommand();
+                                    _SalesDashboardChartViewModel.IsInitialized = true;
+                                }
+                            }),
+                        Task.Factory.StartNew(async () =>
                             {
-                                await _SalesDashboardLeadsViewModel.ExecuteLoadSeedDataCommand();
-                                _SalesDashboardLeadsViewModel.IsInitialized = true;
-                            }
-                        })
-                };
+                                if (!_SalesDashboardLeadsViewModel.IsInitialized)
+                                {
+                                    await _SalesDashboardLeadsViewModel.ExecuteLoadSeedDataCommand();
+                                    _SalesDashboardLeadsViewModel.IsInitialized = true;
+                                }
+                            })
+                    };
 
                 // Awaiting these parallel task allows the leadsView and salesChartView to load independently.
                 // Task.WhenAll() is your friend in cases like these, where you want to load from two different data models on a single page.
@@ -170,4 +170,3 @@ namespace XamarinCRM.Pages.Sales
         }
     }
 }
-
