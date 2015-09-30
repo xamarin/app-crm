@@ -52,8 +52,11 @@ namespace XamarinCRM.Clients
             var store = new MobileServiceSQLiteStore("syncstore.db");
 
             store.DefineTable<Order>();
+
             store.DefineTable<Account>();
+
             store.DefineTable<Category>();
+
             store.DefineTable<Product>();
 
             try
@@ -67,8 +70,11 @@ namespace XamarinCRM.Clients
             }
 
             _OrderTable = _MobileServiceClient.GetSyncTable<Order>();
+
             _AccountTable = _MobileServiceClient.GetSyncTable<Account>();
+
             _CategoryTable = _MobileServiceClient.GetSyncTable<Category>();
+
             _ProductTable = _MobileServiceClient.GetSyncTable<Product>();
         }
 
@@ -79,17 +85,26 @@ namespace XamarinCRM.Clients
             get { return _MobileServiceClient.SyncContext.IsInitialized; }
         }
 
+        bool _IsSeeded;
+        public bool IsSeeded { get { return _IsSeeded; } }
+
         public async Task SeedLocalDataAsync()
-        {
+        {                
             await Execute(
                 "TimeToSyncDB",
                 async () =>
                 {
                     await Init();
+
                     await _OrderTable.PullAsync("syncOrders", _OrderTable.CreateQuery());
+
                     await _AccountTable.PullAsync("syncAccounts", _AccountTable.CreateQuery());
+
                     await _CategoryTable.PullAsync("syncCategories", _CategoryTable.CreateQuery());
+
                     await _ProductTable.PullAsync("syncProducts", _ProductTable.CreateQuery());
+
+                    _IsSeeded = true;
                 }
             );
         }
@@ -135,9 +150,7 @@ namespace XamarinCRM.Clients
             await Execute(
                 "TimeToDeleteOrder",
                 async () =>
-                {
-                    await _OrderTable.DeleteAsync(item);
-                }
+                    await _OrderTable.DeleteAsync(item)
             );
         }
 
@@ -150,7 +163,7 @@ namespace XamarinCRM.Clients
         {
             await Execute(
                 "TimeToSynchronizeAccounts",
-                async () => 
+                async () =>
                 {
                     await Init();
 
@@ -181,7 +194,8 @@ namespace XamarinCRM.Clients
         {
             await Execute(
                 "TimeToDeleteAccount",
-                async () => await _AccountTable.DeleteAsync(item)
+                async () => 
+                    await _AccountTable.DeleteAsync(item)
             );
         }
 
@@ -190,12 +204,9 @@ namespace XamarinCRM.Clients
             return await Execute<IEnumerable<Account>>(
                 "TimeToGetAccountList",
                 async () =>
-                {
-                    return await _AccountTable
-                        .Where(account => account.IsLead == leads)
-                        .OrderBy(b => b.Company)
-                        .ToEnumerableAsync();
-                },
+                    await _AccountTable
+                        .Where(account => account.IsLead == leads).OrderBy(b => b.Company)
+                        .ToEnumerableAsync(),
                 new List<Account>()
             );
         }
@@ -205,12 +216,10 @@ namespace XamarinCRM.Clients
             return await Execute<IEnumerable<Order>>(
                 "TimeToGetOrders",
                 async () =>
-                {
-                    return await _OrderTable
+                    await _OrderTable
                         .Where(order => order.AccountId.ToLower() == accountId.ToLower() && order.IsOpen == true)
                         .OrderBy(order => order.DueDate)
-                        .ToEnumerableAsync();
-                },
+                        .ToEnumerableAsync(),
                 new List<Order>()
             );
         }
@@ -220,12 +229,10 @@ namespace XamarinCRM.Clients
             return await Execute<IEnumerable<Order>>(
                 "TimeToGetAccountHistory",
                 async () =>
-                {
-                    return await _OrderTable
+                    await _OrderTable
                         .Where(order => order.AccountId.ToLower() == accountId.ToLower() && order.IsOpen == false)
                         .OrderByDescending(order => order.ClosedDate)
-                        .ToEnumerableAsync();
-                },
+                        .ToEnumerableAsync(),
                 new List<Order>()
             );
         }
@@ -235,10 +242,7 @@ namespace XamarinCRM.Clients
             return await Execute<IEnumerable<Order>>(
                 "TimeToGetAllOrders",
                 async () =>
-                {
-                    return await _OrderTable
-                        .ToEnumerableAsync();
-                },
+                    await _OrderTable.ToEnumerableAsync(),
                 new List<Order>()
             );
         }
@@ -260,7 +264,8 @@ namespace XamarinCRM.Clients
                     // Disabled in the backend service code as well.
                     // await _MobileServiceClient.SyncContext.PushAsync();
 
-                    await _CategoryTable.PullAsync(null, _CategoryTable.CreateQuery());
+                    await _CategoryTable
+                        .PullAsync(null, _CategoryTable.CreateQuery());
                 }
             );
         }
@@ -277,7 +282,8 @@ namespace XamarinCRM.Clients
                     // Disabled in the backend service code as well.
                     // await _MobileServiceClient.SyncContext.PushAsync();
 
-                    await _ProductTable.PullAsync(null, _ProductTable.CreateQuery());
+                    await _ProductTable
+                        .PullAsync(null, _ProductTable.CreateQuery());
                 }
             );
         }
@@ -290,9 +296,10 @@ namespace XamarinCRM.Clients
                 {
                     if (String.IsNullOrWhiteSpace(parentCategoryId))
                     {
-                        var rootCategories = await _CategoryTable
-                            .Where(category => category.ParentCategoryId == null)
-                            .ToEnumerableAsync();
+                        var rootCategories = 
+                            await _CategoryTable
+                                .Where(category => category.ParentCategoryId == null)
+                                .ToEnumerableAsync();
 
                         var rootCategory = rootCategories.SingleOrDefault();
 
@@ -300,17 +307,19 @@ namespace XamarinCRM.Clients
                         {
                             throw new Exception("The catalog category hierarchy contains no root. This should never happen.");
                         }
-                        return await _CategoryTable
-                            .Where(category => category.ParentCategoryId.ToLower() == rootCategory.Id.ToLower())
-                            .OrderBy(category => category.Sequence)
-                            .ToEnumerableAsync();
+                        return 
+                            await _CategoryTable
+                                .Where(category => category.ParentCategoryId.ToLower() == rootCategory.Id.ToLower())
+                                .OrderBy(category => category.Sequence)
+                                .ToEnumerableAsync();
                     }
                     else
                     {
-                        return await _CategoryTable
-                            .Where(category => category.ParentCategoryId.ToLower() == parentCategoryId.ToLower())
-                            .OrderBy(category => category.Sequence)
-                            .ToEnumerableAsync();
+                        return 
+                            await _CategoryTable
+                                .Where(category => category.ParentCategoryId.ToLower() == parentCategoryId.ToLower())
+                                .OrderBy(category => category.Sequence)
+                                .ToEnumerableAsync();
                     }
                 },
                 new List<Category>());
@@ -321,11 +330,9 @@ namespace XamarinCRM.Clients
             return await Execute<IEnumerable<Product>>(
                 "TimeToGetProducts", 
                 async () =>
-                {
-                    return await _ProductTable
+                    await _ProductTable
                         .Where(product => product.CategoryId.ToLower() == categoryId.ToLower())
-                        .ToEnumerableAsync();
-                }, 
+                        .ToEnumerableAsync(), 
                 new List<Product>());
         }
 
@@ -338,9 +345,10 @@ namespace XamarinCRM.Clients
                     if (String.IsNullOrWhiteSpace(topLevelCategoryId))
                         throw new ArgumentException("topLevelCategoryId must not be null or empty", "topLevelCategoryId");
 
-                    var rootCategories = await _CategoryTable
-                        .Where(category => category.ParentCategoryId == null)
-                        .ToEnumerableAsync();
+                    var rootCategories = 
+                        await _CategoryTable
+                            .Where(category => category.ParentCategoryId == null)
+                            .ToEnumerableAsync();
 
                     var rootCategory = rootCategories.SingleOrDefault();
 
@@ -349,9 +357,10 @@ namespace XamarinCRM.Clients
                         throw new Exception("The catalog category hierarchy contains no root. This should never happen.");
                     }
 
-                    var categories = await _CategoryTable
-                        .Where(category => category.Id.ToLower() == topLevelCategoryId.ToLower())
-                        .ToEnumerableAsync();
+                    var categories = 
+                        await _CategoryTable
+                            .Where(category => category.Id.ToLower() == topLevelCategoryId.ToLower())
+                            .ToEnumerableAsync();
 
                     var topLevelCategory = categories.SingleOrDefault();
 
@@ -386,9 +395,10 @@ namespace XamarinCRM.Clients
                 "TimeToGetProductByName", 
                 async () =>
                 {
-                    var products = await _ProductTable
-                        .Where(p => p.Name.ToLower() == productName.ToLower())
-                        .ToEnumerableAsync();
+                    var products = 
+                        await _ProductTable
+                            .Where(p => p.Name.ToLower() == productName.ToLower())
+                            .ToEnumerableAsync();
 
                     return products.SingleOrDefault();
                 },
@@ -402,11 +412,10 @@ namespace XamarinCRM.Clients
                 "TimeToSearchProducts", 
                 async () =>
                 {
-                    var products = await _ProductTable
-                        .Where(x =>
-                            x.Name.ToLower().Contains(searchTerm.ToLower()) ||
-                            x.Description.ToLower().Contains(searchTerm.ToLower()))
-                        .ToEnumerableAsync();
+                    var products = 
+                        await _ProductTable
+                            .Where(x => x.Name.ToLower().Contains(searchTerm.ToLower()) || x.Description.ToLower().Contains(searchTerm.ToLower()))
+                            .ToEnumerableAsync();
 
                     return products.Distinct();
                 },
@@ -419,7 +428,7 @@ namespace XamarinCRM.Clients
 
         #region some nifty helpers
 
-        private async Task Execute(string insightsIdentifier, Func<Task> execute)
+        static async Task Execute(string insightsIdentifier, Func<Task> execute)
         {
             try
             {
@@ -440,7 +449,7 @@ namespace XamarinCRM.Clients
             }
         }
 
-        private async Task<T> Execute<T>(string insightsIdentifier, Func<Task<T>> execute, T defaultReturnObject)
+        static async Task<T> Execute<T>(string insightsIdentifier, Func<Task<T>> execute, T defaultReturnObject)
         {
             try
             {
@@ -459,25 +468,26 @@ namespace XamarinCRM.Clients
                 Insights.Report(ex2, Insights.Severity.Error);
                 Debug.WriteLine(@"ERROR {0}", ex2.Message);
             }
-
             return defaultReturnObject;
         }
 
-        private async Task<IEnumerable<Category>> GetLeafLevelCategories(string id)
+        async Task<IEnumerable<Category>> GetLeafLevelCategories(string id)
         {
             var resultCategories = new List<Category>();
 
-            var categories = await _CategoryTable
-                .Where(c => c.Id == id)
-                .ToEnumerableAsync();
+            var categories = 
+                await _CategoryTable
+                    .Where(c => c.Id == id)
+                    .ToEnumerableAsync();
 
             var category = categories.SingleOrDefault();
 
             if (category.HasSubCategories)
             {
-                var subCategories = await _CategoryTable
-                    .Where(c => c.ParentCategoryId == category.Id)
-                    .ToEnumerableAsync();
+                var subCategories = 
+                    await _CategoryTable
+                        .Where(c => c.ParentCategoryId == category.Id)
+                        .ToEnumerableAsync();
 
                 foreach (var c in subCategories)
                 {
