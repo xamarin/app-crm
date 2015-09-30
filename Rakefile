@@ -3,6 +3,7 @@ task :default => ['build:ios', 'build:android']
 namespace :build do
 	desc "Build iOS App"
 	task :ios do
+		sh "pwd"
 		sh "nuget restore src/MobileApp/XamarinCRM.iOS/packages.config -PackagesDirectory src/MobileApp/packages/"
 		sh "nuget restore src/MobileApp/XamarinCRM.UITest/packages.config -PackagesDirectory src/MobileApp/packages/"
 		puts "iOS nugets restored"
