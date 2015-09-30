@@ -26,11 +26,13 @@ namespace XamarinCRMAndroid
 		
 		public static void UpdateIdValues()
 		{
-			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::XamarinCRMAndroid.Resource.String.ApplicationName;
-			global::Xamarin.Forms.Platform.Resource.String.Hello = global::XamarinCRMAndroid.Resource.String.Hello;
 			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.Id.agentWebView = global::XamarinCRMAndroid.Resource.Id.agentWebView;
 			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.Layout.WebAuthenticationBroker = global::XamarinCRMAndroid.Resource.Layout.WebAuthenticationBroker;
 			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.String.ApplicationName = global::XamarinCRMAndroid.Resource.String.ApplicationName;
+			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::XamarinCRMAndroid.Resource.String.ApplicationName;
+			global::Xamarin.Forms.Platform.Resource.String.Hello = global::XamarinCRMAndroid.Resource.String.Hello;
+			global::Lotz.Xam.Messaging.Resource.String.ApplicationName = global::XamarinCRMAndroid.Resource.String.ApplicationName;
+			global::Lotz.Xam.Messaging.Resource.String.Hello = global::XamarinCRMAndroid.Resource.String.Hello;
 		}
 		
 		public partial class Animation
@@ -1659,82 +1661,70 @@ namespace XamarinCRMAndroid
 			public const int ic_play_light = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int ic_plusone_medium_off_client = 2130837616;
+			public const int ic_setting_dark = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int ic_plusone_small_off_client = 2130837617;
+			public const int ic_setting_light = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int ic_plusone_standard_off_client = 2130837618;
+			public const int icon = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int ic_plusone_tall_off_client = 2130837619;
+			public const int info = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int ic_setting_dark = 2130837620;
+			public const int map_marker_android = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int ic_setting_light = 2130837621;
+			public const int mr_ic_cast_dark = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int icon = 2130837622;
+			public const int mr_ic_cast_light = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int info = 2130837623;
+			public const int mr_ic_media_route_connecting_mono_dark = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int map_marker_android = 2130837624;
+			public const int mr_ic_media_route_connecting_mono_light = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int mr_ic_cast_dark = 2130837625;
+			public const int mr_ic_media_route_mono_dark = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int mr_ic_cast_light = 2130837626;
+			public const int mr_ic_media_route_mono_light = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int mr_ic_media_route_connecting_mono_dark = 2130837627;
+			public const int mr_ic_pause_dark = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int mr_ic_media_route_connecting_mono_light = 2130837628;
+			public const int mr_ic_pause_light = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int mr_ic_media_route_mono_dark = 2130837629;
+			public const int mr_ic_play_dark = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int mr_ic_media_route_mono_light = 2130837630;
+			public const int mr_ic_play_light = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int mr_ic_pause_dark = 2130837631;
+			public const int mr_ic_settings_dark = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int mr_ic_pause_light = 2130837632;
-			
-			// aapt resource value: 0x7f020081
-			public const int mr_ic_play_dark = 2130837633;
-			
-			// aapt resource value: 0x7f020082
-			public const int mr_ic_play_light = 2130837634;
-			
-			// aapt resource value: 0x7f020083
-			public const int mr_ic_settings_dark = 2130837635;
-			
-			// aapt resource value: 0x7f020084
-			public const int mr_ic_settings_light = 2130837636;
-			
-			// aapt resource value: 0x7f020089
-			public const int notification_template_icon_bg = 2130837641;
+			public const int mr_ic_settings_light = 2130837632;
 			
 			// aapt resource value: 0x7f020085
-			public const int phone_android = 2130837637;
+			public const int notification_template_icon_bg = 2130837637;
 			
-			// aapt resource value: 0x7f020086
-			public const int splash = 2130837638;
+			// aapt resource value: 0x7f020081
+			public const int phone_android = 2130837633;
 			
-			// aapt resource value: 0x7f020087
-			public const int splashSlice = 2130837639;
+			// aapt resource value: 0x7f020082
+			public const int splash = 2130837634;
 			
-			// aapt resource value: 0x7f020088
-			public const int xamarin_logo_plus_name_inline = 2130837640;
+			// aapt resource value: 0x7f020083
+			public const int splashSlice = 2130837635;
+			
+			// aapt resource value: 0x7f020084
+			public const int xamarin_logo_plus_name_inline = 2130837636;
 			
 			static Drawable()
 			{
@@ -2313,8 +2303,8 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f050042
 			public const int GoogleMapsKey = 2131034178;
 			
-			// aapt resource value: 0x7f050041
-			public const int Hello = 2131034177;
+			// aapt resource value: 0x7f05003f
+			public const int Hello = 2131034175;
 			
 			// aapt resource value: 0x7f05000b
 			public const int abc_action_bar_home_description = 2131034123;
@@ -2367,8 +2357,8 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f05001b
 			public const int abc_toolbar_collapse_description = 2131034139;
 			
-			// aapt resource value: 0x7f05003f
-			public const int app_name = 2131034175;
+			// aapt resource value: 0x7f050041
+			public const int app_name = 2131034177;
 			
 			// aapt resource value: 0x7f05001e
 			public const int auth_google_play_services_client_facebook_display_name = 2131034142;

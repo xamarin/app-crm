@@ -1,11 +1,11 @@
 ﻿using System;
 using Xamarin.Forms;
-using XamarinCRM.Interfaces;
 using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Base;
 using XamarinCRM.Views.Custom;
+using Lotz.Xam.Messaging;
 
 namespace XamarinCRM
 {
@@ -93,14 +93,9 @@ namespace XamarinCRM
                     accept: TextResources.Customers_Detail_CallDialog_Accept,
                     cancel: TextResources.Customers_Detail_CallDialog_Cancel))
             {
-                var dialer = DependencyService.Get<IDialer>();
-
-                phoneNumber = phoneNumber.Replace("-", "");
-
-                if (dialer == null)
-                    return;
-
-                dialer.Dial(phoneNumber);
+                var phoneCallTask = MessagingPlugin.PhoneDialer;
+                if (phoneCallTask.CanMakePhoneCall) 
+                    phoneCallTask.MakePhoneCall(phoneNumber.Replace("-", ""));
             }
         }
     }

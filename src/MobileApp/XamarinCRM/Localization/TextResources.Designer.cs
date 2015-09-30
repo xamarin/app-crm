@@ -89,6 +89,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_DeliverConfirmTitle {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_DeliverConfirmTitle", resourceCulture);
+            }
+        }
+        
         internal static string Exit {
             get {
                 return ResourceManager.GetString("Exit", resourceCulture);
@@ -143,9 +149,9 @@ namespace XamarinCRM {
             }
         }
         
-        internal static string Save {
+        internal static string Customers_Orders_Tab_Title {
             get {
-                return ResourceManager.GetString("Save", resourceCulture);
+                return ResourceManager.GetString("Customers_Orders_Tab_Title", resourceCulture);
             }
         }
         
@@ -323,6 +329,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string NoPosition_Alert_Confirm {
+            get {
+                return ResourceManager.GetString("NoPosition_Alert_Confirm", resourceCulture);
+            }
+        }
+        
         internal static string Customers_Orders_EditOrder_Save {
             get {
                 return ResourceManager.GetString("Customers_Orders_EditOrder_Save", resourceCulture);
@@ -395,9 +407,9 @@ namespace XamarinCRM {
             }
         }
         
-        internal static string Customers_Orders_EditOrder_ExitConfirmDescription {
+        internal static string Customers_Orders_EditOrder_PriceTitleLabel {
             get {
-                return ResourceManager.GetString("Customers_Orders_EditOrder_ExitConfirmDescription", resourceCulture);
+                return ResourceManager.GetString("Customers_Orders_EditOrder_PriceTitleLabel", resourceCulture);
             }
         }
         
@@ -422,6 +434,12 @@ namespace XamarinCRM {
         internal static string NetworkConnection_Alert_Confirm {
             get {
                 return ResourceManager.GetString("NetworkConnection_Alert_Confirm", resourceCulture);
+            }
+        }
+        
+        internal static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         
@@ -455,9 +473,9 @@ namespace XamarinCRM {
             }
         }
         
-        internal static string Customers_Orders_Tab_Title {
+        internal static string NoPosition_Alert_Title {
             get {
-                return ResourceManager.GetString("Customers_Orders_Tab_Title", resourceCulture);
+                return ResourceManager.GetString("NoPosition_Alert_Title", resourceCulture);
             }
         }
         
@@ -467,15 +485,15 @@ namespace XamarinCRM {
             }
         }
         
-        internal static string Customers_Orders_EditOrder_ProductEntryPlaceholder {
+        internal static string NoPosition_Alert_Message {
             get {
-                return ResourceManager.GetString("Customers_Orders_EditOrder_ProductEntryPlaceholder", resourceCulture);
+                return ResourceManager.GetString("NoPosition_Alert_Message", resourceCulture);
             }
         }
         
-        internal static string Customers_Orders_EditOrder_PriceTitleLabel {
+        internal static string Splash_PasswordTitleLabel {
             get {
-                return ResourceManager.GetString("Customers_Orders_EditOrder_PriceTitleLabel", resourceCulture);
+                return ResourceManager.GetString("Splash_PasswordTitleLabel", resourceCulture);
             }
         }
         
@@ -485,15 +503,21 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string Customers_Orders_EditOrder_ProductEntryPlaceholder {
+            get {
+                return ResourceManager.GetString("Customers_Orders_EditOrder_ProductEntryPlaceholder", resourceCulture);
+            }
+        }
+        
         internal static string Leads_SaveConfirmDescription {
             get {
                 return ResourceManager.GetString("Leads_SaveConfirmDescription", resourceCulture);
             }
         }
         
-        internal static string Customers_Orders_EditOrder_DeliverConfirmTitle {
+        internal static string Customers_Orders_EditOrder_ExitConfirmDescription {
             get {
-                return ResourceManager.GetString("Customers_Orders_EditOrder_DeliverConfirmTitle", resourceCulture);
+                return ResourceManager.GetString("Customers_Orders_EditOrder_ExitConfirmDescription", resourceCulture);
             }
         }
         
@@ -554,12 +578,6 @@ namespace XamarinCRM {
         internal static string NetworkConnection_Alert_Message {
             get {
                 return ResourceManager.GetString("NetworkConnection_Alert_Message", resourceCulture);
-            }
-        }
-        
-        internal static string Splash_PasswordTitleLabel {
-            get {
-                return ResourceManager.GetString("Splash_PasswordTitleLabel", resourceCulture);
             }
         }
         

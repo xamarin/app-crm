@@ -7,7 +7,6 @@
     <OutputType>Library</OutputType>
     <RootNamespace>XamarinCRM.UITest</RootNamespace>
     <AssemblyName>XamarinCRM.UITest</AssemblyName>
-    <ReleaseVersion>2.0</ReleaseVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
