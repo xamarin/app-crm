@@ -40,8 +40,11 @@ namespace XamarinCRM.UITest
         {
             app.Tap(PriceField);
             app.ClearText();
-            app.EnterText("$" + amount.ToString());
-            app.PressEnter();
+            app.EnterText(amount.ToString());
+            if (OnAndroid)
+                app.PressEnter();
+            if (OniOS)
+                app.DismissKeyboard();
 
             return this;
         }
