@@ -109,6 +109,12 @@ Global
 		{83491F6D-BA09-477D-9DC0-3E670794579F} = {74033BF4-FAF4-4FA6-8615-9257BB03A3F8}
 		{6FDED745-BC57-4153-A591-8366001ACB63} = {D13AD9AC-245A-482B-BDD8-CB0C1E6F1ED4}
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.StandardHeader = $1
+		$1.Text = @\n Copyright ${Year}  ${CopyrightHolder}\n\n   Licensed under the Apache License, Version 2.0 (the "License");\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n       http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an "AS IS" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.
+		$1.IncludeInNewFiles = True
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
