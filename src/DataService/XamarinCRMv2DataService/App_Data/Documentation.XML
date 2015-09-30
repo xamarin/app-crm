@@ -37,5 +37,10 @@
             Products API.
             </summary>
         </member>
+        <member name="T:XamarinCRMv2DataService.RefreshOrdersJob">
+            <summary>
+            Reresh the dates on the orders.
+            </summary>
+        </member>
     </members>
 </doc>
