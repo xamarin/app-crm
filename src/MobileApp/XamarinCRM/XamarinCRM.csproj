@@ -161,7 +161,6 @@
     <None Include="packages.config" />
     <None Include="ConfigTemplate\config-sensitive.xml" />
     <None Include="Localization\TextResources.resx" />
-    <None Include="PluginsHelp\ConnectivityReadme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
