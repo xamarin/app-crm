@@ -8,7 +8,7 @@ using System.Web.Http;
 using Microsoft.WindowsAzure.Mobile.Service;
 using Microsoft.WindowsAzure.Mobile.Service.ScheduledJobs;
 using XamarinCRM.Models;
-using XamarinCRMv2DataService.Model;
+using XamarinCRMv2DataService.DataAccess;
 
 namespace XamarinCRMv2DataService
 {

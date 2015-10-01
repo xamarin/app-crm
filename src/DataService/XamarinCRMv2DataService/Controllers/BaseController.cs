@@ -2,7 +2,7 @@
 using System.Web.Http.Controllers;
 using Microsoft.WindowsAzure.Mobile.Service;
 using Microsoft.WindowsAzure.Mobile.Service.Description;
-using XamarinCRMv2DataService.Model;
+using XamarinCRMv2DataService.DataAccess;
 
 namespace XamarinCRMv2DataService.Controllers
 {

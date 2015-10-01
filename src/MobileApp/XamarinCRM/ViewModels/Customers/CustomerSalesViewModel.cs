@@ -77,7 +77,10 @@ namespace XamarinCRM
 
             IsBusy = true;
 
-            await _DataClient.SeedLocalDataAsync();
+            if (!_DataClient.IsSeeded)
+            {
+                await _DataClient.SeedLocalDataAsync();
+            }
 
             Orders.Clear();
             Orders.AddRange((await _DataClient.GetAllOrdersAsync()).Where(x => x.AccountId == account.Id));

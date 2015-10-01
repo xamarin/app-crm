@@ -196,7 +196,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Models\MobileServiceContext.cs" />
+    <Compile Include="DataAccess\MobileServiceContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\mobile-XamarinCRMv2-CatalogDataService-dev.pubxml" />
+    <None Include="Properties\PublishProfiles\mobile-XamarinCRMv2DataService %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\mobile-XamarinCRMv2DataService-dev.pubxml" />
     <None Include="Properties\PublishProfiles\mobile-XamarinCRMv2DataService.pubxml" />
     <None Include="Properties\PublishProfiles\XamarinCRMv2-CatalogDataService_Debug.pubxml" />

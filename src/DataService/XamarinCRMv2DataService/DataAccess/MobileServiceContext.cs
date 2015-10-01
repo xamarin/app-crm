@@ -5,7 +5,7 @@ using Microsoft.WindowsAzure.Mobile.Service;
 using Microsoft.WindowsAzure.Mobile.Service.Tables;
 using XamarinCRM.Models;
 
-namespace XamarinCRMv2DataService.Model
+namespace XamarinCRMv2DataService.DataAccess
 {
 
     public class MobileServiceContext : DbContext

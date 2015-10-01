@@ -61,6 +61,14 @@ namespace XamarinCRM.Models
         public string ImageUrl { get; set; }
 
         [JsonIgnore]
+        public static string[] IndustryTypes = { "None Selected", "Aerospace", "Education", "Electrical", "Entertainment", "Financial Services", "Logistic", "Healthcare", "Manufacturing", "Retail", "Other" };
+
+        [JsonIgnore]
+        public static string[] OpportunityStages = { "10% - Prospect", "50% - Value Proposition", "75% - Proposal", "100% - Closed" };
+
+
+#if !SERVICE
+        [JsonIgnore]
         public double OpportunityStagePercent
         {
             get
@@ -82,19 +90,13 @@ namespace XamarinCRM.Models
                 return result;
             }
         }
-
-        [JsonIgnore]
-        public static string[] IndustryTypes = { "None Selected", "Aerospace", "Education", "Electrical", "Entertainment", "Financial Services", "Logistic", "Healthcare", "Manufacturing", "Retail", "Other" };
-
+            
         [JsonIgnore]
         public int IndustryTypeCurrentIndex
         {
             get { return IndustryTypes.ToList().IndexOf(Industry); }
             set { Industry = IndustryTypes[value]; }
         }
-
-        [JsonIgnore]
-        public static string[] OpportunityStages = { "10% - Prospect", "50% - Value Proposition", "75% - Proposal", "100% - Closed" };
 
         [JsonIgnore]
         public int OpportunityStageCurrentIndex
@@ -154,5 +156,7 @@ namespace XamarinCRM.Models
         {
             return FirstName + " " + LastName;
         }
+
+#endif
     }
 }
