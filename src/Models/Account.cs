@@ -16,7 +16,7 @@ using System;
 using System.Linq;
 using Newtonsoft.Json;
 
-// The model class files are hared between the mobile and service projects. 
+// The model class files are shared between the mobile and service projects. 
 // If EntityData were compatible with PCL profile 78, the models could be in a PCL.
 
 #if SERVICE
