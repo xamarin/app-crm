@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinCRMv2DataService", "XamarinCRMv2DataService\XamarinCRMv2DataService.csproj", "{4A130AEF-69ED-403C-9D5D-681A8B6D95CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinCRM.Models", "XamarinCRM.Models\XamarinCRM.Models.csproj", "{A6D64BD9-3DF3-425C-9B89-8E474CE398A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4A130AEF-69ED-403C-9D5D-681A8B6D95CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A130AEF-69ED-403C-9D5D-681A8B6D95CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A130AEF-69ED-403C-9D5D-681A8B6D95CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6D64BD9-3DF3-425C-9B89-8E474CE398A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6D64BD9-3DF3-425C-9B89-8E474CE398A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6D64BD9-3DF3-425C-9B89-8E474CE398A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D64BD9-3DF3-425C-9B89-8E474CE398A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

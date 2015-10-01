@@ -50,7 +50,6 @@
     <Compile Include="Properties\Attributes\DisplayAttribute.cs" />
     <Compile Include="Services\AuthInfo.cs" />
     <Compile Include="Localization\TranslateExtension.cs" />
-    <Compile Include="Localization\ILocalization.cs" />
     <Compile Include="Converters\ToUpperConverter.cs" />
     <Compile Include="Views\Sales\LeadListHeaderView.cs" />
     <Compile Include="Views\Sales\LeadListView.cs" />
@@ -98,9 +97,6 @@
     <Compile Include="ViewModels\Customers\OrderDetailViewModel.cs" />
     <Compile Include="Pages\Customers\CustomerTabbedPage.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
-    <Compile Include="Localization\TextResources.Designer.cs">
-      <DependentUpon>TextResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Converters\InvertedBooleanConverter.cs" />
     <Compile Include="Views\Customers\CustomerDetailContactView.cs" />
     <Compile Include="Views\Customers\CustomerDetailPhoneView.cs" />
@@ -151,19 +147,23 @@
       <DependentUpon>SplashPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Splash\SplashViewModel.cs" />
+    <Compile Include="Localization\TextResources.Designer.cs">
+      <DependentUpon>TextResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\ILocalize.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <ItemGroup>
     <EmbeddedResource Include="Config\config.xml" />
     <EmbeddedResource Include="Config\config-sensitive.xml" />
+    <EmbeddedResource Include="Pages\Splash\SplashPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Include="Localization\TextResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
       <LogicalName>XamarinCRM.TextResources.resources</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Splash\SplashPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -258,4 +258,10 @@
   <Target Name="EnsureSenstiveConfigXmlExists" BeforeTargets="PrepareForBuild">
     <Copy SourceFiles="$(ProjectDir)\ConfigTemplate\config-sensitive.xml" DestinationFolder="$(ProjectDir)\Config" Condition="!Exists('$(ProjectDir)\Config\config-sensitive.xml')" />
   </Target>
+  <ItemGroup>
+    <ProjectReference Include="..\XamarinCRM.Models\XamarinCRM.Models.csproj">
+      <Project>{4A17F005-E21F-4D4E-B020-E94CCACBFE26}</Project>
+      <Name>XamarinCRM.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
