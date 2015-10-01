@@ -5,7 +5,7 @@ namespace XamarinCRM.UITest
     public static class AppInitializer
     {
         const string apiKey = "YOUR_API_KEY";
-        const string apkPath = "../../../XamarinCRM.Android/bin/Debug/com.xamarin.xamarincrm-Signed.apk";
+        const string apkPath = "../../../XamarinCRM.Android/bin/Release/com.xamarin.xamarincrm-Signed.apk";
         const string appFile = "../../../XamarinCRM.iOS/bin/iPhoneSimulator/Debug/XamarinCRMiOS.app";
         const string bundleId = "com.xamarin.xamarincrm";
 
