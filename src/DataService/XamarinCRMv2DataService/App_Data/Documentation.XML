@@ -4,11 +4,11 @@
         <name>XamarinCRMv2DataService</name>
     </assembly>
     <members>
-        <member name="M:XamarinCRMv2DataService.MobileServiceInitializer.Seed(XamarinCRMv2DataService.Models.MobileServiceContext)">
+        <member name="M:XamarinCRMv2DataService.MobileServiceInitializer.Seed(XamarinCRMv2DataService.Model.MobileServiceContext)">
             <summary>
             Use this method to populate the data context with data.
             </summary>
-            <param name="context">A <see cref="T:XamarinCRMv2DataService.Models.MobileServiceContext"/></param>
+            <param name="context">A <see cref="T:XamarinCRMv2DataService.Model.MobileServiceContext"/></param>
         </member>
         <member name="T:XamarinCRMv2DataService.Controllers.AccountController">
             <summary>
@@ -39,7 +39,7 @@
         </member>
         <member name="T:XamarinCRMv2DataService.RefreshOrdersJob">
             <summary>
-            Reresh the dates on the orders.
+            Reresh the dates on the orders. Via the Azure dashboard for the service, add a new scheduled job called RefreshOrders. The scheduler will link to the RefreshOrdersJob class by convention ([Your]Job).
             </summary>
         </member>
     </members>

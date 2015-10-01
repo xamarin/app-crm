@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Mobile.Service;
-using XamarinCRMv2DataService.DataObjects;
-using XamarinCRMv2DataService.Models;
+using XamarinCRM.Models;
+using XamarinCRMv2DataService.Model;
 
 namespace XamarinCRMv2DataService
 {
