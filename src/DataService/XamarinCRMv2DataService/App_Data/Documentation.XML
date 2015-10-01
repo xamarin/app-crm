@@ -4,11 +4,11 @@
         <name>XamarinCRMv2DataService</name>
     </assembly>
     <members>
-        <member name="M:XamarinCRMv2DataService.MobileServiceInitializer.Seed(XamarinCRMv2DataService.Model.MobileServiceContext)">
+        <member name="M:XamarinCRMv2DataService.MobileServiceInitializer.Seed(XamarinCRMv2DataService.DataAccess.MobileServiceContext)">
             <summary>
             Use this method to populate the data context with data.
             </summary>
-            <param name="context">A <see cref="T:XamarinCRMv2DataService.Model.MobileServiceContext"/></param>
+            <param name="context">A <see cref="T:XamarinCRMv2DataService.DataAccess.MobileServiceContext"/></param>
         </member>
         <member name="T:XamarinCRMv2DataService.Controllers.AccountController">
             <summary>
