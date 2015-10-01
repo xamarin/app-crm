@@ -25,7 +25,7 @@ namespace :build do
 		addMaptoManifest("src/MobileApp/XamarinCRM.Android/Properties/AndroidManifest.xml")
 		puts "Maps added to manifest"
 		puts "Building XamarinCRM.Android"
-		sh "xbuild /t:SignAndroidPackage /p:Configuration=Release src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj"
+		sh "xbuild /t:SignAndroidPackage /p:Configuration=Debug src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj"
 		puts
 		puts "Checking for Insights on Android"
 		sh "cat src/MobileApp/XamarinCRM.Android/MainActivity.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
