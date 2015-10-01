@@ -24,7 +24,7 @@ namespace XamarinCRM
 {
     public class SalesDashboardChartView : ModelBoundContentView<SalesDashboardChartViewModel>
     {
-        static Color MajorAxisAndLableColor
+        static Color MajorAxisAndLabelColor
         {
             get { return Device.OnPlatform(Palette._011, Palette._008, Color.White); }
         }
@@ -71,13 +71,13 @@ namespace XamarinCRM
                         {
                             OpposedPosition = false,
                             ShowMajorGridLines = true,
-                            MajorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
+                            MajorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLabelColor },
                             ShowMinorGridLines = true,
                             MinorTicksPerInterval = 1,
-                            MinorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLableColor },
+                            MinorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLabelColor },
                             LabelStyle = new ChartAxisLabelStyle()
                                 { 
-                                    TextColor = MajorAxisAndLableColor, 
+                                    TextColor = MajorAxisAndLabelColor, 
                                     LabelFormat = "$0"
                                 }
                         },
@@ -96,7 +96,7 @@ namespace XamarinCRM
                             LabelPlacement = LabelPlacement.BetweenTicks,
                             TickPosition = AxisElementPosition.Inside,
                             ShowMajorGridLines = false,
-                            LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLableColor }
+                            LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLabelColor }
                         },
 
                     BackgroundColor = Color.Transparent
@@ -110,14 +110,16 @@ namespace XamarinCRM
             // wrapping it in a ContentView and adding some right padding to compensate.
             ContentView chartWrapper = new ContentView() { Content = chart };
 
+
+
             StackLayout stackLayout = new UnspacedStackLayout()
                 {
                     Children =
                         {
-                            chartHeaderView,
                             loadingLabel,
                             chartActivityIndicator,
-                            chartWrapper
+                            chartHeaderView,
+                            chartWrapper,
                         }
                     };
             #endregion

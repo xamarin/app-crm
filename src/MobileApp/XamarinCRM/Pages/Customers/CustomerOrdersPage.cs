@@ -133,9 +133,9 @@ namespace XamarinCRM.Pages.Customers
         {
             base.OnAppearing();
 
-            Insights.Track("Customer Orders Page");
-
             ViewModel.LoadOrdersCommand.Execute(null);
+
+            Insights.Track(InsightsReportingConstants.PAGE_CUSTOMERORDERS);
         }
 
         async void AddNewOrderTapped()

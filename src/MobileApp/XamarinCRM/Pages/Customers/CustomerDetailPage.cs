@@ -17,6 +17,8 @@ using XamarinCRM.Layouts;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Customers;
 using XamarinCRM.Pages.Base;
+using Xamarin;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.Pages.Customers
 {
@@ -37,6 +39,13 @@ namespace XamarinCRM.Pages.Customers
             };
 
             Content = new ScrollView() { Content = stackLayout };
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            Insights.Track(InsightsReportingConstants.PAGE_CUSTOMERDETAIL);
         }
     }
 }

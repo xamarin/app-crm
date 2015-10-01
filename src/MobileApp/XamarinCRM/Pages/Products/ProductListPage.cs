@@ -19,6 +19,7 @@ using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.Models;
+using Xamarin;
 
 namespace XamarinCRM.Pages.Products
 {
@@ -63,6 +64,8 @@ namespace XamarinCRM.Pages.Products
             ViewModel.LoadProductsCommand.Execute(ViewModel.CategoryId);
 
             ViewModel.IsInitialized = true;
+
+            Insights.Track(InsightsReportingConstants.PAGE_PRODUCTLIST);
         }
     }
 }
