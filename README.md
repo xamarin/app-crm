@@ -6,6 +6,15 @@ Xamarin CRM is open sourced under [Apache License 2.0](http://www.apache.org/lic
 
 ![](Preview.png)
 
+####Two ways to try it out:
+1) You can download and build the app code source as-is, preconfigured to consume our Azure service instance. 
+
+__OR__ 
+
+2) You can easily create your own fully-functional (but temporary) service instance via Microsoft's Azure App Service [__Try It Now__](https://tryappservice.azure.com/en-us) experience: https://tryappservice.azure.com/en-us. Select 'Xamarin CRM' in step 2:
+
+![](XamarinCRM_TryItNow.png)
+
 ####Supported platforms: iOS and Android
 
 ####The app architecture consists of two parts:
