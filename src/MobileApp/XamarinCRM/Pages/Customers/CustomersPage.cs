@@ -75,14 +75,14 @@ namespace XamarinCRM.Pages.Customers
         {
             base.OnAppearing();
 
-            Insights.Track("Customers Page");
-
             if (ViewModel.IsInitialized)
             {
                 return;
             }
             ViewModel.LoadAccountsCommand.Execute(null);
             ViewModel.IsInitialized = true;
+
+            Insights.Track(InsightsReportingConstants.PAGE_CUSTOMERS);
         }
 
         async Task PushTabbedPage(Account account = null)

@@ -107,7 +107,7 @@ namespace XamarinCRM.Pages.Customers
                 ViewModel.IsInitialized = true;
             }
 
-            Insights.Track("Customer Sales Page");
+            Insights.Track(InsightsReportingConstants.PAGE_CUSTOMERSALES);
         }
     }
 }

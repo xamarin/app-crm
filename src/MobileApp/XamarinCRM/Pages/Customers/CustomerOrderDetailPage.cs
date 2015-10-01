@@ -22,6 +22,7 @@ using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Custom;
 using XamarinCRM.ViewModels.Products;
+using Xamarin;
 
 namespace XamarinCRM.Pages.Customers
 {
@@ -317,6 +318,8 @@ namespace XamarinCRM.Pages.Customers
             } 
 
             await ViewModel.ExecuteLoadOrderItemImageUrlCommand();
+
+            Insights.Track(InsightsReportingConstants.PAGE_CUSTOMERORDERDETAIL);
         }
 
         void SetToolBarItems()

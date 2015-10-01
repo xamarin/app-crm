@@ -20,6 +20,7 @@ using XamarinCRM.Statics;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.ViewModels.Splash;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Xamarin;
 
 namespace XamarinCRM.Pages.Splash
 {
@@ -76,6 +77,8 @@ namespace XamarinCRM.Pages.Splash
                     XamarinLogo.FadeTo(1, (uint)App.AnimationSpeed, Easing.SinIn), 
                     InfoButton.FadeTo(1, (uint)App.AnimationSpeed, Easing.SinIn) 
                 });
+
+            Insights.Track(InsightsReportingConstants.PAGE_SPLASH);
         }
 
         async Task<bool> Authenticate()

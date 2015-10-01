@@ -24,6 +24,7 @@ using Xamarin;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
 using XamarinCRM.Models;
+using XamarinCRM.Statics;
 
 [assembly: Dependency(typeof(DataClient))]
 
@@ -90,11 +91,11 @@ namespace XamarinCRM.Clients
 
         public async Task SeedLocalDataAsync()
         {                
-            string dbSyncInsightsIdentifier = "TimeToIncrementallySyncDB";
+            string dbSyncInsightsIdentifier = InsightsReportingConstants.TIME_DB_SYNC_INCREMENTAL;
 
             if (!LocalDBExists)
             {
-                dbSyncInsightsIdentifier = "TimeToInitiallySyncDB";
+                dbSyncInsightsIdentifier = InsightsReportingConstants.TIME_DB_SYNC_INITIAL;
             }
 
             await Execute(
@@ -122,7 +123,7 @@ namespace XamarinCRM.Clients
         public async Task SynchronizeOrdersAsync()
         {
             await Execute(
-                "TimeToSynchronizeOrders",
+                InsightsReportingConstants.TIME_ORDERS_SYNC,
                 async () =>
                 {
                     if (!LocalDBExists)
@@ -142,7 +143,7 @@ namespace XamarinCRM.Clients
         public async Task SaveOrderAsync(Order item)
         {
             await Execute(
-                "TimeToSaveOrder",
+                InsightsReportingConstants.TIME_ORDERS_SAVE_SINGLE,
                 async () =>
                 {
                     if (item.Id == null)
@@ -156,9 +157,45 @@ namespace XamarinCRM.Clients
         public async Task DeleteOrderAsync(Order item)
         {
             await Execute(
-                "TimeToDeleteOrder",
+                InsightsReportingConstants.TIME_ORDERS_DELETE_SINGLE,
                 async () =>
                     await _OrderTable.DeleteAsync(item)
+            );
+        }
+
+        public async Task<IEnumerable<Order>> GetOpenOrdersForAccountAsync(string accountId)
+        {
+            return await Execute<IEnumerable<Order>>(
+                InsightsReportingConstants.TIME_ORDERS_GET_OPEN,
+                async () =>
+                    await _OrderTable
+                        .Where(order => order.AccountId.ToLower() == accountId.ToLower() && order.IsOpen == true)
+                        .OrderBy(order => order.DueDate)
+                        .ToEnumerableAsync(),
+                    new List<Order>()
+            );
+        }
+
+        public async Task<IEnumerable<Order>> GetClosedOrdersForAccountAsync(string accountId)
+        {
+            return await Execute<IEnumerable<Order>>(
+                InsightsReportingConstants.TIME_ORDERS_GET_CLOSED,
+                async () =>
+                await _OrderTable
+                .Where(order => order.AccountId.ToLower() == accountId.ToLower() && order.IsOpen == false)
+                .OrderByDescending(order => order.ClosedDate)
+                .ToEnumerableAsync(),
+                new List<Order>()
+            );
+        }
+
+        public async Task<IEnumerable<Order>> GetAllOrdersAsync()
+        {
+            return await Execute<IEnumerable<Order>>(
+                InsightsReportingConstants.TIME_ORDERS_GET_ALL,
+                async () =>
+                    await _OrderTable.ToEnumerableAsync(),
+                    new List<Order>()
             );
         }
 
@@ -170,7 +207,7 @@ namespace XamarinCRM.Clients
         public async Task SynchronizeAccountsAsync()
         {
             await Execute(
-                "TimeToSynchronizeAccounts",
+                InsightsReportingConstants.TIME_ACCOUNTS_SYNC,
                 async () =>
                 {
                     if (!LocalDBExists)
@@ -190,7 +227,7 @@ namespace XamarinCRM.Clients
         public async Task SaveAccountAsync(Account item)
         {
             await Execute(
-                "TimeToSaveAccount",
+                InsightsReportingConstants.TIME_ACCOUNTS_SAVE_SINGLE,
                 async () =>
                 {
                     if (item.Id == null)
@@ -204,7 +241,7 @@ namespace XamarinCRM.Clients
         public async Task DeleteAccountAsync(Account item)
         {
             await Execute(
-                "TimeToDeleteAccount",
+                InsightsReportingConstants.TIME_ACCOUNTS_DELETE_SINGLE,
                 async () => 
                     await _AccountTable.DeleteAsync(item)
             );
@@ -213,7 +250,7 @@ namespace XamarinCRM.Clients
         public async Task<IEnumerable<Account>> GetAccountsAsync(bool leads = false)
         {
             return await Execute<IEnumerable<Account>>(
-                "TimeToGetAccountList",
+                InsightsReportingConstants.TIME_ACCOUNTS_GET_ALL,
                 async () =>
                     await _AccountTable
                         .Where(account => account.IsLead == leads).OrderBy(b => b.Company)
@@ -222,51 +259,15 @@ namespace XamarinCRM.Clients
             );
         }
 
-        public async Task<IEnumerable<Order>> GetOpenOrdersForAccountAsync(string accountId)
-        {
-            return await Execute<IEnumerable<Order>>(
-                "TimeToGetOrders",
-                async () =>
-                    await _OrderTable
-                        .Where(order => order.AccountId.ToLower() == accountId.ToLower() && order.IsOpen == true)
-                        .OrderBy(order => order.DueDate)
-                        .ToEnumerableAsync(),
-                new List<Order>()
-            );
-        }
-
-        public async Task<IEnumerable<Order>> GetClosedOrdersForAccountAsync(string accountId)
-        {
-            return await Execute<IEnumerable<Order>>(
-                "TimeToGetAccountHistory",
-                async () =>
-                    await _OrderTable
-                        .Where(order => order.AccountId.ToLower() == accountId.ToLower() && order.IsOpen == false)
-                        .OrderByDescending(order => order.ClosedDate)
-                        .ToEnumerableAsync(),
-                new List<Order>()
-            );
-        }
-
-        public async Task<IEnumerable<Order>> GetAllOrdersAsync()
-        {
-            return await Execute<IEnumerable<Order>>(
-                "TimeToGetAllOrders",
-                async () =>
-                    await _OrderTable.ToEnumerableAsync(),
-                new List<Order>()
-            );
-        }
-
         #endregion
 
 
-        #region product catalog data
+        #region Categories
 
         public async Task SynchronizeCategoriesAsync()
         {
             await Execute(
-                "TimeToSynchronizeCategories",
+                InsightsReportingConstants.TIME_CATEGORIES_SYNC,
                 async () =>
                 {
                     if (!LocalDBExists)
@@ -284,31 +285,10 @@ namespace XamarinCRM.Clients
             );
         }
 
-        public async Task SynchronizeProductsAsync()
-        {
-            await Execute(
-                "TimeToSynchronizeProducts",
-                async () =>
-                {
-                    if (!LocalDBExists)
-                    {    
-                        await Init();
-                    }
-
-                    // For public demo, only allow pull, not push.
-                    // Disabled in the backend service code as well.
-                    // await _MobileServiceClient.SyncContext.PushAsync();
-
-                    await _ProductTable
-                        .PullAsync("syncProducts", _ProductTable.CreateQuery());
-                }
-            );
-        }
-
         public async Task<IEnumerable<Category>> GetCategoriesAsync(string parentCategoryId = null)
         {
             return await Execute<IEnumerable<Category>>(
-                "TimeToGetCategories",
+                InsightsReportingConstants.TIME_CATEGORIES_GET,
                 async () =>
                 {
                     if (String.IsNullOrWhiteSpace(parentCategoryId))
@@ -342,10 +322,36 @@ namespace XamarinCRM.Clients
                 new List<Category>());
         }
 
+        #endregion
+
+
+        #region Products
+
+        public async Task SynchronizeProductsAsync()
+        {
+            await Execute(
+                InsightsReportingConstants.TIME_PRODUCTS_SYNC,
+                async () =>
+                {
+                    if (!LocalDBExists)
+                    {    
+                        await Init();
+                    }
+
+                    // For public demo, only allow pull, not push.
+                    // Disabled in the backend service code as well.
+                    // await _MobileServiceClient.SyncContext.PushAsync();
+
+                    await _ProductTable
+                        .PullAsync("syncProducts", _ProductTable.CreateQuery());
+                }
+            );
+        }
+
         public async Task<IEnumerable<Product>> GetProductsAsync(string categoryId)
         {
             return await Execute<IEnumerable<Product>>(
-                "TimeToGetProducts", 
+                InsightsReportingConstants.TIME_PRODUCTS_GET, 
                 async () =>
                     await _ProductTable
                         .Where(product => product.CategoryId.ToLower() == categoryId.ToLower())
@@ -356,7 +362,7 @@ namespace XamarinCRM.Clients
         public async Task<IEnumerable<Product>> GetAllChildProductsAsync(string topLevelCategoryId)
         {
             return await Execute<IEnumerable<Product>>(
-                "TimeToGetAllChildProducts", 
+                InsightsReportingConstants.TIME_PRODUCTS_GET_ALLCHILDREN, 
                 async () =>
                 {
                     if (String.IsNullOrWhiteSpace(topLevelCategoryId))
@@ -409,7 +415,7 @@ namespace XamarinCRM.Clients
         public async Task<Product> GetProductByNameAsync(string productName)
         {
             return await Execute<Product>(
-                "TimeToGetProductByName", 
+                InsightsReportingConstants.TIME_PRODUCTS_GET_BYNAME, 
                 async () =>
                 {
                     var products = 
@@ -426,7 +432,7 @@ namespace XamarinCRM.Clients
         public async Task<IEnumerable<Product>> SearchAsync(string searchTerm)
         {
             return await Execute<IEnumerable<Product>>(
-                "TimeToSearchProducts", 
+                InsightsReportingConstants.TIME_PRODUCTS_SEARCH, 
                 async () =>
                 {
                     var products = 

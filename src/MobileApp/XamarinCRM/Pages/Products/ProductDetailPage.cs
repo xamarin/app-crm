@@ -16,6 +16,8 @@ using XamarinCRM.Views.Products;
 using Xamarin.Forms;
 using XamarinCRM.Layouts;
 using XamarinCRM.Models;
+using Xamarin;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.Pages.Products
 {
@@ -59,6 +61,13 @@ namespace XamarinCRM.Pages.Products
                 }
             };
             #endregion
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            Insights.Track(InsightsReportingConstants.PAGE_PRODUCTDETAIL);
         }
     }
 }

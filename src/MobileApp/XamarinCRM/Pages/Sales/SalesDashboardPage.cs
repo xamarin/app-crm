@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Xamarin;
-using Xamarin.Forms;
-using XamarinCRM.Layouts;
-using XamarinCRM.Pages.Splash;
-using XamarinCRM.Statics;//
+﻿//
 //  Copyright 2015  Xamarin Inc.
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +12,14 @@ using XamarinCRM.Statics;//
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Xamarin;
+using Xamarin.Forms;
+using XamarinCRM.Layouts;
+using XamarinCRM.Pages.Splash;
+using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Sales;
 using XamarinCRM.Services;
 using XamarinCRM.Models;
@@ -113,7 +113,7 @@ namespace XamarinCRM.Pages.Sales
                 // Task.WhenAll() is your friend in cases like these, where you want to load from two different data models on a single page.
                 await Task.WhenAll(tasksToRun.ToArray());
 
-                Insights.Track("Dashboard Page");
+                Insights.Track(InsightsReportingConstants.PAGE_SALESDASHBOARD);
             }
         }
 

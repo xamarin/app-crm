@@ -179,7 +179,6 @@
     <None Include="packages.config" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
-    <None Include="PluginsHelp\ConnectivityReadme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Target Name="EnsureApiKeyConfigExists" BeforeTargets="PrepareForBuild">

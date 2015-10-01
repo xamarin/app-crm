@@ -18,6 +18,8 @@ using XamarinCRM.Converters;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.Cells;
 using XamarinCRM.Models;
+using Xamarin;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.Pages.Sales
 {
@@ -93,6 +95,13 @@ namespace XamarinCRM.Pages.Sales
                 }
             };
             #endregion
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            Insights.Track(InsightsReportingConstants.PAGE_LEADDETAIL);
         }
     }
 }

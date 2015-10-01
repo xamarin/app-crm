@@ -20,6 +20,7 @@ using XamarinCRM.Pages.Base;
 using XamarinCRM.ViewModels.Customers;
 using ExternalMaps.Plugin;
 using ExternalMaps.Plugin.Abstractions;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.Pages.Customers
 {
@@ -97,7 +98,7 @@ namespace XamarinCRM.Pages.Customers
 
             await this.MakeMap();
 
-            Insights.Track("Contact Map Page");
+            Insights.Track(InsightsReportingConstants.PAGE_CUSTOMERMAP);
         }
     }
 }
