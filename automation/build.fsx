@@ -10,6 +10,8 @@ open Fake.XamarinHelper
 Target "ios-debug" (fun () ->
     Exec "tools/NuGet/NuGet.exe restore ../src/MobileApp/XamarinCRM.iOS/packages.config -PackagesDirectory ../src/MobileApp/packages/"
 
+    solutionFile |> RestoreComponents (fun defaults -> {defaults with ToolPath = "tools/xpkg/xamarin-component.exe" })
+
     iOSBuild (fun defaults ->
         {defaults with
             ProjectPath = "solutions/XamarinCRM.iOS.sln"
