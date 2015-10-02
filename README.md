@@ -5,7 +5,7 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 ![](Preview.png)
 
 ###Two ways to try it out:
-1) You can download and build the app code source as-is, preconfigured to consume our Azure service instance. 
+1) You can download and build the app's source as-is, preconfigured to consume our Azure service instance. 
 
 __OR__ 
 
