@@ -16,7 +16,6 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Android.App;
-using System.Linq;
 using Xamarin.Forms;
 using XamarinCRM.Extensions;
 using XamarinCRMAndroid.Services;
