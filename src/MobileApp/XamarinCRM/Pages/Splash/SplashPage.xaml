@@ -6,6 +6,7 @@
 	xmlns:app="clr-namespace:XamarinCRM" 
 	xmlns:page="clr-namespace:XamarinCRM.Pages.Splash" 
 	xmlns:statics="clr-namespace:XamarinCRM.Statics" 
+	xmlns:i18n="clr-namespace:XamarinCRM.Localization" 
 	BackgroundColor="White">
 	<page:SplashPageXaml.Content>
 		<AbsoluteLayout>
@@ -15,7 +16,7 @@
 	         	AbsoluteLayout.LayoutFlags="YProportional,WidthProportional">
 	         	<Label 
 					x:Name="SplashTitle" 
-					Text="{x:Static app:TextResources.Splash_Title}" 
+					Text="{i18n:Translate Splash_Title}" 
 					TextColor="{x:Static statics:Palette._018}" 
 					XAlign="Center" 
 					YAlign="Center" 
@@ -23,7 +24,7 @@
 					FontSize="Large"/>
 				<Label 
 					x:Name="UsernameTitleLabel" 
-					Text="{x:Static app:TextResources.Splash_UsernameTitleLabel}" 
+					Text="{i18n:Translate Splash_UsernameTitleLabel}" 
 					TextColor="{x:Static statics:Palette._007}" 
 					XAlign="Center" 
 					YAlign="End" 
@@ -39,7 +40,7 @@
 					FontSize="Small"/>
 				<Label 
 					x:Name="PasswordTitleLabel" 
-					Text="{x:Static app:TextResources.Splash_PasswordTitleLabel}" 
+					Text="{i18n:Translate Splash_PasswordTitleLabel}" 
 					TextColor="{x:Static statics:Palette._007}" 
 					XAlign="Center" 
 					YAlign="End" 
@@ -62,7 +63,7 @@
 							<Label 
 								x:Name="SignInButton" 
 								Scale="0" 
-								Text="{x:Static app:TextResources.Splash_SignIn}" 
+								Text="{i18n:Translate Splash_SignIn}" 
 								TextColor="White" 
 								BackgroundColor="{x:Static statics:Palette._002}" 
 								XAlign="Center" 
@@ -73,7 +74,7 @@
 							<Label 
 								x:Name="SkipSignInButton" 
 								Scale="0" 
-								Text="{x:Static app:TextResources.Splash_SkipSignIn}" 
+								Text="{i18n:Translate Splash_SkipSignIn}" 
 								TextColor="White" 
 								BackgroundColor="{x:Static statics:Palette._002}" 
 								XAlign="Center" 
