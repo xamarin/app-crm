@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinCRM.Models", "..\..\src\MobileApp\XamarinCRM.Models\XamarinCRM.Models.csproj", "{4A17F005-E21F-4D4E-B020-E94CCACBFE26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinCRM", "..\..\src\MobileApp\XamarinCRM\XamarinCRM.csproj", "{458941D2-77A4-4B2C-8520-B6EF75947B09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinCRM.Android", "..\..\src\MobileApp\XamarinCRM.Android\XamarinCRM.Android.csproj", "{83491F6D-BA09-477D-9DC0-3E670794579F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		InHouse|iPhone = InHouse|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{458941D2-77A4-4B2C-8520-B6EF75947B09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{458941D2-77A4-4B2C-8520-B6EF75947B09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{458941D2-77A4-4B2C-8520-B6EF75947B09}.InHouse|iPhone.ActiveCfg = InHouse|iPhone
+		{458941D2-77A4-4B2C-8520-B6EF75947B09}.InHouse|iPhone.Build.0 = InHouse|iPhone
+		{458941D2-77A4-4B2C-8520-B6EF75947B09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{458941D2-77A4-4B2C-8520-B6EF75947B09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A17F005-E21F-4D4E-B020-E94CCACBFE26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A17F005-E21F-4D4E-B020-E94CCACBFE26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A17F005-E21F-4D4E-B020-E94CCACBFE26}.InHouse|iPhone.ActiveCfg = Debug|Any CPU
+		{4A17F005-E21F-4D4E-B020-E94CCACBFE26}.InHouse|iPhone.Build.0 = Debug|Any CPU
+		{4A17F005-E21F-4D4E-B020-E94CCACBFE26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A17F005-E21F-4D4E-B020-E94CCACBFE26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83491F6D-BA09-477D-9DC0-3E670794579F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83491F6D-BA09-477D-9DC0-3E670794579F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83491F6D-BA09-477D-9DC0-3E670794579F}.InHouse|iPhone.ActiveCfg = InHouse|iPhone
+		{83491F6D-BA09-477D-9DC0-3E670794579F}.InHouse|iPhone.Build.0 = InHouse|iPhone
+		{83491F6D-BA09-477D-9DC0-3E670794579F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83491F6D-BA09-477D-9DC0-3E670794579F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
