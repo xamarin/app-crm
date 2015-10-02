@@ -2,13 +2,20 @@
 
 Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforce of a fictitious company that sells 3D printer hardware and supplies. The app empowers salespeople to track their sales performance, manage leads, view their contacts, manage orders, and browse the product catalog.
 
-Xamarin CRM is open sourced under [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
-
 ![](Preview.png)
 
-####Supported platforms: iOS and Android
+###Two ways to try it out:
+1) You can download and build the app's source as-is, preconfigured to consume our Azure service instance. 
 
-####The app architecture consists of two parts:
+__OR__ 
+
+2) You can easily create your own fully-functional (but temporary) service instance via Microsoft's Azure App Service [__Try It Now__](https://tryappservice.azure.com/en-us) experience: https://tryappservice.azure.com/en-us. Select 'Xamarin CRM' in step 2. The app source you download will be pre-configured to consume your automatically-created temporary Azure App Service instance.
+
+> <a href="https://tryappservice.azure.com/en-us"><img src="XamarinCRM_TryItNow.png" width="75%" /></a>
+
+###Supported platforms: iOS and Android
+
+###The app architecture consists of two parts:
   1. A Xamarin.Forms mobile app for iOS and Android.
   2. A .NET Web API-backed Entity Framework based Azure Mobile Service for data.
 
