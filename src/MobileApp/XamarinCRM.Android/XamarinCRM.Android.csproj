@@ -189,12 +189,6 @@
   <Import Project="..\packages\Xamarin.Insights.1.11.1\build\MonoAndroid10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.11.1\build\MonoAndroid10\Xamarin.Insights.targets')" />
   <Import Project="..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <ItemGroup>
-    <ProjectReference Include="..\XamarinCRM\XamarinCRM.csproj">
-      <Project>{458941D2-77A4-4B2C-8520-B6EF75947B09}</Project>
-      <Name>XamarinCRM</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Resources\layout\" />
   </ItemGroup>
   <ItemGroup>
@@ -236,5 +230,11 @@
     <EmbeddedResource Include="..\XamarinCRM\Config\config-sensitive.xml">
       <Link>Config\config-sensitive.xml</Link>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XamarinCRM\XamarinCRM.csproj">
+      <Project>{458941D2-77A4-4B2C-8520-B6EF75947B09}</Project>
+      <Name>XamarinCRM</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
