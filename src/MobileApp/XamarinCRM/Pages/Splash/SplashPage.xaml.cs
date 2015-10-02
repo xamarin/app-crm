@@ -22,7 +22,7 @@ using XamarinCRM.ViewModels.Splash;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Xamarin;
 
-namespace XamarinCRM.Pages.Splash
+namespace XamarinCRM.Pages.Splash 
 {
     public partial class SplashPage : SplashPageXaml
     {
