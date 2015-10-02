@@ -26,7 +26,7 @@ namespace XamarinCRM.Localization
     public class TranslateExtension : IMarkupExtension
     {
         readonly CultureInfo ci;
-        const string ResourceId = "XamarinCRM.TextResources.resources";
+        const string ResourceId = "XamarinCRM.TextResources";
 
         public TranslateExtension() {
             ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo ();
