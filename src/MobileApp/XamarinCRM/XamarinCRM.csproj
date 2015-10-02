@@ -252,10 +252,4 @@
   <Target Name="EnsureSenstiveConfigXmlExists" BeforeTargets="PrepareForBuild">
     <Copy SourceFiles="$(ProjectDir)\ConfigTemplate\config-sensitive.xml" DestinationFolder="$(ProjectDir)\Config" Condition="!Exists('$(ProjectDir)\Config\config-sensitive.xml')" />
   </Target>
-  <ItemGroup>
-    <ProjectReference Include="..\XamarinCRM.Models\XamarinCRM.Models.csproj">
-      <Project>{4A17F005-E21F-4D4E-B020-E94CCACBFE26}</Project>
-      <Name>XamarinCRM.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>

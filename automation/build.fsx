@@ -8,7 +8,7 @@ open BuildHelpers
 open Fake.XamarinHelper
 
 Target "ios-debug" (fun () ->
-    RestorePackages "solutions/XamarinCRM.iOS.sln"
+    Exec "tools/NuGet/NuGet.exe restore ../src/MobileApp/XamarinCRM.iOS/packages.config -PackagesDirectory ../src/MobileApp/packages/"
 
     iOSBuild (fun defaults ->
         {defaults with
@@ -19,8 +19,8 @@ Target "ios-debug" (fun () ->
 )
 
 Target "android-debug" (fun () ->
-    RestorePackages "solutions/XamarinCRM.Android.sln"
-
+    Exec "tools/NuGet/NuGet.exe restore ../src/MobileApp/XamarinCRM.Android/packages.config -PackagesDirectory ../src/MobileApp/packages/"
+    
     iOSBuild (fun defaults ->
         {defaults with
             ProjectPath = "solutions/XamarinCRM.Android.sln"
