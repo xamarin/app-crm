@@ -7,12 +7,6 @@ open System.Linq
 open BuildHelpers
 open Fake.XamarinHelper
 
-Target "core-debug" (fun () ->
-    RestorePackages "solutions/XamarinCRM.sln"
-
-    MSBuild "../src/MobileApp/XamarinCRM/bin/Debug" "Build" [ ("Configuration", "Debug"); ("Platform", "Any CPU") ] [ "solutions/XamarinCRM.sln" ] |> ignore
-)
-
 Target "ios-debug" (fun () ->
     RestorePackages "solutions/XamarinCRM.iOS.sln"
 
@@ -34,11 +28,5 @@ Target "android-debug" (fun () ->
             Target = "Build"
         })
 )
-
-"core-debug"
-  ==> "ios-debug"
-  
-"core-debug"
-  ==> "android-debug"
 
 RunTarget() 
