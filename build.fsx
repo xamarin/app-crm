@@ -7,10 +7,14 @@ open System.Linq
 open BuildHelpers
 open Fake.XamarinHelper
 
-let iOSProject = "src/MobileApp/XamarinCRM.iOS"
+let mobileAppPath = "src/MobileApp/"
+
+let solutionFile = (mobileAppPath + "XamarinCRM.sln")
+
+let packageOutputPath = (mobileAppPath + "packages")
 
 Target "ios-simulator-debug" (fun () ->
-    RestorePackages "src/MobileApp/XamarinCRM.sln"
+    Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile) ("-PackagesDirectory " + packageOutputPath)
     
     iOSBuild (fun defaults ->
         {defaults with
@@ -22,7 +26,7 @@ Target "ios-simulator-debug" (fun () ->
 )
 
 Target "ios-simulator-release" (fun () ->
-    RestorePackages "src/MobileApp/XamarinCRM.sln"
+    Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile) ("-PackagesDirectory " + packageOutputPath)
     
     iOSBuild (fun defaults ->
         {defaults with
@@ -34,7 +38,7 @@ Target "ios-simulator-release" (fun () ->
 )
 
 Target "ios-iphone-debug" (fun () ->
-    RestorePackages "src/MobileApp/XamarinCRM.sln"
+    Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile) ("-PackagesDirectory " + packageOutputPath)
     
     iOSBuild (fun defaults ->
         {defaults with
@@ -48,7 +52,7 @@ Target "ios-iphone-debug" (fun () ->
 )
 
 Target "ios-iphone-release" (fun () ->
-    RestorePackages "src/MobileApp/XamarinCRM.sln"
+    Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile) ("-PackagesDirectory " + packageOutputPath)
     
     iOSBuild (fun defaults ->
         {defaults with
@@ -62,7 +66,7 @@ Target "ios-iphone-release" (fun () ->
 )
 
 Target "ios-iphone-inhouse" (fun () ->
-    RestorePackages "src/MobileApp/XamarinCRM.sln"
+    Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile) ("-PackagesDirectory " + packageOutputPath)
     
     iOSBuild (fun defaults ->
         {defaults with
