@@ -13,12 +13,18 @@ let solutionFile = (mobileAppPath + "XamarinCRM.sln")
 
 let packageOutputPath = (mobileAppPath + "packages")
 
+let iOSProject = "src/MobileApp/XamarinCRM.iOS"
+
+let androidProject = "src/MobileApp/XamarinCRM.Android"
+
+let RestorePackagesToHintPath = Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile + " -PackagesDirectory " + packageOutputPath)
+
 Target "ios-simulator-debug" (fun () ->
-    Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile) ("-PackagesDirectory " + packageOutputPath)
+    RestorePackagesToHintPath
     
     iOSBuild (fun defaults ->
         {defaults with
-            ProjectPath = "src/MobileApp/XamarinCRM.sln"
+            ProjectPath = solutionFile
             Platform = "iPhoneSimulator"
             Configuration = "Debug"
             Target = "Build"
@@ -26,11 +32,11 @@ Target "ios-simulator-debug" (fun () ->
 )
 
 Target "ios-simulator-release" (fun () ->
-    Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile) ("-PackagesDirectory " + packageOutputPath)
+    RestorePackagesToHintPath
     
     iOSBuild (fun defaults ->
         {defaults with
-            ProjectPath = "src/MobileApp/XamarinCRM.sln"
+            ProjectPath = solutionFile
             Platform = "iPhoneSimulator"
             Configuration = "Release"
             Target = "Build"
@@ -38,11 +44,11 @@ Target "ios-simulator-release" (fun () ->
 )
 
 Target "ios-iphone-debug" (fun () ->
-    Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile) ("-PackagesDirectory " + packageOutputPath)
+    RestorePackagesToHintPath
     
     iOSBuild (fun defaults ->
         {defaults with
-            ProjectPath = "src/MobileApp/XamarinCRM.sln"
+            ProjectPath = solutionFile
             Platform = "iPhone"
             Configuration = "Debug"
             Target = "Build"
@@ -52,11 +58,11 @@ Target "ios-iphone-debug" (fun () ->
 )
 
 Target "ios-iphone-release" (fun () ->
-    Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile) ("-PackagesDirectory " + packageOutputPath)
+    RestorePackagesToHintPath
     
     iOSBuild (fun defaults ->
         {defaults with
-            ProjectPath = "src/MobileApp/XamarinCRM.sln"
+            ProjectPath = solutionFile
             Platform = "iPhone"
             Configuration = "Release"
             Target = "Build"
@@ -66,11 +72,11 @@ Target "ios-iphone-release" (fun () ->
 )
 
 Target "ios-iphone-inhouse" (fun () ->
-    Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile) ("-PackagesDirectory " + packageOutputPath)
+    RestorePackagesToHintPath
     
     iOSBuild (fun defaults ->
         {defaults with
-            ProjectPath = "src/MobileApp/XamarinCRM.sln"
+            ProjectPath = solutionFile
             Platform = "iPhone"
             Configuration = "Inhouse"
             Target = "Build"
