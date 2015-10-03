@@ -1,4 +1,4 @@
-#r @"tools/FAKE/tools/FakeLib.dll"
+#r @"packages/FAKE/tools/FakeLib.dll"
 #load "build-helpers.fsx"
 open Fake
 open System
