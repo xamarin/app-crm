@@ -7,6 +7,8 @@ open System.Linq
 open BuildHelpers
 open Fake.XamarinHelper
 
+// Let's set up some variables.
+
 let mobileAppPath = "src/MobileApp/"
 
 let solutionFile = (mobileAppPath + "XamarinCRM.sln")
@@ -19,30 +21,9 @@ let androidProject = "src/MobileApp/XamarinCRM.Android"
 
 let RestorePackagesToHintPath = Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile + " -PackagesDirectory " + packageOutputPath)
 
-Target "ios-simulator-debug" (fun () ->
-    RestorePackagesToHintPath
-    
-    iOSBuild (fun defaults ->
-        {defaults with
-            ProjectPath = solutionFile
-            Platform = "iPhoneSimulator"
-            Configuration = "Debug"
-            Target = "Build"
-        })
-)
+// You may or may not want all of the following targets for your purposes. Modify to your liking.
 
-Target "ios-simulator-release" (fun () ->
-    RestorePackagesToHintPath
-    
-    iOSBuild (fun defaults ->
-        {defaults with
-            ProjectPath = solutionFile
-            Platform = "iPhoneSimulator"
-            Configuration = "Release"
-            Target = "Build"
-        })
-)
-
+// This target is mostly for a sanity check, to make sure the app builds with debug settings.
 Target "ios-iphone-debug" (fun () ->
     RestorePackagesToHintPath
     
@@ -57,20 +38,22 @@ Target "ios-iphone-debug" (fun () ->
     TeamCityHelper.PublishArtifact (iOSProject + "/bin/iPhone/Debug/*.ipa")
 )
 
-Target "ios-iphone-release" (fun () ->
+// This target is a release build, signed for App Store distribution.
+Target "ios-iphone-appstore" (fun () ->
     RestorePackagesToHintPath
     
     iOSBuild (fun defaults ->
         {defaults with
             ProjectPath = solutionFile
             Platform = "iPhone"
-            Configuration = "Release"
+            Configuration = "AppStore"
             Target = "Build"
             BuildIpa = true
         })
-    TeamCityHelper.PublishArtifact (iOSProject + "/bin/iPhone/Release/*.ipa")
+    TeamCityHelper.PublishArtifact (iOSProject + "/bin/iPhone/AppStore/*.ipa")
 )
 
+// This target is a release build, signed InHouse distribution.
 Target "ios-iphone-inhouse" (fun () ->
     RestorePackagesToHintPath
     
@@ -85,7 +68,19 @@ Target "ios-iphone-inhouse" (fun () ->
     TeamCityHelper.PublishArtifact (iOSProject + "/bin/iPhone/Inhouse/*.ipa")
 )
 
-"ios-iphone-release"
-  ==> "ios-iphone-inhouse"
+// This target is a release build, signed for Ad-Hoc distribution.
+Target "ios-iphone-adhoc" (fun () ->
+    RestorePackagesToHintPath
+    
+    iOSBuild (fun defaults ->
+        {defaults with
+            ProjectPath = solutionFile
+            Platform = "iPhone"
+            Configuration = "Ad-Hoc"
+            Target = "Build"
+            BuildIpa = true
+        })
+    TeamCityHelper.PublishArtifact (iOSProject + "/bin/iPhone/Ad-Hoc/*.ipa")
+)
 
 RunTarget() 
