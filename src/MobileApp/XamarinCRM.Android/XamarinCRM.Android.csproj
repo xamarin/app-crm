@@ -61,6 +61,41 @@
     <AssemblyName>XamarinCRM.Android</AssemblyName>
     <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <AssemblyName>XamarinCRM.Android</AssemblyName>
+    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <AssemblyName>XamarinCRM.Android</AssemblyName>
+    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhoneSimulator' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Ad-Hoc</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <AssemblyName>XamarinCRM.Android</AssemblyName>
+    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhoneSimulator' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\AppStore</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <AssemblyName>XamarinCRM.Android</AssemblyName>
+    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Ad-Hoc</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <AssemblyName>XamarinCRM.Android</AssemblyName>
+    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Security" />
     <Reference Include="System" />
