@@ -23,7 +23,7 @@ namespace XamarinCRM
 {
     public class App : Application
     {
-        static Page _RootPage;
+        static Page _RootPage; 
 
         public App()
         {
