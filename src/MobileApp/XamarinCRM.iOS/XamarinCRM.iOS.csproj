@@ -63,14 +63,12 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>True</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <IpaPackageName>
-    </IpaPackageName>
+    <IpaPackageName>XamarinCRM_Debug</IpaPackageName>
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <MtouchSdkVersion>9.0</MtouchSdkVersion>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
-    <BuildIpa>True</BuildIpa>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchProfiling>true</MtouchProfiling>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
@@ -84,11 +82,8 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <BuildIpa>True</BuildIpa>
-    <IpaPackageName>
-    </IpaPackageName>
+    <IpaPackageName>XamarinCRM_Release</IpaPackageName>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
-    <IpaIncludeArtwork>true</IpaIncludeArtwork>
     <MtouchUseLlvm>true</MtouchUseLlvm>
     <MtouchUseThumb>true</MtouchUseThumb>
     <MtouchUseSGen>true</MtouchUseSGen>
@@ -116,6 +111,8 @@
     </MtouchI18n>
     <CodesignProvision>Automatic:AdHoc</CodesignProvision>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
+    <IpaIncludeArtwork>true</IpaIncludeArtwork>
+    <IpaPackageName>XamarinCRM_Ad-Hoc</IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <Optimize>true</Optimize>
@@ -135,6 +132,8 @@
     <MtouchI18n>
     </MtouchI18n>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'InHouse|iPhone' ">
     <Optimize>true</Optimize>
