@@ -65,7 +65,7 @@ Target "ios-iphone-inhouse" (fun () ->
             Target = "Build"
             BuildIpa = true
         })
-    TeamCityHelper.PublishArtifact (iOSProject + "/bin/iPhone/Inhouse/*.ipa")
+    TeamCityHelper.PublishArtifact (iOSProject + "/bin/iPhone/InHouse/*.ipa")
 )
 
 // This target is a release build, signed for Ad-Hoc distribution.
