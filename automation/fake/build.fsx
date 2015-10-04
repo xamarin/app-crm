@@ -17,6 +17,8 @@ let packageOutputPath = (mobileAppPath + "packages")
 
 let iOSProject = "../../src/MobileApp/XamarinCRM.iOS"
 
+let iOSBuildOutputLocation = "src/MobileApp/XamarinCRM.iOS/bin"
+
 let androidProject = "../../src/MobileApp/XamarinCRM.Android"
 
 let RestorePackagesToHintPath = Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile + " -PackagesDirectory " + packageOutputPath)
@@ -35,7 +37,7 @@ Target "ios-iphone-debug" (fun () ->
             Target = "Build"
             BuildIpa = true
         })
-    TeamCityHelper.PublishArtifact (iOSProject + "/bin/iPhone/Debug/*.ipa")
+    TeamCityHelper.PublishArtifact (iOSBuildOutputLocation + "/iPhone/Debug/*.ipa")
 )
 
 // This target is a release build, signed for App Store distribution.
@@ -50,7 +52,7 @@ Target "ios-iphone-appstore" (fun () ->
             Target = "Build"
             BuildIpa = true
         })
-    TeamCityHelper.PublishArtifact (iOSProject + "/bin/iPhone/AppStore/*.ipa")
+    TeamCityHelper.PublishArtifact (iOSBuildOutputLocation + "/iPhone/AppStore/*.ipa")
 )
 
 // This target is a release build, signed InHouse distribution.
@@ -65,7 +67,7 @@ Target "ios-iphone-inhouse" (fun () ->
             Target = "Build"
             BuildIpa = true
         })
-    TeamCityHelper.PublishArtifact (iOSProject + "/bin/iPhone/InHouse/*.ipa")
+    TeamCityHelper.PublishArtifact (iOSBuildOutputLocation + "/iPhone/InHouse/*.ipa")
 )
 
 // This target is a release build, signed for Ad-Hoc distribution.
@@ -80,7 +82,7 @@ Target "ios-iphone-adhoc" (fun () ->
             Target = "Build"
             BuildIpa = true
         })
-    TeamCityHelper.PublishArtifact (iOSProject + "/bin/iPhone/Ad-Hoc/*.ipa")
+    TeamCityHelper.PublishArtifact (iOSBuildOutputLocation + "/iPhone/Ad-Hoc/*.ipa")
 )
 
 RunTarget() 
