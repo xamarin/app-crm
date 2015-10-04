@@ -9,15 +9,15 @@ open Fake.XamarinHelper
 
 // Let's set up some variables.
 
-let mobileAppPath = "src/MobileApp/"
+let mobileAppPath = "../../src/MobileApp/"
 
 let solutionFile = (mobileAppPath + "XamarinCRM.sln")
 
 let packageOutputPath = (mobileAppPath + "packages")
 
-let iOSProject = "src/MobileApp/XamarinCRM.iOS"
+let iOSProject = "../../src/MobileApp/XamarinCRM.iOS"
 
-let androidProject = "src/MobileApp/XamarinCRM.Android"
+let androidProject = "../../src/MobileApp/XamarinCRM.Android"
 
 let RestorePackagesToHintPath = Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile + " -PackagesDirectory " + packageOutputPath)
 
