@@ -132,8 +132,9 @@
     <MtouchI18n>
     </MtouchI18n>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
-    <IpaPackageName>
-    </IpaPackageName>
+    <IpaPackageName>XamarinCRM_AppStore</IpaPackageName>
+    <BuildIpa>true</BuildIpa>
+    <IpaIncludeArtwork>true</IpaIncludeArtwork>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'InHouse|iPhone' ">
     <Optimize>true</Optimize>
