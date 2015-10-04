@@ -18,8 +18,8 @@ using Xamarin.Forms;
 using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using XamarinCRM.Pages.Base;
-using XamarinCRM.Models;
 using Xamarin;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.Pages.Products
 {

@@ -13,9 +13,9 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
+using System.Linq;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Threading.Tasks;
-using System.Linq;
 using UIKit;
 using Xamarin.Forms;
 using XamarinCRM.Extensions;

@@ -1,0 +1,3 @@
+#!/bin/sh
+export MONO_IOMAP=all
+exec mono $MONO_OPTIONS xamarin-component.exe "$@"

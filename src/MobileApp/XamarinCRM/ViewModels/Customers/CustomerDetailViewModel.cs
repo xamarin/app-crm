@@ -16,7 +16,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using XamarinCRM.Clients;
-using XamarinCRM.Models;
 using XamarinCRM.Services;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;

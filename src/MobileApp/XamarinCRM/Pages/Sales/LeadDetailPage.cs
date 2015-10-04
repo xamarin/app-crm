@@ -17,9 +17,9 @@ using XamarinCRM.ViewModels.Sales;
 using XamarinCRM.Converters;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.Cells;
+using XamarinCRM.Statics;
 using XamarinCRM.Models;
 using Xamarin;
-using XamarinCRM.Statics;
 
 namespace XamarinCRM.Pages.Sales
 {

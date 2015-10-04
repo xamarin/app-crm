@@ -178,3 +178,6 @@ FakesAssemblies/
 
 #pubxml
 *.pubxml
+
+# FAKE hidden folder (F#-make)
+.fake/

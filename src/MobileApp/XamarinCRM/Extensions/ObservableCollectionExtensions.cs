@@ -15,7 +15,6 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using XamarinCRM.Models;
 using System.Reflection;
 using System.Linq;
 using XamarinCRM.AppModels;
