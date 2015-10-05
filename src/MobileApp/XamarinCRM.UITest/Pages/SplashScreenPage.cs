@@ -4,10 +4,10 @@ namespace XamarinCRM.UITest
 {
     public class SplashScreenPage : BasePage
     {
-        readonly string EnterSignInButton = "SIGN IN (AZURE AD)";
+        readonly string EnterSignInButton = "SIGN IN";
 
         public SplashScreenPage(IApp app, Platform platform)
-            : base(app, platform, "SIGN IN (AZURE AD)", "SIGN IN (AZURE AD)")
+            : base(app, platform, "SIGN IN", "SIGN IN")
         {
         }
 
