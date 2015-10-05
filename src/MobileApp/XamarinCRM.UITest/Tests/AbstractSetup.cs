@@ -28,7 +28,7 @@ namespace XamarinCRM.UITest
 
             Thread.Sleep(TimeSpan.FromSeconds(5));
 
-            if (app.Query("SIGN IN (AZURE AD)").Any())
+            if (app.Query("SIGN IN").Any())
             {
                 new SplashScreenPage(app, platform)
                         .ExitSplashScreen();

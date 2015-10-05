@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+<!---Note that SplashPageXaml is a type defined at the bottom of the SplashPageXaml.cs file -->
 <page:SplashPageXaml 
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
