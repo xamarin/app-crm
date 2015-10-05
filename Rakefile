@@ -67,6 +67,7 @@ namespace :testcloud do
 		API_KEY = ENV['API_KEY']
 		USER_ACCOUNT = ENV['USER_ACCOUNT']
 		DEVICE_SET = ENV['DEVICE_SET']
+		CATEGORY = ENV['CATEGORY']
 
 		arguments = ["API_KEY", "USER_ACCOUNT", "DEVICE_SET"]
 
@@ -82,13 +83,21 @@ namespace :testcloud do
 	desc "Push iOS tests to XTC"
 	task :ios => [:build_test_solution] do
 		devices = get_device_code(DEVICE_SET, "ios")
-		sh "mono src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM"
+		unless CATEGORY.nil?
+ 			sh "mono src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM --category #{CATEGORY}" 
+		else
+			sh "mono src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM" 
+		end
 	end
 
 	desc "Push Android tests to XTC"
 	task :android => [:build_test_solution] do
 		devices = get_device_code(DEVICE_SET, "android")
-		sh "mono src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} keystore ~/.android/debug.keystore android androiddebugkey android --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir src/MobileApp/XamarinCRM.UITest/bin/Debug"
+		unless CATEGORY.nil?
+			sh "mono src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} keystore ~/.android/debug.keystore android androiddebugkey android --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir src/MobileApp/XamarinCRM.UITest/bin/Debug --category #{CATEGORY}"
+		else
+			sh "mono src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} keystore ~/.android/debug.keystore android androiddebugkey android --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir src/MobileApp/XamarinCRM.UITest/bin/Debug"
+		end
 	end
 end
 
