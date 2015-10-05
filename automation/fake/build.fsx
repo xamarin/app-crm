@@ -33,7 +33,7 @@ Target "ios-iphone-debug" (fun () ->
         {defaults with
             ProjectPath = solutionFile
             Platform = "iPhone"
-            Configuration = "Debug"
+            Configuration = "iOS Debug (Development)"
             Target = "Build"
             BuildIpa = true
         })
@@ -48,7 +48,7 @@ Target "ios-iphone-appstore" (fun () ->
         {defaults with
             ProjectPath = solutionFile
             Platform = "iPhone"
-            Configuration = "AppStore"
+            Configuration = "iOS AppStore (Distribution)"
             Target = "Build"
             BuildIpa = true
         })
@@ -63,7 +63,7 @@ Target "ios-iphone-inhouse" (fun () ->
         {defaults with
             ProjectPath = solutionFile
             Platform = "iPhone"
-            Configuration = "Inhouse"
+            Configuration = "iOS InHouse (Distribution)"
             Target = "Build"
             BuildIpa = true
         })
@@ -78,7 +78,7 @@ Target "ios-iphone-adhoc" (fun () ->
         {defaults with
             ProjectPath = solutionFile
             Platform = "iPhone"
-            Configuration = "Ad-Hoc"
+            Configuration = "iOS Ad-Hoc (Distribution)"
             Target = "Build"
             BuildIpa = true
         })
