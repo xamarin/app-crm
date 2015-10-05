@@ -4,18 +4,18 @@ namespace :build do
 	desc "Cleans the project"
 	task :clean do
 	  directories_to_delete = [
-	      "src/MobileApp/XamarinCRM.iOS/bin/iPhone",
-	      "src/MobileApp/XamarinCRM.iOS/bin/iPhoneSimulator",
-	      "src/MobileApp/XamarinCRM.iOS/obj",
-	      "src/MobileApp/XamarinCRM.Android/bin/Debug",
-	      "src/MobileApp/XamarinCRM.Android/bin/Release",
-	      "src/MobileApp/XamarinCRM.Android/obj",
-	      "src/MobileApp/XamarinCRM/bin",
-	      "src/MobileApp/XamarinCRM/obj",
-  	      "src/MobileApp/XamarinCRM.Models/bin",
-	      "src/MobileApp/XamarinCRM.Models/obj",
-	      "src/MobileApp/XamarinCRM.UITest/bin",
-	      "src/MobileApp/XamarinCRM.UITest/obj",
+	      "../../src/MobileApp/XamarinCRM.iOS/bin/iPhone",
+	      "../../src/MobileApp/XamarinCRM.iOS/bin/iPhoneSimulator",
+	      "../../src/MobileApp/XamarinCRM.iOS/obj",
+	      "../../src/MobileApp/XamarinCRM.Android/bin/Debug",
+	      "../../src/MobileApp/XamarinCRM.Android/bin/Release",
+	      "../../src/MobileApp/XamarinCRM.Android/obj",
+	      "../../src/MobileApp/XamarinCRM/bin",
+	      "../../src/MobileApp/XamarinCRM/obj",
+  	      "../../src/MobileApp/XamarinCRM.Models/bin",
+	      "../../src/MobileApp/XamarinCRM.Models/obj",
+	      "../../src/MobileApp/XamarinCRM.UITest/bin",
+	      "../../src/MobileApp/XamarinCRM.UITest/obj",
 	  ]
 
 	  directories_to_delete.each { |x|
@@ -26,31 +26,31 @@ namespace :build do
 	desc "Build iOS App"
 	task :ios => [:clean] do
 		sh "pwd"
-		sh "nuget restore src/MobileApp/XamarinCRM.iOS/packages.config -PackagesDirectory src/MobileApp/packages/"
-		sh "nuget restore src/MobileApp/XamarinCRM.UITest/packages.config -PackagesDirectory src/MobileApp/packages/"
+		sh "nuget restore ../../src/MobileApp/XamarinCRM.iOS/packages.config -PackagesDirectory ../../src/MobileApp/packages/"
+		sh "nuget restore ../../src/MobileApp/XamarinCRM.UITest/packages.config -PackagesDirectory ../../src/MobileApp/packages/"
 		puts "iOS nugets restored"
 		puts
 		puts "Building XamarinCRM.iOS"
-		sh "xbuild src/MobileApp/XamarinCRM.sln /p:Configuration=Debug /p:Platform=iPhone /p:BuildIpa=true"
+		sh "xbuild ../../src/MobileApp/XamarinCRM.sln /p:Configuration='iOS Debug (Development)' /p:Platform=iPhone /p:BuildIpa=true"
 		puts
 		puts "Checking for Insights on iOS"
-		sh "cat src/MobileApp/XamarinCRM.iOS/Main.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
+		sh "cat ../../src/MobileApp/XamarinCRM.iOS/Main.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
 		puts
 		puts "iOS BUILD SUCCESSFUL"
 	end
 
 	desc "Build Android App"
 	task :android => [:clean] do
-		sh "nuget restore src/MobileApp/XamarinCRM.Android/packages.config -PackagesDirectory src/MobileApp/packages"
+		sh "nuget restore ../../src/MobileApp/XamarinCRM.Android/packages.config -PackagesDirectory ../../src/MobileApp/packages"
 		puts "Android nugets restored"
 		puts
-		addMaptoManifest("src/MobileApp/XamarinCRM.Android/Properties/AndroidManifest.xml")
+		addMaptoManifest("../../src/MobileApp/XamarinCRM.Android/Properties/AndroidManifest.xml")
 		puts "Maps added to manifest"
 		puts "Building XamarinCRM.Android"
-		sh "xbuild /t:SignAndroidPackage /p:Configuration=Release src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj"
+		sh "xbuild /t:SignAndroidPackage /p:Configuration=Release ../../src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj"
 		puts
 		puts "Checking for Insights on Android"
-		sh "cat src/MobileApp/XamarinCRM.Android/MainActivity.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
+		sh "cat ../../src/MobileApp/XamarinCRM.Android/MainActivity.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
 		puts
 		puts "Android BUILD SUCCESSFUL"
 	end
@@ -60,9 +60,9 @@ namespace :testcloud do
 	desc "Build Test Solution"
 	task :build_test_solution do
 		puts "Restoring Test Nuget Packages"
-		sh "nuget restore src/MobileApp/XamarinCRM.UITest/packages.config -PackagesDirectory src/MobileApp/packages/"
+		sh "nuget restore ../../src/MobileApp/XamarinCRM.UITest/packages.config -PackagesDirectory ../../src/MobileApp/packages/"
 		puts "Building Test Solution"
-		sh "xbuild src/MobileApp/XamarinCRM.UITest/XamarinCRM.UITest.csproj"
+		sh "xbuild ../../src/MobileApp/XamarinCRM.UITest/XamarinCRM.UITest.csproj"
 
 		API_KEY = ENV['API_KEY']
 		USER_ACCOUNT = ENV['USER_ACCOUNT']
@@ -84,9 +84,9 @@ namespace :testcloud do
 	task :ios => [:build_test_solution] do
 		devices = get_device_code(DEVICE_SET, "ios")
 		unless CATEGORY.nil?
- 			sh "mono src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM --category #{CATEGORY}" 
+ 			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM --category #{CATEGORY}" 
 		else
-			sh "mono src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM" 
+			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM" 
 		end
 	end
 
@@ -94,9 +94,9 @@ namespace :testcloud do
 	task :android => [:build_test_solution] do
 		devices = get_device_code(DEVICE_SET, "android")
 		unless CATEGORY.nil?
-			sh "mono src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} keystore ~/.android/debug.keystore android androiddebugkey android --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir src/MobileApp/XamarinCRM.UITest/bin/Debug --category #{CATEGORY}"
+			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} keystore ~/.android/debug.keystore android androiddebugkey android --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --category #{CATEGORY}"
 		else
-			sh "mono src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} keystore ~/.android/debug.keystore android androiddebugkey android --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir src/MobileApp/XamarinCRM.UITest/bin/Debug"
+			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} keystore ~/.android/debug.keystore android androiddebugkey android --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug"
 		end
 	end
 end
