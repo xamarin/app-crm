@@ -21,6 +21,7 @@
     <RestorePackages>true</RestorePackages>
     <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <ReleaseVersion>2.0.1</ReleaseVersion>
     <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
