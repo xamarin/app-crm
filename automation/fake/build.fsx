@@ -22,7 +22,7 @@ let nuGetPackageOutputPath = (mobileAppRelativeSourcePath + "packages/")
 
 let iOSProjectPath = (mobileAppRelativeSourcePath + "XamarinCRM.iOS/")
 
-let iOSBuildOutputPath = (mobileAppSourcePath + iOSProjectPath + "bin/iPhone/")
+let iOSBuildOutputPath = "src/MobileApp/XamarinCRM/XamarinCRM.iOS/bin/"
 
 let androidProjectPath = (mobileAppRelativeSourcePath + "XamarinCRM.Android/")
 
