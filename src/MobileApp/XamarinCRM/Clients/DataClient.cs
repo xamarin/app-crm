@@ -23,8 +23,8 @@ using Microsoft.WindowsAzure.MobileServices.Sync;
 using Xamarin;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
-using XamarinCRM.Models;
 using XamarinCRM.Statics;
+using XamarinCRM.Models;
 
 [assembly: Dependency(typeof(DataClient))]
 

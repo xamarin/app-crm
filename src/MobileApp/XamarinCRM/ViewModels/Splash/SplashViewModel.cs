@@ -16,7 +16,6 @@ using System.Threading.Tasks;
 using XamarinCRM.Services;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
-using XamarinCRM.Statics;
 
 namespace XamarinCRM.ViewModels.Splash
 {
