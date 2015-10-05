@@ -12,17 +12,19 @@ let androidKeystorePassword = getBuildParamOrDefault "android_keystore_password"
 let RelativeToRepoRoot path = 
     ("../../" + path)
 
-let mobileAppSourcePath = RelativeToRepoRoot "src/MobileApp/"
+let mobileAppSourcePath = "src/MobileApp/"
 
-let solutionFile = (mobileAppSourcePath + "XamarinCRM.sln")
+let mobileAppRelativeSourcePath = RelativeToRepoRoot mobileAppSourcePath
 
-let nuGetPackageOutputPath = (mobileAppSourcePath + "packages/")
+let solutionFile = (mobileAppRelativeSourcePath + "XamarinCRM.sln")
 
-let iOSProjectPath = (mobileAppSourcePath + "XamarinCRM.iOS/")
+let nuGetPackageOutputPath = (mobileAppRelativeSourcePath + "packages/")
 
-let iOSBuildOutputPath = (iOSProjectPath + "bin/iPhone/")
+let iOSProjectPath = (mobileAppRelativeSourcePath + "XamarinCRM.iOS/")
 
-let androidProjectPath = (mobileAppSourcePath + "XamarinCRM.Android/")
+let iOSBuildOutputPath = (mobileAppSourcePath + iOSProjectPath + "bin/iPhone/")
+
+let androidProjectPath = (mobileAppRelativeSourcePath + "XamarinCRM.Android/")
 
 let androidProjectFile = (androidProjectPath + "XamarinCRM.Android.csproj")
 
@@ -105,7 +107,7 @@ Target "android-release" (fun () ->
     |> AndroidSignAndAlign (fun defaults ->
         {defaults with
             ZipalignPath = "tools/zipalign"
-            KeystorePath = (mobileAppSourcePath + "XamarinCRMAndroid.keystore")
+            KeystorePath = (mobileAppRelativeSourcePath + "XamarinCRMAndroid.keystore")
             KeystorePassword = androidKeystorePassword // TODO: Don't store this in the build script for a real app! This gets passed in at the top of the build script.
             KeystoreAlias = "XamarinCRMAndroid"
         })
