@@ -1,8 +1,30 @@
 task :default => ['build:ios', 'build:android']
 
 namespace :build do
+	desc "Cleans the project"
+	task :clean do
+	  directories_to_delete = [
+	      "src/MobileApp/XamarinCRM.iOS/bin/iPhone",
+	      "src/MobileApp/XamarinCRM.iOS/bin/iPhoneSimulator",
+	      "src/MobileApp/XamarinCRM.iOS/obj",
+	      "src/MobileApp/XamarinCRM.Android/bin/Debug",
+	      "src/MobileApp/XamarinCRM.Android/bin/Release",
+	      "src/MobileApp/XamarinCRM.Android/obj",
+	      "src/MobileApp/XamarinCRM/bin",
+	      "src/MobileApp/XamarinCRM/obj",
+  	      "src/MobileApp/XamarinCRM.Models/bin",
+	      "src/MobileApp/XamarinCRM.Models/obj",
+	      "src/MobileApp/XamarinCRM.UITest/bin",
+	      "src/MobileApp/XamarinCRM.UITest/obj",
+	  ]
+
+	  directories_to_delete.each { |x|
+	    rm_rf x
+	  }
+	end
+
 	desc "Build iOS App"
-	task :ios do
+	task :ios => [:clean] do
 		sh "pwd"
 		sh "nuget restore src/MobileApp/XamarinCRM.iOS/packages.config -PackagesDirectory src/MobileApp/packages/"
 		sh "nuget restore src/MobileApp/XamarinCRM.UITest/packages.config -PackagesDirectory src/MobileApp/packages/"
@@ -18,7 +40,7 @@ namespace :build do
 	end
 
 	desc "Build Android App"
-	task :android do
+	task :android => [:clean] do
 		sh "nuget restore src/MobileApp/XamarinCRM.Android/packages.config -PackagesDirectory src/MobileApp/packages"
 		puts "Android nugets restored"
 		puts
