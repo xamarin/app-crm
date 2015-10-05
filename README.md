@@ -9,7 +9,7 @@ Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforc
 
 __OR__ 
 
-2) You can easily create your own fully-functional (but temporary) service instance via Microsoft's Azure App Service [__Try It Now__](https://tryappservice.azure.com/en-us) experience: https://tryappservice.azure.com/en-us. Select 'Xamarin CRM' in step 2. The app source you download will be pre-configured to consume your automatically-created temporary Azure App Service instance.
+2) You can easily create your own fully-functional (but temporary) service instance via Microsoft's Azure App Service [__Try It Now__](https://tryappservice.azure.com/en-us) experience: https://tryappservice.azure.com/en-us. Select 'Xamarin CRM' in step 2. The app source you download will be pre-configured to consume your automatically-created temporary Azure App Service instance. (Be aware that the mobile app source in the Try It Now experience may not be fully up to date. Use this repo for the latest source.)
 
 > <a href="https://tryappservice.azure.com/en-us"><img src="XamarinCRM_TryItNow.png" width="75%" /></a>
 
