@@ -7,21 +7,29 @@ open System.Linq
 open BuildHelpers
 open Fake.XamarinHelper
 
-// Let's set up some variables.
+let androidKeystorePassword = getBuildParamOrDefault "android_keystore_password" "not_provided"
 
-let mobileAppPath = "../../src/MobileApp/"
+let RelativeToRepoRoot path = 
+    ("../../" + path)
 
-let solutionFile = (mobileAppPath + "XamarinCRM.sln")
+let mobileAppSourcePath = RelativeToRepoRoot "src/MobileApp/"
 
-let packageOutputPath = (mobileAppPath + "packages")
+let solutionFile = (mobileAppSourcePath + "XamarinCRM.sln")
 
-let iOSProject = "../../src/MobileApp/XamarinCRM.iOS"
+let nuGetPackageOutputPath = (mobileAppSourcePath + "packages/")
 
-let iOSBuildOutputLocation = "src/MobileApp/XamarinCRM.iOS/bin"
+let iOSProjectPath = (mobileAppSourcePath + "XamarinCRM.iOS/")
 
-let androidProject = "../../src/MobileApp/XamarinCRM.Android"
+let iOSBuildOutputPath = (iOSProjectPath + "bin/iPhone/")
 
-let RestorePackagesToHintPath = Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile + " -PackagesDirectory " + packageOutputPath)
+let androidProjectPath = (mobileAppSourcePath + "XamarinCRM.Android/")
+
+let androidProjectFile = (androidProjectPath + "XamarinCRM.Android.csproj")
+
+let androidBuildOutputPath = (androidProjectPath + "bin/")
+
+let RestorePackagesToHintPath = 
+    Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile + " -PackagesDirectory " + nuGetPackageOutputPath)
 
 // You may or may not want all of the following targets for your purposes. Modify to your liking.
 
@@ -33,11 +41,11 @@ Target "ios-iphone-debug" (fun () ->
         {defaults with
             ProjectPath = solutionFile
             Platform = "iPhone"
-            Configuration = "Debug"
+            Configuration = "iOS Debug (Development)"
             Target = "Build"
             BuildIpa = true
         })
-    TeamCityHelper.PublishArtifact (iOSBuildOutputLocation + "/iPhone/Debug/*.ipa")
+    TeamCityHelper.PublishArtifact (iOSBuildOutputPath + "Debug/*.ipa")
 )
 
 // This target is a release build, signed for App Store distribution.
@@ -48,14 +56,14 @@ Target "ios-iphone-appstore" (fun () ->
         {defaults with
             ProjectPath = solutionFile
             Platform = "iPhone"
-            Configuration = "AppStore"
+            Configuration = "iOS AppStore (Distribution)"
             Target = "Build"
             BuildIpa = true
         })
-    TeamCityHelper.PublishArtifact (iOSBuildOutputLocation + "/iPhone/AppStore/*.ipa")
+    TeamCityHelper.PublishArtifact (iOSBuildOutputPath + "AppStore/*.ipa")
 )
 
-// This target is a release build, signed InHouse distribution.
+// This target is a release build, signed for InHouse distribution.
 Target "ios-iphone-inhouse" (fun () ->
     RestorePackagesToHintPath
     
@@ -63,11 +71,11 @@ Target "ios-iphone-inhouse" (fun () ->
         {defaults with
             ProjectPath = solutionFile
             Platform = "iPhone"
-            Configuration = "Inhouse"
+            Configuration = "iOS InHouse (Distribution)"
             Target = "Build"
             BuildIpa = true
         })
-    TeamCityHelper.PublishArtifact (iOSBuildOutputLocation + "/iPhone/InHouse/*.ipa")
+    TeamCityHelper.PublishArtifact (iOSBuildOutputPath + "InHouse/*.ipa")
 )
 
 // This target is a release build, signed for Ad-Hoc distribution.
@@ -78,11 +86,30 @@ Target "ios-iphone-adhoc" (fun () ->
         {defaults with
             ProjectPath = solutionFile
             Platform = "iPhone"
-            Configuration = "Ad-Hoc"
+            Configuration = "iOS Ad-Hoc (Distribution)"
             Target = "Build"
             BuildIpa = true
         })
-    TeamCityHelper.PublishArtifact (iOSBuildOutputLocation + "/iPhone/Ad-Hoc/*.ipa")
+    TeamCityHelper.PublishArtifact (iOSBuildOutputPath + "Ad-Hoc/*.ipa")
+)
+
+Target "android-release" (fun () ->
+    RestorePackagesToHintPath
+
+    AndroidPackage (fun defaults ->
+        {defaults with
+            ProjectPath = androidProjectFile
+            Configuration = "Release"
+            OutputPath = (androidBuildOutputPath + "Release")
+        }) 
+    |> AndroidSignAndAlign (fun defaults ->
+        {defaults with
+            ZipalignPath = "tools/zipalign"
+            KeystorePath = (mobileAppSourcePath + "XamarinCRMAndroid.keystore")
+            KeystorePassword = androidKeystorePassword // TODO: Don't store this in the build script for a real app! This gets passed in at the top of the build script.
+            KeystoreAlias = "XamarinCRMAndroid"
+        })
+    |> fun file -> TeamCityHelper.PublishArtifact file.FullName
 )
 
 RunTarget() 
