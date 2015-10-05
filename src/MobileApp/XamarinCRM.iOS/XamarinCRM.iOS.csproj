@@ -12,6 +12,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
+    <AssemblyName>XamarinCRMiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -162,21 +163,21 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\iPhoneSimulator\Ad-Hoc</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <AssemblyName>XamarinCRM.iOS</AssemblyName>
+    <AssemblyName>XamarinCRMiOS</AssemblyName>
     <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhoneSimulator' ">
     <Optimize>false</Optimize>
     <OutputPath>bin\iPhoneSimulator\AppStore</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <AssemblyName>XamarinCRM.iOS</AssemblyName>
+    <AssemblyName>XamarinCRMiOS</AssemblyName>
     <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|AnyCPU' ">
     <Optimize>false</Optimize>
     <OutputPath>bin\Ad-Hoc</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <AssemblyName>XamarinCRM.iOS</AssemblyName>
+    <AssemblyName>XamarinCRMiOS</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
