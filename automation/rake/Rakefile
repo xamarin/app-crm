@@ -31,7 +31,7 @@ namespace :build do
 		puts "iOS nugets restored"
 		puts
 		puts "Building XamarinCRM.iOS"
-		sh "xbuild ../../src/MobileApp/XamarinCRM.sln /p:Configuration='iOS Debug (Development)' /p:Platform=iPhone /p:BuildIpa=true"
+		sh "xbuild ../../src/MobileApp/XamarinCRM.sln /p:Configuration='iOS Debug (Development)' /p:Platform=iPhone /p:BuildIpa=true /verbosity:quiet"
 		puts
 		puts "Checking for Insights on iOS"
 		sh "cat ../../src/MobileApp/XamarinCRM.iOS/Main.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
@@ -47,7 +47,7 @@ namespace :build do
 		addMaptoManifest("../../src/MobileApp/XamarinCRM.Android/Properties/AndroidManifest.xml")
 		puts "Maps added to manifest"
 		puts "Building XamarinCRM.Android"
-		sh "xbuild /t:SignAndroidPackage /p:Configuration=Release ../../src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj"
+		sh "xbuild /t:SignAndroidPackage /p:Configuration=Release ../../src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj /verbosity:quiet"
 		puts
 		puts "Checking for Insights on Android"
 		sh "cat ../../src/MobileApp/XamarinCRM.Android/MainActivity.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
@@ -62,7 +62,7 @@ namespace :testcloud do
 		puts "Restoring Test Nuget Packages"
 		sh "nuget restore ../../src/MobileApp/XamarinCRM.UITest/packages.config -PackagesDirectory ../../src/MobileApp/packages/"
 		puts "Building Test Solution"
-		sh "xbuild ../../src/MobileApp/XamarinCRM.UITest/XamarinCRM.UITest.csproj"
+		sh "xbuild ../../src/MobileApp/XamarinCRM.UITest/XamarinCRM.UITest.csproj /verbosity:quiet"
 
 		API_KEY = ENV['API_KEY']
 		USER_ACCOUNT = ENV['USER_ACCOUNT']
