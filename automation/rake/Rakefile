@@ -34,10 +34,13 @@ namespace :build do
 		puts
 		puts "Building XamarinCRM.iOS"
 		time = Benchmark.realtime do
-      sh "xbuild ../../src/MobileApp/XamarinCRM.sln /p:Configuration='iOS Debug (Development)' /p:Platform=iPhone /p:BuildIpa=true  /verbosity:quiet"
+      sh "xbuild ../../src/MobileApp/XamarinCRM.sln /p:Configuration='iOS Debug (Development)' /p:Platform=iPhone /p:BuildIpa=true"
     end
+		min = (time / 60).to_i.to_s
+    sec = (time % 60).to_i.to_s
+    sec = sec.length < 2 ? "0" + sec : sec
     size = (File.size("../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/XamarinCRM_Debug.ipa")/1000000.0).round(1)
-    puts "*** iOS build time: #{time.round(1)} seconds"
+    puts "*** iOS build time: #{min}:#{sec}"
     puts "*** iOS IPA size: #{size} MB"
 		puts
 		puts "Checking for Insights on iOS"
@@ -55,10 +58,13 @@ namespace :build do
 		# puts "Maps added to manifest"
 		puts "Building XamarinCRM.Android"
 		time = Benchmark.realtime do
-      sh "xbuild ../../src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj /t:SignAndroidPackage /p:Configuration=Release /verbosity:quiet"
+      sh "xbuild ../../src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj /t:SignAndroidPackage /p:Configuration=Release"
     end
+		min = (time / 60).to_i.to_s
+    sec = (time % 60).to_i.to_s
+    sec = sec.length < 2 ? "0" + sec : sec
     size = (File.size("../../src/MobileApp/XamarinCRM.Android/bin/Release/com.xamarin.xamarincrm-Signed.apk")/1000000.0).round(1)
-    puts "*** Android build time: #{time.round(1)} seconds"
+    puts "*** Android build time: #{min}:#{sec}"
     puts "*** Android APK size: #{size} MB"
 		puts
 		puts "Checking for Insights on Android"
