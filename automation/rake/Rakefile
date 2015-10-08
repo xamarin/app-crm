@@ -51,8 +51,8 @@ namespace :build do
 		sh "nuget restore ../../src/MobileApp/XamarinCRM.Android/packages.config -PackagesDirectory ../../src/MobileApp/packages"
 		puts "Android nugets restored"
 		puts
-		addMaptoManifest("../../src/MobileApp/XamarinCRM.Android/Properties/AndroidManifest.xml")
-		puts "Maps added to manifest"
+		# addMaptoManifest("../../src/MobileApp/XamarinCRM.Android/Properties/AndroidManifest.xml")
+		# puts "Maps added to manifest"
 		puts "Building XamarinCRM.Android"
 		time = Benchmark.realtime do
       sh "xbuild ../../src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj /t:SignAndroidPackage /p:Configuration=Release /verbosity:quiet"
