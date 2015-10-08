@@ -17,7 +17,7 @@ using XamarinCRM.Statics;
 using XamarinCRM.Converters;
 using XamarinCRM.Views.Custom;
 
-namespace XamarinCRM.Cells
+namespace XamarinCRM.Cells.Customers
 {
     public class OrderListItemCell : ViewCell
     {

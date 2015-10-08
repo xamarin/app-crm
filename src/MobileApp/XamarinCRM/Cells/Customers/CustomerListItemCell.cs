@@ -15,43 +15,44 @@
 using Xamarin.Forms;
 using XamarinCRM.Statics;
 
-namespace XamarinCRM.Cells
+namespace XamarinCRM.Cells.Customers
 {
-    public class CategoryListItemCell : ViewCell
+    public class CustomerListItemCell : ViewCell
     {
-        public CategoryListItemCell()
-        {
-            #region caregoryNameLabel
-            Label caregoryNameLabel = new Label()
-            { 
-                TextColor = Palette._006,
-                FontSize = Device.OnPlatform(
-                    iOS: Device.GetNamedSize(NamedSize.Small, typeof(Label)), 
-                    Android: Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                    WinPhone: Device.GetNamedSize(NamedSize.Medium, typeof(Label))) * 1.2,
-                YAlign = TextAlignment.End,
-                LineBreakMode = LineBreakMode.TailTruncation
-            };
+        public Label CompanyNameLabel { get; private set; }
 
-            // The simple form of the Binding constructor.
-            caregoryNameLabel.SetBinding(
-                Label.TextProperty, 
-                new Binding("Name"));
+        public Label ContactName { get; private set; }
+
+        public CustomerListItemCell()
+        {
+            #region company label
+            CompanyNameLabel = new Label()
+            {
+                TextColor = Palette._006,
+                FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)) * 1.2,
+                XAlign = TextAlignment.Start,
+                YAlign = TextAlignment.End,
+                LineBreakMode = LineBreakMode.TailTruncation,
+//                BackgroundColor = Color.Red
+            };
+            CompanyNameLabel.SetBinding(
+                Label.TextProperty,
+                new Binding("Company"));
             #endregion
 
-            #region categoryDescriptionLabel
-            Label categoryDescriptionLabel = new Label()
-            { 
+            #region contact label
+            ContactName = new Label()
+            {
                 TextColor = Palette._007,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                YAlign = TextAlignment.End,
-                LineBreakMode = LineBreakMode.TailTruncation
+                XAlign = TextAlignment.Start,
+                YAlign = TextAlignment.Start,
+//                BackgroundColor = Color.Blue
             };
 
-            // The simple form of the Binding constructor.
-            categoryDescriptionLabel.SetBinding(
-                Label.TextProperty, 
-                new Binding("Description"));
+            ContactName.SetBinding(
+                Label.TextProperty,
+                new Binding("DisplayContact"));
             #endregion
 
             // A ContentView, which will serve as the "top-level" of the cell's view hierarchy. 
@@ -59,27 +60,21 @@ namespace XamarinCRM.Cells
             var contentView = new ContentView();
 
             // set the padding of the contentView
-            contentView.Padding = new Thickness(10, 10);
+            contentView.Padding = new Thickness(20, 0);
 
             // A container for the "top-level" of the cell's view hierarchy.
-            RelativeLayout relativeLayout = new RelativeLayout()
-            {
-                BackgroundColor = Color.Transparent
-            };
+            RelativeLayout relativeLayout = new RelativeLayout();
 
             // add the companyNameLabel to the relativeLayout
             relativeLayout.Children.Add(
-                view: caregoryNameLabel, 
-                xConstraint: Constraint.RelativeToParent(parent => 0),
-                yConstraint: Constraint.RelativeToParent(parent => 0),
+                view: CompanyNameLabel,
                 widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 2));
 
             // add the percentCopleteLabel to the relativeLayout
             relativeLayout.Children.Add(
-                view: categoryDescriptionLabel,
-                xConstraint: Constraint.RelativeToParent(parent => 0),
-                yConstraint: Constraint.RelativeToParent(parent => (parent.Height / 2)),
+                view: ContactName,
+                yConstraint: Constraint.RelativeToParent(parent => parent.Height / 2),
                 widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 2));
 

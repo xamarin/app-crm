@@ -15,7 +15,7 @@
 using Xamarin.Forms;
 using XamarinCRM.Statics;
 
-namespace XamarinCRM.Cells
+namespace XamarinCRM.Cells.Products
 {
     public class ProductListItemCell : ViewCell
     {

@@ -16,7 +16,7 @@ using Xamarin.Forms;
 using XamarinCRM.Converters;
 using XamarinCRM.Statics;
 
-namespace XamarinCRM
+namespace XamarinCRM.Cells.Customers
 {
     public class CustomerOrderListViewGroupHeaderCell : ViewCell
     {

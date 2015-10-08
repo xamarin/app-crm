@@ -16,7 +16,7 @@ using XamarinCRM.Converters;
 using Xamarin.Forms;
 using XamarinCRM.Statics;
 
-namespace XamarinCRM.Cells
+namespace XamarinCRM.Cells.Sales
 {
     public class LeadListItemCell : ViewCell
     {
