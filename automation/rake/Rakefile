@@ -1,3 +1,5 @@
+require "benchmark"
+
 task :default => ['build:ios', 'build:android']
 
 namespace :build do
@@ -31,7 +33,12 @@ namespace :build do
 		puts "iOS nugets restored"
 		puts
 		puts "Building XamarinCRM.iOS"
-		sh "xbuild ../../src/MobileApp/XamarinCRM.sln /p:Configuration='iOS Debug (Development)' /p:Platform=iPhone /p:BuildIpa=true /verbosity:quiet"
+		time = Benchmark.realtime do
+      sh "xbuild ../../src/MobileApp/XamarinCRM.sln /p:Configuration='iOS Debug (Development)' /p:Platform=iPhone /p:BuildIpa=true  /verbosity:quiet"
+    end
+    size = (File.size("../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/XamarinCRM_Debug.ipa")/1000000.0).round(1)
+    puts "*** iOS build time: #{time.round(1)} seconds"
+    puts "*** iOS IPA size: #{size} MB"
 		puts
 		puts "Checking for Insights on iOS"
 		sh "cat ../../src/MobileApp/XamarinCRM.iOS/Main.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
@@ -47,7 +54,12 @@ namespace :build do
 		addMaptoManifest("../../src/MobileApp/XamarinCRM.Android/Properties/AndroidManifest.xml")
 		puts "Maps added to manifest"
 		puts "Building XamarinCRM.Android"
-		sh "xbuild /t:SignAndroidPackage /p:Configuration=Release ../../src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj /verbosity:quiet"
+		time = Benchmark.realtime do
+      sh "xbuild ../../src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj /t:SignAndroidPackage /p:Configuration=Release /verbosity:quiet"
+    end
+    size = (File.size("../../src/MobileApp/XamarinCRM.Android/bin/Release/com.xamarin.xamarincrm-Signed.apk")/1000000.0).round(1)
+    puts "*** Android build time: #{time.round(1)} seconds"
+    puts "*** Android APK size: #{size} MB"
 		puts
 		puts "Checking for Insights on Android"
 		sh "cat ../../src/MobileApp/XamarinCRM.Android/MainActivity.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
@@ -84,9 +96,9 @@ namespace :testcloud do
 	task :ios => [:build_test_solution] do
 		devices = get_device_code(DEVICE_SET, "ios")
 		unless CATEGORY.nil?
- 			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM --category #{CATEGORY}" 
+ 			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM --category #{CATEGORY}"
 		else
-			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM" 
+			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM"
 		end
 	end
 
