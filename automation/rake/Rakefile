@@ -1,6 +1,6 @@
 require "benchmark"
 
-task :default => ['build:ios', 'build:android']
+task :default => ['build:android', 'build:ios']
 
 namespace :build do
 	desc "Cleans the project"
@@ -112,9 +112,9 @@ namespace :testcloud do
 	task :android => [:build_test_solution] do
 		devices = get_device_code(DEVICE_SET, "android")
 		unless CATEGORY.nil?
-			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} keystore ~/.android/debug.keystore android androiddebugkey android --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --category #{CATEGORY}"
+			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --category #{CATEGORY}" # keystore ~/.android/debug.keystore android androiddebugkey android
 		else
-			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} keystore ~/.android/debug.keystore android androiddebugkey android --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug"
+			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug" # keystore ~/.android/debug.keystore android androiddebugkey android
 		end
 	end
 end
