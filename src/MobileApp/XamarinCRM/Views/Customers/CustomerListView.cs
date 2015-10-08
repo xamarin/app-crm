@@ -13,9 +13,9 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using Xamarin.Forms;
-using XamarinCRM.Cells;
 using XamarinCRM.Statics;
 using XamarinCRM.Views.Base;
+using XamarinCRM.Cells.Customers;
 
 namespace XamarinCRM.Views.Customers
 {
