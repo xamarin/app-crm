@@ -1,4 +1,5 @@
 require "benchmark"
+require "date"
 
 task :default => ['build:android', 'build:ios']
 
@@ -33,19 +34,15 @@ namespace :build do
 		puts "iOS nugets restored"
 		puts
 		puts "Building XamarinCRM.iOS"
-		time = Benchmark.realtime do
-      sh "xbuild ../../src/MobileApp/XamarinCRM.sln /p:Configuration='iOS Debug (Development)' /p:Platform=iPhone /p:BuildIpa=true"
-    end
-		min = (time / 60).to_i.to_s
-    sec = (time % 60).to_i.to_s
-    sec = sec.length < 2 ? "0" + sec : sec
-    size = (File.size("../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/XamarinCRM_Debug.ipa")/1000000.0).round(1)
-    puts "*** iOS build time: #{min}:#{sec}"
-    puts "*** iOS IPA size: #{size} MB"
-		puts
+
+    time = time_cmd "xbuild ../../src/MobileApp/XamarinCRM.sln /p:Configuration='iOS Debug (Development)' /p:Platform=iPhone /p:BuildIpa=true /verbosity:quiet /flp:LogFile=build_ios.log"
+
 		puts "Checking for Insights on iOS"
 		sh "cat ../../src/MobileApp/XamarinCRM.iOS/Main.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
-		puts
+
+    size = (File.size("../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/XamarinCRM_Debug.ipa")/1000000.0).round(1)
+    log_data "iOS", time, size, "build_ios.log"
+
 		puts "iOS BUILD SUCCESSFUL"
 	end
 
@@ -57,20 +54,47 @@ namespace :build do
 		# addMaptoManifest("../../src/MobileApp/XamarinCRM.Android/Properties/AndroidManifest.xml")
 		# puts "Maps added to manifest"
 		puts "Building XamarinCRM.Android"
-		time = Benchmark.realtime do
-      sh "xbuild ../../src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj /t:SignAndroidPackage /p:Configuration=Release"
-    end
-		min = (time / 60).to_i.to_s
-    sec = (time % 60).to_i.to_s
-    sec = sec.length < 2 ? "0" + sec : sec
-    size = (File.size("../../src/MobileApp/XamarinCRM.Android/bin/Release/com.xamarin.xamarincrm-Signed.apk")/1000000.0).round(1)
-    puts "*** Android build time: #{min}:#{sec}"
-    puts "*** Android APK size: #{size} MB"
-		puts
+
+		time = time_cmd "xbuild ../../src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj /p:Configuration=Debug /t:SignAndroidPackage /verbosity:quiet /flp:LogFile=build_android.log"
+
 		puts "Checking for Insights on Android"
 		sh "cat ../../src/MobileApp/XamarinCRM.Android/MainActivity.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
-		puts
+
+    size = (File.size("../../src/MobileApp/XamarinCRM.Android/bin/Debug/com.xamarin.xamarincrm-Signed.apk")/1000000.0).round(1)
+    log_data "Android", time, size, "build_android.log"
+
 		puts "Android BUILD SUCCESSFUL"
+	end
+
+	def time_cmd(cmd)
+		time = Benchmark.realtime do
+			sh cmd
+		end
+		min = (time / 60).to_i.to_s
+		sec = (time % 60).to_i.to_s
+		sec = sec.length < 2 ? "0" + sec : sec
+		return "#{min}:#{sec}"
+	end
+
+	def log_data(platform, time, size, log_file)
+		date = DateTime.now.strftime("%m/%d/%Y %I:%M%p")
+		version = /\d+\.\d+\.\d+\.\d+/.match(`mdls -name kMDItemVersion /Applications/Xamarin\\ Studio.app`)
+		user = /\w+$/.match(ENV['HOME'])[0].capitalize
+
+		tail = `tail -n 6 #{log_file}`
+		warnings = /(\d+) Warning\(s\)/.match(tail).captures[0]
+		errors = /(\d+) Error\(s\)/.match(tail).captures[0]
+
+		puts "*** date: #{date}"
+		puts "*** platform: #{platform}"
+		puts "*** origin: #{user}"
+		puts "*** version: #{version}"
+		puts "*** size (MB): #{size}"
+		puts "*** time: #{time}"
+		puts "*** warnings: #{warnings}"
+		puts "*** errors: #{errors}"
+
+		puts "#{date}, #{platform}, #{user}, #{version}, #{size}, #{time}, #{warnings}, #{errors}"
 	end
 end
 
@@ -112,9 +136,9 @@ namespace :testcloud do
 	task :android => [:build_test_solution] do
 		devices = get_device_code(DEVICE_SET, "android")
 		unless CATEGORY.nil?
-			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --category #{CATEGORY}" # keystore ~/.android/debug.keystore android androiddebugkey android
+			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Debug/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --category #{CATEGORY}" # keystore ~/.android/debug.keystore android androiddebugkey android
 		else
-			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug" # keystore ~/.android/debug.keystore android androiddebugkey android
+			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.1.1/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Debug/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug" # keystore ~/.android/debug.keystore android androiddebugkey android
 		end
 	end
 end
