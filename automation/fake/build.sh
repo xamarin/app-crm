@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -f packages/FAKE/tools/FAKE.exe ]; then
-  mono packages/FAKE/tools/FAKE.exe install FAKE -OutputDirectory packages -ExcludeVersion
+  mono tools/NuGet/NuGet.exe install FAKE -OutputDirectory packages -ExcludeVersion
 fi
 
 if [ $# -eq 0 ]; then
