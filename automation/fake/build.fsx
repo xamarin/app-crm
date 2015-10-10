@@ -8,32 +8,32 @@ open BuildHelpers
 open Fake.XMLHelper
 open Fake.XamarinHelper
 
-let androidKeystorePassword = getBuildParamOrDefault "android_keystore_password" "not_provided"
+let private androidKeystorePassword = getBuildParamOrDefault "android_keystore_password" "not_provided"
 
-let googleMapsForAndroidv2ApiKey = getBuildParamOrDefault "google_maps_for_android_v2_api_key" "not_provided"
+let private googleMapsForAndroidv2ApiKey = getBuildParamOrDefault "google_maps_for_android_v2_api_key" "not_provided"
 
-let mobileAppSourcePath = "../../src/MobileApp/"
+let private mobileAppSourcePath = "../../src/MobileApp/"
 
-let solutionFile = (mobileAppSourcePath + "XamarinCRM.sln")
+let private solutionFile = (mobileAppSourcePath + "XamarinCRM.sln")
 
-let nuGetPackageOutputPath = (mobileAppSourcePath + "packages/")
+let private nuGetPackageOutputPath = (mobileAppSourcePath + "packages/")
 
-let iOSProjectPath = (mobileAppSourcePath + "XamarinCRM.iOS/")
+let private iOSProjectPath = (mobileAppSourcePath + "XamarinCRM.iOS/")
 
-let iOSBuildOutputPath = "src/MobileApp/XamarinCRM.iOS/bin/" // This path isn't relative to ~/automation/fake like the rest of the paths. The tool that uses it runs in the repo's root folder.
+let private iOSBuildOutputPath = "src/MobileApp/XamarinCRM.iOS/bin/" // This path isn't relative to ~/automation/fake like the rest of the paths. The tool that uses it runs in the repo's root folder.
 
-let androidProjectPath = (mobileAppSourcePath + "XamarinCRM.Android/")
+let private androidProjectPath = (mobileAppSourcePath + "XamarinCRM.Android/")
 
-let androidProjectFile = (androidProjectPath + "XamarinCRM.Android.csproj")
+let private androidProjectFile = (androidProjectPath + "XamarinCRM.Android.csproj")
 
-let androidBuildOutputPath = (androidProjectPath + "bin/")
+let private androidBuildOutputPath = (androidProjectPath + "bin/")
 
 // a function that restores all the packages in the solution to a particular directory, instead of the default, which would be relative to the working directory
-let RestorePackagesToHintPath = 
+let private RestorePackagesToHintPath = 
     Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile + " -PackagesDirectory " + nuGetPackageOutputPath)
 
 // a function that encapsulates the different iOS combinations
-let TemplatediOSBuild configName platform provisioningCategory =
+let private TemplatediOSBuild configName platform provisioningCategory =
 
     CleanDir (iOSBuildOutputPath + configName)
     
@@ -50,7 +50,7 @@ let TemplatediOSBuild configName platform provisioningCategory =
     TeamCityHelper.PublishArtifact (iOSBuildOutputPath + platform + "/" + configName + "/*.ipa")
 
 // a function that encapsulates the different Android combinations
-let TemplatedAndroidBuild configName keystoreFile keystoreAlias keystorePassword googleMapsApiKey =
+let private TemplatedAndroidBuild configName keystoreFile keystoreAlias keystorePassword googleMapsApiKey =
 
     RestorePackagesToHintPath
     
@@ -78,8 +78,6 @@ let TemplatedAndroidBuild configName keystoreFile keystoreAlias keystorePassword
             KeystoreAlias = keystoreAlias
         })
     |> fun file -> TeamCityHelper.PublishArtifact file.FullName
-
-// You may or may not want all of the following targets for your purposes. Modify to your liking.
 
 // This target is mostly for a sanity check, to make sure the app builds with debug settings.
 Target "ios-iphone-debug" (fun () ->
