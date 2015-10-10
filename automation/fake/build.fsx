@@ -49,6 +49,36 @@ let TemplatediOSBuild configName platform provisioningCategory =
         })
     TeamCityHelper.PublishArtifact (iOSBuildOutputPath + platform + "/" + configName + "/*.ipa")
 
+// a function that encapsulates the different Android combinations
+let TemplatedAndroidBuild configName keystoreFile keystoreAlias keystorePassword googleMapsApiKey =
+
+    RestorePackagesToHintPath
+    
+    // Delete the (androidProjectPath + "Resources/values/api-keys.xml") file, because of what happens right below.
+    DeleteFile (androidProjectPath + "Resources/values/api-keys.xml")
+
+    // Insert Google Maps For Android v2 API Key into api-keys.xml file in Android project
+    // The actual values/api-keys.xml does not exist in source. It gets copied into place by an MSBuild target in the csproj file, from the valuesTemplate/api-keys.xml file.
+    // So, we place the api key value into the valuesTemplate/api-keys.xml file instead, knowing that it will get copied into place.
+
+    XmlPokeInnerText (androidProjectPath + "Resources/valuesTemplate/api-keys.xml") "(/resources/string[@name='GoogleMapsKey'])[1]" googleMapsForAndroidv2ApiKey
+
+    // Build, sign, and zip-align
+    AndroidPackage (fun defaults ->
+        {defaults with
+            ProjectPath = androidProjectFile
+            Configuration = configName
+            OutputPath = (androidBuildOutputPath + configName)
+        }) 
+    |> AndroidSignAndAlign (fun defaults ->
+        {defaults with
+            ZipalignPath = "tools/zipalign"
+            KeystorePath = (mobileAppSourcePath + keystoreFile)
+            KeystorePassword = androidKeystorePassword // TODO: Don't store this in the build script for a real app! This gets passed in at the top of the build script.
+            KeystoreAlias = keystoreAlias
+        })
+    |> fun file -> TeamCityHelper.PublishArtifact file.FullName
+
 // You may or may not want all of the following targets for your purposes. Modify to your liking.
 
 // This target is mostly for a sanity check, to make sure the app builds with debug settings.
@@ -71,35 +101,14 @@ Target "ios-iphone-adhoc" (fun () ->
     TemplatediOSBuild "Ad-Hoc" "iPhone" "Distribution"
 )
 
+// this target is an Android debug build, signed for AdHoc distribution
+Target "android-debug" (fun () ->
+    TemplatedAndroidBuild "Debug" "debug.keystore" "androiddebugkey" androidKeystorePassword googleMapsForAndroidv2ApiKey
+)
+
 // this target is an Android release build, signed for AdHoc distribution
 Target "android-release" (fun () ->
-
-    RestorePackagesToHintPath
-    
-    // Delete the (androidProjectPath + "Resources/values/api-keys.xml") file, because of what happens right below.
-    DeleteFile (androidProjectPath + "Resources/values/api-keys.xml")
-
-    // Insert Google Maps For Android v2 API Key into api-keys.xml file in Android project
-    // The actual values/api-keys.xml does not exist in source. It gets copied into place by an MSBuild target in the csproj file, from the valuesTemplate/api-keys.xml file.
-    // So, we place the api key value into the valuesTemplate/api-keys.xml file instead, knowing that it will get copied into place.
-
-    XmlPokeInnerText (androidProjectPath + "Resources/valuesTemplate/api-keys.xml") "(/resources/string[@name='GoogleMapsKey'])[1]" googleMapsForAndroidv2ApiKey
-
-    // Build, sign, and zip-align
-    AndroidPackage (fun defaults ->
-        {defaults with
-            ProjectPath = androidProjectFile
-            Configuration = "Release"
-            OutputPath = (androidBuildOutputPath + "Release")
-        }) 
-    |> AndroidSignAndAlign (fun defaults ->
-        {defaults with
-            ZipalignPath = "tools/zipalign"
-            KeystorePath = (mobileAppSourcePath + "XamarinCRMAndroid.keystore")
-            KeystorePassword = androidKeystorePassword // TODO: Don't store this in the build script for a real app! This gets passed in at the top of the build script.
-            KeystoreAlias = "XamarinCRMAndroid"
-        })
-    |> fun file -> TeamCityHelper.PublishArtifact file.FullName
+    TemplatedAndroidBuild "Release" "XamarinCRMAndroid.keystore" "XamarinCRMAndroid" androidKeystorePassword googleMapsForAndroidv2ApiKey
 )
 
 RunTarget() 
