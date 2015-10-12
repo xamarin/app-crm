@@ -26,7 +26,7 @@ namespace XamarinCRM.UITest
         [Test]
         public void EditLead()
         {
-            string company = "UITest Automation";
+            string company = "EDIT LEAD";
             string industry = "Education";
             string size = "808.15";
             string stage = "50% - Value Proposition";
@@ -46,7 +46,7 @@ namespace XamarinCRM.UITest
         [Test]
         public void AddNewLead()
         {
-            string company = "UITest Auto New Lead";
+            string company = "NEW LEAD";
             string industry = "Education";
             string size = "808.15";
             string stage = "50% - Value Proposition";
