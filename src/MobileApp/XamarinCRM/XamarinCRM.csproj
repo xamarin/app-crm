@@ -33,32 +33,7 @@
     <ConsolePause>false</ConsolePause>
     <AssemblyName>MobileCRM</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|AnyCPU' ">
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Ad-Hoc</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <AssemblyName>XamarinCRM</AssemblyName>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
-    <Optimize>false</Optimize>
-    <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <AssemblyName>XamarinCRM</AssemblyName>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
-    <Optimize>false</Optimize>
-    <OutputPath>bin\iPhone\AppStore</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <AssemblyName>XamarinCRM</AssemblyName>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'InHouse|iPhone' ">
-    <Optimize>false</Optimize>
-    <OutputPath>bin\iPhone\InHouse</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <AssemblyName>XamarinCRM</AssemblyName>
-  </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Cells\LeadListItemCell.cs" />
     <Compile Include="Converters\WholePercentToDecimalPercent.cs" />
     <Compile Include="Pages\Sales\LeadContactDetailPage.cs" />
     <Compile Include="Pages\Sales\LeadDetailPage.cs" />
@@ -82,15 +57,12 @@
     <Compile Include="Views\Products\CategoryListView.cs" />
     <Compile Include="Views\Products\ProductDetailDescriptionView.cs" />
     <Compile Include="Views\Products\ProductListView.cs" />
-    <Compile Include="Cells\ProductListItemCell.cs" />
-    <Compile Include="Cells\CategoryListItemCell.cs" />
     <Compile Include="ViewModels\Sales\LeadDetailViewModel.cs" />
     <Compile Include="Cells\PickerCell.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Views\Products\ProductDetailRibbonView.cs" />
     <Compile Include="Views\Base\BaseNonPersistentSelectedItemListView.cs" />
     <Compile Include="Pages\Customers\CustomersPage.cs" />
-    <Compile Include="Cells\CustomerListItemCell.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Views\Customers\CustomerListView.cs" />
@@ -106,7 +78,6 @@
     <Compile Include="Services\IConfigFetcher.cs" />
     <Compile Include="ViewModels\Customers\OrdersViewModel.cs" />
     <Compile Include="Views\Customers\OrderListHeaderView.cs" />
-    <Compile Include="Cells\OrderListItemCell.cs" />
     <Compile Include="Views\Customers\CustomerOrderListView.cs" />
     <Compile Include="Converters\ShortDatePatternConverter.cs" />
     <Compile Include="Converters\CurrencyDoubleConverter.cs" />
@@ -141,7 +112,6 @@
     <Compile Include="Enums\Environment.cs" />
     <Compile Include="Pages\Customers\CustomerOrderDetailPage.cs" />
     <Compile Include="Extensions\IListExtensions.cs" />
-    <Compile Include="Cells\CustomerOrderListViewGroupHeaderCell.cs" />
     <Compile Include="Converters\OrderListHeaderViewBackgroudColorConverter.cs" />
     <Compile Include="Statics\Thicknesses.cs" />
     <Compile Include="Services\IAuthenticationService.cs" />
@@ -165,6 +135,12 @@
     </Compile>
     <Compile Include="Localization\ILocalize.cs" />
     <Compile Include="Statics\InsightsReportingConstants.cs" />
+    <Compile Include="Cells\Products\CategoryListItemCell.cs" />
+    <Compile Include="Cells\Products\ProductListItemCell.cs" />
+    <Compile Include="Cells\Customers\CustomerListItemCell.cs" />
+    <Compile Include="Cells\Customers\CustomerOrderListViewGroupHeaderCell.cs" />
+    <Compile Include="Cells\Customers\OrderListItemCell.cs" />
+    <Compile Include="Cells\Sales\LeadListItemCell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -264,6 +240,9 @@
     <Folder Include="ViewModels\Base\" />
     <Folder Include="Views\Custom\" />
     <Folder Include="Enums\" />
+    <Folder Include="Cells\Customers\" />
+    <Folder Include="Cells\Products\" />
+    <Folder Include="Cells\Sales\" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Xamarin.Insights.1.11.1\build\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.11.1\build\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.targets')" />

@@ -22,6 +22,7 @@ using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Custom;
 using XamarinCRM.Views.Customers;
 using XamarinCRM.Models;
+using XamarinCRM.Cells.Customers;
 
 namespace XamarinCRM.Pages.Customers
 {

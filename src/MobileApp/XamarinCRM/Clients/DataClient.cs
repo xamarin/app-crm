@@ -131,10 +131,6 @@ namespace XamarinCRM.Clients
                         await Init();
                     }
 
-                    // For public demo, only allow pull, not push.
-                    // Disabled in the backend service code as well.
-                    // await _MobileServiceClient.SyncContext.PushAsync();
-
                     await _OrderTable.PullAsync("syncOrders", _OrderTable.CreateQuery());
                 }
             );
@@ -215,10 +211,6 @@ namespace XamarinCRM.Clients
                         await Init();
                     }
 
-                    // For public demo, only allow pull, not push.
-                    // Disabled in the backend service code as well.
-                    // await _MobileServiceClient.SyncContext.PushAsync();
-
                     await _AccountTable.PullAsync("syncAccounts", _AccountTable.CreateQuery());
                 }
             );
@@ -274,10 +266,6 @@ namespace XamarinCRM.Clients
                     {    
                         await Init();
                     }
-
-                    // For public demo, only allow pull, not push.
-                    // Disabled in the backend service code as well.
-                    // await _MobileServiceClient.SyncContext.PushAsync();
 
                     await _CategoryTable
                         .PullAsync("syncCategories", _CategoryTable.CreateQuery());
@@ -337,10 +325,6 @@ namespace XamarinCRM.Clients
                     {    
                         await Init();
                     }
-
-                    // For public demo, only allow pull, not push.
-                    // Disabled in the backend service code as well.
-                    // await _MobileServiceClient.SyncContext.PushAsync();
 
                     await _ProductTable
                         .PullAsync("syncProducts", _ProductTable.CreateQuery());
@@ -457,15 +441,19 @@ namespace XamarinCRM.Clients
             {
                 using (var handle = Insights.TrackTime(insightsIdentifier))
                 {
+                    handle.Start();
                     await execute();
+                    handle.Stop();
                 }
             }
-            catch (MobileServiceInvalidOperationException ex)
+            // isolate mobile service errors
+            catch (MobileServiceInvalidOperationException ex) 
             {
                 Insights.Report(ex, Insights.Severity.Error);
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
+                Debug.WriteLine(@"MOBILE SERVICE ERROR {0}", ex.Message);
             }
-            catch (Exception ex2)
+            // catch all other errors
+            catch (Exception ex2) 
             {
                 Insights.Report(ex2, Insights.Severity.Error);
                 Debug.WriteLine(@"ERROR {0}", ex2.Message);
@@ -478,15 +466,19 @@ namespace XamarinCRM.Clients
             {
                 using (var handle = Insights.TrackTime(insightsIdentifier))
                 {
-                    return await execute();
+                    T result;
+                    handle.Start();
+                    result = await execute();
+                    handle.Stop();
+                    return result;
                 }
             }
-            catch (MobileServiceInvalidOperationException ex)
+            catch (MobileServiceInvalidOperationException ex) // isolate mobile service errors
             {
                 Insights.Report(ex, Insights.Severity.Error);
-                Debug.WriteLine(@"ERROR {0}", ex.Message);
+                Debug.WriteLine(@"MOBILE SERVICE ERROR {0}", ex.Message);
             }
-            catch (Exception ex2)
+            catch (Exception ex2) // catch all other errors
             {
                 Insights.Report(ex2, Insights.Severity.Error);
                 Debug.WriteLine(@"ERROR {0}", ex2.Message);

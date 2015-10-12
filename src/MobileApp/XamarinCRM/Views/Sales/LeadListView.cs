@@ -15,7 +15,7 @@
 using Xamarin.Forms;
 using XamarinCRM.Views.Base;
 using XamarinCRM.Statics;
-using XamarinCRM.Cells;
+using XamarinCRM.Cells.Sales;
 
 namespace XamarinCRM.Views.Sales
 {

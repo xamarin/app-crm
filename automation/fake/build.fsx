@@ -3,115 +3,110 @@
 open Fake
 open System
 open System.IO
-open System.Linq
+open System.Linq;
 open BuildHelpers
+open Fake.XMLHelper
 open Fake.XamarinHelper
 
-let androidKeystorePassword = getBuildParamOrDefault "android_keystore_password" "not_provided"
+let private androidKeystorePassword = getBuildParamOrDefault "android_keystore_password" "not_provided"
 
-let RelativeToRepoRoot path = 
-    ("../../" + path)
+let private googleMapsForAndroidv2ApiKey = getBuildParamOrDefault "google_maps_for_android_v2_api_key" "not_provided"
 
-let mobileAppSourcePath = "src/MobileApp/"
+let private mobileAppSourcePath = "../../src/MobileApp/"
 
-let mobileAppRelativeSourcePath = RelativeToRepoRoot mobileAppSourcePath
+let private solutionFile = (mobileAppSourcePath + "XamarinCRM.sln")
 
-let solutionFile = (mobileAppRelativeSourcePath + "XamarinCRM.sln")
+let private nuGetPackageOutputPath = (mobileAppSourcePath + "packages/")
 
-let nuGetPackageOutputPath = (mobileAppRelativeSourcePath + "packages/")
+let private iOSProjectPath = (mobileAppSourcePath + "XamarinCRM.iOS/")
 
-let iOSProjectPath = (mobileAppRelativeSourcePath + "XamarinCRM.iOS/")
+let private iOSBuildOutputPath = "src/MobileApp/XamarinCRM.iOS/bin/" // This path isn't relative to ~/automation/fake like the rest of the paths. The tool that uses it runs in the repo's root folder.
 
-let iOSBuildOutputPath = "src/MobileApp/XamarinCRM.iOS/bin/iPhone/"
+let private androidProjectPath = (mobileAppSourcePath + "XamarinCRM.Android/")
 
-let androidProjectPath = (mobileAppRelativeSourcePath + "XamarinCRM.Android/")
+let private androidProjectFile = (androidProjectPath + "XamarinCRM.Android.csproj")
 
-let androidProjectFile = (androidProjectPath + "XamarinCRM.Android.csproj")
+let private androidBuildOutputPath = (androidProjectPath + "bin/")
 
-let androidBuildOutputPath = (androidProjectPath + "bin/")
-
-let RestorePackagesToHintPath = 
+// a function that restores all the packages in the solution to a particular directory, instead of the default, which would be relative to the working directory
+let private RestorePackagesToHintPath = 
     Exec "tools/NuGet/NuGet.exe" ("restore " + solutionFile + " -PackagesDirectory " + nuGetPackageOutputPath)
 
-// You may or may not want all of the following targets for your purposes. Modify to your liking.
+// a function that encapsulates the different iOS combinations
+let private TemplatediOSBuild configName platform provisioningCategory =
 
-// This target is mostly for a sanity check, to make sure the app builds with debug settings.
-Target "ios-iphone-debug" (fun () ->
+    CleanDir (iOSBuildOutputPath + configName)
+    
     RestorePackagesToHintPath
     
     iOSBuild (fun defaults ->
         {defaults with
             ProjectPath = solutionFile
-            Platform = "iPhone"
-            Configuration = "iOS Debug (Development)"
+            Platform = platform
+            Configuration = ("iOS " + configName + " (" + provisioningCategory + ")")
             Target = "Build"
             BuildIpa = true
         })
-    TeamCityHelper.PublishArtifact (iOSBuildOutputPath + "Debug/*.ipa")
-)
+    TeamCityHelper.PublishArtifact (iOSBuildOutputPath + platform + "/" + configName + "/*.ipa")
 
-// This target is a release build, signed for App Store distribution.
-Target "ios-iphone-appstore" (fun () ->
+// a function that encapsulates the different Android combinations
+let private TemplatedAndroidBuild configName keystoreFile keystoreAlias keystorePassword googleMapsApiKey =
+
     RestorePackagesToHintPath
     
-    iOSBuild (fun defaults ->
-        {defaults with
-            ProjectPath = solutionFile
-            Platform = "iPhone"
-            Configuration = "iOS AppStore (Distribution)"
-            Target = "Build"
-            BuildIpa = true
-        })
-    TeamCityHelper.PublishArtifact (iOSBuildOutputPath + "AppStore/*.ipa")
-)
+    // Delete the (androidProjectPath + "Resources/values/api-keys.xml") file, because of what happens right below.
+    DeleteFile (androidProjectPath + "Resources/values/api-keys.xml")
 
-// This target is a release build, signed for InHouse distribution.
-Target "ios-iphone-inhouse" (fun () ->
-    RestorePackagesToHintPath
-    
-    iOSBuild (fun defaults ->
-        {defaults with
-            ProjectPath = solutionFile
-            Platform = "iPhone"
-            Configuration = "iOS InHouse (Distribution)"
-            Target = "Build"
-            BuildIpa = true
-        })
-    TeamCityHelper.PublishArtifact (iOSBuildOutputPath + "InHouse/*.ipa")
-)
+    // Insert Google Maps For Android v2 API Key into api-keys.xml file in Android project
+    // The actual values/api-keys.xml does not exist in source. It gets copied into place by an MSBuild target in the csproj file, from the valuesTemplate/api-keys.xml file.
+    // So, we place the api key value into the valuesTemplate/api-keys.xml file instead, knowing that it will get copied into place.
 
-// This target is a release build, signed for Ad-Hoc distribution.
-Target "ios-iphone-adhoc" (fun () ->
-    RestorePackagesToHintPath
-    
-    iOSBuild (fun defaults ->
-        {defaults with
-            ProjectPath = solutionFile
-            Platform = "iPhone"
-            Configuration = "iOS Ad-Hoc (Distribution)"
-            Target = "Build"
-            BuildIpa = true
-        })
-    TeamCityHelper.PublishArtifact (iOSBuildOutputPath + "Ad-Hoc/*.ipa")
-)
+    XmlPokeInnerText (androidProjectPath + "Resources/valuesTemplate/api-keys.xml") "(/resources/string[@name='GoogleMapsKey'])[1]" googleMapsForAndroidv2ApiKey
 
-Target "android-release" (fun () ->
-    RestorePackagesToHintPath
-
+    // Build, sign, and zip-align
     AndroidPackage (fun defaults ->
         {defaults with
             ProjectPath = androidProjectFile
-            Configuration = "Release"
-            OutputPath = (androidBuildOutputPath + "Release")
+            Configuration = configName
+            OutputPath = (androidBuildOutputPath + configName)
         }) 
     |> AndroidSignAndAlign (fun defaults ->
         {defaults with
             ZipalignPath = "tools/zipalign"
-            KeystorePath = (mobileAppRelativeSourcePath + "XamarinCRMAndroid.keystore")
+            KeystorePath = (mobileAppSourcePath + keystoreFile)
             KeystorePassword = androidKeystorePassword // TODO: Don't store this in the build script for a real app! This gets passed in at the top of the build script.
-            KeystoreAlias = "XamarinCRMAndroid"
+            KeystoreAlias = keystoreAlias
         })
     |> fun file -> TeamCityHelper.PublishArtifact file.FullName
+
+// This target is mostly for a sanity check, to make sure the app builds with debug settings.
+Target "ios-iphone-debug" (fun () ->
+    TemplatediOSBuild "Debug" "iPhone" "Development"
+)
+
+// This target is an iOS release build, signed for App Store distribution.
+Target "ios-iphone-appstore" (fun () ->
+    TemplatediOSBuild "AppStore" "iPhone" "Distribution"
+)
+
+// This target is an iOS release build, signed for InHouse distribution.
+Target "ios-iphone-inhouse" (fun () ->
+    TemplatediOSBuild "InHouse" "iPhone" "Distribution"
+)
+
+// This target is an iOS release build, signed for Ad-Hoc distribution.
+Target "ios-iphone-adhoc" (fun () ->
+    TemplatediOSBuild "Ad-Hoc" "iPhone" "Distribution"
+)
+
+// this target is an Android debug build, signed for AdHoc distribution
+Target "android-debug" (fun () ->
+    TemplatedAndroidBuild "Debug" "debug.keystore" "androiddebugkey" androidKeystorePassword googleMapsForAndroidv2ApiKey
+)
+
+// this target is an Android release build, signed for AdHoc distribution
+Target "android-release" (fun () ->
+    TemplatedAndroidBuild "Release" "XamarinCRMAndroid.keystore" "XamarinCRMAndroid" androidKeystorePassword googleMapsForAndroidv2ApiKey
 )
 
 RunTarget() 

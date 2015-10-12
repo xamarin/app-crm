@@ -12,10 +12,10 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-using XamarinCRM.Cells;
 using Xamarin.Forms;
 using XamarinCRM.Views.Base;
 using XamarinCRM.Statics;
+using XamarinCRM.Cells.Products;
 
 namespace XamarinCRM.Views.Products
 {
