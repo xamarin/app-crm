@@ -35,13 +35,13 @@ namespace :build do
 		puts
 		puts "Building XamarinCRM.iOS"
 
-    time = time_cmd "xbuild ../../src/MobileApp/XamarinCRM.sln /p:Configuration='iOS Debug (Development)' /p:Platform=iPhone /p:BuildIpa=true /verbosity:quiet /flp:LogFile=build_ios.log"
+    	time = time_cmd "xbuild ../../src/MobileApp/XamarinCRM.sln /p:Configuration='iOS Debug (Development)' /p:Platform=iPhone /p:BuildIpa=true /verbosity:quiet /flp:LogFile=build_ios.log"
 
 		puts "Checking for Insights on iOS"
 		sh "cat ../../src/MobileApp/XamarinCRM.iOS/Main.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
 
-    size = (File.size("../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/XamarinCRM_Debug.ipa")/1000000.0).round(1)
-    log_data "iOS", time, size, "build_ios.log"
+   		size = (File.size("../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/XamarinCRM_Debug.ipa")/1000000.0).round(1)
+	    log_data "iOS", time, size, "build_ios.log"
 
 		puts "iOS BUILD SUCCESSFUL"
 	end
@@ -60,8 +60,8 @@ namespace :build do
 		puts "Checking for Insights on Android"
 		sh "cat ../../src/MobileApp/XamarinCRM.Android/MainActivity.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
 
-    size = (File.size("../../src/MobileApp/XamarinCRM.Android/bin/Debug/com.xamarin.xamarincrm-Signed.apk")/1000000.0).round(1)
-    log_data "Android", time, size, "build_android.log"
+    	size = (File.size("../../src/MobileApp/XamarinCRM.Android/bin/Debug/com.xamarin.xamarincrm-Signed.apk")/1000000.0).round(1)
+    	log_data "Android", time, size, "build_android.log"
 
 		puts "Android BUILD SUCCESSFUL"
 	end
@@ -86,14 +86,14 @@ namespace :build do
 		errors = /(\d+) Error\(s\)/.match(tail).captures[0]
 
 		puts "*** origin: #{user}"
-    puts "*** xamarin version: #{version}"
-    puts "*** platform: #{platform}"
-    puts "*** date time: #{date}"
-    puts
-    puts "*** build time: #{time}"
-    puts "*** app size (MB): #{size}"
-    puts "*** warnings: #{warnings}"
-    puts "*** errors: #{errors}"
+	    puts "*** xamarin version: #{version}"
+	    puts "*** platform: #{platform}"
+	    puts "*** date time: #{date}"
+	    puts
+	    puts "*** build time: #{time}"
+	    puts "*** app size (MB): #{size}"
+	    puts "*** warnings: #{warnings}"
+	    puts "*** errors: #{errors}"
 	end
 end
 
