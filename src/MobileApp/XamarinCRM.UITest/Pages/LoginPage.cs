@@ -2,6 +2,7 @@
 using System.Threading;
 using Xamarin.UITest;
 using WebQuery = System.Func<Xamarin.UITest.Queries.AppQuery, Xamarin.UITest.Queries.AppWebQuery>;
+using Xamarin.UITest.Android;
 
 namespace XamarinCRM.UITest
 {
@@ -45,31 +46,21 @@ namespace XamarinCRM.UITest
 
         public void LogInWithWorkCredentials(string email, string password)
         {
-            app.EnterText(EmailField, email);
+            app.Tap(EmailField);
+            app.EnterText(email);
             app.Screenshot("Email entered");
-            app.PressEnter();
-            app.DismissKeyboard();
-//            app.WaitForElement(workAccountButton);
-//            app.Screenshot("Account type choser appears. Choosing work account.");
-//            app.Tap(workAccountButton);
 
-            app.WaitForElement(PasswordField);
-            app.EnterText(PasswordField, password);
             app.DismissKeyboard();
+            app.Tap(PasswordField);
+            app.EnterText(password);
             app.Screenshot("Password entered");
 
-            app.WaitForElement(SignInButton);
+            Thread.Sleep(500);
+
             app.Screenshot("Signing in");
-
-            app.Tap(EmailField);
-            //Keyboard has to animate up to animate away...
-            if (app.Query(SignInButton).Any())
-                Thread.Sleep(3000);
-                
-            app.DismissKeyboard();
-            app.Tap(SignInButton);
+            if (OnAndroid)
+                ((AndroidApp)app).PressUserAction();
         }
-
     }
 }
 
