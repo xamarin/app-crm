@@ -1,5 +1,6 @@
 ﻿using Xamarin.UITest;
 using Query = System.Func<Xamarin.UITest.Queries.AppQuery, Xamarin.UITest.Queries.AppQuery>;
+using System.Threading;
 
 namespace XamarinCRM.UITest
 {
@@ -11,6 +12,7 @@ namespace XamarinCRM.UITest
 
         protected Query PhoneButton;
         protected Query MapButton;
+        protected Query HeaderImage;
 
         public CustomerContactPage(IApp app, Platform platform)
             : base(app, platform, "Address", "Address")
@@ -19,12 +21,14 @@ namespace XamarinCRM.UITest
             {
                 PhoneButton = x => x.Class("FormsImageView").Index(2);
                 MapButton = x => x.Class("FormsImageView").Index(3);
+                HeaderImage = x => x.Class("ImageRenderer").Index(0);
             }
 
             if (OniOS)
             {
                 PhoneButton = x => x.Marked("phone_ios");
                 MapButton = x => x.Marked("map_marker_ios");
+                HeaderImage = x => x.Class("Xamarin_Forms_Platform_iOS_ImageRenderer").Index(0);
             }
         }
 
@@ -39,6 +43,8 @@ namespace XamarinCRM.UITest
 
         public void NavigateToCustomerOrders()
         {
+            app.WaitForElement(HeaderImage);
+            Thread.Sleep(3000);
             app.Tap(CustomerOrders);
         }
 
