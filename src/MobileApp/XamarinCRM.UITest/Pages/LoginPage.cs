@@ -50,16 +50,17 @@ namespace XamarinCRM.UITest
             app.EnterText(email);
             app.Screenshot("Email entered");
 
-            app.DismissKeyboard();
+            Thread.Sleep(500);
+            app.PressEnter();
+
+            Thread.Sleep(500);
             app.Tap(PasswordField);
             app.EnterText(password);
             app.Screenshot("Password entered");
 
             Thread.Sleep(500);
-
             app.Screenshot("Signing in");
-            if (OnAndroid)
-                ((AndroidApp)app).PressUserAction();
+            app.PressEnter();
         }
     }
 }
