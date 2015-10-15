@@ -11,7 +11,7 @@ namespace XamarinCRM.UITest
         }
 
         [Test]
-        public void editCustomerOrder()
+        public void EditCustomerOrder()
         {
             new GlobalPage(app, platform)
                 .NavigateToCustomers();
@@ -49,7 +49,7 @@ namespace XamarinCRM.UITest
         }
 
         [Test]
-        public void addNewOrder()
+        public void AddNewOrder()
         {
             new GlobalPage(app, platform)
                 .NavigateToCustomers();
@@ -85,7 +85,7 @@ namespace XamarinCRM.UITest
         }
 
         [Test]
-        public void deliverOrder()
+        public void DeliverOrder()
         {
             new GlobalPage(app, platform)
                 .NavigateToCustomers();
@@ -104,11 +104,11 @@ namespace XamarinCRM.UITest
 
             app.Screenshot("Order removed from list");
         }
-            
+
         [Test]
-        public void addNewOrderAndDeliver()
+        public void AddNewOrderAndDeliver()
         {
-            addNewOrder();
+            AddNewOrder();
 
             new CustomerOrdersPage(app, platform) 
                 .SelectFirstOrder();

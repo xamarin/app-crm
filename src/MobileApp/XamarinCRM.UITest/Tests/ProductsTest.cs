@@ -11,7 +11,7 @@ namespace XamarinCRM.UITest
         }
 
         [Test]
-        public void partsLoadCheck()
+        public void PartsLoadCheck()
         {
             new GlobalPage(app, platform)
                 .NavigateToProducts();
@@ -41,7 +41,7 @@ namespace XamarinCRM.UITest
         }
 
         [Test]
-        public void extruderCheck()
+        public void ExtruderCheck()
         {
             int num = 2;
 
@@ -73,7 +73,7 @@ namespace XamarinCRM.UITest
         }
 
         [Test]
-        public void printerKitsCheck()
+        public void PrinterKitsCheck()
         {
             string num = "HOBY";
 
