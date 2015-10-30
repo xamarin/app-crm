@@ -53,14 +53,17 @@ namespace XamarinCRM.Services
             // prompts the user for authentication
             _AuthenticationResult = await _Authenticator.Authenticate(_TenantAuthority, _ResourceUri, _AzureAuthenticationClientId, _ReturnUri);
 
+            var accessToken = await GetTokenAsync();
+
             // instantiate an ActiveDirectoryClient to query the Graph API
             var activeDirectoryGraphApiClient = new ActiveDirectoryClient(
                 new Uri(new Uri(_ResourceUri), _AzureGraphApiClientId),
-                GetTokenAsync
+                () => Task.FromResult<string>(accessToken)
             );
 
             // query the Azure Graph API for some detailed user information about the logged in user
-            var user = await activeDirectoryGraphApiClient.Me.ToUser().ExecuteAsync();
+            var userFetcher = activeDirectoryGraphApiClient.Me.ToUser();
+            User user = (User)(await userFetcher.ExecuteAsync());
 
             // record some info about the logged in user with Xamarin Insights
             Insights.Identify(

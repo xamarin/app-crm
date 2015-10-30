@@ -70,13 +70,11 @@ namespace XamarinCRM.iOS.Services
         {
             try
             {
-                var authContext = new AuthenticationContext(authority);
-
-                var tokenItems = authContext.TokenCache.ReadItems();
-
-                var token = tokenItems.FirstOrDefault(x => x.Authority == authority);
-
-                return token.AccessToken;
+                return 
+                    (new AuthenticationContext(authority))
+                        .TokenCache
+                        .ReadItems()
+                        .FirstOrDefault(x => x.Authority == authority).AccessToken;
             }
             catch (Exception ex)
             {

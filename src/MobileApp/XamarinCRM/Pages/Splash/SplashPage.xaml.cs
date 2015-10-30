@@ -74,7 +74,6 @@ namespace XamarinCRM.Pages.Splash
             await Task.WhenAll(new []
                 { 
                     // FadeTo() modifies the Opacity property of the given VisualElements over a given duration.
-                    XamarinLogo.FadeTo(1, (uint)App.AnimationSpeed, Easing.SinIn), 
                     InfoButton.FadeTo(1, (uint)App.AnimationSpeed, Easing.SinIn) 
                 });
 
