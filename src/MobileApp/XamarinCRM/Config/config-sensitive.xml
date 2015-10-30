@@ -6,9 +6,12 @@
 
 <config>
   <dataServiceAppKey>LHlKlRaUrMiFrElKVkaEZOTlunFAkF28</dataServiceAppKey>
-
+   
   <!---Azure Active Directory Authentication client id -->
   <azureActiveDirectoryAuthenticationClientId>591ddccc-4dd3-46d8-af4e-7886eb674cb9</azureActiveDirectoryAuthenticationClientId>
+
+  <!---Azure Active Directory Graph API client id -->
+  <azureActiveDirectoryGraphApiClientId>c3561526-ca01-442d-8d4d-166a2bc0f743</azureActiveDirectoryGraphApiClientId>
 
   <!-- This value is only here to further demonstrate how you can put other info in these configs. This value is displayed on the splash screen for demo purposes only. -->
   <azureActiveDirectoryUsername>sally@xamcrm.onmicrosoft.com</azureActiveDirectoryUsername>

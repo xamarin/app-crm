@@ -57,13 +57,32 @@ namespace XamarinCRM.iOS.Services
                 await Task.Factory.StartNew(() => { 
                     authContext.TokenCache.Clear();
                 });
+                return true;
             }
             catch (Exception ex)
             {
                 ex.WriteFormattedMessageToDebugConsole(this);
-                return false;
             }
-            return true;
+            return false;
+        }
+
+        public async Task<string> FetchToken(string authority)
+        {
+            try
+            {
+                var authContext = new AuthenticationContext(authority);
+
+                var tokenItems = authContext.TokenCache.ReadItems();
+
+                var token = tokenItems.FirstOrDefault(x => x.Authority == authority);
+
+                return token.AccessToken;
+            }
+            catch (Exception ex)
+            {
+                ex.WriteFormattedMessageToDebugConsole(this);
+            }
+            return null;
         }
     }
 }

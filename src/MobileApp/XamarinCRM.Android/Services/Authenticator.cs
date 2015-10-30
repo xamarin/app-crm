@@ -55,6 +55,23 @@ namespace XamarinCRMAndroid.Services
             }
             return true;
         }
+
+        public async Task<string> FetchToken(string authority)
+        {
+            try
+            {
+                return 
+                    (new AuthenticationContext(authority))
+                        .TokenCache
+                        .ReadItems()
+                        .FirstOrDefault(x => x.Authority == authority).AccessToken;
+            }
+            catch (Exception ex)
+            {
+                ex.WriteFormattedMessageToDebugConsole(this);
+            }
+            return null;
+        }
     }
 }
 
