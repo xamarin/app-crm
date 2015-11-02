@@ -7,8 +7,15 @@
 	xmlns:app="clr-namespace:XamarinCRM" 
 	xmlns:page="clr-namespace:XamarinCRM.Pages.Splash" 
 	xmlns:statics="clr-namespace:XamarinCRM.Statics" 
+	xmlns:converters="clr-namespace:XamarinCRM.Converters" 
 	xmlns:i18n="clr-namespace:XamarinCRM.Localization" 
 	BackgroundColor="White">
+	<page:SplashPageXaml.Resources>
+	    <ResourceDictionary>
+	    	<converters:InverseBooleanConverter x:Key="boolInverter" />
+	    	<converters:BoolToLabelOpacityConverter x:Key="boolToLabelOpactityConverter" />
+	    </ResourceDictionary>
+    </page:SplashPageXaml.Resources>
 	<page:SplashPageXaml.Content>
 		<AbsoluteLayout>
 			<StackLayout
@@ -61,15 +68,30 @@
 					Padding="20">
 					<StackLayout>
 						<ContentView Padding="0,0,0,20">
-							<Label 
-								x:Name="SignInButton" 
-								Scale="0" 
-								Text="{i18n:Translate Splash_SignIn}" 
-								TextColor="White" 
-								BackgroundColor="{x:Static statics:Palette._002}" 
-								XAlign="Center" 
-								YAlign="Center" 
-								HeightRequest="44" />
+							<AbsoluteLayout 
+								VerticalOptions="FillAndExpand"
+								HorizontalOptions="FillAndExpand">
+								<Label 
+									x:Name="SignInButton" 
+									Scale="0" 
+									Text="{i18n:Translate Splash_SignIn}" 
+									TextColor="White" 
+									BackgroundColor="{x:Static statics:Palette._002}" 
+									XAlign="Center" 
+									YAlign="Center" 
+									HeightRequest="44" 
+									IsEnabled="{Binding IsPresentingLoginUI, Converter={StaticResource boolInverter}}" 
+									Opacity="{Binding IsPresentingLoginUI, Converter={StaticResource boolToLabelOpactityConverter}}"
+									AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0" 
+									AbsoluteLayout.LayoutFlags="All" />
+								<ActivityIndicator 
+									x:Name="SignInButtonActivityIndicator" 
+									IsEnabled="{Binding IsPresentingLoginUI}" 
+									IsVisible="{Binding IsPresentingLoginUI}" 
+									IsRunning="{Binding IsPresentingLoginUI}" 
+									AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0" 
+									AbsoluteLayout.LayoutFlags="All" />
+							</AbsoluteLayout>
 						</ContentView>
 						<ContentView Padding="0,0,0,20">
 							<Label 
@@ -80,7 +102,9 @@
 								BackgroundColor="{x:Static statics:Palette._002}" 
 								XAlign="Center" 
 								YAlign="Center" 
-								HeightRequest="44" />
+								HeightRequest="44" 
+								IsEnabled="{Binding IsPresentingLoginUI, Converter={StaticResource boolInverter}}" 
+								Opacity="{Binding IsPresentingLoginUI, Converter={StaticResource boolToLabelOpactityConverter}}" />
 						</ContentView>
 						<AbsoluteLayout>
 							<Image 
@@ -99,7 +123,7 @@
 								WidthRequest="20" 
 								Aspect="AspectFit" 
 								AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
-	         					AbsoluteLayout.LayoutFlags="XProportional,YProportional"/>
+	         					AbsoluteLayout.LayoutFlags="XProportional,YProportional" />
 						</AbsoluteLayout>
 					</StackLayout>
 				</ContentView>

@@ -74,7 +74,6 @@ namespace XamarinCRM.Pages.Splash
             await Task.WhenAll(new []
                 { 
                     // FadeTo() modifies the Opacity property of the given VisualElements over a given duration.
-                    XamarinLogo.FadeTo(1, (uint)App.AnimationSpeed, Easing.SinIn), 
                     InfoButton.FadeTo(1, (uint)App.AnimationSpeed, Easing.SinIn) 
                 });
 
@@ -87,7 +86,7 @@ namespace XamarinCRM.Pages.Splash
             try
             {
                 // The underlying call behind App.Authenticate() calls the ADAL library, which presents the login UI and awaits success.
-                success = await _AuthenticationService.Authenticate();
+                success = await _AuthenticationService.AuthenticateAsync();
             }
             catch (Exception ex)
             {

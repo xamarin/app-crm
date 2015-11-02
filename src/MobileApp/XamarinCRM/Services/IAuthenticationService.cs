@@ -18,9 +18,11 @@ namespace XamarinCRM.Services
 {
     public interface IAuthenticationService
     {
-        Task<bool> Authenticate();
+        Task<bool> AuthenticateAsync();
 
-        Task<bool> Logout();
+        Task<bool> LogoutAsync();
+
+        Task<string> GetTokenAsync();
 
         bool IsAuthenticated { get; }
 

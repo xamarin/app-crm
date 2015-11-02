@@ -4,7 +4,7 @@
   <dataServiceUrl>https://xamarincrmv2dataservice.azure-mobile.net/</dataServiceUrl>
 
   <!---Azure Active Directory Authentication tenant authority URL -->
-  <azureActiveDirectoryAuthenticationTenantAuthorityUrl>https://login.windows.net/xamcrm.onmicrosoft.com</azureActiveDirectoryAuthenticationTenantAuthorityUrl>
+  <azureActiveDirectoryAuthenticationTenantAuthorityUrl>https://login.windows.net/xamcrm.onmicrosoft.com/</azureActiveDirectoryAuthenticationTenantAuthorityUrl>
 
   <!---Azure Active Directory Authentication return URI -->
   <azureActiveDirectoryAuthenticationReturnUri>http://localhost</azureActiveDirectoryAuthenticationReturnUri>

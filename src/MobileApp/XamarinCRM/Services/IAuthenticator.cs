@@ -22,6 +22,8 @@ namespace XamarinCRM.Services
         Task<AuthenticationResult> Authenticate(string authority, string resource, string clientId, string returnUri);
 
         Task<bool> DeAuthenticate(string authority);
+
+        Task<string> FetchToken(string authority);
     }
 }
 
