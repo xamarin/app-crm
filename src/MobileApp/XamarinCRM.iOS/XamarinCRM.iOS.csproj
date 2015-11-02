@@ -364,7 +364,4 @@
     <ITunesArtwork Include="iTunesArtwork.png" />
     <ITunesArtwork Include="iTunesArtwork%402x.png" />
   </ItemGroup>
-  <ItemGroup>
-    <LinkDescription Include="LinkerPreserve.xml" />
-  </ItemGroup>
 </Project>

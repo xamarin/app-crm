@@ -63,7 +63,7 @@ namespace XamarinCRM.Services
 
             // query the Azure Graph API for some detailed user information about the logged in user
             var userFetcher = activeDirectoryGraphApiClient.Me.ToUser();
-            User user = (User)(await userFetcher.ExecuteAsync());
+            var user = await userFetcher.ExecuteAsync();
 
             // record some info about the logged in user with Xamarin Insights
             Insights.Identify(

@@ -236,7 +236,4 @@
       <Name>XamarinCRM</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <LinkDescription Include="LinkerPreserve.xml" />
-  </ItemGroup>
 </Project>
