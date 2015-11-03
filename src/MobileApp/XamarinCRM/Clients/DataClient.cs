@@ -62,7 +62,7 @@ namespace XamarinCRM.Clients
 
             try
             {
-                await _MobileServiceClient.SyncContext.InitializeAsync(store, new MobileServiceSyncHandler());
+                await _MobileServiceClient.SyncContext.InitializeAsync(store);
             }
             catch (Exception ex)
             {
