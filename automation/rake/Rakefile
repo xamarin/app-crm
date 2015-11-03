@@ -149,7 +149,7 @@ def get_device_code device_set, platform
 		when "Small"
 			return 'fe5e138d'
 		when "Medium"
-			return 'f3836139'
+			return 'fba3c414'
 		when "Large"
 			return "ac078209"
 		end
@@ -158,7 +158,7 @@ def get_device_code device_set, platform
 		when "Small"
 			return '2f802e3f'
 		when "Medium"
-			return '588fda26'
+			return '6755343a'
 		when "Large"
 			return 'e1df384a'
 		end
