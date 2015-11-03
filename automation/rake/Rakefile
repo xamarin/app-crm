@@ -1,5 +1,6 @@
 require "benchmark"
 require "date"
+require "net/http"
 
 task :default => ['build:android', 'build:ios']
 
