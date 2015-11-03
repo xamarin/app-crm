@@ -94,7 +94,33 @@ namespace :build do
 	    puts "*** app size (MB): #{size}"
 	    puts "*** warnings: #{warnings}"
 	    puts "*** errors: #{errors}"
-	end
+
+			post_to_sheet("XamarinCRM", date, platform, user, version, size, time, warnings, errors)
+	  end
+
+	  def post_to_sheet(app, date, platform, channel, version, size, time, warnings, errors)
+	    uri = URI("https://script.google.com/macros/s/AKfycbzlrwTXjCjOHY64uOIF3C1yg1GYDpvK8XXcDBfX68c6YhkL21M/exec")
+	    params = {
+	      method: 'writeLine',
+	      app: app,
+	      date: date,
+	      platform: platform,
+	      channel: channel,
+	      version: version,
+	      size:size,
+	      time: time,
+	      warnings: warnings,
+	      errors: errors
+	    }
+
+	    res = Net::HTTP.post_form(uri, params)
+	    if res.code == "302"
+	      res = Net::HTTP.get_response(URI(res.header['location']))
+	    end
+	    raise res.body unless res.is_a?(Net::HTTPSuccess)
+
+	    puts res.body
+	  end
 end
 
 namespace :testcloud do
