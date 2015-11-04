@@ -29,27 +29,22 @@ namespace :build do
 
 	desc "Build iOS App"
 	task :ios => [:clean] do
-		sh "pwd"
-		sh "nuget restore ../../src/MobileApp/XamarinCRM.iOS/packages.config -PackagesDirectory ../../src/MobileApp/packages/"
-		sh "nuget restore ../../src/MobileApp/XamarinCRM.UITest/packages.config -PackagesDirectory ../../src/MobileApp/packages/"
+		sh "nuget restore ../../src/MobileApp/XamarinCRM.sln"
 		puts "iOS nugets restored"
-		puts
 		puts "Building XamarinCRM.iOS"
 
-    	time = time_cmd "xbuild ../../src/MobileApp/XamarinCRM.sln /p:Configuration='iOS Debug (Development)' /p:Platform=iPhone /p:BuildIpa=true /verbosity:quiet /flp:LogFile=build_ios.log"
+  	time = time_cmd "xbuild ../../src/MobileApp/XamarinCRM.sln /p:Configuration='iOS Debug (Development)' /p:Platform=iPhone /p:BuildIpa=true /verbosity:quiet /flp:LogFile=build_ios.log"
 
 		puts "Checking for Insights on iOS"
 		sh "cat ../../src/MobileApp/XamarinCRM.iOS/Main.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
 
-   		size = (File.size("../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/XamarinCRM_Debug.ipa")/1000000.0).round(1)
-	    log_data "iOS", time, size, "build_ios.log"
-
-		puts "iOS BUILD SUCCESSFUL"
+ 		size = (File.size("../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/XamarinCRM_Debug.ipa")/1000000.0).round(1)
+    log_data "iOS", time, size, "build_ios.log"
 	end
 
 	desc "Build Android App"
 	task :android => [:clean] do
-		sh "nuget restore ../../src/MobileApp/XamarinCRM.Android/packages.config -PackagesDirectory ../../src/MobileApp/packages"
+		sh "nuget restore ../../src/MobileApp/XamarinCRM.sln"
 		puts "Android nugets restored"
 		puts
 		# addMaptoManifest("../../src/MobileApp/XamarinCRM.Android/Properties/AndroidManifest.xml")
@@ -61,10 +56,8 @@ namespace :build do
 		puts "Checking for Insights on Android"
 		sh "cat ../../src/MobileApp/XamarinCRM.Android/MainActivity.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
 
-    	size = (File.size("../../src/MobileApp/XamarinCRM.Android/bin/Debug/com.xamarin.xamarincrm-Signed.apk")/1000000.0).round(1)
-    	log_data "Android", time, size, "build_android.log"
-
-		puts "Android BUILD SUCCESSFUL"
+  	size = (File.size("../../src/MobileApp/XamarinCRM.Android/bin/Debug/com.xamarin.xamarincrm-Signed.apk")/1000000.0).round(1)
+  	log_data "Android", time, size, "build_android.log"
 	end
 
 	def time_cmd(cmd)
@@ -128,7 +121,7 @@ namespace :testcloud do
 	desc "Build Test Solution"
 	task :build_test_solution do
 		puts "Restoring Test Nuget Packages"
-		sh "nuget restore ../../src/MobileApp/XamarinCRM.UITest/packages.config -PackagesDirectory ../../src/MobileApp/packages/"
+		sh "nuget restore ../../src/MobileApp/XamarinCRM.sln"
 		puts "Building Test Solution"
 		sh "xbuild ../../src/MobileApp/XamarinCRM.UITest/XamarinCRM.UITest.csproj /verbosity:quiet"
 
