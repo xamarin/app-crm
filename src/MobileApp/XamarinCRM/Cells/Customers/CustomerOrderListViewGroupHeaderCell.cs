@@ -22,6 +22,7 @@ namespace XamarinCRM.Cells.Customers
     {
         public CustomerOrderListViewGroupHeaderCell()
         {
+			
             var title = new Label
             {
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),

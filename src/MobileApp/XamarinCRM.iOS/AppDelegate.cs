@@ -1,4 +1,5 @@
-﻿//
+﻿
+//
 //  Copyright 2015  Xamarin Inc.
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,6 +19,8 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using Xamarin;
+
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.iOS
 {
@@ -44,10 +47,25 @@ namespace XamarinCRM.iOS
             // Xamarin.Forms.Maps initialization
             FormsMaps.Init();
 
+			ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init ();
+
+
             // Bootstrap the "core" Xamarin.Forms app
             LoadApplication(new App());
 
+			// Apply OS-specific color theming
+			ConfigureApplicationTheming ();
+
             return base.FinishedLaunching(app, options);
         }
+
+		void ConfigureApplicationTheming ()
+		{
+			UINavigationBar.Appearance.TintColor = UIColor.White;
+			UINavigationBar.Appearance.BarTintColor = Palette._001.ToUIColor ();
+			UINavigationBar.Appearance.TitleTextAttributes = new UIStringAttributes { ForegroundColor = UIColor.White };
+			UIBarButtonItem.Appearance.SetTitleTextAttributes (new UITextAttributes { TextColor = UIColor.White }, UIControlState.Normal);
+			UIProgressView.Appearance.ProgressTintColor = Palette._003.ToUIColor ();
+		}
     }
 }

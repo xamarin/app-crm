@@ -25,6 +25,7 @@ namespace XamarinCRM.Cells.Customers
 
         public CustomerListItemCell()
         {
+			StyleId = "disclosure";
             #region company label
             CompanyNameLabel = new Label()
             {
