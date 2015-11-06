@@ -129,12 +129,12 @@ namespace XamarinCRM
                 iOS: () =>
                 { 
                     chartWrapper.Padding = new Thickness(0, 0, 30, 0);
-                    stackLayout.BackgroundColor = Color.Transparent;
+                    //stackLayout.BackgroundColor = Color.Transparent;
                     stackLayout.Padding = new Thickness(0, 20, 0, 0);
                 }, 
                 Android: () =>
                 { 
-                    stackLayout.BackgroundColor = Palette._009;
+                    //stackLayout.BackgroundColor = Palette._009;
                     Font androidChartLabelFont = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
                     columnSeries.YAxis.LabelStyle.Font = androidChartLabelFont;
                     chart.PrimaryAxis.LabelStyle.Font = androidChartLabelFont;

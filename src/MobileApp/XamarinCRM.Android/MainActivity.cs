@@ -28,7 +28,7 @@ namespace XamarinCRMAndroid
             FormsAppCompatActivity.ToolbarResource = Resource.Layout.toolbar;
             FormsAppCompatActivity.TabLayoutResource = Resource.Layout.tabs;
             new SfChartRenderer(); // This is necessary for initializing SyncFusion charts.
-
+            ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init();
             //#if DEBUG
             //Insights.Initialize(Insights.DebugModeKey, this);
             //#else

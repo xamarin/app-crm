@@ -7,6 +7,10 @@ xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=Ima
     Title="{Binding Title}"
     Icon="{Binding Icon}"
     BackgroundColor="#53ba9d">
+     <ContentPage.BackgroundColor>
+        <OnPlatform x:TypeArguments="Color"
+          Android="#292929" />
+      </ContentPage.BackgroundColor>
      <ContentPage.Content>
             <ListView 
                 SeparatorColor="Transparent"
@@ -47,9 +51,9 @@ xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=Ima
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="20" Spacing="10" Orientation="Horizontal">
-                                <Image Source="{Binding Icon}" HeightRequest="25" WidthRequest="25"/>
-                                <Label Text="{Binding Title}" FontSize="24"/>
+                            <StackLayout Padding="10,0" Spacing="15" Orientation="Horizontal">
+                                <Image Source="{Binding Icon}" HeightRequest="35" WidthRequest="35"/>
+                                <Label Text="{Binding Title}" FontSize="20"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

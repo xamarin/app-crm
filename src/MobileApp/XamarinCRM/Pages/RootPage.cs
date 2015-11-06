@@ -25,6 +25,7 @@ using XamarinCRM.Statics;
 using System.Threading.Tasks;
 using XamarinCRM.ViewModels.Base;
 using System.Collections.Generic;
+using XamarinCRM.Pages.About;
 
 namespace XamarinCRM.Pages
 {
@@ -58,7 +59,7 @@ namespace XamarinCRM.Pages
                         Pages.Add(id, new CRMNavigationPage(new SalesDashboardPage
                             { 
                                 Title = TextResources.MainTabs_Sales, 
-                                Icon = new FileImageSource() { File = "SalesTab" }
+                                Icon = new FileImageSource { File = "sales.png" }
                             }));
                         break;
                     case MenuType.Customers:
@@ -66,7 +67,7 @@ namespace XamarinCRM.Pages
                             { 
                                 BindingContext = new CustomersViewModel(Navigation), 
                                 Title = TextResources.MainTabs_Customers, 
-                                Icon = new FileImageSource() { File = "CustomersTab" } 
+                                Icon = new FileImageSource { File = "customers.png" } 
                             }));
                         break;
                     case MenuType.Products:
@@ -74,7 +75,14 @@ namespace XamarinCRM.Pages
                             { 
                                 BindingContext = new CategoriesViewModel(navigation: Navigation), 
                                 Title = TextResources.MainTabs_Products, 
-                                Icon = new FileImageSource() { File = "ProductsTab" } 
+                                Icon = new FileImageSource { File = "products.png" } 
+                            }));
+                        break;
+                    case MenuType.About:
+                        Pages.Add(id, new CRMNavigationPage(new AboutPage
+                            { 
+                                Title = "About", 
+                                Icon = new FileImageSource { File = "about.png" } 
                             }));
                         break;
                 }

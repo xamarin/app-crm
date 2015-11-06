@@ -84,9 +84,9 @@ namespace XamarinCRM.Views.Sales
                 heightConstraint: Constraint.RelativeToParent(parent => (parent.Height / 4) * 3)
             );
 
-            BackgroundColor = Palette._009;
+            //BackgroundColor = Palette._009;
 
-            Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._009);
+            //Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._009);
 
             HeightRequest = Sizes.MediumRowHeight;
 
