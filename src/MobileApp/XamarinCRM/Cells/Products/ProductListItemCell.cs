@@ -21,6 +21,9 @@ namespace XamarinCRM.Cells.Products
     {
         public ProductListItemCell()
         {
+			// Add iOS detail-disclosure button to cell
+			StyleId = "disclosure";
+
             #region productThumbnailImage
             Image productThumbnailImage = new Image()
             {

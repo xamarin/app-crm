@@ -32,6 +32,7 @@ namespace XamarinCRM.Pages.Splash
         {
             InitializeComponent();
 
+            BindingContext = new SplashViewModel();
             _AuthenticationService = DependencyService.Get<IAuthenticationService>();
 
             SignInButton.GestureRecognizers.Add(
@@ -116,7 +117,7 @@ namespace XamarinCRM.Pages.Splash
                     {
                         // Pop off the modally presented SplashPage.
                         // Note that we're not popping the ADAL auth UI here; that's done automatcially by the ADAL library when the Authenticate() method returns.
-                        await ViewModel.PopModalAsync();
+                        App.GoToRoot();
 
                         // Broadcast a message that we have sucessdully authenticated.
                         // This is mostly just for Android. We need to trigger Android to call the SalesDashboardPage.OnAppearing() method,
@@ -135,7 +136,7 @@ namespace XamarinCRM.Pages.Splash
             // because unlike iOS, Android does not call the OnAppearing() method each time that the Page actually appears on screen.
             MessagingCenter.Send(this, MessagingServiceConstants.AUTHENTICATED);
 
-            await ViewModel.PopModalAsync();
+            App.GoToRoot();
         }
 
         async void InfoButtonTapped()

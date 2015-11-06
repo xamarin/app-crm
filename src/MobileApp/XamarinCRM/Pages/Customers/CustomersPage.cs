@@ -41,7 +41,7 @@ namespace XamarinCRM.Pages.Customers
 
             #region customer list
             CustomerListView customerListView = new CustomerListView();
-            customerListView.SetBinding(CustomerListView.ItemsSourceProperty, "Accounts");
+            customerListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "Accounts");
             customerListView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             customerListView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
 
@@ -87,7 +87,7 @@ namespace XamarinCRM.Pages.Customers
 
         async Task PushTabbedPage(Account account = null)
         {
-            await ViewModel.PushModalAsync(new NavigationPage(new CustomerTabbedPage(ViewModel.Navigation, account)));
+            await Navigation.PushAsync(new CustomerTabbedPage(ViewModel.Navigation, account));
         }
     }
 }

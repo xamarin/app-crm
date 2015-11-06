@@ -21,17 +21,129 @@ using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.ViewModels.Splash;
 using XamarinCRM.Services;
 using XamarinCRM.ViewModels.Products;
+using XamarinCRM.Statics;
+using System.Threading.Tasks;
+using XamarinCRM.ViewModels.Base;
+using System.Collections.Generic;
 
 namespace XamarinCRM.Pages
 {
-    public class RootPage : TabbedPage
+    public class RootPage : MasterDetailPage
     {
-        readonly IAuthenticationService _AuthenticationService;
+        Dictionary<MenuType, NavigationPage> Pages { get; set;} 
+        public RootPage()
+        {
+            Pages = new Dictionary<MenuType, NavigationPage>();
+            Master = new MenuPage(this);
+            BindingContext = new BaseViewModel(Navigation)
+                {
+                    Title = "Xamarin CRM",
+                    Icon = "slideout.png"
+                };
+            //setup home page
+            NavigateAsync(MenuType.Sales);
+        }
+
+
+
+        public async Task NavigateAsync(MenuType id)
+        {
+            Page newPage;
+            if (!Pages.ContainsKey(id))
+            {
+
+                switch (id)
+                {
+                    case MenuType.Sales:
+                        Pages.Add(id, new CRMNavigationPage(new SalesDashboardPage
+                            { 
+                                Title = TextResources.MainTabs_Sales, 
+                                Icon = new FileImageSource() { File = "SalesTab" }
+                            }));
+                        break;
+                    case MenuType.Customers:
+                        Pages.Add(id, new CRMNavigationPage(new CustomersPage
+                            { 
+                                BindingContext = new CustomersViewModel(Navigation), 
+                                Title = TextResources.MainTabs_Customers, 
+                                Icon = new FileImageSource() { File = "CustomersTab" } 
+                            }));
+                        break;
+                    case MenuType.Products:
+                        Pages.Add(id, new CRMNavigationPage(new CategoryListPage
+                            { 
+                                BindingContext = new CategoriesViewModel(navigation: Navigation), 
+                                Title = TextResources.MainTabs_Products, 
+                                Icon = new FileImageSource() { File = "ProductsTab" } 
+                            }));
+                        break;
+                }
+            }
+
+            newPage = Pages[id];
+            if(newPage == null)
+                return;
+
+            //pop to root for Windows Phone
+            if (Detail != null && Device.OS == TargetPlatform.WinPhone)
+            {
+                await Detail.Navigation.PopToRootAsync();
+            }
+
+            Detail = newPage;
+
+            if(Device.Idiom != TargetIdiom.Tablet)
+                IsPresented = false;
+        }
+    }
+
+    public class CRMNavigationPage :NavigationPage
+    {
+        public CRMNavigationPage(Page root) : base(root)
+        {
+            Init();
+        }
+
+        public CRMNavigationPage()
+        {
+            Init();
+        }
+
+        void Init()
+        {
+
+            BarBackgroundColor = Palette._001;
+            BarTextColor = Color.White;
+        }
+    }
+
+    public enum MenuType
+    {
+        Sales,
+        Customers,
+        Products,
+        About
+    }
+    public class HomeMenuItem
+    {
+        public HomeMenuItem()
+        {
+            MenuType = MenuType.About;
+        }
+        public string Icon { get; set; }
+        public MenuType MenuType { get; set; }
+        public string Title { get; set; }
+        public string Details { get; set; }
+        public int Id { get; set; }
+    }
+
+    /*public class RootPage : TabbedPage
+    {
+        
 
         public RootPage()
         {
-            _AuthenticationService = DependencyService.Get<IAuthenticationService>();
-
+            
             // the Sales tab page
             this.Children.Add(
                 new NavigationPage(new SalesDashboardPage())
@@ -60,17 +172,6 @@ namespace XamarinCRM.Pages
                 }
             );
         }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
-            // If the App.IsAuthenticated property is false, modally present the SplashPage.
-            if (!_AuthenticationService.IsAuthenticated)
-            {
-                await Navigation.PushModalAsync(new SplashPage() { BindingContext = new SplashViewModel(Navigation) }, false); // setting false to create a smoother transition from loading screen to splash screen on iOS
-            }
-        }
-    }
+    }*/
 }
 

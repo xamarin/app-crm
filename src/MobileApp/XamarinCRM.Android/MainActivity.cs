@@ -13,7 +13,7 @@ using Syncfusion.SfChart.XForms.Droid;
 namespace XamarinCRMAndroid
 {
     [Activity(Label = "XamarinCRM", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : FormsApplicationActivity
+    public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
@@ -25,7 +25,8 @@ namespace XamarinCRMAndroid
             Forms.Init(this, bundle);
 
             FormsMaps.Init(this, bundle);
-
+            FormsAppCompatActivity.ToolbarResource = Resource.Layout.toolbar;
+            FormsAppCompatActivity.TabLayoutResource = Resource.Layout.tabs;
             new SfChartRenderer(); // This is necessary for initializing SyncFusion charts.
 
             //#if DEBUG
@@ -35,11 +36,6 @@ namespace XamarinCRMAndroid
             //#endif
 
             LoadApplication(new App());
-
-            if ((int)Build.VERSION.SdkInt >= 21) 
-            { 
-                ActionBar.SetIcon ( new ColorDrawable (Resources.GetColor (Android.Resource.Color.Transparent))); 
-            }
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
