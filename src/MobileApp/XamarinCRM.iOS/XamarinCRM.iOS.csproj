@@ -363,6 +363,7 @@
     <Compile Include="Localization\Localize.cs" />
     <Compile Include="Services\ConfigFetcher.cs" />
     <Compile Include="Services\Authenticator.cs" />
+    <Compile Include="Renderers\StandardViewCellRenderer.cs" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -388,5 +389,8 @@
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork.png" />
     <ITunesArtwork Include="iTunesArtwork%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
   </ItemGroup>
 </Project>
