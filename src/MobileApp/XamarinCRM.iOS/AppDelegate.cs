@@ -47,6 +47,9 @@ namespace XamarinCRM.iOS
             // Xamarin.Forms.Maps initialization
             FormsMaps.Init();
 
+			ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init ();
+
+
             // Bootstrap the "core" Xamarin.Forms app
             LoadApplication(new App());
 
