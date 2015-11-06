@@ -1,4 +1,5 @@
-﻿//
+﻿
+//
 //  Copyright 2015  Xamarin Inc.
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,6 +19,8 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using Xamarin;
+
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.iOS
 {
@@ -47,7 +50,15 @@ namespace XamarinCRM.iOS
             // Bootstrap the "core" Xamarin.Forms app
             LoadApplication(new App());
 
+			// Apply OS-specific color theming
+			ConfigureApplicationTheming ();
+
             return base.FinishedLaunching(app, options);
         }
+
+		void ConfigureApplicationTheming ()
+		{
+			UIProgressView.Appearance.ProgressTintColor = Palette._003.ToUIColor ();
+		}
     }
 }
