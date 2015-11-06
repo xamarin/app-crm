@@ -40,9 +40,6 @@ namespace XamarinCRM.Pages.Sales
         {
             _AuthenticationService = DependencyService.Get<IAuthenticationService>();
 
-            // If this page is being presented by a NavigationPage, we don't want to show the navigation bar (top) in this particular app design.
-            NavigationPage.SetHasNavigationBar(this, false);
-
             this.SetBinding(ContentPage.TitleProperty, new Binding() { Source = TextResources.Sales });
 
             #region sales chart view
@@ -142,7 +139,7 @@ namespace XamarinCRM.Pages.Sales
                         {
                             viewModel.SaveLeadCommand.Execute(null);
 
-                            await Navigation.PopModalAsync();
+                            await Navigation.PopAsync();
                         }
                     }));
 
@@ -159,7 +156,7 @@ namespace XamarinCRM.Pages.Sales
 
                             if (answer)
                             {
-                                await Navigation.PopModalAsync();
+                                await Navigation.PopAsync();
                             }
                         }
                     }));
@@ -178,9 +175,7 @@ namespace XamarinCRM.Pages.Sales
                     Icon = new FileImageSource() { File = "LeadContactDetailTab" } // only used on iOS
                 });
 
-            NavigationPage navPage = new NavigationPage(tabbedPage);
-
-            await Navigation.PushModalAsync(navPage);
+            await Navigation.PushAsync(tabbedPage);
         }
     }
 }

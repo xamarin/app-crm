@@ -2791,7 +2791,7 @@ namespace XamarinCRMAndroid
 			public const int switch_thumb_normal_material_light = 2131230790;
 			
 			// aapt resource value: 0x7f080054
-			public const int windowBackground = 2131230804;
+			public const int windows_background = 2131230804;
 			
 			static Color()
 			{
@@ -3600,8 +3600,8 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f0a003c
 			public const int adjust_width = 2131361852;
 			
-			// aapt resource value: 0x7f0a0094
-			public const int agentWebView = 2131361940;
+			// aapt resource value: 0x7f0a0096
+			public const int agentWebView = 2131361942;
 			
 			// aapt resource value: 0x7f0a004a
 			public const int alertTitle = 2131361866;
@@ -3909,6 +3909,9 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f0a0029
 			public const int showTitle = 2131361833;
 			
+			// aapt resource value: 0x7f0a0094
+			public const int sliding_tabs = 2131361940;
+			
 			// aapt resource value: 0x7f0a0078
 			public const int snackbar_action = 2131361912;
 			
@@ -3971,6 +3974,9 @@ namespace XamarinCRMAndroid
 			
 			// aapt resource value: 0x7f0a0049
 			public const int title_template = 2131361865;
+			
+			// aapt resource value: 0x7f0a0095
+			public const int toolbar = 2131361941;
 			
 			// aapt resource value: 0x7f0a001a
 			public const int top = 2131361818;
@@ -4194,7 +4200,13 @@ namespace XamarinCRMAndroid
 			public const int support_simple_spinner_dropdown_item = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int WebAuthenticationBroker = 2130903091;
+			public const int tabs = 2130903091;
+			
+			// aapt resource value: 0x7f030034
+			public const int toolbar = 2130903092;
+			
+			// aapt resource value: 0x7f030035
+			public const int WebAuthenticationBroker = 2130903093;
 			
 			static Layout()
 			{
@@ -5401,17 +5413,11 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f070003
 			public const int Widget_MediaRouter_MediaRouteButton = 2131165187;
 			
-			// aapt resource value: 0x7f070146
-			public const int XamarinCRMTheme = 2131165510;
-			
-			// aapt resource value: 0x7f070148
-			public const int XamarinCRMTheme_ActionBar_TitleTextStyle = 2131165512;
-			
-			// aapt resource value: 0x7f070147
-			public const int XamarinCRMTheme_ActionBarStyle = 2131165511;
-			
 			// aapt resource value: 0x7f070145
-			public const int XamarinCRMTheme_Base = 2131165509;
+			public const int XamarinCRMTheme = 2131165509;
+			
+			// aapt resource value: 0x7f070146
+			public const int XamarinCRMTheme_Base = 2131165510;
 			
 			static Style()
 			{

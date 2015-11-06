@@ -50,10 +50,10 @@ namespace XamarinCRM.ViewModels.Products
 
         public bool NeedsRefresh { get; set; }
 
-        public CategoriesViewModel(Category category = null)
+        public CategoriesViewModel(Category category = null, INavigation navigation = null)
         {
             Category = category;
-
+            Navigation = navigation;
             SubCategories = new ObservableCollection<Category>();
 
             _DataClient = DependencyService.Get<IDataClient>();
