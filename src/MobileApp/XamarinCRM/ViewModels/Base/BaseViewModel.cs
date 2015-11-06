@@ -20,11 +20,11 @@ using System.Threading.Tasks;
 
 namespace XamarinCRM.ViewModels.Base
 {
-    public abstract class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         public INavigation Navigation { get; set; }
 
-        protected BaseViewModel(INavigation navigation = null)
+        public BaseViewModel(INavigation navigation = null)
         {
             Navigation = navigation;
         }

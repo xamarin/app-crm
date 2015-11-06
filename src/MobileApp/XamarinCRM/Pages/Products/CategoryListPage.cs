@@ -32,14 +32,14 @@ namespace XamarinCRM.Pages.Products
                 Title = "Products";
             }
 
-            SetBinding(CategoryListPage.TitleProperty, new Binding("Category", converter: new CategoryTitleConverter(Title)));
+            SetBinding(Page.TitleProperty, new Binding("Category", converter: new CategoryTitleConverter(Title)));
 
             #region category list
             CategoryListView categoryListView = new CategoryListView();
-            categoryListView.SetBinding(CategoryListView.ItemsSourceProperty, "SubCategories");
+            categoryListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "SubCategories");
             categoryListView.IsPullToRefreshEnabled = true;
-            categoryListView.SetBinding(CategoryListView.RefreshCommandProperty, "LoadCategoriesCommand");
-            categoryListView.SetBinding(CategoryListView.IsRefreshingProperty, "IsBusy", mode: BindingMode.OneWay);
+            categoryListView.SetBinding(ListView.RefreshCommandProperty, "LoadCategoriesCommand");
+            categoryListView.SetBinding(ListView.IsRefreshingProperty, "IsBusy", mode: BindingMode.OneWay);
 
             categoryListView.ItemTapped += async (sender, e) =>
             {

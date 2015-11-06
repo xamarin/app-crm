@@ -4,5 +4,5 @@
 	<color name="primary">#53ba9d</color>
 	<color name="primaryDark">#42947d</color>
 	<color name="accent">#8de2d5</color>
-	<color name="windowBackground">#ffffff</color>
+	<color name="windows_background">#F5F5F5</color>
 </resources>
