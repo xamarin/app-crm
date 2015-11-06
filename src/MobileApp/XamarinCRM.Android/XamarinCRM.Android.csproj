@@ -38,7 +38,6 @@
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
     <MonoDroidExtraArgs>
     </MonoDroidExtraArgs>
-    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -194,6 +193,7 @@
   <Import Project="..\packages\Xamarin.Insights.1.11.2\build\MonoAndroid10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.11.2\build\MonoAndroid10\Xamarin.Insights.targets')" />
   <ItemGroup>
     <Folder Include="Resources\layout\" />
+    <Folder Include="Resources\drawable-mdpi\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -228,6 +228,36 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\splashSlice.png" />
     <AndroidResource Include="Resources\layout\toolbar.axml" />
     <AndroidResource Include="Resources\layout\tabs.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\products.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\products.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\products.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\products.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\products.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\about.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\customers.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\save.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\exit.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\sales.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\about.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\customers.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\save.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\exit.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\sales.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\about.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\customers.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\save.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\exit.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\sales.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\about.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\customers.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\save.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\exit.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\sales.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\about.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\customers.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\save.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\exit.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\sales.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\XamarinCRM\Config\config.xml">
