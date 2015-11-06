@@ -21,6 +21,7 @@ namespace XamarinCRM.Cells.Products
     {
         public CategoryListItemCell()
         {
+			StyleId = "disclosure";
             #region caregoryNameLabel
             Label caregoryNameLabel = new Label()
             { 
