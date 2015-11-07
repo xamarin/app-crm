@@ -23,13 +23,15 @@ using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Sales;
 using XamarinCRM.Services;
 using XamarinCRM.Models;
+using XamarinCRM.Views.Custom;
 
 namespace XamarinCRM.Pages.Sales
 {
     public class SalesDashboardPage : ContentPage
     {
         IAuthenticationService _AuthenticationService;
-
+        ScrollView scrollView;
+        FloatingActionButtonView fab;
         // We're holding on to these ViewModel properties because a couple of child views are reliant on these ViewModels, as well as the OnAppearing()
         // method in this Page needing access to some of the public methods on those ViewModels, e.g. ExecuteLoadSeedDataCommand().
         SalesDashboardChartViewModel _SalesDashboardChartViewModel { get; set; }
@@ -40,7 +42,7 @@ namespace XamarinCRM.Pages.Sales
         {
             _AuthenticationService = DependencyService.Get<IAuthenticationService>();
 
-            this.SetBinding(ContentPage.TitleProperty, new Binding() { Source = TextResources.Sales });
+            this.SetBinding(Page.TitleProperty, new Binding() { Source = TextResources.Sales });
 
             #region sales chart view
             _SalesDashboardChartViewModel = new SalesDashboardChartViewModel();
@@ -48,23 +50,60 @@ namespace XamarinCRM.Pages.Sales
             #endregion
 
             #region leads view
-            _SalesDashboardLeadsViewModel = new SalesDashboardLeadsViewModel(new Command(PushTabbedLeadPageAction));
-            LeadsView leadsView = new LeadsView() { BindingContext = _SalesDashboardLeadsViewModel };
+            var newLeadCommand = new Command(PushTabbedLeadPageAction);
+            _SalesDashboardLeadsViewModel = new SalesDashboardLeadsViewModel(newLeadCommand);
+            var leadsView = new LeadsView { BindingContext = _SalesDashboardLeadsViewModel };
             #endregion
 
+            scrollView = new ScrollView
+            { 
+                Content = new UnspacedStackLayout
+                {
+                    Children =
+                    {
+                        salesChartView,
+                        leadsView
+                    }
+                }
+            };
+                        
             #region compose view hierarchy
-            Content = new ScrollView() 
-                { 
-                    Content = new UnspacedStackLayout()
-                        {
-                            Children =
-                                {
-                                    salesChartView,
-                                    leadsView
-                                }
-                            },
-                    IsVisible = false // this is set to false until successful authentication
+            if (Device.OS == TargetPlatform.Android)
+            {
+                fab = new FloatingActionButtonView
+                {
+                    ImageName = "add.png",
+                    ColorNormal = Palette._001,
+                    ColorPressed = Palette._002,
+                    ColorRipple = Palette._001,
+                    Clicked = (sender, args) => 
+                            newLeadCommand.Execute(null),
                 };
+
+                var absolute = new AbsoluteLayout
+                { 
+                    VerticalOptions = LayoutOptions.FillAndExpand, 
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                };
+
+                // Position the pageLayout to fill the entire screen.
+                // Manage positioning of child elements on the page by editing the pageLayout.
+                AbsoluteLayout.SetLayoutFlags(scrollView, AbsoluteLayoutFlags.All);
+                AbsoluteLayout.SetLayoutBounds(scrollView, new Rectangle(0f, 0f, 1f, 1f));
+                absolute.Children.Add(scrollView);
+
+                // Overlay the FAB in the bottom-right corner
+                AbsoluteLayout.SetLayoutFlags(fab, AbsoluteLayoutFlags.PositionProportional);
+                AbsoluteLayout.SetLayoutBounds(fab, new Rectangle(1f, 1f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+                absolute.Children.Add(fab);
+
+                Content = absolute;
+
+            }
+            else
+            {
+                Content = scrollView;
+            }
             #endregion
 
             #region wire up MessagingCenter
@@ -79,32 +118,29 @@ namespace XamarinCRM.Pages.Sales
             base.OnAppearing();
 
             // don't show any content until we're authenticated
-
-            Content.IsVisible = false;
-
             if (_AuthenticationService.IsAuthenticated)
             {
                 Content.IsVisible = true;
 
-                List<Task> tasksToRun = new List<Task>()
-                    { 
-                        Task.Factory.StartNew(async () =>
+                var tasksToRun = new List<Task>()
+                { 
+                    Task.Factory.StartNew(async () =>
+                        {
+                            if (!_SalesDashboardChartViewModel.IsInitialized)
                             {
-                                if (!_SalesDashboardChartViewModel.IsInitialized)
-                                {
-                                    await _SalesDashboardChartViewModel.ExecuteLoadSeedDataCommand();
-                                    _SalesDashboardChartViewModel.IsInitialized = true;
-                                }
-                            }),
-                        Task.Factory.StartNew(async () =>
+                                await _SalesDashboardChartViewModel.ExecuteLoadSeedDataCommand();
+                                _SalesDashboardChartViewModel.IsInitialized = true;
+                            }
+                        }),
+                    Task.Factory.StartNew(async () =>
+                        {
+                            if (!_SalesDashboardLeadsViewModel.IsInitialized)
                             {
-                                if (!_SalesDashboardLeadsViewModel.IsInitialized)
-                                {
-                                    await _SalesDashboardLeadsViewModel.ExecuteLoadSeedDataCommand();
-                                    _SalesDashboardLeadsViewModel.IsInitialized = true;
-                                }
-                            })
-                    };
+                                await _SalesDashboardLeadsViewModel.ExecuteLoadSeedDataCommand();
+                                _SalesDashboardLeadsViewModel.IsInitialized = true;
+                            }
+                        })
+                };
 
                 // Awaiting these parallel task allows the leadsView and salesChartView to load independently.
                 // Task.WhenAll() is your friend in cases like these, where you want to load from two different data models on a single page.
@@ -112,7 +148,39 @@ namespace XamarinCRM.Pages.Sales
 
                 Insights.Track(InsightsReportingConstants.PAGE_SALESDASHBOARD);
             }
+            else
+            {
+                Content.IsVisible = false;
+            }
+
+            if(Device.OS == TargetPlatform.Android)
+                scrollView.Scrolled += ScrollView_Scrolled;
         }
+
+
+        double previous = 0;
+        void ScrollView_Scrolled (object sender, ScrolledEventArgs e)
+        {
+            if (fab == null)
+                return;
+            
+            if (scrollView.ScrollY <= 0 || scrollView.ScrollY < previous)
+                fab.Show();
+            else
+                fab.Hide();
+
+            previous = scrollView.ScrollY;
+            
+        }
+
+       
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            if(Device.OS == TargetPlatform.Android)
+                scrollView.Scrolled -= ScrollView_Scrolled;
+        }
+
 
         Action<object> PushTabbedLeadPageAction
         {
