@@ -72,7 +72,7 @@ namespace XamarinCRM.Pages.Sales
             {
                 fab = new FloatingActionButtonView
                 {
-                    ImageName = "add.png",
+                    ImageName = "fab_add.png",
                     ColorNormal = Palette._001,
                     ColorPressed = Palette._002,
                     ColorRipple = Palette._001,
@@ -194,7 +194,7 @@ namespace XamarinCRM.Pages.Sales
             TabbedPage tabbedPage = new TabbedPage();
 
             tabbedPage.ToolbarItems.Add(
-                new ToolbarItem(TextResources.Save, null, async () =>
+                new ToolbarItem(TextResources.Save, "save.png", async () =>
                     {
                         var answer = 
                             await DisplayAlert(
