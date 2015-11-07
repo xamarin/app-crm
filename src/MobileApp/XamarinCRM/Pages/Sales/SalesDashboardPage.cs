@@ -98,10 +98,13 @@ namespace XamarinCRM.Pages.Sales
                 absolute.Children.Add(fab);
 
                 Content = absolute;
-
             }
             else
             {
+				ToolbarItems.Add (new ToolbarItem ("Add", "add_ios_gray", () => {
+					_SalesDashboardLeadsViewModel.PushLeadDetailsTabbedPageCommand.Execute (null);
+				}));
+
                 Content = scrollView;
             }
             #endregion

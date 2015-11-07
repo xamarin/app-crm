@@ -390,6 +390,10 @@
     <BundleResource Include="Resources\splash%403x.png" />
     <BundleResource Include="Resources\splashSlice.png" />
     <BundleResource Include="Resources\xamarin_logo_plus_name_inline.png" />
+    <BundleResource Include="Resources\slideout.png" />
+    <BundleResource Include="Resources\slideout%402x.png" />
+    <BundleResource Include="Resources\add_ios_gray.png" />
+    <BundleResource Include="Resources\add_ios_gray%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.xib" />
