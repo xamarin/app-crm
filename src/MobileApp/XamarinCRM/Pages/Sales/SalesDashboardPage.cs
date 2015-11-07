@@ -196,6 +196,12 @@ namespace XamarinCRM.Pages.Sales
 
             TabbedPage tabbedPage = new TabbedPage();
 
+			if (lead != null) {
+				tabbedPage.Title = lead.Company;
+			} else {
+				tabbedPage.Title = "New Lead";
+			}
+
             tabbedPage.ToolbarItems.Add(
                 new ToolbarItem(TextResources.Save, "save.png", async () =>
                     {
