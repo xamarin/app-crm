@@ -9,7 +9,7 @@ xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=Ima
     BackgroundColor="#53ba9d">
      <ContentPage.BackgroundColor>
         <OnPlatform x:TypeArguments="Color"
-          Android="#292929" />
+          Android="#F5F5F5" />
       </ContentPage.BackgroundColor>
      <ContentPage.Content>
             <ListView 
@@ -37,6 +37,8 @@ xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=Ima
                         <controls:CircleImage
                             Grid.Column="1"
                             Grid.Row="1"
+                            BorderColor = "White"
+                            BorderThickness = "3"
                             HorizontalOptions="Start"
                             VerticalOptions="End"
                             Source="https://s.gravatar.com/avatar/70148d964bb389d42547834e1062c886?s=200"

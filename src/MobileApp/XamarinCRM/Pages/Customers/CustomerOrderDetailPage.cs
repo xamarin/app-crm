@@ -295,7 +295,7 @@ namespace XamarinCRM.Pages.Customers
                     Title = TextResources.MainTabs_Products
                 });
             
-            navPage.ToolbarItems.Add(new ToolbarItem(TextResources.Cancel, null, () => Navigation.PopModalAsync()));
+            navPage.ToolbarItems.Add(new ToolbarItem(TextResources.Cancel, "exit.png", () => Navigation.PopModalAsync()));
 
             await ViewModel.PushModalAsync(navPage);
         }
@@ -331,6 +331,7 @@ namespace XamarinCRM.Pages.Customers
         {
             ToolbarItem saveToolBarItem = new ToolbarItem();
             saveToolBarItem.Text = TextResources.Save;
+            saveToolBarItem.Icon = "save.png";
             saveToolBarItem.Clicked += SaveToolBarItem_Clicked;
             return saveToolBarItem;
         }

@@ -17,6 +17,9 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using XamarinCRM.ViewModels.Base;
+using Xamarin.Forms.Xaml;
+
+
 
 namespace XamarinCRM.Pages
 {
