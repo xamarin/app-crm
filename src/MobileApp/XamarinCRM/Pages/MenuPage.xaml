@@ -51,9 +51,9 @@ xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=Ima
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10,0" Spacing="15" Orientation="Horizontal">
+                            <StackLayout Padding="10,15" Spacing="15" Orientation="Horizontal">
                                 <Image Source="{Binding Icon}" HeightRequest="35" WidthRequest="35"/>
-                                <Label Text="{Binding Title}" FontSize="20"/>
+                                <Label Text="{Binding Title}" FontSize="24" VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
