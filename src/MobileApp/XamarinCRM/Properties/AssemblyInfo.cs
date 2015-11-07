@@ -16,6 +16,7 @@ using System.Reflection;
 
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
+using Xamarin.Forms.Xaml;
 
 [assembly: AssemblyTitle("XamarinCRM")]
 [assembly: AssemblyDescription("")]
@@ -37,4 +38,4 @@ using System.Reflection;
 
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
-[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
+//[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
