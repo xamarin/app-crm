@@ -381,8 +381,6 @@
     <BundleResource Include="Resources\info.png" />
     <BundleResource Include="Resources\LeadContactDetailTab%403x.png" />
     <BundleResource Include="Resources\LeadDetailTab%403x.png" />
-    <BundleResource Include="Resources\map_marker_ios%403x.png" />
-    <BundleResource Include="Resources\phone_ios%403x.png" />
     <BundleResource Include="Resources\ProductsTab%403x.png" />
     <BundleResource Include="Resources\SalesTab%403x.png" />
     <BundleResource Include="Resources\splash.png" />
@@ -394,6 +392,12 @@
     <BundleResource Include="Resources\slideout%402x.png" />
     <BundleResource Include="Resources\add_ios_gray.png" />
     <BundleResource Include="Resources\add_ios_gray%402x.png" />
+    <BundleResource Include="Resources\map_marker_ios.png" />
+    <BundleResource Include="Resources\map_marker_ios%402x.png" />
+    <BundleResource Include="Resources\map_marker_ios%403x.png" />
+    <BundleResource Include="Resources\phone_ios.png" />
+    <BundleResource Include="Resources\phone_ios%402x.png" />
+    <BundleResource Include="Resources\phone_ios%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.xib" />
