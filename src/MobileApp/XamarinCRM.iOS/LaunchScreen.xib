@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6214" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6207"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="548" y="455"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="add_ios_blue.png" width="34" height="35"/>
+        <image name="add_ios_gray.png" width="34" height="35"/>
+        <image name="back_ios.png" width="27" height="27"/>
+        <image name="bottom_up_gradient.png" width="10" height="75"/>
+        <image name="CustomersTab.png" width="19" height="16.333334"/>
+        <image name="Default-568h.png" width="320" height="568"/>
+        <image name="Default-Portrait.png" width="768" height="1004"/>
+        <image name="Default.png" width="320" height="480"/>
+        <image name="icon_29.png" width="29" height="29"/>
+        <image name="icon_40.png" width="40" height="40"/>
+        <image name="icon_50.png" width="50" height="50"/>
+        <image name="icon_57.png" width="57" height="57"/>
+        <image name="icon_58.png" width="58" height="58"/>
+        <image name="icon_72.png" width="72" height="72"/>
+        <image name="icon_76.png" width="76" height="76"/>
+        <image name="icon_80.png" width="80" height="80"/>
+        <image name="icon_100.png" width="100" height="100"/>
+        <image name="icon_114.png" width="114" height="114"/>
+        <image name="icon_120.png" width="120" height="120"/>
+        <image name="icon_144.png" width="144" height="144"/>
+        <image name="icon_152.png" width="152" height="152"/>
+        <image name="info.png" width="1716" height="1716"/>
+        <image name="LeadContactDetailTab.png" width="17" height="17"/>
+        <image name="LeadDetailTab.png" width="17" height="17"/>
+        <image name="map_marker_ios.png" width="28" height="39"/>
+        <image name="phone_ios.png" width="48" height="48"/>
+        <image name="ProductsTab.png" width="17.666666" height="13.666667"/>
+        <image name="SalesTab.png" width="19.333334" height="13.666667"/>
+        <image name="splash.png" width="320" height="568"/>
+        <image name="splashSlice.png" width="2160" height="566"/>
+        <image name="xamarin_logo_plus_name_inline.png" width="714" height="162"/>
+    </resources>
+</document>

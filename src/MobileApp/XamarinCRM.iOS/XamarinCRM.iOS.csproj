@@ -391,4 +391,7 @@
     <BundleResource Include="Resources\splashSlice.png" />
     <BundleResource Include="Resources\xamarin_logo_plus_name_inline.png" />
   </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="LaunchScreen.xib" />
+  </ItemGroup>
 </Project>
