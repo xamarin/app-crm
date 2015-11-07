@@ -26,7 +26,7 @@ namespace XamarinCRM.Views.Customers
     {
         static Color MajorAxisAndLabelColor
         {
-            get { return Device.OnPlatform(Palette._011, Palette._008, Color.White); }
+            get { return Device.OnPlatform(Palette._011, Palette._011, Color.White); }
         }
 
         static double ChartHeight
@@ -89,7 +89,7 @@ namespace XamarinCRM.Views.Customers
             };
 
 
-            columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");
+            columnSeries.SetBinding(ChartSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");
 
             SfChart chart = new SfChart()
             {
@@ -97,6 +97,7 @@ namespace XamarinCRM.Views.Customers
 
                 PrimaryAxis = new CategoryAxis()
                 {
+                    LabelRotationAngle = -45,
                     EdgeLabelsDrawingMode = EdgeLabelsDrawingMode.Center,
                     LabelPlacement = LabelPlacement.BetweenTicks,
                     TickPosition = AxisElementPosition.Inside,

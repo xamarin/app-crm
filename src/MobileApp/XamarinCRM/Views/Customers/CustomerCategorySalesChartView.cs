@@ -30,7 +30,7 @@ namespace XamarinCRM.Views.Customers
 
         static Color LegendLabelColor
         {
-            get { return Device.OnPlatform(Palette._011, Palette._008, Color.White); }
+            get { return Device.OnPlatform(Palette._011, Palette._011, Color.White); }
         }
 
         public CustomerCategorySalesChartView()
@@ -61,7 +61,7 @@ namespace XamarinCRM.Views.Customers
                 }
             };
                         
-            pieSeries.SetBinding(PieSeries.ItemsSourceProperty, "CategorySalesChartDataPoints");
+            pieSeries.SetBinding(ChartSeries.ItemsSourceProperty, "CategorySalesChartDataPoints");
             #endregion
 
             #region chart

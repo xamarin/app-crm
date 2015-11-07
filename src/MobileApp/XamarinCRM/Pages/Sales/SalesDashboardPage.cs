@@ -72,7 +72,7 @@ namespace XamarinCRM.Pages.Sales
             {
                 fab = new FloatingActionButtonView
                 {
-                    ImageName = "add.png",
+                    ImageName = "fab_add.png",
                     ColorNormal = Palette._001,
                     ColorPressed = Palette._002,
                     ColorRipple = Palette._001,

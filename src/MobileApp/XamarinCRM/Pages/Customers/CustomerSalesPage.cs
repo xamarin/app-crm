@@ -40,7 +40,7 @@ namespace XamarinCRM.Pages.Customers
 
             Label companyNameLabel = new Label()
             {
-                TextColor = Device.OnPlatform(Palette._006, Color.White, Color.White),
+                TextColor = Device.OnPlatform(Palette._006, Palette._006, Color.White),
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Start,
@@ -72,14 +72,6 @@ namespace XamarinCRM.Pages.Customers
             CustomerCategorySalesChartView customerCategorySalesChartView = new CustomerCategorySalesChartView();
             #endregion
 
-            #region platform adjustments
-            Device.OnPlatform(
-                Android: () =>
-                {
-                    BackgroundColor = Palette._009;
-                }
-            );
-            #endregion
 
             #region compose view hierarchy
             Content = new ScrollView()
