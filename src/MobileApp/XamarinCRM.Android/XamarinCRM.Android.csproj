@@ -168,6 +168,12 @@
     <Reference Include="Xamarin.Insights">
       <HintPath>..\packages\Xamarin.Insights.1.11.2\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.RecyclerView.22.1.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.FloatingActionButton">
+      <HintPath>..\packages\Refractored.FloatingActionButton.1.3.4\lib\MonoAndroid10\Refractored.FloatingActionButton.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -176,6 +182,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Services\ConfigFetcher.cs" />
     <Compile Include="Services\Authenticator.cs" />
+    <Compile Include="Renderers\FloatingActionButtonViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -194,6 +201,7 @@
   <ItemGroup>
     <Folder Include="Resources\layout\" />
     <Folder Include="Resources\drawable-mdpi\" />
+    <Folder Include="Renderers\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -258,6 +266,11 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\save.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\exit.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\sales.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\add.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\add.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\add.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\add.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\add.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\XamarinCRM\Config\config.xml">
