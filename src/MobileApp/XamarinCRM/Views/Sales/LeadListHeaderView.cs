@@ -48,7 +48,7 @@ namespace XamarinCRM.Views.Sales
                 HorizontalOptions = LayoutOptions.EndAndExpand,
             };
             //Going to use FAB
-            newLeadImage.IsVisible = Device.OS != TargetPlatform.Android;
+			newLeadImage.IsVisible = false;
             newLeadImage.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
                     Command = _NewLeadTappedCommand,
