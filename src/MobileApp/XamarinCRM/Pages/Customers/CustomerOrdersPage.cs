@@ -107,7 +107,7 @@ namespace XamarinCRM.Pages.Customers
             customerOrderListView.ItemTapped += async (sender, e) =>
             {
                 var order = (Order)e.Item;
-                await Navigation.PushAsync(new CustomerOrderDetailPage()
+				await Navigation.PushAsync (new CustomerOrderDetailPage()
                     {
                         BindingContext = new OrderDetailViewModel(ViewModel.Account, order)
                         {
@@ -140,7 +140,9 @@ namespace XamarinCRM.Pages.Customers
         }
 
         async void AddNewOrderTapped()
-        {
+		{
+			NavigationPage.SetBackButtonTitle(this, "Back");
+
             await Navigation.PushAsync(
                 new CustomerOrderDetailPage()
                 {

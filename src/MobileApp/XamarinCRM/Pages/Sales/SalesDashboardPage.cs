@@ -211,24 +211,6 @@ namespace XamarinCRM.Pages.Sales
                         }
                     }));
 
-            tabbedPage.ToolbarItems.Add(
-                new ToolbarItem(TextResources.Exit, null, async () =>
-                    {
-                        {
-                            var answer = 
-                                await DisplayAlert(
-                                    title: TextResources.Leads_ExitConfirmTitle,
-                                    message: TextResources.Leads_ExitConfirmDescription,
-                                    accept: TextResources.Exit_and_Discard,
-                                    cancel: TextResources.Cancel);
-
-                            if (answer)
-                            {
-                                await Navigation.PopAsync();
-                            }
-                        }
-                    }));
-
             tabbedPage.Children.Add(new LeadDetailPage()
                 {
                     BindingContext = viewModel,
