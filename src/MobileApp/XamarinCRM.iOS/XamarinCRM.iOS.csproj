@@ -309,60 +309,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\Default-Portrait.png" />
-    <BundleResource Include="Resources\Default-Portrait%402x.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\LeadContactDetailTab%403x.png" />
-    <BundleResource Include="Resources\LeadDetailTab%403x.png" />
-    <BundleResource Include="Resources\icon_100.png" />
-    <BundleResource Include="Resources\icon_114.png" />
-    <BundleResource Include="Resources\icon_120.png" />
-    <BundleResource Include="Resources\icon_144.png" />
-    <BundleResource Include="Resources\icon_152.png" />
-    <BundleResource Include="Resources\icon_29.png" />
-    <BundleResource Include="Resources\icon_40.png" />
-    <BundleResource Include="Resources\icon_50.png" />
-    <BundleResource Include="Resources\icon_57.png" />
-    <BundleResource Include="Resources\icon_58.png" />
-    <BundleResource Include="Resources\icon_72.png" />
-    <BundleResource Include="Resources\icon_76.png" />
-    <BundleResource Include="Resources\icon_80.png" />
-    <BundleResource Include="Resources\back_ios%403x.png" />
-    <BundleResource Include="Resources\add_ios_blue%403x.png" />
-    <BundleResource Include="Resources\add_ios_gray%403x.png" />
-    <BundleResource Include="Resources\splash.png" />
-    <BundleResource Include="Resources\splash%402x.png" />
-    <BundleResource Include="Resources\splash%403x.png" />
-    <BundleResource Include="Resources\xamarin_logo_plus_name_inline.png" />
-    <BundleResource Include="Resources\bottom_up_gradient%402x.png" />
-    <BundleResource Include="Resources\bottom_up_gradient%403x.png" />
-    <BundleResource Include="Resources\bottom_up_gradient.png" />
-    <BundleResource Include="Resources\phone_ios%403x.png" />
-    <BundleResource Include="Resources\map_marker_ios%403x.png" />
-    <BundleResource Include="Resources\splashSlice.png" />
-    <BundleResource Include="Resources\info.png" />
-    <BundleResource Include="Resources\slideout.png" />
-    <BundleResource Include="Resources\slideout%402x.png" />
-    <BundleResource Include="Resources\customers%403x.png" />
-    <BundleResource Include="Resources\add.png" />
-    <BundleResource Include="Resources\add%402x.png" />
-    <BundleResource Include="Resources\add%403x.png" />
-    <BundleResource Include="Resources\about.png" />
-    <BundleResource Include="Resources\about%402x.png" />
-    <BundleResource Include="Resources\about%403x.png" />
-    <BundleResource Include="Resources\products.png" />
-    <BundleResource Include="Resources\products%402x.png" />
-    <BundleResource Include="Resources\products%403x.png" />
-    <BundleResource Include="Resources\sales.png" />
-    <BundleResource Include="Resources\sales%402x.png" />
-    <BundleResource Include="Resources\sales%403x.png" />
-    <BundleResource Include="Resources\save.png" />
-    <BundleResource Include="Resources\save%402x.png" />
-    <BundleResource Include="Resources\save%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
@@ -404,5 +350,45 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add_ios_blue%403x.png" />
+    <BundleResource Include="Resources\add_ios_gray%403x.png" />
+    <BundleResource Include="Resources\back_ios%403x.png" />
+    <BundleResource Include="Resources\bottom_up_gradient.png" />
+    <BundleResource Include="Resources\bottom_up_gradient%402x.png" />
+    <BundleResource Include="Resources\bottom_up_gradient%403x.png" />
+    <BundleResource Include="Resources\CustomersTab%403x.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Default-Portrait.png" />
+    <BundleResource Include="Resources\Default-Portrait%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\icon_29.png" />
+    <BundleResource Include="Resources\icon_40.png" />
+    <BundleResource Include="Resources\icon_50.png" />
+    <BundleResource Include="Resources\icon_57.png" />
+    <BundleResource Include="Resources\icon_58.png" />
+    <BundleResource Include="Resources\icon_72.png" />
+    <BundleResource Include="Resources\icon_76.png" />
+    <BundleResource Include="Resources\icon_80.png" />
+    <BundleResource Include="Resources\icon_100.png" />
+    <BundleResource Include="Resources\icon_114.png" />
+    <BundleResource Include="Resources\icon_120.png" />
+    <BundleResource Include="Resources\icon_144.png" />
+    <BundleResource Include="Resources\icon_152.png" />
+    <BundleResource Include="Resources\info.png" />
+    <BundleResource Include="Resources\LeadContactDetailTab%403x.png" />
+    <BundleResource Include="Resources\LeadDetailTab%403x.png" />
+    <BundleResource Include="Resources\map_marker_ios%403x.png" />
+    <BundleResource Include="Resources\phone_ios%403x.png" />
+    <BundleResource Include="Resources\ProductsTab%403x.png" />
+    <BundleResource Include="Resources\SalesTab%403x.png" />
+    <BundleResource Include="Resources\splash.png" />
+    <BundleResource Include="Resources\splash%402x.png" />
+    <BundleResource Include="Resources\splash%403x.png" />
+    <BundleResource Include="Resources\splashSlice.png" />
+    <BundleResource Include="Resources\xamarin_logo_plus_name_inline.png" />
   </ItemGroup>
 </Project>
