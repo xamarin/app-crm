@@ -65,6 +65,12 @@ namespace XamarinCRM.iOS
 			UINavigationBar.Appearance.BarTintColor = Palette._001.ToUIColor ();
 			UINavigationBar.Appearance.TitleTextAttributes = new UIStringAttributes { ForegroundColor = UIColor.White };
 			UIBarButtonItem.Appearance.SetTitleTextAttributes (new UITextAttributes { TextColor = UIColor.White }, UIControlState.Normal);
+
+			UITabBar.Appearance.TintColor = UIColor.White;
+			UITabBar.Appearance.BarTintColor = UIColor.White;
+			UITabBar.Appearance.SelectedImageTintColor = Palette._003.ToUIColor ();
+			UITabBarItem.Appearance.SetTitleTextAttributes (new UITextAttributes { TextColor = Palette._003.ToUIColor () }, UIControlState.Selected);
+
 			UIProgressView.Appearance.ProgressTintColor = Palette._003.ToUIColor ();
 		}
     }
