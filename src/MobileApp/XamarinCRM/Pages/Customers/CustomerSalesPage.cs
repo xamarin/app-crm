@@ -80,7 +80,6 @@ namespace XamarinCRM.Pages.Customers
                 {
                     Children =
                     {
-                        new ContentViewWithBottomBorder(){ Content = headerLabelsView },
                         customerWeeklySalesChartView,
                         customerCategorySalesChartView
                     }

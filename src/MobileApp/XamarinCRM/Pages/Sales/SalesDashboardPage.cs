@@ -194,7 +194,7 @@ namespace XamarinCRM.Pages.Sales
             TabbedPage tabbedPage = new TabbedPage();
 
             tabbedPage.ToolbarItems.Add(
-                new ToolbarItem(TextResources.Save, null, async () =>
+                new ToolbarItem(TextResources.Save, "save.png", async () =>
                     {
                         var answer = 
                             await DisplayAlert(

@@ -31,7 +31,7 @@ namespace XamarinCRM.Views.Customers
 
         static double ChartHeight
         {
-            get { return Device.OnPlatform(160, 150, 150); }
+            get { return Device.OnPlatform(160, 190, 150); }
         }
 
         public CustomerWeeklySalesChartView()

@@ -30,6 +30,15 @@ namespace XamarinCRM.Pages.Customers
     {
         public CustomerOrdersPage()
         {
+
+            #region toolbar items
+            ToolbarItems.Add(new ToolbarItem
+                {
+                    Text = "Add",
+                    Icon = "add.png",
+                    Command = new Command(AddNewOrderTapped)
+                });
+            #endregion
             #region activity indicator
             ActivityIndicator activityIndicator = new ActivityIndicator() { HeightRequest = Sizes.LargeRowHeight };
             activityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
@@ -97,7 +106,7 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             #region order list view
-            CustomerOrderListView customerOrderListView = new CustomerOrderListView() { IsGroupingEnabled = true };
+            var customerOrderListView = new CustomerOrderListView() { IsGroupingEnabled = true };
             customerOrderListView.GroupDisplayBinding = new Binding("Key");
             customerOrderListView.GroupHeaderTemplate = new DataTemplate(typeof(CustomerOrderListViewGroupHeaderCell));
             customerOrderListView.SetBinding(ListView.ItemsSourceProperty, "OrderGroups");
@@ -123,7 +132,6 @@ namespace XamarinCRM.Pages.Customers
                 Children =
                 { 
                     activityIndicator, 
-                    new ContentViewWithBottomBorder() { Content = headerLabelsView },
                     customerOrderListView 
                 }
             };
