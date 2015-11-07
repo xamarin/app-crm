@@ -314,9 +314,6 @@
     <BundleResource Include="Resources\Default-Portrait%402x.png" />
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\CustomersTab%403x.png" />
-    <BundleResource Include="Resources\ProductsTab%403x.png" />
-    <BundleResource Include="Resources\SalesTab%403x.png" />
     <BundleResource Include="Resources\LeadContactDetailTab%403x.png" />
     <BundleResource Include="Resources\LeadDetailTab%403x.png" />
     <BundleResource Include="Resources\icon_100.png" />
@@ -350,6 +347,9 @@
     <BundleResource Include="Resources\about%402x.png" />
     <BundleResource Include="Resources\slideout.png" />
     <BundleResource Include="Resources\slideout%402x.png" />
+    <BundleResource Include="Resources\customers%403x.png" />
+    <BundleResource Include="Resources\products%403x.png" />
+    <BundleResource Include="Resources\sales%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

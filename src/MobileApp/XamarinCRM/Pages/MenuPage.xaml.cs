@@ -37,10 +37,10 @@ namespace XamarinCRM.Pages
 
             ListViewMenu.ItemsSource = menuItems = new List<HomeMenuItem>
                 {
-                    new HomeMenuItem { Title = "Sales", MenuType = MenuType.Sales, Icon ="SalesTab.png" },
-                    new HomeMenuItem { Title = "Customers", MenuType = MenuType.Customers, Icon = "CustomersTab.png" },
-                    new HomeMenuItem { Title = "Products", MenuType = MenuType.Products, Icon = "ProductsTab.png" },
-                    new HomeMenuItem { Title = "About", MenuType = MenuType.About, Icon = "ProductsTab.png" },
+                    new HomeMenuItem { Title = "Sales", MenuType = MenuType.Sales, Icon ="sales.png" },
+                    new HomeMenuItem { Title = "Customers", MenuType = MenuType.Customers, Icon = "customers.png" },
+                    new HomeMenuItem { Title = "Products", MenuType = MenuType.Products, Icon = "products.png" },
+                    new HomeMenuItem { Title = "About", MenuType = MenuType.About, Icon = "about.png" },
 
                 };
 
