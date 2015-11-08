@@ -153,34 +153,9 @@ namespace XamarinCRM.Pages.Sales
                 Content.IsVisible = false;
             }
 
-            if(Device.OS == TargetPlatform.Android)
-                scrollView.Scrolled += ScrollView_Scrolled;
         }
-
-
-        double previous = 0;
-        void ScrollView_Scrolled (object sender, ScrolledEventArgs e)
-        {
-            if (fab == null)
-                return;
-            
-            if (scrollView.ScrollY <= 0 || scrollView.ScrollY < previous)
-                fab.Show();
-            else
-                fab.Hide();
-
-            previous = scrollView.ScrollY;
-            
-        }
-
        
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            if(Device.OS == TargetPlatform.Android)
-                scrollView.Scrolled -= ScrollView_Scrolled;
-        }
-
+       
 
         Action<object> PushTabbedLeadPageAction
         {
