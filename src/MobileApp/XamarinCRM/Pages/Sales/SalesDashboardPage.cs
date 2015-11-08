@@ -98,10 +98,13 @@ namespace XamarinCRM.Pages.Sales
                 absolute.Children.Add(fab);
 
                 Content = absolute;
-
             }
             else
             {
+				ToolbarItems.Add (new ToolbarItem ("Add", "add_ios_gray", () => {
+					_SalesDashboardLeadsViewModel.PushLeadDetailsTabbedPageCommand.Execute (null);
+				}));
+
                 Content = scrollView;
             }
             #endregion
@@ -167,6 +170,12 @@ namespace XamarinCRM.Pages.Sales
             LeadDetailViewModel viewModel = new LeadDetailViewModel(Navigation, lead); 
 
             TabbedPage tabbedPage = new TabbedPage();
+
+			if (lead != null) {
+				tabbedPage.Title = lead.Company;
+			} else {
+				tabbedPage.Title = "New Lead";
+			}
 
             tabbedPage.ToolbarItems.Add(
                 new ToolbarItem(TextResources.Save, "save.png", async () =>
