@@ -32,12 +32,15 @@ namespace XamarinCRM.Pages.Customers
         {
 
             #region toolbar items
-            ToolbarItems.Add(new ToolbarItem
-                {
-                    Text = "Add",
-                    Icon = "add.png",
-                    Command = new Command(AddNewOrderTapped)
-                });
+            if(Device.OS != TargetPlatform.Android)
+            {
+                ToolbarItems.Add(new ToolbarItem
+                    {
+                        Text = "Add",
+                        Icon = "add.png",
+                        Command = new Command(AddNewOrderTapped)
+                    });
+            }
             #endregion
             #region activity indicator
             ActivityIndicator activityIndicator = new ActivityIndicator() { HeightRequest = Sizes.LargeRowHeight };
@@ -77,6 +80,8 @@ namespace XamarinCRM.Pages.Customers
                     Command = new Command(AddNewOrderTapped),
                     NumberOfTapsRequired = 1 
                 });
+
+            addNewOrderImage.IsVisible = Device.OS != TargetPlatform.Android;
 
             AbsoluteLayout headerAbsoluteLayout = new AbsoluteLayout() { HeightRequest = Sizes.LargeRowHeight };
 
@@ -127,7 +132,7 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             #region compose view hierarchy
-            Content = new UnspacedStackLayout()
+            var stack = new UnspacedStackLayout()
             { 
                 Children =
                 { 
@@ -135,6 +140,43 @@ namespace XamarinCRM.Pages.Customers
                     customerOrderListView 
                 }
             };
+
+            if (Device.OS == TargetPlatform.Android)
+            {
+                var fab = new FloatingActionButtonView
+                    {
+                        ImageName = "fab_add.png",
+                        ColorNormal = Palette._001,
+                        ColorPressed = Palette._002,
+                        ColorRipple = Palette._001,
+                        Clicked = (sender, args) => 
+                            AddNewOrderTapped(),
+                    };
+
+                var absolute = new AbsoluteLayout
+                    { 
+                        VerticalOptions = LayoutOptions.FillAndExpand, 
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                    };
+
+                // Position the pageLayout to fill the entire screen.
+                // Manage positioning of child elements on the page by editing the pageLayout.
+                AbsoluteLayout.SetLayoutFlags(stack, AbsoluteLayoutFlags.All);
+                AbsoluteLayout.SetLayoutBounds(stack, new Rectangle(0f, 0f, 1f, 1f));
+                absolute.Children.Add(stack);
+
+                // Overlay the FAB in the bottom-right corner
+                AbsoluteLayout.SetLayoutFlags(fab, AbsoluteLayoutFlags.PositionProportional);
+                AbsoluteLayout.SetLayoutBounds(fab, new Rectangle(1f, 1f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+                absolute.Children.Add(fab);
+
+                Content = absolute;
+
+            }
+            else
+            {
+                Content = stack;
+            }
             #endregion
         }
 
