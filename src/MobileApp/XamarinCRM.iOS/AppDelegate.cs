@@ -21,6 +21,8 @@ using Xamarin.Forms.Platform.iOS;
 using Xamarin;
 
 using XamarinCRM.Statics;
+using System;
+using XamarinCRM.Pages;
 
 namespace XamarinCRM.iOS
 {
@@ -73,5 +75,66 @@ namespace XamarinCRM.iOS
 
 			UIProgressView.Appearance.ProgressTintColor = Palette._003.ToUIColor ();
 		}
+
+        public const string First = "com.xamarin.xamarincrm.001";
+        public const string Second = "com.xamarin.xamarincrm.002";
+        public const string Third = "com.xamarin.xamarincrm.003";
+
+        public UIApplicationShortcutItem LaunchedShortcutItem { get; set; }
+        public override void OnActivated (UIApplication application)
+        {
+            Console.WriteLine ("ccccccc OnActivated");
+
+            // Handle any shortcut item being selected
+            HandleShortcutItem(LaunchedShortcutItem);
+
+            // Clear shortcut after it's been handled
+            LaunchedShortcutItem = null;
+        }
+
+        // if app is already running
+        public override void PerformActionForShortcutItem (UIApplication application, UIApplicationShortcutItem shortcutItem, UIOperationHandler completionHandler)
+        {
+            Console.WriteLine ("dddddddd PerformActionForShortcutItem");
+            // Perform action
+            var handled = HandleShortcutItem(shortcutItem);
+            completionHandler(handled);
+        }
+        public bool HandleShortcutItem(UIApplicationShortcutItem shortcutItem) {
+            Console.WriteLine ("eeeeeeeeeee HandleShortcutItem ");
+            var handled = false;
+
+            // Anything to process?
+            if (shortcutItem == null) 
+                return false;
+
+            // Take action based on the shortcut type
+            switch (shortcutItem.Type) {
+                case First:
+                    App.GoToRoot();
+                    ((RootPage)App.Current.MainPage).NavigateAsync(MenuType.Sales);
+                    handled = true;
+                    break;
+                case Second:
+                    App.GoToRoot();
+                    ((RootPage)App.Current.MainPage).NavigateAsync(MenuType.Customers);
+
+                    handled = true;
+                    break;
+
+                case Third:
+                    App.GoToRoot();
+                    ((RootPage)App.Current.MainPage).NavigateAsync(MenuType.Products);
+
+                    handled = true;
+                    break;
+            }
+
+            Console.Write (handled);
+            // Return results
+            return handled;
+        }
+
+     
     }
 }
