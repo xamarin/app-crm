@@ -404,15 +404,18 @@
     <BundleResource Include="Resources\about%403x.png" />
     <BundleResource Include="Resources\about%402x.png" />
     <BundleResource Include="Resources\about.png" />
-    <BundleResource Include="Resources\save%403x.png" />
-    <BundleResource Include="Resources\save%402x.png" />
-    <BundleResource Include="Resources\save.png" />
     <BundleResource Include="Resources\sales%403x.png" />
     <BundleResource Include="Resources\sales%402x.png" />
     <BundleResource Include="Resources\sales.png" />
     <BundleResource Include="Resources\products%403x.png" />
     <BundleResource Include="Resources\products%402x.png" />
     <BundleResource Include="Resources\products.png" />
+    <BundleResource Include="Resources\customers.png" />
+    <BundleResource Include="Resources\customers%402x.png" />
+    <BundleResource Include="Resources\customers%403x.png" />
+    <BundleResource Include="Resources\save.png" />
+    <BundleResource Include="Resources\save%402x.png" />
+    <BundleResource Include="Resources\save%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.xib" />
