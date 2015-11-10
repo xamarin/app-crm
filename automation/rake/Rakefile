@@ -130,7 +130,7 @@ end
 
 namespace :testcloud do
 	desc "Push Android tests to XTC"
-	task :android => [:build_test_solution] do
+	task :android => ['build:tests'] do
 		get_env_variables
 		devices = get_device_code(DEVICE_SET, "android")
 		unless CATEGORY.nil?
@@ -141,7 +141,7 @@ namespace :testcloud do
 	end
 
 	desc "Push iOS tests to XTC"
-	task :ios => [:build_test_solution] do
+	task :ios => ['build:tests'] do
 		get_env_variables
 		devices = get_device_code(DEVICE_SET, "ios")
 		unless CATEGORY.nil?
