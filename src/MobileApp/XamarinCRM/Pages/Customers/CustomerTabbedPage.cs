@@ -26,7 +26,7 @@ namespace XamarinCRM.Pages.Customers
             // since we're modally presented this tabbed view (because Android doesn't natively support nested tabs),
             // this tool bar item provides a way to get back to the Customers list
 
-            var customerDetailPage = new CustomerDetailPage()
+            var customerDetailPage = new CustomerDetailPage(account)
             {
                 BindingContext = new CustomerDetailViewModel(account) { Navigation = this.Navigation },
                 Title = TextResources.Customers_Detail_Tab_Title,

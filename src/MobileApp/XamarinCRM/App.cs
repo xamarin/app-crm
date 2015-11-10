@@ -56,7 +56,14 @@ namespace XamarinCRM
 
         public static void GoToRoot()
         {
-            CurrentApp.MainPage = new RootPage();
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                CurrentApp.MainPage = new RootTabPage();
+            }
+            else
+            {
+                CurrentApp.MainPage = new RootPage();
+            }
         }
 
         public static async Task ExecuteIfConnected(Func<Task> actionToExecuteIfConnected)

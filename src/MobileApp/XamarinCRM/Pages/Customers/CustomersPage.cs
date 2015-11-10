@@ -87,7 +87,20 @@ namespace XamarinCRM.Pages.Customers
 
         async Task PushTabbedPage(Account account = null)
         {
-            await Navigation.PushAsync(new CustomerTabbedPage(ViewModel.Navigation, account));
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                var customerDetailPage = new CustomerDetailPage(account)
+                    {
+                        BindingContext = new CustomerDetailViewModel(account) { Navigation = this.Navigation },
+                        Title = TextResources.Customers_Detail_Tab_Title,
+                        Icon = new FileImageSource() { File = "CustomersTab" } // only used  on iOS
+                    };
+                await Navigation.PushAsync(customerDetailPage);
+            }
+            else
+            {
+                await Navigation.PushAsync(new CustomerTabbedPage(ViewModel.Navigation, account));
+            }
         }
     }
 }

@@ -107,8 +107,11 @@ namespace XamarinCRM
 
         async void MapMarkerIconTapped()
         {
-            NavigationPage navPage = new NavigationPage(new CustomerMapPage(ViewModel));
-            await ViewModel.PushModalAsync(navPage);
+            var navPage = new CustomerMapPage(ViewModel)
+                {
+                    Title = "Location"
+                };
+            await ViewModel.PushAsync(navPage);
         }
     }
 }

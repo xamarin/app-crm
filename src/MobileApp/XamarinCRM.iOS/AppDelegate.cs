@@ -35,6 +35,7 @@ namespace XamarinCRM.iOS
 
             #if DEBUG
             Xamarin.Calabash.Start();
+            ObjCRuntime.Dlfcn.dlopen("recorderPluginCalabash.dylib", 0);
             #endif
 
             // Azure Mobile Services initilization
@@ -112,19 +113,19 @@ namespace XamarinCRM.iOS
             switch (shortcutItem.Type) {
                 case First:
                     App.GoToRoot();
-                    ((RootPage)App.Current.MainPage).NavigateAsync(MenuType.Sales);
+                    ((RootTabPage)App.Current.MainPage).CurrentPage = ((RootTabPage)App.Current.MainPage).Children[0];
                     handled = true;
                     break;
                 case Second:
                     App.GoToRoot();
-                    ((RootPage)App.Current.MainPage).NavigateAsync(MenuType.Customers);
+                    ((RootTabPage)App.Current.MainPage).CurrentPage = ((RootTabPage)App.Current.MainPage).Children[1];
 
                     handled = true;
                     break;
 
                 case Third:
                     App.GoToRoot();
-                    ((RootPage)App.Current.MainPage).NavigateAsync(MenuType.Products);
+                    ((RootTabPage)App.Current.MainPage).CurrentPage = ((RootTabPage)App.Current.MainPage).Children[2];
 
                     handled = true;
                     break;

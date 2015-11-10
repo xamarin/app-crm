@@ -169,15 +169,41 @@ namespace XamarinCRM.Pages.Sales
         {
             LeadDetailViewModel viewModel = new LeadDetailViewModel(Navigation, lead); 
 
-            TabbedPage tabbedPage = new TabbedPage();
+
+            Page page = null;
+            var leadDetail = new LeadDetailPage()
+            {
+                BindingContext = viewModel,
+                Title = TextResources.Details,
+                Icon = new FileImageSource() { File = "LeadDetailTab" } // only used on iOS
+            };
+            
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                page = leadDetail;
+            }
+            else
+            {
+                page = new TabbedPage();
+                ((TabbedPage)page).Children.Add(leadDetail);
+
+                ((TabbedPage)page).Children.Add(new LeadContactDetailPage()
+                    {
+                        BindingContext = viewModel,
+                        Title = TextResources.Contact,
+                        Icon = new FileImageSource() { File = "LeadContactDetailTab" } // only used on iOS
+                    });
+                
+            }
+
 
 			if (lead != null) {
-				tabbedPage.Title = lead.Company;
+                page.Title = lead.Company;
 			} else {
-				tabbedPage.Title = "New Lead";
+                page.Title = "New Lead";
 			}
 
-            tabbedPage.ToolbarItems.Add(
+            page.ToolbarItems.Add(
                 new ToolbarItem(TextResources.Save, "save.png", async () =>
                     {
                         var answer = 
@@ -195,21 +221,8 @@ namespace XamarinCRM.Pages.Sales
                         }
                     }));
 
-            tabbedPage.Children.Add(new LeadDetailPage()
-                {
-                    BindingContext = viewModel,
-                    Title = TextResources.Details,
-                    Icon = new FileImageSource() { File = "LeadDetailTab" } // only used on iOS
-                });
-
-            tabbedPage.Children.Add(new LeadContactDetailPage()
-                {
-                    BindingContext = viewModel,
-                    Title = TextResources.Contact,
-                    Icon = new FileImageSource() { File = "LeadContactDetailTab" } // only used on iOS
-                });
-
-            await Navigation.PushAsync(tabbedPage);
+           
+            await Navigation.PushAsync(page);
         }
     }
 }

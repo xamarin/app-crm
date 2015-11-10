@@ -322,6 +322,7 @@
     <Compile Include="Services\Authenticator.cs" />
     <Compile Include="Renderers\StandardViewCellRenderer.cs" />
     <Compile Include="Renderers\StandardPickerRenderer.cs" />
+    <Compile Include="Renderers\StandardImageCellRenderer.cs" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

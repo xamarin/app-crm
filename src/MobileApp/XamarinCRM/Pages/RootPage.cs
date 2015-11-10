@@ -29,18 +29,21 @@ using XamarinCRM.Pages.About;
 
 namespace XamarinCRM.Pages
 {
+
+
     public class RootPage : MasterDetailPage
     {
-        Dictionary<MenuType, NavigationPage> Pages { get; set;} 
+        Dictionary<MenuType, NavigationPage> Pages { get; set; }
+
         public RootPage()
         {
             Pages = new Dictionary<MenuType, NavigationPage>();
             Master = new MenuPage(this);
             BindingContext = new BaseViewModel(Navigation)
-                {
-                    Title = "Xamarin CRM",
-                    Icon = "slideout.png"
-                };
+            {
+                Title = "Xamarin CRM",
+                Icon = "slideout.png"
+            };
             //setup home page
             NavigateAsync(MenuType.Sales);
         }
@@ -57,39 +60,39 @@ namespace XamarinCRM.Pages
                 {
                     case MenuType.Sales:
                         Pages.Add(id, new CRMNavigationPage(new SalesDashboardPage
-                            { 
-                                Title = TextResources.MainTabs_Sales, 
-                                Icon = new FileImageSource { File = "sales.png" }
-                            }));
+                                { 
+                                    Title = TextResources.MainTabs_Sales, 
+                                    Icon = new FileImageSource { File = "sales.png" }
+                                }));
                         break;
                     case MenuType.Customers:
                         Pages.Add(id, new CRMNavigationPage(new CustomersPage
-                            { 
-                                BindingContext = new CustomersViewModel(Navigation), 
-                                Title = TextResources.MainTabs_Customers, 
-                                Icon = new FileImageSource { File = "customers.png" } 
-                            }));
+                                { 
+                                    BindingContext = new CustomersViewModel(Navigation), 
+                                    Title = TextResources.MainTabs_Customers, 
+                                    Icon = new FileImageSource { File = "customers.png" } 
+                                }));
                         break;
                     case MenuType.Products:
                         Pages.Add(id, new CRMNavigationPage(new CategoryListPage
-                            { 
-                                BindingContext = new CategoriesViewModel(navigation: Navigation), 
-                                Title = TextResources.MainTabs_Products, 
-                                Icon = new FileImageSource { File = "products.png" } 
-                            }));
+                                { 
+                                    BindingContext = new CategoriesViewModel(navigation: Navigation), 
+                                    Title = TextResources.MainTabs_Products, 
+                                    Icon = new FileImageSource { File = "products.png" } 
+                                }));
                         break;
                     case MenuType.About:
                         Pages.Add(id, new CRMNavigationPage(new AboutPage
-                            { 
-                                Title = "About", 
-                                Icon = new FileImageSource { File = "about.png" } 
-                            }));
+                                { 
+                                    Title = "About", 
+                                    Icon = new FileImageSource { File = "about.png" } 
+                                }));
                         break;
                 }
             }
 
             newPage = Pages[id];
-            if(newPage == null)
+            if (newPage == null)
                 return;
 
             //pop to root for Windows Phone
@@ -100,14 +103,57 @@ namespace XamarinCRM.Pages
 
             Detail = newPage;
 
-            if(Device.Idiom != TargetIdiom.Tablet)
+            if (Device.Idiom != TargetIdiom.Tablet)
                 IsPresented = false;
+        }
+    }
+
+    public class RootTabPage : TabbedPage
+    {
+        public RootTabPage()
+        {
+            Children.Add(new CRMNavigationPage(new SalesDashboardPage
+                    { 
+                        Title = TextResources.MainTabs_Sales, 
+                        Icon = new FileImageSource { File = "sales.png" }
+                    })
+                { 
+                    Title = TextResources.MainTabs_Sales, 
+                    Icon = new FileImageSource { File = "sales.png" }
+                });
+            Children.Add(new CRMNavigationPage(new CustomersPage
+                    { 
+                        BindingContext = new CustomersViewModel(Navigation), 
+                        Title = TextResources.MainTabs_Customers, 
+                        Icon = new FileImageSource { File = "customers.png" } 
+                    })
+                {  
+                    Title = TextResources.MainTabs_Customers, 
+                    Icon = new FileImageSource { File = "customers.png" } 
+                });
+            Children.Add(new CRMNavigationPage(new CategoryListPage
+                    { 
+                        BindingContext = new CategoriesViewModel(navigation: Navigation), 
+                        Title = TextResources.MainTabs_Products, 
+                        Icon = new FileImageSource { File = "products.png" } 
+                    })
+                { 
+                    Title = TextResources.MainTabs_Products, 
+                    Icon = new FileImageSource { File = "products.png" } 
+                });
+        }
+
+        protected override void OnCurrentPageChanged()
+        {
+            base.OnCurrentPageChanged();
+            this.Title = this.CurrentPage.Title;
         }
     }
 
     public class CRMNavigationPage :NavigationPage
     {
-        public CRMNavigationPage(Page root) : base(root)
+        public CRMNavigationPage(Page root)
+            : base(root)
         {
             Init();
         }
@@ -132,16 +178,22 @@ namespace XamarinCRM.Pages
         Products,
         About
     }
+
     public class HomeMenuItem
     {
         public HomeMenuItem()
         {
             MenuType = MenuType.About;
         }
+
         public string Icon { get; set; }
+
         public MenuType MenuType { get; set; }
+
         public string Title { get; set; }
+
         public string Details { get; set; }
+
         public int Id { get; set; }
     }
 
