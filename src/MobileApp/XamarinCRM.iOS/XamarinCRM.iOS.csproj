@@ -398,6 +398,21 @@
     <BundleResource Include="Resources\phone_ios.png" />
     <BundleResource Include="Resources\phone_ios%402x.png" />
     <BundleResource Include="Resources\phone_ios%403x.png" />
+    <BundleResource Include="Resources\add%403x.png" />
+    <BundleResource Include="Resources\add%402x.png" />
+    <BundleResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\about%403x.png" />
+    <BundleResource Include="Resources\about%402x.png" />
+    <BundleResource Include="Resources\about.png" />
+    <BundleResource Include="Resources\save%403x.png" />
+    <BundleResource Include="Resources\save%402x.png" />
+    <BundleResource Include="Resources\save.png" />
+    <BundleResource Include="Resources\sales%403x.png" />
+    <BundleResource Include="Resources\sales%402x.png" />
+    <BundleResource Include="Resources\sales.png" />
+    <BundleResource Include="Resources\products%403x.png" />
+    <BundleResource Include="Resources\products%402x.png" />
+    <BundleResource Include="Resources\products.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.xib" />
