@@ -103,7 +103,7 @@ namespace XamarinCRM
                 };
 
             if(Device.OS == TargetPlatform.Android)
-                BackgroundColor = Color.Transparent;
+                chart.BackgroundColor = Color.Transparent;
 
             chart.Series.Add(columnSeries);
             chart.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());

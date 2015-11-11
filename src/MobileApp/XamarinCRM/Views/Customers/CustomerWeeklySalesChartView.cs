@@ -88,12 +88,11 @@ namespace XamarinCRM.Views.Customers
                 Color = Palette._014
             };
 
-            if(Device.OS == TargetPlatform.Android)
-                BackgroundColor = Color.Transparent;
+
 
             columnSeries.SetBinding(ChartSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");
 
-            SfChart chart = new SfChart()
+            var chart = new SfChart()
             {
                 HeightRequest = ChartHeight,
 
@@ -107,8 +106,11 @@ namespace XamarinCRM.Views.Customers
                     LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLabelColor }
                 },
 
-                //BackgroundColor = Color.Transparent
+              
             };
+
+            if(Device.OS == TargetPlatform.Android)
+                chart.BackgroundColor = Color.Transparent;
 
             chart.Series.Add(columnSeries);
             chart.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
