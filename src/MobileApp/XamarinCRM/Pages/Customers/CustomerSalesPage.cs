@@ -59,8 +59,7 @@ namespace XamarinCRM.Pages.Customers
                 yConstraint: Constraint.RelativeToParent(parent => parent.Height / 2),
                 widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 2));
-
-            ContentView headerLabelsView = new ContentView() { Padding = new Thickness(20, 0), Content = headerLabelsRelativeLayout };
+            
             #endregion
 
             #region weekly sales chart
