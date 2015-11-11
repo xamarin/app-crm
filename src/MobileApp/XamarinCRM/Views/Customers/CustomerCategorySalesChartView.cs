@@ -72,7 +72,7 @@ namespace XamarinCRM.Views.Customers
                 {
                     DockPosition = LegendPlacement.Top
                 },
-                BackgroundColor = Color.Transparent
+                //BackgroundColor = Color.Transparent
             };
             chart.Legend.LabelStyle.TextColor = LegendLabelColor;
             

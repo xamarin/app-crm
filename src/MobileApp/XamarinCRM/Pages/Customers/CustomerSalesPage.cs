@@ -26,7 +26,7 @@ namespace XamarinCRM.Pages.Customers
     {
         public CustomerSalesPage()
         {
-            BackgroundColor = Color.Transparent;
+            //BackgroundColor = Color.Transparent;
             #region header
             Label companyTitleLabel = new Label()
             {

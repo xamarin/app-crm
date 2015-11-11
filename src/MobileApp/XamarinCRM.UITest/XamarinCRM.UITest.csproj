@@ -112,4 +112,18 @@
   <ItemGroup>
     <EmbeddedResource Include="accounts.csv" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XamarinCRM.iOS\XamarinCRM.iOS.csproj">
+      <Project>{6A02ABA0-EE87-4C04-A065-BEF98D7F4E53}</Project>
+      <Name>XamarinCRM.iOS</Name>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\XamarinCRM.Android\XamarinCRM.Android.csproj">
+      <Project>{83491F6D-BA09-477D-9DC0-3E670794579F}</Project>
+      <Name>XamarinCRM.Android</Name>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

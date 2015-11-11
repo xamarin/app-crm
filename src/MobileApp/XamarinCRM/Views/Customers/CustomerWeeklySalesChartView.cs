@@ -105,7 +105,7 @@ namespace XamarinCRM.Views.Customers
                     LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLabelColor }
                 },
 
-                BackgroundColor = Color.Transparent
+                //BackgroundColor = Color.Transparent
             };
 
             chart.Series.Add(columnSeries);
@@ -114,7 +114,7 @@ namespace XamarinCRM.Views.Customers
 
             // The chart has uncontrollable white space on it's left in iOS, so we're
             // wrapping it in a ContentView and adding some right padding to compensate.
-            ContentView chartWrapper = new ContentView() { Content = chart, BackgroundColor = Color.Transparent };
+            ContentView chartWrapper = new ContentView() { Content = chart };
             #endregion
 
             #region compsose view hierarchy

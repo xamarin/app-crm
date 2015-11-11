@@ -100,7 +100,7 @@ namespace XamarinCRM
                             LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLabelColor }
                         },
 
-                    BackgroundColor = Color.Transparent
+                    //BackgroundColor = Color.Transparent
                 };
 
             chart.Series.Add(columnSeries);
