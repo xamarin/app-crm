@@ -130,8 +130,6 @@ namespace XamarinCRM
                 iOS: () =>
                 { 
                     chartWrapper.Padding = new Thickness(0, 0, 30, 0);
-                    //stackLayout.BackgroundColor = Color.Transparent;
-                    stackLayout.Padding = new Thickness(0, 20, 0, 0);
                 }, 
                 Android: () =>
                 { 
