@@ -19,26 +19,110 @@ using XamarinCRM.Views.Customers;
 using XamarinCRM.Pages.Base;
 using Xamarin;
 using XamarinCRM.Statics;
+using XamarinCRM.Models;
 
 namespace XamarinCRM.Pages.Customers
 {
     public class CustomerDetailPage : ModelBoundContentPage<CustomerDetailViewModel>
     {
-        public CustomerDetailPage()
+        public CustomerDetailPage(Account account)
         {
 
-            StackLayout stackLayout = new UnspacedStackLayout()
-            {
-                Children =
-                {
-                    new CustomerDetailHeaderView(),
-                    new CustomerDetailContactView(),
-                    new CustomerDetailPhoneView(this),
-                    new CustomerDetailAddressView()
-                }
-            };
 
-            Content = new ScrollView() { Content = stackLayout };
+
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                
+                var orders = new ImageCell
+                {
+                    Text = TextResources.Customers_Orders_Tab_Title,
+                    ImageSource = new FileImageSource() { File = "ProductsTab" },
+                    StyleId = "disclosure",
+                    Command = new Command(async() => await Navigation.PushAsync(new CustomerOrdersPage()
+                            {
+                                BindingContext = new OrdersViewModel(account) { Navigation = this.Navigation },
+                                Title = TextResources.Customers_Orders_Tab_Title,
+                                Icon = new FileImageSource() { File = "ProductsTab" } // only used  on iOS
+                            }))
+                };
+
+                var sales = new ImageCell
+                {
+                    Text = TextResources.Customers_Sales_Tab_Title,
+                    ImageSource = new FileImageSource() { File = "SalesTab" },
+                    StyleId = "disclosure",
+                    Command = new Command(async () => await Navigation.PushAsync(new CustomerSalesPage()
+                            {
+                                BindingContext = new CustomerSalesViewModel(account) { Navigation = this.Navigation },
+                                Title = TextResources.Customers_Sales_Tab_Title,
+                                Icon = new FileImageSource() { File = "SalesTab" } // only used  on iOS
+                            }))
+                };
+
+
+                var infoStack = new UnspacedStackLayout()
+                    {
+                        Children =
+                            {
+                                
+                                new CustomerDetailContactView(),
+                                new CustomerDetailPhoneView(this),
+                                new CustomerDetailAddressView(),
+                            }
+                        };
+                
+                var table = new TableView()
+                    {
+                        Intent = TableIntent.Menu,
+                        HasUnevenRows = true,
+                        Root = new TableRoot()
+                            {
+                                new TableSection("Details")
+                                {
+                                    new ViewCell
+                                    {
+                                        View = infoStack,
+                                        Height = 280
+                                    }
+                                },
+                                new TableSection("More")
+                                {
+                                    orders,
+                                    sales
+                                }
+                            }
+                    };
+                
+              
+
+                Content = new UnspacedStackLayout
+                    {
+                        Children =
+                            {
+                                new CustomerDetailHeaderView(),
+                                table
+                            }
+                    };
+            }
+            else
+            {
+
+                var stackLayout = new UnspacedStackLayout()
+                    {
+                        Children =
+                            {
+                                new CustomerDetailHeaderView(),
+                                new CustomerDetailContactView(),
+                                new CustomerDetailPhoneView(this),
+                                new CustomerDetailAddressView(),
+                            }
+                        };
+
+                Content = new ScrollView() { Content = stackLayout };
+            }
+
+
+
         }
 
         protected override void OnAppearing()

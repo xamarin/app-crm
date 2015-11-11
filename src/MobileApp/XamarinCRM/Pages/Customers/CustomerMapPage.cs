@@ -56,17 +56,12 @@ namespace XamarinCRM.Pages.Customers
 
                             CrossExternalMaps.Current.NavigateTo(pin.Label, pin.Position.Latitude, pin.Position.Longitude, NavigationType.Driving);
 
-                            await ViewModel.PopModalAsync();
+                            await ViewModel.PopAsync();
                         }
                     }
                 )
             );
 
-            ToolbarItems.Add(
-                new ToolbarItem(
-                    TextResources.Close, 
-                    null, 
-                    async () => await ViewModel.PopModalAsync()));
         }
 
         public async Task MakeMap()

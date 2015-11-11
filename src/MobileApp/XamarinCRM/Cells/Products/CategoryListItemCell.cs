@@ -21,6 +21,7 @@ namespace XamarinCRM.Cells.Products
     {
         public CategoryListItemCell()
         {
+			StyleId = "disclosure";
             #region caregoryNameLabel
             Label caregoryNameLabel = new Label()
             { 
@@ -64,7 +65,7 @@ namespace XamarinCRM.Cells.Products
             // A container for the "top-level" of the cell's view hierarchy.
             RelativeLayout relativeLayout = new RelativeLayout()
             {
-                BackgroundColor = Color.Transparent
+                //BackgroundColor = Color.Transparent
             };
 
             // add the companyNameLabel to the relativeLayout

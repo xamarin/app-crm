@@ -26,20 +26,20 @@ namespace XamarinCRM
     {
         static Color MajorAxisAndLabelColor
         {
-            get { return Device.OnPlatform(Palette._011, Palette._008, Color.White); }
+            get { return Device.OnPlatform(Palette._011, Palette._011, Color.White); }
         }
 
         public SalesDashboardChartView()
         {
             #region sales graph header
-            SalesChartHeaderView chartHeaderView = new SalesChartHeaderView() { HeightRequest = Sizes.MediumRowHeight, Padding = new Thickness(20, 10, 20, 0) };
+            var chartHeaderView = new SalesChartHeaderView() { HeightRequest = Sizes.MediumRowHeight, Padding = new Thickness(20, 10, 20, 0) };
             chartHeaderView.WeeklyAverageValueLabel.SetBinding(Label.TextProperty, "WeeklySalesAverage");
             chartHeaderView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             chartHeaderView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
             #endregion
 
             #region activity indicator
-            ActivityIndicator chartActivityIndicator = new ActivityIndicator()
+            var chartActivityIndicator = new ActivityIndicator()
                 {
                     HeightRequest = Sizes.MediumRowHeight
                 };
@@ -63,9 +63,9 @@ namespace XamarinCRM
             #endregion
 
             #region the sales graph
-            const double chartHeight = 190;
+            double chartHeight = Device.OnPlatform(190, 250, 190);
 
-            ColumnSeries columnSeries = new ColumnSeries()
+            var columnSeries = new ColumnSeries()
                 {
                     YAxis = new NumericalAxis()
                         {
@@ -84,14 +84,15 @@ namespace XamarinCRM
                     Color = Palette._003
                 };
 
-            columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");
+            columnSeries.SetBinding(ChartSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");
 
-            SfChart chart = new SfChart()
+            var chart = new SfChart()
                 {
                     HeightRequest = chartHeight,
 
                     PrimaryAxis = new CategoryAxis()
                         {
+                            LabelRotationAngle = -45,
                             EdgeLabelsDrawingMode = EdgeLabelsDrawingMode.Center,
                             LabelPlacement = LabelPlacement.BetweenTicks,
                             TickPosition = AxisElementPosition.Inside,
@@ -99,7 +100,7 @@ namespace XamarinCRM
                             LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLabelColor }
                         },
 
-                    BackgroundColor = Color.Transparent
+                    //BackgroundColor = Color.Transparent
                 };
 
             chart.Series.Add(columnSeries);
@@ -129,12 +130,10 @@ namespace XamarinCRM
                 iOS: () =>
                 { 
                     chartWrapper.Padding = new Thickness(0, 0, 30, 0);
-                    stackLayout.BackgroundColor = Color.Transparent;
-                    stackLayout.Padding = new Thickness(0, 20, 0, 0);
                 }, 
                 Android: () =>
                 { 
-                    stackLayout.BackgroundColor = Palette._009;
+                    //stackLayout.BackgroundColor = Palette._009;
                     Font androidChartLabelFont = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
                     columnSeries.YAxis.LabelStyle.Font = androidChartLabelFont;
                     chart.PrimaryAxis.LabelStyle.Font = androidChartLabelFont;

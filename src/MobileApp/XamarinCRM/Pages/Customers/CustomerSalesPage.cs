@@ -26,7 +26,6 @@ namespace XamarinCRM.Pages.Customers
     {
         public CustomerSalesPage()
         {
-            BackgroundColor = Color.Transparent;
             #region header
             Label companyTitleLabel = new Label()
             {
@@ -40,7 +39,7 @@ namespace XamarinCRM.Pages.Customers
 
             Label companyNameLabel = new Label()
             {
-                TextColor = Device.OnPlatform(Palette._006, Color.White, Color.White),
+                TextColor = Device.OnPlatform(Palette._006, Palette._006, Color.White),
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Start,
@@ -60,8 +59,7 @@ namespace XamarinCRM.Pages.Customers
                 yConstraint: Constraint.RelativeToParent(parent => parent.Height / 2),
                 widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 2));
-
-            ContentView headerLabelsView = new ContentView() { Padding = new Thickness(20, 0), Content = headerLabelsRelativeLayout };
+            
             #endregion
 
             #region weekly sales chart
@@ -72,14 +70,6 @@ namespace XamarinCRM.Pages.Customers
             CustomerCategorySalesChartView customerCategorySalesChartView = new CustomerCategorySalesChartView();
             #endregion
 
-            #region platform adjustments
-            Device.OnPlatform(
-                Android: () =>
-                {
-                    BackgroundColor = Palette._009;
-                }
-            );
-            #endregion
 
             #region compose view hierarchy
             Content = new ScrollView()
@@ -88,7 +78,6 @@ namespace XamarinCRM.Pages.Customers
                 {
                     Children =
                     {
-                        new ContentViewWithBottomBorder(){ Content = headerLabelsView },
                         customerWeeklySalesChartView,
                         customerCategorySalesChartView
                     }

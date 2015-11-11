@@ -29,8 +29,9 @@ namespace XamarinCRM
             Label addressTitleLabel = new Label()
             { 
                 Text = TextResources.Customers_Detail_Address,
-                TextColor = Device.OnPlatform(Palette._005, Palette._007, Palette._006),
-                FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label)), Device.GetNamedSize(NamedSize.Small, typeof(Label))),
+                TextColor = Device.OnPlatform(Palette._003, Palette._007, Palette._006),
+				FontAttributes = FontAttributes.Bold,
+				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
 
@@ -106,8 +107,11 @@ namespace XamarinCRM
 
         async void MapMarkerIconTapped()
         {
-            NavigationPage navPage = new NavigationPage(new CustomerMapPage(ViewModel));
-            await ViewModel.PushModalAsync(navPage);
+            var navPage = new CustomerMapPage(ViewModel)
+                {
+                    Title = "Location"
+                };
+            await ViewModel.PushAsync(navPage);
         }
     }
 }

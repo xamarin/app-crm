@@ -39,12 +39,7 @@ namespace XamarinCRM.Pages.Customers
         Image _OrderItemImage;
 
         public CustomerOrderDetailPage()
-        {
-            // Hide the back button, because we have ToolBarItems to control navigtion on this page.
-            // A back button would be confusing here in this modally presented tab page.
-            NavigationPage.SetHasBackButton(this, false);
-            NavigationPage.SetBackButtonTitle(this, string.Empty);
-
+		{
             #region header
             Label companyTitleLabel = new Label()
             {
@@ -300,7 +295,7 @@ namespace XamarinCRM.Pages.Customers
                     Title = TextResources.MainTabs_Products
                 });
             
-            navPage.ToolbarItems.Add(new ToolbarItem(TextResources.Cancel, null, () => Navigation.PopModalAsync()));
+            navPage.ToolbarItems.Add(new ToolbarItem(TextResources.Cancel, "exit.png", () => Navigation.PopModalAsync()));
 
             await ViewModel.PushModalAsync(navPage);
         }
@@ -330,24 +325,15 @@ namespace XamarinCRM.Pages.Customers
             {
                 ToolbarItems.Add(GetSaveToolBarItem());
             }
-
-            ToolbarItems.Add(GetExitToolbarItem());
         }
 
         ToolbarItem GetSaveToolBarItem()
         {
             ToolbarItem saveToolBarItem = new ToolbarItem();
             saveToolBarItem.Text = TextResources.Save;
+            saveToolBarItem.Icon = "save.png";
             saveToolBarItem.Clicked += SaveToolBarItem_Clicked;
             return saveToolBarItem;
-        }
-
-        ToolbarItem GetExitToolbarItem()
-        {
-            ToolbarItem exitToolBarItem = new ToolbarItem();
-            exitToolBarItem.Text = TextResources.Exit;
-            exitToolBarItem.Clicked += ExitToolBarItem_Clicked;
-            return exitToolBarItem;
         }
 
         void SaveToolBarItem_Clicked(object sender, EventArgs e)
@@ -359,44 +345,6 @@ namespace XamarinCRM.Pages.Customers
             else
             {
                 SaveAction.Invoke();
-            }
-        }
-
-        void ExitToolBarItem_Clicked(object sender, EventArgs e)
-        {
-            if (ViewModel.Order.IsOpen)
-            {
-                ExitAndDiscardAction.Invoke();
-            }
-            else
-            {
-                ExitAction.Invoke();
-            }
-        }
-
-        Action ExitAction
-        {
-            get { return new Action(async () => await Navigation.PopAsync()); }
-        }
-
-        Action ExitAndDiscardAction
-        {
-            get
-            {
-                return new Action(async () =>
-                    {
-                        var answer = 
-                            await DisplayAlert(
-                                title: TextResources.Customers_Orders_EditOrder_ExitConfirmTitle,
-                                message: TextResources.Customers_Orders_EditOrder_ExitConfirmDescription,
-                                accept: TextResources.Exit_and_Discard,
-                                cancel: TextResources.Cancel);
-
-                        if (answer)
-                        {
-                            await Navigation.PopAsync();
-                        }
-                    });
             }
         }
 

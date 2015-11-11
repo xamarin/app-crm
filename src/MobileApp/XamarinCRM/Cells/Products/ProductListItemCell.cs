@@ -21,6 +21,9 @@ namespace XamarinCRM.Cells.Products
     {
         public ProductListItemCell()
         {
+			// Add iOS detail-disclosure button to cell
+			StyleId = "disclosure";
+
             #region productThumbnailImage
             Image productThumbnailImage = new Image()
             {
@@ -79,7 +82,7 @@ namespace XamarinCRM.Cells.Products
             // A container for the "top-level" of the cell's view hierarchy.
             RelativeLayout relativeLayout = new RelativeLayout()
             {
-                BackgroundColor = Color.Transparent
+                //BackgroundColor = Color.Transparent
             };
 
             relativeLayout.Children.Add(

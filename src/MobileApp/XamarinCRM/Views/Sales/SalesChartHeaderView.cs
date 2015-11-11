@@ -26,7 +26,7 @@ namespace XamarinCRM.Views.Sales
             Label headerTitleLabel = new Label()
             { 
                 Text = TextResources.SalesDashboard_SalesChart_Header_Title,
-                TextColor = Device.OnPlatform(Palette._006, Color.White, Color.White),
+                    TextColor = Device.OnPlatform(Palette._006, Palette._006, Color.White),
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 XAlign = TextAlignment.Start,
                 YAlign = TextAlignment.Start
@@ -46,7 +46,7 @@ namespace XamarinCRM.Views.Sales
 
             WeeklyAverageValueLabel = new Label()
             {
-                TextColor = Device.OnPlatform(Palette._006, Color.White, Color.White),
+                    TextColor = Device.OnPlatform(Palette._006, Palette._006, Color.White),
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Large, typeof(Label)),
                     Android: Device.GetNamedSize(NamedSize.Large, typeof(Label)),
@@ -84,9 +84,9 @@ namespace XamarinCRM.Views.Sales
                 heightConstraint: Constraint.RelativeToParent(parent => (parent.Height / 4) * 3)
             );
 
-            BackgroundColor = Palette._009;
+            //BackgroundColor = Palette._009;
 
-            Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._009);
+            //Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._009);
 
             HeightRequest = Sizes.MediumRowHeight;
 

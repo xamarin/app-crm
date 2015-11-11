@@ -18,22 +18,52 @@ using XamarinCRM.Pages;
 using Xamarin.Forms;
 using Connectivity.Plugin;
 using XamarinCRM.Localization;
+using XamarinCRM.Services;
+using XamarinCRM.Pages.Splash;
 
 namespace XamarinCRM
 {
     public class App : Application
     {
-        static Page _RootPage; 
+        static Application app;
+        public static Application CurrentApp
+        {
+            get { return app; }
+        }
 
+        readonly IAuthenticationService _AuthenticationService;
         public App()
         {
+            app = this;
+            _AuthenticationService = DependencyService.Get<IAuthenticationService>();
+
             /* if we were targeting Windows Phone, we'd want to include the next line. */
             // if (Device.OS != TargetPlatform.WinPhone) 
             TextResources.Culture = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
 
-            _RootPage = new RootPage();
 
-            MainPage = _RootPage;
+            // If the App.IsAuthenticated property is false, modally present the SplashPage.
+            if (!_AuthenticationService.IsAuthenticated)
+            {
+                MainPage = new SplashPage();
+            }
+            else
+            {
+                GoToRoot();
+            }
+
+        }
+
+        public static void GoToRoot()
+        {
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                CurrentApp.MainPage = new RootTabPage();
+            }
+            else
+            {
+                CurrentApp.MainPage = new RootPage();
+            }
         }
 
         public static async Task ExecuteIfConnected(Func<Task> actionToExecuteIfConnected)
@@ -50,7 +80,7 @@ namespace XamarinCRM
 
         static async Task ShowNetworkConnectionAlert()
         {
-            await _RootPage.DisplayAlert(
+            await CurrentApp.MainPage.DisplayAlert(
                 TextResources.NetworkConnection_Alert_Title, 
                 TextResources.NetworkConnection_Alert_Message, 
                 TextResources.NetworkConnection_Alert_Confirm);
