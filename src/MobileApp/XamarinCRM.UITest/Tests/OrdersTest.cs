@@ -44,8 +44,6 @@ namespace XamarinCRM.UITest
                 .ChangePrice(44)
                 .SaveAndExit();
             //      .changeDate();
-
-            app.ScrollDownTo("FIL-ABS-VLT");
         }
 
         [Test]
@@ -89,10 +87,10 @@ namespace XamarinCRM.UITest
         {
             new GlobalPage(app, platform)
                 .NavigateToCustomers();
-
+            
             new CustomersPage(app, platform)
                 .ClickFirstContact();
-
+        
             new CustomerContactPage(app, platform)
                 .NavigateToCustomerOrders();
 
@@ -110,9 +108,11 @@ namespace XamarinCRM.UITest
         {
             AddNewOrder();
 
-            new CustomersPage(app, platform)
-                .ClickFirstContact();
-
+            if (platform == Platform.Android)
+            {
+                new CustomersPage(app, platform)
+                    .ClickFirstContact();
+            }
             new CustomerContactPage(app, platform)
                 .NavigateToCustomerOrders();
 
