@@ -206,6 +206,13 @@ namespace XamarinCRM.Pages.Sales
             page.ToolbarItems.Add(
                 new ToolbarItem(TextResources.Save, "save.png", async () =>
                     {
+
+                        if(string.IsNullOrWhiteSpace(viewModel.Lead.Company))
+                        {
+                            await DisplayAlert("Missing Information", "Please fill in the lead's company to continue", "OK");
+                            return;
+                        }
+
                         var answer = 
                             await DisplayAlert(
                                 title: TextResources.Leads_SaveConfirmTitle,

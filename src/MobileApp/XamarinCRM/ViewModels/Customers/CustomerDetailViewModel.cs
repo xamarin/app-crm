@@ -145,6 +145,7 @@ namespace XamarinCRM.ViewModels.Customers
             if (IsBusy)
                 return;
 
+
             IsBusy = true;
 
 

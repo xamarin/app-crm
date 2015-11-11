@@ -88,6 +88,8 @@ namespace XamarinCRM.Views.Customers
                 Color = Palette._014
             };
 
+            if(Device.OS == TargetPlatform.Android)
+                BackgroundColor = Color.Transparent;
 
             columnSeries.SetBinding(ChartSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");
 

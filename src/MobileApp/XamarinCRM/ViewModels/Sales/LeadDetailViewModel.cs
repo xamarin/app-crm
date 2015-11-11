@@ -107,6 +107,14 @@ namespace XamarinCRM.ViewModels.Sales
             if (IsBusy)
                 return;
 
+
+            if (string.IsNullOrWhiteSpace(Lead.Company))
+            {
+
+                MessagingCenter.Send(Lead, MessagingServiceConstants.SAVE_LEAD_ERROR);
+                return;
+            }
+
             IsBusy = true;
 
             await _DataClient.SaveAccountAsync(Lead);

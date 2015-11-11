@@ -99,9 +99,11 @@ namespace XamarinCRM
                             ShowMajorGridLines = false,
                             LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLabelColor }
                         },
-
-                    //BackgroundColor = Color.Transparent
+                               
                 };
+
+            if(Device.OS == TargetPlatform.Android)
+                BackgroundColor = Color.Transparent;
 
             chart.Series.Add(columnSeries);
             chart.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
