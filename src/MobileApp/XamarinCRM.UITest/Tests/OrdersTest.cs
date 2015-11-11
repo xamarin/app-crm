@@ -110,6 +110,12 @@ namespace XamarinCRM.UITest
         {
             AddNewOrder();
 
+            new CustomersPage(app, platform)
+                .ClickFirstContact();
+
+            new CustomerContactPage(app, platform)
+                .NavigateToCustomerOrders();
+
             new CustomerOrdersPage(app, platform) 
                 .SelectFirstOrder();
 

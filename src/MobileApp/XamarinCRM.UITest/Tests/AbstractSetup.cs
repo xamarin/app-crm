@@ -41,7 +41,7 @@ namespace XamarinCRM.UITest
             {
                 LogIn();
             }
-
+//            app.Repl();
             //Refreshing the data on home page
 //            new GlobalPage(app, platform)
 //                .navigateToProducts();

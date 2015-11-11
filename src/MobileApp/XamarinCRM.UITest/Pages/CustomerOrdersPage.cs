@@ -15,8 +15,8 @@ namespace XamarinCRM.UITest
         {
             if (OnAndroid)
             {
-                SecondOrder = x => x.Class("LabelRenderer").Child(20);
-                NewOrderButton = x => x.Class("FormsImageView");
+                SecondOrder = x => x.Class("LabelRenderer").Index(1);
+                NewOrderButton = x => x.Class("FloatingActionButton");
             }
             if (OniOS)
             {

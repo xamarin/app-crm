@@ -11,7 +11,7 @@ namespace XamarinCRM.UITest
         }
 
         [Test]
-        [Ignore]
+//        [Ignore]
         public void Repl()
         {
             app.Repl();
