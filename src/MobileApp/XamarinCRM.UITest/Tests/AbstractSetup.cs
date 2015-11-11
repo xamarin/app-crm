@@ -41,7 +41,9 @@ namespace XamarinCRM.UITest
             {
                 LogIn();
             }
-//            app.Repl();
+
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+            app.WaitForNoElement("Loading sales data...");
             //Refreshing the data on home page
 //            new GlobalPage(app, platform)
 //                .navigateToProducts();

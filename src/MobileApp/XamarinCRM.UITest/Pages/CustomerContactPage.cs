@@ -43,6 +43,11 @@ namespace XamarinCRM.UITest
 
         public void NavigateToCustomerOrders()
         {
+            if (OniOS)
+            {
+                app.ScrollDownTo(CustomerOrders);
+            }
+
             app.WaitForElement(HeaderImage);
             Thread.Sleep(3000);
             app.Tap(CustomerOrders);
@@ -50,6 +55,10 @@ namespace XamarinCRM.UITest
 
         public void NavigateToCustomerSales()
         {
+            if (OniOS)
+            {
+                app.ScrollDownTo(CustomerSales);
+            }
             app.Tap(CustomerSales);
         }
 

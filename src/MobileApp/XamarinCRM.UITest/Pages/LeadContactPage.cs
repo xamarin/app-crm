@@ -25,7 +25,7 @@ namespace XamarinCRM.UITest
         {
             if (OnAndroid)
             {
-                DetailsTab = x => x.Id("action_bar_container").Descendant().Text("Details");
+                DetailsTab = x => x.Marked("Details");
                 RoleField = x => x.Marked("Role").Sibling();
                 FirstNameField = x => x.Marked("First Name").Sibling();
                 LastNameField = x => x.Marked("Last Name").Sibling();

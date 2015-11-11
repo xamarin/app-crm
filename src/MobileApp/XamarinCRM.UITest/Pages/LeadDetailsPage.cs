@@ -15,21 +15,33 @@ namespace XamarinCRM.UITest
         readonly Query ScrollPanel;
         readonly Query OkButton;
         readonly Query DismissSelection;
+        readonly Query SaveButton;
+
+        readonly Query RoleField;
+        readonly Query FirstNameField;
+        readonly Query LastNameField;
+        readonly Query PhoneField;
+        readonly Query EmailField;
+        readonly Query AddressField;
+        readonly Query PostalCodeField;
+        readonly Query CityField;
+        readonly Query StateField;
+        readonly Query CountryField;
 
         public LeadDetailsPage(IApp app, Platform platform)
             : base(app, platform, "Opportunity", "OPPORTUNITY")
         {
             if (OnAndroid)
             {
-                ContactTab = x => x.Id("action_bar_container").Descendant().Text("Contact");
+                ContactTab = x => x.Marked("Contact");
                 EditCompany = x => x.Marked("Company").Sibling();
                 EditIndustry = x => x.Class("android.widget.EditText").Index(1);
                 EditSize = x => x.Marked("Size").Sibling();
                 EditStage = x => x.Class("android.widget.EditText").Index(3);
                 Done = x => x.Marked("Save");
                 Save = x => x.Marked("Save");
-                ScrollPanel = x => x.Marked("customPanel");
-                OkButton = x => x.Marked("button1");
+                ScrollPanel = x => x.Id("contentPanel");
+                OkButton = x => x.Id("button2");
             }
             if (OniOS)
             {
@@ -41,6 +53,18 @@ namespace XamarinCRM.UITest
                 Done = x => x.Marked("DONE");
                 Save = x => x.Marked("Save");
                 DismissSelection = x => x.Marked("Done");
+
+                RoleField = x => x.Marked("Role").Sibling();
+                FirstNameField = x => x.Marked("First Name").Sibling();
+                LastNameField = x => x.Marked("Last Name").Sibling();
+                PhoneField = x => x.Marked("Phone").Sibling();
+                EmailField = x => x.Marked("Email").Sibling();
+                AddressField = x => x.Marked("Address").Sibling();
+                PostalCodeField = x => x.Marked("Postal Code").Sibling();
+                CityField = x => x.Marked("City").Sibling();
+                StateField = x => x.Marked("State").Sibling();
+                CountryField = x => x.Marked("Country").Sibling();
+                SaveButton = x => x.Id("save.png");
             }
         }
 
@@ -74,7 +98,12 @@ namespace XamarinCRM.UITest
 
         public void SaveLead()
         {
-            app.Tap(Save);
+            if (OniOS)
+                app.Tap(SaveButton);
+            if (OnAndroid)
+                app.Tap(Save);
+
+            app.Screenshot("Save dialog appears");
             app.Tap(Save);
         }
 
@@ -84,7 +113,12 @@ namespace XamarinCRM.UITest
             {
                 app.Tap(EditIndustry);
                 app.ScrollDown(ScrollPanel);
-                app.Tap(OkButton);
+                try{
+                    app.Tap(industry);
+                }
+                catch {
+                    app.Tap(OkButton);
+                }
             }
             if (OniOS)
             {
@@ -102,7 +136,12 @@ namespace XamarinCRM.UITest
             {
                 app.Tap(EditStage);
                 app.ScrollDown(ScrollPanel);
-                app.Tap(OkButton);
+                try {
+                    app.Tap(stage);
+                }
+                catch {
+                    app.Tap(OkButton);
+                }
             }
             if (OniOS)
             {
@@ -111,6 +150,60 @@ namespace XamarinCRM.UITest
                 app.Tap(DismissSelection);
             }
 
+            return this;
+        }
+
+        public LeadDetailsPage EnterLeadContact(
+            string role,
+            string firstName,
+            string lastName,
+            string phone,
+            string email,
+            string address,
+            string postalCode,
+            string city,
+            string state,
+            string country
+        )
+        {
+            if (OniOS)
+            {
+                app.Tap(RoleField);
+                app.EnterText(role);
+                app.PressEnter();
+
+                app.EnterText(FirstNameField, firstName);
+                app.PressEnter();
+
+                app.EnterText(LastNameField, lastName);
+                app.PressEnter();
+
+                app.EnterText(PhoneField, phone);
+                app.DismissKeyboard();
+
+                app.EnterText(EmailField, email);
+                app.PressEnter();
+
+                app.ScrollDownTo("Address");
+                app.EnterText(AddressField, address);
+                app.PressEnter();
+
+                app.ScrollDownTo("Postal Code");
+                app.EnterText(PostalCodeField, postalCode);
+                app.DismissKeyboard();
+
+                app.ScrollDownTo("City");
+                app.EnterText(CityField, city);
+                app.PressEnter();
+
+                app.ScrollDownTo("State");
+                app.EnterText(StateField, state);
+                app.PressEnter();
+
+                app.ScrollDownTo("Country");
+                app.EnterText(CountryField, country);
+                app.PressEnter();
+            }
             return this;
         }
     }

@@ -22,7 +22,7 @@ namespace XamarinCRM.UITest
             {
                 FirstLead = x => x.Marked("50% - Value Proposition");
                 ListView = x => x.Id("content");
-                AddLeadButton = x => x.Class("FormsImageView");
+                AddLeadButton = x => x.Class("FloatingActionButton");
                 LeadCell = x => x.Class("ViewCellRenderer_ViewCellContainer");
                 ChartIdentifier = x => x.Id("stripLinesLayout");
             }
