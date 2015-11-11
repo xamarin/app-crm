@@ -18,7 +18,7 @@ namespace XamarinCRM.UITest
 
 
         public LoginPage(IApp app, Platform platform)
-            : base(app, platform, "Sign in", "Sign in")
+            : base(app, platform, x => x.WebView(), x => x.WebView())
         {
         }
 

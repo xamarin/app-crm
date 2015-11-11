@@ -37,7 +37,7 @@ namespace XamarinCRM.UITest
             //waiting for next screen to load
             Thread.Sleep(TimeSpan.FromSeconds(5));
 
-            if (app.Query("Sign in").Any())
+            if (app.Query(x => x.WebView()).Any())
             {
                 LogIn();
             }
