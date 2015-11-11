@@ -11,7 +11,7 @@ namespace XamarinCRM.UITest
         }
 
         [Test]
-        public void editCustomerOrder()
+        public void EditCustomerOrder()
         {
             new GlobalPage(app, platform)
                 .NavigateToCustomers();
@@ -44,12 +44,10 @@ namespace XamarinCRM.UITest
                 .ChangePrice(44)
                 .SaveAndExit();
             //      .changeDate();
-
-            app.ScrollDownTo("FIL-ABS-VLT");
         }
 
         [Test]
-        public void addNewOrder()
+        public void AddNewOrder()
         {
             new GlobalPage(app, platform)
                 .NavigateToCustomers();
@@ -85,14 +83,14 @@ namespace XamarinCRM.UITest
         }
 
         [Test]
-        public void deliverOrder()
+        public void DeliverOrder()
         {
             new GlobalPage(app, platform)
                 .NavigateToCustomers();
-
+            
             new CustomersPage(app, platform)
                 .ClickFirstContact();
-
+        
             new CustomerContactPage(app, platform)
                 .NavigateToCustomerOrders();
 
@@ -104,11 +102,19 @@ namespace XamarinCRM.UITest
 
             app.Screenshot("Order removed from list");
         }
-            
+
         [Test]
-        public void addNewOrderAndDeliver()
+        public void AddNewOrderAndDeliver()
         {
-            addNewOrder();
+            AddNewOrder();
+
+            if (platform == Platform.Android)
+            {
+                new CustomersPage(app, platform)
+                    .ClickFirstContact();
+            }
+            new CustomerContactPage(app, platform)
+                .NavigateToCustomerOrders();
 
             new CustomerOrdersPage(app, platform) 
                 .SelectFirstOrder();

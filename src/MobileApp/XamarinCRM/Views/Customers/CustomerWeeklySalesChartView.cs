@@ -26,12 +26,12 @@ namespace XamarinCRM.Views.Customers
     {
         static Color MajorAxisAndLabelColor
         {
-            get { return Device.OnPlatform(Palette._011, Palette._008, Color.White); }
+            get { return Device.OnPlatform(Palette._011, Palette._011, Color.White); }
         }
 
         static double ChartHeight
         {
-            get { return Device.OnPlatform(160, 150, 150); }
+            get { return Device.OnPlatform(160, 190, 150); }
         }
 
         public CustomerWeeklySalesChartView()
@@ -89,7 +89,7 @@ namespace XamarinCRM.Views.Customers
             };
 
 
-            columnSeries.SetBinding(ColumnSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");
+            columnSeries.SetBinding(ChartSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");
 
             SfChart chart = new SfChart()
             {
@@ -97,6 +97,7 @@ namespace XamarinCRM.Views.Customers
 
                 PrimaryAxis = new CategoryAxis()
                 {
+                    LabelRotationAngle = -45,
                     EdgeLabelsDrawingMode = EdgeLabelsDrawingMode.Center,
                     LabelPlacement = LabelPlacement.BetweenTicks,
                     TickPosition = AxisElementPosition.Inside,
@@ -104,7 +105,7 @@ namespace XamarinCRM.Views.Customers
                     LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLabelColor }
                 },
 
-                BackgroundColor = Color.Transparent
+                //BackgroundColor = Color.Transparent
             };
 
             chart.Series.Add(columnSeries);
@@ -113,7 +114,7 @@ namespace XamarinCRM.Views.Customers
 
             // The chart has uncontrollable white space on it's left in iOS, so we're
             // wrapping it in a ContentView and adding some right padding to compensate.
-            ContentView chartWrapper = new ContentView() { Content = chart, BackgroundColor = Color.Transparent };
+            ContentView chartWrapper = new ContentView() { Content = chart };
             #endregion
 
             #region compsose view hierarchy

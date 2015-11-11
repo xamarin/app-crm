@@ -30,6 +30,7 @@ namespace XamarinCRM.Cells.Sales
 
         public LeadListItemCell()
         {
+			StyleId = "none";
             #region companyNameLabel
             CompanyNameLabel = new Label()
             {

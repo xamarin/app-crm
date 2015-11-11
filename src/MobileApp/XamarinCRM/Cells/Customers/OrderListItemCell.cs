@@ -29,6 +29,7 @@ namespace XamarinCRM.Cells.Customers
 
         public OrderListItemCell()
         {
+			StyleId = "disclosure";
             #region primary label
             PrimaryLabel = new Label()
             {

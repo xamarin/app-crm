@@ -61,5 +61,40 @@
 	<string>2.0.1</string>
 	<key>CFBundleVersion</key>
 	<string>2.0.1</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeLocation</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Sales</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Sales</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.xamarin.xamarincrm.001</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeLocation</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Customers</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Customers</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.xamarin.xamarincrm.002</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeLocation</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Products</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Products</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.xamarin.xamarincrm.003</string>
+		</dict>
+	</array>
 </dict>
 </plist>

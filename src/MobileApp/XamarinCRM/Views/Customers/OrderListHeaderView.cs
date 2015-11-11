@@ -14,6 +14,7 @@
 //    limitations under the License.
 using Xamarin.Forms;
 using XamarinCRM.Statics;
+using XamarinCRM.Views.Custom;
 
 namespace XamarinCRM.Views.Customers
 {
@@ -36,6 +37,8 @@ namespace XamarinCRM.Views.Customers
                 iOS: () => AddNewOrderImage.Source = new FileImageSource(){ File = "add_ios_blue" }, 
                 Android: () => AddNewOrderImage.Source = new FileImageSource() { File = "add_android_blue" }
             );
+
+            AddNewOrderImage.IsVisible = Device.OS != TargetPlatform.Android;
             #endregion
 
             #region add new order label
@@ -77,7 +80,9 @@ namespace XamarinCRM.Views.Customers
             );
             #endregion
 
+           
             Content = relativeLayout;
+
         }
     }
 }

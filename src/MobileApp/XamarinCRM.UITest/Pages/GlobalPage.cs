@@ -11,6 +11,7 @@ namespace XamarinCRM.UITest
         readonly string SalesTab;
         readonly string CustomersTab;
         readonly string ProductsTab;
+        readonly Query MenuFlyout;
 
         public GlobalPage(IApp app, Platform platform)
             : base(app, platform)
@@ -20,13 +21,14 @@ namespace XamarinCRM.UITest
                 SalesTab = "Sales";
                 CustomersTab = "Customers";
                 ProductsTab = "Products";
+                MenuFlyout = x => x.Class("android.widget.ImageButton").Marked("OK");
             }
             if (OniOS)
             {
                 BackButton = "Back";
-                SalesTab = "SalesTab";
-                CustomersTab = "CustomersTab";
-                ProductsTab = "ProductsTab";
+                SalesTab = "Sales";
+                CustomersTab = "Customers";
+                ProductsTab = "Products";
             }
         }
 
@@ -44,16 +46,22 @@ namespace XamarinCRM.UITest
 
         public void NavigateToSales()
         {
+            if (OnAndroid)
+                app.Tap(MenuFlyout);
             app.Tap(SalesTab);
         }
 
         public void NavigateToCustomers()
         {
+            if (OnAndroid)
+                app.Tap(MenuFlyout);
             app.Tap(CustomersTab);
         }
 
         public void NavigateToProducts()
         {
+            if (OnAndroid)
+                app.Tap(MenuFlyout);
             app.Tap(ProductsTab);
         }
     }

@@ -11,7 +11,7 @@ namespace XamarinCRM.UITest
         }
 
         [Test]
-        public void checkCustomerDetails()
+        public void CheckCustomerDetails()
         {
             new GlobalPage(app, platform)
                 .NavigateToCustomers();
@@ -24,7 +24,8 @@ namespace XamarinCRM.UITest
         }
 
         [Test]
-        public void investigateCustomerPage()
+        [Category("wall")]
+        public void InvestigateCustomerPage()
         {
             new GlobalPage(app, platform)
                 .NavigateToCustomers();

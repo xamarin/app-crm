@@ -5,7 +5,7 @@ namespace XamarinCRM.UITest
 {
     public class CustomerOrderDetailsPage : BasePage
     {
-        readonly Query SaveButton = x => x.Marked("Save");
+        readonly Query SaveButton;
         readonly Query ExitButton = x => x.Marked("Exit");
         readonly Query DeliverOrderButton = x => x.Marked("Deliver Order");
         readonly Query ConfirmDeliveryButton = x => x.Marked("Yes, Deliver");
@@ -18,6 +18,7 @@ namespace XamarinCRM.UITest
         {
             if (OnAndroid)
             {
+                SaveButton = x => x.Marked("Save");
                 ProductField = x => x.Class("EntryEditText").Descendant(0);
                 PriceField = x => x.Class("EntryEditText").Descendant(1);
                 DateField = x => x.Class("EditText").Index(0);
@@ -27,6 +28,7 @@ namespace XamarinCRM.UITest
                 ProductField = x => x.Class("UITextFieldLabel").Descendant(0);
                 PriceField = x => x.Class("UITextFieldLabel").Descendant(1);
                 DateField = x => x.Class("UITextFieldLabel").Descendant(2);
+                SaveButton = x => x.Id("save.png");
             }
         }
 
@@ -67,7 +69,7 @@ namespace XamarinCRM.UITest
         {
             app.Tap(SaveButton);
             app.Screenshot("Dialog Appears");
-            app.Tap(SaveButton);
+            app.Tap("Save");
         }
 
         public void DeliverOrder()

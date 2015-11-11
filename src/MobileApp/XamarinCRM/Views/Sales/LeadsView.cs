@@ -27,7 +27,7 @@ namespace XamarinCRM
         public LeadsView()
         {
             #region leads list activity inidicator
-            ActivityIndicator leadListActivityIndicator = new ActivityIndicator()
+            var leadListActivityIndicator = new ActivityIndicator()
             { 
                 HeightRequest = Sizes.MediumRowHeight
             };
@@ -37,7 +37,7 @@ namespace XamarinCRM
             #endregion
 
             #region loading label
-            Label loadingLabel = new Label()
+            var loadingLabel = new Label()
             {
                 Text = TextResources.SalesDashboard_Leads_LoadingLabel,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
@@ -53,14 +53,14 @@ namespace XamarinCRM
             #region leads list header
             // LeadListHeaderView is an example of a custom view composed with Xamarin.Forms.
             // It takes an action as a constructor parameter, which will be used by the add new lead button ("+").
-            LeadListHeaderView leadListHeaderView = new LeadListHeaderView(new Command(ExecutePushLeadDetailsTabbedPageCommand));
+            var leadListHeaderView = new LeadListHeaderView(new Command(ExecutePushLeadDetailsTabbedPageCommand));
             leadListHeaderView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             leadListHeaderView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
             #endregion
 
             #region leadsListView
-            LeadListView leadListView = new LeadListView();
-            leadListView.SetBinding(LeadListView.ItemsSourceProperty, "Leads");
+            var leadListView = new LeadListView();
+            leadListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "Leads");
             leadListView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             leadListView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
 

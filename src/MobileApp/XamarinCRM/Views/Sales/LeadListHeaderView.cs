@@ -41,12 +41,14 @@ namespace XamarinCRM.Views.Sales
             #endregion
 
             #region new lead image "button"
-            Image newLeadImage = new Image()
+            var newLeadImage = new Image
             {
-                Source = new FileImageSource() { File = Device.OnPlatform("add_ios_gray", "add_android_gray", null) },
+                Source = new FileImageSource { File = Device.OnPlatform("add_ios_gray", "add_android_gray", null) },
                 Aspect = Aspect.AspectFit, 
-                HorizontalOptions = LayoutOptions.EndAndExpand
+                HorizontalOptions = LayoutOptions.EndAndExpand,
             };
+            //Going to use FAB
+			newLeadImage.IsVisible = false;
             newLeadImage.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
                     Command = _NewLeadTappedCommand,
