@@ -59,8 +59,7 @@ namespace XamarinCRM.Pages.Customers
                 {
                     customerListActivityIndicator,
                     customerListView
-                },
-                Padding = Device.OnPlatform(Thicknesses.IosStatusBar, Thicknesses.Empty, Thicknesses.Empty)
+                }
             };
             #endregion
 
