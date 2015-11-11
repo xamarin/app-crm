@@ -10,6 +10,7 @@ namespace XamarinCRM.UITest
         {
         }
 
+        [Category("sanity")]
         [Test]
         public void SelectingFilamentColor()
         {
@@ -38,6 +39,13 @@ namespace XamarinCRM.UITest
 
             new ABSFilamentPage(app, platform)
                 .SelectColor(color);
+        }
+
+        [Category("sanity")]
+        [Test]
+        public void AppLaunches()
+        {
+            app.Screenshot("App launches. XTC is up");
         }
     }
 }

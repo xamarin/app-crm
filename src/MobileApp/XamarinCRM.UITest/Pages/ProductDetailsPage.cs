@@ -8,7 +8,7 @@ namespace XamarinCRM.UITest
         readonly Query AddToOrderButton = x => x.Marked("ADD TO ORDER");
 
         public ProductDetailsPage(IApp app, Platform platform)
-            : base(app, platform, "action_bar_container", "Back")
+            : base(app, platform, "content", "Back")
         {
         }
 

@@ -1,15 +1,19 @@
 ﻿using System;
 using Xamarin.UITest;
 using Query = System.Func<Xamarin.UITest.Queries.AppQuery, Xamarin.UITest.Queries.AppQuery>;
+using System.Linq;
 
 namespace XamarinCRM.UITest
 {
     public class SalesHomePage : BasePage
     {
-
         readonly Query FirstLead;
         readonly Query ListView;
         readonly Query AddLeadButton;
+        readonly Query LeadCell;
+        readonly Query ChartIdentifier;
+        readonly Query SalesDataLoading = x => x.Marked("Loading sales data...");
+        readonly Query LeadsLoading = x => x.Marked("Loading leads data...");
 
         public SalesHomePage(IApp app, Platform platform)
             : base(app, platform, "WEEKLY AVERAGE", "WEEKLY AVERAGE")
@@ -18,7 +22,9 @@ namespace XamarinCRM.UITest
             {
                 FirstLead = x => x.Marked("50% - Value Proposition");
                 ListView = x => x.Id("content");
-                AddLeadButton = x => x.Class("FormsImageView");
+                AddLeadButton = x => x.Class("FloatingActionButton");
+                LeadCell = x => x.Class("ViewCellRenderer_ViewCellContainer");
+                ChartIdentifier = x => x.Id("stripLinesLayout");
             }
             if (OniOS)
             {
@@ -26,6 +32,13 @@ namespace XamarinCRM.UITest
                 ListView = x => x.Class("UILayoutContainerView");
                 AddLeadButton = x => x.Id("add_ios_gray");
             }
+
+            //Verifying page has loaded
+            app.WaitForElement(LeadCell);
+            app.WaitForElement(ChartIdentifier);
+
+            app.WaitForNoElement(SalesDataLoading, timeout: TimeSpan.FromSeconds(20));
+            app.WaitForNoElement(LeadsLoading, timeout: TimeSpan.FromSeconds(20));
         }
 
         public void ClickOnFirstLead()

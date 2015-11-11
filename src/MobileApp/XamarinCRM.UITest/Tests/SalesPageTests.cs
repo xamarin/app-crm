@@ -15,18 +15,26 @@ namespace XamarinCRM.UITest
         {
             new SalesHomePage(app, platform)
                 .ClickOnFirstLead();
-            
-            new LeadDetailsPage(app, platform)
-                .GoToLeadContact();
 
-            new LeadContactPage(app, platform)
-               .GoToLeadDetails();
+            if (platform == Platform.Android)
+            {
+                new LeadDetailsPage(app, platform)
+                   .GoToLeadContact();
+
+                new LeadContactPage(app, platform)
+                   .GoToLeadDetails();
+            }
+            if (platform == Platform.iOS)
+            {
+                app.ScrollDownTo("Country");
+                app.Screenshot("Examined Lead information");
+            }
         }
 
         [Test]
         public void EditLead()
         {
-            string company = "UITest Automation";
+            string company = "EDIT LEAD";
             string industry = "Education";
             string size = "808.15";
             string stage = "50% - Value Proposition";
@@ -46,7 +54,7 @@ namespace XamarinCRM.UITest
         [Test]
         public void AddNewLead()
         {
-            string company = "UITest Auto New Lead";
+            string company = "NEW LEAD";
             string industry = "Education";
             string size = "808.15";
             string stage = "50% - Value Proposition";
@@ -65,22 +73,42 @@ namespace XamarinCRM.UITest
                 .AddNewLead();
 
             new LeadDetailsPage(app, platform)
-                .EnterLeadDetails(company, industry, size, stage)
-                .GoToLeadContact();
+                .EnterLeadDetails(company, industry, size, stage);
+            
+            if (platform == Platform.Android)
+            {
+                new LeadDetailsPage(app, platform)
+                    .GoToLeadContact();
 
-            new LeadContactPage(app, platform)
-                .EnterLeadContact(role, 
-                firstName, 
-                lastName, 
-                phone, 
-                email, 
-                address, 
-                postalCode, 
-                city, 
-                state, 
-                country)
-                .SaveLead();
+                new LeadContactPage(app, platform)
+                    .EnterLeadContact(role, 
+                    firstName, 
+                    lastName, 
+                    phone, 
+                    email, 
+                    address, 
+                    postalCode, 
+                    city, 
+                    state, 
+                    country)
+                    .SaveLead();
+            }
 
+            if (platform == Platform.iOS)
+            {
+                new LeadDetailsPage(app, platform)
+                    .EnterLeadContact(role,
+                    firstName, 
+                    lastName, 
+                    phone, 
+                    email, 
+                    address, 
+                    postalCode, 
+                    city, 
+                    state, 
+                    country)
+                    .SaveLead();
+            }
             new SalesHomePage(app, platform)
                 .RefreshLeads()
                 .VerifyLeadPresent(company, industry, size, stage);
