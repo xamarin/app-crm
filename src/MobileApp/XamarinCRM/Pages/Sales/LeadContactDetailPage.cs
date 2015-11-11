@@ -29,7 +29,9 @@ namespace XamarinCRM.Pages.Sales
             #region roleEntry
             EntryCell roleEntryCell = new EntryCell()
             {
-                Label = TextResources.Leads_LeadContactDetail_Role, LabelColor = Palette._007
+                Label = TextResources.Leads_LeadContactDetail_Role, 
+                    LabelColor = Palette._007,
+                    Keyboard = Keyboard.Text
             };
             roleEntryCell.SetBinding(EntryCell.TextProperty, "Lead.JobTitle", BindingMode.TwoWay);
             #endregion
@@ -37,7 +39,8 @@ namespace XamarinCRM.Pages.Sales
             #region firstNameEntry
             EntryCell firstNameEntryCell = new EntryCell()
             {
-                Label = TextResources.Leads_LeadContactDetail_FirstName
+                    Label = TextResources.Leads_LeadContactDetail_FirstName,
+                    Keyboard = Keyboard.Text
             };
             firstNameEntryCell.SetBinding(EntryCell.TextProperty, "Lead.FirstName", BindingMode.TwoWay);
             #endregion
@@ -45,7 +48,8 @@ namespace XamarinCRM.Pages.Sales
             #region lastNameEntry
             EntryCell lastNameEntryCell = new EntryCell()
             {
-                Label = TextResources.Leads_LeadContactDetail_LastName
+                    Label = TextResources.Leads_LeadContactDetail_LastName,
+                    Keyboard = Keyboard.Text
             };
             lastNameEntryCell.SetBinding(EntryCell.TextProperty, "Lead.LastName", BindingMode.TwoWay);
             #endregion
@@ -71,7 +75,8 @@ namespace XamarinCRM.Pages.Sales
             #region streetEntry
             EntryCell streetEntryCell = new EntryCell()
             {
-                Label = TextResources.Leads_LeadContactDetail_Address
+                    Label = TextResources.Leads_LeadContactDetail_Address,
+                    Keyboard = Keyboard.Text
             };
             streetEntryCell.SetBinding(EntryCell.TextProperty, "Lead.Street", BindingMode.TwoWay);
             #endregion
@@ -88,7 +93,8 @@ namespace XamarinCRM.Pages.Sales
             #region cityEntry
             EntryCell cityEntryCell = new EntryCell()
             {
-                Label = TextResources.Leads_LeadContactDetail_City
+                    Label = TextResources.Leads_LeadContactDetail_City,
+                    Keyboard = Keyboard.Text
             };
             cityEntryCell.SetBinding(EntryCell.TextProperty, "Lead.City", BindingMode.TwoWay);
             #endregion
@@ -96,7 +102,8 @@ namespace XamarinCRM.Pages.Sales
             #region stateEntry
             EntryCell stateEntryCell = new EntryCell()
             {
-                Label = TextResources.Leads_LeadContactDetail_State
+                    Label = TextResources.Leads_LeadContactDetail_State,
+                    Keyboard = Keyboard.Text
             };
             stateEntryCell.SetBinding(EntryCell.TextProperty, "Lead.State", BindingMode.TwoWay);
             #endregion
@@ -104,7 +111,8 @@ namespace XamarinCRM.Pages.Sales
             #region countryEntry
             EntryCell countryEntryCell = new EntryCell()
             {
-                Label = TextResources.Leads_LeadContactDetail_Country
+                    Label = TextResources.Leads_LeadContactDetail_Country,
+                    Keyboard = Keyboard.Text
             };
             countryEntryCell.SetBinding(EntryCell.TextProperty, "Lead.Country", BindingMode.TwoWay);
             #endregion
