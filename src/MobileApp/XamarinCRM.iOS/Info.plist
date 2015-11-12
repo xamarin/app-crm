@@ -58,9 +58,9 @@
 	<key>CFBundleDisplayName</key>
 	<string>Xamarin CRM</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.1.0</string>
+	<string>2.1.1</string>
 	<key>CFBundleVersion</key>
-	<string>2.1.0</string>
+	<string>2.1.1</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIApplicationShortcutItems</key>
