@@ -21,7 +21,7 @@
     <RestorePackages>true</RestorePackages>
     <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <ReleaseVersion>2.0.1</ReleaseVersion>
+    <ReleaseVersion>2.1.0</ReleaseVersion>
     <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AssemblyName>MobileCRMAndroid</AssemblyName>
     <AndroidLinkMode>None</AndroidLinkMode>
