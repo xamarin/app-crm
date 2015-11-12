@@ -29,12 +29,12 @@ namespace :build do
 		# puts "Adding maps to manifest"
 		# addMaptoManifest("../../src/MobileApp/XamarinCRM.Android/Properties/AndroidManifest.xml")
 		puts "Building XamarinCRM.Android"
-		time = time_cmd "xbuild ../../src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj /p:Configuration=Debug /t:SignAndroidPackage /verbosity:quiet /flp:LogFile=build_android.log"
+		time = time_cmd "xbuild ../../src/MobileApp/XamarinCRM.Android/XamarinCRM.Android.csproj /p:Configuration=Release /t:SignAndroidPackage /verbosity:quiet /flp:LogFile=build_android.log"
 
 		puts "Checking for Insights on Android"
 		sh "cat ../../src/MobileApp/XamarinCRM.Android/MainActivity.cs | grep Insights | grep 2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26"
 
-		size = (File.size("../../src/MobileApp/XamarinCRM.Android/bin/Debug/com.xamarin.xamarincrm-Signed.apk")/1000000.0).round(1)
+		size = (File.size("../../src/MobileApp/XamarinCRM.Android/bin/Release/com.xamarin.xamarincrm-Signed.apk")/1000000.0).round(1)
 		log_data "Android", time, size, "build_android.log"
 	end
 
@@ -91,7 +91,9 @@ namespace :build do
     puts "*** warnings: #{warnings}"
     puts "*** errors: #{errors}"
 
-		post_to_sheet("XamarinCRM", date, platform, user, version, size, time, warnings, errors)
+		if ENV['POST_RESULTS'] == "true"
+			post_to_sheet("XamarinCRM", date, platform, user, version, size, time, warnings, errors)
+		end
   end
 
   def post_to_sheet(app, date, platform, channel, version, size, time, warnings, errors)
@@ -134,9 +136,9 @@ namespace :testcloud do
 		get_env_variables
 		devices = get_device_code(DEVICE_SET, "android")
 		unless CATEGORY.nil?
-			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.2.0/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Debug/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --category #{CATEGORY}" # keystore ~/.android/debug.keystore android androiddebugkey android
+			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.2.0/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --category #{CATEGORY}" # keystore ~/.android/debug.keystore android androiddebugkey android
 		else
-			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.2.0/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Debug/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug" # keystore ~/.android/debug.keystore android androiddebugkey android
+			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.2.0/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug" # keystore ~/.android/debug.keystore android androiddebugkey android
 		end
 	end
 
