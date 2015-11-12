@@ -68,8 +68,6 @@
     <MtouchDebug>True</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <IpaPackageName>XamarinCRM_Debug</IpaPackageName>
-    <MtouchI18n>
-    </MtouchI18n>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
@@ -78,6 +76,7 @@
     <IpaIncludeArtwork>true</IpaIncludeArtwork>
     <MtouchLink>None</MtouchLink>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
+    <MtouchExtraArgs>--linkskip=ImageCircle.Forms.Plugin.iOS --linkskip=ImageCircle.Forms.Plugin.Abstractions</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
