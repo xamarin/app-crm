@@ -38,10 +38,10 @@ xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=Ima
                             Grid.Column="1"
                             Grid.Row="1"
                             BorderColor = "White"
-                            BorderThickness = "3"
+                            BorderThickness = "5"
                             HorizontalOptions="Start"
                             VerticalOptions="End"
-                            Source="https://s.gravatar.com/avatar/70148d964bb389d42547834e1062c886?s=200"
+                            Source="https://blog.xamarin.com/wp-content/uploads/2015/03/RDXWoY7W_400x400.png"
                             WidthRequest="75" HeightRequest="75"/>
                         <Label 
                             Grid.Column="1"
