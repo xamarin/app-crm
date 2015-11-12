@@ -49,7 +49,7 @@ namespace XamarinCRM.Pages
                     new HomeMenuItem { Title = "Sales", MenuType = MenuType.Sales, Icon ="sales.png" },
                     new HomeMenuItem { Title = "Customers", MenuType = MenuType.Customers, Icon = "customers.png" },
                     new HomeMenuItem { Title = "Products", MenuType = MenuType.Products, Icon = "products.png" },
-                    new HomeMenuItem { Title = "About", MenuType = MenuType.About, Icon = "about.png" },
+//                    new HomeMenuItem { Title = "About", MenuType = MenuType.About, Icon = "about.png" },
 
                 };
 
