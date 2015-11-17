@@ -8,6 +8,8 @@ DEVICE_SET = ENV['DEVICE_SET']
 CATEGORY = ENV['CATEGORY']
 LOCALE = "en_US"
 
+APP_NAME = "Xamarin CRM"
+
 task :default => ['build:android', 'build:ios', 'build:tests']
 
 desc "Removes bin and obj directories for Android, iOS, and test projects."
@@ -91,20 +93,21 @@ namespace :build do
     puts "*** warnings: #{warnings}"
     puts "*** errors: #{errors}"
 
-		if ENV['POST_RESULTS'] == "true"
-			post_to_sheet("XamarinCRM", date, platform, user, version, size, time, warnings, errors)
-		end
+		post_to_sheet(date, platform, user, version, size, time, warnings, errors)
   end
 
-  def post_to_sheet(app, date, platform, channel, version, size, time, warnings, errors)
+	def post_to_sheet(date, platform, channel, version, size, time, warnings, errors)
+		return unless ENV['POST_RESULTS'] == "true"
+
     uri = URI("https://script.google.com/macros/s/AKfycbzlrwTXjCjOHY64uOIF3C1yg1GYDpvK8XXcDBfX68c6YhkL21M/exec")
     params = {
       method: 'writeLine',
-      app: app,
+      destSheet: 'Log',
       date: date,
       platform: platform,
       channel: channel,
       version: version,
+      app: APP_NAME,
       size:size,
       time: time,
       warnings: warnings,
@@ -136,9 +139,9 @@ namespace :testcloud do
 		get_env_variables
 		devices = get_device_code(DEVICE_SET, "android")
 		unless CATEGORY.nil?
-			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.2.0/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --category #{CATEGORY}" # keystore ~/.android/debug.keystore android androiddebugkey android
+			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.2.0/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name '#{APP_NAME}' --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --category #{CATEGORY} --async" # keystore ~/.android/debug.keystore android androiddebugkey android
 		else
-			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.2.0/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug" # keystore ~/.android/debug.keystore android androiddebugkey android
+			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.2.0/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.Android/bin/Release/*Signed.apk #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name '#{APP_NAME}' --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --async" # keystore ~/.android/debug.keystore android androiddebugkey android
 		end
 	end
 
@@ -147,9 +150,9 @@ namespace :testcloud do
 		get_env_variables
 		devices = get_device_code(DEVICE_SET, "ios")
 		unless CATEGORY.nil?
- 			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.2.0/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM --category #{CATEGORY}"
+ 			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.2.0/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name '#{APP_NAME}' --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM --category #{CATEGORY} --async"
 		else
-			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.2.0/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name \"Xamarin CRM\" --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM"
+			sh "mono ../../src/MobileApp/packages/Xamarin.UITest.1.2.0/tools/test-cloud.exe submit ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.ipa #{API_KEY} --devices #{devices} --series \"#{DEVICE_SET}\" --locale #{LOCALE} --app-name '#{APP_NAME}' --user #{USER_ACCOUNT} --assembly-dir ../../src/MobileApp/XamarinCRM.UITest/bin/Debug --dsym ../../src/MobileApp/XamarinCRM.iOS/bin/iPhone/Debug/*.app.dSYM --async"
 		end
 	end
 
