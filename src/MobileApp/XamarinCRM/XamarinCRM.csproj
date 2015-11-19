@@ -137,7 +137,6 @@
     <Compile Include="Statics\InsightsReportingConstants.cs" />
     <Compile Include="Cells\Products\CategoryListItemCell.cs" />
     <Compile Include="Cells\Products\ProductListItemCell.cs" />
-    <Compile Include="Cells\Customers\CustomerListItemCell.cs" />
     <Compile Include="Cells\Customers\CustomerOrderListViewGroupHeaderCell.cs" />
     <Compile Include="Cells\Customers\OrderListItemCell.cs" />
     <Compile Include="Cells\Sales\LeadListItemCell.cs" />
@@ -149,6 +148,10 @@
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Custom\FloatingActionButtonView.cs" />
+    <Compile Include="Cells\Customers\CustomerListItemCell.xaml.cs">
+      <DependentUpon>CustomerListItemCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Statics\Fonts.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -170,6 +173,9 @@
     <EmbeddedResource Include="Pages\About\AboutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <LogicalName>AboutPage.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cells\Customers\CustomerListItemCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

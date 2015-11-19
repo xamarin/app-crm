@@ -24,8 +24,6 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchI18n>
-    </MtouchI18n>
     <MtouchArch>i386</MtouchArch>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
     <IpaMetadata>
@@ -49,10 +47,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchI18n>
-    </MtouchI18n>
     <MtouchArch>i386</MtouchArch>
-    <MtouchLink>None</MtouchLink>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -76,7 +71,6 @@
     <IpaIncludeArtwork>true</IpaIncludeArtwork>
     <MtouchLink>None</MtouchLink>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
-    <MtouchExtraArgs>--linkskip=ImageCircle.Forms.Plugin.iOS --linkskip=ImageCircle.Forms.Plugin.Abstractions</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
@@ -95,7 +89,6 @@
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <BuildIpa>true</BuildIpa>
     <IpaIncludeArtwork>true</IpaIncludeArtwork>
-    <MtouchLink>None</MtouchLink>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
@@ -113,12 +106,9 @@
     <MtouchUseThumb>true</MtouchUseThumb>
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchI18n>
-    </MtouchI18n>
     <CodesignProvision>Automatic:AdHoc</CodesignProvision>
     <IpaIncludeArtwork>true</IpaIncludeArtwork>
     <IpaPackageName>XamarinCRM_Ad-Hoc</IpaPackageName>
-    <MtouchLink>None</MtouchLink>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
@@ -136,12 +126,9 @@
     <MtouchUseThumb>true</MtouchUseThumb>
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchI18n>
-    </MtouchI18n>
     <IpaPackageName>XamarinCRM_AppStore</IpaPackageName>
     <BuildIpa>true</BuildIpa>
     <IpaIncludeArtwork>true</IpaIncludeArtwork>
-    <MtouchLink>None</MtouchLink>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'InHouse|iPhone' ">
@@ -156,15 +143,12 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
     <BuildIpa>true</BuildIpa>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchI18n>
-    </MtouchI18n>
     <IpaPackageName>XamarinCRM_InHouse</IpaPackageName>
     <IpaIncludeArtwork>true</IpaIncludeArtwork>
     <MtouchUseLlvm>true</MtouchUseLlvm>
     <MtouchUseThumb>true</MtouchUseThumb>
     <MtouchUseSGen>true</MtouchUseSGen>
     <CodesignProvision>Automatic:InHouse</CodesignProvision>
-    <MtouchLink>None</MtouchLink>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhoneSimulator' ">
@@ -172,10 +156,7 @@
     <OutputPath>bin\iPhoneSimulator\Ad-Hoc</OutputPath>
     <WarningLevel>4</WarningLevel>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchI18n>
-    </MtouchI18n>
     <MtouchArch>i386</MtouchArch>
-    <MtouchLink>None</MtouchLink>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhoneSimulator' ">
@@ -183,10 +164,7 @@
     <OutputPath>bin\iPhoneSimulator\AppStore</OutputPath>
     <WarningLevel>4</WarningLevel>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchI18n>
-    </MtouchI18n>
     <MtouchArch>i386</MtouchArch>
-    <MtouchLink>None</MtouchLink>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'InHouse|iPhoneSimulator' ">
@@ -194,10 +172,7 @@
     <OutputPath>bin\iPhoneSimulator\InHouse</OutputPath>
     <WarningLevel>4</WarningLevel>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchI18n>
-    </MtouchI18n>
     <MtouchArch>i386</MtouchArch>
-    <MtouchLink>None</MtouchLink>
     <AssemblyName>XamarinCRMiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

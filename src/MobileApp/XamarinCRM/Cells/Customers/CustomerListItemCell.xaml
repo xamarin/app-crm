@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.CustomerListItemCell"
+xmlns:statics="clr-namespace:XamarinCRM.Statics">
+	<ViewCell.View>
+		<ContentView Padding="20,0">
+			<RelativeLayout>
+
+				<Label 
+				x:Name="CompanyLabel" 
+				Text="{Binding Company}"
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}" 
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
+				TextColor="{x:Static statics:Palette._006}"
+				FontSize="{x:Static statics:Fonts._120PercentOfSmall}"
+				XAlign="Start"
+				YAlign="End"
+				LineBreakMode="TailTruncation" />
+
+				<Label 
+				x:Name="ContactName" 
+				Text="{Binding DisplayContact}"
+				RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}"
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}"
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}"
+				TextColor="{x:Static statics:Palette._007}"
+				FontSize="Small"
+				XAlign="Start"
+				YAlign="Start"
+				LineBreakMode="TailTruncation" />
+
+			</RelativeLayout>
+		</ContentView>
+	</ViewCell.View>
+</ViewCell>
