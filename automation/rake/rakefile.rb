@@ -38,7 +38,7 @@ namespace :build do
     # puts "Adding maps to manifest"
 		# addMaptoManifest("../../src/MobileApp/XamarinCRM.Android/Properties/AndroidManifest.xml")
     puts "building Android project with:"
-    time = time_cmd "xbuild #{ANDROID_DIR}/*.csproj /p:Configuration=Debug /t:SignAndroidPackage /verbosity:quiet /flp:LogFile=build_android.log" # /verbosity:quiet
+    time = time_cmd "xbuild #{ANDROID_DIR}/*.csproj /p:Configuration=Release /t:SignAndroidPackage /verbosity:quiet /flp:LogFile=build_android.log" # /verbosity:quiet
     size = (File.size(APK_FILE)/1000000.0).round(1)
     log_data "Android", time, size, "build_android.log"
   end
