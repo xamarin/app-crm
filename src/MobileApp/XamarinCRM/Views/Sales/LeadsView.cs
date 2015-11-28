@@ -35,7 +35,7 @@ namespace XamarinCRM
             #region leads list activity inidicator
             var leadListActivityIndicator = new ActivityIndicator()
             { 
-                HeightRequest = Sizes.MediumRowHeight
+                HeightRequest = RowSizes.MediumRowHeightDouble
             };
             leadListActivityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
             leadListActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
@@ -47,9 +47,9 @@ namespace XamarinCRM
             {
                 Text = TextResources.SalesDashboard_Leads_LoadingLabel,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                HeightRequest = Sizes.MediumRowHeight,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.End,
+                HeightRequest = RowSizes.MediumRowHeightDouble,
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.End,
                 TextColor = Palette._007
             };
             loadingLabel.SetBinding(IsEnabledProperty, "IsBusy");

@@ -19,13 +19,18 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
+using XamarinCRM.Views.Base;
 
-namespace XamarinCRM.Statics
+namespace XamarinCRM.Views.Customers
 {
-    public static class Fonts
+    public partial class CustomerOrderListView : NonPersistentSelectedItemListView
     {
-        public readonly static double _120PercentOfSmall = Device.GetNamedSize(NamedSize.Small, typeof(Label)) * 1.2;
+        public CustomerOrderListView()
+        {
+            InitializeComponent();
+        }
     }
 }
 

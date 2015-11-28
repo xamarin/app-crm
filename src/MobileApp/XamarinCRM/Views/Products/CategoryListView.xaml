@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:NonPersistentSelectedItemListView
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Views.Products.CategoryListView"
+xmlns:base="clr-namespace:XamarinCRM.Views"
+xmlns:statics="clr-namespace:XamarinCRM.Statics"
+	RowHeight="{x:Static statics:RowSizes.LargeRowHeightInt}"
+	SeparatorColor="{x:Static statics:Palette._013}">
+	<base:NonPersistentSelectedItemListView.ItemTemplate>
+		<DataTemplate>
+			<ViewCell StyleId="disclosure">
+				<ContentView Padding="10,10">
+					<RelativeLayout>
+
+						<Label 
+						TextColor="{x:Static statics:Palette._006}" 
+						FontSize="Small" 
+						VerticalTextAlignment="End" 
+						LineBreakMode="TailTruncation" 
+						Text="{Binding Name}" 
+						RelativeLayout.XConstraint="{ConstraintExpression Constant=0}" 
+						RelativeLayout.YConstraint="{ConstraintExpression Constant=0}" 
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}" 
+						RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" />
+
+						<Label 
+						TextColor="{x:Static statics:Palette._007}" 
+						FontSize="Small" 
+						VerticalTextAlignment="End" 
+						LineBreakMode="TailTruncation" 
+						Text="{Binding Description}" 
+						RelativeLayout.XConstraint="{ConstraintExpression Constant=0}" 
+						RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}" 
+						RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" />
+
+					</RelativeLayout>
+				</ContentView>
+			</ViewCell>
+		</DataTemplate>
+	</base:NonPersistentSelectedItemListView.ItemTemplate>
+</base:NonPersistentSelectedItemListView>

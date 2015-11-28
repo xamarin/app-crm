@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:NonPersistentSelectedItemListView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Views.Customers.CustomerOrderListView" 
+xmlns:views="clr-namespace:XamarinCRM.Views" 
+xmlns:statics="clr-namespace:XamarinCRM.Statics" 
+xmlns:converters="clr-namespace:XamarinCRM.Converters" 
+	HasUnevenRows="true" 
+	RowHeight="{x:Static statics:RowSizes.LargeRowHeightInt}" 
+	SeparatorColor="{x:Static statics:Palette._013}" 
+	IsVisible="{Binding IsBusy, Converter={StaticResource boolInverter}}" 
+	IsEnabled="{Binding IsBusy, Converter={StaticResource boolInverter}}" 
+	ItemsSource="{Binding OrderGroups}" 
+	IsGroupingEnabled="true" 
+	GroupDisplayBinding="{Binding Key}">
+
+	<views:NonPersistentSelectedItemListView.Resources>
+		<ResourceDictionary>
+			<converters:InverseBooleanConverter x:Key="boolInverter" />
+			<converters:OrderListHeaderViewBackgroudColorConverter x:Key="orderListHeaderViewBackgroudColorConverter" />
+			<converters:ShortDatePatternConverter x:Key="shortDatePatternConverter" />
+			<converters:CurrencyDoubleConverter x:Key="currencyDoubleConverter" />
+		</ResourceDictionary>
+	</views:NonPersistentSelectedItemListView.Resources>
+
+	<views:NonPersistentSelectedItemListView.ItemTemplate>
+		<DataTemplate>
+			<ViewCell StyleId="disclosure">
+				<ContentView Padding="20,0">
+					<RelativeLayout HeightRequest="{x:Static statics:RowSizes.LargeRowHeightDouble}">
+
+						<Label x:Name="PrimaryLabel" 
+						Text="{Binding Item}" 
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" 
+						RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
+						TextColor="{x:Static statics:Palette._006}" 
+						FontSize="{x:Static statics:FontSizes._120PercentOfSmall}" 
+						XAlign="Start" 
+						YAlign="End" 
+						LineBreakMode="TailTruncation" />
+
+						<Label x:Name="SecondaryLabel" 
+						Text="{Binding DueDate, Converter={StaticResource shortDatePatternConverter}}" 
+						RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}" 
+						RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
+						TextColor="{x:Static statics:Palette._007}" 
+						FontSize="{x:Static statics:FontSizes._120PercentOfSmall}" 
+						XAlign="Start" 
+						YAlign="Start" 
+						LineBreakMode="TailTruncation" />
+
+						<Label x:Name="TernaryLabel" 
+						Text="{Binding Price, Converter={StaticResource currencyDoubleConverter}}" 
+						RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=SecondaryLabel, Property=Width}" 
+						RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}" 
+						RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
+						TextColor="{x:Static statics:Palette._007}" 
+						FontSize="Small" 
+						XAlign="End" 
+						YAlign="Start" />
+
+					</RelativeLayout>
+				</ContentView>
+			</ViewCell>
+		</DataTemplate>
+	</views:NonPersistentSelectedItemListView.ItemTemplate>
+
+	<views:NonPersistentSelectedItemListView.GroupHeaderTemplate>
+		<DataTemplate>
+			<ViewCell>
+				<ContentView 
+				Padding="10,0" 
+				HeightRequest="{x:Static statics:RowSizes.MediumRowHeightDouble}" 
+				BackgroundColor="{Binding Key, Converter={StaticResource orderListHeaderViewBackgroudColorConverter}}">
+					<Label x:Name="Title" 
+					Text="{Binding Key}" 
+					FontSize="Medium" 
+					TextColor="White" 
+					VerticalOptions="Center" 
+					FontAttributes="Bold" />
+				</ContentView>
+			</ViewCell>
+		</DataTemplate>
+	</views:NonPersistentSelectedItemListView.GroupHeaderTemplate>
+
+</views:NonPersistentSelectedItemListView>

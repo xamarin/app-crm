@@ -18,36 +18,18 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-using Xamarin.Forms;
-using XamarinCRM.Layouts;
-using XamarinCRM.Statics;
-using System.ComponentModel;
 
-namespace XamarinCRM.Views.Custom
+namespace XamarinCRM.Statics
 {
-    public class ContentViewWithBottomBorder : ContentView, INotifyPropertyChanged
+    public static class RowSizes
     {
-        public new View Content
-        {
-            get { return base.Content; }
-            set 
-            { 
-                StackLayout stackLayout = new UnspacedStackLayout();
+        public readonly static double LargeRowHeightDouble = 60;
+        public readonly static double MediumRowHeightDouble = 44;
+        public readonly static double SmallRowHeightDouble = 30;
 
-                stackLayout.Children.Add(value);
-
-                RelativeLayout borderLayout = new RelativeLayout() { HeightRequest = 1 };
-
-                borderLayout.Children.Add(
-                    view: new BoxView() { BackgroundColor = Palette._013, HeightRequest = 1 },
-                    widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
-                    heightConstraint: Constraint.Constant(1));
-                
-                stackLayout.Children.Add(borderLayout);
-
-                base.Content = stackLayout; 
-            }
-        }
+        public static int LargeRowHeightInt { get { return (int)LargeRowHeightDouble; } }
+        public static int MediumRowHeightInt { get { return (int)MediumRowHeightDouble; } }
+        public static int SmallRowHeightInt { get { return (int)SmallRowHeightDouble; } }
     }
 }
 

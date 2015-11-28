@@ -54,45 +54,56 @@ namespace XamarinCRM.Pages
             NavigateAsync(MenuType.Sales);
         }
 
-
+        void SetDetailIfNull(Page page)
+        {
+            if (Detail == null && page != null)
+                Detail = page;
+        }
 
         public async Task NavigateAsync(MenuType id)
         {
             Page newPage;
             if (!Pages.ContainsKey(id))
             {
-
                 switch (id)
                 {
                     case MenuType.Sales:
-                        Pages.Add(id, new CRMNavigationPage(new SalesDashboardPage
-                                { 
-                                    Title = TextResources.MainTabs_Sales, 
-                                    Icon = new FileImageSource { File = "sales.png" }
-                                }));
+                        var page = new CRMNavigationPage(new SalesDashboardPage
+                            { 
+                                Title = TextResources.MainTabs_Sales, 
+                                Icon = new FileImageSource { File = "sales.png" }
+                            });
+                        SetDetailIfNull(page);
+                        Pages.Add(id, page);
                         break;
                     case MenuType.Customers:
-                        Pages.Add(id, new CRMNavigationPage(new CustomersPage
-                                { 
-                                    BindingContext = new CustomersViewModel(Navigation), 
-                                    Title = TextResources.MainTabs_Customers, 
-                                    Icon = new FileImageSource { File = "customers.png" } 
-                                }));
+                        page = new CRMNavigationPage(new CustomersPage
+                            { 
+                                BindingContext = new CustomersViewModel(Navigation), 
+                                Title = TextResources.MainTabs_Customers, 
+                                Icon = new FileImageSource { File = "customers.png" } 
+                            });
+                        SetDetailIfNull(page);
+                        Pages.Add(id, page);
                         break;
                     case MenuType.Products:
-                        Pages.Add(id, new CRMNavigationPage(new CategoryListPage
-                                { 
-                                    BindingContext = new CategoriesViewModel(navigation: Navigation), 
-                                    Title = TextResources.MainTabs_Products, 
-                                    Icon = new FileImageSource { File = "products.png" } 
-                                }));
+                        page = new CRMNavigationPage(new CategoryListPage
+                            { 
+                                BindingContext = new CategoriesViewModel(navigation: Navigation), 
+                                Title = TextResources.MainTabs_Products, 
+                                Icon = new FileImageSource { File = "products.png" } 
+                            });
+                        SetDetailIfNull(page);
+                        Pages.Add(id, page);
                         break;
                     case MenuType.About:
-                        Pages.Add(id, new CRMNavigationPage(new AboutPage
-                                { 
-                                    Title = "About", 
-                                    Icon = new FileImageSource { File = "about.png" } 
-                                }));
+                        page = new CRMNavigationPage(new AboutPage
+                            { 
+                                Title = "About", 
+                                Icon = new FileImageSource { File = "about.png" } 
+                            });
+                        SetDetailIfNull(page);
+                        Pages.Add(id, page);
                         break;
                 }
             }

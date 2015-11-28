@@ -41,8 +41,8 @@ namespace XamarinCRM.Views.Sales
                 TextColor = Palette._003,
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 FontAttributes = FontAttributes.Bold,
-                XAlign = TextAlignment.Start,
-                YAlign = TextAlignment.Center
+                HorizontalTextAlignment = TextAlignment.Start,
+                VerticalTextAlignment = TextAlignment.Center
             };
             #endregion
 
@@ -54,7 +54,7 @@ namespace XamarinCRM.Views.Sales
                 HorizontalOptions = LayoutOptions.EndAndExpand,
             };
             //Going to use FAB
-			newLeadImage.IsVisible = false;
+            newLeadImage.IsVisible = false;
             newLeadImage.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
                     Command = _NewLeadTappedCommand,
@@ -80,7 +80,7 @@ namespace XamarinCRM.Views.Sales
             ContentView contentView = new ContentView()
             {
                 Padding = new Thickness(10, 0), // give the content some padding on the left and right
-                HeightRequest = Sizes.MediumRowHeight, // set the height of the content view
+                HeightRequest = RowSizes.MediumRowHeightDouble, // set the height of the content view
             };
             #endregion
 

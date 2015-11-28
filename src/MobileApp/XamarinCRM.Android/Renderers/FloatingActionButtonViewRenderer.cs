@@ -20,13 +20,13 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
 using XamarinCRMAndroid.Renderers;
-using XamarinCRM.Views.Custom;
 using Xamarin.Forms.Platform.Android;
 using Android.Widget;
 using Xamarin.Forms;
 using com.refractored.fab;
 using Android.Views;
 using System.IO;
+using XamarinCRM.Views;
 
 [assembly: ExportRenderer (typeof (FloatingActionButtonView), typeof (FloatingActionButtonViewRenderer))]
 namespace XamarinCRMAndroid.Renderers

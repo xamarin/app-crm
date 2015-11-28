@@ -1,40 +1,48 @@
 ﻿// The MIT License (MIT)
-// 
+//
 // Copyright (c) 2015 Xamarin
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
 // the Software without restriction, including without limitation the rights to
 // use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
 // the Software, and to permit persons to whom the Software is furnished to do so,
 // subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in all
 // copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
 // FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-using Xamarin.Forms;
-using XamarinCRM.Statics;
-using XamarinCRM.Views.Base;
-using XamarinCRM.Cells.Customers;
+using System;
+using System.Collections.Generic;
 
-namespace XamarinCRM.Views.Customers
+using Xamarin.Forms;
+using XamarinCRM.Pages.Base;
+using Xamarin;
+using XamarinCRM.Statics;
+
+namespace XamarinCRM.Pages.Products
 {
-    public class CustomerOrderListView : BaseNonPersistentSelectedItemListView
+    public partial class ProductDetailPage : ProductDetailPageXaml
     {
-        public CustomerOrderListView()
+        public ProductDetailPage()
         {
-            HasUnevenRows = true; // Circumvents calculating heights for each cell individually. The rows of this list view will have a static height.
-            RowHeight = (int)Sizes.LargeRowHeight; // set the row height for the list view items
-            SeparatorVisibility = SeparatorVisibility.None;
-            ItemTemplate = new DataTemplate(typeof(OrderListItemCell));
-            SeparatorColor = Palette._013;
+            InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            Insights.Track(InsightsReportingConstants.PAGE_PRODUCTDETAIL);
         }
     }
+
+    public partial class ProductDetailPageXaml : ModelBoundContentPage<ProductDetailViewModel> { }
 }
 

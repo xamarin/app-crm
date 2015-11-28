@@ -21,7 +21,7 @@
 using System;
 using Xamarin.Forms;
 
-namespace XamarinCRM.Views.Custom
+namespace XamarinCRM.Views
 {
     public enum FloatingActionButtonSize
     {

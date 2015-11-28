@@ -30,6 +30,12 @@ namespace XamarinCRM.ViewModels.Products
     {
         readonly IDataClient _DataClient;
 
+        readonly bool _IsPerformingProductSelection;
+        public bool IsPerformingProductSelection
+        {
+            get { return _IsPerformingProductSelection; }
+        }
+
         Category _Category;
 
         public Category Category
@@ -40,6 +46,12 @@ namespace XamarinCRM.ViewModels.Products
                 _Category = value;
                 OnPropertyChanged("Category");
             }
+        }
+
+        public new string Title
+        {
+            get { return base.Title ?? "Products"; }
+            set { base.Title = value; }
         }
 
         ObservableCollection<Category> _SubCategories;
@@ -56,10 +68,11 @@ namespace XamarinCRM.ViewModels.Products
 
         public bool NeedsRefresh { get; set; }
 
-        public CategoriesViewModel(Category category = null, INavigation navigation = null)
+        public CategoriesViewModel(Category category = null, INavigation navigation = null, bool isPerformingProductSelection = false)
         {
             Category = category;
             Navigation = navigation;
+            _IsPerformingProductSelection = isPerformingProductSelection;
             SubCategories = new ObservableCollection<Category>();
 
             _DataClient = DependencyService.Get<IDataClient>();

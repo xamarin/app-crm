@@ -26,6 +26,9 @@ using Connectivity.Plugin;
 using XamarinCRM.Localization;
 using XamarinCRM.Services;
 using XamarinCRM.Pages.Splash;
+using Xamarin.Forms.Xaml;
+
+//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
 namespace XamarinCRM
 {

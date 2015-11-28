@@ -23,7 +23,6 @@ using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Base;
-using XamarinCRM.Views.Custom;
 
 namespace XamarinCRM.Views.Customers
 {

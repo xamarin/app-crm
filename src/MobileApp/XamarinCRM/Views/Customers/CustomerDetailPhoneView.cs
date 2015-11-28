@@ -24,8 +24,8 @@ using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Base;
-using XamarinCRM.Views.Custom;
 using Lotz.Xam.Messaging;
+using XamarinCRM.Views;
 
 namespace XamarinCRM
 {
@@ -67,8 +67,8 @@ namespace XamarinCRM
             // an expanded view to catch touches, because the image is a bit small
             AbsoluteLayout phoneImageTouchView = new AbsoluteLayout()
             { 
-                WidthRequest = Sizes.MediumRowHeight, 
-                HeightRequest = Sizes.MediumRowHeight
+                WidthRequest = RowSizes.MediumRowHeightDouble, 
+                HeightRequest = RowSizes.MediumRowHeightDouble
             };
 
             phoneImageTouchView.Children.Add(phoneImage, new Rectangle(.5, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);

@@ -21,16 +21,15 @@
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using XamarinCRM.Views;
 
-namespace XamarinCRM
+namespace XamarinCRM.Views.Products
 {
-    public partial class CustomerListItemCell : ViewCell
+    public partial class CategoryListView : NonPersistentSelectedItemListView
     {
-        public CustomerListItemCell()
+        public CategoryListView()
         {
             InitializeComponent();
-
-            StyleId = "disclosure";
         }
     }
 }

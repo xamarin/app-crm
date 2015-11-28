@@ -20,7 +20,6 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using Xamarin.Forms;
 using XamarinCRM.Statics;
-using XamarinCRM.Views.Custom;
 
 namespace XamarinCRM.Views.Customers
 {
@@ -32,7 +31,7 @@ namespace XamarinCRM.Views.Customers
 
         public OrderListHeaderView()
         {
-            HeightRequest = Sizes.LargeRowHeight;
+            HeightRequest = RowSizes.LargeRowHeightDouble;
 
             #region add new order image
             AddNewOrderImage = new Image()
@@ -52,8 +51,8 @@ namespace XamarinCRM.Views.Customers
             {
                 Text = TextResources.Customers_Orders_NewOrder.ToUpper(),
                 TextColor = Palette._004,
-                XAlign = TextAlignment.Start,
-                YAlign = TextAlignment.Center,
+                    HorizontalTextAlignment = TextAlignment.Start,
+                    VerticalTextAlignment = TextAlignment.Center,
             };
             #endregion
 

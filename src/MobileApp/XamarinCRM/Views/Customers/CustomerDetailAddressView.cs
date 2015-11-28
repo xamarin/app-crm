@@ -77,8 +77,8 @@ namespace XamarinCRM
             // an expanded view to catch touches, because the image is a bit small
             AbsoluteLayout mapMarkerImageTouchView = new AbsoluteLayout()
             { 
-                WidthRequest = Sizes.MediumRowHeight, 
-                HeightRequest = Sizes.MediumRowHeight
+                WidthRequest = RowSizes.MediumRowHeightDouble, 
+                HeightRequest = RowSizes.MediumRowHeightDouble
             };
 
             mapMarkerImageTouchView.GestureRecognizers.Add(

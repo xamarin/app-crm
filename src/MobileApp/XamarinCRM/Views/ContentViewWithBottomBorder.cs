@@ -19,17 +19,34 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using Xamarin.Forms;
+using XamarinCRM.Layouts;
+using XamarinCRM.Statics;
+using System.ComponentModel;
 
-namespace XamarinCRM.Views.Base
+namespace XamarinCRM.Views
 {
-    public abstract class BaseNonPersistentSelectedItemListView : ListView
+    public class ContentViewWithBottomBorder : ContentView, INotifyPropertyChanged
     {
-        protected BaseNonPersistentSelectedItemListView()
+        protected new View Content
         {
-            // This prevents the ugly default highlighting of the selected cell upon navigating back to a list view.
-            // The side effect is that the list view will no longer be maintaining the most recently selected item (if you're into that kind of thing).
-            // Probably not the best way to remove that default SelectedItem styling, but simple and straighforward.
-            ItemSelected += (sender, e) => SelectedItem = null;
+            get { return base.Content; }
+            set 
+            { 
+                StackLayout stackLayout = new UnspacedStackLayout();
+
+                stackLayout.Children.Add(value);
+
+                RelativeLayout borderLayout = new RelativeLayout() { HeightRequest = 1 };
+
+                borderLayout.Children.Add(
+                    view: new BoxView() { BackgroundColor = Palette._013, HeightRequest = 1 },
+                    widthConstraint: Constraint.RelativeToParent(parent => parent.Width),
+                    heightConstraint: Constraint.Constant(1));
+                
+                stackLayout.Children.Add(borderLayout);
+
+                base.Content = stackLayout; 
+            }
         }
     }
 }

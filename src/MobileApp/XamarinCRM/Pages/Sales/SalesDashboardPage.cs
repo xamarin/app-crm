@@ -28,7 +28,7 @@ using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Sales;
 using XamarinCRM.Services;
 using XamarinCRM.Models;
-using XamarinCRM.Views.Custom;
+using XamarinCRM.Views;
 
 namespace XamarinCRM.Pages.Sales
 {
@@ -50,8 +50,14 @@ namespace XamarinCRM.Pages.Sales
             this.SetBinding(Page.TitleProperty, new Binding() { Source = TextResources.Sales });
 
             #region sales chart view
+            SalesDashboardChartView salesChartView = null;
             _SalesDashboardChartViewModel = new SalesDashboardChartViewModel();
-            SalesDashboardChartView salesChartView = new SalesDashboardChartView() { BindingContext = _SalesDashboardChartViewModel };
+            try {
+                salesChartView = new SalesDashboardChartView() { BindingContext = _SalesDashboardChartViewModel };    
+            } catch (Exception ex) {
+                
+            }
+
             #endregion
 
             #region leads view

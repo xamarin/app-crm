@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:NonPersistentSelectedItemListView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Views.Products.ProductListView"
+xmlns:base="clr-namespace:XamarinCRM.Views"
+xmlns:statics="clr-namespace:XamarinCRM.Statics"
+	HasUnevenRows="false"
+	RowHeight="{x:Static statics:RowSizes.LargeRowHeightInt}"
+	SeparatorColor="{x:Static statics:Palette._013}">
+	<base:NonPersistentSelectedItemListView.ItemTemplate>
+		<DataTemplate>
+			<ViewCell StyleId="disclosure">
+				<ContentView Padding="10,10">
+					<StackLayout Orientation="Horizontal" Spacing="0">
+						<AbsoluteLayout WidthRequest="{x:Static statics:RowSizes.LargeRowHeightDouble}">
+							<ActivityIndicator
+							BindingContext="{x:Reference ThumbnailImage}" 
+							IsEnabled="{Binding IsLoading}" 
+							IsVisible="{Binding IsLoading}" 
+							IsRunning="{Binding IsLoading}" 
+							AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional" 
+							AbsoluteLayout.LayoutBounds="0,0,1,1" />
+							<Image 
+							x:Name="ThumbnailImage" 
+							Source="{Binding ImageUrl}" 
+							Aspect="AspectFit" 
+							AbsoluteLayout.LayoutFlags="PositionProportional" 
+							AbsoluteLayout.LayoutBounds="0,0,AutoSize,AutoSize" />
+						</AbsoluteLayout>
+						<StackLayout Spacing="0">
+							<Label 
+							Text="{Binding Name}" 
+							TextColor="{x:Static statics:Palette._006}" 
+							FontSize="Small" 
+							VerticalTextAlignment="Center" 
+							LineBreakMode="TailTruncation" />
+							<Label 
+							Text="{Binding Description}" 
+							TextColor="{x:Static statics:Palette._007}" 
+							FontSize="Small" 
+							VerticalTextAlignment="Center" 
+							LineBreakMode="TailTruncation" />
+						</StackLayout>
+					</StackLayout>
+				</ContentView>
+			</ViewCell>
+		</DataTemplate>
+	</base:NonPersistentSelectedItemListView.ItemTemplate>
+</base:NonPersistentSelectedItemListView>

@@ -45,7 +45,7 @@ namespace XamarinCRM.Views.Customers
             #region leads list activity indicator
             ActivityIndicator activityIndicator = new ActivityIndicator()
             { 
-                HeightRequest = Sizes.MediumRowHeight
+                HeightRequest = RowSizes.MediumRowHeightDouble
             };
             activityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
             activityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
@@ -57,9 +57,9 @@ namespace XamarinCRM.Views.Customers
             {
                 Text = TextResources.SalesDashboard_SalesChart_LoadingLabel,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                HeightRequest = Sizes.MediumRowHeight,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.End,
+                HeightRequest = RowSizes.MediumRowHeightDouble,
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.End,
                 TextColor = Palette._007
             };
             loadingLabel.SetBinding(IsEnabledProperty, "IsBusy");
@@ -67,7 +67,7 @@ namespace XamarinCRM.Views.Customers
             #endregion
 
             #region sales graph header
-            SalesChartHeaderView chartHeaderView = new SalesChartHeaderView() { HeightRequest = Sizes.MediumRowHeight };
+            SalesChartHeaderView chartHeaderView = new SalesChartHeaderView() { HeightRequest = RowSizes.MediumRowHeightDouble };
             chartHeaderView.WeeklyAverageValueLabel.SetBinding(Label.TextProperty, "WeeklySalesAverage");
             chartHeaderView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             chartHeaderView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
@@ -115,7 +115,7 @@ namespace XamarinCRM.Views.Customers
               
             };
 
-            if(Device.OS == TargetPlatform.Android)
+            if (Device.OS == TargetPlatform.Android)
                 chart.BackgroundColor = Color.Transparent;
 
             chart.Series.Add(columnSeries);
