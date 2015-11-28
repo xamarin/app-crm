@@ -121,7 +121,6 @@
     </Compile>
     <Compile Include="Localization\ILocalize.cs" />
     <Compile Include="Statics\InsightsReportingConstants.cs" />
-    <Compile Include="Cells\Products\ProductListItemCell.cs" />
     <Compile Include="Cells\Sales\LeadListItemCell.cs" />
     <Compile Include="Converters\BoolToLabelOpacityConverter.cs" />
     <Compile Include="Pages\MenuPage.xaml.cs">
