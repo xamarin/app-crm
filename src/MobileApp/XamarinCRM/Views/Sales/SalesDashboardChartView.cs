@@ -121,8 +121,9 @@ namespace XamarinCRM
 
 
 
-            StackLayout stackLayout = new UnspacedStackLayout()
+            StackLayout stackLayout = new StackLayout()
             {
+                Spacing = 0,
                 Children =
                 {
                     loadingLabel,

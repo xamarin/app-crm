@@ -52,9 +52,12 @@ namespace XamarinCRM.Pages.Sales
             #region sales chart view
             SalesDashboardChartView salesChartView = null;
             _SalesDashboardChartViewModel = new SalesDashboardChartViewModel();
-            try {
+            try
+            {
                 salesChartView = new SalesDashboardChartView() { BindingContext = _SalesDashboardChartViewModel };    
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 
             }
 
@@ -68,8 +71,9 @@ namespace XamarinCRM.Pages.Sales
 
             scrollView = new ScrollView
             { 
-                Content = new UnspacedStackLayout
+                Content = new StackLayout
                 {
+                    Spacing = 0,
                     Children =
                     {
                         salesChartView,
@@ -112,9 +116,10 @@ namespace XamarinCRM.Pages.Sales
             }
             else
             {
-				ToolbarItems.Add (new ToolbarItem ("Add", "add_ios_gray", () => {
-					_SalesDashboardLeadsViewModel.PushLeadDetailsTabbedPageCommand.Execute (null);
-				}));
+                ToolbarItems.Add(new ToolbarItem("Add", "add_ios_gray", () =>
+                        {
+                            _SalesDashboardLeadsViewModel.PushLeadDetailsTabbedPageCommand.Execute(null);
+                        }));
 
                 Content = scrollView;
             }
@@ -168,7 +173,7 @@ namespace XamarinCRM.Pages.Sales
             }
 
         }
-       
+
        
 
         Action<object> PushTabbedLeadPageAction
@@ -208,17 +213,20 @@ namespace XamarinCRM.Pages.Sales
             }
 
 
-			if (lead != null) {
+            if (lead != null)
+            {
                 page.Title = lead.Company;
-			} else {
+            }
+            else
+            {
                 page.Title = "New Lead";
-			}
+            }
 
             page.ToolbarItems.Add(
                 new ToolbarItem(TextResources.Save, "save.png", async () =>
                     {
 
-                        if(string.IsNullOrWhiteSpace(viewModel.Lead.Company))
+                        if (string.IsNullOrWhiteSpace(viewModel.Lead.Company))
                         {
                             await DisplayAlert("Missing Information", "Please fill in the lead's company to continue", "OK");
                             return;

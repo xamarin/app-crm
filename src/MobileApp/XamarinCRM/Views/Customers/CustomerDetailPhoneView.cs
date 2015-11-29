@@ -42,9 +42,9 @@ namespace XamarinCRM
             { 
                 Text = TextResources.Phone,
                 TextColor = Device.OnPlatform(Palette._003, Palette._007, Palette._006),
-				FontAttributes = FontAttributes.Bold,
-				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-				LineBreakMode = LineBreakMode.TailTruncation
+                FontAttributes = FontAttributes.Bold,
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                LineBreakMode = LineBreakMode.TailTruncation
             };
 
             Label phoneLabel = new Label()
@@ -81,8 +81,9 @@ namespace XamarinCRM
             #endregion
 
             #region compose view hierarchy
-            StackLayout stackLayout = new UnspacedStackLayout()
+            StackLayout stackLayout = new StackLayout()
             {
+                Spacing = 0,
                 Children =
                 {
                     phoneTitleLabel,
@@ -95,7 +96,7 @@ namespace XamarinCRM
             absoluteLayout.Children.Add(phoneImageTouchView, new Rectangle(.95, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
             #endregion
 
-            Content = new ContentViewWithBottomBorder() { Content = absoluteLayout };
+            Content = absoluteLayout;
         }
 
         async void OnPhoneTapped(object sender, EventArgs e)
@@ -115,7 +116,7 @@ namespace XamarinCRM
                     cancel: TextResources.Customers_Detail_CallDialog_Cancel))
             {
                 var phoneCallTask = MessagingPlugin.PhoneDialer;
-                if (phoneCallTask.CanMakePhoneCall) 
+                if (phoneCallTask.CanMakePhoneCall)
                     phoneCallTask.MakePhoneCall(phoneNumber.Replace("-", ""));
             }
         }

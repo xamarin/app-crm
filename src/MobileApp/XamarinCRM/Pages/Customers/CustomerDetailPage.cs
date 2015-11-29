@@ -66,63 +66,66 @@ namespace XamarinCRM.Pages.Customers
                 };
 
 
-                var infoStack = new UnspacedStackLayout()
+                var infoStack = new StackLayout()
+                {
+                    Spacing = 0,
+                    Children =
                     {
-                        Children =
-                            {
                                 
-                                new CustomerDetailContactView(),
-                                new CustomerDetailPhoneView(this),
-                                new CustomerDetailAddressView(),
-                            }
-                        };
+                        new CustomerDetailContactView(),
+                        new CustomerDetailPhoneView(this),
+                        new CustomerDetailAddressView(),
+                    }
+                };
                 
                 var table = new TableView()
+                {
+                    Intent = TableIntent.Menu,
+                    HasUnevenRows = true,
+                    Root = new TableRoot()
                     {
-                        Intent = TableIntent.Menu,
-                        HasUnevenRows = true,
-                        Root = new TableRoot()
+                        new TableSection("Details")
+                        {
+                            new ViewCell
                             {
-                                new TableSection("Details")
-                                {
-                                    new ViewCell
-                                    {
-                                        View = infoStack,
-                                        Height = 280
-                                    }
-                                },
-                                new TableSection("More")
-                                {
-                                    orders,
-                                    sales
-                                }
+                                View = infoStack,
+                                Height = 280
                             }
-                    };
+                        },
+                        new TableSection("More")
+                        {
+                            orders,
+                            sales
+                        }
+                    }
+                };
                 
               
 
-                Content = new UnspacedStackLayout
+                Content = new StackLayout
+                {
+                    Spacing = 0,
+                    Children =
                     {
-                        Children =
-                            {
-                                new CustomerDetailHeaderView(),
-                                table
-                            }
-                    };
+                        new CustomerDetailHeaderView(),
+                        table
+                    }
+                };
             }
             else
             {
 
-                var stackLayout = new UnspacedStackLayout()
+                var stackLayout = new StackLayout()
+                {
+                    Spacing = 0,
+                    Children =
                     {
-                        Children =
-                            {
-                                new CustomerDetailHeaderView(),
-                                new CustomerDetailContactView(),
-                                new CustomerDetailPhoneView(this),
-                                new CustomerDetailAddressView(),
-                            }
-                        };
+                        new CustomerDetailHeaderView(),
+                        new CustomerDetailContactView(),
+                        new CustomerDetailPhoneView(this),
+                        new CustomerDetailAddressView(),
+                    }
+                };
 
                 Content = new ScrollView() { Content = stackLayout };
             }

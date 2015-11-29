@@ -128,7 +128,7 @@ namespace XamarinCRM.Views.Customers
             #endregion
 
             #region compsose view hierarchy
-            StackLayout stackLayout = new UnspacedStackLayout();
+            StackLayout stackLayout = new StackLayout() { Spacing = 0 };
             stackLayout.Children.Add(loadingLabel);
             stackLayout.Children.Add(activityIndicator);
             stackLayout.Children.Add(chartHeaderView);

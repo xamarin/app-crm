@@ -36,8 +36,8 @@ namespace XamarinCRM
             { 
                 Text = TextResources.Customers_Detail_Address,
                 TextColor = Device.OnPlatform(Palette._003, Palette._007, Palette._006),
-				FontAttributes = FontAttributes.Bold,
-				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
 
@@ -91,8 +91,9 @@ namespace XamarinCRM
             #endregion
 
             #region compose view hierarchy
-            StackLayout stackLayout = new UnspacedStackLayout()
+            StackLayout stackLayout = new StackLayout()
             { 
+                Spacing = 0,
                 Children =
                 {
                     addressTitleLabel,
@@ -114,9 +115,9 @@ namespace XamarinCRM
         async void MapMarkerIconTapped()
         {
             var navPage = new CustomerMapPage(ViewModel)
-                {
-                    Title = "Location"
-                };
+            {
+                Title = "Location"
+            };
             await ViewModel.PushAsync(navPage);
         }
     }

@@ -79,8 +79,9 @@ namespace XamarinCRM.Pages.Customers
             #region compose view hierarchy
             Content = new ScrollView()
             { 
-                Content = new UnspacedStackLayout()
+                Content = new StackLayout()
                 {
+                    Spacing = 0,
                     Children =
                     {
                         customerWeeklySalesChartView,

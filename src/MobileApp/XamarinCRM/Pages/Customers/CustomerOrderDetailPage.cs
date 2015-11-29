@@ -116,8 +116,9 @@ namespace XamarinCRM.Pages.Customers
             productSelectionLabel.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             productSelectionLabel.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
 
-            StackLayout productSelectionStack = new UnspacedStackLayout()
+            StackLayout productSelectionStack = new StackLayout()
             {
+                Spacing = 0,
                 Children =
                 {
                     _ProductSelectionEntry,
@@ -137,8 +138,9 @@ namespace XamarinCRM.Pages.Customers
             priceLabel.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             priceLabel.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
 
-            StackLayout priceStack = new UnspacedStackLayout()
+            StackLayout priceStack = new StackLayout()
             {
+                Spacing = 0,
                 Children =
                 {
                     priceEntry,
@@ -163,7 +165,7 @@ namespace XamarinCRM.Pages.Customers
             dueDateLabel.SetBinding(IsEnabledProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
             dueDateLabel.SetBinding(IsVisibleProperty, "Order.IsOpen", converter: new InverseBooleanConverter());
 
-            StackLayout dueDateStack = new UnspacedStackLayout();
+            StackLayout dueDateStack = new StackLayout() { Spacing = 0 };
             dueDateStack.Children.Add(dueDateEntry);
             dueDateStack.Children.Add(dueDateLabel);
             #endregion
@@ -258,12 +260,13 @@ namespace XamarinCRM.Pages.Customers
             #region compose view hierarchy
             Content = new ScrollView()
             { 
-                Content = new UnspacedStackLayout()
+                Content = new StackLayout()
                 {
+                    Spacing = 0,
                     Children =
                     {
-                        new ContentViewWithBottomBorder() { Content = headerLabelsView },
-                        new ContentViewWithBottomBorder() { Content = orderDetailsGrid },
+                        headerLabelsView,
+                        orderDetailsGrid,
                         loadingImageUrlLabel,
                         imageUrlFetchingActivityIndicator,
                         loadingImageLabel,
@@ -425,8 +428,8 @@ namespace XamarinCRM.Pages.Customers
                 Content = new Label()
                 {
                     Text = labelValue.CapitalizeForAndroid(), 
-                        HorizontalTextAlignment = TextAlignment.End, 
-                        VerticalTextAlignment = TextAlignment.Center,
+                    HorizontalTextAlignment = TextAlignment.End, 
+                    VerticalTextAlignment = TextAlignment.Center,
                     TextColor = Device.OnPlatform(Palette._007, Palette._004, Palette._007),
                 }
             };

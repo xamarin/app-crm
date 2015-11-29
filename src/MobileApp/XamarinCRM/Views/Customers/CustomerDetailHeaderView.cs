@@ -71,8 +71,9 @@ namespace XamarinCRM.Views.Customers
             #endregion
 
             #region compose view hierarchy
-            StackLayout stackLayout = new UnspacedStackLayout()
+            StackLayout stackLayout = new StackLayout()
             {
+                Spacing = 0,
                 Children =
                 {
                     companyLabel,

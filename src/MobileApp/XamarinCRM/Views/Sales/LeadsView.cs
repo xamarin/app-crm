@@ -78,8 +78,9 @@ namespace XamarinCRM
             #endregion
 
             #region compose view hierarchy
-            Content = new UnspacedStackLayout()
+            Content = new StackLayout()
             {
+                Spacing = 0,
                 Children =
                 {
                     leadListHeaderView,

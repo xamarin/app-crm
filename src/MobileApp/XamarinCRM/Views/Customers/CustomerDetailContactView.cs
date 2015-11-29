@@ -35,9 +35,9 @@ namespace XamarinCRM.Views.Customers
             { 
                 Text = TextResources.Contact,
                 TextColor = Device.OnPlatform(Palette._003, Palette._007, Palette._006),
-				FontAttributes = FontAttributes.Bold,
-				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-				LineBreakMode = LineBreakMode.TailTruncation
+                FontAttributes = FontAttributes.Bold,
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                LineBreakMode = LineBreakMode.TailTruncation
             };
 
             Label contactLabel = new Label()
@@ -50,17 +50,15 @@ namespace XamarinCRM.Views.Customers
             #endregion
 
             #region compose view hierarchy
-            Content = new ContentViewWithBottomBorder()
+            Content = new StackLayout()
             { 
-                Content = new UnspacedStackLayout()
-                { 
-                    Children =
-                    {
-                        contactTitleLabel,
-                        contactLabel
-                    },
-                    Padding = new Thickness(20) 
-                } 
+                Spacing= 0,
+                Children =
+                {
+                    contactTitleLabel,
+                    contactLabel
+                },
+                Padding = new Thickness(20) 
             };
             #endregion
         }

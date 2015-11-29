@@ -60,7 +60,6 @@
     <Compile Include="Pages\Customers\CustomerSalesPage.cs" />
     <Compile Include="ViewModels\Customers\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModels\Customers\CustomersViewModel.cs" />
-    <Compile Include="Layouts\UnspacedStackLayout.cs" />
     <Compile Include="Statics\MessagingServiceConstants.cs" />
     <Compile Include="Statics\Palette.cs" />
     <Compile Include="Services\IConfigFetcher.cs" />
@@ -135,7 +134,6 @@
     <Compile Include="Views\Customers\CustomerOrderListView.xaml.cs">
       <DependentUpon>CustomerOrderListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ContentViewWithBottomBorder.cs" />
     <Compile Include="Views\NonPersistentSelectedItemListView.xaml.cs">
       <DependentUpon>NonPersistentSelectedItemListView.xaml</DependentUpon>
     </Compile>
@@ -310,15 +308,12 @@
     <Folder Include="Clients\" />
     <Folder Include="Extensions\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Layouts\" />
     <Folder Include="Statics\" />
     <Folder Include="Config\" />
     <Folder Include="Pages\Splash\" />
     <Folder Include="ViewModels\Splash\" />
     <Folder Include="ViewModels\Base\" />
     <Folder Include="Enums\" />
-    <Folder Include="Cells\Customers\" />
-    <Folder Include="Cells\Products\" />
     <Folder Include="Cells\Sales\" />
     <Folder Include="Pages\About\" />
   </ItemGroup>
