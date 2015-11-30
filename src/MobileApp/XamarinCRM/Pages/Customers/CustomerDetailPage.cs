@@ -32,9 +32,6 @@ namespace XamarinCRM.Pages.Customers
     {
         public CustomerDetailPage(Account account)
         {
-
-
-
             if (Device.OS == TargetPlatform.iOS)
             {
                 
@@ -98,8 +95,6 @@ namespace XamarinCRM.Pages.Customers
                         }
                     }
                 };
-                
-              
 
                 Content = new StackLayout
                 {
@@ -113,7 +108,6 @@ namespace XamarinCRM.Pages.Customers
             }
             else
             {
-
                 var stackLayout = new StackLayout()
                 {
                     Spacing = 0,
@@ -128,9 +122,6 @@ namespace XamarinCRM.Pages.Customers
 
                 Content = new ScrollView() { Content = stackLayout };
             }
-
-
-
         }
 
         protected override void OnAppearing()

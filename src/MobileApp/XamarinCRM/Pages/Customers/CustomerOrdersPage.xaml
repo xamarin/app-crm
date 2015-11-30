@@ -23,6 +23,12 @@ xmlns:statics="clr-namespace:XamarinCRM.Statics">
 			<OnPlatform.Android>
 				<AbsoluteLayout>
 
+					<!-- see CustomerOrderListView.xaml for setup, bindings, etc. -->	
+					<customerViews:CustomerOrderListView 
+					AbsoluteLayout.LayoutFlags="All" 
+					AbsoluteLayout.LayoutBounds="0,0,1,1" 
+					ItemTapped="OrderItemTapped" />
+
 					<views:FloatingActionButtonView x:Name="AddNewOrderButton" 
 					AbsoluteLayout.LayoutFlags="PositionProportional" 
 					AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize" 
@@ -31,11 +37,7 @@ xmlns:statics="clr-namespace:XamarinCRM.Statics">
 					ColorPressed="{x:Static statics:Palette._002}"
 					ColorRipple="{x:Static statics:Palette._001}"/>
 
-					<!-- see CustomerOrderListView.xaml for setup, bindings, etc. -->	
-					<customerViews:CustomerOrderListView 
-					AbsoluteLayout.LayoutFlags="All" 
-					AbsoluteLayout.LayoutBounds="0,0,1,1" 
-					ItemTapped="OrderItemTapped" />
+
 
 				</AbsoluteLayout>
 			</OnPlatform.Android>

@@ -36,22 +36,25 @@ namespace XamarinCRM.Pages.Customers
             {
                 BindingContext = new CustomerDetailViewModel(account) { Navigation = this.Navigation },
                 Title = TextResources.Customers_Detail_Tab_Title,
-                Icon = new FileImageSource() { File = "CustomersTab" } // only used  on iOS
             };
+            if (Device.OS == TargetPlatform.iOS)
+                customerDetailPage.Icon = new FileImageSource() { File = "CustomersTab" };
 
             var customerOrdersPage = new CustomerOrdersPage()
             {
                 BindingContext = new OrdersViewModel(account) { Navigation = this.Navigation },
                 Title = TextResources.Customers_Orders_Tab_Title,
-                Icon = new FileImageSource() { File = "ProductsTab" } // only used  on iOS
             };
+            if (Device.OS == TargetPlatform.iOS)
+                customerOrdersPage.Icon = Icon = new FileImageSource() { File = "ProductsTab" };
 
             var customerSalesPage = new CustomerSalesPage()
             {
                 BindingContext = new CustomerSalesViewModel(account) { Navigation = this.Navigation },
                 Title = TextResources.Customers_Sales_Tab_Title,
-                Icon = new FileImageSource() { File = "SalesTab" } // only used  on iOS
             };
+            if (Device.OS == TargetPlatform.iOS)
+                customerSalesPage.Icon = Icon = new FileImageSource() { File = "SalesTab" };
 
             Children.Add(customerDetailPage);
             Children.Add(customerOrdersPage);

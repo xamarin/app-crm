@@ -53,7 +53,7 @@ namespace XamarinCRM.ViewModels.Customers
                 this.Title = "Account";
             }
 
-            this.Icon = "account.png";
+//            this.Icon = "account.png";
 
             _DataClient = DependencyService.Get<IDataClient>();
             _GeoCodingService = DependencyService.Get<IGeoCodingService>();

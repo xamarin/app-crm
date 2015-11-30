@@ -77,9 +77,10 @@ namespace XamarinCRM.Views.Customers
                 Legend = new ChartLegend()
                 {
                     DockPosition = LegendPlacement.Top
-                },
-                //BackgroundColor = Color.Transparent
+                }
             };
+            if (Device.OS == TargetPlatform.Android)
+                chart.BackgroundColor = Color.Transparent;
             chart.Legend.LabelStyle.TextColor = LegendLabelColor;
             
             chart.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
