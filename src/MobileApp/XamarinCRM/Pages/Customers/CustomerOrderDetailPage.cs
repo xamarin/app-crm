@@ -21,14 +21,12 @@
 using System;
 using Xamarin.Forms;
 using XamarinCRM.Converters;
-using XamarinCRM.Layouts;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.Pages.Products;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.ViewModels.Products;
 using Xamarin;
-using XamarinCRM.Views;
 
 namespace XamarinCRM.Pages.Customers
 {

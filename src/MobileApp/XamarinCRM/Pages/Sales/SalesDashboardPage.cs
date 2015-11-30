@@ -22,7 +22,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin;
 using Xamarin.Forms;
-using XamarinCRM.Layouts;
 using XamarinCRM.Pages.Splash;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Sales;

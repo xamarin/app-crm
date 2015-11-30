@@ -20,12 +20,10 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
 using Xamarin.Forms;
-using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Base;
 using Lotz.Xam.Messaging;
-using XamarinCRM.Views;
 
 namespace XamarinCRM
 {

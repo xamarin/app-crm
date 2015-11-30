@@ -20,7 +20,6 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
-using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using XamarinCRM.Views.Sales;
 using XamarinCRM.Views.Base;

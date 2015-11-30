@@ -21,7 +21,6 @@
 using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 using XamarinCRM.Converters;
-using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using XamarinCRM.Views.Base;
 using XamarinCRM.Views.Sales;

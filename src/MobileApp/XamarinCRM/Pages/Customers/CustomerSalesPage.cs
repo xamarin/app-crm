@@ -20,7 +20,6 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using Xamarin;
 using Xamarin.Forms;
-using XamarinCRM.Layouts;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.Statics;
 using XamarinCRM.Views.Customers;
