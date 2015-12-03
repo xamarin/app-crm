@@ -1,38 +1,37 @@
 ﻿// The MIT License (MIT)
-// 
+//
 // Copyright (c) 2015 Xamarin
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
 // the Software without restriction, including without limitation the rights to
 // use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
 // the Software, and to permit persons to whom the Software is furnished to do so,
 // subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in all
 // copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
 // FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-using System; 
-using System.Threading.Tasks;
-using XamarinCRM.Pages;
-using Xamarin.Forms;
-using Connectivity.Plugin;
-using XamarinCRM.Localization;
-using XamarinCRM.Services;
-using XamarinCRM.Pages.Splash;
-using Xamarin.Forms.Xaml;
+using System;
+using System.Collections.Generic;
 
-//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+using Xamarin.Forms;
+using XamarinCRM.Services;
+using XamarinCRM.Localization;
+using XamarinCRM.Pages.Splash;
+using XamarinCRM.Pages;
+using System.Threading.Tasks;
+using Connectivity.Plugin;
 
 namespace XamarinCRM
 {
-    public class App : Application
+    public partial class App : Application
     {
         static Application app;
         public static Application CurrentApp
@@ -43,6 +42,8 @@ namespace XamarinCRM
         readonly IAuthenticationService _AuthenticationService;
         public App()
         {
+            InitializeComponent();
+
             app = this;
             _AuthenticationService = DependencyService.Get<IAuthenticationService>();
 
@@ -103,3 +104,4 @@ namespace XamarinCRM
         public static int AnimationSpeed = 250;
     }
 }
+

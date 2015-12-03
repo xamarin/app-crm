@@ -20,29 +20,23 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-
 using Xamarin.Forms;
-using XamarinCRM.Pages.Base;
-using Xamarin;
-using XamarinCRM.Statics;
+using XamarinCRM.ViewModels.Customers;
+using XamarinCRM.Views.Base;
+using System.Windows.Input;
+using System.Threading.Tasks;
+using Lotz.Xam.Messaging;
 
-namespace XamarinCRM.Pages.Products
+namespace XamarinCRM.Views.Customers
 {
-    public partial class ProductDetailPage : ProductDetailPageXaml
+    public partial class CustomerDetailPhoneView : CustomerDetailPhoneViewXaml
     {
-        public ProductDetailPage()
+        public CustomerDetailPhoneView()
         {
             InitializeComponent();
         }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            Insights.Track(InsightsReportingConstants.PAGE_PRODUCTDETAIL);
-        }
     }
 
-    public abstract class ProductDetailPageXaml : ModelBoundContentPage<ProductDetailViewModel> { }
+    public abstract class CustomerDetailPhoneViewXaml : ModelBoundContentView<CustomerDetailViewModel> { }
 }
 

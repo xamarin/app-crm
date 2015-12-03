@@ -28,9 +28,9 @@ using XamarinCRM.Models;
 
 namespace XamarinCRM.Pages.Customers
 {
-    public class CustomerDetailPage : ModelBoundContentPage<CustomerDetailViewModel>
+    public class OldCustomerDetailPage : ModelBoundContentPage<CustomerDetailViewModel>
     {
-        public CustomerDetailPage(Account account)
+        public OldCustomerDetailPage(Account account)
         {
             if (Device.OS == TargetPlatform.iOS)
             {
@@ -69,7 +69,7 @@ namespace XamarinCRM.Pages.Customers
                     {
                                 
                         new CustomerDetailContactView(),
-                        new CustomerDetailPhoneView(this),
+                        new CustomerDetailPhoneView(),
                         new CustomerDetailAddressView(),
                     }
                 };
@@ -115,7 +115,7 @@ namespace XamarinCRM.Pages.Customers
                     {
                         new CustomerDetailHeaderView(),
                         new CustomerDetailContactView(),
-                        new CustomerDetailPhoneView(this),
+                        new CustomerDetailPhoneView(),
                         new CustomerDetailAddressView(),
                     }
                 };

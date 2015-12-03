@@ -27,7 +27,7 @@ using XamarinCRM.Views.Sales;
 
 namespace XamarinCRM.Views.Customers
 {
-    public class CustomerWeeklySalesChartView : ModelBoundContentView<CustomerSalesViewModel>
+    public class OldCustomerWeeklySalesChartView : ModelBoundContentView<CustomerSalesViewModel>
     {
         static Color MajorAxisAndLabelColor
         {
@@ -39,7 +39,7 @@ namespace XamarinCRM.Views.Customers
             get { return Device.OnPlatform(160, 190, 150); }
         }
 
-        public CustomerWeeklySalesChartView()
+        public OldCustomerWeeklySalesChartView()
         {
             #region leads list activity indicator
             ActivityIndicator activityIndicator = new ActivityIndicator()

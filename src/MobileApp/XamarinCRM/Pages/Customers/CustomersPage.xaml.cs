@@ -44,7 +44,7 @@ namespace XamarinCRM.Pages.Customers
             #endregion
         }
 
-        async void CustomerItemTapped (object sender, ItemTappedEventArgs e)
+        async void CustomerItemTapped(object sender, ItemTappedEventArgs e)
         {
             Account account = (Account)e.Item;
             await PushTabbedPage(account);
@@ -68,21 +68,27 @@ namespace XamarinCRM.Pages.Customers
         {
             if (Device.OS == TargetPlatform.iOS)
             {
-                var customerDetailPage = new CustomerDetailPage(account)
-                    {
-                        BindingContext = new CustomerDetailViewModel(account) { Navigation = this.Navigation },
-                        Title = TextResources.Customers_Detail_Tab_Title,
-                        Icon = new FileImageSource() { File = "CustomersTab" } // only used  on iOS
-                    };
+                var customerDetailPage = new CustomerDetailPage()
+                {
+                    BindingContext = new CustomerDetailViewModel(account, this) { Navigation = this.Navigation },
+                    Title = TextResources.Customers_Detail_Tab_Title,
+                    Icon = new FileImageSource() { File = "CustomersTab" } // only used  on iOS
+                };
                 await Navigation.PushAsync(customerDetailPage);
             }
             else
             {
-                await Navigation.PushAsync(new CustomerTabbedPage(ViewModel.Navigation, account));
+                await Navigation.PushAsync(new CustomerTabbedPage()
+                    { 
+                        BindingContext = new CustomerTabbedPageViewModel(account, this) { }
+                    });
             }
         }
     }
 
-    public partial class CustomersPageXaml : ModelBoundContentPage<CustomersViewModel> { }
+    public abstract class CustomersPageXaml : ModelBoundContentPage<CustomersViewModel>
+    {
+
+    }
 }
 

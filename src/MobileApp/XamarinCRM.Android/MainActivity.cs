@@ -34,7 +34,7 @@ namespace XamarinCRMAndroid
             Insights.Initialize("2b82ddc37582e6c1bece7e5901e8bae3bf7bfb26", this);
             //#endif
 
-            LoadApplication(new App());
+            LoadApplication(new OldApp());
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)

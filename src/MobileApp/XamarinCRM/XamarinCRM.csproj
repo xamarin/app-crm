@@ -38,7 +38,6 @@
     <Compile Include="Pages\Sales\LeadContactDetailPage.cs" />
     <Compile Include="Pages\Sales\LeadDetailPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="App.cs" />
     <Compile Include="Properties\Attributes\CurrencyAttribute.cs" />
     <Compile Include="Properties\Attributes\DisplayAttribute.cs" />
     <Compile Include="Services\AuthInfo.cs" />
@@ -56,7 +55,6 @@
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
-    <Compile Include="Pages\Customers\CustomerDetailPage.cs" />
     <Compile Include="Pages\Customers\CustomerSalesPage.cs" />
     <Compile Include="ViewModels\Customers\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModels\Customers\CustomersViewModel.cs" />
@@ -64,18 +62,13 @@
     <Compile Include="Statics\Palette.cs" />
     <Compile Include="Services\IConfigFetcher.cs" />
     <Compile Include="ViewModels\Customers\OrdersViewModel.cs" />
-    <Compile Include="Views\Customers\OrderListHeaderView.cs" />
     <Compile Include="Converters\ShortDatePatternConverter.cs" />
     <Compile Include="Converters\CurrencyDoubleConverter.cs" />
     <Compile Include="Services\IAuthenticator.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="ViewModels\Customers\OrderDetailViewModel.cs" />
-    <Compile Include="Pages\Customers\CustomerTabbedPage.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="Converters\InvertedBooleanConverter.cs" />
-    <Compile Include="Views\Customers\CustomerDetailContactView.cs" />
-    <Compile Include="Views\Customers\CustomerDetailPhoneView.cs" />
-    <Compile Include="Views\Customers\CustomerDetailAddressView.cs" />
     <Compile Include="Pages\Customers\CustomerMapPage.cs" />
     <Compile Include="ViewModels\Customers\CustomerMapViewModel.cs" />
     <Compile Include="Views\Sales\LeadsView.cs" />
@@ -86,11 +79,8 @@
     <Compile Include="Converters\ConvertableConverter.cs" />
     <Compile Include="Services\IGeoCodingService.cs" />
     <Compile Include="Services\GeoCodingService.cs" />
-    <Compile Include="Views\Customers\CustomerCategorySalesChartView.cs" />
-    <Compile Include="Views\Customers\CustomerWeeklySalesChartView.cs" />
     <Compile Include="Views\Sales\SalesDashboardChartView.cs" />
     <Compile Include="ViewModels\Customers\CustomerSalesViewModel.cs" />
-    <Compile Include="Views\Customers\CustomerDetailHeaderView.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Views\Base\ModelBoundContentView.cs" />
     <Compile Include="Pages\Base\ModelBoundContentPage.cs" />
@@ -161,6 +151,37 @@
     <Compile Include="Views\Products\ProductListView.xaml.cs">
       <DependentUpon>ProductListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Customers\OldCustomerTabbedPage.cs" />
+    <Compile Include="Pages\Customers\CustomerTabbedPage.xaml.cs">
+      <DependentUpon>CustomerTabbedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Customers\CustomerTabbedPageViewModel.cs" />
+    <Compile Include="Pages\Base\ModelBoundTabbedPage.cs" />
+    <Compile Include="Pages\Customers\OldCustomerDetailPage.cs" />
+    <Compile Include="Pages\Customers\CustomerDetailPage.xaml.cs">
+      <DependentUpon>CustomerDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\OldCustomerDetailHeaderView.cs" />
+    <Compile Include="Views\Customers\OldCustomerDetailContactView.cs" />
+    <Compile Include="Views\Customers\OldCustomerDetailPhoneView.cs" />
+    <Compile Include="Views\Customers\OldCustomerDetailAddressView.cs" />
+    <Compile Include="Views\Customers\OldCustomerCategorySalesChartView.cs" />
+    <Compile Include="Views\Customers\OldCustomerWeeklySalesChartView.cs" />
+    <Compile Include="Views\Customers\CustomerDetailHeaderView.xaml.cs">
+      <DependentUpon>CustomerDetailHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\CustomerDetailAddressView.xaml.cs">
+      <DependentUpon>CustomerDetailAddressView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\CustomerDetailContactView.xaml.cs">
+      <DependentUpon>CustomerDetailContactView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\CustomerDetailPhoneView.xaml.cs">
+      <DependentUpon>CustomerDetailPhoneView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -211,6 +232,27 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Products\ProductListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Customers\CustomerTabbedPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Customers\CustomerDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\CustomerDetailHeaderView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\CustomerDetailAddressView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\CustomerDetailContactView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\CustomerDetailPhoneView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

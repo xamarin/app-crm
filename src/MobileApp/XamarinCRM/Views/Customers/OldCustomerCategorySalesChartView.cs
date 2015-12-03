@@ -27,7 +27,7 @@ using XamarinCRM.Statics;
 
 namespace XamarinCRM.Views.Customers
 {
-    public class CustomerCategorySalesChartView : ModelBoundContentView<CustomerSalesViewModel>
+    public class OldCustomerCategorySalesChartView : ModelBoundContentView<CustomerSalesViewModel>
     {
         static double ChartHeight
         {
@@ -39,7 +39,7 @@ namespace XamarinCRM.Views.Customers
             get { return Device.OnPlatform(Palette._011, Palette._011, Color.White); }
         }
 
-        public CustomerCategorySalesChartView()
+        public OldCustomerCategorySalesChartView()
         {
             #region chart series
             PieSeries pieSeries = new PieSeries()

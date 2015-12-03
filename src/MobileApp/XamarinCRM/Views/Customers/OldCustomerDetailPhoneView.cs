@@ -18,106 +18,105 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+using System;
 using Xamarin.Forms;
-using XamarinCRM.Pages.Customers;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Views.Base;
+using Lotz.Xam.Messaging;
 
 namespace XamarinCRM
 {
-    public class CustomerDetailAddressView : ModelBoundContentView<CustomerDetailViewModel>
+    public class OldCustomerDetailPhoneView : ModelBoundContentView<CustomerDetailViewModel>
     {
-        public CustomerDetailAddressView()
+        readonly Page _Page;
+
+        public OldCustomerDetailPhoneView(Page page)
         {
+            _Page = page;
+
             #region labels
-            Label addressTitleLabel = new Label()
+            Label phoneTitleLabel = new Label()
             { 
-                Text = TextResources.Customers_Detail_Address,
+                Text = TextResources.Phone,
                 TextColor = Device.OnPlatform(Palette._003, Palette._007, Palette._006),
                 FontAttributes = FontAttributes.Bold,
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
 
-            Label addressStreetLabel = new Label()
+            Label phoneLabel = new Label()
             { 
                 TextColor = Palette._006, 
                 FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
                 LineBreakMode = LineBreakMode.TailTruncation
             };
-            addressStreetLabel.SetBinding(Label.TextProperty, "Account.Street");
-
-            Label addressCityLabel = new Label()
-            { 
-                TextColor = Palette._006, 
-                FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
-                LineBreakMode = LineBreakMode.TailTruncation
-            };
-            addressCityLabel.SetBinding(Label.TextProperty, "Account.City");
-
-            Label addressStatePostalLabel = new Label()
-            { 
-                TextColor = Palette._006, 
-                FontSize = Device.OnPlatform(Device.GetNamedSize(NamedSize.Default, typeof(Label)), Device.GetNamedSize(NamedSize.Medium, typeof(Label)), Device.GetNamedSize(NamedSize.Default, typeof(Label))),
-                LineBreakMode = LineBreakMode.TailTruncation
-            };
-            addressStatePostalLabel.SetBinding(Label.TextProperty, "Account.StatePostal");
+            phoneLabel.SetBinding(Label.TextProperty, "Account.Phone");
             #endregion
 
-            #region map marker image
-            Image mapMarkerImage = new Image()
+            #region phone image
+            Image phoneImage = new Image()
             { 
-                Source = new FileImageSource { File = Device.OnPlatform("map_marker_ios", "map_marker_android", null) }, 
+                Source = new FileImageSource { File = Device.OnPlatform("phone_ios", "phone_android", null) }, 
                 Aspect = Aspect.AspectFit, 
-                HeightRequest = 25
+                HeightRequest = 25 
             }; 
 
             // an expanded view to catch touches, because the image is a bit small
-            AbsoluteLayout mapMarkerImageTouchView = new AbsoluteLayout()
+            AbsoluteLayout phoneImageTouchView = new AbsoluteLayout()
             { 
                 WidthRequest = RowSizes.MediumRowHeightDouble, 
                 HeightRequest = RowSizes.MediumRowHeightDouble
             };
 
-            mapMarkerImageTouchView.GestureRecognizers.Add(
+            phoneImageTouchView.Children.Add(phoneImage, new Rectangle(.5, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
+
+            phoneImageTouchView.GestureRecognizers.Add(
                 new TapGestureRecognizer()
                 { 
-                    Command = new Command(MapMarkerIconTapped) 
+                    Command = new Command(() => OnPhoneTapped(phoneLabel, null)) 
                 });
-
-            mapMarkerImageTouchView.Children.Add(mapMarkerImage, new Rectangle(.5, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
             #endregion
 
             #region compose view hierarchy
             StackLayout stackLayout = new StackLayout()
-            { 
+            {
                 Spacing = 0,
                 Children =
                 {
-                    addressTitleLabel,
-                    addressStreetLabel,
-                    addressCityLabel,
-                    addressStatePostalLabel
-
+                    phoneTitleLabel,
+                    phoneLabel
                 },
                 Padding = new Thickness(20) 
             };
             AbsoluteLayout absoluteLayout = new AbsoluteLayout();
             absoluteLayout.Children.Add(stackLayout, new Rectangle(0, .5, 1, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional | AbsoluteLayoutFlags.WidthProportional);
-            absoluteLayout.Children.Add(mapMarkerImageTouchView, new Rectangle(.95, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
+            absoluteLayout.Children.Add(phoneImageTouchView, new Rectangle(.95, .5, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), AbsoluteLayoutFlags.PositionProportional);
             #endregion
 
             Content = absoluteLayout;
         }
 
-        async void MapMarkerIconTapped()
+        async void OnPhoneTapped(object sender, EventArgs e)
         {
-            var navPage = new CustomerMapPage(ViewModel)
+            if (sender == null)
+                return;
+
+            string phoneNumber = ((Label)sender).Text;
+
+            if (String.IsNullOrWhiteSpace(phoneNumber))
+                return;        
+
+            if (await _Page.DisplayAlert(
+                    title: TextResources.Customers_Detail_CallDialog_Title,
+                    message: TextResources.Customers_Detail_CallDialog_Message + phoneNumber + "?",
+                    accept: TextResources.Customers_Detail_CallDialog_Accept,
+                    cancel: TextResources.Customers_Detail_CallDialog_Cancel))
             {
-                Title = "Location"
-            };
-            await ViewModel.PushAsync(navPage);
+                var phoneCallTask = MessagingPlugin.PhoneDialer;
+                if (phoneCallTask.CanMakePhoneCall)
+                    phoneCallTask.MakePhoneCall(phoneNumber.Replace("-", ""));
+            }
         }
     }
 }

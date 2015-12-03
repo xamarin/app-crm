@@ -21,7 +21,7 @@
 using System;
 using Xamarin.Forms;
 
-namespace XamarinCRM
+namespace XamarinCRM.Converters
 {
     public class LoadingLabelHeightConverter : IValueConverter
     {

@@ -19,30 +19,38 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-
+using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
-using XamarinCRM.Pages.Base;
-using Xamarin;
-using XamarinCRM.Statics;
 
-namespace XamarinCRM.Pages.Products
+namespace XamarinCRM.Pages.Base
 {
-    public partial class ProductDetailPage : ProductDetailPageXaml
+    /// <summary>
+    /// A generically typed ContentPage that enforces the type of its BindingContext according to TViewModel.
+    /// </summary>
+    public abstract class ModelBoundTabbedPage<TViewModel> : TabbedPage where TViewModel : BaseViewModel
     {
-        public ProductDetailPage()
+        /// <summary>
+        /// Gets the generically typed ViewModel from the underlying BindingContext.
+        /// </summary>
+        /// <value>The generically typed ViewModel.</value>
+        protected TViewModel ViewModel
         {
-            InitializeComponent();
+            get { return base.BindingContext as TViewModel; }
         }
 
-        protected override void OnAppearing()
+        /// <summary>
+        /// Sets the underlying BindingContext as the defined generic type.
+        /// </summary>
+        /// <value>The generically typed ViewModel.</value>
+        /// <remarks>Enforces a generically typed BindingContext, instead of the underlying loosely object-typed BindingContext.</remarks>
+        public new TViewModel BindingContext
         {
-            base.OnAppearing();
-
-            Insights.Track(InsightsReportingConstants.PAGE_PRODUCTDETAIL);
+            set 
+            { 
+                base.BindingContext = value; 
+                base.OnPropertyChanged("BindingContext");
+            }
         }
     }
-
-    public abstract class ProductDetailPageXaml : ModelBoundContentPage<ProductDetailViewModel> { }
 }
 

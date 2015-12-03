@@ -67,11 +67,11 @@ namespace XamarinCRM.Pages.Customers
             #endregion
 
             #region weekly sales chart
-            CustomerWeeklySalesChartView customerWeeklySalesChartView = new CustomerWeeklySalesChartView();
+            OldCustomerWeeklySalesChartView customerWeeklySalesChartView = new OldCustomerWeeklySalesChartView();
             #endregion
 
             #region category sales chart
-            CustomerCategorySalesChartView customerCategorySalesChartView = new CustomerCategorySalesChartView();
+            OldCustomerCategorySalesChartView customerCategorySalesChartView = new OldCustomerCategorySalesChartView();
             #endregion
 
 

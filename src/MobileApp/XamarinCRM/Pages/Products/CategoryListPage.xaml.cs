@@ -65,6 +65,6 @@ namespace XamarinCRM.Pages.Products
         }
     }
 
-    public partial class CategoryListPageXaml : ModelBoundContentPage<CategoriesViewModel> { }
+    public abstract class CategoryListPageXaml : ModelBoundContentPage<CategoriesViewModel> { }
 }
 

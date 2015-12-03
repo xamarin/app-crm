@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<customerPages:CustomersPageXaml 
+<base:CustomersPageXaml
 xmlns="http://xamarin.com/schemas/2014/forms" 
 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 x:Class="XamarinCRM.Pages.Customers.CustomersPage" 
-xmlns:customerPages="clr-namespace:XamarinCRM.Pages.Customers" 
+xmlns:base="clr-namespace:XamarinCRM.Pages.Customers" 
 xmlns:customerViews="clr-namespace:XamarinCRM.Views.Customers">
-	<customerPages:CustomersPageXaml.Content>
+	<base:CustomersPageXaml.Content>
 		<customerViews:CustomerListView ItemTapped="CustomerItemTapped" />
-	</customerPages:CustomersPageXaml.Content>
-</customerPages:CustomersPageXaml>
+	</base:CustomersPageXaml.Content>
+</base:CustomersPageXaml>

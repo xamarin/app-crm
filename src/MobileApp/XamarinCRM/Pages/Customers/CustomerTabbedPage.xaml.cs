@@ -23,26 +23,18 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using XamarinCRM.Pages.Base;
-using Xamarin;
-using XamarinCRM.Statics;
+using XamarinCRM.ViewModels.Customers;
 
-namespace XamarinCRM.Pages.Products
+namespace XamarinCRM.Pages.Customers
 {
-    public partial class ProductDetailPage : ProductDetailPageXaml
+    public partial class CustomerTabbedPage : CustomerTabbedPageXaml
     {
-        public ProductDetailPage()
+        public CustomerTabbedPage()
         {
             InitializeComponent();
         }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            Insights.Track(InsightsReportingConstants.PAGE_PRODUCTDETAIL);
-        }
     }
 
-    public abstract class ProductDetailPageXaml : ModelBoundContentPage<ProductDetailViewModel> { }
+    public abstract class CustomerTabbedPageXaml : ModelBoundTabbedPage<CustomerTabbedPageViewModel> { }
 }
 

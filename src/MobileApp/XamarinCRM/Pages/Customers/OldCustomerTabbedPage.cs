@@ -24,17 +24,17 @@ using XamarinCRM.Models;
 
 namespace XamarinCRM.Pages.Customers
 {
-    public class CustomerTabbedPage : TabbedPage
+    public class OldCustomerTabbedPage : TabbedPage
     {
-        public CustomerTabbedPage(INavigation navigation, Account account)
+        public OldCustomerTabbedPage(Account account)
         {
             Title = account.Company;
             // since we're modally presented this tabbed view (because Android doesn't natively support nested tabs),
             // this tool bar item provides a way to get back to the Customers list
 
-            var customerDetailPage = new CustomerDetailPage(account)
+            var customerDetailPage = new CustomerDetailPage()
             {
-                BindingContext = new CustomerDetailViewModel(account) { Navigation = this.Navigation },
+                BindingContext = new CustomerDetailViewModel(account, this) { Navigation = this.Navigation },
                 Title = TextResources.Customers_Detail_Tab_Title,
             };
             if (Device.OS == TargetPlatform.iOS)
