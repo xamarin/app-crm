@@ -17,14 +17,15 @@ xmlns:core="clr-namespace:System">
 		LineBreakMode="TailTruncation">
 			<Label.TextColor>
 				<OnPlatform x:TypeArguments="Color" 
-				iOS="{x:Static statics:Palette._003}"
-				Android="{x:Static statics:Palette._007}"
+				iOS="{x:Static statics:Palette._003}" 
+				Android="{x:Static statics:Palette._007}" 
 				WinPhone="{x:Static statics:Palette._006}" />
 			</Label.TextColor>
 		</Label>
 
 		<Label
-		TextColor="{x:Static statics:Palette._006}"
+		Text="{Binding Account.DisplayContact}" 
+		TextColor="{x:Static statics:Palette._006}" 
 		LineBreakMode="TailTruncation" 
 		Style="{DynamicResource Label_Default-Medium-Default}" />
 
