@@ -1762,20 +1762,20 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f01008a
 			public const int buttonTintMode = 2130772106;
 			
-			// aapt resource value: 0x7f010001
-			public const int cameraBearing = 2130771969;
-			
-			// aapt resource value: 0x7f010002
-			public const int cameraTargetLat = 2130771970;
-			
-			// aapt resource value: 0x7f010003
-			public const int cameraTargetLng = 2130771971;
-			
 			// aapt resource value: 0x7f010004
-			public const int cameraTilt = 2130771972;
+			public const int cameraBearing = 2130771972;
 			
 			// aapt resource value: 0x7f010005
-			public const int cameraZoom = 2130771973;
+			public const int cameraTargetLat = 2130771973;
+			
+			// aapt resource value: 0x7f010006
+			public const int cameraTargetLng = 2130771974;
+			
+			// aapt resource value: 0x7f010007
+			public const int cameraTilt = 2130771975;
+			
+			// aapt resource value: 0x7f010008
+			public const int cameraZoom = 2130771976;
 			
 			// aapt resource value: 0x7f010020
 			public const int cardBackgroundColor = 2130772000;
@@ -1801,8 +1801,8 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f010115
 			public const int checkedTextViewStyle = 2130772245;
 			
-			// aapt resource value: 0x7f010012
-			public const int circleCrop = 2130771986;
+			// aapt resource value: 0x7f010002
+			public const int circleCrop = 2130771970;
 			
 			// aapt resource value: 0x7f0100a1
 			public const int closeIcon = 2130772129;
@@ -2026,11 +2026,11 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f01009e
 			public const int iconifiedByDefault = 2130772126;
 			
-			// aapt resource value: 0x7f010011
-			public const int imageAspectRatio = 2130771985;
+			// aapt resource value: 0x7f010001
+			public const int imageAspectRatio = 2130771969;
 			
-			// aapt resource value: 0x7f010010
-			public const int imageAspectRatioAdjust = 2130771984;
+			// aapt resource value: 0x7f010000
+			public const int imageAspectRatioAdjust = 2130771968;
 			
 			// aapt resource value: 0x7f010076
 			public const int indeterminateProgressStyle = 2130772086;
@@ -2122,8 +2122,8 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f0100f7
 			public const int listPreferredItemPaddingRight = 2130772215;
 			
-			// aapt resource value: 0x7f010006
-			public const int liteMode = 2130771974;
+			// aapt resource value: 0x7f010009
+			public const int liteMode = 2130771977;
 			
 			// aapt resource value: 0x7f01006e
 			public const int logo = 2130772078;
@@ -2131,8 +2131,8 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f010127
 			public const int logoDescription = 2130772263;
 			
-			// aapt resource value: 0x7f010000
-			public const int mapType = 2130771968;
+			// aapt resource value: 0x7f010003
+			public const int mapType = 2130771971;
 			
 			// aapt resource value: 0x7f01004f
 			public const int maxActionInlineWidth = 2130772047;
@@ -2449,29 +2449,29 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f0100aa
 			public const int track = 2130772138;
 			
-			// aapt resource value: 0x7f010007
-			public const int uiCompass = 2130771975;
-			
-			// aapt resource value: 0x7f01000f
-			public const int uiMapToolbar = 2130771983;
-			
-			// aapt resource value: 0x7f010008
-			public const int uiRotateGestures = 2130771976;
-			
-			// aapt resource value: 0x7f010009
-			public const int uiScrollGestures = 2130771977;
-			
 			// aapt resource value: 0x7f01000a
-			public const int uiTiltGestures = 2130771978;
+			public const int uiCompass = 2130771978;
+			
+			// aapt resource value: 0x7f010012
+			public const int uiMapToolbar = 2130771986;
 			
 			// aapt resource value: 0x7f01000b
-			public const int uiZoomControls = 2130771979;
+			public const int uiRotateGestures = 2130771979;
 			
 			// aapt resource value: 0x7f01000c
-			public const int uiZoomGestures = 2130771980;
+			public const int uiScrollGestures = 2130771980;
 			
 			// aapt resource value: 0x7f01000d
-			public const int useViewLifecycle = 2130771981;
+			public const int uiTiltGestures = 2130771981;
+			
+			// aapt resource value: 0x7f01000e
+			public const int uiZoomControls = 2130771982;
+			
+			// aapt resource value: 0x7f01000f
+			public const int uiZoomGestures = 2130771983;
+			
+			// aapt resource value: 0x7f010010
+			public const int useViewLifecycle = 2130771984;
 			
 			// aapt resource value: 0x7f0100a5
 			public const int voiceIcon = 2130772133;
@@ -2506,8 +2506,8 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f0100b2
 			public const int windowNoTitle = 2130772146;
 			
-			// aapt resource value: 0x7f01000e
-			public const int zOrderOnTop = 2130771982;
+			// aapt resource value: 0x7f010011
+			public const int zOrderOnTop = 2130771985;
 			
 			static Attribute()
 			{
@@ -3705,11 +3705,11 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f090041
 			public const int activity_chooser_view_content = 2131296321;
 			
-			// aapt resource value: 0x7f090010
-			public const int adjust_height = 2131296272;
+			// aapt resource value: 0x7f09000b
+			public const int adjust_height = 2131296267;
 			
-			// aapt resource value: 0x7f090011
-			public const int adjust_width = 2131296273;
+			// aapt resource value: 0x7f09000c
+			public const int adjust_width = 2131296268;
 			
 			// aapt resource value: 0x7f090097
 			public const int agentWebView = 2131296407;
@@ -3843,8 +3843,8 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f09002c
 			public const int homeAsUp = 2131296300;
 			
-			// aapt resource value: 0x7f09000b
-			public const int hybrid = 2131296267;
+			// aapt resource value: 0x7f09000e
+			public const int hybrid = 2131296270;
 			
 			// aapt resource value: 0x7f090046
 			public const int icon = 2131296326;
@@ -3921,11 +3921,11 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f09003b
 			public const int never = 2131296315;
 			
-			// aapt resource value: 0x7f09000c
-			public const int none = 2131296268;
-			
 			// aapt resource value: 0x7f09000d
-			public const int normal = 2131296269;
+			public const int none = 2131296269;
+			
+			// aapt resource value: 0x7f09000f
+			public const int normal = 2131296271;
 			
 			// aapt resource value: 0x7f090016
 			public const int parallax = 2131296278;
@@ -3957,8 +3957,8 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f09007c
 			public const int route_name = 2131296380;
 			
-			// aapt resource value: 0x7f09000e
-			public const int satellite = 2131296270;
+			// aapt resource value: 0x7f090010
+			public const int satellite = 2131296272;
 			
 			// aapt resource value: 0x7f090032
 			public const int screen = 2131296306;
@@ -4065,8 +4065,8 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f09002a
 			public const int tabMode = 2131296298;
 			
-			// aapt resource value: 0x7f09000f
-			public const int terrain = 2131296271;
+			// aapt resource value: 0x7f090011
+			public const int terrain = 2131296273;
 			
 			// aapt resource value: 0x7f090092
 			public const int text = 2131296402;
@@ -4401,68 +4401,68 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f05002d
 			public const int appbar_scrolling_view_behavior = 2131034157;
 			
-			// aapt resource value: 0x7f050001
-			public const int auth_google_play_services_client_facebook_display_name = 2131034113;
+			// aapt resource value: 0x7f050003
+			public const int auth_google_play_services_client_facebook_display_name = 2131034115;
 			
-			// aapt resource value: 0x7f050000
-			public const int auth_google_play_services_client_google_display_name = 2131034112;
+			// aapt resource value: 0x7f050002
+			public const int auth_google_play_services_client_google_display_name = 2131034114;
 			
-			// aapt resource value: 0x7f050004
-			public const int common_android_wear_notification_needs_update_text = 2131034116;
+			// aapt resource value: 0x7f050006
+			public const int common_android_wear_notification_needs_update_text = 2131034118;
+			
+			// aapt resource value: 0x7f050013
+			public const int common_android_wear_update_text = 2131034131;
 			
 			// aapt resource value: 0x7f050011
-			public const int common_android_wear_update_text = 2131034129;
-			
-			// aapt resource value: 0x7f05000f
-			public const int common_android_wear_update_title = 2131034127;
+			public const int common_android_wear_update_title = 2131034129;
 			
 			// aapt resource value: 0x7f05001f
 			public const int common_google_play_services_api_unavailable_text = 2131034143;
 			
+			// aapt resource value: 0x7f05000f
+			public const int common_google_play_services_enable_button = 2131034127;
+			
+			// aapt resource value: 0x7f05000e
+			public const int common_google_play_services_enable_text = 2131034126;
+			
 			// aapt resource value: 0x7f05000d
-			public const int common_google_play_services_enable_button = 2131034125;
-			
-			// aapt resource value: 0x7f05000c
-			public const int common_google_play_services_enable_text = 2131034124;
-			
-			// aapt resource value: 0x7f05000b
-			public const int common_google_play_services_enable_title = 2131034123;
-			
-			// aapt resource value: 0x7f050006
-			public const int common_google_play_services_error_notification_requested_by_msg = 2131034118;
-			
-			// aapt resource value: 0x7f05000a
-			public const int common_google_play_services_install_button = 2131034122;
+			public const int common_google_play_services_enable_title = 2131034125;
 			
 			// aapt resource value: 0x7f050008
-			public const int common_google_play_services_install_text_phone = 2131034120;
+			public const int common_google_play_services_error_notification_requested_by_msg = 2131034120;
+			
+			// aapt resource value: 0x7f05000c
+			public const int common_google_play_services_install_button = 2131034124;
+			
+			// aapt resource value: 0x7f05000a
+			public const int common_google_play_services_install_text_phone = 2131034122;
+			
+			// aapt resource value: 0x7f05000b
+			public const int common_google_play_services_install_text_tablet = 2131034123;
 			
 			// aapt resource value: 0x7f050009
-			public const int common_google_play_services_install_text_tablet = 2131034121;
+			public const int common_google_play_services_install_title = 2131034121;
+			
+			// aapt resource value: 0x7f050019
+			public const int common_google_play_services_invalid_account_text = 2131034137;
+			
+			// aapt resource value: 0x7f050018
+			public const int common_google_play_services_invalid_account_title = 2131034136;
 			
 			// aapt resource value: 0x7f050007
-			public const int common_google_play_services_install_title = 2131034119;
+			public const int common_google_play_services_needs_enabling_title = 2131034119;
 			
 			// aapt resource value: 0x7f050017
-			public const int common_google_play_services_invalid_account_text = 2131034135;
+			public const int common_google_play_services_network_error_text = 2131034135;
 			
 			// aapt resource value: 0x7f050016
-			public const int common_google_play_services_invalid_account_title = 2131034134;
+			public const int common_google_play_services_network_error_title = 2131034134;
 			
 			// aapt resource value: 0x7f050005
-			public const int common_google_play_services_needs_enabling_title = 2131034117;
+			public const int common_google_play_services_notification_needs_update_title = 2131034117;
 			
-			// aapt resource value: 0x7f050015
-			public const int common_google_play_services_network_error_text = 2131034133;
-			
-			// aapt resource value: 0x7f050014
-			public const int common_google_play_services_network_error_title = 2131034132;
-			
-			// aapt resource value: 0x7f050003
-			public const int common_google_play_services_notification_needs_update_title = 2131034115;
-			
-			// aapt resource value: 0x7f050002
-			public const int common_google_play_services_notification_ticker = 2131034114;
+			// aapt resource value: 0x7f050004
+			public const int common_google_play_services_notification_ticker = 2131034116;
 			
 			// aapt resource value: 0x7f050021
 			public const int common_google_play_services_sign_in_failed_text = 2131034145;
@@ -4470,38 +4470,38 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f050020
 			public const int common_google_play_services_sign_in_failed_title = 2131034144;
 			
-			// aapt resource value: 0x7f050018
-			public const int common_google_play_services_unknown_issue = 2131034136;
-			
 			// aapt resource value: 0x7f05001a
-			public const int common_google_play_services_unsupported_text = 2131034138;
+			public const int common_google_play_services_unknown_issue = 2131034138;
 			
-			// aapt resource value: 0x7f050019
-			public const int common_google_play_services_unsupported_title = 2131034137;
+			// aapt resource value: 0x7f05001c
+			public const int common_google_play_services_unsupported_text = 2131034140;
 			
 			// aapt resource value: 0x7f05001b
-			public const int common_google_play_services_update_button = 2131034139;
+			public const int common_google_play_services_unsupported_title = 2131034139;
 			
-			// aapt resource value: 0x7f050010
-			public const int common_google_play_services_update_text = 2131034128;
-			
-			// aapt resource value: 0x7f05000e
-			public const int common_google_play_services_update_title = 2131034126;
-			
-			// aapt resource value: 0x7f050013
-			public const int common_google_play_services_updating_text = 2131034131;
+			// aapt resource value: 0x7f05001d
+			public const int common_google_play_services_update_button = 2131034141;
 			
 			// aapt resource value: 0x7f050012
-			public const int common_google_play_services_updating_title = 2131034130;
+			public const int common_google_play_services_update_text = 2131034130;
+			
+			// aapt resource value: 0x7f050010
+			public const int common_google_play_services_update_title = 2131034128;
+			
+			// aapt resource value: 0x7f050015
+			public const int common_google_play_services_updating_text = 2131034133;
+			
+			// aapt resource value: 0x7f050014
+			public const int common_google_play_services_updating_title = 2131034132;
 			
 			// aapt resource value: 0x7f05001e
 			public const int common_open_on_phone = 2131034142;
 			
-			// aapt resource value: 0x7f05001c
-			public const int common_signin_button_text = 2131034140;
+			// aapt resource value: 0x7f050000
+			public const int common_signin_button_text = 2131034112;
 			
-			// aapt resource value: 0x7f05001d
-			public const int common_signin_button_text_long = 2131034141;
+			// aapt resource value: 0x7f050001
+			public const int common_signin_button_text_long = 2131034113;
 			
 			// aapt resource value: 0x7f050022
 			public const int mr_media_route_button_content_description = 2131034146;
@@ -6106,9 +6106,9 @@ namespace XamarinCRMAndroid
 			
 			public static int[] LoadingImageView = new int[]
 			{
-					2130771984,
-					2130771985,
-					2130771986};
+					2130771968,
+					2130771969,
+					2130771970};
 			
 			// aapt resource value: 2
 			public const int LoadingImageView_circleCrop = 2;
@@ -6121,9 +6121,6 @@ namespace XamarinCRMAndroid
 			
 			public static int[] MapAttrs = new int[]
 			{
-					2130771968,
-					2130771969,
-					2130771970,
 					2130771971,
 					2130771972,
 					2130771973,
@@ -6136,7 +6133,10 @@ namespace XamarinCRMAndroid
 					2130771980,
 					2130771981,
 					2130771982,
-					2130771983};
+					2130771983,
+					2130771984,
+					2130771985,
+					2130771986};
 			
 			// aapt resource value: 1
 			public const int MapAttrs_cameraBearing = 1;
