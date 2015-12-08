@@ -17,7 +17,7 @@ xmlns:i18n="clr-namespace:XamarinCRM.Localization">
 					HasUnevenRows="true">
 						<TableRoot>
 							<TableSection Title="Details">
-								<ViewCell Height="280">
+								<ViewCell Height="250">
 									<StackLayout Spacing="0">
 										<customerViews:CustomerDetailContactView />
 										<customerViews:CustomerDetailPhoneView />

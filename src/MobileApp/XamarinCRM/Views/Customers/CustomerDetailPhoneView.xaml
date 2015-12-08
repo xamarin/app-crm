@@ -7,7 +7,7 @@ xmlns:base="clr-namespace:XamarinCRM.Views.Customers"
 xmlns:i18n="clr-namespace:XamarinCRM.Localization"
 xmlns:statics="clr-namespace:XamarinCRM.Statics">
 	<AbsoluteLayout>
-		<StackLayout Spacing="0" Padding="20">
+		<StackLayout Spacing="0" Padding="20,10">
 			<Label 
 			Text="{i18n:Translate Phone}" 
 			FontSize="Medium" 

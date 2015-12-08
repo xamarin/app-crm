@@ -8,7 +8,7 @@ xmlns:statics="clr-namespace:XamarinCRM.Statics"
 xmlns:i18n="clr-namespace:XamarinCRM.Localization"
 xmlns:core="clr-namespace:System">
 
-	<StackLayout Spacing="0" Padding="20">
+	<StackLayout Spacing="0" Padding="20,10">
 
 		<Label 
 		Text="{i18n:Translate Contact}" 
@@ -26,6 +26,12 @@ xmlns:core="clr-namespace:System">
 		<Label
 		Text="{Binding Account.DisplayContact}" 
 		TextColor="{x:Static statics:Palette._006}" 
+		LineBreakMode="TailTruncation" 
+		Style="{DynamicResource Label_Default-Medium-Default}" />
+
+		<Label
+		Text="{Binding Account.JobTitle}" 
+		TextColor="{x:Static statics:Palette._007}" 
 		LineBreakMode="TailTruncation" 
 		Style="{DynamicResource Label_Default-Medium-Default}" />
 

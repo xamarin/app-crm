@@ -11,7 +11,7 @@ xmlns:core="clr-namespace:System">
 
 		<StackLayout 
 		Spacing="0"
-		Padding="20"
+		Padding="20,10"
 		AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
 		AbsoluteLayout.LayoutBounds="0, 0.5, 1, AutoSize">
 

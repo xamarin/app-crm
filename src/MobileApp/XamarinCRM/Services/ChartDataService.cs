@@ -44,7 +44,7 @@ namespace XamarinCRM.Services
 
         #region IChartDataService implementation
 
-        public async Task<List<WeeklySalesDataPoint>> GetWeeklySalesDataPointsAsync(IEnumerable<Order> orders, int numberOfWeeks = 6, bool isOpen = false)
+        public async Task<List<WeeklySalesDataPoint>> GetWeeklySalesDataPointsAsync(IEnumerable<Order> orders, int numberOfWeeks = 6, OrderStatusOption statusOption = OrderStatusOption.Both)
         {
             DateTime dateStart = DateTime.UtcNow;
 
@@ -52,7 +52,7 @@ namespace XamarinCRM.Services
             DateTime dateWkEnd = dateWkStart.AddDays(6);
 
             var enumerableOrders = orders as IList<Order> ?? orders.ToList();
-            double total = GetOrderTotalForPeriod(enumerableOrders, dateWkStart, dateWkEnd, isOpen);
+            double total = GetOrderTotalForPeriod(enumerableOrders, dateWkStart, dateWkEnd, statusOption);
 
             List<WeeklySalesDataPoint> weeklySalesDataPoints = new List<WeeklySalesDataPoint>();
 
@@ -69,7 +69,7 @@ namespace XamarinCRM.Services
             return weeklySalesDataPoints;
         }
 
-        public async Task<List<ChartDataPoint>> GetCategorySalesDataPointsAsync(IEnumerable<Order> orders, Account account = null, int numberOfWeeks = 6, bool isOpen = false)
+        public async Task<List<ChartDataPoint>> GetCategorySalesDataPointsAsync(IEnumerable<Order> orders, Account account = null, int numberOfWeeks = 6, OrderStatusOption statusOption = OrderStatusOption.Both)
         {
             // get top-level categories by passing no parent categoryId
             var categories = await _DataClient.GetCategoriesAsync();
@@ -80,7 +80,7 @@ namespace XamarinCRM.Services
 
             foreach (var category in categories)
             {
-                double amount = await GetOrderTotalForCategoryAsync(orders, category, numberOfWeeks, isOpen);
+                double amount = await GetOrderTotalForCategoryAsync(orders, category, numberOfWeeks, statusOption);
                 categorySalesDataPoints.Add(new ChartDataPoint(category.Name, amount));
             }
 
@@ -89,7 +89,7 @@ namespace XamarinCRM.Services
 
         #endregion
 
-        async Task<double> GetOrderTotalForCategoryAsync(IEnumerable<Order> orders, Category category, int numberOfWeeks = 6, bool isOpen = false)
+        async Task<double> GetOrderTotalForCategoryAsync(IEnumerable<Order> orders, Category category, int numberOfWeeks = 6, OrderStatusOption statusOption = OrderStatusOption.Both)
         {
             double total = 0;
 
@@ -100,21 +100,31 @@ namespace XamarinCRM.Services
 
             IEnumerable<Order> results;
 
-            if (isOpen)
+            switch (statusOption)
             {
-                results = orders.Where(
-                    order => order.IsOpen == isOpen &&
-                    order.OrderDate >= dateStart &&
-                    order.OrderDate <= dateEnd &&
-                    categoryProducts.Any(product => product.Name.ToLower() == order.Item.ToLower()));
-            }
-            else
-            {
-                results = orders.Where(
-                    order => order.IsOpen == isOpen &&
-                    order.ClosedDate >= dateStart &&
-                    order.ClosedDate <= dateEnd &&
-                    categoryProducts.Any(product => product.Name.ToLower() == order.Item.ToLower()));
+                case OrderStatusOption.Open:
+                    results = orders.Where(
+                        order => 
+                        order.IsOpen &&
+                        order.OrderDate >= dateStart &&
+                        order.OrderDate <= dateEnd &&
+                        categoryProducts.Any(product => product.Name.ToLower() == order.Item.ToLower()));
+                    break;
+                case OrderStatusOption.Closed:
+                    results = orders.Where(
+                        order => 
+                        !order.IsOpen &&
+                        order.ClosedDate >= dateStart &&
+                        order.ClosedDate <= dateEnd &&
+                        categoryProducts.Any(product => product.Name.ToLower() == order.Item.ToLower()));
+                    break;
+                default:
+                    results = orders.Where(
+                        order => 
+                        order.ClosedDate >= dateStart &&
+                        order.ClosedDate <= dateEnd &&
+                        categoryProducts.Any(product => product.Name.ToLower() == order.Item.ToLower()));
+                    break;
             }
                 
             foreach (var order in results)
@@ -125,25 +135,34 @@ namespace XamarinCRM.Services
             return total;
         }
 
-        static double GetOrderTotalForPeriod(IEnumerable<Order> orders, DateTime dateStart, DateTime dateEnd, bool isOpen = false)
+        static double GetOrderTotalForPeriod(IEnumerable<Order> orders, DateTime dateStart, DateTime dateEnd, OrderStatusOption statusOption = OrderStatusOption.Both)
         {
             double total = 0;
 
             IEnumerable<Order> results;
 
-            if (isOpen)
+            switch (statusOption)
             {
-                results = orders.Where(
-                    order => order.IsOpen == isOpen &&
-                    order.OrderDate >= dateStart &&
-                    order.OrderDate <= dateEnd);
-            }
-            else
-            {
-                results = orders.Where(
-                    order => order.IsOpen == isOpen &&
-                    order.ClosedDate >= dateStart &&
-                    order.ClosedDate <= dateEnd);
+                case OrderStatusOption.Open:
+                    results = orders.Where(
+                        order => 
+                        order.IsOpen &&
+                        order.OrderDate >= dateStart &&
+                        order.OrderDate <= dateEnd);
+                    break;
+                case OrderStatusOption.Closed:
+                    results = orders.Where(
+                        order => 
+                        !order.IsOpen &&
+                        order.ClosedDate >= dateStart &&
+                        order.ClosedDate <= dateEnd);
+                    break;
+                default:
+                    results = orders.Where(
+                        order => 
+                        order.OrderDate >= dateStart &&
+                        order.OrderDate <= dateEnd);
+                    break;
             }
 
             foreach (var order in results)
