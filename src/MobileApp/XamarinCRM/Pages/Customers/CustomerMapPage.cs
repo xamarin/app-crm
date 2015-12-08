@@ -24,9 +24,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.ViewModels.Customers;
-using ExternalMaps.Plugin;
-using ExternalMaps.Plugin.Abstractions;
 using XamarinCRM.Statics;
+using Plugin.ExternalMaps;
+using Plugin.ExternalMaps.Abstractions;
 
 namespace XamarinCRM.Pages.Customers
 {
