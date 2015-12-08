@@ -6,7 +6,8 @@ x:Class="XamarinCRM.Pages.Products.ProductDetailPage"
 xmlns:base="clr-namespace:XamarinCRM.Pages.Products"
 xmlns:productViews="clr-namespace:XamarinCRM.Views.Products"
 xmlns:statics="clr-namespace:XamarinCRM.Statics"
-xmlns:i18n="clr-namespace:XamarinCRM.Localization">
+xmlns:i18n="clr-namespace:XamarinCRM.Localization"
+	Title="{Binding CatalogProduct.Name}">
 	<ScrollView>
 		<StackLayout Spacing="0">
 
