@@ -78,10 +78,9 @@ namespace XamarinCRM.Pages.Customers
             }
             else
             {
-                await Navigation.PushAsync(new CustomerTabbedPage()
-                    { 
-                        BindingContext = new CustomerTabbedPageViewModel(account, this) { }
-                    });
+                var customerTabbedPage = new CustomerTabbedPage(){ BindingContext = new CustomerTabbedPageViewModel(account, this) { Navigation = this.Navigation } };
+
+                await Navigation.PushAsync(customerTabbedPage);
             }
         }
     }

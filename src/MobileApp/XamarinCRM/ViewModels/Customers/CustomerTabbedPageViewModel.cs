@@ -52,7 +52,11 @@ namespace XamarinCRM.ViewModels.Customers
         CustomerDetailViewModel _CustomerDetailViewModel;
         public CustomerDetailViewModel CustomerDetailViewModel
         {
-            get { return _CustomerDetailViewModel; }
+            get 
+            { 
+                _CustomerDetailViewModel.Navigation = this.Navigation;
+                return _CustomerDetailViewModel; 
+            }
             private set 
             {
                 _CustomerDetailViewModel = value;
@@ -63,7 +67,11 @@ namespace XamarinCRM.ViewModels.Customers
         OrdersViewModel _OrdersViewModel;
         public OrdersViewModel OrdersViewModel
         {
-            get { return _OrdersViewModel; }
+            get 
+            { 
+                _OrdersViewModel.Navigation = this.Navigation;
+                return _OrdersViewModel; 
+            }
             private set 
             {
                 _OrdersViewModel = value;
@@ -74,7 +82,11 @@ namespace XamarinCRM.ViewModels.Customers
         CustomerSalesViewModel _CustomerSalesViewModel;
         public CustomerSalesViewModel CustomerSalesViewModel
         {
-            get { return _CustomerSalesViewModel; }
+            get 
+            { 
+                _CustomerSalesViewModel.Navigation = this.Navigation;
+                return _CustomerSalesViewModel; 
+            }
             private set 
             {
                 _CustomerSalesViewModel = value;

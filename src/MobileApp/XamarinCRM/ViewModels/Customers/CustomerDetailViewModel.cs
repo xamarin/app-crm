@@ -218,7 +218,9 @@ namespace XamarinCRM.ViewModels.Customers
         {
             await PushAsync(new CustomerMapPage(this)
                 {
-                    Title = "Location"
+                    Title = Account.Company,
+                    BindingContext = this
+
                 });
         }
 
