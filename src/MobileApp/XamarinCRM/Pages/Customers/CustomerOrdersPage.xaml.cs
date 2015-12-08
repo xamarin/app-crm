@@ -85,7 +85,7 @@ namespace XamarinCRM.Pages.Customers
     /// <summary>
     /// This class definition just gives us a way to reference ModelBoundContentPage<T> in the XAML of this Page.
     /// </summary>
-    public partial class CustomerOrdersPageXaml : ModelBoundContentPage<OrdersViewModel>
+    public abstract class CustomerOrdersPageXaml : ModelBoundContentPage<OrdersViewModel>
     {
         
     }
