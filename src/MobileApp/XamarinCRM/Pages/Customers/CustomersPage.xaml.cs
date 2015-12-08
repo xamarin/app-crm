@@ -71,7 +71,6 @@ namespace XamarinCRM.Pages.Customers
                 var customerDetailPage = new CustomerDetailPage()
                 {
                     BindingContext = new CustomerDetailViewModel(account, this) { Navigation = this.Navigation },
-                    Title = TextResources.Customers_Detail_Tab_Title,
                     Icon = new FileImageSource() { File = "CustomersTab" } // only used  on iOS
                 };
                 await Navigation.PushAsync(customerDetailPage);

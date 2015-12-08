@@ -42,7 +42,6 @@ namespace XamarinCRM.Pages.Customers
                     {
                         Navigation = this.Navigation
                     },
-                    Title = TextResources.Customers_Orders_Tab_Title,
                     Icon = new FileImageSource()
                     {
                         File = "ProductsTab" // only used  on iOS
