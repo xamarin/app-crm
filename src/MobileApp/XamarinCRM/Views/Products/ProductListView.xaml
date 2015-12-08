@@ -20,13 +20,15 @@ xmlns:statics="clr-namespace:XamarinCRM.Statics"
 							IsVisible="{Binding IsLoading}" 
 							IsRunning="{Binding IsLoading}" 
 							AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional" 
-							AbsoluteLayout.LayoutBounds="0,0,1,1" />
+							AbsoluteLayout.LayoutBounds="0,0,1,1" 
+							WidthRequest="{x:Static statics:RowSizes.LargeRowHeightDouble}" />
 							<Image 
 							x:Name="ThumbnailImage" 
 							Source="{Binding ImageUrl}" 
 							Aspect="AspectFit" 
 							AbsoluteLayout.LayoutFlags="PositionProportional" 
-							AbsoluteLayout.LayoutBounds="0,0,AutoSize,AutoSize" />
+							AbsoluteLayout.LayoutBounds="0,0,AutoSize,AutoSize" 
+							WidthRequest="{x:Static statics:RowSizes.LargeRowHeightDouble}"  />
 						</AbsoluteLayout>
 						<StackLayout Spacing="0">
 							<Label 
