@@ -32,10 +32,10 @@ namespace XamarinCRM.Views.Sales
             Label headerTitleLabel = new Label()
             { 
                 Text = TextResources.SalesDashboard_SalesChart_Header_Title,
-                    TextColor = Device.OnPlatform(Palette._006, Palette._006, Color.White),
+                TextColor = Device.OnPlatform(Palette._006, Palette._006, Color.White),
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                XAlign = TextAlignment.Start,
-                YAlign = TextAlignment.Start
+                HorizontalTextAlignment = TextAlignment.Start,
+                VerticalTextAlignment = TextAlignment.Start
             };
 
             Label weeklyAverageTitleLabel = new Label()
@@ -46,19 +46,19 @@ namespace XamarinCRM.Views.Sales
                     iOS: Device.GetNamedSize(NamedSize.Micro, typeof(Label)) * .9,
                     Android: Device.GetNamedSize(NamedSize.Micro, typeof(Label)),
                     WinPhone: Device.GetNamedSize(NamedSize.Micro, typeof(Label))),
-                XAlign = TextAlignment.End,
-                YAlign = TextAlignment.Center
+                HorizontalTextAlignment = TextAlignment.End,
+                VerticalTextAlignment = TextAlignment.Center
             };
 
             WeeklyAverageValueLabel = new Label()
             {
-                    TextColor = Device.OnPlatform(Palette._006, Palette._006, Color.White),
+                TextColor = Device.OnPlatform(Palette._006, Palette._006, Color.White),
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Large, typeof(Label)),
                     Android: Device.GetNamedSize(NamedSize.Large, typeof(Label)),
                     WinPhone: Device.GetNamedSize(NamedSize.Large, typeof(Label))) * 1.1,
-                XAlign = TextAlignment.End,
-                YAlign = TextAlignment.End
+                HorizontalTextAlignment = TextAlignment.End,
+                VerticalTextAlignment = TextAlignment.End
             };
 
             Device.OnPlatform(
@@ -94,7 +94,7 @@ namespace XamarinCRM.Views.Sales
 
             //Device.OnPlatform(iOS: () => BackgroundColor = Color.White, Android: () => BackgroundColor = Palette._009);
 
-            HeightRequest = Sizes.MediumRowHeight;
+            HeightRequest = RowSizes.MediumRowHeightDouble;
 
             Padding = new Thickness(20, 20, 20, 0);
 

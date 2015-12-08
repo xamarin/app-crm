@@ -22,7 +22,7 @@ using System;
 using Xamarin.Forms;
 using XamarinCRM.Statics;
 
-namespace XamarinCRM
+namespace XamarinCRM.Converters
 {
     public class IndustryLabelBooleanToColorConverter : IValueConverter
     {

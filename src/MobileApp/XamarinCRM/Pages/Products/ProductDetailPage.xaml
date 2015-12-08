@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:ProductDetailPageXaml 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Pages.Products.ProductDetailPage" 
+xmlns:base="clr-namespace:XamarinCRM.Pages.Products"
+xmlns:productViews="clr-namespace:XamarinCRM.Views.Products"
+xmlns:statics="clr-namespace:XamarinCRM.Statics"
+xmlns:i18n="clr-namespace:XamarinCRM.Localization">
+	<ScrollView>
+		<StackLayout Spacing="0">
+
+			<Image 
+			Source="{Binding CatalogProduct.ImageUrl}" 
+			Aspect="AspectFit" />
+
+			<ContentView 
+			Padding="20,15" 
+			BackgroundColor="{x:Static statics:Palette._009}" 
+			HeightRequest="{x:Static statics:RowSizes.SmallRowHeightDouble}">
+				<AbsoluteLayout>
+
+					<Label 
+					Text="{Binding CatalogProduct.Price, StringFormat='{0:C}'}" 
+					TextColor="White" 
+					FontSize="Large" 
+					FontAttributes="Bold" 
+					HorizontalTextAlignment="Start" 
+					VerticalTextAlignment="Center" 
+					AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" 
+					AbsoluteLayout.LayoutBounds="0, 0, 0.5, AutoSize" />
+
+					<ContentView
+					IsEnabled="{Binding IsPerformingProductSelection}" 
+					IsVisible="{Binding IsPerformingProductSelection}"
+					AbsoluteLayout.LayoutFlags="PositionProportional" 
+					AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize">
+						<StackLayout Orientation="Horizontal">
+							<Label 
+							Text="{i18n:Translate Customers_Orders_EditOrder_AddToOrder}" 
+							TextColor="{x:Static statics:Palette._004}" 
+							HorizontalTextAlignment="End" 
+							VerticalTextAlignment="Center" />
+							<Image 
+							HorizontalOptions="End" 
+							VerticalOptions="Center">
+								<Image.Source>
+									<OnPlatform x:TypeArguments="ImageSource">
+										<OnPlatform.iOS>
+											<FileImageSource File="add_ios_blue" />
+										</OnPlatform.iOS>
+										<OnPlatform.Android>
+											<FileImageSource File="add_android_blue" />
+										</OnPlatform.Android>
+									</OnPlatform>
+								</Image.Source>
+								<Image.GestureRecognizers>
+									<TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AddToOrderCommand}" />
+								</Image.GestureRecognizers>
+							</Image>
+						</StackLayout>
+					</ContentView>
+
+				</AbsoluteLayout>
+			</ContentView>
+
+			<ContentView Padding="20">
+				<StackLayout Spacing="0">
+					<Label 
+					Text="{Binding CatalogProduct.Name}" 
+					TextColor="{x:Static statics:Palette._006}" 
+					FontSize="Large" 
+					LineBreakMode="TailTruncation" />
+					<ContentView Padding="0, 10">
+						<Label 
+						Text="{Binding CatalogProduct.Description}" 
+						TextColor="{x:Static statics:Palette._007}" 
+						FontSize="Default" />
+					</ContentView>
+				</StackLayout>
+			</ContentView>
+
+		</StackLayout>
+	</ScrollView>
+</base:ProductDetailPageXaml>

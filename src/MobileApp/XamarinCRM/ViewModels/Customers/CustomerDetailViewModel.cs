@@ -26,6 +26,10 @@ using XamarinCRM.Services;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using XamarinCRM.Models;
+using System.Windows.Input;
+using System;
+using Lotz.Xam.Messaging;
+using XamarinCRM.Pages.Customers;
 
 namespace XamarinCRM.ViewModels.Customers
 {
@@ -37,7 +41,14 @@ namespace XamarinCRM.ViewModels.Customers
 
         public Account Account { get; set; }
 
-        public CustomerDetailViewModel(Account account)
+        readonly Page _CurrentPage;
+
+        public Page CurrentPage
+        {
+            get { return _CurrentPage; }
+        }
+
+        public CustomerDetailViewModel(Account account, Page currentPage)
         {
             if (account == null)
             {
@@ -52,6 +63,8 @@ namespace XamarinCRM.ViewModels.Customers
                 Account = account;
                 this.Title = "Account";
             }
+
+            _CurrentPage = currentPage;
 
             this.Icon = "account.png";
 
@@ -125,44 +138,90 @@ namespace XamarinCRM.ViewModels.Customers
                 }
             }
         }
-      
+
         public string DisplayContact
         {
             get { return Account.DisplayName + ", " + Account.JobTitle; }
         }
 
-        Command _SaveAccountCommand;
+        ICommand _SaveAccountCommand;
 
-        /// <summary>
-        /// Command to load contacts
-        /// </summary>
-        public Command SaveAccountCommand
+        public ICommand SaveAccountCommand
         {
             get
             {
                 return _SaveAccountCommand ??
                 (_SaveAccountCommand = new Command(async () =>
-                  await ExecuteSaveAccountCommand()));
+                    {
+                        if (IsBusy)
+                            return;
+
+
+                        IsBusy = true;
+
+
+                        await _DataClient.SaveAccountAsync(Account);
+
+                        MessagingCenter.Send(Account, MessagingServiceConstants.SAVE_ACCOUNT);
+
+                        IsBusy = false;
+
+                        await Navigation.PopAsync();
+                    }));
             }
         }
 
-        async Task ExecuteSaveAccountCommand()
+        ICommand _PhoneIconTappedCommand;
+
+        public ICommand PhoneIconTappedCommand
         {
-            if (IsBusy)
+            get
+            {  
+                return _PhoneIconTappedCommand ?? (_PhoneIconTappedCommand = new Command<Label>(async label => await ExecutePhoneIconTappedCommand(label)));
+            }
+        }
+
+        async Task ExecutePhoneIconTappedCommand(Label label)
+        {
+            if (label == null)
                 return;
 
+            string phoneNumber = label.Text;
 
-            IsBusy = true;
+            if (String.IsNullOrWhiteSpace(phoneNumber))
+                return;        
 
-
-            await _DataClient.SaveAccountAsync(Account);
-
-            MessagingCenter.Send(Account, MessagingServiceConstants.SAVE_ACCOUNT);
-
-            IsBusy = false;
-
-            await Navigation.PopAsync();
+            if (await CurrentPage.DisplayAlert(
+                    title: TextResources.Customers_Detail_CallDialog_Title,
+                    message: TextResources.Customers_Detail_CallDialog_Message + phoneNumber + "?",
+                    accept: TextResources.Customers_Detail_CallDialog_Accept,
+                    cancel: TextResources.Customers_Detail_CallDialog_Cancel))
+            {
+                var phoneCallTask = MessagingPlugin.PhoneDialer;
+                if (phoneCallTask.CanMakePhoneCall)
+                    phoneCallTask.MakePhoneCall(phoneNumber.Replace("-", ""));
+            }
         }
+
+        ICommand _MapMarkerIconTappedCommand;
+
+        public ICommand MapMarkerIconTappedCommand
+        {
+            get
+            {  
+                return _MapMarkerIconTappedCommand ??
+                    (_MapMarkerIconTappedCommand = new Command(async () => await ExecuteMapMarkerIconTappedCommand()));
+            }
+        }
+
+        async Task ExecuteMapMarkerIconTappedCommand()
+        {
+            await PushAsync(new CustomerMapPage(this)
+                {
+                    Title = "Location"
+                });
+        }
+
 
         public async Task GoBack()
         {

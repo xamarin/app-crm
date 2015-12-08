@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:NonPersistentSelectedItemListView 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Views.Customers.CustomerListView"
+xmlns:views="clr-namespace:XamarinCRM.Views" 
+xmlns:statics="clr-namespace:XamarinCRM.Statics" 
+xmlns:converters="clr-namespace:XamarinCRM.Converters" 
+	HasUnevenRows="false"
+	RowHeight="{x:Static statics:RowSizes.LargeRowHeightInt}"
+	SeparatorColor="{x:Static statics:Palette._013}"
+	IsEnabled="{Binding IsBusy, Converter={StaticResource boolInverter}}"
+	IsVisible="{Binding IsBusy, Converter={StaticResource boolInverter}}"
+	ItemsSource="{Binding Accounts}">
+	<views:NonPersistentSelectedItemListView.Resources>
+		<ResourceDictionary>
+			<converters:InverseBooleanConverter x:Key="boolInverter" />
+		</ResourceDictionary>
+	</views:NonPersistentSelectedItemListView.Resources>
+	<views:NonPersistentSelectedItemListView.ItemTemplate>
+		<DataTemplate>
+			<ViewCell StyleId="disclosure">
+				<ContentView Padding="20,0">
+					<RelativeLayout>
+
+						<Label 
+						x:Name="CompanyLabel" 
+						Text="{Binding Company}"
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}" 
+						RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}" 
+						TextColor="{x:Static statics:Palette._006}"
+						FontSize="{x:Static statics:FontSizes._120PercentOfSmall}"
+						XAlign="Start"
+						YAlign="End"
+						LineBreakMode="TailTruncation" />
+
+						<Label 
+						x:Name="ContactName" 
+						Text="{Binding DisplayContact}"
+						RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}"
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}"
+						RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}"
+						TextColor="{x:Static statics:Palette._007}"
+						FontSize="Small"
+						XAlign="Start"
+						YAlign="Start"
+						LineBreakMode="TailTruncation" />
+
+					</RelativeLayout>
+				</ContentView>
+			</ViewCell>
+		</DataTemplate>
+	</views:NonPersistentSelectedItemListView.ItemTemplate>
+</views:NonPersistentSelectedItemListView >

@@ -36,13 +36,13 @@ namespace XamarinCRM.Cells.Sales
 
         public LeadListItemCell()
         {
-			StyleId = "none";
+            StyleId = "none";
             #region companyNameLabel
             CompanyNameLabel = new Label()
             {
                 TextColor = Palette._006,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)) * 1.2,
-                YAlign = TextAlignment.End,
+                VerticalTextAlignment = TextAlignment.End,
                 LineBreakMode = LineBreakMode.TailTruncation
             };
 
@@ -56,7 +56,7 @@ namespace XamarinCRM.Cells.Sales
             {
                 TextColor = Palette._007,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                YAlign = TextAlignment.End,
+                VerticalTextAlignment = TextAlignment.End,
                 LineBreakMode = LineBreakMode.TailTruncation
             };
                         
@@ -70,7 +70,7 @@ namespace XamarinCRM.Cells.Sales
             LeadAmountLabel = new Label()
             {
                 TextColor = Palette._007,
-                XAlign = TextAlignment.End,
+                HorizontalTextAlignment = TextAlignment.End,
                 FontSize = Device.OnPlatform(
                     iOS: Device.GetNamedSize(NamedSize.Small, typeof(Label)),
                     Android: Device.GetNamedSize(NamedSize.Small, typeof(Label)),

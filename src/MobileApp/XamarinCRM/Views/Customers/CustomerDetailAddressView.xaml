@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:CustomerDetailAddressViewXaml
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Views.Customers.CustomerDetailAddressView"
+xmlns:base="clr-namespace:XamarinCRM.Views.Customers"
+xmlns:statics="clr-namespace:XamarinCRM.Statics"
+xmlns:i18n="clr-namespace:XamarinCRM.Localization"
+xmlns:core="clr-namespace:System">
+	<AbsoluteLayout>
+
+		<StackLayout 
+		Spacing="0"
+		Padding="20,10"
+		AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+		AbsoluteLayout.LayoutBounds="0, 0.5, 1, AutoSize">
+
+			<Label x:Name="AddressLabel"
+			Text="{i18n:Translate Customers_Detail_Address}" 
+			FontSize="Medium" 
+			FontAttributes="Bold" 
+			LineBreakMode="TailTruncation">
+				<Label.TextColor>
+					<OnPlatform 
+					x:TypeArguments="Color" 
+					iOS="{x:Static statics:Palette._003}" 
+					Android="{x:Static statics:Palette._007}" 
+					WinPhone="{x:Static statics:Palette._006}" />
+				</Label.TextColor>
+			</Label>
+
+			<Label x:Name="StreetValue"
+			Text="{Binding Account.Street}"
+			TextColor="{x:Static statics:Palette._006}"
+			LineBreakMode="TailTruncation" 
+			Style="{DynamicResource Label_Default-Medium-Default}" />
+
+			<Label x:Name="CityValue"
+			Text="{Binding Account.City}"
+			LineBreakMode="TailTruncation"
+			Style="{DynamicResource Label_Default-Medium-Default}" />
+
+			<Label x:Name="StateAndPostalValue"
+			Text="{Binding Account.StatePostal}"
+			LineBreakMode="TailTruncation" 
+			Style="{DynamicResource Label_Default-Medium-Default}" />
+
+		</StackLayout>
+
+		<AbsoluteLayout
+		WidthRequest="{x:Static statics:RowSizes.MediumRowHeightDouble}" 
+		HeightRequest="{x:Static statics:RowSizes.MediumRowHeightDouble}" 
+		AbsoluteLayout.LayoutFlags="PositionProportional" 
+		AbsoluteLayout.LayoutBounds="0.95, 0.5, AutoSize, AutoSize">
+			<AbsoluteLayout.GestureRecognizers>
+				<TapGestureRecognizer 
+				Command="{Binding MapMarkerIconTappedCommand}" 
+				NumberOfTapsRequired="1" />
+			</AbsoluteLayout.GestureRecognizers>
+			<AbsoluteLayout.Children>
+				<Image
+				AbsoluteLayout.LayoutFlags="PositionProportional" 
+				AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize" 
+				Aspect="AspectFit" 
+                HeightRequest="25">
+					<Image.Source>
+						<OnPlatform x:TypeArguments="ImageSource">
+							<OnPlatform.iOS>
+								<FileImageSource File="map_marker_ios" />
+							</OnPlatform.iOS>
+							<OnPlatform.Android>
+								<FileImageSource File="map_marker_android" />
+							</OnPlatform.Android>
+						</OnPlatform>
+					</Image.Source>
+				</Image>
+			</AbsoluteLayout.Children>
+		</AbsoluteLayout>
+
+	</AbsoluteLayout>
+</base:CustomerDetailAddressViewXaml>

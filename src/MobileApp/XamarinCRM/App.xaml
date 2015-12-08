@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Application 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.App">
+	<Application.Resources>
+		<ResourceDictionary>
+
+			<OnPlatform x:Key="FontSize_Default-Medium-Default" x:TypeArguments="Font" iOS="Default" Android="Medium" WinPhone="Default" />
+
+			<Style TargetType="Label" x:Key="Label_Default-Medium-Default">
+				<Setter Property="FontSize" Value="{StaticResource FontSize_Default-Medium-Default}" />
+			</Style>
+
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>

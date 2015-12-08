@@ -45,8 +45,7 @@ namespace XamarinCRM.Localization
             if (Text == null)
                 return "";
 
-            ResourceManager resmgr = new ResourceManager(ResourceId
-                , typeof(TranslateExtension).GetTypeInfo().Assembly);
+            ResourceManager resmgr = new ResourceManager(ResourceId, typeof(TranslateExtension).GetTypeInfo().Assembly);
 
             var translation = resmgr.GetString (Text, ci);
 

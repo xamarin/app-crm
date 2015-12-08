@@ -93,6 +93,7 @@ namespace XamarinCRM.Clients
         }
 
         bool _IsSeeded;
+
         public bool IsSeeded { get { return _IsSeeded; } }
 
         public async Task SeedLocalDataAsync()
@@ -174,7 +175,7 @@ namespace XamarinCRM.Clients
                         .Where(order => order.AccountId.ToLower() == accountId.ToLower() && order.IsOpen == true)
                         .OrderBy(order => order.DueDate)
                         .ToEnumerableAsync(),
-                    new List<Order>()
+                new List<Order>()
             );
         }
 
@@ -197,7 +198,7 @@ namespace XamarinCRM.Clients
                 InsightsReportingConstants.TIME_ORDERS_GET_ALL,
                 async () =>
                     await _OrderTable.ToEnumerableAsync(),
-                    new List<Order>()
+                new List<Order>()
             );
         }
 
@@ -345,6 +346,7 @@ namespace XamarinCRM.Clients
                 async () =>
                     await _ProductTable
                         .Where(product => product.CategoryId.ToLower() == categoryId.ToLower())
+                        .OrderBy(product => product.Name)
                         .ToEnumerableAsync(), 
                 new List<Product>());
         }
@@ -396,7 +398,7 @@ namespace XamarinCRM.Clients
                         products.AddRange(await GetProductsAsync(c.Id));
                     }
 
-                    return products;
+                    return products.OrderBy(product => product.Name);
                 },
                 new List<Product>()
             );
@@ -411,6 +413,7 @@ namespace XamarinCRM.Clients
                     var products = 
                         await _ProductTable
                             .Where(p => p.Name.ToLower() == productName.ToLower())
+                            .OrderBy(product => product.Name)
                             .ToEnumerableAsync();
 
                     return products.SingleOrDefault();
@@ -453,13 +456,13 @@ namespace XamarinCRM.Clients
                 }
             }
             // isolate mobile service errors
-            catch (MobileServiceInvalidOperationException ex) 
+            catch (MobileServiceInvalidOperationException ex)
             {
                 Insights.Report(ex, Insights.Severity.Error);
                 Debug.WriteLine(@"MOBILE SERVICE ERROR {0}", ex.Message);
             }
             // catch all other errors
-            catch (Exception ex2) 
+            catch (Exception ex2)
             {
                 Insights.Report(ex2, Insights.Severity.Error);
                 Debug.WriteLine(@"ERROR {0}", ex2.Message);
