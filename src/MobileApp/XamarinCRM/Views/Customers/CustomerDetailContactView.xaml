@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:CustomerDetailContactViewXaml 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Views.Customers.CustomerDetailContactView"
+xmlns:base="clr-namespace:XamarinCRM.Views.Customers"
+xmlns:statics="clr-namespace:XamarinCRM.Statics"
+xmlns:i18n="clr-namespace:XamarinCRM.Localization"
+xmlns:core="clr-namespace:System">
+
+	<StackLayout Spacing="0" Padding="20,10">
+
+		<Label 
+		Text="{i18n:Translate Contact}" 
+		FontAttributes="Bold" 
+		FontSize="Medium" 
+		LineBreakMode="TailTruncation">
+			<Label.TextColor>
+				<OnPlatform x:TypeArguments="Color" 
+				iOS="{x:Static statics:Palette._003}" 
+				Android="{x:Static statics:Palette._007}" 
+				WinPhone="{x:Static statics:Palette._006}" />
+			</Label.TextColor>
+		</Label>
+
+		<Label
+		Text="{Binding Account.DisplayContact}" 
+		TextColor="{x:Static statics:Palette._006}" 
+		LineBreakMode="TailTruncation" 
+		Style="{DynamicResource Label_Default-Medium-Default}" />
+
+		<Label
+		Text="{Binding Account.JobTitle}" 
+		TextColor="{x:Static statics:Palette._007}" 
+		LineBreakMode="TailTruncation" 
+		Style="{DynamicResource Label_Default-Medium-Default}" />
+
+	</StackLayout>
+
+</base:CustomerDetailContactViewXaml >

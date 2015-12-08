@@ -7,7 +7,6 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Android.Content;
 using Xamarin.Forms.Platform.Android;
 using XamarinCRM;
-using Android.Graphics.Drawables;
 using Syncfusion.SfChart.XForms.Droid;
 
 namespace XamarinCRMAndroid

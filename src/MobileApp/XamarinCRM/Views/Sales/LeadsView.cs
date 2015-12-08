@@ -19,7 +19,6 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using Xamarin.Forms;
-using XamarinCRM.Layouts;
 using XamarinCRM.Statics;
 using XamarinCRM.Views.Base;
 using XamarinCRM.Views.Sales;
@@ -35,7 +34,7 @@ namespace XamarinCRM
             #region leads list activity inidicator
             var leadListActivityIndicator = new ActivityIndicator()
             { 
-                HeightRequest = Sizes.MediumRowHeight
+                HeightRequest = RowSizes.MediumRowHeightDouble
             };
             leadListActivityIndicator.SetBinding(IsEnabledProperty, "IsBusy");
             leadListActivityIndicator.SetBinding(IsVisibleProperty, "IsBusy");
@@ -47,9 +46,9 @@ namespace XamarinCRM
             {
                 Text = TextResources.SalesDashboard_Leads_LoadingLabel,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-                HeightRequest = Sizes.MediumRowHeight,
-                XAlign = TextAlignment.Center,
-                YAlign = TextAlignment.End,
+                HeightRequest = RowSizes.MediumRowHeightDouble,
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.End,
                 TextColor = Palette._007
             };
             loadingLabel.SetBinding(IsEnabledProperty, "IsBusy");
@@ -78,8 +77,9 @@ namespace XamarinCRM
             #endregion
 
             #region compose view hierarchy
-            Content = new UnspacedStackLayout()
+            Content = new StackLayout()
             {
+                Spacing = 0,
                 Children =
                 {
                     leadListHeaderView,

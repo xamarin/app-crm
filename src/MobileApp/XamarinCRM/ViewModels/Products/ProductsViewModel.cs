@@ -23,12 +23,21 @@ using XamarinCRM.Clients;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
 using XamarinCRM.Models;
+using System.Windows.Input;
+using XamarinCRM.Pages.Products;
+using System;
 
 namespace XamarinCRM.ViewModels.Products
 {
     public class ProductsViewModel : BaseViewModel
     {
         readonly IDataClient _DataClient;
+
+        readonly bool _IsPerformingProductSelection;
+        public bool IsPerformingProductSelection
+        {
+            get { return _IsPerformingProductSelection; }
+        }
 
         string _CategoryId;
         public string CategoryId
@@ -39,6 +48,12 @@ namespace XamarinCRM.ViewModels.Products
                 _CategoryId = value;
                 OnPropertyChanged("CategoryId");
             }
+        }
+
+        public new string Title
+        {
+            get { return base.Title ?? "Products"; }
+            set { base.Title = value; }
         }
 
         ObservableCollection<Product> _Products;
@@ -54,14 +69,15 @@ namespace XamarinCRM.ViewModels.Products
 
         public bool NeedsRefresh { get; set; }
 
-        public ProductsViewModel(string categoryId = null)
+        public ProductsViewModel(string categoryId = null, bool isPerformingProductSelection = false)
         {
             _CategoryId = categoryId;
+
+            _IsPerformingProductSelection = isPerformingProductSelection;
 
             _Products = new ObservableCollection<Product>();
 
             _DataClient = DependencyService.Get<IDataClient>();
-
         }
 
         Command _LoadProductsCommand;

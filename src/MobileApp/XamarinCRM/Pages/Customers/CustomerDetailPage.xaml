@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:CustomerDetailPageXaml
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Pages.Customers.CustomerDetailPage" 
+xmlns:base="clr-namespace:XamarinCRM.Pages.Customers" 
+xmlns:customerViews="clr-namespace:XamarinCRM.Views.Customers" 
+xmlns:i18n="clr-namespace:XamarinCRM.Localization" 
+	Title="{Binding Account.Company}">
+	<base:CustomerDetailPageXaml.Content>
+		<OnPlatform x:TypeArguments="View">
+
+			<OnPlatform.iOS>
+				<StackLayout Spacing="0">
+					<customerViews:CustomerDetailHeaderView />
+					<TableView 
+					Intent="Menu" 
+					HasUnevenRows="true">
+						<TableRoot>
+							<TableSection Title="Details">
+								<ViewCell Height="250">
+									<StackLayout Spacing="0">
+										<customerViews:CustomerDetailContactView />
+										<customerViews:CustomerDetailPhoneView />
+										<customerViews:CustomerDetailAddressView />
+									</StackLayout>
+								</ViewCell>
+							</TableSection>
+							<TableSection Title="More">
+								<ImageCell
+								Text="{i18n:Translate Customers_Orders_Tab_Title}" 
+								ImageSource="ProductsTab" 
+								StyleId="disclosure"
+								Tapped="ProductsTabTapped" />
+								<ImageCell 
+								Text="{i18n:Translate Customers_Sales_Tab_Title}" 
+								ImageSource="SalesTab" 
+								StyleId="disclosure" 
+								Tapped="SalesTabTapped" />
+							</TableSection>
+						</TableRoot>
+					</TableView>
+				</StackLayout>
+			</OnPlatform.iOS>
+
+			<OnPlatform.Android>
+				<ScrollView>
+					<StackLayout Spacing="0">
+						<customerViews:CustomerDetailHeaderView />
+						<customerViews:CustomerDetailContactView />
+						<customerViews:CustomerDetailPhoneView />
+						<customerViews:CustomerDetailAddressView />
+					</StackLayout>
+				</ScrollView>
+			</OnPlatform.Android>
+
+		</OnPlatform>
+	</base:CustomerDetailPageXaml.Content>
+</base:CustomerDetailPageXaml>

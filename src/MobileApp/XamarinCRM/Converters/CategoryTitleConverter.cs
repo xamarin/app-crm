@@ -22,7 +22,7 @@ using System;
 using Xamarin.Forms;
 using XamarinCRM.Models;
 
-namespace XamarinCRM
+namespace XamarinCRM.Converters
 {
     public class CategoryTitleConverter : IValueConverter
     {

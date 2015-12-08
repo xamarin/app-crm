@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:CustomerDetailHeaderViewXaml 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Views.Customers.CustomerDetailHeaderView" 
+xmlns:base="clr-namespace:XamarinCRM.Views.Customers"
+xmlns:statics="clr-namespace:XamarinCRM.Statics"
+xmlns:converters="clr-namespace:XamarinCRM.Converters">
+
+	<base:CustomerDetailHeaderViewXaml.Resources>
+		<ResourceDictionary>
+			<converters:CompanyLabelBooleanToColorConverter x:Key="companyLabelBooleanToColorConverter" />
+			<converters:IndustryLabelBooleanToColorConverter x:Key="industryLabelBooleanToColorConverter" />
+			<converters:InverseBooleanConverter x:Key="inverseBooleanConverter" />
+		</ResourceDictionary>
+	</base:CustomerDetailHeaderViewXaml.Resources>
+
+	<base:CustomerDetailHeaderViewXaml.Content>
+		<AbsoluteLayout
+		HeightRequest="150">
+
+			<Image 
+			AbsoluteLayout.LayoutFlags="All"
+			AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+			x:Name="CompanyImage" 
+			Aspect="AspectFill" 
+			Source="{Binding Account.ImageUrl}" />
+
+			<ActivityIndicator
+			AbsoluteLayout.LayoutFlags="WidthProportional, PositionProportional"
+			AbsoluteLayout.LayoutBounds="0, 0.5, 1, AutoSize"
+			BindingContext="{x:Reference CompanyImage}" 
+			IsEnabled="{Binding IsLoading}" 
+			IsVisible="{Binding IsLoading}" 
+			IsRunning="{Binding IsLoading}"/>
+
+			<Image 
+			AbsoluteLayout.LayoutFlags="WidthProportional, PositionProportional"
+			AbsoluteLayout.LayoutBounds="0, 1, 1, AutoSize"
+			BindingContext="{x:Reference CompanyImage}"
+			HeightRequest="75" 
+			Aspect="Fill" 
+			Source="bottom_up_gradient" 
+			IsVisible="{Binding IsLoading, Converter={StaticResource inverseBooleanConverter}}" />
+
+			<StackLayout 
+			AbsoluteLayout.LayoutFlags="WidthProportional, PositionProportional"
+			AbsoluteLayout.LayoutBounds="0, 1, 1, AutoSize"
+			Spacing="0" 
+			Padding="20">
+
+				<Label 
+				Text="{Binding Account.Company}" 
+				TextColor="{Binding IsLoading, Source={x:Reference CompanyImage}, Converter={StaticResource companyLabelBooleanToColorConverter}}" 
+				FontSize="Large" 
+				LineBreakMode="TailTruncation" />
+
+				<Label 
+				Text="{Binding Account.Industry}" 
+				TextColor="{Binding IsLoading, Source={x:Reference CompanyImage}, Converter={StaticResource industryLabelBooleanToColorConverter}}" 
+				FontSize="Small" 
+				LineBreakMode="TailTruncation" />
+
+			</StackLayout>
+
+		</AbsoluteLayout>
+	</base:CustomerDetailHeaderViewXaml.Content>
+
+</base:CustomerDetailHeaderViewXaml >

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:CustomerOrdersPageXaml 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Pages.Customers.CustomerOrdersPage" 
+xmlns:views="clr-namespace:XamarinCRM.Views" 
+xmlns:base="clr-namespace:XamarinCRM.Pages.Customers" 
+xmlns:customerViews="clr-namespace:XamarinCRM.Views.Customers" 
+xmlns:layouts="clr-namespace:XamarinCRM.Layouts" 
+xmlns:statics="clr-namespace:XamarinCRM.Statics">
+	
+	<base:CustomerOrdersPageXaml.Content>
+
+		<OnPlatform x:TypeArguments="View">
+			
+			<OnPlatform.iOS>
+
+				<!-- see CustomerOrderListView.xaml for setup, bindings, etc. -->
+				<customerViews:CustomerOrderListView ItemTapped="OrderItemTapped" />
+
+			</OnPlatform.iOS>
+
+			<OnPlatform.Android>
+				<AbsoluteLayout>
+
+					<!-- see CustomerOrderListView.xaml for setup, bindings, etc. -->	
+					<customerViews:CustomerOrderListView 
+					AbsoluteLayout.LayoutFlags="All" 
+					AbsoluteLayout.LayoutBounds="0,0,1,1" 
+					ItemTapped="OrderItemTapped" />
+
+					<views:FloatingActionButtonView x:Name="AddNewOrderButton" 
+					AbsoluteLayout.LayoutFlags="PositionProportional" 
+					AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize" 
+					ImageName="fab_add.png" 
+					ColorNormal="{x:Static statics:Palette._001}"
+					ColorPressed="{x:Static statics:Palette._002}"
+					ColorRipple="{x:Static statics:Palette._001}"/>
+
+
+
+				</AbsoluteLayout>
+			</OnPlatform.Android>
+
+			<OnPlatform.WinPhone>
+
+				<!-- see CustomerOrderListView.xaml for setup, bindings, etc. -->	
+				<customerViews:CustomerOrderListView ItemTapped="OrderItemTapped" />
+
+			</OnPlatform.WinPhone>
+
+		</OnPlatform>
+	</base:CustomerOrdersPageXaml.Content>
+</base:CustomerOrdersPageXaml>

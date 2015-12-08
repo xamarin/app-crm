@@ -38,7 +38,6 @@
     <Compile Include="Pages\Sales\LeadContactDetailPage.cs" />
     <Compile Include="Pages\Sales\LeadDetailPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="App.cs" />
     <Compile Include="Properties\Attributes\CurrencyAttribute.cs" />
     <Compile Include="Properties\Attributes\DisplayAttribute.cs" />
     <Compile Include="Services\AuthInfo.cs" />
@@ -49,47 +48,27 @@
     <Compile Include="Views\Sales\SalesChartHeaderView.cs" />
     <Compile Include="Pages\Sales\SalesDashboardPage.cs" />
     <Compile Include="Pages\RootPage.cs" />
-    <Compile Include="Pages\Products\CategoryListPage.cs" />
-    <Compile Include="Pages\Products\ProductDetailPage.cs" />
-    <Compile Include="Pages\Products\ProductListPage.cs" />
     <Compile Include="ViewModels\Products\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\Products\ProductsViewModel.cs" />
-    <Compile Include="Views\Products\CategoryListView.cs" />
-    <Compile Include="Views\Products\ProductDetailDescriptionView.cs" />
-    <Compile Include="Views\Products\ProductListView.cs" />
     <Compile Include="ViewModels\Sales\LeadDetailViewModel.cs" />
     <Compile Include="Cells\PickerCell.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
-    <Compile Include="Views\Products\ProductDetailRibbonView.cs" />
-    <Compile Include="Views\Base\BaseNonPersistentSelectedItemListView.cs" />
-    <Compile Include="Pages\Customers\CustomersPage.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
-    <Compile Include="Views\Customers\CustomerListView.cs" />
-    <Compile Include="Pages\Customers\CustomerDetailPage.cs" />
-    <Compile Include="Pages\Customers\CustomerOrdersPage.cs" />
     <Compile Include="Pages\Customers\CustomerSalesPage.cs" />
     <Compile Include="ViewModels\Customers\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModels\Customers\CustomersViewModel.cs" />
-    <Compile Include="Layouts\UnspacedStackLayout.cs" />
     <Compile Include="Statics\MessagingServiceConstants.cs" />
     <Compile Include="Statics\Palette.cs" />
-    <Compile Include="Statics\Sizes.cs" />
     <Compile Include="Services\IConfigFetcher.cs" />
     <Compile Include="ViewModels\Customers\OrdersViewModel.cs" />
-    <Compile Include="Views\Customers\OrderListHeaderView.cs" />
-    <Compile Include="Views\Customers\CustomerOrderListView.cs" />
     <Compile Include="Converters\ShortDatePatternConverter.cs" />
     <Compile Include="Converters\CurrencyDoubleConverter.cs" />
     <Compile Include="Services\IAuthenticator.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="ViewModels\Customers\OrderDetailViewModel.cs" />
-    <Compile Include="Pages\Customers\CustomerTabbedPage.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="Converters\InvertedBooleanConverter.cs" />
-    <Compile Include="Views\Customers\CustomerDetailContactView.cs" />
-    <Compile Include="Views\Customers\CustomerDetailPhoneView.cs" />
-    <Compile Include="Views\Customers\CustomerDetailAddressView.cs" />
     <Compile Include="Pages\Customers\CustomerMapPage.cs" />
     <Compile Include="ViewModels\Customers\CustomerMapViewModel.cs" />
     <Compile Include="Views\Sales\LeadsView.cs" />
@@ -100,13 +79,9 @@
     <Compile Include="Converters\ConvertableConverter.cs" />
     <Compile Include="Services\IGeoCodingService.cs" />
     <Compile Include="Services\GeoCodingService.cs" />
-    <Compile Include="Views\Customers\CustomerCategorySalesChartView.cs" />
-    <Compile Include="Views\Customers\CustomerWeeklySalesChartView.cs" />
     <Compile Include="Views\Sales\SalesDashboardChartView.cs" />
     <Compile Include="ViewModels\Customers\CustomerSalesViewModel.cs" />
-    <Compile Include="Views\Customers\CustomerDetailHeaderView.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Views\Custom\ContentViewWithBottomBorder.cs" />
     <Compile Include="Views\Base\ModelBoundContentView.cs" />
     <Compile Include="Pages\Base\ModelBoundContentPage.cs" />
     <Compile Include="Enums\Environment.cs" />
@@ -135,10 +110,6 @@
     </Compile>
     <Compile Include="Localization\ILocalize.cs" />
     <Compile Include="Statics\InsightsReportingConstants.cs" />
-    <Compile Include="Cells\Products\CategoryListItemCell.cs" />
-    <Compile Include="Cells\Products\ProductListItemCell.cs" />
-    <Compile Include="Cells\Customers\CustomerOrderListViewGroupHeaderCell.cs" />
-    <Compile Include="Cells\Customers\OrderListItemCell.cs" />
     <Compile Include="Cells\Sales\LeadListItemCell.cs" />
     <Compile Include="Converters\BoolToLabelOpacityConverter.cs" />
     <Compile Include="Pages\MenuPage.xaml.cs">
@@ -147,11 +118,65 @@
     <Compile Include="Pages\About\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Custom\FloatingActionButtonView.cs" />
-    <Compile Include="Cells\Customers\CustomerListItemCell.xaml.cs">
-      <DependentUpon>CustomerListItemCell.xaml</DependentUpon>
+    <Compile Include="Pages\Customers\CustomerOrdersPage.xaml.cs">
+      <DependentUpon>CustomerOrdersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Statics\Fonts.cs" />
+    <Compile Include="Views\Customers\CustomerOrderListView.xaml.cs">
+      <DependentUpon>CustomerOrderListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NonPersistentSelectedItemListView.xaml.cs">
+      <DependentUpon>NonPersistentSelectedItemListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FloatingActionButtonView.cs" />
+    <Compile Include="Statics\FontSizes.cs" />
+    <Compile Include="Statics\RowSizes.cs" />
+    <Compile Include="Views\Customers\CustomerListView.xaml.cs">
+      <DependentUpon>CustomerListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Customers\CustomersPage.xaml.cs">
+      <DependentUpon>CustomersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\CategoryListPage.xaml.cs">
+      <DependentUpon>CategoryListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Products\CategoryListView.xaml.cs">
+      <DependentUpon>CategoryListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\ProductDetailPage.xaml.cs">
+      <DependentUpon>ProductDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\ProductListPage.xaml.cs">
+      <DependentUpon>ProductListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Products\ProductListView.xaml.cs">
+      <DependentUpon>ProductListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Customers\CustomerTabbedPage.xaml.cs">
+      <DependentUpon>CustomerTabbedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Customers\CustomerTabbedPageViewModel.cs" />
+    <Compile Include="Pages\Base\ModelBoundTabbedPage.cs" />
+    <Compile Include="Pages\Customers\CustomerDetailPage.xaml.cs">
+      <DependentUpon>CustomerDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\OldCustomerCategorySalesChartView.cs" />
+    <Compile Include="Views\Customers\OldCustomerWeeklySalesChartView.cs" />
+    <Compile Include="Views\Customers\CustomerDetailHeaderView.xaml.cs">
+      <DependentUpon>CustomerDetailHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\CustomerDetailAddressView.xaml.cs">
+      <DependentUpon>CustomerDetailAddressView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\CustomerDetailContactView.xaml.cs">
+      <DependentUpon>CustomerDetailContactView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customers\CustomerDetailPhoneView.xaml.cs">
+      <DependentUpon>CustomerDetailPhoneView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppModels\OrderStatusOption.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -174,7 +199,55 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <LogicalName>AboutPage.xaml</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cells\Customers\CustomerListItemCell.xaml">
+    <EmbeddedResource Include="Pages\Customers\CustomerOrdersPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\CustomerOrderListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NonPersistentSelectedItemListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\CustomerListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Customers\CustomersPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Products\CategoryListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Products\CategoryListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Products\ProductDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Products\ProductListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Products\ProductListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Customers\CustomerTabbedPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Customers\CustomerDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\CustomerDetailHeaderView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\CustomerDetailAddressView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\CustomerDetailContactView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\CustomerDetailPhoneView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -206,60 +279,61 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Connectivity.Plugin">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.1.0.4\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Connectivity.Plugin.dll</HintPath>
-    </Reference>
-    <Reference Include="Connectivity.Plugin.Abstractions">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.1.0.4\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Connectivity.Plugin.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="ExternalMaps.Plugin">
-      <HintPath>..\packages\Xam.Plugin.ExternalMaps.1.0.5\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\ExternalMaps.Plugin.dll</HintPath>
-    </Reference>
-    <Reference Include="ExternalMaps.Plugin.Abstractions">
-      <HintPath>..\packages\Xam.Plugin.ExternalMaps.1.0.5\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\ExternalMaps.Plugin.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Lotz.Xam.Messaging.Abstractions">
-      <HintPath>..\packages\Xam.Plugins.Messaging.2.2.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Lotz.Xam.Messaging">
-      <HintPath>..\packages\Xam.Plugins.Messaging.2.2.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Lotz.Xam.Messaging.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Spatial">
-      <HintPath>..\packages\System.Spatial.5.6.4\lib\portable-net45+wp8+win8+wpa\System.Spatial.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Edm">
-      <HintPath>..\packages\Microsoft.Data.Edm.5.6.4\lib\portable-net45+wp8+win8+wpa\Microsoft.Data.Edm.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.OData">
-      <HintPath>..\packages\Microsoft.Data.OData.5.6.4\lib\portable-net45+wp8+win8+wpa\Microsoft.Data.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Services.Client">
-      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.4\lib\portable-net45+wp8+win8+wpa\Microsoft.Data.Services.Client.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.ActiveDirectory.GraphClient">
       <HintPath>..\packages\Microsoft.Azure.ActiveDirectory.GraphClient.2.1.0\lib\portable-net4+sl5+win+wpa+wp8\Microsoft.Azure.ActiveDirectory.GraphClient.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Insights">
       <HintPath>..\packages\Xamarin.Insights.1.11.2\lib\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.dll</HintPath>
     </Reference>
-    <Reference Include="ImageCircle.Forms.Plugin.Abstractions">
-      <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.1.1.6\lib\portable-net45+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
+    <Reference Include="System.Spatial">
+      <HintPath>..\packages\System.Spatial.5.7.0\lib\portable-net45+wp8+win8+wpa\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.7.0\lib\portable-net45+wp8+win8+wpa\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData">
+      <HintPath>..\packages\Microsoft.Data.OData.5.7.0\lib\portable-net45+wp8+win8+wpa\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.7.0\lib\portable-net45+wp8+win8+wpa\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\packages\Xamarin.Forms.2.0.0.6482\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.2.0.0.6490\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\packages\Xamarin.Forms.2.0.0.6482\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.2.0.0.6490\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform">
-      <HintPath>..\packages\Xamarin.Forms.2.0.0.6482\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.2.0.0.6490\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Maps">
-      <HintPath>..\packages\Xamarin.Forms.Maps.2.0.0.6482\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Forms.Maps.2.0.0.6490\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.2.0.0\lib\portable-net45+wp80+wp81+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Connectivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.2.0.0\lib\portable-net45+wp80+wp81+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.ExternalMaps">
+      <HintPath>..\packages\Xam.Plugin.ExternalMaps.2.0.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.ExternalMaps.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.ExternalMaps.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.ExternalMaps.2.0.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.ExternalMaps.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.1.3.0\lib\portable-net45+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Lotz.Xam.Messaging.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.Messaging.2.3.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Lotz.Xam.Messaging">
+      <HintPath>..\packages\Xam.Plugins.Messaging.2.3.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Lotz.Xam.Messaging.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="PluginsHelp\ConnectivityReadme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\Customers\" />
@@ -272,22 +346,18 @@
     <Folder Include="Clients\" />
     <Folder Include="Extensions\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Layouts\" />
     <Folder Include="Statics\" />
     <Folder Include="Config\" />
     <Folder Include="Pages\Splash\" />
     <Folder Include="ViewModels\Splash\" />
     <Folder Include="ViewModels\Base\" />
-    <Folder Include="Views\Custom\" />
     <Folder Include="Enums\" />
-    <Folder Include="Cells\Customers\" />
-    <Folder Include="Cells\Products\" />
     <Folder Include="Cells\Sales\" />
     <Folder Include="Pages\About\" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Xamarin.Insights.1.11.2\build\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.11.2\build\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.targets')" />
-  <Import Project="..\packages\Xamarin.Forms.2.0.0.6482\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.0.0.6482\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.2.0.0.6490\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.0.0.6490\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureSenstiveConfigXmlExists" BeforeTargets="PrepareForBuild">
     <Copy SourceFiles="$(ProjectDir)\ConfigTemplate\config-sensitive.xml" DestinationFolder="$(ProjectDir)\Config" Condition="!Exists('$(ProjectDir)\Config\config-sensitive.xml')" />
   </Target>

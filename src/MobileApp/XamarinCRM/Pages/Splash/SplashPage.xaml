@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!---Note that SplashPageXaml is a type defined at the bottom of the SplashPageXaml.cs file -->
 <page:SplashPageXaml 
-	xmlns="http://xamarin.com/schemas/2014/forms" 
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-	x:Class="XamarinCRM.Pages.Splash.SplashPage" 
-	xmlns:app="clr-namespace:XamarinCRM" 
-	xmlns:page="clr-namespace:XamarinCRM.Pages.Splash" 
-	xmlns:statics="clr-namespace:XamarinCRM.Statics" 
-	xmlns:converters="clr-namespace:XamarinCRM.Converters" 
-	xmlns:i18n="clr-namespace:XamarinCRM.Localization" 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Pages.Splash.SplashPage" 
+xmlns:app="clr-namespace:XamarinCRM" 
+xmlns:page="clr-namespace:XamarinCRM.Pages.Splash" 
+xmlns:statics="clr-namespace:XamarinCRM.Statics" 
+xmlns:converters="clr-namespace:XamarinCRM.Converters" 
+xmlns:i18n="clr-namespace:XamarinCRM.Localization" 
 	BackgroundColor="White">
 	<page:SplashPageXaml.Resources>
 	    <ResourceDictionary>

@@ -22,21 +22,20 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin;
 using Xamarin.Forms;
-using XamarinCRM.Layouts;
 using XamarinCRM.Pages.Splash;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Sales;
 using XamarinCRM.Services;
 using XamarinCRM.Models;
-using XamarinCRM.Views.Custom;
+using XamarinCRM.Views;
 
 namespace XamarinCRM.Pages.Sales
 {
     public class SalesDashboardPage : ContentPage
     {
         IAuthenticationService _AuthenticationService;
-        ScrollView scrollView;
-        FloatingActionButtonView fab;
+        ScrollView _ScrollView;
+        FloatingActionButtonView _Fab;
         // We're holding on to these ViewModel properties because a couple of child views are reliant on these ViewModels, as well as the OnAppearing()
         // method in this Page needing access to some of the public methods on those ViewModels, e.g. ExecuteLoadSeedDataCommand().
         SalesDashboardChartViewModel _SalesDashboardChartViewModel { get; set; }
@@ -50,8 +49,17 @@ namespace XamarinCRM.Pages.Sales
             this.SetBinding(Page.TitleProperty, new Binding() { Source = TextResources.Sales });
 
             #region sales chart view
+            SalesDashboardChartView salesChartView = null;
             _SalesDashboardChartViewModel = new SalesDashboardChartViewModel();
-            SalesDashboardChartView salesChartView = new SalesDashboardChartView() { BindingContext = _SalesDashboardChartViewModel };
+            try
+            {
+                salesChartView = new SalesDashboardChartView() { BindingContext = _SalesDashboardChartViewModel };    
+            }
+            catch (Exception ex)
+            {
+                
+            }
+
             #endregion
 
             #region leads view
@@ -60,10 +68,11 @@ namespace XamarinCRM.Pages.Sales
             var leadsView = new LeadsView { BindingContext = _SalesDashboardLeadsViewModel };
             #endregion
 
-            scrollView = new ScrollView
+            _ScrollView = new ScrollView
             { 
-                Content = new UnspacedStackLayout
+                Content = new StackLayout
                 {
+                    Spacing = 0,
                     Children =
                     {
                         salesChartView,
@@ -75,7 +84,7 @@ namespace XamarinCRM.Pages.Sales
             #region compose view hierarchy
             if (Device.OS == TargetPlatform.Android)
             {
-                fab = new FloatingActionButtonView
+                _Fab = new FloatingActionButtonView
                 {
                     ImageName = "fab_add.png",
                     ColorNormal = Palette._001,
@@ -93,24 +102,25 @@ namespace XamarinCRM.Pages.Sales
 
                 // Position the pageLayout to fill the entire screen.
                 // Manage positioning of child elements on the page by editing the pageLayout.
-                AbsoluteLayout.SetLayoutFlags(scrollView, AbsoluteLayoutFlags.All);
-                AbsoluteLayout.SetLayoutBounds(scrollView, new Rectangle(0f, 0f, 1f, 1f));
-                absolute.Children.Add(scrollView);
+                AbsoluteLayout.SetLayoutFlags(_ScrollView, AbsoluteLayoutFlags.All);
+                AbsoluteLayout.SetLayoutBounds(_ScrollView, new Rectangle(0f, 0f, 1f, 1f));
+                absolute.Children.Add(_ScrollView);
 
                 // Overlay the FAB in the bottom-right corner
-                AbsoluteLayout.SetLayoutFlags(fab, AbsoluteLayoutFlags.PositionProportional);
-                AbsoluteLayout.SetLayoutBounds(fab, new Rectangle(1f, 1f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
-                absolute.Children.Add(fab);
+                AbsoluteLayout.SetLayoutFlags(_Fab, AbsoluteLayoutFlags.PositionProportional);
+                AbsoluteLayout.SetLayoutBounds(_Fab, new Rectangle(1f, 1f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+                absolute.Children.Add(_Fab);
 
                 Content = absolute;
             }
             else
             {
-				ToolbarItems.Add (new ToolbarItem ("Add", "add_ios_gray", () => {
-					_SalesDashboardLeadsViewModel.PushLeadDetailsTabbedPageCommand.Execute (null);
-				}));
+                ToolbarItems.Add(new ToolbarItem("Add", "add_ios_gray", () =>
+                        {
+                            _SalesDashboardLeadsViewModel.PushLeadDetailsTabbedPageCommand.Execute(null);
+                        }));
 
-                Content = scrollView;
+                Content = _ScrollView;
             }
             #endregion
 
@@ -162,7 +172,7 @@ namespace XamarinCRM.Pages.Sales
             }
 
         }
-       
+
        
 
         Action<object> PushTabbedLeadPageAction
@@ -176,43 +186,52 @@ namespace XamarinCRM.Pages.Sales
 
 
             Page page = null;
-            var leadDetail = new LeadDetailPage()
+            var leadDetailPage = new LeadDetailPage()
             {
                 BindingContext = viewModel,
                 Title = TextResources.Details,
-                Icon = new FileImageSource() { File = "LeadDetailTab" } // only used on iOS
+                
             };
+            if (Device.OS == TargetPlatform.iOS)
+                leadDetailPage.Icon = Icon = new FileImageSource() { File = "LeadDetailTab" };
             
             if (Device.OS == TargetPlatform.iOS)
             {
-                page = leadDetail;
+                page = leadDetailPage;
             }
             else
             {
                 page = new TabbedPage();
-                ((TabbedPage)page).Children.Add(leadDetail);
 
-                ((TabbedPage)page).Children.Add(new LeadContactDetailPage()
-                    {
-                        BindingContext = viewModel,
-                        Title = TextResources.Contact,
-                        Icon = new FileImageSource() { File = "LeadContactDetailTab" } // only used on iOS
-                    });
-                
+                var leadContactDetailPage = new LeadContactDetailPage()
+                {
+                    BindingContext = viewModel,
+                    Title = TextResources.Contact,
+                };
+
+                if (Device.OS == TargetPlatform.iOS)
+                    leadContactDetailPage.Icon = new FileImageSource() { File = "LeadContactDetailTab" };
+
+                ((TabbedPage)page).Children.Add(leadDetailPage);
+
+                ((TabbedPage)page).Children.Add(leadContactDetailPage);
             }
 
 
-			if (lead != null) {
+            if (lead != null)
+            {
                 page.Title = lead.Company;
-			} else {
+            }
+            else
+            {
                 page.Title = "New Lead";
-			}
+            }
 
             page.ToolbarItems.Add(
                 new ToolbarItem(TextResources.Save, "save.png", async () =>
                     {
 
-                        if(string.IsNullOrWhiteSpace(viewModel.Lead.Company))
+                        if (string.IsNullOrWhiteSpace(viewModel.Lead.Company))
                         {
                             await DisplayAlert("Missing Information", "Please fill in the lead's company to continue", "OK");
                             return;

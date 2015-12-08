@@ -43,9 +43,9 @@ namespace XamarinCRM.iOS
 			case "detail-disclosure-button":
 				cell.Accessory = UIKit.UITableViewCellAccessory.DetailDisclosureButton;
 				break;
-			case "disclosure":
-				cell.Accessory = UIKit.UITableViewCellAccessory.DisclosureIndicator;
-				break;
+            case "disclosure":
+                cell.Accessory = UIKit.UITableViewCellAccessory.DisclosureIndicator;
+			    break;
 			default:
 				cell.Accessory = UIKit.UITableViewCellAccessory.None;
 				break;
