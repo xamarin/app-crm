@@ -298,7 +298,7 @@ namespace XamarinCRM.Pages.Customers
 
             NavigationPage navPage = new NavigationPage(new CategoryListPage()
                 { 
-                    BindingContext = new CategoriesViewModel(null, null, true),
+                    BindingContext = new CategoriesViewModel(null, true) { Navigation = this.Navigation },
                     Title = TextResources.MainTabs_Products
                 });
             

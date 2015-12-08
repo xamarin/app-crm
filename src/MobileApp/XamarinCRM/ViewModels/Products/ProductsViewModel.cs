@@ -69,9 +69,11 @@ namespace XamarinCRM.ViewModels.Products
 
         public bool NeedsRefresh { get; set; }
 
-        public ProductsViewModel(string categoryId = null)
+        public ProductsViewModel(string categoryId = null, bool isPerformingProductSelection = false)
         {
             _CategoryId = categoryId;
+
+            _IsPerformingProductSelection = isPerformingProductSelection;
 
             _Products = new ObservableCollection<Product>();
 

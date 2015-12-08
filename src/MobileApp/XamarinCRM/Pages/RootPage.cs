@@ -89,7 +89,7 @@ namespace XamarinCRM.Pages
                     case MenuType.Products:
                         page = new CRMNavigationPage(new CategoryListPage
                             { 
-                                BindingContext = new CategoriesViewModel(navigation: Navigation), 
+                                BindingContext = new CategoriesViewModel() { Navigation = this.Navigation }, 
                                 Title = TextResources.MainTabs_Products, 
                                 Icon = new FileImageSource { File = "products.png" } 
                             });
@@ -150,7 +150,7 @@ namespace XamarinCRM.Pages
                 });
             Children.Add(new CRMNavigationPage(new CategoryListPage
                     { 
-                        BindingContext = new CategoriesViewModel(navigation: Navigation), 
+                    BindingContext = new CategoriesViewModel() { Navigation = this.Navigation }, 
                         Title = TextResources.MainTabs_Products, 
                         Icon = new FileImageSource { File = "products.png" } 
                     })

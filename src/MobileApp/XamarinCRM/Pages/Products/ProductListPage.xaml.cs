@@ -54,7 +54,7 @@ namespace XamarinCRM.Pages.Products
         async void ProductItemTapped (object sender, ItemTappedEventArgs e)
         {
             Product catalogProduct = ((Product)e.Item);
-            await Navigation.PushAsync(new ProductDetailPage() { BindingContext = new ProductDetailViewModel(catalogProduct, ViewModel.IsPerformingProductSelection) });
+            await Navigation.PushAsync(new ProductDetailPage() { BindingContext = new ProductDetailViewModel(catalogProduct, ViewModel.IsPerformingProductSelection) { Navigation = ViewModel.Navigation } });
         }
     }
 

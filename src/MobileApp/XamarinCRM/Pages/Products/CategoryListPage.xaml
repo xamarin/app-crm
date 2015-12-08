@@ -5,7 +5,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 x:Class="XamarinCRM.Pages.Products.CategoryListPage"
 xmlns:productsPages="clr-namespace:XamarinCRM.Pages.Products"
 xmlns:productsViews="clr-namespace:XamarinCRM.Views.Products"
-	Title="{Binding Category}">
+	Title="{Binding Title}">
 	<productsPages:CategoryListPage.Content>
 		<productsViews:CategoryListView 
 		IsPullToRefreshEnabled="true"

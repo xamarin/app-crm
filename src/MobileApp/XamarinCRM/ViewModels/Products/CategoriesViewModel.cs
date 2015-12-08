@@ -68,11 +68,12 @@ namespace XamarinCRM.ViewModels.Products
 
         public bool NeedsRefresh { get; set; }
 
-        public CategoriesViewModel(Category category = null, INavigation navigation = null, bool isPerformingProductSelection = false)
+        public CategoriesViewModel(Category category = null, bool isPerformingProductSelection = false)
         {
             Category = category;
-            Navigation = navigation;
+
             _IsPerformingProductSelection = isPerformingProductSelection;
+
             SubCategories = new ObservableCollection<Category>();
 
             _DataClient = DependencyService.Get<IDataClient>();

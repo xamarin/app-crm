@@ -31,6 +31,7 @@ namespace XamarinCRM
         public ProductDetailViewModel(Product catalogProduct, bool isPerformingProductSelection = false)
         {
             CatalogProduct = catalogProduct;
+
             _IsPerformingProductSelection = isPerformingProductSelection;
 
             AddToOrderCommand = new Command(async () =>

@@ -4,7 +4,8 @@ xmlns="http://xamarin.com/schemas/2014/forms"
 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 x:Class="XamarinCRM.Pages.Products.ProductListPage"
 xmlns:base="clr-namespace:XamarinCRM.Pages.Products"
-xmlns:productsViews="clr-namespace:XamarinCRM.Views.Products">
+xmlns:productsViews="clr-namespace:XamarinCRM.Views.Products"
+	Title="{Binding Title}">
 		<productsViews:ProductListView
 		ItemsSource="{Binding Products}"
 		IsRefreshing="{Binding IsBusy}" 

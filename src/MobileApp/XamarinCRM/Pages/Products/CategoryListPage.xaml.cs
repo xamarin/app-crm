@@ -56,11 +56,11 @@ namespace XamarinCRM.Pages.Products
             Category catalogCategory = ((Category)e.Item);
             if (catalogCategory.HasSubCategories)
             {
-                await Navigation.PushAsync(new CategoryListPage() { BindingContext = new CategoriesViewModel(catalogCategory, null, ViewModel.IsPerformingProductSelection) { Title = catalogCategory.Name } });
+                await Navigation.PushAsync(new CategoryListPage() { BindingContext = new CategoriesViewModel(catalogCategory, ViewModel.IsPerformingProductSelection) { Title = catalogCategory.Name, Navigation = ViewModel.Navigation } });
             }
             else
             {
-                await Navigation.PushAsync(new ProductListPage() { BindingContext = new ProductsViewModel(catalogCategory.Id) { Title = catalogCategory.Name } });
+                await Navigation.PushAsync(new ProductListPage() { BindingContext = new ProductsViewModel(catalogCategory.Id, ViewModel.IsPerformingProductSelection) { Title = catalogCategory.Name, Navigation = ViewModel.Navigation } });
             }
         }
     }
