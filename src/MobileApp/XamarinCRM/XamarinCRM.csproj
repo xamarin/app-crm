@@ -55,7 +55,6 @@
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
-    <Compile Include="Pages\Customers\CustomerSalesPage.cs" />
     <Compile Include="ViewModels\Customers\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModels\Customers\CustomersViewModel.cs" />
     <Compile Include="Statics\MessagingServiceConstants.cs" />
@@ -69,7 +68,6 @@
     <Compile Include="ViewModels\Customers\OrderDetailViewModel.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="Converters\InvertedBooleanConverter.cs" />
-    <Compile Include="Pages\Customers\CustomerMapPage.cs" />
     <Compile Include="ViewModels\Customers\CustomerMapViewModel.cs" />
     <Compile Include="Views\Sales\LeadsView.cs" />
     <Compile Include="ViewModels\Sales\SalesDashboardChartViewModel.cs" />
@@ -85,7 +83,6 @@
     <Compile Include="Views\Base\ModelBoundContentView.cs" />
     <Compile Include="Pages\Base\ModelBoundContentPage.cs" />
     <Compile Include="Enums\Environment.cs" />
-    <Compile Include="Pages\Customers\CustomerOrderDetailPage.cs" />
     <Compile Include="Extensions\IListExtensions.cs" />
     <Compile Include="Converters\OrderListHeaderViewBackgroudColorConverter.cs" />
     <Compile Include="Statics\Thicknesses.cs" />
@@ -177,6 +174,17 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppModels\OrderStatusOption.cs" />
+    <Compile Include="Pages\Customers\OlldCustomerMapPage.cs" />
+    <Compile Include="Pages\Customers\OldCustomerSalesPage.cs" />
+    <Compile Include="Pages\Customers\CustomerSalesPage.xaml.cs">
+      <DependentUpon>CustomerSalesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Customers\CustomerOrderDetailPage.xaml.cs">
+      <DependentUpon>CustomerOrderDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Customers\CustomerMapPage.xaml.cs">
+      <DependentUpon>CustomerMapPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -248,6 +256,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="App.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Customers\CustomerSalesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Customers\CustomerOrderDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Customers\CustomerMapPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

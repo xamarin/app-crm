@@ -120,7 +120,7 @@ namespace XamarinCRM.ViewModels.Customers
 
         static IEnumerable<Order> SortOrders(IEnumerable<Order> orders)
         {
-            return orders.OrderByDescending(x => x.IsOpen).ThenByDescending(x => x.OrderDate).ThenByDescending(x => x.ClosedDate);
+            return orders.OrderByDescending(x => x.IsOpen).ThenByDescending(x => x.ClosedDate).ThenByDescending(x => x.OrderDate);
         }
     }
 }

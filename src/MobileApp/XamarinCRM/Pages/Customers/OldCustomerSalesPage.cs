@@ -26,9 +26,9 @@ using XamarinCRM.Views.Customers;
 
 namespace XamarinCRM.Pages.Customers
 {
-    public class CustomerSalesPage : ModelBoundContentPage<CustomerSalesViewModel>
+    public class OldCustomerSalesPage : ModelBoundContentPage<CustomerSalesViewModel>
     {
-        public CustomerSalesPage()
+        public OldCustomerSalesPage()
         {
             #region header
             Label companyTitleLabel = new Label()

@@ -51,7 +51,7 @@ namespace XamarinCRM.Pages.Customers
 
         async void SalesTabTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CustomerSalesPage()
+            await Navigation.PushAsync(new OldCustomerSalesPage()
                 {
                     BindingContext = new CustomerSalesViewModel(ViewModel.Account)
                     {

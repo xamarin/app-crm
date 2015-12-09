@@ -216,7 +216,7 @@ namespace XamarinCRM.ViewModels.Customers
 
         async Task ExecuteMapMarkerIconTappedCommand()
         {
-            await PushAsync(new CustomerMapPage(this)
+            await PushAsync(new OlldCustomerMapPage(this)
                 {
                     Title = Account.Company,
                     BindingContext = this
