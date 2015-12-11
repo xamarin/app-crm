@@ -18,18 +18,16 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+using Xamarin;
 using Xamarin.Forms;
-using XamarinCRM.ViewModels.Sales;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.Statics;
-using Xamarin;
+using XamarinCRM.ViewModels.Sales;
 
 namespace XamarinCRM.Pages.Sales
 {
     public class LeadContactDetailPage : ModelBoundContentPage<LeadDetailViewModel>
     {
-        // NOTE: the ViewModel is contained in the base class
-
         public LeadContactDetailPage()
         {
             #region roleEntry
