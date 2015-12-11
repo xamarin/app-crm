@@ -37,23 +37,6 @@ namespace XamarinCRM.Views.Sales
             set { SetValue(WeeklyAverageProperty, value); }
         }
 
-        protected override void OnPropertyChanged(string propertyName = null)
-        {
-            base.OnPropertyChanged(propertyName);
-
-            switch(propertyName)
-            {
-                case "WeeklyAverage":
-                    UpdateWeeklyAverage();
-                    break;
-            }
-        }
-
-        void UpdateWeeklyAverage()
-        {
-            _WeeklyAverageValueLabel.Text = (string)GetValue(WeeklyAverageProperty);
-        }
-
         #endregion Example of custom bindable property
 
         public SalesChartHeaderView()
