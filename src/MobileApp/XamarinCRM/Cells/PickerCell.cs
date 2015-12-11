@@ -53,8 +53,6 @@ namespace XamarinCRM.Cells
                 Padding = new Thickness(15, 0, 0, 0)
             };
 
-
-
             Device.OnPlatform(
                 iOS: () =>
                 {
