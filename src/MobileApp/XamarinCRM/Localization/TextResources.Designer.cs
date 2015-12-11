@@ -377,6 +377,18 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string SalesDashboard_SalesChart_PrimaryAxis_Title {
+            get {
+                return ResourceManager.GetString("SalesDashboard_SalesChart_PrimaryAxis_Title", resourceCulture);
+            }
+        }
+        
+        internal static string SalesDashboard_SalesChart_YAxis_Title {
+            get {
+                return ResourceManager.GetString("SalesDashboard_SalesChart_YAxis_Title", resourceCulture);
+            }
+        }
+        
         internal static string Customers_Detail_Tab_Title {
             get {
                 return ResourceManager.GetString("Customers_Detail_Tab_Title", resourceCulture);

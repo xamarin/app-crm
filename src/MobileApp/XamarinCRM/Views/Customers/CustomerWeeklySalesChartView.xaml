@@ -13,6 +13,7 @@ xmlns:i18n="clr-namespace:XamarinCRM.Localization">
 		<ResourceDictionary>
 			<OnPlatform x:Key="AxisLabelColor" x:TypeArguments="Color" iOS="{x:Static statics:Palette._011}" Android="{x:Static statics:Palette._011}" WinPhone="White" />
 			<OnPlatform x:Key="AxisLineColor" x:TypeArguments="Color" iOS="{x:Static statics:Palette._008}" Android="{x:Static statics:Palette._008}" WinPhone="White" />
+			<OnPlatform x:Key="AxisFont" x:TypeArguments="Font" iOS="{x:Static statics:Fonts.SystemFontAt60PercentOfDefault}" Android ="{x:Static statics:Fonts.SystemFontAt170PercentOfDefault}" />
 			<OnPlatform x:Key="AndroidDataMarkerFont" x:TypeArguments="Font" Android="{x:Static statics:Fonts.SystemFontAt120PercentOfLarge}" />
 			<OnPlatform x:Key="AndroidChartLabelFont" x:TypeArguments="Font" Android="{x:Static statics:Fonts.SystemFontAt150PercentOfLarge}" />
 			<converters:InverseBooleanConverter x:Key="inverseBooleanConverter" />
@@ -64,6 +65,12 @@ xmlns:i18n="clr-namespace:XamarinCRM.Localization">
 							LabelPlacement="BetweenTicks"
 							TickPosition="Inside"
 							ShowMajorGridLines="false">
+								<sf:CategoryAxis.Title>
+									<sf:ChartAxisTitle 
+									Text="{i18n:Translate SalesDashboard_SalesChart_PrimaryAxis_Title}" 
+									TextColor="{x:Static statics:Palette._011}" 
+									Font="{StaticResource AxisFont}" />
+								</sf:CategoryAxis.Title>	
 								<sf:CategoryAxis.LabelStyle>
 									<sf:ChartAxisLabelStyle 
 									TextColor="{StaticResource AxisLabelColor}" 
@@ -82,7 +89,13 @@ xmlns:i18n="clr-namespace:XamarinCRM.Localization">
 									OpposedPosition="false"
 									ShowMajorGridLines="true"
 									ShowMinorGridLines="true"
-									MinorTicksPerInterval="1">										
+									MinorTicksPerInterval="1">	
+										<sf:NumericalAxis.Title>
+											<sf:ChartAxisTitle 
+											Text="{i18n:Translate SalesDashboard_SalesChart_YAxis_Title}" 
+											TextColor="{x:Static statics:Palette._011}" 
+											Font="{StaticResource AxisFont}" />
+										</sf:NumericalAxis.Title>					
 										<sf:NumericalAxis.MajorGridLineStyle>
 											<sf:ChartLineStyle StrokeColor="{StaticResource AxisLineColor}" />
 										</sf:NumericalAxis.MajorGridLineStyle>

@@ -29,16 +29,6 @@ namespace XamarinCRM
 {
     public class SalesDashboardChartView : ModelBoundContentView<SalesDashboardChartViewModel>
     {
-        static Color AxisLabelColor
-        {
-            get { return Device.OnPlatform(Palette._011, Palette._011, Color.White); }
-        }
-
-        static Color AxisLineColor
-        {
-            get { return Device.OnPlatform(Palette._008, Palette._008, Color.White); }
-        }
-
         public SalesDashboardChartView()
         {
             #region sales graph header
@@ -79,6 +69,12 @@ namespace XamarinCRM
             {
                 YAxis = new NumericalAxis()
                 {
+                    Title = new ChartAxisTitle()
+                    {
+                        Text = TextResources.SalesDashboard_SalesChart_YAxis_Title,
+                        Font = ChartAxisFont,
+                        TextColor = Palette._011
+                    },
                     OpposedPosition = false,
                     ShowMajorGridLines = true,
                     MajorGridLineStyle = new ChartLineStyle() { StrokeColor = AxisLineColor },
@@ -114,6 +110,12 @@ namespace XamarinCRM
 
                 PrimaryAxis = new CategoryAxis()
                 {
+                    Title = new ChartAxisTitle()
+                    {
+                        Text = TextResources.SalesDashboard_SalesChart_PrimaryAxis_Title,
+                        Font = ChartAxisFont,
+                        TextColor = Palette._011
+                    },
                     LabelRotationAngle = -45,
                     EdgeLabelsDrawingMode = EdgeLabelsDrawingMode.Center,
                     LabelPlacement = LabelPlacement.BetweenTicks,
@@ -129,10 +131,7 @@ namespace XamarinCRM
             chart.Series.Add(columnSeries);
             chart.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             chart.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
-
-            // The chart has uncontrollable white space on it's left in iOS, so we're
-            // wrapping it in a ContentView and adding some right padding to compensate.
-            ContentView chartWrapper = new ContentView() { Content = chart };
+           
 
             StackLayout stackLayout = new StackLayout()
             {
@@ -142,7 +141,7 @@ namespace XamarinCRM
                     loadingLabel,
                     chartActivityIndicator,
                     chartHeaderView,
-                    chartWrapper,
+                    new ContentView() { Content = chart, HeightRequest = chartHeight }
                 }
             };
             #endregion
@@ -151,7 +150,6 @@ namespace XamarinCRM
             Device.OnPlatform(
                 iOS: () =>
                 { 
-                    chartWrapper.Padding = new Thickness(0, 0, 30, 0);
                     columnSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Micro, typeof(Label)) * 0.6);
                 }, 
                 Android: () =>
@@ -163,6 +161,37 @@ namespace XamarinCRM
             #endregion
 
             Content = stackLayout;
+        }
+
+        static Color AxisLabelColor
+        {
+            get { return Device.OnPlatform(Palette._011, Palette._011, Color.White); }
+        }
+
+        static Color AxisLineColor
+        {
+            get { return Device.OnPlatform(Palette._008, Palette._008, Color.White); }
+        }
+
+        static Font ChartAxisFont
+        {
+            get
+            {
+                Font font;
+
+                Device.OnPlatform(
+                    iOS: () =>
+                    { 
+                        font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Default, typeof(ChartAxisTitle)) * 0.6); 
+                    },
+                    Android: () =>
+                    { 
+                        font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Default, typeof(ChartAxisTitle)) * 1.7);
+                    }
+                );
+
+                return font;
+            }
         }
     }
 }

@@ -191,6 +191,12 @@
 	<data name="SalesDashboard_Leads_LoadingLabel" xml:space="preserve">
 		<value>Loading leads data...</value>
 	</data>
+	<data name="SalesDashboard_SalesChart_PrimaryAxis_Title" xml:space="preserve">
+		<value>Week</value>
+	</data>
+	<data name="SalesDashboard_SalesChart_YAxis_Title" xml:space="preserve">
+		<value>Sales Total</value>
+	</data>
 
 
 	<data name="Customers_Detail_Tab_Title" xml:space="preserve">
