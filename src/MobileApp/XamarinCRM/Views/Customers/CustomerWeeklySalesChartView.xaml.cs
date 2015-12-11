@@ -19,14 +19,21 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
+using XamarinCRM.Views.Base;
+using Xamarin;
 
-namespace XamarinCRM.Statics
+namespace XamarinCRM.Views.Customers
 {
-    public static class FontSizes
+    public partial class CustomerWeeklySalesChartView : CustomerWeeklySalesChartViewXaml
     {
-        public readonly static double _120PercentOfSmall = Device.GetNamedSize(NamedSize.Small, typeof(Label)) * 1.2;
-        public readonly static double _150PercentOfLarge = Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5;
+        public CustomerWeeklySalesChartView()
+        {
+            InitializeComponent();
+        }
     }
+
+    public abstract class CustomerWeeklySalesChartViewXaml : ModelBoundContentView<CustomerSalesViewModel> { }
 }
 

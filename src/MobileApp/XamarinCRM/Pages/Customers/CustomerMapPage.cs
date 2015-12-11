@@ -30,14 +30,12 @@ using Plugin.ExternalMaps.Abstractions;
 
 namespace XamarinCRM.Pages.Customers
 {
-    public class OlldCustomerMapPage : ModelBoundContentPage<CustomerDetailViewModel>
+    public class CustomerMapPage : ModelBoundContentPage<CustomerDetailViewModel>
     {
         Map _Map;
 
-        public OlldCustomerMapPage(CustomerDetailViewModel viewModel)
+        public CustomerMapPage()
         {
-            this.BindingContext = viewModel;
-
             _Map = new Map()
             {
                 IsShowingUser = true,

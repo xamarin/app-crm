@@ -23,6 +23,8 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using XamarinCRM.Pages.Base;
+using Xamarin;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.Pages.Customers
 {
@@ -31,6 +33,19 @@ namespace XamarinCRM.Pages.Customers
         public CustomerSalesPage()
         {
             InitializeComponent();
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (!ViewModel.IsInitialized)
+            {
+                await ViewModel.ExecuteLoadSeedDataCommand(ViewModel.Account);
+                ViewModel.IsInitialized = true;
+            }
+
+            Insights.Track(InsightsReportingConstants.PAGE_CUSTOMERSALES);
         }
     }
 

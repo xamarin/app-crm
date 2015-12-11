@@ -19,7 +19,6 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
-
 using Xamarin.Forms;
 using XamarinCRM.Services;
 using XamarinCRM.Localization;
@@ -27,6 +26,9 @@ using XamarinCRM.Pages.Splash;
 using XamarinCRM.Pages;
 using System.Threading.Tasks;
 using Plugin.Connectivity;
+using Xamarin.Forms.Xaml;
+
+//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
 namespace XamarinCRM
 {

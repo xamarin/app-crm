@@ -25,7 +25,36 @@ namespace XamarinCRM.Views.Sales
 {
     public class SalesChartHeaderView : ContentView
     {
-        public Label WeeklyAverageValueLabel;
+        readonly Label _WeeklyAverageValueLabel;
+
+        #region Example of custom bindable property
+
+        public static readonly BindableProperty WeeklyAverageProperty = BindableProperty.Create<SalesChartHeaderView, string>(p => p.WeeklyAverage, null);
+
+        public string WeeklyAverage
+        {
+            get { return (string)GetValue(WeeklyAverageProperty); }
+            set { SetValue(WeeklyAverageProperty, value); }
+        }
+
+        protected override void OnPropertyChanged(string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+
+            switch(propertyName)
+            {
+                case "WeeklyAverage":
+                    UpdateWeeklyAverage();
+                    break;
+            }
+        }
+
+        void UpdateWeeklyAverage()
+        {
+            _WeeklyAverageValueLabel.Text = (string)GetValue(WeeklyAverageProperty);
+        }
+
+        #endregion Example of custom bindable property
 
         public SalesChartHeaderView()
         {
@@ -50,7 +79,7 @@ namespace XamarinCRM.Views.Sales
                 VerticalTextAlignment = TextAlignment.Center
             };
 
-            WeeklyAverageValueLabel = new Label()
+            _WeeklyAverageValueLabel = new Label()
             {
                 TextColor = Device.OnPlatform(Palette._006, Palette._006, Color.White),
                 FontSize = Device.OnPlatform(
@@ -62,7 +91,7 @@ namespace XamarinCRM.Views.Sales
             };
 
             Device.OnPlatform(
-                Android: () => WeeklyAverageValueLabel.FontAttributes = FontAttributes.Bold);
+                Android: () => _WeeklyAverageValueLabel.FontAttributes = FontAttributes.Bold);
 
             RelativeLayout relativeLayout = new RelativeLayout();
 
@@ -83,7 +112,7 @@ namespace XamarinCRM.Views.Sales
             );
            
             relativeLayout.Children.Add(
-                view: WeeklyAverageValueLabel,
+                view: _WeeklyAverageValueLabel,
                 xConstraint: Constraint.RelativeToParent(parent => parent.Width / 2),
                 yConstraint: Constraint.RelativeToParent(parent => parent.Height / 4),
                 widthConstraint: Constraint.RelativeToParent(parent => parent.Width / 2),

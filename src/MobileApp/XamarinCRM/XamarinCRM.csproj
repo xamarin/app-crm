@@ -156,8 +156,6 @@
     <Compile Include="Pages\Customers\CustomerDetailPage.xaml.cs">
       <DependentUpon>CustomerDetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Customers\OldCustomerCategorySalesChartView.cs" />
-    <Compile Include="Views\Customers\OldCustomerWeeklySalesChartView.cs" />
     <Compile Include="Views\Customers\CustomerDetailHeaderView.xaml.cs">
       <DependentUpon>CustomerDetailHeaderView.xaml</DependentUpon>
     </Compile>
@@ -174,17 +172,20 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppModels\OrderStatusOption.cs" />
-    <Compile Include="Pages\Customers\OlldCustomerMapPage.cs" />
-    <Compile Include="Pages\Customers\OldCustomerSalesPage.cs" />
     <Compile Include="Pages\Customers\CustomerSalesPage.xaml.cs">
       <DependentUpon>CustomerSalesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Customers\CustomerOrderDetailPage.xaml.cs">
       <DependentUpon>CustomerOrderDetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Customers\CustomerMapPage.xaml.cs">
-      <DependentUpon>CustomerMapPage.xaml</DependentUpon>
+    <Compile Include="Views\Customers\CustomerWeeklySalesChartView.xaml.cs">
+      <DependentUpon>CustomerWeeklySalesChartView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Customers\CustomerCategorySalesChartView.xaml.cs">
+      <DependentUpon>CustomerCategorySalesChartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Customers\CustomerMapPage.cs" />
+    <Compile Include="Statics\Fonts.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -264,7 +265,10 @@
     <EmbeddedResource Include="Pages\Customers\CustomerOrderDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Customers\CustomerMapPage.xaml">
+    <EmbeddedResource Include="Views\Customers\CustomerWeeklySalesChartView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers\CustomerCategorySalesChartView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

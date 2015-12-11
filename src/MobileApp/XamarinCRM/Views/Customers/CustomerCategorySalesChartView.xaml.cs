@@ -20,21 +20,48 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-
 using Xamarin.Forms;
-using XamarinCRM.Pages.Base;
-using XamarinCRM.ViewModels.Customers;
+using XamarinCRM.Views.Base;
+using Syncfusion.SfChart.XForms;
+using XamarinCRM.Statics;
 
-namespace XamarinCRM.Pages.Customers
+namespace XamarinCRM.Views.Customers
 {
-    public partial class CustomerMapPage : CustomerMapPageXaml
+    public partial class CustomerCategorySalesChartView : CustomerCategorySalesChartViewXaml
     {
-        public CustomerMapPage()
+        public CustomerCategorySalesChartView()
         {
             InitializeComponent();
+
+            pieSeries.ColorModel = new ChartColorModel()
+            {
+                Palette = ChartColorPalette.Custom,
+                CustomBrushes = new List<Color>()
+                { 
+                    Palette._014, 
+                    Palette._015, 
+                    Palette._016
+                }
+            };
+
+            Device.OnPlatform(
+                iOS: () =>
+                {
+                    pieSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Small, typeof(Label)));
+                },
+                Android: () =>
+                {
+                    pieSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
+                    chart.BackgroundColor = Color.Transparent;
+                });
+
+
         }
     }
 
-    public abstract class CustomerMapPageXaml : ModelBoundContentPage<CustomerDetailViewModel> {}
+    public abstract class CustomerCategorySalesChartViewXaml : ModelBoundContentView<CustomerSalesViewModel>
+    {
+
+    }
 }
 
