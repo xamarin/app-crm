@@ -50,8 +50,7 @@ namespace XamarinCRM
 
         public bool NeedsRefresh { get; set; }
 
-        public CustomerSalesViewModel(Account account, INavigation navigation = null)
-            : base(navigation)
+        public CustomerSalesViewModel(Account account)
         {
             _Account = account;
 

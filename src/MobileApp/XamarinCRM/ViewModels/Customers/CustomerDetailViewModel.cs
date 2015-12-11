@@ -28,8 +28,8 @@ using XamarinCRM.ViewModels.Base;
 using XamarinCRM.Models;
 using System.Windows.Input;
 using System;
-using Lotz.Xam.Messaging;
 using XamarinCRM.Pages.Customers;
+using Plugin.Messaging;
 
 namespace XamarinCRM.ViewModels.Customers
 {
