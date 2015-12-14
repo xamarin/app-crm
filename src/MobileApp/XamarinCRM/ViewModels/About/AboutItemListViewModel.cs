@@ -92,7 +92,7 @@ namespace XamarinCRM.ViewModels
                 "Xamarin CRM is a demo app whose imagined purpose is to serve the mobile workforce of a " +
             "fictitious company that sells 3D printer hardware and supplies. The app empowers salespeople " +
             "to track their sales performance, manage leads, view their contacts, manage orders, and " +
-            "browse a product catalog.\n\nThe app is built with the Xamarin Platform and Xamarin.Forms, " +
+            "browse a product catalog.\n\nThe app is built with Xamarin Platform and Xamarin.Forms, " +
             "and takes advantage of several other supporting technologies:";
         }
     }
