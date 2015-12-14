@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:CustomerSalesPageXaml 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Pages.Customers.CustomerSalesPage"
+xmlns:base="clr-namespace:XamarinCRM.Pages.Customers"
+xmlns:customerViews="clr-namespace:XamarinCRM.Views.Customers">
+	<ScrollView>
+		<StackLayout Spacing="0">
+			<customerViews:CustomerWeeklySalesChartView />
+			<customerViews:CustomerCategorySalesChartView />
+		</StackLayout>
+	</ScrollView>
+</base:CustomerSalesPageXaml >

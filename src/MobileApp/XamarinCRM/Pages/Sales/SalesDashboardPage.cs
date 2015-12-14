@@ -49,23 +49,12 @@ namespace XamarinCRM.Pages.Sales
             this.SetBinding(Page.TitleProperty, new Binding() { Source = TextResources.Sales });
 
             #region sales chart view
-            SalesDashboardChartView salesChartView = null;
-            _SalesDashboardChartViewModel = new SalesDashboardChartViewModel();
-            try
-            {
-                salesChartView = new SalesDashboardChartView() { BindingContext = _SalesDashboardChartViewModel };    
-            }
-            catch (Exception ex)
-            {
-                
-            }
+            var salesChartView = new SalesDashboardChartView() { BindingContext = _SalesDashboardChartViewModel = new SalesDashboardChartViewModel() };
 
             #endregion
 
             #region leads view
-            var newLeadCommand = new Command(PushTabbedLeadPageAction);
-            _SalesDashboardLeadsViewModel = new SalesDashboardLeadsViewModel(newLeadCommand);
-            var leadsView = new LeadsView { BindingContext = _SalesDashboardLeadsViewModel };
+            var leadsView = new LeadsView { BindingContext = _SalesDashboardLeadsViewModel = new SalesDashboardLeadsViewModel(new Command(PushTabbedLeadPageAction)) };
             #endregion
 
             _ScrollView = new ScrollView
@@ -91,7 +80,7 @@ namespace XamarinCRM.Pages.Sales
                     ColorPressed = Palette._002,
                     ColorRipple = Palette._001,
                     Clicked = (sender, args) => 
-                            newLeadCommand.Execute(null),
+                            _SalesDashboardLeadsViewModel.PushTabbedLeadPageCommand.Execute(null),
                 };
 
                 var absolute = new AbsoluteLayout
@@ -116,9 +105,7 @@ namespace XamarinCRM.Pages.Sales
             else
             {
                 ToolbarItems.Add(new ToolbarItem("Add", "add_ios_gray", () =>
-                        {
-                            _SalesDashboardLeadsViewModel.PushLeadDetailsTabbedPageCommand.Execute(null);
-                        }));
+                    _SalesDashboardLeadsViewModel.PushTabbedLeadPageCommand.Execute(null)));
 
                 Content = _ScrollView;
             }
@@ -184,8 +171,6 @@ namespace XamarinCRM.Pages.Sales
         {
             LeadDetailViewModel viewModel = new LeadDetailViewModel(Navigation, lead); 
 
-
-            Page page = null;
             var leadDetailPage = new LeadDetailPage()
             {
                 BindingContext = viewModel,
@@ -194,40 +179,18 @@ namespace XamarinCRM.Pages.Sales
             };
             if (Device.OS == TargetPlatform.iOS)
                 leadDetailPage.Icon = Icon = new FileImageSource() { File = "LeadDetailTab" };
-            
-            if (Device.OS == TargetPlatform.iOS)
-            {
-                page = leadDetailPage;
-            }
-            else
-            {
-                page = new TabbedPage();
-
-                var leadContactDetailPage = new LeadContactDetailPage()
-                {
-                    BindingContext = viewModel,
-                    Title = TextResources.Contact,
-                };
-
-                if (Device.OS == TargetPlatform.iOS)
-                    leadContactDetailPage.Icon = new FileImageSource() { File = "LeadContactDetailTab" };
-
-                ((TabbedPage)page).Children.Add(leadDetailPage);
-
-                ((TabbedPage)page).Children.Add(leadContactDetailPage);
-            }
 
 
             if (lead != null)
             {
-                page.Title = lead.Company;
+                leadDetailPage.Title = lead.Company;
             }
             else
             {
-                page.Title = "New Lead";
+                leadDetailPage.Title = "New Lead";
             }
 
-            page.ToolbarItems.Add(
+            leadDetailPage.ToolbarItems.Add(
                 new ToolbarItem(TextResources.Save, "save.png", async () =>
                     {
 
@@ -253,7 +216,7 @@ namespace XamarinCRM.Pages.Sales
                     }));
 
            
-            await Navigation.PushAsync(page);
+            await Navigation.PushAsync(leadDetailPage);
         }
     }
 }

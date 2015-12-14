@@ -25,9 +25,9 @@ using System.Threading.Tasks;
 using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
+using XamarinCRM.Models;
 using XamarinCRM.Services;
 using XamarinCRM.ViewModels.Base;
-using XamarinCRM.Models;
 
 namespace XamarinCRM
 {
@@ -50,8 +50,7 @@ namespace XamarinCRM
 
         public bool NeedsRefresh { get; set; }
 
-        public CustomerSalesViewModel(Account account, INavigation navigation = null)
-            : base(navigation)
+        public CustomerSalesViewModel(Account account)
         {
             _Account = account;
 

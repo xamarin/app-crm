@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:CustomerOrderDetailPageXaml 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Pages.Customers.CustomerOrderDetailPage"
+xmlns:base="clr-namespace:XamarinCRM.Pages.Customers"
+xmlns:statics="clr-namespace:XamarinCRM.Statics"
+xmlns:converters="clr-namespace:XamarinCRM.Converters"
+xmlns:i18n="clr-namespace:XamarinCRM.Localization">
+	<base:CustomerOrderDetailPageXaml.Resources>
+		<ResourceDictionary>
+	    	<converters:ShortDatePatternConverter x:Key="shortDatePatternConverter" />
+	    	<converters:InverseBooleanConverter x:Key="inverseBooleanConverter" />
+	    	<converters:CurrencyDoubleConverter x:Key="currencyDoubleConverter" />
+	    </ResourceDictionary>
+	</base:CustomerOrderDetailPageXaml.Resources>
+	<base:CustomerOrderDetailPageXaml.Content>
+	<ScrollView>
+		<StackLayout 
+		Spacing="0">
+			<ContentView 
+			x:Name="headerLabelsView" 
+			Padding="20, 0">
+				<RelativeLayout 
+				x:Name="headerLabelsRelativeLayout"
+				HeightRequest="{x:Static statics:RowSizes.LargeRowHeightDouble}">
+					<Label 
+					RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}"
+					RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}"
+					x:Name="companyTitleLabel" 
+					Text="{i18n:Translate Customers_Orders_EditOrder_CompanyTitle}" 
+					TextColor="{x:Static statics:Palette._007}" 
+					FontSize="Small" 
+					HorizontalTextAlignment="Start" 
+					VerticalTextAlignment="End" 
+					LineBreakMode="TailTruncation" />
+					<Label 
+					RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}"
+					RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}"
+					RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}"
+					x:Name="companyNameLabel" 
+					Text="{Binding Account.Company}"
+					TextColor="{x:Static statics:Palette._006}" 
+					FontSize="Medium" 
+					HorizontalTextAlignment="Start" 
+					VerticalTextAlignment="Start" 
+					LineBreakMode="TailTruncation" />
+				</RelativeLayout>
+			</ContentView>
+			<Grid x:Name="orderDetailsGrid" Padding="20">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<Grid.Children>
+
+					<ContentView 
+					Grid.Row="0" 
+					Grid.Column="0"
+					HeightRequest="{x:Static statics:RowSizes.SmallRowHeightDouble}">
+						<Label 
+						Text="{i18n:Translate Customers_Orders_EditOrder_ProductTitleLabel}"
+						HorizontalTextAlignment="End" 
+						VerticalTextAlignment="Center">
+							<Label.TextColor>
+								<OnPlatform x:TypeArguments="Color" iOS="{x:Static statics:Palette._007}" Android="{x:Static statics:Palette._004}" WinPhone="{x:Static statics:Palette._007}" />
+							</Label.TextColor>
+						</Label>
+					</ContentView>
+
+					<ContentView 
+					Grid.Row="1" 
+					Grid.Column="0"
+					HeightRequest="{x:Static statics:RowSizes.SmallRowHeightDouble}">
+						<Label 
+						Text="{i18n:Translate Customers_Orders_EditOrder_PriceTitleLabel}"
+						HorizontalTextAlignment="End" 
+						VerticalTextAlignment="Center">
+							<Label.TextColor>
+								<OnPlatform x:TypeArguments="Color" iOS="{x:Static statics:Palette._007}" Android="{x:Static statics:Palette._004}" WinPhone="{x:Static statics:Palette._007}" />
+							</Label.TextColor>
+						</Label>
+					</ContentView>
+
+					<ContentView 
+					Grid.Row="2" 
+					Grid.Column="0"
+					HeightRequest="{x:Static statics:RowSizes.SmallRowHeightDouble}">
+						<Label 
+						Text="{i18n:Translate Customers_Orders_EditOrder_OrderDateTitleLabel}"
+						HorizontalTextAlignment="End" 
+						VerticalTextAlignment="Center">
+							<Label.TextColor>
+								<OnPlatform x:TypeArguments="Color" iOS="{x:Static statics:Palette._007}" Android="{x:Static statics:Palette._004}" WinPhone="{x:Static statics:Palette._007}" />
+							</Label.TextColor>
+						</Label>
+					</ContentView>
+
+					<ContentView 
+					Grid.Row="3" 
+					Grid.Column="0"
+					HeightRequest="{x:Static statics:RowSizes.SmallRowHeightDouble}">
+						<Label 
+						Text="{i18n:Translate Customers_Orders_EditOrder_DueDateTitleLabel}"
+						HorizontalTextAlignment="End" 
+						VerticalTextAlignment="Center">
+							<Label.TextColor>
+								<OnPlatform x:TypeArguments="Color" iOS="{x:Static statics:Palette._007}" Android="{x:Static statics:Palette._004}" WinPhone="{x:Static statics:Palette._007}" />
+							</Label.TextColor>
+						</Label>
+					</ContentView>
+
+					<ContentView 
+					Grid.Row="4" 
+					Grid.Column="0"
+					HeightRequest="{x:Static statics:RowSizes.SmallRowHeightDouble}"
+					IsVisible="{Binding Order.IsOpen, Converter={StaticResource inverseBooleanConverter}}" 
+					IsEnabled="{Binding Order.IsOpen, Converter={StaticResource inverseBooleanConverter}}">
+						<Label 
+						Text="{i18n:Translate Customers_Orders_EditOrder_ClosedDateTitleLabel}"
+						HorizontalTextAlignment="End" 
+						VerticalTextAlignment="Center">
+							<Label.TextColor>
+								<OnPlatform x:TypeArguments="Color" iOS="{x:Static statics:Palette._007}" Android="{x:Static statics:Palette._004}" WinPhone="{x:Static statics:Palette._007}" />
+							</Label.TextColor>
+						</Label>
+					</ContentView>
+
+					<StackLayout 
+					Spacing="0"
+					x:Name="productSelectionStack"
+					Grid.Row="0" 
+					Grid.Column="1">
+						<Entry
+						x:Name="productSelectionEntry"
+						Text="{Binding Order.Item}" 
+						IsEnabled="{Binding Order.IsOpen}" 
+						IsVisible="{Binding Order.IsOpen}" />
+						<Label 
+						HeightRequest="{x:Static statics:RowSizes.SmallRowHeightDouble}" 
+						VerticalTextAlignment="Center"
+						FontSize="Medium"
+						Text="{Binding Order.Item}" 
+						LineBreakMode="TailTruncation"
+						IsEnabled="{Binding Order.IsOpen, Converter={StaticResource inverseBooleanConverter}}" 
+						IsVisible="{Binding Order.IsOpen, Converter={StaticResource inverseBooleanConverter}}" />
+					</StackLayout>
+
+					<StackLayout
+					Spacing="0"
+					x:Name="priceStack"
+					Grid.Row="1" 
+					Grid.Column="1">
+						<Entry
+						Placeholder="{i18n:Translate Customers_Orders_EditOrder_PriceEntryPlaceholder}" 
+						Keyboard="Numeric" 
+						Text="{Binding Order.Price}" 
+						IsEnabled="{Binding Order.IsOpen}" 
+						IsVisible="{Binding Order.IsOpen}" />
+						<Label 
+						HeightRequest="{x:Static statics:RowSizes.SmallRowHeightDouble}" 
+						VerticalTextAlignment="Center" 
+						FontSize="Medium" 
+						Text="{Binding Order.Price, Converter={StaticResource currencyDoubleConverter}}"
+						IsEnabled="{Binding Order.IsOpen, Converter={StaticResource inverseBooleanConverter}}" 
+						IsVisible="{Binding Order.IsOpen, Converter={StaticResource inverseBooleanConverter}}" />
+					</StackLayout>
+
+					<Label
+					x:Name="orderDateLabel"
+					Grid.Row="2" 
+					Grid.Column="1"
+					Text="{Binding Order.OrderDate, Converter={StaticResource shortDatePatternConverter}}"
+					HeightRequest="{x:Static statics:RowSizes.SmallRowHeightDouble}}" 
+					VerticalTextAlignment="Center" 
+					FontSize="Medium" />
+
+					<StackLayout Spacing="0"
+					Grid.Row="3" 
+					Grid.Column="1">
+						<DatePicker 
+						Date="{Binding Order.DueDate, Mode=TwoWay}" 
+						IsEnabled="{Binding Order.IsOpen}"
+						IsVisible="{Binding Order.IsOpen}" />
+						<Label 
+						HeightRequest="{x:Static statics:RowSizes.SmallRowHeightDouble}" 
+						VerticalTextAlignment="Center" 
+						FontSize="Medium" 
+						Text="{Binding Order.DueDate, Converter={StaticResource shortDatePatternConverter}}" 
+						IsEnabled="{Binding Order.IsOpen, Converter={StaticResource inverseBooleanConverter}}" 
+						IsVisible="{Binding Order.IsOpen, Converter={StaticResource inverseBooleanConverter}}" />
+					</StackLayout>
+
+					<Label
+					Grid.Row="4" 
+					Grid.Column="1" 
+					HeightRequest="{x:Static statics:RowSizes.SmallRowHeightDouble}" 
+					VerticalTextAlignment="Center" 
+					FontSize="Medium" 
+					Text="{Binding Order.ClosedDate, Converter={StaticResource shortDatePatternConverter}}"
+					IsEnabled="{Binding Order.IsOpen, Converter={StaticResource inverseBooleanConverter}}" 
+					IsVisible="{Binding Order.IsOpen, Converter={StaticResource inverseBooleanConverter}}" />
+
+					<Button 
+					Grid.Row="5" 
+					Grid.Column="0"
+					Grid.ColumnSpan="2" 
+					Text="{i18n:Translate Customer_Order_Detail_Deliver_Order}"
+					IsEnabled="{Binding Order.IsOpen}"
+					IsVisible="{Binding Order.IsOpen}"
+					Clicked="DeliverButton_Clicked" />
+
+				</Grid.Children>
+			</Grid>
+			<ActivityIndicator 
+			HeightRequest="{x:Static statics:RowSizes.LargeRowHeightDouble}" 
+			IsEnabled="{Binding IsBusy}" 
+			IsVisible="{Binding IsBusy}" 
+			IsRunning="{Binding IsBusy}" />
+			<ActivityIndicator
+			HeightRequest="{x:Static statics:RowSizes.LargeRowHeightDouble}"
+			BindingContext="{x:Reference ProductImage}" 
+			IsEnabled="{Binding IsLoading}" 
+			IsVisible="{Binding IsLoading}" 
+			IsRunning="{Binding IsLoading}" />
+			<ContentView Padding="20">
+				<Image x:Name="ProductImage" Aspect="AspectFit" Source="{Binding OrderItemImageUrl}" />
+			</ContentView>
+		</StackLayout>
+	</ScrollView>
+	</base:CustomerOrderDetailPageXaml.Content>
+</base:CustomerOrderDetailPageXaml>

@@ -34,10 +34,8 @@ namespace XamarinCRM.Pages.Customers
     {
         Map _Map;
 
-        public CustomerMapPage(CustomerDetailViewModel viewModel)
+        public CustomerMapPage()
         {
-            this.BindingContext = viewModel;
-
             _Map = new Map()
             {
                 IsShowingUser = true,

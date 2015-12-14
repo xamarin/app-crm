@@ -26,8 +26,8 @@ using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 using XamarinCRM.Clients;
 using XamarinCRM.Services;
-using XamarinCRM.AppModels;
 using XamarinCRM.Models;
+using XamarinCRM.Models.Local;
 
 [assembly: Dependency(typeof(ChartDataService))]
 

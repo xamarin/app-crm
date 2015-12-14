@@ -47,7 +47,7 @@ namespace XamarinCRM.ViewModels.Customers
 
         IDataClient _DataClient;
 
-        public CustomersViewModel(INavigation navigation = null) : base(navigation)
+        public CustomersViewModel()
         {
             this.Title = "Accounts";
             this.Icon = "list.png";

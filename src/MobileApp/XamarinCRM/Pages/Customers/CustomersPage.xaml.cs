@@ -18,9 +18,6 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-using System;
-using System.Collections.Generic;
-
 using Xamarin.Forms;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.ViewModels.Customers;
@@ -77,9 +74,19 @@ namespace XamarinCRM.Pages.Customers
             }
             else
             {
-                var customerTabbedPage = new CustomerTabbedPage(){ BindingContext = new CustomerTabbedPageViewModel(account, this) { Navigation = this.Navigation } };
+                var tabbedPage = new TabbedPage() { Title = account.Company };
 
-                await Navigation.PushAsync(customerTabbedPage);
+                var customerDetailPage = new CustomerDetailPage() { BindingContext = new CustomerDetailViewModel(account, tabbedPage) { Navigation = this.Navigation }, Title = TextResources.Customers_Detail_Tab_Title };
+
+                var customerOrdersPage = new CustomerOrdersPage() { BindingContext = new OrdersViewModel(account) { Navigation = this.Navigation }, Title = TextResources.Customers_Orders_Tab_Title };
+
+                var customerSalesPage = new CustomerSalesPage() { BindingContext = new CustomerSalesViewModel(account) { Navigation = this.Navigation }, Title = TextResources.Customers_Sales_Tab_Title };
+
+                tabbedPage.Children.Add(customerDetailPage);
+                tabbedPage.Children.Add(customerOrdersPage);
+                tabbedPage.Children.Add(customerSalesPage);
+
+                await Navigation.PushAsync(tabbedPage);
             }
         }
     }

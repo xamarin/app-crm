@@ -18,18 +18,18 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Plugin.Messaging;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using XamarinCRM.Clients;
+using XamarinCRM.Models;
+using XamarinCRM.Pages.Customers;
 using XamarinCRM.Services;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
-using XamarinCRM.Models;
-using System.Windows.Input;
-using System;
-using Lotz.Xam.Messaging;
-using XamarinCRM.Pages.Customers;
 
 namespace XamarinCRM.ViewModels.Customers
 {
@@ -216,11 +216,10 @@ namespace XamarinCRM.ViewModels.Customers
 
         async Task ExecuteMapMarkerIconTappedCommand()
         {
-            await PushAsync(new CustomerMapPage(this)
+            await PushAsync(new CustomerMapPage()
                 {
                     Title = Account.Company,
                     BindingContext = this
-
                 });
         }
 

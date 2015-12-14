@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:AboutDetailPageXaml
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Pages.About.AboutDetailPage"
+xmlns:base="clr-namespace:XamarinCRM.Pages.About"
+xmlns:converters="clr-namespace:XamarinCRM.Converters"
+Title="{Binding Title}">
+	<WebView 
+	VerticalOptions="Fill"
+	IsEnabled="{Binding UriIsPresent}"
+	IsVisible="{Binding UriIsPresent}"
+	Source="{Binding Uri}" />
+</base:AboutDetailPageXaml>

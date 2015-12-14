@@ -18,19 +18,19 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-using XamarinCRM.ViewModels.Customers;
-using XamarinCRM.Views.Base;
+using System;
+using Xamarin.Forms;
+using Syncfusion.SfChart.XForms;
 
-namespace XamarinCRM.Views.Customers
+namespace XamarinCRM.Statics
 {
-    public partial class CustomerDetailPhoneView : CustomerDetailPhoneViewXaml
+    public static class Fonts
     {
-        public CustomerDetailPhoneView()
-        {
-            InitializeComponent();
-        }
-    }
+        public static Font SystemFontAt150PercentOfLarge = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
+        public static Font SystemFontAt120PercentOfLarge = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.2);
 
-    public abstract class CustomerDetailPhoneViewXaml : ModelBoundContentView<CustomerDetailViewModel> { }
+        public static Font SystemFontAt60PercentOfDefault = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Default, typeof(ChartAxisTitle)) * 0.6);
+        public static Font SystemFontAt170PercentOfDefault = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Default, typeof(ChartAxisTitle)) * 1.7);
+    }
 }
 

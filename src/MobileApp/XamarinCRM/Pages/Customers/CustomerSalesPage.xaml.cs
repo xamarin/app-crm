@@ -18,19 +18,37 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-using XamarinCRM.ViewModels.Customers;
-using XamarinCRM.Views.Base;
+using System;
+using System.Collections.Generic;
 
-namespace XamarinCRM.Views.Customers
+using Xamarin.Forms;
+using XamarinCRM.Pages.Base;
+using Xamarin;
+using XamarinCRM.Statics;
+
+namespace XamarinCRM.Pages.Customers
 {
-    public partial class CustomerDetailPhoneView : CustomerDetailPhoneViewXaml
+    public partial class CustomerSalesPage : CustomerSalesPageXaml
     {
-        public CustomerDetailPhoneView()
+        public CustomerSalesPage()
         {
             InitializeComponent();
         }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (!ViewModel.IsInitialized)
+            {
+                await ViewModel.ExecuteLoadSeedDataCommand(ViewModel.Account);
+                ViewModel.IsInitialized = true;
+            }
+
+            Insights.Track(InsightsReportingConstants.PAGE_CUSTOMERSALES);
+        }
     }
 
-    public abstract class CustomerDetailPhoneViewXaml : ModelBoundContentView<CustomerDetailViewModel> { }
+    public abstract class CustomerSalesPageXaml : ModelBoundContentPage<CustomerSalesViewModel> { }
 }
 

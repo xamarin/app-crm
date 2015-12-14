@@ -1,40 +1,42 @@
 ﻿// The MIT License (MIT)
-//
+// 
 // Copyright (c) 2015 Xamarin
-//
+// 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
 // the Software without restriction, including without limitation the rights to
 // use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
 // the Software, and to permit persons to whom the Software is furnished to do so,
 // subject to the following conditions:
-//
+// 
 // The above copyright notice and this permission notice shall be included in all
 // copies or substantial portions of the Software.
-//
+// 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
 // FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
-using Xamarin.Forms;
-using XamarinCRM.Pages.Base;
-using XamarinCRM.ViewModels.Customers;
-
-namespace XamarinCRM.Pages.Customers
+namespace XamarinCRM.Models.Local
 {
-    public partial class CustomerTabbedPage : CustomerTabbedPageXaml
+    public class Grouping<T,K> : ObservableCollection<T>
     {
-        public CustomerTabbedPage()
+        public K Key { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XamarinCRM.Models.Grouping&lt;T,K&gt;"/> class.
+        /// </summary>
+        /// <param name="items">A collection of items of type T</param>
+        /// <param name="key">A key of type K.</param>
+        public Grouping(IEnumerable<T> items, K key)
         {
-            InitializeComponent();
+            Key = key;
+            Items.AddRange(items);
         }
     }
-
-    public abstract class CustomerTabbedPageXaml : ModelBoundTabbedPage<CustomerTabbedPageViewModel> { }
 }
 

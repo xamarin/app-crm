@@ -32,6 +32,7 @@ using System.Threading.Tasks;
 using XamarinCRM.ViewModels.Base;
 using System.Collections.Generic;
 using XamarinCRM.Pages.About;
+using XamarinCRM.ViewModels;
 
 namespace XamarinCRM.Pages
 {
@@ -79,7 +80,7 @@ namespace XamarinCRM.Pages
                     case MenuType.Customers:
                         page = new CRMNavigationPage(new CustomersPage
                             { 
-                                BindingContext = new CustomersViewModel(Navigation), 
+                                BindingContext = new CustomersViewModel() { Navigation = this.Navigation }, 
                                 Title = TextResources.MainTabs_Customers, 
                                 Icon = new FileImageSource { File = "customers.png" } 
                             });
@@ -97,10 +98,11 @@ namespace XamarinCRM.Pages
                         Pages.Add(id, page);
                         break;
                     case MenuType.About:
-                        page = new CRMNavigationPage(new AboutPage
+                        page = new CRMNavigationPage(new AboutItemListPage
                             { 
-                                Title = "About", 
-                                Icon = new FileImageSource { File = "about.png" } 
+                                Title = TextResources.MainTabs_Products, 
+                                Icon = new FileImageSource { File = "about.png" },
+                                BindingContext = new AboutItemListViewModel() { Navigation = this.Navigation }
                             });
                         SetDetailIfNull(page);
                         Pages.Add(id, page);
@@ -140,7 +142,7 @@ namespace XamarinCRM.Pages
                 });
             Children.Add(new CRMNavigationPage(new CustomersPage
                     { 
-                        BindingContext = new CustomersViewModel(Navigation), 
+                        BindingContext = new CustomersViewModel() { Navigation = this.Navigation }, 
                         Title = TextResources.MainTabs_Customers, 
                         Icon = new FileImageSource { File = "customers.png" } 
                     })
@@ -150,13 +152,23 @@ namespace XamarinCRM.Pages
                 });
             Children.Add(new CRMNavigationPage(new CategoryListPage
                     { 
-                    BindingContext = new CategoriesViewModel() { Navigation = this.Navigation }, 
+                        BindingContext = new CategoriesViewModel() { Navigation = this.Navigation }, 
                         Title = TextResources.MainTabs_Products, 
                         Icon = new FileImageSource { File = "products.png" } 
                     })
                 { 
                     Title = TextResources.MainTabs_Products, 
-                    Icon = new FileImageSource { File = "products.png" } 
+                    Icon = new FileImageSource { File = "products.png" },
+                });
+            Children.Add(new CRMNavigationPage(new AboutItemListPage
+                    { 
+                        Title = TextResources.MainTabs_About, 
+                        Icon = new FileImageSource { File = "about.png" },
+                        BindingContext = new AboutItemListViewModel() { Navigation = this.Navigation }
+                    })
+                { 
+                    Title = TextResources.MainTabs_About, 
+                    Icon = new FileImageSource { File = "about.png" } 
                 });
         }
 

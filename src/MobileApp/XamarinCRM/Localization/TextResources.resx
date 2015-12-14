@@ -23,6 +23,9 @@
 	<data name="MainTabs_Products" xml:space="preserve">
     	<value>Products</value>
 	</data>
+	<data name="MainTabs_About" xml:space="preserve">
+    	<value>About</value>
+	</data>
 
 
 	<data name="Splash_UsernameTitleLabel" xml:space="preserve">
@@ -191,6 +194,12 @@
 	<data name="SalesDashboard_Leads_LoadingLabel" xml:space="preserve">
 		<value>Loading leads data...</value>
 	</data>
+	<data name="SalesDashboard_SalesChart_PrimaryAxis_Title" xml:space="preserve">
+		<value>Week</value>
+	</data>
+	<data name="SalesDashboard_SalesChart_YAxis_Title" xml:space="preserve">
+		<value>Sales Total</value>
+	</data>
 
 
 	<data name="Customers_Detail_Tab_Title" xml:space="preserve">
@@ -306,6 +315,9 @@
 	</data>
 	<data name="Customers_OrderClosed" xml:space="preserve">
 		<value>Delivered Orders</value>
+	</data>
+	<data name="Customer_Order_Detail_Deliver_Order" xml:space="preserve">
+		<value>Deliver Order</value>
 	</data>
 
 

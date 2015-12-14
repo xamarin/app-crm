@@ -29,16 +29,11 @@ namespace XamarinCRM
 {
     public class SalesDashboardChartView : ModelBoundContentView<SalesDashboardChartViewModel>
     {
-        static Color MajorAxisAndLabelColor
-        {
-            get { return Device.OnPlatform(Palette._011, Palette._011, Color.White); }
-        }
-
         public SalesDashboardChartView()
         {
             #region sales graph header
             var chartHeaderView = new SalesChartHeaderView() { HeightRequest = RowSizes.MediumRowHeightDouble, Padding = new Thickness(20, 10, 20, 0) };
-            chartHeaderView.WeeklyAverageValueLabel.SetBinding(Label.TextProperty, "WeeklySalesAverage");
+            chartHeaderView.SetBinding(SalesChartHeaderView.WeeklyAverageProperty, "WeeklySalesAverage");
             chartHeaderView.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             chartHeaderView.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
             #endregion
@@ -74,18 +69,36 @@ namespace XamarinCRM
             {
                 YAxis = new NumericalAxis()
                 {
+                    Title = new ChartAxisTitle()
+                    {
+                        Text = TextResources.SalesDashboard_SalesChart_YAxis_Title,
+                        Font = ChartAxisFont,
+                        TextColor = Palette._011
+                    },
                     OpposedPosition = false,
                     ShowMajorGridLines = true,
-                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLabelColor },
+                    MajorGridLineStyle = new ChartLineStyle() { StrokeColor = AxisLineColor },
                     ShowMinorGridLines = true,
                     MinorTicksPerInterval = 1,
-                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = MajorAxisAndLabelColor },
+                    MinorGridLineStyle = new ChartLineStyle() { StrokeColor = AxisLineColor },
                     LabelStyle = new ChartAxisLabelStyle()
                     { 
-                        TextColor = MajorAxisAndLabelColor, 
+                        TextColor = AxisLabelColor, 
                         LabelFormat = "$0"
                     }
                 },
+                DataMarker = new ChartDataMarker()
+                {
+                    LabelStyle = new DataMarkerLabelStyle()
+                    {
+                        LabelPosition = DataMarkerLabelPosition.Auto,
+                        TextColor = Color.Black, 
+                        BackgroundColor = Color.Transparent, //Palette._003,
+                        LabelFormat = "$0.00"
+                    }
+                },
+                DataMarkerPosition = DataMarkerPosition.Top,
+                EnableDataPointSelection = false,
                 Color = Palette._003
             };
 
@@ -97,14 +110,19 @@ namespace XamarinCRM
 
                 PrimaryAxis = new CategoryAxis()
                 {
+                    Title = new ChartAxisTitle()
+                    {
+                        Text = TextResources.SalesDashboard_SalesChart_PrimaryAxis_Title,
+                        Font = ChartAxisFont,
+                        TextColor = Palette._011
+                    },
                     LabelRotationAngle = -45,
                     EdgeLabelsDrawingMode = EdgeLabelsDrawingMode.Center,
                     LabelPlacement = LabelPlacement.BetweenTicks,
                     TickPosition = AxisElementPosition.Inside,
                     ShowMajorGridLines = false,
-                    LabelStyle = new ChartAxisLabelStyle() { TextColor = MajorAxisAndLabelColor }
-                },
-                               
+                    LabelStyle = new ChartAxisLabelStyle() { TextColor = AxisLabelColor }
+                },        
             };
 
             if (Device.OS == TargetPlatform.Android)
@@ -113,12 +131,7 @@ namespace XamarinCRM
             chart.Series.Add(columnSeries);
             chart.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             chart.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
-
-            // The chart has uncontrollable white space on it's left in iOS, so we're
-            // wrapping it in a ContentView and adding some right padding to compensate.
-            ContentView chartWrapper = new ContentView() { Content = chart };
-
-
+           
 
             StackLayout stackLayout = new StackLayout()
             {
@@ -128,7 +141,7 @@ namespace XamarinCRM
                     loadingLabel,
                     chartActivityIndicator,
                     chartHeaderView,
-                    chartWrapper,
+                    new ContentView() { Content = chart, HeightRequest = chartHeight }
                 }
             };
             #endregion
@@ -137,18 +150,48 @@ namespace XamarinCRM
             Device.OnPlatform(
                 iOS: () =>
                 { 
-                    chartWrapper.Padding = new Thickness(0, 0, 30, 0);
+                    columnSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Micro, typeof(Label)) * 0.6);
                 }, 
                 Android: () =>
                 { 
-                    //stackLayout.BackgroundColor = Palette._009;
-                    Font androidChartLabelFont = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
-                    columnSeries.YAxis.LabelStyle.Font = androidChartLabelFont;
-                    chart.PrimaryAxis.LabelStyle.Font = androidChartLabelFont;
+                    columnSeries.YAxis.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
+                    columnSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.2);
+                    chart.PrimaryAxis.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
                 });
             #endregion
 
             Content = stackLayout;
+        }
+
+        static Color AxisLabelColor
+        {
+            get { return Device.OnPlatform(Palette._011, Palette._011, Color.White); }
+        }
+
+        static Color AxisLineColor
+        {
+            get { return Device.OnPlatform(Palette._008, Palette._008, Color.White); }
+        }
+
+        static Font ChartAxisFont
+        {
+            get
+            {
+                Font font;
+
+                Device.OnPlatform(
+                    iOS: () =>
+                    { 
+                        font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Default, typeof(ChartAxisTitle)) * 0.6); 
+                    },
+                    Android: () =>
+                    { 
+                        font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Default, typeof(ChartAxisTitle)) * 1.7);
+                    }
+                );
+
+                return font;
+            }
         }
     }
 }

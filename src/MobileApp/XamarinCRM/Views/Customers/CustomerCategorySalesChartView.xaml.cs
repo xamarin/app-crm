@@ -1,17 +1,17 @@
 ﻿// The MIT License (MIT)
-// 
+//
 // Copyright (c) 2015 Xamarin
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
 // the Software without restriction, including without limitation the rights to
 // use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
 // the Software, and to permit persons to whom the Software is furnished to do so,
 // subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in all
 // copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
 // FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -20,17 +20,48 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-
 using Xamarin.Forms;
+using XamarinCRM.Views.Base;
+using Syncfusion.SfChart.XForms;
+using XamarinCRM.Statics;
 
-namespace XamarinCRM.Pages.About
+namespace XamarinCRM.Views.Customers
 {
-    public partial class AboutPage : ContentPage
+    public partial class CustomerCategorySalesChartView : CustomerCategorySalesChartViewXaml
     {
-        public AboutPage()
+        public CustomerCategorySalesChartView()
         {
             InitializeComponent();
+
+            pieSeries.ColorModel = new ChartColorModel()
+            {
+                Palette = ChartColorPalette.Custom,
+                CustomBrushes = new List<Color>()
+                { 
+                    Palette._014, 
+                    Palette._015, 
+                    Palette._016
+                }
+            };
+
+            Device.OnPlatform(
+                iOS: () =>
+                {
+                    pieSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Small, typeof(Label)));
+                },
+                Android: () =>
+                {
+                    pieSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
+                    chart.BackgroundColor = Color.Transparent;
+                });
+
+
         }
+    }
+
+    public abstract class CustomerCategorySalesChartViewXaml : ModelBoundContentView<CustomerSalesViewModel>
+    {
+
     }
 }
 

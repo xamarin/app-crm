@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:CustomerCategorySalesChartViewXaml
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Views.Customers.CustomerCategorySalesChartView" 
+xmlns:base="clr-namespace:XamarinCRM.Views.Customers" 
+xmlns:sf="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" 
+xmlns:statics="clr-namespace:XamarinCRM.Statics" 
+xmlns:converters="clr-namespace:XamarinCRM.Converters">
+	<base:CustomerCategorySalesChartViewXaml.Resources>
+		<ResourceDictionary>
+			<OnPlatform x:Key="ChartHeight" x:TypeArguments="x:Double" iOS="175" Android="200" WinPhone="175" />
+			<converters:InverseBooleanConverter x:Key="inverseBooleanConverter" />
+		</ResourceDictionary>
+	</base:CustomerCategorySalesChartViewXaml.Resources>
+	<base:CustomerCategorySalesChartViewXaml.Content>
+		<RelativeLayout>
+			<sf:SfChart
+			x:Name="chart"
+			RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}"
+			RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}"
+			IsEnabled="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}"
+			IsVisible="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}">
+				<sf:SfChart.Legend>
+					<sf:ChartLegend DockPosition="Top" />
+				</sf:SfChart.Legend>
+				<sf:SfChart.Series>
+					<sf:PieSeries
+					x:Name="pieSeries"
+					ExplodeAll="true"
+					ConnectorLineType="Bezier"
+					ItemsSource="{Binding CategorySalesChartDataPoints}">
+						<sf:PieSeries.DataMarker>
+							<sf:ChartDataMarker>
+								<sf:ChartDataMarker.LabelStyle Margin="5" LabelFormat="$0.00" />
+							</sf:ChartDataMarker>
+						</sf:PieSeries.DataMarker>
+					</sf:PieSeries>
+				</sf:SfChart.Series>
+			</sf:SfChart>
+		</RelativeLayout>
+	</base:CustomerCategorySalesChartViewXaml.Content>
+</base:CustomerCategorySalesChartViewXaml>

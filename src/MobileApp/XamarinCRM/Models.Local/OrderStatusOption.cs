@@ -18,19 +18,15 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-using XamarinCRM.ViewModels.Customers;
-using XamarinCRM.Views.Base;
+using System;
 
-namespace XamarinCRM.Views.Customers
+namespace XamarinCRM.Models.Local
 {
-    public partial class CustomerDetailPhoneView : CustomerDetailPhoneViewXaml
+    public enum OrderStatusOption
     {
-        public CustomerDetailPhoneView()
-        {
-            InitializeComponent();
-        }
+        Open,
+        Closed,
+        Both
     }
-
-    public abstract class CustomerDetailPhoneViewXaml : ModelBoundContentView<CustomerDetailViewModel> { }
 }
 

@@ -19,15 +19,12 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-
 using Xamarin.Forms;
 using XamarinCRM.Pages.Base;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Models;
 using Xamarin;
 using XamarinCRM.Statics;
-using System.Threading.Tasks;
 
 namespace XamarinCRM.Pages.Customers
 {

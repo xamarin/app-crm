@@ -49,6 +49,10 @@ namespace XamarinCRM.Statics
 
         public const string PAGE_SPLASH = "Splash Page";
 
+        public const string PGAE_ABOUTITEMLIST = "About Item List Page";
+
+        public const string PGAE_ABOUTITEMDETAIL = "About Item Detail Page";
+
 
         public const string TIME_DB_SYNC_INCREMENTAL = "TimeToIncrementallySyncDB";
 

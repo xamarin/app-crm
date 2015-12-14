@@ -9,15 +9,15 @@ xmlns:converters="clr-namespace:XamarinCRM.Converters"
 	HasUnevenRows="true" 
 	RowHeight="{x:Static statics:RowSizes.LargeRowHeightInt}" 
 	SeparatorColor="{x:Static statics:Palette._013}" 
-	IsVisible="{Binding IsBusy, Converter={StaticResource boolInverter}}" 
-	IsEnabled="{Binding IsBusy, Converter={StaticResource boolInverter}}" 
+	IsVisible="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}" 
+	IsEnabled="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}" 
 	ItemsSource="{Binding OrderGroups}" 
 	IsGroupingEnabled="true" 
 	GroupDisplayBinding="{Binding Key}">
 
 	<views:NonPersistentSelectedItemListView.Resources>
 		<ResourceDictionary>
-			<converters:InverseBooleanConverter x:Key="boolInverter" />
+			<converters:InverseBooleanConverter x:Key="inverseBooleanConverter" />
 			<converters:OrderListHeaderViewBackgroudColorConverter x:Key="orderListHeaderViewBackgroudColorConverter" />
 			<converters:ShortDatePatternConverter x:Key="shortDatePatternConverter" />
 			<converters:CurrencyDoubleConverter x:Key="currencyDoubleConverter" />

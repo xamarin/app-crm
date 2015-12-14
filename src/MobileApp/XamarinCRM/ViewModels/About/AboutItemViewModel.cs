@@ -19,14 +19,22 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
+using XamarinCRM.ViewModels.Base;
 
-namespace XamarinCRM.AppModels
+namespace XamarinCRM
 {
-    public enum OrderStatusOption
+    public class AboutItemViewModel : BaseViewModel
     {
-        Open,
-        Closed,
-        Both
+        public string Description { get; set; }
+        public string Uri { get; set; }
+
+        public bool UriIsPresent 
+        { 
+            get 
+            { 
+                return !String.IsNullOrWhiteSpace(Uri); 
+            } 
+        }
     }
 }
 

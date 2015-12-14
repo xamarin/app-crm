@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:CustomerWeeklySalesChartViewXaml
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Views.Customers.CustomerWeeklySalesChartView" 
+xmlns:base="clr-namespace:XamarinCRM.Views.Customers" 
+xmlns:salesViews="clr-namespace:XamarinCRM.Views.Sales" 
+xmlns:sf="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" 
+xmlns:statics="clr-namespace:XamarinCRM.Statics" 
+xmlns:converters="clr-namespace:XamarinCRM.Converters" 
+xmlns:i18n="clr-namespace:XamarinCRM.Localization">
+	<base:CustomerWeeklySalesChartViewXaml.Resources>
+		<ResourceDictionary>
+			<OnPlatform x:Key="AxisLabelColor" x:TypeArguments="Color" iOS="{x:Static statics:Palette._011}" Android="{x:Static statics:Palette._011}" WinPhone="White" />
+			<OnPlatform x:Key="AxisLineColor" x:TypeArguments="Color" iOS="{x:Static statics:Palette._008}" Android="{x:Static statics:Palette._008}" WinPhone="White" />
+			<OnPlatform x:Key="AxisFont" x:TypeArguments="Font" iOS="{x:Static statics:Fonts.SystemFontAt60PercentOfDefault}" Android ="{x:Static statics:Fonts.SystemFontAt170PercentOfDefault}" />
+			<OnPlatform x:Key="AndroidDataMarkerFont" x:TypeArguments="Font" Android="{x:Static statics:Fonts.SystemFontAt120PercentOfLarge}" />
+			<OnPlatform x:Key="AndroidChartLabelFont" x:TypeArguments="Font" Android="{x:Static statics:Fonts.SystemFontAt150PercentOfLarge}" />
+			<converters:InverseBooleanConverter x:Key="inverseBooleanConverter" />
+		</ResourceDictionary>
+	</base:CustomerWeeklySalesChartViewXaml.Resources>
+	<base:CustomerWeeklySalesChartViewXaml.Content>
+		<StackLayout Spacing="0">
+
+			<Label 
+			Text="{i18n:Translate SalesDashboard_SalesChart_LoadingLabel}" 
+			FontSize="Small" 
+			HeightRequest="{x:Static statics:RowSizes.MediumRowHeightDouble}" 
+			HorizontalTextAlignment="Center" 
+			VerticalTextAlignment="End" 
+			TextColor="{x:Static statics:Palette._007}"
+			IsEnabled="{Binding IsBusy}"
+			IsVisible="{Binding IsBusy}" />
+
+			<ActivityIndicator 
+			HeightRequest="{x:Static statics:RowSizes.MediumRowHeightDouble}" 
+			IsEnabled="{Binding IsBusy}" 
+			IsVisible="{Binding IsBusy}" 
+			IsRunning="{Binding IsBusy}" />
+
+			<salesViews:SalesChartHeaderView
+			HeightRequest="{x:Static statics:RowSizes.MediumRowHeightDouble}"
+			IsEnabled="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}"
+			IsVisible="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}"
+			WeeklyAverage="{Binding WeeklySalesAverage}" />
+
+			<ContentView>
+				<ContentView.Padding>
+					<OnPlatform x:TypeArguments="Thickness" iOS="0, 0, 30, 0" />
+				</ContentView.Padding>
+				<ContentView.Content>
+					<sf:SfChart
+					IsEnabled="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}"
+					IsVisible="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}">
+						<sf:SfChart.HeightRequest>
+							<OnPlatform x:TypeArguments="x:Double" iOS="160" Android="190" WinPhone="150" />
+						</sf:SfChart.HeightRequest>	
+						<sf:SfChart.BackgroundColor>
+							<OnPlatform x:TypeArguments="Color" Android="Transparent" />
+						</sf:SfChart.BackgroundColor>
+						<sf:SfChart.PrimaryAxis>
+							<sf:CategoryAxis
+							LabelRotationAngle="-45"
+							EdgeLabelsDrawingMode="Center"
+							LabelPlacement="BetweenTicks"
+							TickPosition="Inside"
+							ShowMajorGridLines="false">
+								<sf:CategoryAxis.Title>
+									<sf:ChartAxisTitle 
+									Text="{i18n:Translate SalesDashboard_SalesChart_PrimaryAxis_Title}" 
+									TextColor="{x:Static statics:Palette._011}" 
+									Font="{StaticResource AxisFont}" />
+								</sf:CategoryAxis.Title>	
+								<sf:CategoryAxis.LabelStyle>
+									<sf:ChartAxisLabelStyle 
+									TextColor="{StaticResource AxisLabelColor}" 
+									Font="{StaticResource AndroidChartLabelFont}" />
+								</sf:CategoryAxis.LabelStyle>
+							</sf:CategoryAxis>
+						</sf:SfChart.PrimaryAxis>
+						<sf:SfChart.Series>
+							<sf:ColumnSeries 
+							ItemsSource="{Binding WeeklySalesChartDataPoints}"
+							Color="{x:Static statics:Palette._014}"
+							DataMarkerPosition="Top"
+							EnableDataPointSelection="false">
+								<sf:ColumnSeries.YAxis>
+									<sf:NumericalAxis
+									OpposedPosition="false"
+									ShowMajorGridLines="true"
+									ShowMinorGridLines="true"
+									MinorTicksPerInterval="1">	
+										<sf:NumericalAxis.Title>
+											<sf:ChartAxisTitle 
+											Text="{i18n:Translate SalesDashboard_SalesChart_YAxis_Title}" 
+											TextColor="{x:Static statics:Palette._011}" 
+											Font="{StaticResource AxisFont}" />
+										</sf:NumericalAxis.Title>					
+										<sf:NumericalAxis.MajorGridLineStyle>
+											<sf:ChartLineStyle StrokeColor="{StaticResource AxisLineColor}" />
+										</sf:NumericalAxis.MajorGridLineStyle>
+										<sf:NumericalAxis.MinorGridLineStyle>
+											<sf:ChartLineStyle StrokeColor="{StaticResource AxisLineColor}" />
+										</sf:NumericalAxis.MinorGridLineStyle>
+										<sf:NumericalAxis.LabelStyle>
+											<sf:ChartAxisLabelStyle 
+											TextColor="{StaticResource AxisLabelColor}" 
+											Font="{StaticResource AndroidChartLabelFont}"
+											LabelFormat="$0">
+											</sf:ChartAxisLabelStyle>
+										</sf:NumericalAxis.LabelStyle>
+									</sf:NumericalAxis>
+								</sf:ColumnSeries.YAxis>
+								<sf:ColumnSeries.DataMarker>
+									<sf:ChartDataMarker>
+										<sf:ChartDataMarker.LabelStyle>
+											<sf:DataMarkerLabelStyle 
+											LabelPosition="Auto" 
+											TextColor="Black" 
+											BackgroundColor="Transparent" 
+											LabelFormat="$0.00"
+											Font="{StaticResource AndroidDataMarkerFont}" />
+										</sf:ChartDataMarker.LabelStyle>
+									</sf:ChartDataMarker>
+								</sf:ColumnSeries.DataMarker>
+							</sf:ColumnSeries>
+						</sf:SfChart.Series>
+					</sf:SfChart>
+				</ContentView.Content>
+			</ContentView>
+
+		</StackLayout>
+	</base:CustomerWeeklySalesChartViewXaml.Content>
+</base:CustomerWeeklySalesChartViewXaml>

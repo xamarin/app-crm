@@ -40,19 +40,14 @@ namespace XamarinCRM
 
         ObservableCollection<Account> _Leads;
 
-        readonly Command _PushTabbedLeadPageCommand;
-
-        public Command PushLeadDetailsTabbedPageCommand
-        { 
-            get { return _PushTabbedLeadPageCommand; } 
-        }
+        public Command PushTabbedLeadPageCommand { get; private set; }
 
         public bool NeedsRefresh { get; set; }
 
         public SalesDashboardLeadsViewModel(Command pushTabbedLeadPageCommand, INavigation navigation = null)
             : base(navigation)
         {
-            _PushTabbedLeadPageCommand = pushTabbedLeadPageCommand;
+            PushTabbedLeadPageCommand = pushTabbedLeadPageCommand;
 
             _DataClient = DependencyService.Get<IDataClient>();
 

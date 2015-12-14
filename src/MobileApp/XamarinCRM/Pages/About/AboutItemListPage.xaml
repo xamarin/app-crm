@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:AboutItemListPageXaml 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="XamarinCRM.Pages.About.AboutItemListPage" 
+xmlns:statics="clr-namespace:XamarinCRM.Statics"
+xmlns:base="clr-namespace:XamarinCRM.Pages.About"
+xmlns:views="clr-namespace:XamarinCRM.Views">
+	<ScrollView>
+		<StackLayout Spacing="0">
+			<ContentView 
+			BackgroundColor="White" 
+			HeightRequest="50" />
+			<Image 
+			Source="about_background.png" 
+			Aspect="AspectFit" />
+			<ContentView Padding="20">
+				<Label 
+				LineBreakMode="WordWrap" 
+				Text="{Binding Overview}" />
+			</ContentView>
+			<ListView
+			x:Name="AboutItemList" 
+			ItemsSource="{Binding Items}" 
+			ItemTapped="AboutItemTapped" 
+			RowHeight="{x:Static statics:RowSizes.MediumRowHeightInt}">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell 
+						StyleId="disclosure">
+							<ContentView Padding="20,0,0,0">
+								<Label 
+								Text="{Binding Title}"
+								VerticalTextAlignment="Center" 
+								LineBreakMode="TailTruncation" />
+							</ContentView>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ScrollView>
+</base:AboutItemListPageXaml>
