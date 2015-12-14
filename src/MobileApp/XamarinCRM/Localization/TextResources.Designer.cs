@@ -65,6 +65,12 @@ namespace XamarinCRM {
             }
         }
         
+        internal static string MainTabs_About {
+            get {
+                return ResourceManager.GetString("MainTabs_About", resourceCulture);
+            }
+        }
+        
         internal static string Splash_UsernameTitleLabel {
             get {
                 return ResourceManager.GetString("Splash_UsernameTitleLabel", resourceCulture);

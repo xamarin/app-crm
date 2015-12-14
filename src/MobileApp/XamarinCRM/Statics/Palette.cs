@@ -113,6 +113,11 @@ namespace XamarinCRM.Statics
         /// A gray. Used for title on splash screen.
         /// </summary>
         public static readonly Color _018 = Color.FromHex("C5C5C5");
+
+        /// <summary>
+        /// An off-white used on the About page.
+        /// </summary>
+        public static readonly Color _019 = Color.FromHex("F2F2F2");
     }
 }
 

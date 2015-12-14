@@ -27,8 +27,8 @@ using XamarinCRM.Clients;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using XamarinCRM.Extensions;
-using XamarinCRM.AppModels;
 using XamarinCRM.Models;
+using XamarinCRM.Models.Local;
 
 namespace XamarinCRM.ViewModels.Customers
 {

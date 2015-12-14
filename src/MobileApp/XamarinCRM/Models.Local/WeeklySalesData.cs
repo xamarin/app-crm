@@ -18,19 +18,34 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Syncfusion.SfChart.XForms;
-using XamarinCRM.Models;
-using XamarinCRM.Models.Local;
+using System;
 
-namespace XamarinCRM.Services
+namespace XamarinCRM.Models.Local
 {
-    public interface IChartDataService
+    public class WeeklySalesDataPoint
     {
-        Task<List<WeeklySalesDataPoint>> GetWeeklySalesDataPointsAsync(IEnumerable<Order> orders, int numberOfWeeks = 6, OrderStatusOption statusOption = OrderStatusOption.Both);
+        public WeeklySalesDataPoint()
+        {
+            DateStart = DateTime.MinValue;
+            DateEnd = DateTime.MaxValue;
+            Amount = 0;
+        }
 
-        Task<List<ChartDataPoint>> GetCategorySalesDataPointsAsync(IEnumerable<Order> orders, Account account = null, int numberOfWeeks = 6, OrderStatusOption statusOption = OrderStatusOption.Both);
+        public DateTime DateStart { get; set; }
+
+        public DateTime DateEnd { get; set; }
+
+        public double Amount { get; set; }
+
+        public string DateStartString
+        {
+            get { return DateStart.ToString("M/dd"); }
+        }
+
+        public string DateEndString
+        {
+            get { return DateEnd.ToString("M/dd"); }
+        }
     }
 }
 

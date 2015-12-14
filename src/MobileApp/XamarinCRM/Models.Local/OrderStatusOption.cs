@@ -20,7 +20,7 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using System;
 
-namespace XamarinCRM.AppModels
+namespace XamarinCRM.Models.Local
 {
     public enum OrderStatusOption
     {

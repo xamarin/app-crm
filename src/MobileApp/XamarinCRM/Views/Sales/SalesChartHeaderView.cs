@@ -49,7 +49,6 @@ namespace XamarinCRM.Views.Sales
             }
         }
 
-
         #endregion Example of custom bindable property
 
         public SalesChartHeaderView()

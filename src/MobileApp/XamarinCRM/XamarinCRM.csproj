@@ -81,7 +81,6 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Views\Base\ModelBoundContentView.cs" />
     <Compile Include="Pages\Base\ModelBoundContentPage.cs" />
-    <Compile Include="Enums\Environment.cs" />
     <Compile Include="Extensions\IListExtensions.cs" />
     <Compile Include="Converters\OrderListHeaderViewBackgroudColorConverter.cs" />
     <Compile Include="Statics\Thicknesses.cs" />
@@ -94,9 +93,6 @@
     <Compile Include="Clients\DataClient.cs" />
     <Compile Include="Clients\MobileDataSync.cs" />
     <Compile Include="Clients\IDataClient.cs" />
-    <Compile Include="AppModels\WeeklySalesData.cs" />
-    <Compile Include="AppModels\CategorySalesDataPoint.cs" />
-    <Compile Include="AppModels\Grouping.cs" />
     <Compile Include="Pages\Splash\SplashPage.xaml.cs">
       <DependentUpon>SplashPage.xaml</DependentUpon>
     </Compile>
@@ -110,9 +106,6 @@
     <Compile Include="Converters\BoolToLabelOpacityConverter.cs" />
     <Compile Include="Pages\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\About\AboutPage.xaml.cs">
-      <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Customers\CustomerOrdersPage.xaml.cs">
       <DependentUpon>CustomerOrdersPage.xaml</DependentUpon>
@@ -166,7 +159,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppModels\OrderStatusOption.cs" />
     <Compile Include="Pages\Customers\CustomerSalesPage.xaml.cs">
       <DependentUpon>CustomerSalesPage.xaml</DependentUpon>
     </Compile>
@@ -181,6 +173,18 @@
     </Compile>
     <Compile Include="Pages\Customers\CustomerMapPage.cs" />
     <Compile Include="Statics\Fonts.cs" />
+    <Compile Include="Models.Local\WeeklySalesData.cs" />
+    <Compile Include="Models.Local\CategorySalesDataPoint.cs" />
+    <Compile Include="Models.Local\Grouping.cs" />
+    <Compile Include="Models.Local\OrderStatusOption.cs" />
+    <Compile Include="Pages\About\AboutDetailPage.xaml.cs">
+      <DependentUpon>AboutDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\About\AboutItemListViewModel.cs" />
+    <Compile Include="ViewModels\About\AboutItemViewModel.cs" />
+    <Compile Include="Pages\About\AboutItemListPage.cs">
+      <DependentUpon>AboutItemListPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -198,10 +202,6 @@
     <EmbeddedResource Include="Pages\MenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <LogicalName>MenuPage.xaml</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\About\AboutPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <LogicalName>AboutPage.xaml</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Customers\CustomerOrdersPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -262,6 +262,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Customers\CustomerCategorySalesChartView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\About\AboutDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\About\AboutItemListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <LogicalName>AboutPage.xaml</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -364,9 +371,9 @@
     <Folder Include="Pages\Splash\" />
     <Folder Include="ViewModels\Splash\" />
     <Folder Include="ViewModels\Base\" />
-    <Folder Include="Enums\" />
     <Folder Include="Cells\Sales\" />
     <Folder Include="Pages\About\" />
+    <Folder Include="ViewModels\About\" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Xamarin.Forms.2.0.0.6490\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.0.0.6490\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

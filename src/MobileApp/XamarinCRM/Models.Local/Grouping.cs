@@ -18,18 +18,24 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
-using Xamarin.Forms;
-
-namespace XamarinCRM.Pages.About
+namespace XamarinCRM.Models.Local
 {
-    public partial class AboutPage : ContentPage
+    public class Grouping<T,K> : ObservableCollection<T>
     {
-        public AboutPage()
+        public K Key { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XamarinCRM.Models.Grouping&lt;T,K&gt;"/> class.
+        /// </summary>
+        /// <param name="items">A collection of items of type T</param>
+        /// <param name="key">A key of type K.</param>
+        public Grouping(IEnumerable<T> items, K key)
         {
-            InitializeComponent();
+            Key = key;
+            Items.AddRange(items);
         }
     }
 }

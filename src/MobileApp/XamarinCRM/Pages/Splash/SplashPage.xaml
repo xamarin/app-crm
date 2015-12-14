@@ -113,17 +113,8 @@ xmlns:i18n="clr-namespace:XamarinCRM.Localization"
 								Source="xamarin_logo_plus_name_inline" 
 								HeightRequest="30" 
 								Aspect="AspectFit" 
-								AbsoluteLayout.LayoutBounds=".5, .5, AutoSize, AutoSize"
+								AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
 	         					AbsoluteLayout.LayoutFlags="XProportional,YProportional"/>
-							<Image 
-								x:Name="InfoButton" 
-								Opacity ="0" 
-								Source="info" 
-								HeightRequest="20" 
-								WidthRequest="20" 
-								Aspect="AspectFit" 
-								AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
-	         					AbsoluteLayout.LayoutFlags="XProportional,YProportional" />
 						</AbsoluteLayout>
 					</StackLayout>
 				</ContentView>

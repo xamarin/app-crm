@@ -18,25 +18,33 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
-namespace XamarinCRM.AppModels
+using Xamarin.Forms;
+using XamarinCRM.Pages.Base;
+using XamarinCRM.ViewModels;
+
+namespace XamarinCRM.Pages.About
 {
-    public class Grouping<T,K> : ObservableCollection<T>
+    public partial class AboutItemListPage : AboutItemListPageXaml
     {
-        public K Key { get; private set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="XamarinCRM.Models.Grouping&lt;T,K&gt;"/> class.
-        /// </summary>
-        /// <param name="items">A collection of items of type T</param>
-        /// <param name="key">A key of type K.</param>
-        public Grouping(IEnumerable<T> items, K key)
+        public AboutItemListPage()
         {
-            Key = key;
-            Items.AddRange(items);
+            InitializeComponent();
+
+            // This prevents the ugly default highlighting of the selected cell upon navigating back to a list view.
+            // The side effect is that the list view will no longer be maintaining the most recently selected item (if you're into that kind of thing).
+            // Probably not the best way to remove that default SelectedItem styling, but simple and straighforward.
+            AboutItemList.ItemSelected += (sender, e) => AboutItemList.SelectedItem = null;
+        }
+
+        async void AboutItemTapped (object sender, ItemTappedEventArgs e)
+        {
+            AboutItemViewModel vm = ((AboutItemViewModel)e.Item);
+            vm.Navigation = this.Navigation;
+            await Navigation.PushAsync(new AboutDetailPage() { BindingContext = vm });
         }
     }
+
+    public class AboutItemListPageXaml : ModelBoundContentPage<AboutItemListViewModel> {}
 }
 

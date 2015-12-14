@@ -292,6 +292,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\add.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\customers.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\about_background.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\XamarinCRM\Config\config.xml">

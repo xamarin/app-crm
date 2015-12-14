@@ -54,13 +54,6 @@ namespace XamarinCRM.Pages.Splash
                     NumberOfTapsRequired = 1, 
                     Command = new Command(SkipSignInButtonTapped) 
                 });
-
-            InfoButton.GestureRecognizers.Add(
-                new TapGestureRecognizer()
-                { 
-                    NumberOfTapsRequired = 1, 
-                    Command = new Command(InfoButtonTapped) 
-                });
         }
 
         protected async override void OnAppearing()
@@ -76,13 +69,6 @@ namespace XamarinCRM.Pages.Splash
             // Sequentially animate the login buttons. ScaleTo() makes them "grow" from a singularity to the full button size.
             await SignInButton.ScaleTo(1, (uint)App.AnimationSpeed, Easing.SinIn);
             await SkipSignInButton.ScaleTo(1, (uint)App.AnimationSpeed, Easing.SinIn);
-
-            // Using Task.WhenAll() allows these two animations to be run in parallel.
-            await Task.WhenAll(new []
-                { 
-                    // FadeTo() modifies the Opacity property of the given VisualElements over a given duration.
-                    InfoButton.FadeTo(1, (uint)App.AnimationSpeed, Easing.SinIn) 
-                });
 
             Insights.Track(InsightsReportingConstants.PAGE_SPLASH);
         }
@@ -143,11 +129,6 @@ namespace XamarinCRM.Pages.Splash
             MessagingCenter.Send(this, MessagingServiceConstants.AUTHENTICATED);
 
             App.GoToRoot();
-        }
-
-        async void InfoButtonTapped()
-        {
-            // navigation to the About page will go here when About Page is completed.
         }
     }
 
