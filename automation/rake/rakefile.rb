@@ -3,7 +3,7 @@ require "date"
 require 'net/http'
 
 ### PROPERTIES TO SET
-APP_NAME = "XamarinCRM"
+APP_NAME = "Xamarin CRM"
 
 ANDROID_DIR = "../../src/MobileApp/XamarinCRM.Android"
 IOS_DIR = "../../src/MobileApp/XamarinCRM.iOS"
