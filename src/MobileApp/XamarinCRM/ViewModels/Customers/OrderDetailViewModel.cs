@@ -23,14 +23,14 @@ using Xamarin.Forms;
 using XamarinCRM.Localization;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
-using XamarinCRM.Clients;
 using XamarinCRM.Models;
+using XamarinCRM.Services;
 
 namespace XamarinCRM.ViewModels.Customers
 {
     public class OrderDetailViewModel : BaseViewModel
     {
-        readonly IDataClient _DataClient;
+        readonly IDataService _DataClient;
 
         public OrderDetailViewModel(Account account, Order order = null)
         {
@@ -46,7 +46,7 @@ namespace XamarinCRM.ViewModels.Customers
             }
 
             this.Title = "Order Details";
-            _DataClient = DependencyService.Get<IDataClient>();
+            _DataClient = DependencyService.Get<IDataService>();
 
             DependencyService.Get<ILocalize>();
 

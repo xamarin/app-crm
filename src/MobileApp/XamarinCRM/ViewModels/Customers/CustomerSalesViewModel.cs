@@ -24,7 +24,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
-using XamarinCRM.Clients;
 using XamarinCRM.Models;
 using XamarinCRM.Services;
 using XamarinCRM.ViewModels.Base;
@@ -33,7 +32,7 @@ namespace XamarinCRM
 {
     public class CustomerSalesViewModel : BaseViewModel
     {
-        IDataClient _DataClient;
+        IDataService _DataClient;
 
         IChartDataService _ChartDataService;
 
@@ -54,7 +53,7 @@ namespace XamarinCRM
         {
             _Account = account;
 
-            _DataClient = DependencyService.Get<IDataClient>();
+            _DataClient = DependencyService.Get<IDataService>();
 
             _ChartDataService = DependencyService.Get<IChartDataService>();
 

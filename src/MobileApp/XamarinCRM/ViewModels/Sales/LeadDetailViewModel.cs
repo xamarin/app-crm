@@ -24,7 +24,6 @@ using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using XamarinCRM.Clients;
 using XamarinCRM.Services;
 using XamarinCRM.Models;
 
@@ -32,7 +31,7 @@ namespace XamarinCRM.ViewModels.Sales
 {
     public class LeadDetailViewModel : BaseViewModel
     {
-        readonly IDataClient _DataClient;
+        readonly IDataService _DataClient;
 
         IGeoCodingService _GeoCodingService;
 
@@ -60,7 +59,7 @@ namespace XamarinCRM.ViewModels.Sales
 
             this.Icon = "contact.png";
 
-            _DataClient = DependencyService.Get<IDataClient>();
+            _DataClient = DependencyService.Get<IDataService>();
 
             _GeoCodingService = DependencyService.Get<IGeoCodingService>();
         }

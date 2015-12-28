@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <config>
-  <dataServiceUrl>https://xamarincrmv2dataservice.azure-mobile.net/</dataServiceUrl>
+  <dataServiceUrl>https://xamarincrmservice.azurewebsites.net/</dataServiceUrl>
 
   <!---Azure Active Directory Authentication tenant authority URL -->
   <azureActiveDirectoryAuthenticationTenantAuthorityUrl>https://login.windows.net/xamcrm.onmicrosoft.com/</azureActiveDirectoryAuthenticationTenantAuthorityUrl>

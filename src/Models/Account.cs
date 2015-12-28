@@ -18,25 +18,14 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+using Newtonsoft.Json;
 using System;
 using System.Linq;
-using Newtonsoft.Json;
-
-// The model class files are shared between the mobile and service projects. 
-// If EntityData were compatible with PCL profile 78, the models could be in a PCL.
-
-#if SERVICE
-using Microsoft.WindowsAzure.Mobile.Service;
-#endif
 
 namespace XamarinCRM.Models
 {
-    public class Account : 
-#if SERVICE
-        EntityData
-#else
-        BaseModel
-#endif
+    public class Account : BaseModel
     {
         public Account()
         {

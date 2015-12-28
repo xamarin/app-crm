@@ -24,7 +24,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
-using XamarinCRM.Clients;
 using XamarinCRM.Services;
 using XamarinCRM.Models;
 using XamarinCRM.Models.Local;
@@ -35,16 +34,18 @@ namespace XamarinCRM.Services
 {
     public class ChartDataService : IChartDataService
     {
-        IDataClient _DataClient;
+        IDataService _DataClient;
+
+        const int defaultNumberOfWeks = 6;
 
         public ChartDataService()
         {
-            _DataClient = DependencyService.Get<IDataClient>();
+            _DataClient = DependencyService.Get<IDataService>();
         }
 
         #region IChartDataService implementation
 
-        public async Task<List<WeeklySalesDataPoint>> GetWeeklySalesDataPointsAsync(IEnumerable<Order> orders, int numberOfWeeks = 6, OrderStatusOption statusOption = OrderStatusOption.Both)
+        public async Task<List<WeeklySalesDataPoint>> GetWeeklySalesDataPointsAsync(IEnumerable<Order> orders, int numberOfWeeks = defaultNumberOfWeks, OrderStatusOption statusOption = OrderStatusOption.Both)
         {
             DateTime dateStart = DateTime.UtcNow;
 
@@ -69,7 +70,7 @@ namespace XamarinCRM.Services
             return weeklySalesDataPoints;
         }
 
-        public async Task<List<ChartDataPoint>> GetCategorySalesDataPointsAsync(IEnumerable<Order> orders, Account account = null, int numberOfWeeks = 6, OrderStatusOption statusOption = OrderStatusOption.Both)
+        public async Task<List<ChartDataPoint>> GetCategorySalesDataPointsAsync(IEnumerable<Order> orders, Account account = null, int numberOfWeeks = defaultNumberOfWeks, OrderStatusOption statusOption = OrderStatusOption.Both)
         {
             // get top-level categories by passing no parent categoryId
             var categories = await _DataClient.GetCategoriesAsync();
@@ -89,7 +90,7 @@ namespace XamarinCRM.Services
 
         #endregion
 
-        async Task<double> GetOrderTotalForCategoryAsync(IEnumerable<Order> orders, Category category, int numberOfWeeks = 6, OrderStatusOption statusOption = OrderStatusOption.Both)
+        async Task<double> GetOrderTotalForCategoryAsync(IEnumerable<Order> orders, Category category, int numberOfWeeks = defaultNumberOfWeks, OrderStatusOption statusOption = OrderStatusOption.Both)
         {
             double total = 0;
 

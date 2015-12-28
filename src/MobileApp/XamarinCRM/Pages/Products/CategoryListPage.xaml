@@ -6,12 +6,10 @@ x:Class="XamarinCRM.Pages.Products.CategoryListPage"
 xmlns:productsPages="clr-namespace:XamarinCRM.Pages.Products"
 xmlns:productsViews="clr-namespace:XamarinCRM.Views.Products"
 	Title="{Binding Title}">
-	<productsPages:CategoryListPage.Content>
-		<productsViews:CategoryListView 
-		IsPullToRefreshEnabled="true"
-		ItemsSource="{Binding SubCategories}" 
-		RefreshCommand="{Binding LoadCategoriesCommand}" 
-		IsRefreshing="{Binding IsBusy}" 
+	<productsViews:CategoryListView 
+		IsPullToRefreshEnabled="True"
+		ItemsSource="{Binding SubCategories}"
+		RefreshCommand="{Binding LoadCategoriesRemoteCommand}"
+		IsRefreshing="{Binding IsBusy, Mode=OneWay}"
 		ItemTapped="CategoryItemTapped" />
-	</productsPages:CategoryListPage.Content>
 </productsPages:CategoryListPageXaml>

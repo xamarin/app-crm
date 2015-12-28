@@ -91,9 +91,6 @@ namespace XamarinCRM.Pages.Customers
         }
     }
 
-    public abstract class CustomersPageXaml : ModelBoundContentPage<CustomersViewModel>
-    {
-
-    }
+    public abstract class CustomersPageXaml : ModelBoundContentPage<CustomersViewModel> { }
 }
 

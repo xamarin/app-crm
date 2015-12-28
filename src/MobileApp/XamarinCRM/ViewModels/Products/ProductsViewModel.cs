@@ -18,20 +18,18 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 using System.Collections.ObjectModel;
-using XamarinCRM.Clients;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
 using XamarinCRM.Models;
-using System.Windows.Input;
-using XamarinCRM.Pages.Products;
-using System;
+using XamarinCRM.Services;
 
 namespace XamarinCRM.ViewModels.Products
 {
     public class ProductsViewModel : BaseViewModel
     {
-        readonly IDataClient _DataClient;
+        readonly IDataService _DataService;
 
         readonly bool _IsPerformingProductSelection;
         public bool IsPerformingProductSelection
@@ -77,7 +75,7 @@ namespace XamarinCRM.ViewModels.Products
 
             _Products = new ObservableCollection<Product>();
 
-            _DataClient = DependencyService.Get<IDataClient>();
+            _DataService = DependencyService.Get<IDataService>();
         }
 
         Command _LoadProductsCommand;
@@ -87,11 +85,7 @@ namespace XamarinCRM.ViewModels.Products
         /// </summary>
         public Command LoadProductsCommand
         {
-            get
-            {
-                return _LoadProductsCommand ??
-                    (_LoadProductsCommand = new Command(ExecuteLoadProductsCommand));
-            }
+            get { return _LoadProductsCommand ?? (_LoadProductsCommand = new Command(ExecuteLoadProductsCommand)); }
         }
 
         async void ExecuteLoadProductsCommand()
@@ -102,10 +96,33 @@ namespace XamarinCRM.ViewModels.Products
             IsBusy = true;
             LoadProductsCommand.ChangeCanExecute();
 
-            Products = new ObservableCollection<Product>((await _DataClient.GetProductsAsync(_CategoryId)));
+            Products = new ObservableCollection<Product>((await _DataService.GetProductsAsync(_CategoryId)));
 
             IsBusy = false;
             LoadProductsCommand.ChangeCanExecute();
+        }
+
+        Command _LoadProductsRemoteCommand;
+
+        public Command LoadProductsRemoteCommand
+        {
+            get { return _LoadProductsRemoteCommand ?? (_LoadProductsRemoteCommand = new Command(ExecuteLoadProductsRemoteCommand)); }
+        }
+
+        async void ExecuteLoadProductsRemoteCommand()
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+            LoadProductsRemoteCommand.ChangeCanExecute();
+
+            await _DataService.SynchronizeProductsAsync();
+
+            Products = new ObservableCollection<Product>((await _DataService.GetProductsAsync(_CategoryId)));
+
+            IsBusy = false;
+            LoadProductsRemoteCommand.ChangeCanExecute();
         }
     }
 }
