@@ -33,7 +33,7 @@ namespace XamarinCRM.Views.Customers
         {
             InitializeComponent();
 
-            pieSeries.ColorModel = new ChartColorModel()
+            doughnutSeries.ColorModel = new ChartColorModel()
             {
                 Palette = ChartColorPalette.Custom,
                 CustomBrushes = new List<Color>()
@@ -47,11 +47,11 @@ namespace XamarinCRM.Views.Customers
             Device.OnPlatform(
                 iOS: () =>
                 {
-                    pieSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Small, typeof(Label)));
+                    doughnutSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Small, typeof(Label)));
                 },
                 Android: () =>
                 {
-                    pieSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
+                    doughnutSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
                     chart.BackgroundColor = Color.Transparent;
                 });
 

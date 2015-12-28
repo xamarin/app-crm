@@ -173,8 +173,9 @@ namespace XamarinCRM.Pages.Customers
 
                         if (answer)
                         {
+                            var now = DateTime.UtcNow;
                             ViewModel.Order.IsOpen = false; // close the order
-                            ViewModel.Order.ClosedDate = DateTime.UtcNow; // set the closed date
+                            ViewModel.Order.ClosedDate = DateTime.SpecifyKind(new DateTime(now.Year, now.Month, now.Day, 0, 0, 0), DateTimeKind.Utc); // set the closed date
                             ViewModel.SaveOrderCommand.Execute(null);
                         }
                     });

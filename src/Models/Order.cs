@@ -30,10 +30,12 @@ namespace XamarinCRM.Models
         {
             AccountId = string.Empty;
 
+            var now = DateTime.UtcNow;
+
             //New orders default to open status. 
             IsOpen = true;
             Item = string.Empty;
-            OrderDate = DateTime.UtcNow;
+            OrderDate = DateTime.SpecifyKind(new DateTime(now.Year, now.Month, now.Day, 0, 0, 0), DateTimeKind.Utc);
             ClosedDate = null; // Is never shown unless order is closed, in which case this should have a sane value.
             DueDate = DateTime.UtcNow.AddDays(7);
             Price = 0;

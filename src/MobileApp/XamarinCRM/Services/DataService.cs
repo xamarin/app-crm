@@ -344,6 +344,24 @@ namespace XamarinCRM.Services
                 new List<Category>());
         }
 
+        public async Task<Category> GetTopLevelCategory(string categoryId)
+        {
+            var cat = (await _CategoryTable.Where(c => c.Id == categoryId).ToEnumerableAsync()).SingleOrDefault();
+
+            if (cat == null)
+                throw new Exception("The product has no category. This should never happen.");
+
+            var parentCat = (await _CategoryTable.Where(c => c.Id == cat.ParentCategoryId).ToEnumerableAsync()).SingleOrDefault();
+
+            if (parentCat.ParentCategoryId == null)
+                return cat;
+            else
+                return await GetTopLevelCategory(cat.ParentCategoryId);
+
+        }
+
+
+
         #endregion
 
 
