@@ -38,17 +38,17 @@ namespace XamarinCRMAppService
             If we do not re-calculate the dates, then the mobile app will eventually show no data, because the dates will eventually be greater than 6 weeks in the past.
             In addition, a scheduled job will need to be run weekly to refresh the data, incrementing the order dates forward by one week. That is, if one wants the mobile app to always present data in its UI.
              */
-            DateTime inceptionDate = DateTime.SpecifyKind(DateTime.Parse("12/6/15 12:00:00 AM"), DateTimeKind.Utc); // The DateTime at which these orders were originally generated, in UTC.
+            DateTime inceptionDate = DateTime.SpecifyKind(new DateTime(2015, 12, 6, 0, 0, 0), DateTimeKind.Utc); // The DateTime at which these orders were originally generated, in UTC.
 
             DateTime now = DateTime.UtcNow;
 
-            var midnightToday = DateTime.SpecifyKind(new DateTime(now.Year, now.Month, now.Day), DateTimeKind.Utc);
+            var today = DateTime.SpecifyKind(new DateTime(now.Year, now.Month, now.Day, 0, 0, 0), DateTimeKind.Utc);
 
-            var daysElapsed = (int)(midnightToday - inceptionDate).TotalDays;
+            var daysElapsed = (int)(today - inceptionDate).TotalDays;
 
-            var weeksToAdjust = (daysElapsed / 7) - 2;
+            var weeksElapsed = (daysElapsed / 7);
 
-            var daysToAdjust = weeksToAdjust * 7 ;
+            var daysToAdjust = weeksElapsed * 7;
 
 
             // setup categories
@@ -104,7 +104,7 @@ namespace XamarinCRMAppService
                     Sequence = c.Sequence,
                     ParentCategoryId = c.ParentCategoryId,
                     CreatedAt = inceptionDate,
-                    UpdatedAt = inceptionDate
+                    UpdatedAt = inceptionDate.AddDays(daysToAdjust)
                 };
 
                 adjustedCategories.Add(adujustedCategory);
@@ -210,7 +210,7 @@ namespace XamarinCRMAppService
                     CategoryId = p.CategoryId,
                     ImageUrl = p.ImageUrl,
                     CreatedAt = inceptionDate,
-                    UpdatedAt = inceptionDate
+                    UpdatedAt = inceptionDate.AddDays(daysToAdjust)
                 };
 
                 adjustedProducts.Add(adjustedProduct);
@@ -286,7 +286,7 @@ namespace XamarinCRMAppService
                     Unit = a.Unit,
                     Deleted = a.Deleted,
                     CreatedAt = inceptionDate,
-                    UpdatedAt = inceptionDate
+                    UpdatedAt = inceptionDate.AddDays(daysToAdjust)
                 };
 
                 adjustedAccounts.Add(adjustedAccount);
@@ -522,7 +522,7 @@ namespace XamarinCRMAppService
                     DueDate = o.DueDate.AddDays(daysToAdjust),
                     ClosedDate = closedDate,
                     CreatedAt = inceptionDate,
-                    UpdatedAt = inceptionDate
+                    UpdatedAt = inceptionDate.AddDays(daysToAdjust)
                 };
 
                 adjustedOrders.Add(adjustedOrder);

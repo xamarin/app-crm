@@ -353,10 +353,7 @@ namespace XamarinCRM.Services
 
             var parentCat = (await _CategoryTable.Where(c => c.Id == cat.ParentCategoryId).ToEnumerableAsync()).SingleOrDefault();
 
-            if (parentCat.ParentCategoryId == null)
-                return cat;
-            else
-                return await GetTopLevelCategory(cat.ParentCategoryId);
+            return parentCat.ParentCategoryId == null ? cat : await GetTopLevelCategory(cat.ParentCategoryId);
 
         }
 

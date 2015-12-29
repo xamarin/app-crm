@@ -22,7 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
 using XamarinCRM.Services;
 using XamarinCRM.Models;

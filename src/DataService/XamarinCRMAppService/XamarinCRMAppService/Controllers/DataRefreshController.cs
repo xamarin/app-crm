@@ -35,17 +35,17 @@ namespace XamarinCRMAppService.Controllers
 
                 DateTime now = DateTime.UtcNow;
 
-                var midnightToday = DateTime.SpecifyKind(new DateTime(now.Year, now.Month, now.Day, 0, 0, 0), DateTimeKind.Utc);
+                var today = DateTime.SpecifyKind(new DateTime(now.Year, now.Month, now.Day, 0, 0, 0), DateTimeKind.Utc);
 
-                var midnightOnLastUpdatedDay = DateTime.SpecifyKind(new DateTime(last.Year, last.Month, last.Day, 0, 0, 0), DateTimeKind.Utc);
+                var lastUpdatedDay = DateTime.SpecifyKind(new DateTime(last.Year, last.Month, last.Day, 0, 0, 0), DateTimeKind.Utc);
 
-                var daysElapsed = (int) (midnightToday - midnightOnLastUpdatedDay).TotalDays;
+                var daysElapsed = (int) (today - lastUpdatedDay).TotalDays;
 
-                var weeksToAdjust = (daysElapsed / 7);
+                var weeksElapsed = (daysElapsed / 7);
 
-                var daysToAdjust = weeksToAdjust * 7;
+                var daysToAdjust = weeksElapsed * 7;
 
-                if (weeksToAdjust > 0)
+                if (weeksElapsed > 0)
                 {
                     foreach (var o in orders)
                     {

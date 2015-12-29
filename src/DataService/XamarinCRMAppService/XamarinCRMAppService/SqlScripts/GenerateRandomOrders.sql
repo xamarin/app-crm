@@ -57,7 +57,7 @@ BEGIN
 		-- select random isOpen bit
 		-- SELECT @isOpen = CAST(CAST(CRYPT_GEN_RANDOM(1) AS int) % 2 AS BIT);
 
-		-- make 75% of orders open, 25% closed
+		-- make 25% of orders open, 75% closed
 		IF (@OrderStatusIteration < 4)
 			BEGIN
 				SELECT @isOpen = 0;
