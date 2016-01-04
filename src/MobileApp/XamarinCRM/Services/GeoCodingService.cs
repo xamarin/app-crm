@@ -58,7 +58,6 @@ namespace XamarinCRM.Services
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("ERROR: MobileCRM.Shared.Helpers.GeoCodeAddress(): " + ex.Message);
                 Insights.Report(ex);
             }
 

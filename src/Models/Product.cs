@@ -22,18 +22,9 @@
 // The model class files are shared between the mobile and service projects. 
 // If EntityData were compatible with PCL profile 78, the models could be in a PCL.
 
-#if SERVICE
-using Microsoft.WindowsAzure.Mobile.Service;
-#endif
-
 namespace XamarinCRM.Models
 {
-    public class Product :
-#if SERVICE
-        EntityData
-#else
-        BaseModel
-#endif
+    public class Product : BaseModel
     {
         public Product()
         {
@@ -50,5 +41,23 @@ namespace XamarinCRM.Models
         public string ImageUrl { get; set; }
 
         public string CategoryId { get; set; }
+
+        #if !SERVICE
+
+        public string ThumbnailImageUrl 
+        { 
+            get 
+            {
+                if (string.IsNullOrWhiteSpace(ImageUrl) || !ImageUrl.Contains("."))
+                    return null;
+
+                var index = ImageUrl.LastIndexOf('.');
+                var name = ImageUrl.Substring(0, index);
+                var extension = ImageUrl.Substring(index);
+                return string.Format("{0}-thumb{1}", name, extension);
+            }
+        }
+
+        #endif
     }
 }

@@ -27,8 +27,8 @@ using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using XamarinCRM.Clients;
 using XamarinCRM.Models;
+using XamarinCRM.Services;
 
 namespace XamarinCRM.ViewModels.Customers
 {
@@ -45,14 +45,14 @@ namespace XamarinCRM.ViewModels.Customers
             }
         }
 
-        IDataClient _DataClient;
+        IDataService _DataService;
 
         public CustomersViewModel()
         {
             this.Title = "Accounts";
             this.Icon = "list.png";
 
-            _DataClient = DependencyService.Get<IDataClient>();
+            _DataService = DependencyService.Get<IDataService>();
             Accounts = new ObservableCollection<Account>();
 
             MessagingCenter.Subscribe<Account>(this, MessagingServiceConstants.ACCOUNT, (account) =>
@@ -61,19 +61,14 @@ namespace XamarinCRM.ViewModels.Customers
                 });
         }
 
-        Command loadAccountsCommand;
+        Command _LoadAccountsCommand;
 
         /// <summary>
         /// Command to load accounts
         /// </summary>
         public Command LoadAccountsCommand
         {
-            get
-            {
-                return loadAccountsCommand ??
-                (loadAccountsCommand = new Command(async () =>
-                  await ExecuteLoadAccountsCommand()));
-            }
+            get { return _LoadAccountsCommand ?? (_LoadAccountsCommand = new Command(async () => await ExecuteLoadAccountsCommand())); }
         }
 
         async Task ExecuteLoadAccountsCommand()
@@ -81,10 +76,30 @@ namespace XamarinCRM.ViewModels.Customers
             IsBusy = true;
             LoadAccountsCommand.ChangeCanExecute(); 
 
-            Accounts = (await _DataClient.GetAccountsAsync(false)).ToObservableCollection();
+            Accounts = (await _DataService.GetAccountsAsync(false)).ToObservableCollection();
 
             IsBusy = false;
             LoadAccountsCommand.ChangeCanExecute(); 
+        }
+
+        Command _LoadAccountsRemoteCommand;
+
+        public Command LoadAccountsRefreshCommand
+        {
+            get { return _LoadAccountsRemoteCommand ?? (_LoadAccountsRemoteCommand = new Command(async () => await ExecuteLoadAccountsRefreshCommand())); }
+        }
+
+        async Task ExecuteLoadAccountsRefreshCommand()
+        {
+            IsBusy = true;
+            LoadAccountsRefreshCommand.ChangeCanExecute(); 
+
+            await _DataService.SynchronizeAccountsAsync();
+
+            Accounts = (await _DataService.GetAccountsAsync(false)).ToObservableCollection();
+
+            IsBusy = false;
+            LoadAccountsRefreshCommand.ChangeCanExecute(); 
         }
 
         public static readonly Position NullPosition = new Position(0, 0);

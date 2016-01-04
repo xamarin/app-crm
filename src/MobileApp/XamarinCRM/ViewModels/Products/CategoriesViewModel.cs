@@ -21,14 +21,15 @@
 using System.Collections.ObjectModel;
 using XamarinCRM.ViewModels.Base;
 using Xamarin.Forms;
-using XamarinCRM.Clients;
 using XamarinCRM.Models;
+using XamarinCRM.Services;
+using System.Windows.Input;
 
 namespace XamarinCRM.ViewModels.Products
 {
     public class CategoriesViewModel : BaseViewModel
     {
-        readonly IDataClient _DataClient;
+        readonly IDataService _DataService;
 
         readonly bool _IsPerformingProductSelection;
         public bool IsPerformingProductSelection
@@ -76,7 +77,7 @@ namespace XamarinCRM.ViewModels.Products
 
             SubCategories = new ObservableCollection<Category>();
 
-            _DataClient = DependencyService.Get<IDataClient>();
+            _DataService = DependencyService.Get<IDataService>();
 
         }
 
@@ -87,10 +88,7 @@ namespace XamarinCRM.ViewModels.Products
         /// </summary>
         public Command LoadCategoriesCommand
         {
-            get
-            {
-                return _LoadCategoriesCommand ?? (_LoadCategoriesCommand = new Command(ExecuteLoadCategoriesCommand));
-            }
+            get { return _LoadCategoriesCommand ?? (_LoadCategoriesCommand = new Command(ExecuteLoadCategoriesCommand)); }
         }
 
         async void ExecuteLoadCategoriesCommand()
@@ -101,10 +99,33 @@ namespace XamarinCRM.ViewModels.Products
             IsBusy = true;
             LoadCategoriesCommand.ChangeCanExecute();
 
-            SubCategories = new ObservableCollection<Category>((await _DataClient.GetCategoriesAsync((_Category != null) ? _Category.Id : null)));
+            SubCategories = new ObservableCollection<Category>((await _DataService.GetCategoriesAsync((_Category != null) ? _Category.Id : null)));
 
             IsBusy = false;
             LoadCategoriesCommand.ChangeCanExecute();
+        }
+
+        Command _LoadCategoriesRemoteCommand;
+
+        public Command LoadCategoriesRemoteCommand
+        {
+            get { return _LoadCategoriesRemoteCommand ?? (_LoadCategoriesRemoteCommand = new Command(ExecuteLoadCategoriesRemoteCommand)); }
+        }
+
+        async void ExecuteLoadCategoriesRemoteCommand()
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+            LoadCategoriesRemoteCommand.ChangeCanExecute();
+
+            await _DataService.SynchronizeCategoriesAsync();
+
+            SubCategories = new ObservableCollection<Category>((await _DataService.GetCategoriesAsync((_Category != null) ? _Category.Id : null)));
+
+            IsBusy = false;
+            LoadCategoriesRemoteCommand.ChangeCanExecute();
         }
     }
 }

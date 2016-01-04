@@ -7,17 +7,19 @@ xmlns:statics="clr-namespace:XamarinCRM.Statics"
 xmlns:base="clr-namespace:XamarinCRM.Pages.About"
 xmlns:views="clr-namespace:XamarinCRM.Views">
 	<ScrollView>
-		<StackLayout Spacing="0">
-			<ContentView 
-			BackgroundColor="White" 
-			HeightRequest="50" />
+		<StackLayout Spacing="0" BackgroundColor="White">
+			<ContentView Padding="20">
+				<Label 
+				LineBreakMode="WordWrap" 
+				Text="{Binding Overview}" />
+			</ContentView>
 			<Image 
 			Source="about_background.png" 
 			Aspect="AspectFit" />
 			<ContentView Padding="20">
 				<Label 
 				LineBreakMode="WordWrap" 
-				Text="{Binding Overview}" />
+				Text="{Binding ListHeading}" />
 			</ContentView>
 			<ListView
 			x:Name="AboutItemList" 

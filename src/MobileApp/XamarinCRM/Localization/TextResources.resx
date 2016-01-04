@@ -319,6 +319,9 @@
 	<data name="Customer_Order_Detail_Deliver_Order" xml:space="preserve">
 		<value>Deliver Order</value>
 	</data>
+	<data name="Customer_Sales_By_Category_Header" xml:space="preserve">
+		<value>6-Week Sales By Major Category</value>
+	</data>
 
 
 	<data name="Products" xml:space="preserve">

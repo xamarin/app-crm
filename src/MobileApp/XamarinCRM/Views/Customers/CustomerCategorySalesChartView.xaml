@@ -6,7 +6,8 @@ x:Class="XamarinCRM.Views.Customers.CustomerCategorySalesChartView"
 xmlns:base="clr-namespace:XamarinCRM.Views.Customers" 
 xmlns:sf="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" 
 xmlns:statics="clr-namespace:XamarinCRM.Statics" 
-xmlns:converters="clr-namespace:XamarinCRM.Converters">
+xmlns:converters="clr-namespace:XamarinCRM.Converters"
+xmlns:i18n="clr-namespace:XamarinCRM.Localization">
 	<base:CustomerCategorySalesChartViewXaml.Resources>
 		<ResourceDictionary>
 			<OnPlatform x:Key="ChartHeight" x:TypeArguments="x:Double" iOS="175" Android="200" WinPhone="175" />
@@ -14,30 +15,41 @@ xmlns:converters="clr-namespace:XamarinCRM.Converters">
 		</ResourceDictionary>
 	</base:CustomerCategorySalesChartViewXaml.Resources>
 	<base:CustomerCategorySalesChartViewXaml.Content>
-		<RelativeLayout>
-			<sf:SfChart
-			x:Name="chart"
-			RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}"
-			RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}"
-			IsEnabled="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}"
-			IsVisible="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}">
-				<sf:SfChart.Legend>
-					<sf:ChartLegend DockPosition="Top" />
-				</sf:SfChart.Legend>
-				<sf:SfChart.Series>
-					<sf:PieSeries
-					x:Name="pieSeries"
-					ExplodeAll="true"
-					ConnectorLineType="Bezier"
-					ItemsSource="{Binding CategorySalesChartDataPoints}">
-						<sf:PieSeries.DataMarker>
-							<sf:ChartDataMarker>
-								<sf:ChartDataMarker.LabelStyle Margin="5" LabelFormat="$0.00" />
-							</sf:ChartDataMarker>
-						</sf:PieSeries.DataMarker>
-					</sf:PieSeries>
-				</sf:SfChart.Series>
-			</sf:SfChart>
-		</RelativeLayout>
+		<StackLayout>
+			<ContentView Padding="20, 20, 20, 0">
+				<Label 
+				Text="{i18n:Translate Customer_Sales_By_Category_Header}"
+				FontSize="Medium"
+				TextColor="{x:Static statics:Palette._006}" />
+			</ContentView>
+			<RelativeLayout>
+				<sf:SfChart
+				x:Name="chart"
+				RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}"
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.0}"
+				IsEnabled="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}"
+				IsVisible="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}">
+					<sf:SfChart.Legend>
+						<sf:ChartLegend DockPosition="Top" />
+					</sf:SfChart.Legend>
+					<sf:SfChart.Series>
+						<sf:DoughnutSeries
+						x:Name="doughnutSeries"
+						ExplodeAll="true"
+						ItemsSource="{Binding CategorySalesChartDataPoints}"
+						XBindingPath = "CategoryName" 
+						YBindingPath = "Amount">
+							<sf:DoughnutSeries.DataMarker>
+								<sf:ChartDataMarker>
+									<sf:ChartDataMarker.LabelStyle>
+										<sf:DataMarkerLabelStyle LabelFormat="$0.00" />
+									</sf:ChartDataMarker.LabelStyle>
+								</sf:ChartDataMarker>
+							</sf:DoughnutSeries.DataMarker>
+						</sf:DoughnutSeries>
+					</sf:SfChart.Series>
+				</sf:SfChart>
+			</RelativeLayout>
+		</StackLayout>
 	</base:CustomerCategorySalesChartViewXaml.Content>
 </base:CustomerCategorySalesChartViewXaml>

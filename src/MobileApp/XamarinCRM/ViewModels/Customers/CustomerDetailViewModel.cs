@@ -24,7 +24,6 @@ using System.Windows.Input;
 using Plugin.Messaging;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using XamarinCRM.Clients;
 using XamarinCRM.Models;
 using XamarinCRM.Pages.Customers;
 using XamarinCRM.Services;
@@ -35,7 +34,7 @@ namespace XamarinCRM.ViewModels.Customers
 {
     public class CustomerDetailViewModel : BaseViewModel
     {
-        IDataClient _DataClient;
+        IDataService _DataClient;
 
         readonly IGeoCodingService _GeoCodingService;
 
@@ -68,7 +67,7 @@ namespace XamarinCRM.ViewModels.Customers
 
             this.Icon = "account.png";
 
-            _DataClient = DependencyService.Get<IDataClient>();
+            _DataClient = DependencyService.Get<IDataService>();
             _GeoCodingService = DependencyService.Get<IGeoCodingService>();
 
             MessagingCenter.Subscribe<Account>(this, MessagingServiceConstants.ACCOUNT, (Account) =>

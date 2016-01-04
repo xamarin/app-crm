@@ -7,8 +7,9 @@ xmlns:base="clr-namespace:XamarinCRM.Pages.Products"
 xmlns:productsViews="clr-namespace:XamarinCRM.Views.Products" 
 	Title="{Binding Title}">
 		<productsViews:ProductListView
+		IsPullToRefreshEnabled="True"
 		ItemsSource="{Binding Products}" 
-		IsRefreshing="{Binding IsBusy}" 
-		RefreshCommand="{Binding LoadProductsCommand}" 
+		RefreshCommand="{Binding LoadProductsRemoteCommand}" 
+		IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
 		ItemTapped="ProductItemTapped" />
 </base:ProductListPageXaml>

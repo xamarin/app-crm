@@ -11,7 +11,15 @@ xmlns:i18n="clr-namespace:XamarinCRM.Localization"
 	<ScrollView>
 		<StackLayout Spacing="0">
 
+			<ActivityIndicator
+			BindingContext="{x:Reference ProductImage}" 
+			IsEnabled="{Binding IsLoading}" 
+			IsVisible="{Binding IsLoading}" 
+			IsRunning="{Binding IsLoading}"
+			HeightRequest="{x:Static statics:RowSizes.LargeRowHeightDouble}" />
+
 			<Image 
+			x:Name="ProductImage"
 			Source="{Binding CatalogProduct.ImageUrl}" 
 			Aspect="AspectFit" />
 

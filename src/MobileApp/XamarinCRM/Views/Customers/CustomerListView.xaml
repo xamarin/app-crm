@@ -8,10 +8,7 @@ xmlns:statics="clr-namespace:XamarinCRM.Statics"
 xmlns:converters="clr-namespace:XamarinCRM.Converters" 
 	HasUnevenRows="false"
 	RowHeight="{x:Static statics:RowSizes.LargeRowHeightInt}"
-	SeparatorColor="{x:Static statics:Palette._013}"
-	IsEnabled="{Binding IsBusy, Converter={StaticResource boolInverter}}"
-	IsVisible="{Binding IsBusy, Converter={StaticResource boolInverter}}"
-	ItemsSource="{Binding Accounts}">
+	SeparatorColor="{x:Static statics:Palette._013}">
 	<views:NonPersistentSelectedItemListView.Resources>
 		<ResourceDictionary>
 			<converters:InverseBooleanConverter x:Key="boolInverter" />

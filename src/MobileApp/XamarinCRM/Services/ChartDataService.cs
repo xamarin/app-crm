@@ -22,12 +22,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
-using XamarinCRM.Clients;
 using XamarinCRM.Services;
 using XamarinCRM.Models;
 using XamarinCRM.Models.Local;
+using System.Globalization;
 
 [assembly: Dependency(typeof(ChartDataService))]
 
@@ -35,105 +34,109 @@ namespace XamarinCRM.Services
 {
     public class ChartDataService : IChartDataService
     {
-        IDataClient _DataClient;
+        IDataService _DataClient;
+
+        const int defaultNumberOfWeeks = 6;
 
         public ChartDataService()
         {
-            _DataClient = DependencyService.Get<IDataClient>();
+            _DataClient = DependencyService.Get<IDataService>();
         }
 
         #region IChartDataService implementation
 
-        public async Task<List<WeeklySalesDataPoint>> GetWeeklySalesDataPointsAsync(IEnumerable<Order> orders, int numberOfWeeks = 6, OrderStatusOption statusOption = OrderStatusOption.Both)
+        public async Task<IEnumerable<WeeklySalesDataPoint>> GetWeeklySalesDataPointsAsync(IEnumerable<Order> orders, int numberOfWeeks = defaultNumberOfWeeks, OrderStatusOption statusOption = OrderStatusOption.Both)
         {
-            DateTime dateStart = DateTime.UtcNow;
+            var now = DateTime.UtcNow;
 
-            DateTime dateWkStart = dateStart.Subtract(new TimeSpan(dateStart.DayOfWeek.GetHashCode(), 0, 0, 0));
-            DateTime dateWkEnd = dateWkStart.AddDays(6);
+            var today = DateTime.SpecifyKind(new DateTime(now.Year, now.Month, now.Day, 0, 0, 0), DateTimeKind.Utc);
+
+            int delta = CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek - today.DayOfWeek;
+
+            if(delta > 0)
+                delta -= 7;
+            
+            var firstDayOfCurrentWeek = today.AddDays(delta);
+
+            var weekStart = firstDayOfCurrentWeek;
+
+            var weekEnd = weekStart.AddDays(7);
 
             var enumerableOrders = orders as IList<Order> ?? orders.ToList();
-            double total = GetOrderTotalForPeriod(enumerableOrders, dateWkStart, dateWkEnd, statusOption);
 
-            List<WeeklySalesDataPoint> weeklySalesDataPoints = new List<WeeklySalesDataPoint>();
+            var weeklySalesDataPoints = new List<WeeklySalesDataPoint>();
 
-            weeklySalesDataPoints.Add(new WeeklySalesDataPoint() { DateStart = dateWkStart, DateEnd = dateWkEnd, Amount = total });
+            double weekTotal = 0;
 
-            for (int i = 1; i < numberOfWeeks; i++)
+            for (int i = 0; i < numberOfWeeks; i++)
             {
-                dateWkStart = dateWkStart.AddDays(-7);
-                dateWkEnd = dateWkStart.AddDays(6);
-                total = GetOrderTotalForPeriod(enumerableOrders, dateWkStart, dateWkEnd);
-                weeklySalesDataPoints.Add(new WeeklySalesDataPoint() { DateStart = dateWkStart, DateEnd = dateWkEnd, Amount = total });
+                weekStart = weekStart.AddDays(-7);
+                weekEnd = weekEnd.AddDays(-7);
+                weekTotal = GetOrderTotalForPeriod(enumerableOrders, weekStart, weekEnd);
+                weeklySalesDataPoints.Add(new WeeklySalesDataPoint() { DateStart = weekStart, DateEnd = weekEnd, Amount = weekTotal });
             }
 
             return weeklySalesDataPoints;
         }
 
-        public async Task<List<ChartDataPoint>> GetCategorySalesDataPointsAsync(IEnumerable<Order> orders, Account account = null, int numberOfWeeks = 6, OrderStatusOption statusOption = OrderStatusOption.Both)
+        public async Task<IEnumerable<IGrouping<string, CategorySalesDataPoint>>> GetCategorySalesDataPointsAsync(IEnumerable<Order> orders, int numberOfWeeks = defaultNumberOfWeeks, OrderStatusOption statusOption = OrderStatusOption.Both)
         {
-            // get top-level categories by passing no parent categoryId
-            var categories = await _DataClient.GetCategoriesAsync();
+            var now = DateTime.UtcNow;
 
-            List<ChartDataPoint> categorySalesDataPoints = new List<ChartDataPoint>();
+            var today = DateTime.SpecifyKind(new DateTime(now.Year, now.Month, now.Day, 0, 0, 0), DateTimeKind.Utc);
 
-            orders = (account == null) ? orders : orders.Where(order => order.AccountId == account.Id);
+            int delta = CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek - today.DayOfWeek;
 
-            foreach (var category in categories)
-            {
-                double amount = await GetOrderTotalForCategoryAsync(orders, category, numberOfWeeks, statusOption);
-                categorySalesDataPoints.Add(new ChartDataPoint(category.Name, amount));
-            }
+            if(delta > 0)
+                delta -= 7;
 
-            return categorySalesDataPoints;
-        }
+            var firstDayOfCurrentWeek = today.AddDays(delta);
 
-        #endregion
+            var dateEnd = firstDayOfCurrentWeek;
 
-        async Task<double> GetOrderTotalForCategoryAsync(IEnumerable<Order> orders, Category category, int numberOfWeeks = 6, OrderStatusOption statusOption = OrderStatusOption.Both)
-        {
-            double total = 0;
+            var dateStart = dateEnd.AddDays(numberOfWeeks * -7);
 
-            var categoryProducts = await _DataClient.GetAllChildProductsAsync(category.Id);
+            var enumerableOrders = orders as IList<Order> ?? orders.ToList();
 
-            DateTime dateEnd = DateTime.UtcNow;
-            DateTime dateStart = dateEnd.AddDays(-numberOfWeeks * 7);
+            var categorySalesDataPoints = new List<CategorySalesDataPoint>();
 
-            IEnumerable<Order> results;
+            IEnumerable<Order> dateRangedOrders;
 
             switch (statusOption)
             {
                 case OrderStatusOption.Open:
-                    results = orders.Where(
+                    dateRangedOrders = enumerableOrders.Where(
                         order => 
                         order.IsOpen &&
                         order.OrderDate >= dateStart &&
-                        order.OrderDate <= dateEnd &&
-                        categoryProducts.Any(product => product.Name.ToLower() == order.Item.ToLower()));
+                        order.OrderDate < dateEnd);
                     break;
                 case OrderStatusOption.Closed:
-                    results = orders.Where(
+                    dateRangedOrders = enumerableOrders.Where(
                         order => 
                         !order.IsOpen &&
-                        order.ClosedDate >= dateStart &&
-                        order.ClosedDate <= dateEnd &&
-                        categoryProducts.Any(product => product.Name.ToLower() == order.Item.ToLower()));
+                        order.OrderDate >= dateStart &&
+                        order.OrderDate < dateEnd);
                     break;
                 default:
-                    results = orders.Where(
+                    dateRangedOrders = enumerableOrders.Where(
                         order => 
-                        order.ClosedDate >= dateStart &&
-                        order.ClosedDate <= dateEnd &&
-                        categoryProducts.Any(product => product.Name.ToLower() == order.Item.ToLower()));
+                        order.OrderDate >= dateStart &&
+                        order.OrderDate < dateEnd);
                     break;
             }
-                
-            foreach (var order in results)
+
+            foreach (var r in dateRangedOrders)
             {
-                total += order.Price;
+                categorySalesDataPoints.Add(new CategorySalesDataPoint() { CategoryName = (await _DataClient.GetTopLevelCategory((await _DataClient.GetProductByNameAsync(r.Item)).CategoryId)).Name, Amount = r.Price });
             }
 
-            return total;
+            var groupedCategorySalesDataPoints = categorySalesDataPoints.GroupBy(x => x.CategoryName);
+
+            return groupedCategorySalesDataPoints;
         }
+
+        #endregion
 
         static double GetOrderTotalForPeriod(IEnumerable<Order> orders, DateTime dateStart, DateTime dateEnd, OrderStatusOption statusOption = OrderStatusOption.Both)
         {
@@ -148,20 +151,20 @@ namespace XamarinCRM.Services
                         order => 
                         order.IsOpen &&
                         order.OrderDate >= dateStart &&
-                        order.OrderDate <= dateEnd);
+                        order.OrderDate < dateEnd);
                     break;
                 case OrderStatusOption.Closed:
                     results = orders.Where(
                         order => 
                         !order.IsOpen &&
-                        order.ClosedDate >= dateStart &&
-                        order.ClosedDate <= dateEnd);
+                        order.OrderDate >= dateStart &&
+                        order.OrderDate < dateEnd);
                     break;
                 default:
                     results = orders.Where(
                         order => 
                         order.OrderDate >= dateStart &&
-                        order.OrderDate <= dateEnd);
+                        order.OrderDate < dateEnd);
                     break;
             }
 

@@ -5,7 +5,10 @@ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 x:Class="XamarinCRM.Pages.Customers.CustomersPage" 
 xmlns:base="clr-namespace:XamarinCRM.Pages.Customers" 
 xmlns:customerViews="clr-namespace:XamarinCRM.Views.Customers">
-	<base:CustomersPageXaml.Content>
-		<customerViews:CustomerListView ItemTapped="CustomerItemTapped" />
-	</base:CustomersPageXaml.Content>
+	<customerViews:CustomerListView 
+	IsPullToRefreshEnabled="True"
+	ItemsSource="{Binding Accounts}" 
+	RefreshCommand="{Binding LoadAccountsRefreshCommand}" 
+	IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+	ItemTapped="CustomerItemTapped" />
 </base:CustomersPageXaml>

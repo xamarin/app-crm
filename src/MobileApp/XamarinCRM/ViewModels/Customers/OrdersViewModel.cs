@@ -23,12 +23,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using XamarinCRM.Clients;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using XamarinCRM.Extensions;
 using XamarinCRM.Models;
 using XamarinCRM.Models.Local;
+using XamarinCRM.Services;
 
 namespace XamarinCRM.ViewModels.Customers
 {
@@ -50,7 +50,7 @@ namespace XamarinCRM.ViewModels.Customers
             }
         }
 
-        readonly IDataClient _DataClient;
+        readonly IDataService _DataClient;
 
         public OrdersViewModel(Account account)
         {
@@ -58,7 +58,7 @@ namespace XamarinCRM.ViewModels.Customers
 
             _Orders = new List<Order>();
 
-            _DataClient = DependencyService.Get<IDataClient>();
+            _DataClient = DependencyService.Get<IDataService>();
 
             OrderGroups = new ObservableCollection<Grouping<Order, string>>();
 

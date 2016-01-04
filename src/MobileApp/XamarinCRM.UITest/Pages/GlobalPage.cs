@@ -21,7 +21,7 @@ namespace XamarinCRM.UITest
                 SalesTab = "Sales";
                 CustomersTab = "Customers";
                 ProductsTab = "Products";
-                MenuFlyout = x => x.Class("android.widget.ImageButton").Marked("OK");
+                app.Tap(x => x.Marked("OK"));
             }
             if (OniOS)
             {

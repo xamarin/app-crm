@@ -24,7 +24,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Syncfusion.SfChart.XForms;
 using Xamarin.Forms;
-using XamarinCRM.Clients;
 using XamarinCRM.Extensions;
 using XamarinCRM.Services;
 using XamarinCRM.ViewModels.Base;
@@ -34,7 +33,7 @@ namespace XamarinCRM
 {
     public class SalesDashboardChartViewModel : BaseViewModel
     {
-        IDataClient _DataClient;
+        IDataService _DataClient;
 
         IChartDataService _ChartDataService;
 
@@ -50,7 +49,7 @@ namespace XamarinCRM
         public SalesDashboardChartViewModel(INavigation navigation = null)
             : base(navigation)
         {
-            _DataClient = DependencyService.Get<IDataClient>();
+            _DataClient = DependencyService.Get<IDataService>();
 
             _ChartDataService = DependencyService.Get<IChartDataService>();
 
@@ -86,7 +85,7 @@ namespace XamarinCRM
             WeeklySalesChartDataPoints = 
                 (await _ChartDataService.GetWeeklySalesDataPointsAsync(Orders))
                     .OrderBy(x => x.DateStart)
-                    .Select(x => new ChartDataPoint(x.DateStart.ToString("d MMM"), x.Amount)).ToObservableCollection();
+                    .Select(x => new ChartDataPoint(FormatDateRange(x.DateStart, x.DateEnd), x.Amount)).ToObservableCollection();
 
             WeeklySalesAverage = String.Format("{0:C}", WeeklySalesChartDataPoints.Average(x => x.YValue));
 
@@ -122,6 +121,11 @@ namespace XamarinCRM
                 _WeeklySalesAverage = value;
                 OnPropertyChanged("WeeklySalesAverage");
             }
+        }
+
+        static string FormatDateRange(DateTime start, DateTime end)
+        {
+            return String.Format("{0}-\n{1}", start.ToString("d MMM"), end.AddDays(-1).ToString("d MMM"));
         }
     }
 }

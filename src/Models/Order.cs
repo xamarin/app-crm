@@ -18,32 +18,24 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 using System;
-
-// The model class files are shared between the mobile and service projects. 
-// If EntityData were compatible with PCL profile 78, the models could be in a PCL.
-
-#if SERVICE
-using Microsoft.WindowsAzure.Mobile.Service;
-#endif
 
 namespace XamarinCRM.Models
 {
-    public class Order : 
-#if SERVICE
-        EntityData
-#else
-        BaseModel
-#endif
+    public class Order : BaseModel
+
     {
         public Order()
         {
             AccountId = string.Empty;
 
+            var now = DateTime.UtcNow;
+
             //New orders default to open status. 
             IsOpen = true;
             Item = string.Empty;
-            OrderDate = DateTime.UtcNow;
+            OrderDate = DateTime.SpecifyKind(new DateTime(now.Year, now.Month, now.Day, 0, 0, 0), DateTimeKind.Utc);
             ClosedDate = null; // Is never shown unless order is closed, in which case this should have a sane value.
             DueDate = DateTime.UtcNow.AddDays(7);
             Price = 0;
