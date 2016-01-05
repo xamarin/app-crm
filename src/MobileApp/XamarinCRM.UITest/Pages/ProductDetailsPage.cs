@@ -10,6 +10,10 @@ namespace XamarinCRM.UITest
         public ProductDetailsPage(IApp app, Platform platform)
             : base(app, platform, "content", "Back")
         {
+            if (OniOS)
+            {
+                AddToOrderButton = x => x.Id("add_ios_blue");
+            }
         }
 
         public void VerifyProduct()
