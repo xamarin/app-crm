@@ -8,6 +8,7 @@ using Android.Content;
 using Xamarin.Forms.Platform.Android;
 using XamarinCRM;
 using Syncfusion.SfChart.XForms.Droid;
+using ImageCircle.Forms.Plugin.Droid;
 
 namespace XamarinCRMAndroid
 {
@@ -27,7 +28,7 @@ namespace XamarinCRMAndroid
             FormsAppCompatActivity.ToolbarResource = Resource.Layout.toolbar;
             FormsAppCompatActivity.TabLayoutResource = Resource.Layout.tabs;
             new SfChartRenderer(); // This is necessary for initializing SyncFusion charts.
-            ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init();
+            ImageCircleRenderer.Init();
             //#if DEBUG
             //Insights.Initialize(Insights.DebugModeKey, this);
             //#else

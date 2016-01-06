@@ -29,6 +29,7 @@ using Xamarin;
 using XamarinCRM.Statics;
 using System;
 using XamarinCRM.Pages;
+using ImageCircle.Forms.Plugin.iOS;
 
 namespace XamarinCRM.iOS
 {
@@ -56,7 +57,7 @@ namespace XamarinCRM.iOS
             // Xamarin.Forms.Maps initialization
             FormsMaps.Init();
 
-			ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init ();
+			ImageCircleRenderer.Init ();
 
 
             // Bootstrap the "core" Xamarin.Forms app
