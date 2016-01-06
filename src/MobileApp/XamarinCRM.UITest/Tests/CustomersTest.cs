@@ -10,6 +10,7 @@ namespace XamarinCRM.UITest
         {
         }
 
+        [Category("TestLogin")]
         [Test]
         public void CheckCustomerDetails()
         {

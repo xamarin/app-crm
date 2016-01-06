@@ -69,19 +69,21 @@ namespace XamarinCRM.Services
 
             // query the Azure Graph API for some detailed user information about the logged in user
             var userFetcher = activeDirectoryGraphApiClient.Me.ToUser();
-            var user = await userFetcher.ExecuteAsync();
 
-            // record some info about the logged in user with Xamarin Insights
-            Insights.Identify(
-                _AuthenticationResult.UserInfo.UniqueId, 
-                new Dictionary<string, string> 
-                {
-                    { Insights.Traits.Email, user.UserPrincipalName },
-                    { Insights.Traits.FirstName, user.GivenName },
-                    { Insights.Traits.LastName, user.Surname },
-                    { "Preferred Language", user.PreferredLanguage }
-                }
-            );
+            await Task.Factory.StartNew(async () => {
+                var user = await userFetcher.ExecuteAsync();
+                // record some info about the logged in user with Xamarin Insights
+                Insights.Identify(
+                    _AuthenticationResult.UserInfo.UniqueId, 
+                    new Dictionary<string, string> 
+                    {
+                        { Insights.Traits.Email, user.UserPrincipalName },
+                        { Insights.Traits.FirstName, user.GivenName },
+                        { Insights.Traits.LastName, user.Surname },
+                        { "Preferred Language", user.PreferredLanguage }
+                    }
+                );
+            });
 
             return true;
         }
