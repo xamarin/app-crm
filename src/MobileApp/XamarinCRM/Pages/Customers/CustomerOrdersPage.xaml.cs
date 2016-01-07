@@ -95,7 +95,7 @@ namespace XamarinCRM.Pages.Customers
             ToolbarItem newOrderButton = new ToolbarItem();
             newOrderButton.Text = "Add";
             newOrderButton.Icon = "add_ios_gray";
-            newOrderButton.Clicked += (o, ea) => AddNewOrderButtonClicked(o, ea);
+            newOrderButton.Clicked += (o, ea) => AddNewOrderButtonClicked.Invoke(o, ea);
             return newOrderButton;
         }
     }
