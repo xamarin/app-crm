@@ -95,24 +95,9 @@ namespace XamarinCRM.Pages.Customers
             ToolbarItem newOrderButton = new ToolbarItem();
             newOrderButton.Text = "Add";
             newOrderButton.Icon = "add_ios_gray";
-            newOrderButton.Clicked += NewOrderButton_Clicked;
+            newOrderButton.Clicked += (o, ea) => AddNewOrderButtonClicked(o, ea);
             return newOrderButton;
         }
-
-        async void NewOrderButton_Clicked (object sender, EventArgs e)
-        {
-            NavigationPage.SetBackButtonTitle(this, "Back");
-
-            await Navigation.PushAsync(
-                new CustomerOrderDetailPage()
-                {
-                    BindingContext = new OrderDetailViewModel(ViewModel.Account)
-                        { 
-                            Navigation = ViewModel.Navigation 
-                        }
-                });
-        }
-
     }
 
     /// <summary>
