@@ -108,17 +108,6 @@ namespace XamarinCRM.UITest
         {
             AddNewOrder();
 
-//            if (platform == Platform.Android)
-//            {
-//                new CustomersPage(app, platform)
-//                    .ClickFirstContact();
-//            }
-            if (platform == Platform.iOS)
-            {
-                new CustomerContactPage(app, platform)
-                    .NavigateToCustomerOrders();
-            }
-
             new CustomerOrdersPage(app, platform) 
                 .SelectFirstOrder();
 
