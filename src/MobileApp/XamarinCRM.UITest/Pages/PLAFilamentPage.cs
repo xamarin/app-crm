@@ -5,7 +5,7 @@ namespace XamarinCRM.UITest
     public class PLAFilamentPage : BasePage
     {
         public PLAFilamentPage(IApp app, Platform platform)
-            : base(app, platform, "FIL-PLA-VLT", "PLA Filament")
+            : base(app, platform, "FIL-PLA-BLU", "PLA Filament")
         {
         }
 
