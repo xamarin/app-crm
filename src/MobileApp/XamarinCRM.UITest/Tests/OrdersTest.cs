@@ -39,7 +39,7 @@ namespace XamarinCRM.UITest
 
             new ProductDetailsPage(app, platform)
                 .AddToOrder();
-
+            
             new CustomerOrderDetailsPage(app, platform)
                 .ChangePrice(44)
                 .SaveAndExit();
