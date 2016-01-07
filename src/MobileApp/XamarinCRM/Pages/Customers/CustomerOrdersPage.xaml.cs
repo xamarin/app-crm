@@ -39,7 +39,6 @@ namespace XamarinCRM.Pages.Customers
             if (Device.OS == TargetPlatform.iOS)
             {
                 SetToolBarItems();
-//                ToolbarItems.Add(new ToolbarItem("Add", "add_ios_gray", AddNewOrderClicked));
             }
         }
 
