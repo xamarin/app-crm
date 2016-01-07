@@ -21,7 +21,7 @@ namespace XamarinCRM.UITest
             if (OniOS)
             {
                 SecondOrder = x => x.Class("UITableViewCellContentView").Index(1);
-                NewOrderButton = x => x.Marked("add");
+                NewOrderButton = x => x.Marked("add_ios_gray");
             }
         }
 

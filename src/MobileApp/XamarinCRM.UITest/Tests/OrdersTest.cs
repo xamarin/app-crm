@@ -60,7 +60,7 @@ namespace XamarinCRM.UITest
 
             new CustomerOrdersPage(app, platform) 
                 .AddNewOrder();
-
+            
             new CustomerOrderDetailsPage(app, platform)
                 .ChangeProduct();
 
