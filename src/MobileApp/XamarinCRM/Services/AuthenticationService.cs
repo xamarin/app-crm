@@ -68,12 +68,35 @@ namespace XamarinCRM.Services
             );
 
             // query the Azure Graph API for some detailed user information about the logged in user
-            Task.Run(async () => {
-                var user = activeDirectoryGraphApiClient.Me.ExecuteAsync().Result;
-                // record some info about the logged in user with Xamarin Insights
+            //This is done differently based on platform because if this is not awaited in iOS, it crashes
+            //the app. Android is done this way to correct login issues that were previously occurring.
+            if (Xamarin.Forms.Device.OS == TargetPlatform.Android)
+            {
+                Task.Run(() =>
+                    {
+                        LogUserInfo(activeDirectoryGraphApiClient);
+                    });
+            }
+            else
+            {
+                await Task.Run(async () =>
+                    {
+                        LogUserInfo(activeDirectoryGraphApiClient);
+                    });
+            }
+
+            return true;
+        }
+
+        void LogUserInfo(ActiveDirectoryClient activeDirectoryGraphApiClient)
+        {
+            var user = activeDirectoryGraphApiClient.Me.ExecuteAsync().Result;
+            // record some info about the logged in user with Xamarin Insights
+            if (user != null)
+            {
                 Insights.Identify(
                     _AuthenticationResult.UserInfo.UniqueId, 
-                    new Dictionary<string, string> 
+                    new Dictionary<string, string>
                     {
                         { Insights.Traits.Email, user.UserPrincipalName },
                         { Insights.Traits.FirstName, user.GivenName },
@@ -81,9 +104,7 @@ namespace XamarinCRM.Services
                         { "Preferred Language", user.PreferredLanguage }
                     }
                 );
-            });
-
-            return true;
+            }
         }
 
         public async Task<bool> LogoutAsync()
