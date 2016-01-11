@@ -22,11 +22,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin;
 using Xamarin.Forms;
+using XamarinCRM.Models;
 using XamarinCRM.Pages.Splash;
+using XamarinCRM.Services;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Sales;
-using XamarinCRM.Services;
-using XamarinCRM.Models;
 using XamarinCRM.Views;
 
 namespace XamarinCRM.Pages.Sales

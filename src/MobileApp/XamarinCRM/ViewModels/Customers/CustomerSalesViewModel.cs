@@ -47,6 +47,21 @@ namespace XamarinCRM
 
         string _WeeklySalesAverage;
 
+        public string WeeklySalesAverage
+        {
+            get { return _WeeklySalesAverage; }
+            set
+            {
+                _WeeklySalesAverage = value;
+                OnPropertyChanged("WeeklySalesAverage");
+            }
+        }
+
+        static string FormatDateRange(DateTime start, DateTime end)
+        {
+            return String.Format("{0}-\n{1}", start.ToString("d MMM"), end.AddDays(-1).ToString("d MMM"));
+        }
+
         public bool NeedsRefresh { get; set; }
 
         public CustomerSalesViewModel(Account account)
@@ -141,21 +156,6 @@ namespace XamarinCRM
                 _CategorySalesChartDataPoints = value;
                 OnPropertyChanged("CategorySalesChartDataPoints");
             }
-        }
-
-        public string WeeklySalesAverage
-        {
-            get { return _WeeklySalesAverage; }
-            set
-            {
-                _WeeklySalesAverage = value;
-                OnPropertyChanged("WeeklySalesAverage");
-            }
-        }
-
-        static string FormatDateRange(DateTime start, DateTime end)
-        {
-            return String.Format("{0}-\n{1}", start.ToString("d MMM"), end.AddDays(-1).ToString("d MMM"));
         }
     }
 }
