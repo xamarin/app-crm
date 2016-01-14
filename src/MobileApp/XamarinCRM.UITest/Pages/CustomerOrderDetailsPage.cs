@@ -25,9 +25,9 @@ namespace XamarinCRM.UITest
             }
             if (OniOS)
             {
-                ProductField = x => x.Class("UITextFieldLabel").Descendant(0);
-                PriceField = x => x.Class("UITextFieldLabel").Descendant(1);
-                DateField = x => x.Class("UITextFieldLabel").Descendant(2);
+                ProductField = x => x.Class("UITextField").Index(0);
+                PriceField = x => x.Class("UITextField").Index(1);
+                DateField = x => x.Class("UITextField").Index(2);
                 SaveButton = x => x.Id("save.png");
             }
         }

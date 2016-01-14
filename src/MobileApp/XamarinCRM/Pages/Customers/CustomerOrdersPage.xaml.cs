@@ -35,6 +35,11 @@ namespace XamarinCRM.Pages.Customers
             InitializeComponent();
 
             AddNewOrderButton.Clicked = AddNewOrderButtonClicked;
+
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                SetToolBarItems();
+            }
         }
 
         protected override void OnAppearing()
@@ -76,6 +81,22 @@ namespace XamarinCRM.Pages.Customers
                             });
                     });
             }
+        }
+
+        void SetToolBarItems()
+        {
+            ToolbarItems.Clear();
+
+            ToolbarItems.Add(GetNewOrderToolBarItem());
+        }
+
+        ToolbarItem GetNewOrderToolBarItem()
+        {
+            ToolbarItem newOrderButton = new ToolbarItem();
+            newOrderButton.Text = "Add";
+            newOrderButton.Icon = "add_ios_gray";
+            newOrderButton.Clicked += (o, ea) => AddNewOrderButtonClicked.Invoke(o, ea);
+            return newOrderButton;
         }
     }
 

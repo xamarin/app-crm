@@ -53,7 +53,7 @@ namespace XamarinCRM.UITest
 //
             app.Screenshot("On Home Page");
         }
-
+            
         void LogIn()
         {
             var deviceIndex = Environment.GetEnvironmentVariable("XTC_DEVICE_INDEX");

@@ -39,7 +39,7 @@ namespace XamarinCRM.UITest
 
             new ProductDetailsPage(app, platform)
                 .AddToOrder();
-
+            
             new CustomerOrderDetailsPage(app, platform)
                 .ChangePrice(44)
                 .SaveAndExit();
@@ -60,7 +60,7 @@ namespace XamarinCRM.UITest
 
             new CustomerOrdersPage(app, platform) 
                 .AddNewOrder();
-
+            
             new CustomerOrderDetailsPage(app, platform)
                 .ChangeProduct();
 
@@ -107,17 +107,6 @@ namespace XamarinCRM.UITest
         public void AddNewOrderAndDeliver()
         {
             AddNewOrder();
-
-//            if (platform == Platform.Android)
-//            {
-//                new CustomersPage(app, platform)
-//                    .ClickFirstContact();
-//            }
-            if (platform == Platform.iOS)
-            {
-                new CustomerContactPage(app, platform)
-                    .NavigateToCustomerOrders();
-            }
 
             new CustomerOrdersPage(app, platform) 
                 .SelectFirstOrder();
