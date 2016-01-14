@@ -35,7 +35,7 @@ namespace XamarinCRM.UITest
                 .SelectPart("ABS Filament");
 
             new ABSFilamentPage(app, platform)
-                .SelectColor("VLT");
+                .SelectColor("BLU-LIGHT");
 
             new ProductDetailsPage(app, platform)
                 .AddToOrder();
@@ -108,13 +108,16 @@ namespace XamarinCRM.UITest
         {
             AddNewOrder();
 
-            if (platform == Platform.Android)
+//            if (platform == Platform.Android)
+//            {
+//                new CustomersPage(app, platform)
+//                    .ClickFirstContact();
+//            }
+            if (platform == Platform.iOS)
             {
-                new CustomersPage(app, platform)
-                    .ClickFirstContact();
+                new CustomerContactPage(app, platform)
+                    .NavigateToCustomerOrders();
             }
-            new CustomerContactPage(app, platform)
-                .NavigateToCustomerOrders();
 
             new CustomerOrdersPage(app, platform) 
                 .SelectFirstOrder();

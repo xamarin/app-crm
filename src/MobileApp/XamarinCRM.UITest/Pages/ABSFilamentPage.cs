@@ -6,7 +6,7 @@ namespace XamarinCRM.UITest
     public class ABSFilamentPage : BasePage
     {
         public ABSFilamentPage(IApp app, Platform platform)
-            : base(app, platform, "FIL-ABS-VLT", "ABS Filament")
+            : base(app, platform, "FIL-ABS-BLU", "ABS Filament")
         {
         }
 

@@ -24,8 +24,8 @@ namespace XamarinCRM.UITest
             return ConfigureApp
                     .iOS
                     //.ApiKey(apiKey)
-                    .AppBundle(appFile)
-//                    .InstalledApp(bundleId)
+//                    .AppBundle(appFile)
+                    .InstalledApp(bundleId)
                     .StartApp();
         }
     }

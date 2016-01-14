@@ -61,7 +61,10 @@ namespace XamarinCRM.UITest
 
         public void GoToLeadDetails()
         {
-            app.Tap(DetailsTab);
+            if (OnAndroid)
+                app.ScrollUpTo("Company");
+            if (OniOS)
+                app.Tap(DetailsTab);
         }
 
         public LeadContactPage EnterLeadContact(

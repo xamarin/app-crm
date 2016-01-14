@@ -5,11 +5,15 @@ namespace XamarinCRM.UITest
 {
     public class ProductDetailsPage : BasePage
     {
-        readonly Query AddToOrderButton = x => x.Marked("ADD TO ORDER");
+        readonly Query AddToOrderButton;
 
         public ProductDetailsPage(IApp app, Platform platform)
             : base(app, platform, "content", "Back")
         {
+            if (OnAndroid)
+            {
+                AddToOrderButton = x => x.Marked("Add to Order").Parent(0).Sibling();
+            }
             if (OniOS)
             {
                 AddToOrderButton = x => x.Id("add_ios_blue");
