@@ -177,20 +177,18 @@ namespace XamarinCRM
         {
             get
             {
-                Font font;
-
-                Device.OnPlatform(
-                    iOS: () =>
-                    { 
-                        font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Default, typeof(ChartAxisTitle)) * 0.6); 
-                    },
-                    Android: () =>
-                    { 
-                        font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Default, typeof(ChartAxisTitle)) * 1.7);
-                    }
-                );
-
-                return font;
+                if (Device.OS == TargetPlatform.iOS)
+                {
+                    return Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Default, typeof(ChartAxisTitle)) * 0.6);
+                }
+                else if (Device.OS == TargetPlatform.Android)
+                {
+                    return Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Default, typeof(ChartAxisTitle)) * 1.7);
+                }
+                else
+                {
+                    return Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Default, typeof(ChartAxisTitle)));
+                }
             }
         }
     }
