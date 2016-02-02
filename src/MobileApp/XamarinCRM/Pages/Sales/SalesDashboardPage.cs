@@ -127,11 +127,16 @@ namespace XamarinCRM.Pages.Sales
             {
                 Content.IsVisible = true;
 
-                if (!_SalesDashboardChartViewModel.IsInitialized)
+                if (!_SalesDashboardChartViewModel.IsInitialized) 
                 {
                     await _SalesDashboardChartViewModel.ExecuteLoadSeedDataCommand();
-                    await _SalesDashboardLeadsViewModel.ExecuteLoadSeedDataCommand();
                     _SalesDashboardChartViewModel.IsInitialized = true;
+                }
+
+                if (!_SalesDashboardLeadsViewModel.IsInitialized) 
+                {
+                    await _SalesDashboardLeadsViewModel.ExecuteLoadSeedDataCommand();
+                    _SalesDashboardLeadsViewModel.IsInitialized = true;
                 }
 
                 Insights.Track(InsightsReportingConstants.PAGE_SALESDASHBOARD);
