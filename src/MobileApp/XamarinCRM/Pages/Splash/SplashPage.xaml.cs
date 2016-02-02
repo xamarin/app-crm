@@ -87,6 +87,8 @@ namespace XamarinCRM.Pages.Splash
                 {
                     // Do nothing, just duck the exception. The user just cancelled out of the login UI.
                 }
+                else
+                    await DisplayAlert("Login error", "An unknown login error has occurred. Please try again.", "OK");
             }
             finally
             {
