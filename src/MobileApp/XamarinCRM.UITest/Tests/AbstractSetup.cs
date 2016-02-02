@@ -53,6 +53,14 @@ namespace XamarinCRM.UITest
 //
             app.Screenshot("On Home Page");
         }
+
+        [TearDown]
+        public virtual void AfterEachTest()
+        {
+            if (platform == Platform.iOS)
+                // wipe the device keychain
+                app.TestServer.Post("/keychain");
+        }
             
         void LogIn()
         {
