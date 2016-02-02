@@ -7,7 +7,8 @@ xmlns:views="clr-namespace:XamarinCRM.Views"
 xmlns:base="clr-namespace:XamarinCRM.Pages.Customers" 
 xmlns:customerViews="clr-namespace:XamarinCRM.Views.Customers" 
 xmlns:layouts="clr-namespace:XamarinCRM.Layouts" 
-xmlns:statics="clr-namespace:XamarinCRM.Statics">
+xmlns:statics="clr-namespace:XamarinCRM.Statics"
+Title="{Binding DisplayContact}">
 	
 	<base:CustomerOrdersPageXaml.Content>
 

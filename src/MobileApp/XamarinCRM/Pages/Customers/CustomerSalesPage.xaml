@@ -4,7 +4,8 @@ xmlns="http://xamarin.com/schemas/2014/forms"
 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 x:Class="XamarinCRM.Pages.Customers.CustomerSalesPage"
 xmlns:base="clr-namespace:XamarinCRM.Pages.Customers"
-xmlns:customerViews="clr-namespace:XamarinCRM.Views.Customers">
+xmlns:customerViews="clr-namespace:XamarinCRM.Views.Customers"
+Title="{Binding DisplayContact}">
 	<ScrollView>
 		<StackLayout Spacing="0">
 			<customerViews:CustomerWeeklySalesChartView />
