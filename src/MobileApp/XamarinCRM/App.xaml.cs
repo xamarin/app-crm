@@ -18,6 +18,9 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+#define TRY_APP_SERVICE
+
 using System;
 using Xamarin.Forms;
 using XamarinCRM.Services;
@@ -51,6 +54,12 @@ namespace XamarinCRM
             TextResources.Culture = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
 
 
+#if TRY_APP_SERVICE
+            // Don't show splash screen for Try App Service version of client
+            _AuthenticationService.BypassAuthentication();
+            GoToRoot();
+#else
+
             // If the App.IsAuthenticated property is false, modally present the SplashPage.
             if (!_AuthenticationService.IsAuthenticated)
             {
@@ -60,7 +69,7 @@ namespace XamarinCRM
             {
                 GoToRoot();
             }
-
+#endif
         }
 
         public static void GoToRoot()
