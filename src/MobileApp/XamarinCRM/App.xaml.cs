@@ -28,8 +28,6 @@ using System.Threading.Tasks;
 using Plugin.Connectivity;
 using Xamarin.Forms.Xaml;
 
-//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-
 namespace XamarinCRM
 {
     public partial class App : Application
