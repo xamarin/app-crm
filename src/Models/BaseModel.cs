@@ -21,9 +21,9 @@
 
 using System;
 
-#if SERVICE
+#if TRY_APP_SERVICE
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.Azure.Mobile.Server.Tables;
-
 #endif
 
 namespace XamarinCRM.Models
@@ -32,18 +32,42 @@ namespace XamarinCRM.Models
     // If ITableData were compatible with PCL profile 78, the models could be in a PCL.
 
     public class BaseModel
-#if SERVICE
+    #if TRY_APP_SERVICE
         : ITableData
 #endif
     {
+        #region System properties
         public string Id { get; set; }
 
+        public byte[] Version { get; set; }
+
+#if TRY_APP_SERVICE
+        [NotMapped]
+#endif        
         public DateTimeOffset? CreatedAt { get; set; }
 
+#if TRY_APP_SERVICE
+        [NotMapped]
+#endif
         public DateTimeOffset? UpdatedAt { get; set; }
 
         public bool Deleted { get; set; }
+        #endregion
 
-        public byte[] Version { get; set; }
+#if TRY_APP_SERVICE
+        // SQL Compact Edition does not support the DateTimeOffset type.
+        // These are simple backing properties that store these values using the DateTime type instead.
+        public DateTime __createdAtDateTime
+        {
+            get { return CreatedAt?.DateTime ?? DateTime.Now; }
+            set { CreatedAt = value; }
+        }
+
+        public DateTime __updatedAtDateTime
+        {
+            get { return UpdatedAt?.DateTime ?? DateTime.Now; }
+            set { UpdatedAt = value; }
+        }
+#endif
     }
 }

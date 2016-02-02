@@ -20,7 +20,9 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.OData;
 using XamarinCRM.Models;
 
 namespace XamarinCRMAppService.Controllers
@@ -40,25 +42,22 @@ namespace XamarinCRMAppService.Controllers
         }
 
         // PATCH tables/Account/48D68C86-6EA6-4C25-AA33-223FC9A27959
-        // Omitted intentionally to prevent PATCH operations
-        //public Task<Account> PatchAccount(string id, Delta<Account> patch)
-        //{
-        //     return UpdateAsync(id, patch);
-        //}
+        public Task<Account> PatchAccount(string id, Delta<Account> patch)
+        {
+            return UpdateAsync(id, patch);
+        }
 
         // POST tables/Account
-        // Omitted intentionally to prevent POST operations
-        //public async Task<IHttpActionResult> PostAccount(Account item)
-        //{
-        //    Account current = await InsertAsync(item);
-        //    return CreatedAtRoute("Tables", new { id = current.Id }, current);
-        //}
+        public async Task<IHttpActionResult> PostAccount(Account item)
+        {
+            Account current = await InsertAsync(item);
+            return CreatedAtRoute("Tables", new { id = current.Id }, current);
+        }
 
         // DELETE tables/Account/48D68C86-6EA6-4C25-AA33-223FC9A27959
-        // Omitted intentionally to prevent DELETE operations
-        //public Task DeleteAccount(string id)
-        //{
-        //     return DeleteAsync(id);
-        //}
+        public Task DeleteAccount(string id)
+        {
+            return DeleteAsync(id);
+        }
     }
 }

@@ -49,7 +49,7 @@ namespace XamarinCRM.Models
         public DateTime DueDate { get; set; }
         public DateTime? ClosedDate { get; set; }
 
-#if !SERVICE
+#if !TRY_APP_SERVICE
         public string Status
         {
             get { return (IsOpen) ? "Open Orders" : "Delivered Orders"; }

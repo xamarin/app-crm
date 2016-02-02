@@ -29,6 +29,7 @@ namespace XamarinCRM.Models
     {
         public Account()
         {
+            Id = Guid.NewGuid().ToString();
             FirstName = LastName = Company = Street = Unit = City = PostalCode = State = Country = Phone = JobTitle = Email = string.Empty;
             Industry = IndustryTypes[0];
             OpportunityStage = OpportunityStages[0];
@@ -62,7 +63,7 @@ namespace XamarinCRM.Models
         public static string[] OpportunityStages = { "10% - Prospect", "50% - Value Proposition", "75% - Proposal", "100% - Closed" };
 
 
-#if !SERVICE
+#if !TRY_APP_SERVICE
         [JsonIgnore]
         public double OpportunityStagePercent
         {
