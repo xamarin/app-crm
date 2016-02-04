@@ -74,6 +74,18 @@ namespace XamarinCRMAppService.Models
             modelBuilder.Conventions.Add(
                 new AttributeToColumnAnnotationConvention<TableColumnAttribute, string>(
                     "ServiceTableColumn", (property, attributes) => attributes.Single().ColumnType.ToString()));
+
+            modelBuilder.Types<Account>().Configure(x => x.Ignore(prop => prop.CreatedAt));
+            modelBuilder.Types<Account>().Configure(x => x.Ignore(prop => prop.UpdatedAt));
+
+            modelBuilder.Types<Order>().Configure(x => x.Ignore(prop => prop.CreatedAt));
+            modelBuilder.Types<Order>().Configure(x => x.Ignore(prop => prop.UpdatedAt));
+
+            modelBuilder.Types<Category>().Configure(x => x.Ignore(prop => prop.CreatedAt));
+            modelBuilder.Types<Category>().Configure(x => x.Ignore(prop => prop.UpdatedAt));
+
+            modelBuilder.Types<Product>().Configure(x => x.Ignore(prop => prop.CreatedAt));
+            modelBuilder.Types<Product>().Configure(x => x.Ignore(prop => prop.UpdatedAt));
         }
 
         public DbSet<Account> Accounts { get; set; }
