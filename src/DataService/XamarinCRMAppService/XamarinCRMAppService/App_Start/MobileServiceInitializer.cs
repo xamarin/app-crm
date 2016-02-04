@@ -26,8 +26,14 @@ using XamarinCRM.Models;
 using XamarinCRMAppService.Models;
 
 namespace XamarinCRMAppService
-{
-    public class MobileServiceInitializer : DropCreateDatabaseIfModelChanges<MobileServiceContext>
+{   
+    public class MobileServiceInitializer :
+#if !TRY_APP_SERVICE    
+    DropCreateDatabaseIfModelChanges<MobileServiceContext>
+#else
+    DropCreateDatabaseAlways<MobileServiceContext>
+#endif
+
     {
         protected override void Seed(MobileServiceContext context)
         {

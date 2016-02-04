@@ -40,12 +40,18 @@ namespace XamarinCRMAppService.Models
         // service name, set by the 'MS_MobileServiceName' AppSettings in the local 
         // Web.config, is the same as the service name when hosted in Azure.
 
+#if !TRY_APP_SERVICE
         private const string connectionStringName = "Name=MS_TableConnectionString";
+#else
+        private const string connectionStringName = "Name=MS_TryAppService_TableConnectionString";
+#endif
 
         public MobileServiceContext() : base(connectionStringName)
         {
             // Increasing timeout because database creation in Azure SQL seems to take a while (roughly 120 seconds).
+#if !TRY_APP_SERVICE
             Database.CommandTimeout = 300; 
+#endif
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -68,6 +74,18 @@ namespace XamarinCRMAppService.Models
             modelBuilder.Conventions.Add(
                 new AttributeToColumnAnnotationConvention<TableColumnAttribute, string>(
                     "ServiceTableColumn", (property, attributes) => attributes.Single().ColumnType.ToString()));
+
+            modelBuilder.Types<Account>().Configure(x => x.Ignore(prop => prop.CreatedAt));
+            modelBuilder.Types<Account>().Configure(x => x.Ignore(prop => prop.UpdatedAt));
+
+            modelBuilder.Types<Order>().Configure(x => x.Ignore(prop => prop.CreatedAt));
+            modelBuilder.Types<Order>().Configure(x => x.Ignore(prop => prop.UpdatedAt));
+
+            modelBuilder.Types<Category>().Configure(x => x.Ignore(prop => prop.CreatedAt));
+            modelBuilder.Types<Category>().Configure(x => x.Ignore(prop => prop.UpdatedAt));
+
+            modelBuilder.Types<Product>().Configure(x => x.Ignore(prop => prop.CreatedAt));
+            modelBuilder.Types<Product>().Configure(x => x.Ignore(prop => prop.UpdatedAt));
         }
 
         public DbSet<Account> Accounts { get; set; }

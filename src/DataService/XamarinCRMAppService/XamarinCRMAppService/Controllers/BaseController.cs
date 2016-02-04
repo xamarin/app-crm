@@ -19,6 +19,7 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+using System.Linq;
 using System.Web.Http.Controllers;
 using Microsoft.Azure.Mobile.Server;
 using Microsoft.Azure.Mobile.Server.Config;
@@ -35,6 +36,23 @@ namespace XamarinCRMAppService.Controllers
             base.Initialize(controllerContext);
             MobileServiceContext context = new MobileServiceContext();
             DomainManager = new EntityDomainManager<T>(context, Request);
+        }
+
+        // GET tables/Account
+        public IQueryable<T> GetAll()
+        {
+#if TRY_APP_SERVICE
+            // In your production mobile service, do not evaluate the query by calling ToList() before returning 
+            // the results. This is required due to SQL Compact Edition not supporting the DateTimeOffset type. 
+            return Query().ToList().AsQueryable();
+#else
+            return Query();
+#endif
+        }
+
+        public T Get(string id)
+        {
+            return Lookup(id).Queryable.FirstOrDefault();
         }
     }
 }

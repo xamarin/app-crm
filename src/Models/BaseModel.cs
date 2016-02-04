@@ -24,6 +24,7 @@ using System;
 #if TRY_APP_SERVICE
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.Azure.Mobile.Server.Tables;
+using Newtonsoft.Json;
 #endif
 
 namespace XamarinCRM.Models
@@ -41,14 +42,8 @@ namespace XamarinCRM.Models
 
         public byte[] Version { get; set; }
 
-#if TRY_APP_SERVICE
-        [NotMapped]
-#endif        
         public DateTimeOffset? CreatedAt { get; set; }
 
-#if TRY_APP_SERVICE
-        [NotMapped]
-#endif
         public DateTimeOffset? UpdatedAt { get; set; }
 
         public bool Deleted { get; set; }

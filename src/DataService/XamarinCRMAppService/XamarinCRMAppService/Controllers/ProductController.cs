@@ -27,18 +27,6 @@ namespace XamarinCRMAppService.Controllers
 {
     public class ProductController : BaseController<Product>
     {
-        // GET tables/Product
-        public IQueryable<Product> GetAllProduct()
-        {
-            return Query(); 
-        }
-
-        // GET tables/Product/48D68C86-6EA6-4C25-AA33-223FC9A27959
-        public SingleResult<Product> GetProduct(string id)
-        {
-            return Lookup(id);
-        }
-
         // PATCH tables/Product/48D68C86-6EA6-4C25-AA33-223FC9A27959
         // Omitted intentionally to prevent PATCH operations
         //public Task<Product> PatchProduct(string id, Delta<Product> patch)

@@ -19,6 +19,7 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -29,21 +30,10 @@ namespace XamarinCRMAppService.Controllers
 {
     public class AccountController : BaseController<Account>
     {
-        // GET tables/Account
-        public IQueryable<Account> GetAllAccount()
-        {
-            return Query(); 
-        }
-
-        // GET tables/Account/48D68C86-6EA6-4C25-AA33-223FC9A27959
-        public SingleResult<Account> GetAccount(string id)
-        {
-            return Lookup(id);
-        }
-
         // PATCH tables/Account/48D68C86-6EA6-4C25-AA33-223FC9A27959
         public Task<Account> PatchAccount(string id, Delta<Account> patch)
         {
+            patch.TrySetPropertyValue("__updatedAtDateTime", DateTime.Now);
             return UpdateAsync(id, patch);
         }
 
