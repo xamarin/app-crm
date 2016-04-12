@@ -69,8 +69,6 @@ namespace XamarinCRM.Pages.Splash
             // Sequentially animate the login buttons. ScaleTo() makes them "grow" from a singularity to the full button size.
             await SignInButton.ScaleTo(1, (uint)App.AnimationSpeed, Easing.SinIn);
             await SkipSignInButton.ScaleTo(1, (uint)App.AnimationSpeed, Easing.SinIn);
-
-            Insights.Track(InsightsReportingConstants.PAGE_SPLASH);
         }
 
         async Task<bool> Authenticate()

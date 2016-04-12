@@ -47,8 +47,6 @@ namespace XamarinCRM.Pages.Customers
             base.OnAppearing();
 
             ViewModel.LoadOrdersCommand.Execute(null);
-
-            Insights.Track(InsightsReportingConstants.PAGE_CUSTOMERORDERS);
         }
 
         async void OrderItemTapped(object sender, ItemTappedEventArgs e)

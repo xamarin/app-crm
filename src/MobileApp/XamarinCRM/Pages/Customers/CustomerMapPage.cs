@@ -96,8 +96,6 @@ namespace XamarinCRM.Pages.Customers
             base.OnAppearing();
 
             await this.MakeMap();
-
-            Insights.Track(InsightsReportingConstants.PAGE_CUSTOMERMAP);
         }
     }
 }

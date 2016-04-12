@@ -47,8 +47,6 @@ namespace XamarinCRM.Pages.Products
             ViewModel.LoadProductsCommand.Execute(ViewModel.CategoryId);
 
             ViewModel.IsInitialized = true;
-
-            Insights.Track(InsightsReportingConstants.PAGE_PRODUCTLIST);
         }
 
         async void ProductItemTapped (object sender, ItemTappedEventArgs e)

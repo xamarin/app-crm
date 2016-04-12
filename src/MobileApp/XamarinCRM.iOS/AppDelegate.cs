@@ -20,16 +20,17 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using Foundation;
+using HockeyApp;
+using ImageCircle.Forms.Plugin.iOS;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
+using System;
+using System.Threading.Tasks;
 using UIKit;
+using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using Xamarin;
-
-using XamarinCRM.Statics;
-using System;
 using XamarinCRM.Pages;
-using ImageCircle.Forms.Plugin.iOS;
+using XamarinCRM.Statics;
 
 namespace XamarinCRM.iOS
 {
@@ -38,6 +39,31 @@ namespace XamarinCRM.iOS
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            //We MUST wrap our setup in this block to wire up
+            // Mono's SIGSEGV and SIGBUS signals
+            HockeyApp.Setup.EnableCustomCrashReporting(() => {
+
+                //Get the shared instance
+                var manager = BITHockeyManager.SharedHockeyManager;
+
+                //Configure it to use our APP_ID
+                manager.Configure("59a5cd6206a6133d2caf642b33ed67d7");
+
+                //Start the manager
+                manager.StartManager();
+
+                //Authenticate (there are other authentication options)
+                manager.Authenticator.AuthenticateInstallation();
+
+                //Rethrow any unhandled .NET exceptions as native iOS 
+                // exceptions so the stack traces appear nicely in HockeyApp
+                AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+                    Setup.ThrowExceptionAsNative(e.ExceptionObject);
+
+                TaskScheduler.UnobservedTaskException += (sender, e) =>
+                    Setup.ThrowExceptionAsNative(e.Exception);
+            });
+
             new SfChartRenderer(); // This is necessary for initializing SyncFusion charts.
 
             #if DEBUG
@@ -58,7 +84,6 @@ namespace XamarinCRM.iOS
             FormsMaps.Init();
 
 			ImageCircleRenderer.Init ();
-
 
             // Bootstrap the "core" Xamarin.Forms app
             LoadApplication(new App());

@@ -8,13 +8,11 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>XamarinCRM.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>261c51be</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
     <ReleaseVersion>2.1.1</ReleaseVersion>
-    <AssemblyName>XamarinCRMiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -181,12 +179,9 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <AssemblyName>XamarinCRMiOS</AssemblyName>
+    <AssemblyName>XamarinCRM.iOS</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HockeyApp.iOS">
-      <HintPath>..\Components\hockeyappios-3.8.6.0\lib\ios-unified\HockeyApp.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
@@ -221,6 +216,12 @@
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.11.3\lib\Xamarin.iOS10\Xamarin.Insights.dll</HintPath>
+    </Reference>
+    <Reference Include="PLCrashReporterUnifiedBinding">
+      <HintPath>..\packages\Xamarin.Insights.1.11.3\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
+    </Reference>
     <Reference Include="Lotz.Xam.Messaging.Abstractions">
       <HintPath>..\packages\Xam.Plugins.Messaging.3.0.0\lib\Xamarin.iOS10\Lotz.Xam.Messaging.Abstractions.dll</HintPath>
     </Reference>
@@ -299,6 +300,7 @@
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.Insights.1.11.3\build\Xamarin.iOS10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.11.3\build\Xamarin.iOS10\Xamarin.Insights.targets')" />
   <Import Project="..\packages\Xamarin.Forms.2.0.1.6505\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.0.1.6505\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <ItemGroup>
     <ProjectReference Include="..\XamarinCRM\XamarinCRM.csproj">
@@ -306,12 +308,7 @@
       <Name>XamarinCRM</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="hockeyappios">
-      <Visible>False</Visible>
-      <Version>3.8.6.0</Version>
-    </XamarinComponentReference>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="..\XamarinCRM\Config\config.xml">
@@ -325,7 +322,10 @@
     <ITunesArtwork Include="iTunesArtwork.png" />
     <ITunesArtwork Include="iTunesArtwork%402x.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Renderers\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\add_ios_blue%403x.png" />
     <BundleResource Include="Resources\add_ios_gray%403x.png" />

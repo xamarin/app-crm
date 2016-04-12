@@ -58,7 +58,7 @@ namespace XamarinCRM.Services
             }
             catch (Exception ex)
             {
-                Insights.Report(ex);
+                // TODO: log error
             }
 
             return p;

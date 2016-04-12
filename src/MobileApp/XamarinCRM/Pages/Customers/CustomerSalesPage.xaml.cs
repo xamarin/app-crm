@@ -44,8 +44,6 @@ namespace XamarinCRM.Pages.Customers
                 await ViewModel.ExecuteLoadSeedDataCommand(ViewModel.Account);
                 ViewModel.IsInitialized = true;
             }
-
-            Insights.Track(InsightsReportingConstants.PAGE_CUSTOMERSALES);
         }
     }
 

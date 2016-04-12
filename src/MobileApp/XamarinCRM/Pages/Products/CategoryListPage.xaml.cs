@@ -47,8 +47,6 @@ namespace XamarinCRM.Pages.Products
             ViewModel.LoadCategoriesCommand.Execute(ViewModel.Category);
 
             ViewModel.IsInitialized = true;
-
-            Insights.Track(InsightsReportingConstants.PAGE_CATEGORYLIST);
         }
 
         async void CategoryItemTapped (object sender, ItemTappedEventArgs e)

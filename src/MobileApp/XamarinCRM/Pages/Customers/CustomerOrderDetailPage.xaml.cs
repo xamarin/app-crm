@@ -53,8 +53,6 @@ namespace XamarinCRM.Pages.Customers
             } 
 
             await ViewModel.ExecuteLoadOrderItemImageUrlCommand();
-
-            Insights.Track(InsightsReportingConstants.PAGE_CUSTOMERORDERDETAIL);
         }
 
         void SetToolBarItems()

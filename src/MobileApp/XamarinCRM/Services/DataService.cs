@@ -101,7 +101,6 @@ namespace XamarinCRM.Services
             catch (Exception ex)
             {
                 Debug.WriteLine(@"Failed to initialize sync context: {0}", ex.Message);
-                Insights.Report(ex, Insights.Severity.Error);
             }
 
             _OrderTable = _AzureAppServiceClient.GetSyncTable<Order>();
@@ -125,16 +124,8 @@ namespace XamarinCRM.Services
         public bool IsSeeded { get { return _IsSeeded; } }
 
         public async Task SeedLocalDataAsync()
-        {                
-            string dbSyncInsightsIdentifier = InsightsReportingConstants.TIME_DB_SYNC_INCREMENTAL;
-
-            if (!LocalDBExists)
-            {
-                dbSyncInsightsIdentifier = InsightsReportingConstants.TIME_DB_SYNC_INITIAL;
-            }
-
+        {      
             await Execute(
-                dbSyncInsightsIdentifier,
                 async () =>
                 {
                     await SynchronizeAccountsAsync();
@@ -158,7 +149,6 @@ namespace XamarinCRM.Services
         public async Task SynchronizeOrdersAsync()
         {
             await Execute(
-                InsightsReportingConstants.TIME_ORDERS_SYNC,
                 async () =>
                 {
                     if (!LocalDBExists)
@@ -174,7 +164,6 @@ namespace XamarinCRM.Services
         public async Task SaveOrderAsync(Order item)
         {
             await Execute(
-                InsightsReportingConstants.TIME_ORDERS_SAVE_SINGLE,
                 async () =>
                 {
                     if (item.Id == null)
@@ -188,7 +177,6 @@ namespace XamarinCRM.Services
         public async Task DeleteOrderAsync(Order item)
         {
             await Execute(
-                InsightsReportingConstants.TIME_ORDERS_DELETE_SINGLE,
                 async () =>
                     await _OrderTable.DeleteAsync(item)
             );
@@ -197,7 +185,6 @@ namespace XamarinCRM.Services
         public async Task<IEnumerable<Order>> GetOpenOrdersForAccountAsync(string accountId)
         {
             return await Execute<IEnumerable<Order>>(
-                InsightsReportingConstants.TIME_ORDERS_GET_OPEN,
                 async () =>
                     await _OrderTable
                         .Where(order => order.AccountId.ToLower() == accountId.ToLower() && order.IsOpen == true)
@@ -210,7 +197,6 @@ namespace XamarinCRM.Services
         public async Task<IEnumerable<Order>> GetClosedOrdersForAccountAsync(string accountId)
         {
             return await Execute<IEnumerable<Order>>(
-                InsightsReportingConstants.TIME_ORDERS_GET_CLOSED,
                 async () =>
                 await _OrderTable
                 .Where(order => order.AccountId.ToLower() == accountId.ToLower() && order.IsOpen == false)
@@ -223,7 +209,6 @@ namespace XamarinCRM.Services
         public async Task<IEnumerable<Order>> GetAllOrdersAsync()
         {
             return await Execute<IEnumerable<Order>>(
-                InsightsReportingConstants.TIME_ORDERS_GET_ALL,
                 async () =>
                     await _OrderTable.ToEnumerableAsync(),
                 new List<Order>()
@@ -238,7 +223,6 @@ namespace XamarinCRM.Services
         public async Task SynchronizeAccountsAsync()
         {
             await Execute(
-                InsightsReportingConstants.TIME_ACCOUNTS_SYNC,
                 async () =>
                 {
                     if (!LocalDBExists)
@@ -254,7 +238,6 @@ namespace XamarinCRM.Services
         public async Task SaveAccountAsync(Account item)
         {
             await Execute(
-                InsightsReportingConstants.TIME_ACCOUNTS_SAVE_SINGLE,
                 async () =>
                 {
                     if (item.Id == null)
@@ -268,7 +251,6 @@ namespace XamarinCRM.Services
         public async Task DeleteAccountAsync(Account item)
         {
             await Execute(
-                InsightsReportingConstants.TIME_ACCOUNTS_DELETE_SINGLE,
                 async () => 
                     await _AccountTable.DeleteAsync(item)
             );
@@ -277,7 +259,6 @@ namespace XamarinCRM.Services
         public async Task<IEnumerable<Account>> GetAccountsAsync(bool includeLeads = false)
         {
             return await Execute<IEnumerable<Account>>(
-                InsightsReportingConstants.TIME_ACCOUNTS_GET_ALL,
                 async () =>
                     await _AccountTable
                     .Where(account => account.IsLead == includeLeads).OrderBy(b => b.Company)
@@ -294,7 +275,6 @@ namespace XamarinCRM.Services
         public async Task SynchronizeCategoriesAsync()
         {
             await Execute(
-                InsightsReportingConstants.TIME_CATEGORIES_SYNC,
                 async () =>
                 {
                     if (!LocalDBExists)
@@ -310,7 +290,6 @@ namespace XamarinCRM.Services
         public async Task<IEnumerable<Category>> GetCategoriesAsync(string parentCategoryId = null)
         {
             return await Execute<IEnumerable<Category>>(
-                InsightsReportingConstants.TIME_CATEGORIES_GET,
                 async () =>
                 {
                     if (String.IsNullOrWhiteSpace(parentCategoryId))
@@ -367,7 +346,6 @@ namespace XamarinCRM.Services
         public async Task SynchronizeProductsAsync()
         {
             await Execute(
-                InsightsReportingConstants.TIME_PRODUCTS_SYNC,
                 async () =>
                 {
                     if (!LocalDBExists)
@@ -383,7 +361,6 @@ namespace XamarinCRM.Services
         public async Task<IEnumerable<Product>> GetProductsAsync(string categoryId)
         {
             return await Execute<IEnumerable<Product>>(
-                InsightsReportingConstants.TIME_PRODUCTS_GET, 
                 async () =>
                     await _ProductTable
                         .Where(product => product.CategoryId.ToLower() == categoryId.ToLower())
@@ -395,7 +372,6 @@ namespace XamarinCRM.Services
         public async Task<IEnumerable<Product>> GetAllChildProductsAsync(string topLevelCategoryId)
         {
             return await Execute<IEnumerable<Product>>(
-                InsightsReportingConstants.TIME_PRODUCTS_GET_ALLCHILDREN, 
                 async () =>
                 {
                     if (String.IsNullOrWhiteSpace(topLevelCategoryId))
@@ -448,7 +424,6 @@ namespace XamarinCRM.Services
         public async Task<Product> GetProductByNameAsync(string productName)
         {
             return await Execute<Product>(
-                InsightsReportingConstants.TIME_PRODUCTS_GET_BYNAME, 
                 async () =>
                 {
                     var products = 
@@ -466,7 +441,6 @@ namespace XamarinCRM.Services
         public async Task<IEnumerable<Product>> SearchAsync(string searchTerm)
         {
             return await Execute<IEnumerable<Product>>(
-                InsightsReportingConstants.TIME_PRODUCTS_SEARCH, 
                 async () =>
                 {
                     var products = 
@@ -485,52 +459,36 @@ namespace XamarinCRM.Services
 
         #region some nifty helpers
 
-        static async Task Execute(string insightsIdentifier, Func<Task> execute)
+        static async Task Execute(Func<Task> execute)
         {
             try
             {
-                using (var handle = Insights.TrackTime(insightsIdentifier))
-                {
-                    handle.Start();
-                    await execute();
-                    handle.Stop();
-                }
+                await execute();
             }
             // isolate mobile service errors
             catch (MobileServiceInvalidOperationException ex)
             {
-                Insights.Report(ex, Insights.Severity.Error);
                 Debug.WriteLine(@"MOBILE SERVICE ERROR {0}", ex.Message);
             }
             // catch all other errors
             catch (Exception ex2)
             {
-                Insights.Report(ex2, Insights.Severity.Error);
                 Debug.WriteLine(@"ERROR {0}", ex2.Message);
             }
         }
 
-        static async Task<T> Execute<T>(string insightsIdentifier, Func<Task<T>> execute, T defaultReturnObject)
+        static async Task<T> Execute<T>(Func<Task<T>> execute, T defaultReturnObject)
         {
             try
             {
-                using (var handle = Insights.TrackTime(insightsIdentifier))
-                {
-                    T result;
-                    handle.Start();
-                    result = await execute();
-                    handle.Stop();
-                    return result;
-                }
+                return await execute();
             }
             catch (MobileServiceInvalidOperationException ex) // isolate mobile service errors
             {
-                Insights.Report(ex, Insights.Severity.Error);
                 Debug.WriteLine(@"MOBILE SERVICE ERROR {0}", ex.Message);
             }
             catch (Exception ex2) // catch all other errors
             {
-                Insights.Report(ex2, Insights.Severity.Error);
                 Debug.WriteLine(@"ERROR {0}", ex2.Message);
             }
             return defaultReturnObject;

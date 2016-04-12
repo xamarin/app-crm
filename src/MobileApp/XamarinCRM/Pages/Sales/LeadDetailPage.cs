@@ -216,8 +216,6 @@ namespace XamarinCRM.Pages.Sales
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            Insights.Track(InsightsReportingConstants.PAGE_LEADDETAIL);
         }
     }
 }

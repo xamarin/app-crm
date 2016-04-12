@@ -38,8 +38,6 @@ namespace XamarinCRM.Pages.Products
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            Insights.Track(InsightsReportingConstants.PAGE_PRODUCTDETAIL);
         }
     }
 

@@ -46,7 +46,7 @@ namespace XamarinCRM.iOS
 
 				Control.BorderStyle = UITextBorderStyle.None;
 			} catch (Exception ex) {
-				Xamarin.Insights.Report (ex);
+				// TODO: log error
 			}
 		}
 

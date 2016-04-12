@@ -138,8 +138,6 @@ namespace XamarinCRM.Pages.Sales
                     await _SalesDashboardLeadsViewModel.ExecuteLoadSeedDataCommand();
                     _SalesDashboardLeadsViewModel.IsInitialized = true;
                 }
-
-                Insights.Track(InsightsReportingConstants.PAGE_SALESDASHBOARD);
             }
             else
             {

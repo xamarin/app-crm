@@ -57,8 +57,6 @@ namespace XamarinCRM.Pages.Customers
             }
             ViewModel.LoadAccountsCommand.Execute(null);
             ViewModel.IsInitialized = true;
-
-            Insights.Track(InsightsReportingConstants.PAGE_CUSTOMERS);
         }
 
         async Task PushTabbedPage(Account account = null)

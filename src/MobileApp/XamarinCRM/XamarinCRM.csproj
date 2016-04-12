@@ -97,7 +97,6 @@
       <DependentUpon>TextResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Localization\ILocalize.cs" />
-    <Compile Include="Statics\InsightsReportingConstants.cs" />
     <Compile Include="Cells\Sales\LeadListItemCell.cs" />
     <Compile Include="Converters\BoolToLabelOpacityConverter.cs" />
     <Compile Include="Pages\MenuPage.xaml.cs">
@@ -366,29 +365,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Customers\" />
-    <Folder Include="Pages\Products\" />
-    <Folder Include="Views\Customers\" />
-    <Folder Include="Views\Products\" />
-    <Folder Include="ViewModels\Sales\" />
-    <Folder Include="ViewModels\Customers\" />
-    <Folder Include="ViewModels\Products\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Views\Base\" />
-    <Folder Include="Statics\" />
-    <Folder Include="Config\" />
-    <Folder Include="Pages\Splash\" />
-    <Folder Include="ViewModels\Splash\" />
-    <Folder Include="ViewModels\Base\" />
-    <Folder Include="Cells\Sales\" />
-    <Folder Include="Pages\About\" />
-    <Folder Include="ViewModels\About\" />
-    <Folder Include="Models\" />
-    <Folder Include="Models\Local\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Xamarin.Insights.1.11.3\build\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.11.3\build\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.targets')" />
   <Import Project="..\packages\Xamarin.Forms.2.0.1.6505\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.0.1.6505\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
