@@ -26,7 +26,6 @@ using Syncfusion.SfChart.XForms.iOS.Renderers;
 using System;
 using System.Threading.Tasks;
 using UIKit;
-using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using XamarinCRM.Pages;
@@ -81,7 +80,7 @@ namespace XamarinCRM.iOS
             Forms.Init();
 
             // Xamarin.Forms.Maps initialization
-            FormsMaps.Init();
+            Xamarin.FormsMaps.Init();
 
 			ImageCircleRenderer.Init ();
 

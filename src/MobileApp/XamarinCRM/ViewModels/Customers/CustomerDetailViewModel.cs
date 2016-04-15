@@ -21,7 +21,6 @@
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Plugin.Messaging;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using XamarinCRM.Models;
@@ -29,6 +28,7 @@ using XamarinCRM.Pages.Customers;
 using XamarinCRM.Services;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
+using Plugin.Messaging;
 
 namespace XamarinCRM.ViewModels.Customers
 {
