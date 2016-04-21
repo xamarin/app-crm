@@ -159,7 +159,7 @@ namespace :submit do
     cmd += " --fixture #{ENV['FIXTURE']}" unless ENV['FIXTURE'].nil?
     cmd += " --async" if ENV['ASYNC'] == "true"
 
-    # cmd += " #{extras}"
+    cmd += " #{extras}"
 
     sh cmd
   end
