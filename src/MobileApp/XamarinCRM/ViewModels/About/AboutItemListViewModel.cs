@@ -56,7 +56,7 @@ namespace XamarinCRM.ViewModels
                 new AboutItemViewModel()
                 {
                     Title = "HockeyApp",
-                    Uri = "https://hockeyapp.net"
+					Uri = "http://www.hockeyapp.net"
                 },
 
                 new AboutItemViewModel()
