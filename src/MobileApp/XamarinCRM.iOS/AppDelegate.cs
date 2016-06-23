@@ -37,31 +37,11 @@ namespace XamarinCRM.iOS
     public partial class AppDelegate : FormsApplicationDelegate
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
-        {
-            //We MUST wrap our setup in this block to wire up
-            // Mono's SIGSEGV and SIGBUS signals
-            HockeyApp.Setup.EnableCustomCrashReporting(() => {
-
-                //Get the shared instance
-                var manager = BITHockeyManager.SharedHockeyManager;
-
-                //Configure it to use our APP_ID
-                manager.Configure("59a5cd6206a6133d2caf642b33ed67d7");
-
-                //Start the manager
-                manager.StartManager();
-
-                //Authenticate (there are other authentication options)
-                manager.Authenticator.AuthenticateInstallation();
-
-                //Rethrow any unhandled .NET exceptions as native iOS 
-                // exceptions so the stack traces appear nicely in HockeyApp
-                AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
-                    Setup.ThrowExceptionAsNative(e.ExceptionObject);
-
-                TaskScheduler.UnobservedTaskException += (sender, e) =>
-                    Setup.ThrowExceptionAsNative(e.Exception);
-            });
+       	{
+			var manager = BITHockeyManager.SharedHockeyManager;
+			// Set the HockeyApp App Id here:
+			manager.Configure("11111111222222223333333344444444"); // This is just a dummy value. Replace with your real HockeyApp App ID
+			manager.StartManager();
 
             new SfChartRenderer(); // This is necessary for initializing SyncFusion charts.
 
