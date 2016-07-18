@@ -26,9 +26,6 @@ namespace XamarinCRMAndroid
 		
 		public static void UpdateIdValues()
 		{
-			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.Id.agentWebView = global::XamarinCRMAndroid.Resource.Id.agentWebView;
-			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.Layout.WebAuthenticationBroker = global::XamarinCRMAndroid.Resource.Layout.WebAuthenticationBroker;
-			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.String.ApplicationName = global::XamarinCRMAndroid.Resource.String.ApplicationName;
 			global::com.refractored.fab.Resource.Attribute.fab_colorDisabled = global::XamarinCRMAndroid.Resource.Attribute.fab_colorDisabled;
 			global::com.refractored.fab.Resource.Attribute.fab_colorNormal = global::XamarinCRMAndroid.Resource.Attribute.fab_colorNormal;
 			global::com.refractored.fab.Resource.Attribute.fab_colorPressed = global::XamarinCRMAndroid.Resource.Attribute.fab_colorPressed;
@@ -65,6 +62,129 @@ namespace XamarinCRMAndroid
 			global::com.refractored.fab.Resource.Styleable.RecyclerView_spanCount = global::XamarinCRMAndroid.Resource.Styleable.RecyclerView_spanCount;
 			global::com.refractored.fab.Resource.Styleable.RecyclerView_stackFromEnd = global::XamarinCRMAndroid.Resource.Styleable.RecyclerView_stackFromEnd;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::XamarinCRMAndroid.Resource.Attribute.actionBarSize;
+			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.Id.agentWebView = global::XamarinCRMAndroid.Resource.Id.agentWebView;
+			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.Layout.WebAuthenticationBroker = global::XamarinCRMAndroid.Resource.Layout.WebAuthenticationBroker;
+			global::Microsoft.IdentityModel.Clients.ActiveDirectory.Resource.String.ApplicationName = global::XamarinCRMAndroid.Resource.String.ApplicationName;
+			global::HockeyApp.Resource.Color.hockeyapp_background_header = global::XamarinCRMAndroid.Resource.Color.hockeyapp_background_header;
+			global::HockeyApp.Resource.Color.hockeyapp_background_light = global::XamarinCRMAndroid.Resource.Color.hockeyapp_background_light;
+			global::HockeyApp.Resource.Color.hockeyapp_background_white = global::XamarinCRMAndroid.Resource.Color.hockeyapp_background_white;
+			global::HockeyApp.Resource.Color.hockeyapp_button_background = global::XamarinCRMAndroid.Resource.Color.hockeyapp_button_background;
+			global::HockeyApp.Resource.Color.hockeyapp_button_background_pressed = global::XamarinCRMAndroid.Resource.Color.hockeyapp_button_background_pressed;
+			global::HockeyApp.Resource.Color.hockeyapp_button_background_selected = global::XamarinCRMAndroid.Resource.Color.hockeyapp_button_background_selected;
+			global::HockeyApp.Resource.Color.hockeyapp_text_black = global::XamarinCRMAndroid.Resource.Color.hockeyapp_text_black;
+			global::HockeyApp.Resource.Color.hockeyapp_text_light = global::XamarinCRMAndroid.Resource.Color.hockeyapp_text_light;
+			global::HockeyApp.Resource.Color.hockeyapp_text_normal = global::XamarinCRMAndroid.Resource.Color.hockeyapp_text_normal;
+			global::HockeyApp.Resource.Color.hockeyapp_text_white = global::XamarinCRMAndroid.Resource.Color.hockeyapp_text_white;
+			global::HockeyApp.Resource.Drawable.hockeyapp_btn_background = global::XamarinCRMAndroid.Resource.Drawable.hockeyapp_btn_background;
+			global::HockeyApp.Resource.Id.button_add_response = global::XamarinCRMAndroid.Resource.Id.button_add_response;
+			global::HockeyApp.Resource.Id.button_attachment = global::XamarinCRMAndroid.Resource.Id.button_attachment;
+			global::HockeyApp.Resource.Id.button_login = global::XamarinCRMAndroid.Resource.Id.button_login;
+			global::HockeyApp.Resource.Id.button_refresh = global::XamarinCRMAndroid.Resource.Id.button_refresh;
+			global::HockeyApp.Resource.Id.button_send = global::XamarinCRMAndroid.Resource.Id.button_send;
+			global::HockeyApp.Resource.Id.button_update = global::XamarinCRMAndroid.Resource.Id.button_update;
+			global::HockeyApp.Resource.Id.input_email = global::XamarinCRMAndroid.Resource.Id.input_email;
+			global::HockeyApp.Resource.Id.input_message = global::XamarinCRMAndroid.Resource.Id.input_message;
+			global::HockeyApp.Resource.Id.input_name = global::XamarinCRMAndroid.Resource.Id.input_name;
+			global::HockeyApp.Resource.Id.input_password = global::XamarinCRMAndroid.Resource.Id.input_password;
+			global::HockeyApp.Resource.Id.input_subject = global::XamarinCRMAndroid.Resource.Id.input_subject;
+			global::HockeyApp.Resource.Id.label_author = global::XamarinCRMAndroid.Resource.Id.label_author;
+			global::HockeyApp.Resource.Id.label_date = global::XamarinCRMAndroid.Resource.Id.label_date;
+			global::HockeyApp.Resource.Id.label_last_updated = global::XamarinCRMAndroid.Resource.Id.label_last_updated;
+			global::HockeyApp.Resource.Id.label_message = global::XamarinCRMAndroid.Resource.Id.label_message;
+			global::HockeyApp.Resource.Id.label_text = global::XamarinCRMAndroid.Resource.Id.label_text;
+			global::HockeyApp.Resource.Id.label_title = global::XamarinCRMAndroid.Resource.Id.label_title;
+			global::HockeyApp.Resource.Id.label_version = global::XamarinCRMAndroid.Resource.Id.label_version;
+			global::HockeyApp.Resource.Id.list_attachments = global::XamarinCRMAndroid.Resource.Id.list_attachments;
+			global::HockeyApp.Resource.Id.list_feedback_messages = global::XamarinCRMAndroid.Resource.Id.list_feedback_messages;
+			global::HockeyApp.Resource.Id.text_headline = global::XamarinCRMAndroid.Resource.Id.text_headline;
+			global::HockeyApp.Resource.Id.view_header = global::XamarinCRMAndroid.Resource.Id.view_header;
+			global::HockeyApp.Resource.Id.web_update_details = global::XamarinCRMAndroid.Resource.Id.web_update_details;
+			global::HockeyApp.Resource.Id.wrapper_attachments = global::XamarinCRMAndroid.Resource.Id.wrapper_attachments;
+			global::HockeyApp.Resource.Id.wrapper_feedback = global::XamarinCRMAndroid.Resource.Id.wrapper_feedback;
+			global::HockeyApp.Resource.Id.wrapper_feedback_scroll = global::XamarinCRMAndroid.Resource.Id.wrapper_feedback_scroll;
+			global::HockeyApp.Resource.Id.wrapper_messages = global::XamarinCRMAndroid.Resource.Id.wrapper_messages;
+			global::HockeyApp.Resource.Id.wrapper_messages_buttons = global::XamarinCRMAndroid.Resource.Id.wrapper_messages_buttons;
+			global::HockeyApp.Resource.Layout.hockeyapp_activity_expiry_info = global::XamarinCRMAndroid.Resource.Layout.hockeyapp_activity_expiry_info;
+			global::HockeyApp.Resource.Layout.hockeyapp_activity_feedback = global::XamarinCRMAndroid.Resource.Layout.hockeyapp_activity_feedback;
+			global::HockeyApp.Resource.Layout.hockeyapp_activity_login = global::XamarinCRMAndroid.Resource.Layout.hockeyapp_activity_login;
+			global::HockeyApp.Resource.Layout.hockeyapp_activity_update = global::XamarinCRMAndroid.Resource.Layout.hockeyapp_activity_update;
+			global::HockeyApp.Resource.Layout.hockeyapp_fragment_update = global::XamarinCRMAndroid.Resource.Layout.hockeyapp_fragment_update;
+			global::HockeyApp.Resource.Layout.hockeyapp_view_feedback_message = global::XamarinCRMAndroid.Resource.Layout.hockeyapp_view_feedback_message;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_app_name_fallback = global::XamarinCRMAndroid.Resource.String.hockeyapp_crash_dialog_app_name_fallback;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_message = global::XamarinCRMAndroid.Resource.String.hockeyapp_crash_dialog_message;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_negative_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_crash_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_neutral_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_crash_dialog_neutral_button;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_positive_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_crash_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_crash_dialog_title = global::XamarinCRMAndroid.Resource.String.hockeyapp_crash_dialog_title;
+			global::HockeyApp.Resource.String.hockeyapp_dialog_error_message = global::XamarinCRMAndroid.Resource.String.hockeyapp_dialog_error_message;
+			global::HockeyApp.Resource.String.hockeyapp_dialog_error_title = global::XamarinCRMAndroid.Resource.String.hockeyapp_dialog_error_title;
+			global::HockeyApp.Resource.String.hockeyapp_dialog_negative_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_dialog_positive_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_download_failed_dialog_message = global::XamarinCRMAndroid.Resource.String.hockeyapp_download_failed_dialog_message;
+			global::HockeyApp.Resource.String.hockeyapp_download_failed_dialog_negative_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_download_failed_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_download_failed_dialog_positive_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_download_failed_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_download_failed_dialog_title = global::XamarinCRMAndroid.Resource.String.hockeyapp_download_failed_dialog_title;
+			global::HockeyApp.Resource.String.hockeyapp_error_no_network_message = global::XamarinCRMAndroid.Resource.String.hockeyapp_error_no_network_message;
+			global::HockeyApp.Resource.String.hockeyapp_expiry_info_text = global::XamarinCRMAndroid.Resource.String.hockeyapp_expiry_info_text;
+			global::HockeyApp.Resource.String.hockeyapp_expiry_info_title = global::XamarinCRMAndroid.Resource.String.hockeyapp_expiry_info_title;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attach_file = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_attach_file;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attach_picture = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_attach_picture;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attachment_button_text = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_attachment_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attachment_error = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_attachment_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_attachment_loading = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_attachment_loading;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_email_hint = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_email_hint;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_failed_text = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_failed_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_failed_title = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_failed_title;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_fetching_feedback_text = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_fetching_feedback_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_generic_error = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_generic_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_last_updated_text = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_last_updated_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_max_attachments_allowed = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_max_attachments_allowed;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_message_hint = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_message_hint;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_name_hint = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_name_hint;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_refresh_button_text = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_refresh_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_response_button_text = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_response_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_select_file = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_select_file;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_select_picture = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_select_picture;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_send_button_text = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_send_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_send_generic_error = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_send_generic_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_send_network_error = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_send_network_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_sending_feedback_text = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_sending_feedback_text;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_subject_hint = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_subject_hint;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_title = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_title;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_email_empty = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_validate_email_empty;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_email_error = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_validate_email_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_name_error = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_validate_name_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_subject_error = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_validate_subject_error;
+			global::HockeyApp.Resource.String.hockeyapp_feedback_validate_text_error = global::XamarinCRMAndroid.Resource.String.hockeyapp_feedback_validate_text_error;
+			global::HockeyApp.Resource.String.hockeyapp_login_email_hint = global::XamarinCRMAndroid.Resource.String.hockeyapp_login_email_hint;
+			global::HockeyApp.Resource.String.hockeyapp_login_headline_text = global::XamarinCRMAndroid.Resource.String.hockeyapp_login_headline_text;
+			global::HockeyApp.Resource.String.hockeyapp_login_headline_text_email_only = global::XamarinCRMAndroid.Resource.String.hockeyapp_login_headline_text_email_only;
+			global::HockeyApp.Resource.String.hockeyapp_login_login_button_text = global::XamarinCRMAndroid.Resource.String.hockeyapp_login_login_button_text;
+			global::HockeyApp.Resource.String.hockeyapp_login_missing_credentials_toast = global::XamarinCRMAndroid.Resource.String.hockeyapp_login_missing_credentials_toast;
+			global::HockeyApp.Resource.String.hockeyapp_login_password_hint = global::XamarinCRMAndroid.Resource.String.hockeyapp_login_password_hint;
+			global::HockeyApp.Resource.String.hockeyapp_paint_dialog_message = global::XamarinCRMAndroid.Resource.String.hockeyapp_paint_dialog_message;
+			global::HockeyApp.Resource.String.hockeyapp_paint_dialog_negative_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_paint_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_paint_dialog_neutral_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_paint_dialog_neutral_button;
+			global::HockeyApp.Resource.String.hockeyapp_paint_dialog_positive_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_paint_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_paint_indicator_toast = global::XamarinCRMAndroid.Resource.String.hockeyapp_paint_indicator_toast;
+			global::HockeyApp.Resource.String.hockeyapp_paint_menu_clear = global::XamarinCRMAndroid.Resource.String.hockeyapp_paint_menu_clear;
+			global::HockeyApp.Resource.String.hockeyapp_paint_menu_save = global::XamarinCRMAndroid.Resource.String.hockeyapp_paint_menu_save;
+			global::HockeyApp.Resource.String.hockeyapp_paint_menu_undo = global::XamarinCRMAndroid.Resource.String.hockeyapp_paint_menu_undo;
+			global::HockeyApp.Resource.String.hockeyapp_permission_dialog_negative_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_permission_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_permission_dialog_positive_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_permission_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_permission_update_message = global::XamarinCRMAndroid.Resource.String.hockeyapp_permission_update_message;
+			global::HockeyApp.Resource.String.hockeyapp_permission_update_title = global::XamarinCRMAndroid.Resource.String.hockeyapp_permission_update_title;
+			global::HockeyApp.Resource.String.hockeyapp_update_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_update_button;
+			global::HockeyApp.Resource.String.hockeyapp_update_dialog_message = global::XamarinCRMAndroid.Resource.String.hockeyapp_update_dialog_message;
+			global::HockeyApp.Resource.String.hockeyapp_update_dialog_negative_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_update_dialog_negative_button;
+			global::HockeyApp.Resource.String.hockeyapp_update_dialog_positive_button = global::XamarinCRMAndroid.Resource.String.hockeyapp_update_dialog_positive_button;
+			global::HockeyApp.Resource.String.hockeyapp_update_dialog_title = global::XamarinCRMAndroid.Resource.String.hockeyapp_update_dialog_title;
+			global::HockeyApp.Resource.String.hockeyapp_update_mandatory_toast = global::XamarinCRMAndroid.Resource.String.hockeyapp_update_mandatory_toast;
+			global::HockeyApp.Resource.String.hockeyapp_update_version_details_label = global::XamarinCRMAndroid.Resource.String.hockeyapp_update_version_details_label;
+			global::HockeyApp.Resource.String.library_name = global::XamarinCRMAndroid.Resource.String.library_name;
+			global::HockeyApp.Resource.Style.HockeyApp_ButtonStyle = global::XamarinCRMAndroid.Resource.Style.HockeyApp_ButtonStyle;
+			global::HockeyApp.Resource.Style.HockeyApp_EditTextStyle = global::XamarinCRMAndroid.Resource.Style.HockeyApp_EditTextStyle;
+			global::HockeyApp.Resource.Style.HockeyApp_SingleLineInputStyle = global::XamarinCRMAndroid.Resource.Style.HockeyApp_SingleLineInputStyle;
 		}
 		
 		public partial class Animation
@@ -3575,8 +3695,8 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f07008d
 			public const int ApplicationName = 2131165325;
 			
-			// aapt resource value: 0x7f07008e
-			public const int GoogleMapsKey = 2131165326;
+			// aapt resource value: 0x7f07008f
+			public const int GoogleMapsKey = 2131165327;
 			
 			// aapt resource value: 0x7f070031
 			public const int abc_action_bar_home_description = 2131165233;
@@ -3635,8 +3755,8 @@ namespace XamarinCRMAndroid
 			// aapt resource value: 0x7f070043
 			public const int abc_toolbar_collapse_description = 2131165251;
 			
-			// aapt resource value: 0x7f07008c
-			public const int app_name = 2131165324;
+			// aapt resource value: 0x7f07008e
+			public const int app_name = 2131165326;
 			
 			// aapt resource value: 0x7f07002e
 			public const int appbar_scrolling_view_behavior = 2131165230;
@@ -3952,6 +4072,9 @@ namespace XamarinCRMAndroid
 			
 			// aapt resource value: 0x7f07008b
 			public const int hockeyapp_update_version_details_label = 2131165323;
+			
+			// aapt resource value: 0x7f07008c
+			public const int library_name = 2131165324;
 			
 			// aapt resource value: 0x7f07001f
 			public const int mr_button_content_description = 2131165215;

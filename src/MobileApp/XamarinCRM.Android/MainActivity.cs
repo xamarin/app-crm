@@ -2,21 +2,18 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Runtime;
 using ImageCircle.Forms.Plugin.Droid;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Syncfusion.SfChart.XForms.Droid;
-using System;
-using System.Threading.Tasks;
 using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using XamarinCRM;
-using HockeyApp;
+using HockeyApp.Android;
 
 namespace XamarinCRMAndroid
 {
-    [Activity(Label = "XamarinCRM", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity(Label = "XamarinCRM", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

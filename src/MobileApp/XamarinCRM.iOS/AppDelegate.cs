@@ -1,11 +1,8 @@
-﻿
-
-using Foundation;
-using HockeyApp;
+﻿using Foundation;
+using HockeyApp.iOS;
 using ImageCircle.Forms.Plugin.iOS;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
 using System;
-using System.Threading.Tasks;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
