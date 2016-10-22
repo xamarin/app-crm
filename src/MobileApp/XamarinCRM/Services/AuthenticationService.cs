@@ -63,7 +63,7 @@ namespace XamarinCRM.Services
                         throw new Exception("Failed to DeAuthenticate!");
                     }
                     _AuthenticationResult = null;
-                });
+                }).Unwrap();
             return true;
         }
 
