@@ -52,7 +52,7 @@ namespace XamarinCRM
             // if (Device.OS != TargetPlatform.WinPhone) 
             TextResources.Culture = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
 
-
+			return;
             // If the App.IsAuthenticated property is false, modally present the SplashPage.
             if (!_AuthenticationService.IsAuthenticated)
             {
