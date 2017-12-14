@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using XamarinCRM.Services;
 using XamarinCRM.Models;
+using XamarinCRM.Localization;
 
 namespace XamarinCRM.ViewModels.Sales
 {

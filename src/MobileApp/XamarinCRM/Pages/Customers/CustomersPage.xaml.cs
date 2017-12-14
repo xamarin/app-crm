@@ -25,6 +25,7 @@ using XamarinCRM.Statics;
 using Xamarin;
 using XamarinCRM.Models;
 using System.Threading.Tasks;
+using XamarinCRM.Localization;
 
 namespace XamarinCRM.Pages.Customers
 {

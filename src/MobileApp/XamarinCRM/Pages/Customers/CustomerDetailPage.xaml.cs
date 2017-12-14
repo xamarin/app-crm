@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Pages.Base;
+using XamarinCRM.Localization;
 
 namespace XamarinCRM.Pages.Customers
 {

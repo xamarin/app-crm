@@ -8,6 +8,7 @@ using XamarinCRM.ViewModels.Customers;
 using XamarinCRM.Statics;
 using Plugin.ExternalMaps;
 using Plugin.ExternalMaps.Abstractions;
+using XamarinCRM.Localization;
 
 namespace XamarinCRM.Pages.Customers
 {

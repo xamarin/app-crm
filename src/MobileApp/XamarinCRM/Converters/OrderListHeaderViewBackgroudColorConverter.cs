@@ -2,6 +2,7 @@
 using System;
 using Xamarin.Forms;
 using XamarinCRM.Statics;
+using XamarinCRM.Localization;
 
 namespace XamarinCRM.Converters
 {
