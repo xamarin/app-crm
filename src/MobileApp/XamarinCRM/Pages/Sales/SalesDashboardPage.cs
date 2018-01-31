@@ -28,6 +28,7 @@ using XamarinCRM.Services;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Sales;
 using XamarinCRM.Views;
+using XamarinCRM.Localization;
 
 namespace XamarinCRM.Pages.Sales
 {

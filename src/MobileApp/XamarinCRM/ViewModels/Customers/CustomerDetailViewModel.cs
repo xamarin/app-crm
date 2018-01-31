@@ -10,6 +10,7 @@ using XamarinCRM.Services;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using Plugin.Messaging;
+using XamarinCRM.Localization;
 
 namespace XamarinCRM.ViewModels.Customers
 {

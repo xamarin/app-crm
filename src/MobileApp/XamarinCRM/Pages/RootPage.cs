@@ -14,6 +14,7 @@ using XamarinCRM.ViewModels.Base;
 using System.Collections.Generic;
 using XamarinCRM.Pages.About;
 using XamarinCRM.ViewModels;
+using XamarinCRM.Localization;
 
 namespace XamarinCRM.Pages
 {

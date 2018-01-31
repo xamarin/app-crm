@@ -28,6 +28,7 @@ using XamarinCRM.Pages.Products;
 using XamarinCRM.ViewModels.Products;
 using Xamarin;
 using XamarinCRM.Statics;
+using XamarinCRM.Localization;
 
 namespace XamarinCRM.Pages.Customers
 {
