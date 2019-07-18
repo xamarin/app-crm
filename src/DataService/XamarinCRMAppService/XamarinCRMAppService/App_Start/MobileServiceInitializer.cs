@@ -19,7 +19,7 @@ namespace XamarinCRMAppService
             If we do not re-calculate the dates, then the mobile app will eventually show no data, because the dates will eventually be greater than 6 weeks in the past.
             In addition, a scheduled job will need to be run weekly to refresh the data, incrementing the order dates forward by one week. That is, if one wants the mobile app to always present data in its UI.
              */
-            DateTime inceptionDate = DateTime.SpecifyKind(new DateTime(2015, 12, 6, 0, 0, 0), DateTimeKind.Utc); // The DateTime at which these orders were originally generated, in UTC.
+            DateTime inceptionDate = DateTime.SpecifyKind(new DateTime(2017, 1, 15, 0, 0, 0), DateTimeKind.Utc); // The DateTime at which these orders were originally generated, in UTC.
 
             DateTime now = DateTime.UtcNow;
 
