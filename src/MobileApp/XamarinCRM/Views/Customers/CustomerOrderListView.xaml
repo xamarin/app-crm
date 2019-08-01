@@ -12,8 +12,7 @@ xmlns:converters="clr-namespace:XamarinCRM.Converters"
 	IsVisible="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}" 
 	IsEnabled="{Binding IsBusy, Converter={StaticResource inverseBooleanConverter}}" 
 	ItemsSource="{Binding OrderGroups}" 
-	IsGroupingEnabled="true" 
-	GroupDisplayBinding="{Binding Key}">
+	IsGroupingEnabled="true">
 
 	<views:NonPersistentSelectedItemListView.Resources>
 		<ResourceDictionary>

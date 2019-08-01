@@ -51,7 +51,6 @@ xmlns:i18n="clr-namespace:XamarinCRM.Localization"
 							HorizontalTextAlignment="End" 
 							VerticalTextAlignment="Center" />
 							<Image 
-							HorizontalOptions="End" 
 							VerticalOptions="Center">
 								<Image.Source>
 									<OnPlatform x:TypeArguments="ImageSource">

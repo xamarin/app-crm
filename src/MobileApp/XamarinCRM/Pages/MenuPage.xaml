@@ -14,8 +14,6 @@ xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=Ima
      <ContentPage.Content>
             <ListView 
                 SeparatorColor="Transparent"
-                Grid.ColumnSpan="3"
-                Grid.Row="4"
                 HasUnevenRows="true"
                 x:Name="ListViewMenu">
                 <ListView.Header>
